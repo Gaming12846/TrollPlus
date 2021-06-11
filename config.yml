@@ -1,0 +1,16 @@
+# Config for Troll v1.1.2 by Gaming12846
+message:
+  nopermission: 'You have no permission to do that'
+  noconsole: 'The console cannot use this command'
+  usagetrollmenu: 'Please use </troll Player>'
+  targetnotonline: 'The Player [Player] is currently not online'
+
+banmessage:
+  banmessageplayer: 'You have been banned from this Server'
+  bankmessagebroadcastonoff: true
+  banmessagebroadcast: 'The Player [Player] have been permanently banned from the server'
+
+spammessages:
+  - 'test1'
+  - 'test2'
+  - 'test3'
