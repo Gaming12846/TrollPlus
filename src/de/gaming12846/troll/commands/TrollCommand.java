@@ -35,27 +35,42 @@ public class TrollCommand implements CommandExecutor {
 						if (t != null) {
 							Vars.target = t;
 
+							// Create inventory
 							Vars.trollmenu = Bukkit.createInventory(null, 27, "Troll §4" + Vars.target.getName());
-							Vars.trollmenu.setItem(26, Items.createItem(Material.BARRIER, 0, "§fClose"));
 
+							/**
+							 * | Freeze | x | Handitemdrop | x | Control | x | Flip behind | x | x |
+							 * 
+							 * | x | x | x | x | x | x | x | x | x |
+							 * 
+							 * | Vanish | x | Teleport | x | Kill | x | Invsee | x | Close |
+							 */
+
+							// Basic things
+							Vars.trollmenu.setItem(26, Items.createItem(Material.BARRIER, 0, "§fClose"));
+							Vars.trollmenu.setItem(24, Items.createItem(Material.CHEST, 0, "§fInvsee"));
+							Vars.trollmenu.setItem(22, Items.createItem(Material.WITHER_SKELETON_SKULL, 0, "§fKill"));
+							Vars.trollmenu.setItem(20,
+									Items.createItem(Material.ENDER_PEARL, 0, "§fTeleport to player"));
+							Vars.trollmenu.setItem(18,
+									Items.createItem(Material.POTION, 0, "§fVanish " + Vars.vanishstatus));
+
+							// Features
 							Vars.trollmenu.setItem(0,
 									Items.createItem(Material.ICE, 0, "§fFreeze " + Vars.freezestatus));
-							Vars.trollmenu.setItem(2, Items.createItem(Material.CHEST, 0, "§fInvSee"));
-							Vars.trollmenu.setItem(4, Items.createItem(Material.WITHER_SKELETON_SKULL, 0, "§fKill"));
-							Vars.trollmenu.setItem(6, Items.createItem(Material.FEATHER, 0,
-									"§fAuto Hand Item Drop " + Vars.handitemdropstatus));
-							Vars.trollmenu.setItem(8, Items.createItem(Material.LEGACY_BOOK_AND_QUILL, 0,
-									"§fSpam Messages " + Vars.spammessagesstatus));
-							Vars.trollmenu.setItem(9,
-									Items.createItem(Material.ENDER_PEARL, 0, "§fTeleport to Player"));
+							Vars.trollmenu.setItem(2, Items.createItem(Material.FEATHER, 0,
+									"§fHand item drop " + Vars.handitemdropstatus));
+							Vars.trollmenu.setItem(4,
+									Items.createItem(Material.LEAD, 0, "§fControl " + Vars.controlstatus));
+							Vars.trollmenu.setItem(6,
+									Items.createItem(Material.EGG, 0, "§fFlip behind " + Vars.flipbehindstatus));
+							Vars.trollmenu.setItem(8, Items.createItem(Material.MUSIC_DISC_BLOCKS, 0,
+									"§fSpam sounds " + Vars.spamsoundsstatus));
+							Vars.trollmenu.setItem(9, Items.createItem(Material.LEGACY_BOOK_AND_QUILL, 0,
+									"§fSpam messages " + Vars.spammessagesstatus));
 							Vars.trollmenu.setItem(11,
-									Items.createItem(Material.ENDER_EYE, 0, "§fControl " + Vars.controlstatus));
-							Vars.trollmenu.setItem(13,
-									Items.createItem(Material.NOTE_BLOCK, 0, "§fPlay Random Scary Sound"));
-							Vars.trollmenu.setItem(15, Items.createItem(Material.PAPER, 0, "§fFake Ban"));
-							Vars.trollmenu.setItem(17, Items.createItem(Material.MUSIC_DISC_BLOCKS, 0,
-									"§fSpam Sounds " + Vars.spamsoundsstatus));
-							Vars.trollmenu.setItem(18, Items.createItem(Material.EGG, 0, "§fLook behind"));
+									Items.createItem(Material.NOTE_BLOCK, 0, "§fPlay random scary sound"));
+							Vars.trollmenu.setItem(17, Items.createItem(Material.PAPER, 0, "§fFake ban"));
 
 							p.openInventory(Vars.trollmenu);
 						} else {

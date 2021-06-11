@@ -1,4 +1,4 @@
-# Config for Troll v1.1.2 by Gaming12846
+# Config for Troll v1.2 by Gaming12846
 message:
   nopermission: 'You have no permission to do that'
   noconsole: 'The console cannot use this command'
@@ -11,6 +11,6 @@ banmessage:
   banmessagebroadcast: 'The Player [Player] have been permanently banned from the server'
 
 spammessages:
-  - 'test1'
-  - 'test2'
-  - 'test3'
+  - 'testmessage1'
+  - 'testmessage2'
+  - 'testmessage3'

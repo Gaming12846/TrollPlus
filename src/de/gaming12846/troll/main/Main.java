@@ -14,6 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import de.gaming12846.troll.commands.TrollCommand;
 import de.gaming12846.troll.features.Control;
+import de.gaming12846.troll.features.FlipBehind;
 import de.gaming12846.troll.features.Freeze;
 import de.gaming12846.troll.features.TrollMenu;
 
@@ -21,6 +22,7 @@ public class Main extends JavaPlugin {
 
 	private static Main plugin;
 
+	// Plugin initialisation
 	@Override
 	public void onEnable() {
 		plugin = this;
@@ -28,10 +30,10 @@ public class Main extends JavaPlugin {
 		File Config = new File("plugins/Troll/config.yml");
 
 		if (Config.exists()) {
-			Bukkit.getConsoleSender().sendMessage("[Troll] Config was loaded.");
+			Bukkit.getConsoleSender().sendMessage("[Troll] Config was loaded successfully");
 			reloadConfig();
 		} else {
-			Bukkit.getConsoleSender().sendMessage("[Troll] Cant find a config, create a new one.");
+			Bukkit.getConsoleSender().sendMessage("[Troll] Cant find a config, create a new one");
 			getConfig().options().copyDefaults(true);
 			saveConfig();
 		}
@@ -43,15 +45,18 @@ public class Main extends JavaPlugin {
 		return plugin;
 	}
 
+	// Register commands
 	private void registerCommands() {
 		getCommand("troll").setExecutor(new TrollCommand());
 	}
 
+	// Register listeners
 	private void registerListeners() {
 		PluginManager pm = Bukkit.getPluginManager();
 		pm.registerEvents(new TrollMenu(), this);
 		pm.registerEvents(new Freeze(), this);
 		pm.registerEvents(new Control(), this);
+		pm.registerEvents(new FlipBehind(), this);
 	}
 
 }

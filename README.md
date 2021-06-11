@@ -1,24 +1,28 @@
-# Troll v1.1.2
-A simple plugin to troll player in Minecraft
+# Troll v1.2
+A simple plugin for trolling players in Minecraft
 
 Features:
-- Freeze Player
-- Open Player Inventory (InvSee)
-- Kill Player
-- Drop Player Hand Item
-- Teleport to Player
-- Fakeban
-- Random Soundspawn
+- Config
+- Multilingual support (Config)
+- Freeze player
+- Hand item drop
 - Player control (Testing)
-- Config (You can add any language)
+- Flip Behind player when interacting
+- Sound spam
+- Message spam
+- Play random scray sound
+- Fake ban
+- Vanish (Target and all)
+- Teleport to the player
+- Kill
+- Open player inventory (Invsee)
 
 Commands:
-- /gethead player
+- /troll player
 
 Permissions:
 - troll.opentrollmenu
 
 To Do List:
-- Improve Control Feature
-- Add Spawn Mobs, Entitys etc.
+- Improve control feature
 - Add more features

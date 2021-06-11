@@ -1,6 +1,6 @@
 main: de.gaming12846.troll.main.Main
 name: Troll
-version: 1.1.2
+version: 1.2
 api-version: 1.13
 author: Gaming12846
 commands:

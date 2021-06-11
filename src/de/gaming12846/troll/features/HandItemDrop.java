@@ -15,7 +15,7 @@ import de.gaming12846.troll.utilitys.Vars;
 
 public class HandItemDrop {
 
-	public static void AutoHandItemDrop() {
+	public static void HandItemDrop() {
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Main.getPlugin(), new Runnable() {
 
 			@SuppressWarnings("deprecation")
