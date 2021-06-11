@@ -1,6 +1,8 @@
 # Troll v1.2
 A simple plugin for trolling players in Minecraft
 
+Native Minecraft Version: 1.17
+
 Features:
 - Config
 - Multilingual support (Config)
@@ -14,7 +16,7 @@ Features:
 - Fake ban
 - Vanish (Target and all)
 - Teleport to the player
-- Kill
+- Kill player
 - Open player inventory (Invsee)
 
 Commands:
@@ -23,6 +25,6 @@ Commands:
 Permissions:
 - troll.opentrollmenu
 
-To Do List:
+To-do list:
 - Improve control feature
 - Add more features
