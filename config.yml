@@ -1,9 +1,15 @@
 # Config for Troll v1.2 by Gaming12846
-message:
-  nopermission: 'You have no permission to do that'
-  noconsole: 'The console cannot use this command'
-  usagetrollmenu: 'Please use </troll Player>'
-  targetnotonline: 'The Player [Player] is currently not online'
+messages:
+  noPermission: 'You have no permission to do that'
+  noConsole: 'The console cannot use this command'
+  usageTrollmenu: 'Please use </troll Player>'
+  usageBlacklist: 'Please use </trollblacklist [add/remove] Player>'
+  targetNotOnline: 'The Player [Player] is currently not online'
+  immune: 'The Player [Player] is immune'
+  addedBlacklist: 'The Player [Player] has been added to the blacklist'
+  removedBlacklist: 'The Player [Player] has been removed from the blacklist'
+  allreadyInBlacklist: 'The Player [Player] is already in the blacklist'
+  notInBlacklist: 'The Player [Player] is not on the blacklist'
 
 banmessage:
   banmessageplayer: 'You have been banned from this Server'

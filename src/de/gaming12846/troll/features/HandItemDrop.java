@@ -22,7 +22,7 @@ public class HandItemDrop {
 			@Override
 			public void run() {
 
-				if (Vars.handitemdroplist.contains(Vars.target.getName())) {
+				if (Vars.handitemdropList.contains(Vars.target.getName())) {
 
 					if (Vars.target.getInventory().getItemInMainHand().getAmount() > 0) {
 						ItemStack item = Vars.target.getItemInHand();
@@ -30,13 +30,8 @@ public class HandItemDrop {
 						Item itemDropped = Vars.target.getWorld().dropItemNaturally(Vars.target.getLocation(), item);
 						itemDropped.setPickupDelay(40);
 					}
-
 				}
-
 			}
-
 		}, 10, 10);
-
 	}
-
 }

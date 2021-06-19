@@ -25,7 +25,6 @@ public class Control implements Listener {
 		if (Vars.controller.containsKey(p)) {
 			Vars.controller.get(p).teleport(p);
 		}
-
 	}
 
 	public static HashMap<Player, String> message = new HashMap<>();
@@ -40,7 +39,5 @@ public class Control implements Listener {
 			message.put(Vars.controller.get(p), e.getMessage());
 			Vars.controller.get(p).chat(e.getMessage());
 		}
-
 	}
-
 }

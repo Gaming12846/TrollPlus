@@ -20,7 +20,7 @@ public class Freeze implements Listener {
 	public void onPlayerMove(PlayerMoveEvent e) {
 		Player p = e.getPlayer();
 
-		if (Vars.freezelist.contains(p.getName()))
+		if (Vars.freezeList.contains(p.getName()))
 			e.setCancelled(true);
 	}
 
@@ -28,8 +28,7 @@ public class Freeze implements Listener {
 	public void OnInteract(PlayerInteractEvent e) {
 		Player p = e.getPlayer();
 
-		if (Vars.freezelist.contains(p.getName()))
+		if (Vars.freezeList.contains(p.getName()))
 			e.setCancelled(true);
 	}
-
 }

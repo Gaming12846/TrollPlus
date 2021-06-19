@@ -24,7 +24,7 @@ public class SpamSounds {
 			@Override
 			public void run() {
 
-				if (Vars.spamsoundslist.contains(Vars.target.getName())) {
+				if (Vars.spamsoundsList.contains(Vars.target.getName())) {
 					List<Sound> sounds = new ArrayList<>();
 					sounds.add(Sound.ENTITY_EXPERIENCE_BOTTLE_THROW);
 					sounds.add(Sound.ENTITY_PLAYER_HURT);
@@ -56,13 +56,8 @@ public class SpamSounds {
 							break;
 					}
 					Vars.target.playSound(Vars.target.getLocation(), sound, 30, rand);
-
 				}
-
 			}
-
 		}, 5, 5);
-
 	}
-
 }

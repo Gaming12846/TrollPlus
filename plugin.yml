@@ -4,5 +4,11 @@ version: 1.2
 api-version: 1.13
 author: Gaming12846
 commands:
-     Troll:
+     troll:
           description: Opens the troll menu
+          aliases: [t]
+          usage: Simply type </troll Player>
+     trollblacklist:
+          description: Add or remove players from the blacklist
+          aliases: [tb]
+          usage: Simply type </trollblacklist [add/remove] Player>

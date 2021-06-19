@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
@@ -19,31 +20,43 @@ public class Vars {
 	public static Player target;
 	public static Inventory trollmenu;
 
+	public static FileConfiguration blacklist = null;
+
 	// Plugin initialisation
 	public static String prefix = "§f[§dTroll§f] ";
 
 	// Messages
-	public static String nopermission = prefix + Main.getPlugin().getConfig().getString("message.nopermission");
-	public static String noconsole = "[Troll] " + Main.getPlugin().getConfig().getString("message.noconsole");
+	public static String noPermission = prefix + Main.getPlugin().getConfig().getString("messages.noPermission");
+	public static String noConsole = "[Troll] " + Main.getPlugin().getConfig().getString("messages.noConsole");
 
-	public static String usagetrollmenu = prefix + Main.getPlugin().getConfig().getString("message.usagetrollmenu");
-	public static String targetnotonline = prefix + Main.getPlugin().getConfig().getString("message.targetnotonline");
+	public static String usageTrollmenu = prefix + Main.getPlugin().getConfig().getString("messages.usageTrollmenu");
+	public static String usageBlacklist = prefix + Main.getPlugin().getConfig().getString("messages.usageBlacklist");;
 
-	public static String banmessageplayer = Main.getPlugin().getConfig().getString("banmessage.banmessageplayer");
-	public static String banmessagebroadcast = Main.getPlugin().getConfig().getString("banmessage.banmessagebroadcast");
+	public static String targetNotOnline = prefix + Main.getPlugin().getConfig().getString("messages.targetNotOnline");
+	public static String immune = prefix + Main.getPlugin().getConfig().getString("messages.immune");
+
+	public static String banMessagePlayer = Main.getPlugin().getConfig().getString("banmessage.banmessageplayer");
+	public static String banMessageBroadcast = Main.getPlugin().getConfig().getString("banmessage.banmessagebroadcast");
+
+	public static String addedBlacklist = prefix + Main.getPlugin().getConfig().getString("messages.addedBlacklist");
+	public static String removedBlacklist = prefix
+			+ Main.getPlugin().getConfig().getString("messages.removedBlacklist");
+	public static String allreadyInBlacklist = prefix
+			+ Main.getPlugin().getConfig().getString("messages.allreadyInBlacklist");
+	public static String notInBlacklist = prefix + Main.getPlugin().getConfig().getString("messages.notInBlacklist");
 
 	// Booleans
-	public static boolean bankmessagebroadcastonoff = Main.getPlugin().getConfig()
+	public static boolean bankMessageBroadcastOnOff = Main.getPlugin().getConfig()
 			.getBoolean("banmessage.bankmessagebroadcastonoff");
 
 	// ArrayLists
-	public static ArrayList<String> vanishlist = new ArrayList<>();
-	public static ArrayList<String> freezelist = new ArrayList<>();
-	public static ArrayList<String> handitemdroplist = new ArrayList<>();
-	public static ArrayList<String> controllist = new ArrayList<>();
-	public static ArrayList<String> spammessageslist = new ArrayList<>();
-	public static ArrayList<String> spamsoundslist = new ArrayList<>();
-	public static ArrayList<String> flipbehindlist = new ArrayList<>();
+	public static ArrayList<String> vanishList = new ArrayList<>();
+	public static ArrayList<String> freezeList = new ArrayList<>();
+	public static ArrayList<String> handitemdropList = new ArrayList<>();
+	public static ArrayList<String> controlList = new ArrayList<>();
+	public static ArrayList<String> spammessagesList = new ArrayList<>();
+	public static ArrayList<String> spamsoundsList = new ArrayList<>();
+	public static ArrayList<String> flipbehindList = new ArrayList<>();
 
 	// Lists
 	public static List<String> spammessages = Main.getPlugin().getConfig().getStringList("spammessages");
@@ -52,11 +65,11 @@ public class Vars {
 	public static HashMap<Player, Player> controller = new HashMap<>();
 
 	// Status
-	public static String vanishstatus = "§cOFF";
-	public static String freezestatus = "§cOFF";
-	public static String handitemdropstatus = "§cOFF";
-	public static String controlstatus = "§cOFF";
-	public static String spammessagesstatus = "§cOFF";
-	public static String spamsoundsstatus = "§cOFF";
-	public static String flipbehindstatus = "§cOFF";
+	public static String vanishStatus = "§cOFF";
+	public static String freezeStatus = "§cOFF";
+	public static String handitemdropStatus = "§cOFF";
+	public static String controlStatus = "§cOFF";
+	public static String spammessagesStatus = "§cOFF";
+	public static String spamsoundsStatus = "§cOFF";
+	public static String flipbehindStatus = "§cOFF";
 }

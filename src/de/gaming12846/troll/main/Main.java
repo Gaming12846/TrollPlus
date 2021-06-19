@@ -6,37 +6,32 @@
 
 package de.gaming12846.troll.main;
 
-import java.io.File;
-
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import de.gaming12846.troll.commands.BlacklistCommand;
 import de.gaming12846.troll.commands.TrollCommand;
 import de.gaming12846.troll.features.Control;
 import de.gaming12846.troll.features.FlipBehind;
 import de.gaming12846.troll.features.Freeze;
 import de.gaming12846.troll.features.TrollMenu;
+import de.gaming12846.troll.utilitys.ConfigLoader;
 
 public class Main extends JavaPlugin {
 
 	private static Main plugin;
 
-	// Plugin initialisation
+	// Plugin disable
+	@Override
+	public void onDisable() {
+	}
+
+	// Plugin enable
 	@Override
 	public void onEnable() {
 		plugin = this;
-
-		File Config = new File("plugins/Troll/config.yml");
-
-		if (Config.exists()) {
-			Bukkit.getConsoleSender().sendMessage("[Troll] Config was loaded successfully");
-			reloadConfig();
-		} else {
-			Bukkit.getConsoleSender().sendMessage("[Troll] Cant find a config, create a new one");
-			getConfig().options().copyDefaults(true);
-			saveConfig();
-		}
+		ConfigLoader.ConfigLoader();
 		registerCommands();
 		registerListeners();
 	}
@@ -48,6 +43,7 @@ public class Main extends JavaPlugin {
 	// Register commands
 	private void registerCommands() {
 		getCommand("troll").setExecutor(new TrollCommand());
+		getCommand("trollblacklist").setExecutor(new BlacklistCommand());
 	}
 
 	// Register listeners
@@ -58,5 +54,4 @@ public class Main extends JavaPlugin {
 		pm.registerEvents(new Control(), this);
 		pm.registerEvents(new FlipBehind(), this);
 	}
-
 }

@@ -22,7 +22,7 @@ public class SpamMessages {
 			@Override
 			public void run() {
 
-				if (Vars.spammessageslist.contains(Vars.target.getName())) {
+				if (Vars.spammessagesList.contains(Vars.target.getName())) {
 					Random random = new Random();
 					String randomElement = Vars.spammessages.get(random.nextInt(Vars.spammessages.size()));
 					StringBuilder sb1 = new StringBuilder();
@@ -48,11 +48,7 @@ public class SpamMessages {
 					}
 					Vars.target.sendMessage(sb3.toString());
 				}
-
 			}
-
 		}, 20, 20);
-
 	}
-
 }

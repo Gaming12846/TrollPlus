@@ -21,7 +21,7 @@ public class FlipBehind implements Listener {
 	public void onPlayerInteract(PlayerInteractEvent e) {
 		Player p = e.getPlayer();
 
-		if (Vars.flipbehindlist.contains(p.getName())) {
+		if (Vars.flipbehindList.contains(p.getName())) {
 			double x = Vars.target.getLocation().getX();
 			double y = Vars.target.getLocation().getY();
 			double z = Vars.target.getLocation().getZ();
@@ -32,7 +32,5 @@ public class FlipBehind implements Listener {
 			location.setYaw((float) yaw2);
 			Vars.target.teleport(location);
 		}
-
 	}
-
 }
