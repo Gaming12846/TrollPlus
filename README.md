@@ -1,4 +1,4 @@
-# TrollPlus v1.3
+# TrollPlus v1.3.1
 A simple plugin for trolling players in Minecraft
 
 Native Minecraft Version: 1.17
