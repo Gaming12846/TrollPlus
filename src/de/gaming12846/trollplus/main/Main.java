@@ -1,24 +1,28 @@
 /**
- * Troll
+ * TrollPlus
  * 
  * @author Gaming12846
  */
 
-package de.gaming12846.troll.main;
+package de.gaming12846.trollplus.main;
+
+import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import de.gaming12846.troll.commands.BlacklistCommand;
-import de.gaming12846.troll.commands.TrollCommand;
-import de.gaming12846.troll.features.Control;
-import de.gaming12846.troll.features.FlipBehind;
-import de.gaming12846.troll.features.Freeze;
-import de.gaming12846.troll.features.SemiBan;
-import de.gaming12846.troll.features.TNTTrack;
-import de.gaming12846.troll.features.TrollMenu;
-import de.gaming12846.troll.utilitys.ConfigLoader;
+import de.gaming12846.trollplus.bstats.Metrics;
+import de.gaming12846.trollplus.commands.BlacklistCommand;
+import de.gaming12846.trollplus.commands.TrollCommand;
+import de.gaming12846.trollplus.features.Control;
+import de.gaming12846.trollplus.features.FlipBehind;
+import de.gaming12846.trollplus.features.Freeze;
+import de.gaming12846.trollplus.features.SemiBan;
+import de.gaming12846.trollplus.features.TNTTrack;
+import de.gaming12846.trollplus.features.TrollMenu;
+import de.gaming12846.trollplus.utilitys.ConfigLoader;
+import de.gaming12846.trollplus.utilitys.UpdateChecker;
 
 public class Main extends JavaPlugin {
 
@@ -33,9 +37,22 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		plugin = this;
+		Logger logger = this.getLogger();
+
 		ConfigLoader.ConfigLoader();
 		registerCommands();
 		registerListeners();
+
+		@SuppressWarnings("unused")
+		Metrics metrics = new Metrics(this, 11761);
+
+		new UpdateChecker(this, 12345).getVersion(version -> {
+			if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
+				logger.info("There is not a new update available.");
+			} else {
+				logger.info("There is a new update available.");
+			}
+		});
 	}
 
 	public static Main getPlugin() {

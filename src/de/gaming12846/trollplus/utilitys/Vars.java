@@ -1,10 +1,10 @@
 /**
- * Troll
+ * TrollPlus
  * 
  * @author Gaming12846
  */
 
-package de.gaming12846.troll.utilitys;
+package de.gaming12846.trollplus.utilitys;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,7 +14,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
-import de.gaming12846.troll.main.Main;
+import de.gaming12846.trollplus.main.Main;
 
 public class Vars {
 	public static Player target = null;
@@ -22,12 +22,11 @@ public class Vars {
 
 	public static FileConfiguration blacklist = null;
 
-	public static String prefix = "§8[§c§lTroll§8]§f ";
+	public static String prefix = "§8[§c§lTrollPlus§8]§f ";
 
 	// Booleans
 	public static class Booleans {
-		public static boolean banMessageBroadcastOnOff = Main.getPlugin().getConfig()
-				.getBoolean("banmessage.banMessageBroadcastOnOff");
+		public static boolean banMessageBroadcastOnOff = Main.getPlugin().getConfig().getBoolean("banmessage.banMessageBroadcastOnOff");
 	}
 
 	// Status
@@ -65,31 +64,23 @@ public class Vars {
 
 	// Messages
 	public static class Messages {
-		public static String noPermission = prefix + Main.getPlugin().getConfig().getString("messages.noPermission");
-		public static String noConsole = "[Troll] " + Main.getPlugin().getConfig().getString("messages.noConsole");
+		public static String noPermission = Main.getPlugin().getConfig().getString("messages.noPermission");
+		public static String noConsole = prefix + Main.getPlugin().getConfig().getString("messages.noConsole");
 
-		public static String usageTrollmenu = prefix
-				+ Main.getPlugin().getConfig().getString("messages.usageTrollmenu");
-		public static String usageBlacklist = prefix
-				+ Main.getPlugin().getConfig().getString("messages.usageBlacklist");;
+		public static String usageTrollmenu = prefix + Main.getPlugin().getConfig().getString("messages.usageTrollmenu");
+		public static String usageBlacklist = prefix + Main.getPlugin().getConfig().getString("messages.usageBlacklist");;
 
-		public static String targetNotOnline = prefix
-				+ Main.getPlugin().getConfig().getString("messages.targetNotOnline");
+		public static String targetNotOnline = prefix + Main.getPlugin().getConfig().getString("messages.targetNotOnline");
 		public static String immune = prefix + Main.getPlugin().getConfig().getString("messages.immune");
 
-		public static String semibanMessage = Main.getPlugin().getConfig().getString("messages.semiBanMessage");
+		public static String semibanMessage = Main.getPlugin().getConfig().getString("messages.semibanMessage");
 
 		public static String banMessagePlayer = Main.getPlugin().getConfig().getString("banmessage.banMessagePlayer");
-		public static String banMessageBroadcast = Main.getPlugin().getConfig()
-				.getString("banmessage.banMessageBroadcast");
+		public static String banMessageBroadcast = Main.getPlugin().getConfig().getString("banmessage.banMessageBroadcast");
 
-		public static String addedBlacklist = prefix
-				+ Main.getPlugin().getConfig().getString("messages.addedBlacklist");
-		public static String removedBlacklist = prefix
-				+ Main.getPlugin().getConfig().getString("messages.removedBlacklist");
-		public static String allreadyInBlacklist = prefix
-				+ Main.getPlugin().getConfig().getString("messages.allreadyInBlacklist");
-		public static String notInBlacklist = prefix
-				+ Main.getPlugin().getConfig().getString("messages.notInBlacklist");
+		public static String addedBlacklist = prefix + Main.getPlugin().getConfig().getString("messages.addedBlacklist");
+		public static String removedBlacklist = prefix + Main.getPlugin().getConfig().getString("messages.removedBlacklist");
+		public static String allreadyInBlacklist = prefix + Main.getPlugin().getConfig().getString("messages.allreadyInBlacklist");
+		public static String notInBlacklist = prefix + Main.getPlugin().getConfig().getString("messages.notInBlacklist");
 	}
 }

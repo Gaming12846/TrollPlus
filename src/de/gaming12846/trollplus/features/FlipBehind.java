@@ -1,10 +1,10 @@
 /**
- * Troll
+ * TrollPlus
  * 
  * @author Gaming12846
  */
 
-package de.gaming12846.troll.features;
+package de.gaming12846.trollplus.features;
 
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -13,7 +13,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 
-import de.gaming12846.troll.utilitys.Vars;
+import de.gaming12846.trollplus.utilitys.Vars;
 
 public class FlipBehind implements Listener {
 

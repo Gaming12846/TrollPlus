@@ -1,10 +1,10 @@
 /**
- * Troll
+ * TrollPlus
  * 
  * @author Gaming12846
  */
 
-package de.gaming12846.troll.features;
+package de.gaming12846.trollplus.features;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
@@ -15,8 +15,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityExplodeEvent;
 
-import de.gaming12846.troll.main.Main;
-import de.gaming12846.troll.utilitys.Vars;
+import de.gaming12846.trollplus.main.Main;
+import de.gaming12846.trollplus.utilitys.Vars;
 
 public class TNTTrack implements Listener {
 
@@ -42,8 +42,7 @@ public class TNTTrack implements Listener {
 
 		if (e.getEntity().getType() == EntityType.PRIMED_TNT && e.getEntity().getName().equals("TNTTrack")) {
 			e.setCancelled(true);
-			e.getEntity().getLocation().getWorld().playSound(e.getEntity().getLocation(), Sound.ENTITY_GENERIC_EXPLODE,
-					20, 1);
+			e.getEntity().getLocation().getWorld().playSound(e.getEntity().getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 20, 1);
 		}
 	}
 }

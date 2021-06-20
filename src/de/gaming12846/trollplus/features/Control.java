@@ -1,10 +1,10 @@
 /**
- * Troll
+ * TrollPlus
  * 
  * @author Gaming12846
  */
 
-package de.gaming12846.troll.features;
+package de.gaming12846.trollplus.features;
 
 import java.util.HashMap;
 
@@ -14,7 +14,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 
-import de.gaming12846.troll.utilitys.Vars;
+import de.gaming12846.trollplus.utilitys.Vars;
 
 public class Control implements Listener {
 

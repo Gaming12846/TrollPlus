@@ -1,10 +1,10 @@
 /**
- * Troll
+ * TrollPlus
  * 
  * @author Gaming12846
  */
 
-package de.gaming12846.troll.utilitys;
+package de.gaming12846.trollplus.utilitys;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;

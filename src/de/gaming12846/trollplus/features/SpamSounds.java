@@ -1,10 +1,10 @@
 /**
- * Troll
+ * TrollPlus
  * 
  * @author Gaming12846
  */
 
-package de.gaming12846.troll.features;
+package de.gaming12846.trollplus.features;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +13,8 @@ import java.util.Random;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 
-import de.gaming12846.troll.main.Main;
-import de.gaming12846.troll.utilitys.Vars;
+import de.gaming12846.trollplus.main.Main;
+import de.gaming12846.trollplus.utilitys.Vars;
 
 public class SpamSounds {
 

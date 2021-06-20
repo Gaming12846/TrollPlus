@@ -1,10 +1,10 @@
 /**
- * Troll
+ * TrollPlus
  * 
  * @author Gaming12846
  */
 
-package de.gaming12846.troll.features;
+package de.gaming12846.trollplus.features;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -14,7 +14,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
-import de.gaming12846.troll.utilitys.Vars;
+import de.gaming12846.trollplus.utilitys.Vars;
 
 public class SemiBan implements Listener {
 
@@ -36,7 +36,7 @@ public class SemiBan implements Listener {
 			String message = e.getMessage();
 			String semiBanMessage = "";
 			semiBanMessage = Vars.Messages.semibanMessage.replace("[Player]", p.getName());
-			p.sendMessage(semiBanMessage + message);
+			p.sendMessage(semiBanMessage + " " + message);
 		}
 	}
 
