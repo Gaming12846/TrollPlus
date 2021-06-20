@@ -15,6 +15,8 @@ import de.gaming12846.troll.commands.TrollCommand;
 import de.gaming12846.troll.features.Control;
 import de.gaming12846.troll.features.FlipBehind;
 import de.gaming12846.troll.features.Freeze;
+import de.gaming12846.troll.features.SemiBan;
+import de.gaming12846.troll.features.TNTTrack;
 import de.gaming12846.troll.features.TrollMenu;
 import de.gaming12846.troll.utilitys.ConfigLoader;
 
@@ -53,5 +55,7 @@ public class Main extends JavaPlugin {
 		pm.registerEvents(new Freeze(), this);
 		pm.registerEvents(new Control(), this);
 		pm.registerEvents(new FlipBehind(), this);
+		pm.registerEvents(new SemiBan(), this);
+		pm.registerEvents(new TNTTrack(), this);
 	}
 }

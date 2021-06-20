@@ -17,6 +17,7 @@ import de.gaming12846.troll.utilitys.Vars;
 public class SpamMessages {
 
 	public static void SpamMessages() {
+
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Main.getPlugin(), new Runnable() {
 
 			@Override

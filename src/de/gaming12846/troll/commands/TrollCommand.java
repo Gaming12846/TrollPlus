@@ -42,9 +42,9 @@ public class TrollCommand implements CommandExecutor {
 								Vars.trollmenu = Bukkit.createInventory(null, 27, "Troll §4" + Vars.target.getName());
 
 								/**
-								 * | Freeze | x | Handitemdrop | x | Control | x | Flip behind | x | x |
+								 * | Freeze | x | Handitemdrop | x | Control | x | Flip behind | x | Spam sounds |
 								 * 
-								 * | x | x | x | x | x | x | x | x | x |
+								 * | Spam messages | x | Random Scray sound | x | TNT track | x | Semi ban | x | Fake ban |
 								 * 
 								 * | Vanish | x | Teleport | x | Kill | x | Invsee | x | Close |
 								 */
@@ -75,6 +75,10 @@ public class TrollCommand implements CommandExecutor {
 								Vars.trollmenu.setItem(11,
 										Items.createItem(Material.NOTE_BLOCK, 0, "§fPlay random scary sound"));
 								Vars.trollmenu.setItem(17, Items.createItem(Material.PAPER, 0, "§fFake ban"));
+								Vars.trollmenu.setItem(15,
+										Items.createItem(Material.SHEARS, 0, "§fSemi ban " + Vars.semiBanStatus));
+								Vars.trollmenu.setItem(13,
+										Items.createItem(Material.TNT, 0, "§fTNT track " + Vars.tntTrackStatus));
 
 								p.openInventory(Vars.trollmenu);
 							} else {

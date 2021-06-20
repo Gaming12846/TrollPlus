@@ -6,6 +6,7 @@ messages:
   usageBlacklist: 'Please use </trollblacklist [add/remove] Player>'
   targetNotOnline: 'The Player [Player] is currently not online'
   immune: 'The Player [Player] is immune'
+  semiBanMessage: '<[Player]> '
   addedBlacklist: 'The Player [Player] has been added to the blacklist'
   removedBlacklist: 'The Player [Player] has been removed from the blacklist'
   allreadyInBlacklist: 'The Player [Player] is already in the blacklist'

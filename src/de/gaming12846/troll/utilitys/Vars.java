@@ -35,6 +35,8 @@ public class Vars {
 	public static String targetNotOnline = prefix + Main.getPlugin().getConfig().getString("messages.targetNotOnline");
 	public static String immune = prefix + Main.getPlugin().getConfig().getString("messages.immune");
 
+	public static String semiBanMessage = Main.getPlugin().getConfig().getString("messages.semiBanMessage");
+
 	public static String banMessagePlayer = Main.getPlugin().getConfig().getString("banmessage.banmessageplayer");
 	public static String banMessageBroadcast = Main.getPlugin().getConfig().getString("banmessage.banmessagebroadcast");
 
@@ -57,6 +59,8 @@ public class Vars {
 	public static ArrayList<String> spammessagesList = new ArrayList<>();
 	public static ArrayList<String> spamsoundsList = new ArrayList<>();
 	public static ArrayList<String> flipbehindList = new ArrayList<>();
+	public static ArrayList<String> semiBanList = new ArrayList<>();
+	public static ArrayList<String> tntTrackList = new ArrayList<>();
 
 	// Lists
 	public static List<String> spammessages = Main.getPlugin().getConfig().getStringList("spammessages");
@@ -72,4 +76,6 @@ public class Vars {
 	public static String spammessagesStatus = "§cOFF";
 	public static String spamsoundsStatus = "§cOFF";
 	public static String flipbehindStatus = "§cOFF";
+	public static String semiBanStatus = "§cOFF";
+	public static String tntTrackStatus = "§cOFF";
 }

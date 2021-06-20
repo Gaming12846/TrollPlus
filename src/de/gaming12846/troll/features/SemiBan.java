@@ -1,0 +1,50 @@
+/**
+ * Troll
+ * 
+ * @author Gaming12846
+ */
+
+package de.gaming12846.troll.features;
+
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+
+import de.gaming12846.troll.utilitys.Vars;
+
+public class SemiBan implements Listener {
+
+	@EventHandler
+	public void onPlayerInteract(PlayerInteractEvent e) {
+		Player p = e.getPlayer();
+
+		if (Vars.semiBanList.contains(p.getName())) {
+			e.setCancelled(true);
+		}
+	}
+
+	@EventHandler
+	public void onAsyncPlayerChat(AsyncPlayerChatEvent e) {
+		Player p = e.getPlayer();
+
+		if (Vars.semiBanList.contains(p.getName())) {
+			e.setCancelled(true);
+			String message = e.getMessage();
+			String semiBanMessage = "";
+			semiBanMessage = Vars.semiBanMessage.replace("[Player]", p.getName());
+			p.sendMessage(semiBanMessage + message);
+		}
+	}
+
+	@EventHandler
+	public void onEntityDamageByEntity(EntityDamageByEntityEvent e) {
+		Entity damager = e.getDamager();
+
+		if (Vars.semiBanList.contains(damager.getName()))
+			e.setCancelled(true);
+	}
+}

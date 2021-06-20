@@ -171,6 +171,31 @@ public class TrollMenu implements Listener {
 						banbroadcast = Vars.banMessageBroadcast.replace("[Player]", Vars.target.getName());
 						Bukkit.broadcastMessage(banbroadcast);
 					}
+				} else if (e.getSlot() == 15) {
+					if (Vars.semiBanList.contains(Vars.target.getName())) {
+						Vars.semiBanList.remove(Vars.target.getName());
+						Vars.semiBanStatus = "§cOFF";
+						Vars.trollmenu.setItem(15,
+								Items.createItem(Material.SHEARS, 0, "§fSemi ban " + Vars.semiBanStatus));
+					} else {
+						Vars.semiBanList.add(Vars.target.getName());
+						Vars.semiBanStatus = "§aON";
+						Vars.trollmenu.setItem(15,
+								Items.createItem(Material.SHEARS, 0, "§fSemi ban " + Vars.semiBanStatus));
+					}
+				} else if (e.getSlot() == 13) {
+					if (Vars.tntTrackList.contains(Vars.target.getName())) {
+						Vars.tntTrackList.remove(Vars.target.getName());
+						Vars.tntTrackStatus = "§cOFF";
+						Vars.trollmenu.setItem(13,
+								Items.createItem(Material.TNT, 0, "§fTNT track " + Vars.tntTrackStatus));
+					} else {
+						Vars.tntTrackList.add(Vars.target.getName());
+						Vars.tntTrackStatus = "§aON";
+						Vars.trollmenu.setItem(13,
+								Items.createItem(Material.TNT, 0, "§fTNT track " + Vars.tntTrackStatus));
+						TNTTrack.TNTTrack();
+					}
 				}
 			}
 		} catch (Exception e1) {
