@@ -31,7 +31,7 @@ public class TrollMenu implements Listener {
 
 		try {
 
-			if (e.getView().getTitle().equalsIgnoreCase("Troll §4" + Vars.target.getName())) {
+			if (e.getView().getTitle().equalsIgnoreCase("Troll §l§4" + Vars.target.getName())) {
 				e.setCancelled(true);
 
 				// Basic things
@@ -44,111 +44,113 @@ public class TrollMenu implements Listener {
 				} else if (e.getSlot() == 20) {
 					p.teleport(Vars.target);
 				} else if (e.getSlot() == 18) {
-					if (Vars.vanishList.contains(p.getName()) && Vars.vanishStatus == "§bAll") {
-						Vars.vanishList.remove(Vars.target.getName());
+					if (Vars.Lists.vanishList.contains(p.getName()) && Vars.Status.vanishStatus == "§b§lAll") {
+						Vars.Lists.vanishList.remove(Vars.target.getName());
 						for (Player online : Bukkit.getServer().getOnlinePlayers()) {
 							online.showPlayer(p);
 						}
-						Vars.vanishStatus = "§cOFF";
+						Vars.Status.vanishStatus = "§c§lOFF";
 						Vars.trollmenu.setItem(18,
-								Items.createItem(Material.POTION, 0, "§fVanish " + Vars.vanishStatus));
-					} else if (Vars.vanishList.contains(p.getName())) {
+								Items.createItem(Material.POTION, 0, "§fVanish " + Vars.Status.vanishStatus));
+					} else if (Vars.Lists.vanishList.contains(p.getName())) {
 						Vars.target.showPlayer(p);
 						for (Player online : Bukkit.getServer().getOnlinePlayers()) {
 							online.hidePlayer(p);
 						}
-						Vars.vanishStatus = "§bAll";
+						Vars.Status.vanishStatus = "§b§lAll";
 						Vars.trollmenu.setItem(18,
-								Items.createItem(Material.POTION, 0, "§fVanish " + Vars.vanishStatus));
+								Items.createItem(Material.POTION, 0, "§fVanish " + Vars.Status.vanishStatus));
 					} else {
-						Vars.vanishList.add(Vars.target.getName());
+						Vars.Lists.vanishList.add(Vars.target.getName());
 						Vars.target.hidePlayer(p);
-						Vars.vanishStatus = "§aTarget";
+						Vars.Status.vanishStatus = "§a§lTarget";
 						Vars.trollmenu.setItem(18,
-								Items.createItem(Material.POTION, 0, "§fVanish " + Vars.vanishStatus));
+								Items.createItem(Material.POTION, 0, "§fVanish " + Vars.Status.vanishStatus));
 					}
 
 					// Features
 				} else if (e.getSlot() == 0) {
-					if (Vars.freezeList.contains(Vars.target.getName())) {
-						Vars.freezeList.remove(Vars.target.getName());
+					if (Vars.Lists.freezeList.contains(Vars.target.getName())) {
+						Vars.Lists.freezeList.remove(Vars.target.getName());
 						Vars.target.removePotionEffect(PotionEffectType.SLOW);
-						Vars.freezeStatus = "§cOFF";
-						Vars.trollmenu.setItem(0, Items.createItem(Material.ICE, 0, "§fFreeze " + Vars.freezeStatus));
+						Vars.Status.freezeStatus = "§c§lOFF";
+						Vars.trollmenu.setItem(0,
+								Items.createItem(Material.ICE, 0, "§fFreeze " + Vars.Status.freezeStatus));
 					} else {
-						Vars.freezeList.add(Vars.target.getName());
+						Vars.Lists.freezeList.add(Vars.target.getName());
 						Vars.target.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, Integer.MAX_VALUE, 10));
-						Vars.freezeStatus = "§aON";
-						Vars.trollmenu.setItem(0, Items.createItem(Material.ICE, 0, "§fFreeze " + Vars.freezeStatus));
+						Vars.Status.freezeStatus = "§a§lON";
+						Vars.trollmenu.setItem(0,
+								Items.createItem(Material.ICE, 0, "§fFreeze " + Vars.Status.freezeStatus));
 					}
 				} else if (e.getSlot() == 2) {
-					if (Vars.handitemdropList.contains(Vars.target.getName())) {
-						Vars.handitemdropList.remove(Vars.target.getName());
-						Vars.handitemdropStatus = "§cOFF";
-						Vars.trollmenu.setItem(2,
-								Items.createItem(Material.FEATHER, 0, "§fHand item drop " + Vars.handitemdropStatus));
+					if (Vars.Lists.handitemdropList.contains(Vars.target.getName())) {
+						Vars.Lists.handitemdropList.remove(Vars.target.getName());
+						Vars.Status.handitemdropStatus = "§c§lOFF";
+						Vars.trollmenu.setItem(2, Items.createItem(Material.FEATHER, 0,
+								"§fHand item drop " + Vars.Status.handitemdropStatus));
 					} else {
-						Vars.handitemdropList.add(Vars.target.getName());
-						Vars.handitemdropStatus = "§aON";
-						Vars.trollmenu.setItem(2,
-								Items.createItem(Material.FEATHER, 0, "§fHand item drop " + Vars.handitemdropStatus));
+						Vars.Lists.handitemdropList.add(Vars.target.getName());
+						Vars.Status.handitemdropStatus = "§a§lON";
+						Vars.trollmenu.setItem(2, Items.createItem(Material.FEATHER, 0,
+								"§fHand item drop " + Vars.Status.handitemdropStatus));
 						HandItemDrop.HandItemDrop();
 					}
 				} else if (e.getSlot() == 4) {
-					if (Vars.controller.containsKey(p)) {
+					if (Vars.HashMaps.controller.containsKey(p)) {
 						// if (Vars.controlList.contains(Vars.target.getName())) {
 						// Vars.controlList.remove(Vars.target.getName());
-						Vars.controller.remove(p, Vars.target);
-						Vars.controlStatus = "§cOFF";
+						Vars.HashMaps.controller.remove(p, Vars.target);
+						Vars.Status.controlStatus = "§c§lOFF";
 						Vars.trollmenu.setItem(4,
-								Items.createItem(Material.LEAD, 0, "§fControl " + Vars.controlStatus));
+								Items.createItem(Material.LEAD, 0, "§fControl " + Vars.Status.controlStatus));
 						Vars.target.showPlayer(p);
 						p.showPlayer(Vars.target);
 					} else {
 						// Vars.controlList.add(Vars.target.getName());
-						Vars.controller.put(p, Vars.target);
-						Vars.controlStatus = "§aON";
+						Vars.HashMaps.controller.put(p, Vars.target);
+						Vars.Status.controlStatus = "§a§lON";
 						Vars.trollmenu.setItem(4,
-								Items.createItem(Material.LEAD, 0, "§fControl " + Vars.controlStatus));
+								Items.createItem(Material.LEAD, 0, "§fControl " + Vars.Status.controlStatus));
 						Vars.target.hidePlayer(p);
 						p.hidePlayer(Vars.target);
 					}
 				} else if (e.getSlot() == 6) {
-					if (Vars.flipbehindList.contains(Vars.target.getName())) {
-						Vars.flipbehindList.remove(Vars.target.getName());
-						Vars.flipbehindStatus = "§cOFF";
+					if (Vars.Lists.flipbehindList.contains(Vars.target.getName())) {
+						Vars.Lists.flipbehindList.remove(Vars.target.getName());
+						Vars.Status.flipbehindStatus = "§c§lOFF";
 						Vars.trollmenu.setItem(6,
-								Items.createItem(Material.EGG, 0, "§fFlip behind " + Vars.flipbehindStatus));
+								Items.createItem(Material.EGG, 0, "§fFlip behind " + Vars.Status.flipbehindStatus));
 					} else {
-						Vars.flipbehindList.add(Vars.target.getName());
-						Vars.flipbehindStatus = "§aON";
+						Vars.Lists.flipbehindList.add(Vars.target.getName());
+						Vars.Status.flipbehindStatus = "§a§lON";
 						Vars.trollmenu.setItem(6,
-								Items.createItem(Material.EGG, 0, "§fFlip behind " + Vars.flipbehindStatus));
+								Items.createItem(Material.EGG, 0, "§fFlip behind " + Vars.Status.flipbehindStatus));
 					}
 				} else if (e.getSlot() == 8) {
-					if (Vars.spamsoundsList.contains(Vars.target.getName())) {
-						Vars.spamsoundsList.remove(Vars.target.getName());
-						Vars.spamsoundsStatus = "§cOFF";
+					if (Vars.Lists.spamsoundsList.contains(Vars.target.getName())) {
+						Vars.Lists.spamsoundsList.remove(Vars.target.getName());
+						Vars.Status.spamsoundsStatus = "§c§lOFF";
 						Vars.trollmenu.setItem(8, Items.createItem(Material.MUSIC_DISC_BLOCKS, 0,
-								"§fSpam sounds " + Vars.spamsoundsStatus));
+								"§fSpam sounds " + Vars.Status.spamsoundsStatus));
 					} else {
-						Vars.spamsoundsList.add(Vars.target.getName());
-						Vars.spamsoundsStatus = "§aON";
+						Vars.Lists.spamsoundsList.add(Vars.target.getName());
+						Vars.Status.spamsoundsStatus = "§a§lON";
 						Vars.trollmenu.setItem(8, Items.createItem(Material.MUSIC_DISC_BLOCKS, 0,
-								"§fSpam sounds " + Vars.spamsoundsStatus));
+								"§fSpam sounds " + Vars.Status.spamsoundsStatus));
 						SpamSounds.SpamSounds();
 					}
 				} else if (e.getSlot() == 9) {
-					if (Vars.spammessagesList.contains(Vars.target.getName())) {
-						Vars.spammessagesList.remove(Vars.target.getName());
-						Vars.spammessagesStatus = "§cOFF";
+					if (Vars.Lists.spammessagesList.contains(Vars.target.getName())) {
+						Vars.Lists.spammessagesList.remove(Vars.target.getName());
+						Vars.Status.spammessagesStatus = "§c§lOFF";
 						Vars.trollmenu.setItem(9, Items.createItem(Material.LEGACY_BOOK_AND_QUILL, 0,
-								"§fSpam messages " + Vars.spammessagesStatus));
+								"§fSpam messages " + Vars.Status.spammessagesStatus));
 					} else {
-						Vars.spammessagesList.add(Vars.target.getName());
-						Vars.spammessagesStatus = "§aON";
+						Vars.Lists.spammessagesList.add(Vars.target.getName());
+						Vars.Status.spammessagesStatus = "§a§lON";
 						Vars.trollmenu.setItem(9, Items.createItem(Material.LEGACY_BOOK_AND_QUILL, 0,
-								"§fSpam messages " + Vars.spammessagesStatus));
+								"§fSpam messages " + Vars.Status.spammessagesStatus));
 						SpamMessages.SpamMessages();
 					}
 				} else if (e.getSlot() == 11) {
@@ -164,36 +166,36 @@ public class TrollMenu implements Listener {
 					Sound sound = sounds.get(random.nextInt(sounds.size()));
 					Vars.target.playSound(Vars.target.getLocation(), sound, 200, 1);
 				} else if (e.getSlot() == 17) {
-					Vars.target.kickPlayer(Vars.banMessagePlayer);
+					Vars.target.kickPlayer(Vars.Messages.banMessagePlayer);
 
-					if (Vars.bankMessageBroadcastOnOff == true) {
+					if (Vars.Booleans.banMessageBroadcastOnOff == true) {
 						String banbroadcast = "";
-						banbroadcast = Vars.banMessageBroadcast.replace("[Player]", Vars.target.getName());
+						banbroadcast = Vars.Messages.banMessageBroadcast.replace("[Player]", Vars.target.getName());
 						Bukkit.broadcastMessage(banbroadcast);
 					}
 				} else if (e.getSlot() == 15) {
-					if (Vars.semiBanList.contains(Vars.target.getName())) {
-						Vars.semiBanList.remove(Vars.target.getName());
-						Vars.semiBanStatus = "§cOFF";
+					if (Vars.Lists.semibanList.contains(Vars.target.getName())) {
+						Vars.Lists.semibanList.remove(Vars.target.getName());
+						Vars.Status.semibanStatus = "§c§lOFF";
 						Vars.trollmenu.setItem(15,
-								Items.createItem(Material.SHEARS, 0, "§fSemi ban " + Vars.semiBanStatus));
+								Items.createItem(Material.SHEARS, 0, "§fSemi ban " + Vars.Status.semibanStatus));
 					} else {
-						Vars.semiBanList.add(Vars.target.getName());
-						Vars.semiBanStatus = "§aON";
+						Vars.Lists.semibanList.add(Vars.target.getName());
+						Vars.Status.semibanStatus = "§a§lON";
 						Vars.trollmenu.setItem(15,
-								Items.createItem(Material.SHEARS, 0, "§fSemi ban " + Vars.semiBanStatus));
+								Items.createItem(Material.SHEARS, 0, "§fSemi ban " + Vars.Status.semibanStatus));
 					}
 				} else if (e.getSlot() == 13) {
-					if (Vars.tntTrackList.contains(Vars.target.getName())) {
-						Vars.tntTrackList.remove(Vars.target.getName());
-						Vars.tntTrackStatus = "§cOFF";
+					if (Vars.Lists.tnttrackList.contains(Vars.target.getName())) {
+						Vars.Lists.tnttrackList.remove(Vars.target.getName());
+						Vars.Status.tnttrackStatus = "§c§lOFF";
 						Vars.trollmenu.setItem(13,
-								Items.createItem(Material.TNT, 0, "§fTNT track " + Vars.tntTrackStatus));
+								Items.createItem(Material.TNT, 0, "§fTNT track " + Vars.Status.tnttrackStatus));
 					} else {
-						Vars.tntTrackList.add(Vars.target.getName());
-						Vars.tntTrackStatus = "§aON";
+						Vars.Lists.tnttrackList.add(Vars.target.getName());
+						Vars.Status.tnttrackStatus = "§a§lON";
 						Vars.trollmenu.setItem(13,
-								Items.createItem(Material.TNT, 0, "§fTNT track " + Vars.tntTrackStatus));
+								Items.createItem(Material.TNT, 0, "§fTNT track " + Vars.Status.tnttrackStatus));
 						TNTTrack.TNTTrack();
 					}
 				}

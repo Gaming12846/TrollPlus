@@ -21,15 +21,15 @@ public class FlipBehind implements Listener {
 	public void onPlayerInteract(PlayerInteractEvent e) {
 		Player p = e.getPlayer();
 
-		if (Vars.flipbehindList.contains(p.getName())) {
+		if (Vars.Lists.flipbehindList.contains(p.getName())) {
 			double x = Vars.target.getLocation().getX();
 			double y = Vars.target.getLocation().getY();
 			double z = Vars.target.getLocation().getZ();
 			double yaw = Vars.target.getEyeLocation().getYaw();
 			World world = Vars.target.getLocation().getWorld();
-			double yaw2 = yaw + 180;
+			double yawUpdated = yaw + 180;
 			Location location = new Location(world, x, y, z);
-			location.setYaw((float) yaw2);
+			location.setYaw((float) yawUpdated);
 			Vars.target.teleport(location);
 		}
 	}

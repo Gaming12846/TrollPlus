@@ -11,12 +11,10 @@ messages:
   removedBlacklist: 'The Player [Player] has been removed from the blacklist'
   allreadyInBlacklist: 'The Player [Player] is already in the blacklist'
   notInBlacklist: 'The Player [Player] is not on the blacklist'
-
 banmessage:
-  banmessageplayer: 'You have been banned from this Server'
-  bankmessagebroadcastonoff: true
-  banmessagebroadcast: 'The Player [Player] have been permanently banned from the server'
-
+  banMessagePlayer: 'You have been banned from this Server'
+  banMessageBroadcastOnOff: true
+  banMessageBroadcast: 'The Player [Player] have been permanently banned from the server'
 spammessages:
   - 'testmessage1'
   - 'testmessage2'

@@ -19,12 +19,13 @@ import de.gaming12846.troll.utilitys.Vars;
 public class SpamSounds {
 
 	public static void SpamSounds() {
+
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Main.getPlugin(), new Runnable() {
 
 			@Override
 			public void run() {
 
-				if (Vars.spamsoundsList.contains(Vars.target.getName())) {
+				if (Vars.Lists.spamsoundsList.contains(Vars.target.getName())) {
 					List<Sound> sounds = new ArrayList<>();
 					sounds.add(Sound.ENTITY_EXPERIENCE_BOTTLE_THROW);
 					sounds.add(Sound.ENTITY_PLAYER_HURT);

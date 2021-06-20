@@ -21,51 +21,56 @@ public class BlacklistCommand implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
 		if (cmd.getName().equalsIgnoreCase("trollblacklist")) {
-			Player p = (Player) sender;
 
-			if (p.hasPermission("troll.blacklist")) {
+			if (sender instanceof Player) {
+				Player p = (Player) sender;
 
-				if (args.length == 2) {
-					Player t = Bukkit.getPlayer(args[1]);
+				if (p.hasPermission("troll.blacklist")) {
 
-					if (t != null) {
-						if (args[0].equalsIgnoreCase("add")) {
+					if (args.length == 2) {
+						Player t = Bukkit.getPlayer(args[1]);
 
-							if (!Vars.blacklist.contains(t.getUniqueId().toString())) {
-								Vars.blacklist.set(t.getUniqueId().toString(), t.getName());
-								ConfigLoader.saveBlacklist();
-								String addedBlacklist = "";
-								addedBlacklist = Vars.addedBlacklist.replace("[Player]", args[1]);
-								p.sendMessage(addedBlacklist);
-							} else {
-								String allreadyInBlacklist = "";
-								allreadyInBlacklist = Vars.allreadyInBlacklist.replace("[Player]", args[1]);
-								p.sendMessage(allreadyInBlacklist);
-							}
+						if (t != null) {
+							if (args[0].equalsIgnoreCase("add")) {
 
-						} else if (args[0].equalsIgnoreCase("remove")) {
-							if (Vars.blacklist.contains(t.getUniqueId().toString())) {
-								Vars.blacklist.set(t.getUniqueId().toString(), null);
-								ConfigLoader.saveBlacklist();
-								String removedBlacklist = "";
-								removedBlacklist = Vars.removedBlacklist.replace("[Player]", args[1]);
-								p.sendMessage(removedBlacklist);
-							} else {
-								String notInBlacklist = "";
-								notInBlacklist = Vars.notInBlacklist.replace("[Player]", args[1]);
-								p.sendMessage(notInBlacklist);
-							}
-						} else
-							p.sendMessage(Vars.usageBlacklist);
-					} else {
-						String notOnline = "";
-						notOnline = Vars.targetNotOnline.replace("[Player]", args[1]);
-						p.sendMessage(notOnline);
-					}
+								if (!Vars.blacklist.contains(t.getUniqueId().toString())) {
+									Vars.blacklist.set(t.getUniqueId().toString(), t.getName());
+									ConfigLoader.saveBlacklist();
+									String addedBlacklist = "";
+									addedBlacklist = Vars.Messages.addedBlacklist.replace("[Player]", args[1]);
+									p.sendMessage(addedBlacklist);
+								} else {
+									String allreadyInBlacklist = "";
+									allreadyInBlacklist = Vars.Messages.allreadyInBlacklist.replace("[Player]",
+											args[1]);
+									p.sendMessage(allreadyInBlacklist);
+								}
+
+							} else if (args[0].equalsIgnoreCase("remove")) {
+								if (Vars.blacklist.contains(t.getUniqueId().toString())) {
+									Vars.blacklist.set(t.getUniqueId().toString(), null);
+									ConfigLoader.saveBlacklist();
+									String removedBlacklist = "";
+									removedBlacklist = Vars.Messages.removedBlacklist.replace("[Player]", args[1]);
+									p.sendMessage(removedBlacklist);
+								} else {
+									String notInBlacklist = "";
+									notInBlacklist = Vars.Messages.notInBlacklist.replace("[Player]", args[1]);
+									p.sendMessage(notInBlacklist);
+								}
+							} else
+								p.sendMessage(Vars.Messages.usageBlacklist);
+						} else {
+							String notOnline = "";
+							notOnline = Vars.Messages.targetNotOnline.replace("[Player]", args[1]);
+							p.sendMessage(notOnline);
+						}
+					} else
+						p.sendMessage(Vars.Messages.usageBlacklist);
 				} else
-					p.sendMessage(Vars.usageBlacklist);
+					p.sendMessage(Vars.Messages.noPermission);
 			} else
-				p.sendMessage(Vars.noPermission);
+				sender.sendMessage(Vars.Messages.noConsole);
 		}
 		return true;
 	}

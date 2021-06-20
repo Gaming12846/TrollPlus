@@ -27,7 +27,7 @@ public class TNTTrack implements Listener {
 			@Override
 			public void run() {
 
-				if (Vars.tntTrackList.contains(Vars.target.getName())) {
+				if (Vars.Lists.tnttrackList.contains(Vars.target.getName())) {
 					Entity tnt = Vars.target.getWorld().spawn(Vars.target.getLocation(), TNTPrimed.class);
 					((TNTPrimed) tnt).setFuseTicks(100);
 					((TNTPrimed) tnt).setCustomName("TNTTrack");

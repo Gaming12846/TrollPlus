@@ -16,19 +16,24 @@ import de.gaming12846.troll.utilitys.Vars;
 public class HandItemDrop {
 
 	public static void HandItemDrop() {
+
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Main.getPlugin(), new Runnable() {
 
-			@SuppressWarnings("deprecation")
 			@Override
 			public void run() {
 
-				if (Vars.handitemdropList.contains(Vars.target.getName())) {
+				if (Vars.Lists.handitemdropList.contains(Vars.target.getName())) {
 
-					if (Vars.target.getInventory().getItemInMainHand().getAmount() > 0) {
+					if (Vars.target.getInventory().getItemInMainHand().getAmount() != 0) {
 						ItemStack item = Vars.target.getItemInHand();
-						Vars.target.getInventory().remove(item);
-						Item itemDropped = Vars.target.getWorld().dropItemNaturally(Vars.target.getLocation(), item);
-						itemDropped.setPickupDelay(40);
+						int amount = item.getAmount();
+						amount--;
+						item.setAmount(amount);
+						Vars.target.getInventory().setItemInHand(item);
+						ItemStack itemDrop = new ItemStack(Vars.target.getItemInHand().getType(), 1);
+						Item itemDropped = Vars.target.getWorld().dropItemNaturally(Vars.target.getLocation(),
+								itemDrop);
+						itemDropped.setPickupDelay(20);
 					}
 				}
 			}

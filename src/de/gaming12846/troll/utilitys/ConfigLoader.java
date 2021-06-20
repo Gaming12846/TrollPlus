@@ -34,7 +34,6 @@ public class ConfigLoader {
 			Main.getPlugin().getConfig().options().copyDefaults(true);
 			Main.getPlugin().saveConfig();
 		}
-
 		reloadBlacklist();
 	}
 
@@ -68,8 +67,6 @@ public class ConfigLoader {
 		try {
 			Vars.blacklist.save(blacklistFile);
 		} catch (IOException ex) {
-			// Logger.getLogger(JavaPlugin.class.getName()).log(Level.SEVERE,"Konfiguration
-			// konnte nicht nach " + blacklistFile + " geschrieben werden.", ex);
 		}
 	}
 }

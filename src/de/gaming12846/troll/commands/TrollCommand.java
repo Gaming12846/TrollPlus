@@ -19,7 +19,6 @@ import de.gaming12846.troll.utilitys.Vars;
 
 public class TrollCommand implements CommandExecutor {
 
-	@SuppressWarnings({ "deprecation", "unused" })
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
@@ -33,18 +32,19 @@ public class TrollCommand implements CommandExecutor {
 					if (args.length == 1) {
 						Player t = Bukkit.getPlayer(args[0]);
 
-						if (!ConfigLoader.getBlacklist().contains(t.getUniqueId().toString())) {
+						if (t != null) {
 
-							if (t != null) {
+							if (!ConfigLoader.getBlacklist().contains(t.getUniqueId().toString())) {
 								Vars.target = t;
-
 								// Create inventory
-								Vars.trollmenu = Bukkit.createInventory(null, 27, "Troll §4" + Vars.target.getName());
+								Vars.trollmenu = Bukkit.createInventory(null, 27, "Troll §l§4" + Vars.target.getName());
 
 								/**
-								 * | Freeze | x | Handitemdrop | x | Control | x | Flip behind | x | Spam sounds |
+								 * | Freeze | x | Handitemdrop | x | Control | x | Flip behind | x | Spam sounds
+								 * |
 								 * 
-								 * | Spam messages | x | Random Scray sound | x | TNT track | x | Semi ban | x | Fake ban |
+								 * | Spam messages | x | Random Scray sound | x | TNT track | x | Semi ban | x |
+								 * Fake ban |
 								 * 
 								 * | Vanish | x | Teleport | x | Kill | x | Invsee | x | Close |
 								 */
@@ -57,46 +57,46 @@ public class TrollCommand implements CommandExecutor {
 								Vars.trollmenu.setItem(20,
 										Items.createItem(Material.ENDER_PEARL, 0, "§fTeleport to player"));
 								Vars.trollmenu.setItem(18,
-										Items.createItem(Material.POTION, 0, "§fVanish " + Vars.vanishStatus));
+										Items.createItem(Material.POTION, 0, "§fVanish " + Vars.Status.vanishStatus));
 
 								// Features
 								Vars.trollmenu.setItem(0,
-										Items.createItem(Material.ICE, 0, "§fFreeze " + Vars.freezeStatus));
+										Items.createItem(Material.ICE, 0, "§fFreeze " + Vars.Status.freezeStatus));
 								Vars.trollmenu.setItem(2, Items.createItem(Material.FEATHER, 0,
-										"§fHand item drop " + Vars.handitemdropStatus));
+										"§fHand item drop " + Vars.Status.handitemdropStatus));
 								Vars.trollmenu.setItem(4,
-										Items.createItem(Material.LEAD, 0, "§fControl " + Vars.controlStatus));
-								Vars.trollmenu.setItem(6,
-										Items.createItem(Material.EGG, 0, "§fFlip behind " + Vars.flipbehindStatus));
+										Items.createItem(Material.LEAD, 0, "§fControl " + Vars.Status.controlStatus));
+								Vars.trollmenu.setItem(6, Items.createItem(Material.EGG, 0,
+										"§fFlip behind " + Vars.Status.flipbehindStatus));
 								Vars.trollmenu.setItem(8, Items.createItem(Material.MUSIC_DISC_BLOCKS, 0,
-										"§fSpam sounds " + Vars.spamsoundsStatus));
+										"§fSpam sounds " + Vars.Status.spamsoundsStatus));
 								Vars.trollmenu.setItem(9, Items.createItem(Material.LEGACY_BOOK_AND_QUILL, 0,
-										"§fSpam messages " + Vars.spammessagesStatus));
+										"§fSpam messages " + Vars.Status.spammessagesStatus));
 								Vars.trollmenu.setItem(11,
 										Items.createItem(Material.NOTE_BLOCK, 0, "§fPlay random scary sound"));
 								Vars.trollmenu.setItem(17, Items.createItem(Material.PAPER, 0, "§fFake ban"));
-								Vars.trollmenu.setItem(15,
-										Items.createItem(Material.SHEARS, 0, "§fSemi ban " + Vars.semiBanStatus));
+								Vars.trollmenu.setItem(15, Items.createItem(Material.SHEARS, 0,
+										"§fSemi ban " + Vars.Status.semibanStatus));
 								Vars.trollmenu.setItem(13,
-										Items.createItem(Material.TNT, 0, "§fTNT track " + Vars.tntTrackStatus));
+										Items.createItem(Material.TNT, 0, "§fTNT track " + Vars.Status.tnttrackStatus));
 
 								p.openInventory(Vars.trollmenu);
 							} else {
-								String notOnline = "";
-								notOnline = Vars.targetNotOnline.replace("[Player]", args[0]);
-								p.sendMessage(notOnline);
+								String immune = "";
+								immune = Vars.Messages.immune.replace("[Player]", args[0]);
+								p.sendMessage(immune);
 							}
 						} else {
-							String immune = "";
-							immune = Vars.immune.replace("[Player]", args[0]);
-							p.sendMessage(immune);
+							String notOnline = "";
+							notOnline = Vars.Messages.targetNotOnline.replace("[Player]", args[0]);
+							p.sendMessage(notOnline);
 						}
 					} else
-						p.sendMessage(Vars.usageTrollmenu);
+						p.sendMessage(Vars.Messages.usageTrollmenu);
 				} else
-					p.sendMessage(Vars.noPermission);
+					p.sendMessage(Vars.Messages.noPermission);
 			} else
-				sender.sendMessage(Vars.noConsole);
+				sender.sendMessage(Vars.Messages.noConsole);
 		}
 		return true;
 	}
