@@ -7,7 +7,6 @@
 package de.gaming12846.trollplus.features;
 
 import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -21,15 +20,10 @@ public class FlipBehind implements Listener {
 	public void onPlayerInteract(PlayerInteractEvent e) {
 		Player p = e.getPlayer();
 
-		if (Vars.Lists.flipbehindList.contains(p.getName())) {
-			double x = Vars.target.getLocation().getX();
-			double y = Vars.target.getLocation().getY();
-			double z = Vars.target.getLocation().getZ();
-			double yaw = Vars.target.getEyeLocation().getYaw();
-			World world = Vars.target.getLocation().getWorld();
-			double yawUpdated = yaw + 180;
-			Location location = new Location(world, x, y, z);
-			location.setYaw((float) yawUpdated);
+		if (Vars.Lists.flipBehindList.contains(p.getName())) {
+			Location location = new Location(Vars.target.getLocation().getWorld(), Vars.target.getLocation().getX(), Vars.target.getLocation().getY(),
+					Vars.target.getLocation().getZ());
+			location.setYaw(Vars.target.getEyeLocation().getYaw() + 180);
 			Vars.target.teleport(location);
 		}
 	}

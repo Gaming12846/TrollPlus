@@ -6,10 +6,9 @@
 
 package de.gaming12846.trollplus.features;
 
-import java.util.Random;
-
-import org.bukkit.Bukkit;
+import org.apache.commons.lang.math.RandomUtils;
 import org.bukkit.ChatColor;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import de.gaming12846.trollplus.main.Main;
 import de.gaming12846.trollplus.utilitys.Vars;
@@ -18,37 +17,39 @@ public class SpamMessages {
 
 	public static void SpamMessages() {
 
-		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Main.getPlugin(), new Runnable() {
+		if (Vars.Lists.spamMessagesList.contains(Vars.target.getName())) {
 
-			@Override
-			public void run() {
+			new BukkitRunnable() {
 
-				if (Vars.Lists.spammessagesList.contains(Vars.target.getName())) {
-					Random random = new Random();
-					String randomElement = Vars.Lists.spammessages.get(random.nextInt(Vars.Lists.spammessages.size()));
-					StringBuilder sb1 = new StringBuilder();
-					for (Character character : randomElement.toCharArray()) {
-						sb1.append(ChatColor.getByChar(Integer.toHexString(random.nextInt(16))));
-						sb1.append(character);
-					}
-					Random random2 = new Random();
-					String randomElement2 = Vars.Lists.spammessages.get(random2.nextInt(Vars.Lists.spammessages.size()));
-					StringBuilder sb2 = new StringBuilder();
-					for (Character character : randomElement2.toCharArray()) {
-						sb2.append(ChatColor.getByChar(Integer.toHexString(random2.nextInt(16))));
-						sb2.append(character);
-					}
-					Random random3 = new Random();
-					String randomElement3 = Vars.Lists.spammessages.get(random3.nextInt(Vars.Lists.spammessages.size()));
-					StringBuilder sb3 = new StringBuilder();
-					for (Character character : randomElement3.toCharArray()) {
-						sb3.append(ChatColor.getByChar(Integer.toHexString(random3.nextInt(16))));
-						sb3.append(character);
-					}
-					Vars.target.sendTitle(sb1.toString(), sb2.toString(), 0, 20, 0);
-					Vars.target.sendMessage(sb3.toString());
+				@Override
+				public void run() {
+
+					if (Vars.Lists.spamMessagesList.contains(Vars.target.getName())) {
+
+						StringBuilder stringBuilder1 = new StringBuilder();
+						for (Character character : Vars.Lists.spamMessages.get(RandomUtils.JVM_RANDOM.nextInt(Vars.Lists.spamMessages.size()))
+								.toCharArray()) {
+							stringBuilder1.append(ChatColor.getByChar(Integer.toHexString(RandomUtils.JVM_RANDOM.nextInt(16))));
+							stringBuilder1.append(character);
+						}
+						StringBuilder stringBuilder2 = new StringBuilder();
+						for (Character character : Vars.Lists.spamMessages.get(RandomUtils.JVM_RANDOM.nextInt(Vars.Lists.spamMessages.size()))
+								.toCharArray()) {
+							stringBuilder2.append(ChatColor.getByChar(Integer.toHexString(RandomUtils.JVM_RANDOM.nextInt(16))));
+							stringBuilder2.append(character);
+						}
+						StringBuilder stringBuilder3 = new StringBuilder();
+						for (Character character : Vars.Lists.spamMessages.get(RandomUtils.JVM_RANDOM.nextInt(Vars.Lists.spamMessages.size()))
+								.toCharArray()) {
+							stringBuilder3.append(ChatColor.getByChar(Integer.toHexString(RandomUtils.JVM_RANDOM.nextInt(16))));
+							stringBuilder3.append(character);
+						}
+						Vars.target.sendTitle(stringBuilder1.toString(), stringBuilder2.toString(), 3, 10, 3);
+						Vars.target.sendMessage(stringBuilder3.toString());
+					} else
+						cancel();
 				}
-			}
-		}, 20, 20);
+			}.runTaskTimer(Main.getPlugin(), 10, 10);
+		}
 	}
 }

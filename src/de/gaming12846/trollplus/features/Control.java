@@ -24,9 +24,8 @@ public class Control implements Listener {
 	public void onPlayerMove(PlayerMoveEvent e) {
 		Player p = e.getPlayer();
 
-		if (Vars.HashMaps.controller.containsKey(p)) {
+		if (Vars.HashMaps.controller.containsKey(p))
 			Vars.HashMaps.controller.get(p).teleport(p);
-		}
 	}
 
 	@EventHandler

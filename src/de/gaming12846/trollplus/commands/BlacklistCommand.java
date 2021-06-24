@@ -14,6 +14,7 @@ import org.bukkit.entity.Player;
 
 import de.gaming12846.trollplus.utilitys.ConfigLoader;
 import de.gaming12846.trollplus.utilitys.Vars;
+import net.md_5.bungee.api.ChatColor;
 
 public class BlacklistCommand implements CommandExecutor {
 
@@ -34,31 +35,30 @@ public class BlacklistCommand implements CommandExecutor {
 								Vars.blacklist.set(t.getUniqueId().toString(), t.getName());
 								ConfigLoader.saveBlacklist();
 								String addedBlacklist = "";
-								addedBlacklist = Vars.Messages.addedBlacklist.replace("[Player]", "§l" + args[1] + "§r");
+								addedBlacklist = Vars.Messages.addedBlacklist.replace("[Player]", ChatColor.BOLD + args[1] + ChatColor.RESET);
 								sender.sendMessage(addedBlacklist);
 							} else {
 								String allreadyInBlacklist = "";
-								allreadyInBlacklist = Vars.Messages.allreadyInBlacklist.replace("[Player]", "§l" + args[1] + "§r");
+								allreadyInBlacklist = Vars.Messages.allreadyInBlacklist.replace("[Player]",
+										ChatColor.BOLD + args[1] + ChatColor.RESET);
 								sender.sendMessage(allreadyInBlacklist);
 							}
-
 						} else if (args[0].equalsIgnoreCase("remove")) {
 							if (Vars.blacklist.contains(t.getUniqueId().toString())) {
 								Vars.blacklist.set(t.getUniqueId().toString(), null);
 								ConfigLoader.saveBlacklist();
 								String removedBlacklist = "";
-								removedBlacklist = Vars.Messages.removedBlacklist.replace("[Player]", "§l" + args[1] + "§r");
+								removedBlacklist = Vars.Messages.removedBlacklist.replace("[Player]", ChatColor.BOLD + args[1] + ChatColor.RESET);
 								sender.sendMessage(removedBlacklist);
 							} else {
 								String notInBlacklist = "";
-								notInBlacklist = Vars.Messages.notInBlacklist.replace("[Player]", "§l" + args[1] + "§r");
+								notInBlacklist = Vars.Messages.notInBlacklist.replace("[Player]", ChatColor.BOLD + args[1] + ChatColor.RESET);
 								sender.sendMessage(notInBlacklist);
 							}
 						} else
 							sender.sendMessage(Vars.Messages.usageBlacklist);
 					} else {
-						String notOnline = "";
-						notOnline = Vars.Messages.targetNotOnline.replace("[Player]", "§l" + args[1] + "§r");
+						String notOnline = Vars.Messages.targetNotOnline.replace("[Player]", ChatColor.BOLD + args[1] + ChatColor.RESET);
 						sender.sendMessage(notOnline);
 					}
 				} else

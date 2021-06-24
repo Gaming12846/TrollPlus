@@ -24,42 +24,42 @@ public class Vars {
 
 	public static String prefix = "§8[§c§lTrollPlus§8]§f ";
 
-	// Booleans
-	public static class Booleans {
-		public static boolean banMessageBroadcastOnOff = Main.getPlugin().getConfig().getBoolean("banmessage.banMessageBroadcastOnOff");
-	}
-
 	// Status
 	public static class Status {
 		public static String vanishStatus = "§c§lOFF";
 		public static String freezeStatus = "§c§lOFF";
-		public static String handitemdropStatus = "§c§lOFF";
+		public static String handItemDropStatus = "§c§lOFF";
 		public static String controlStatus = "§c§lOFF";
-		public static String spammessagesStatus = "§c§lOFF";
-		public static String spamsoundsStatus = "§c§lOFF";
-		public static String flipbehindStatus = "§c§lOFF";
-		public static String semibanStatus = "§c§lOFF";
-		public static String tnttrackStatus = "§c§lOFF";
+		public static String spamMessagesStatus = "§c§lOFF";
+		public static String spamSoundsStatus = "§c§lOFF";
+		public static String flipBehindStatus = "§c§lOFF";
+		public static String semiBanStatus = "§c§lOFF";
+		public static String tntTrackStatus = "§c§lOFF";
 	}
 
 	// ArrayLists and Lists
 	public static class Lists {
 		public static ArrayList<String> vanishList = new ArrayList<>();
 		public static ArrayList<String> freezeList = new ArrayList<>();
-		public static ArrayList<String> handitemdropList = new ArrayList<>();
+		public static ArrayList<String> handItemDropList = new ArrayList<>();
 		public static ArrayList<String> controlList = new ArrayList<>();
-		public static ArrayList<String> spammessagesList = new ArrayList<>();
-		public static ArrayList<String> spamsoundsList = new ArrayList<>();
-		public static ArrayList<String> flipbehindList = new ArrayList<>();
-		public static ArrayList<String> semibanList = new ArrayList<>();
-		public static ArrayList<String> tnttrackList = new ArrayList<>();
+		public static ArrayList<String> spamMessagesList = new ArrayList<>();
+		public static ArrayList<String> spamSoundsList = new ArrayList<>();
+		public static ArrayList<String> flipBehindList = new ArrayList<>();
+		public static ArrayList<String> semiBanList = new ArrayList<>();
+		public static ArrayList<String> tntTrackList = new ArrayList<>();
 
-		public static List<String> spammessages = Main.getPlugin().getConfig().getStringList("spammessages");
+		public static List<String> spamMessages = Main.getPlugin().getConfig().getStringList("spamessages");
 	}
 
 	// HashMaps
 	public static class HashMaps {
 		public static HashMap<Player, Player> controller = new HashMap<>();
+	}
+
+	// Booleans
+	public static class Booleans {
+		public static boolean banMessageBroadcastSwitch = Main.getPlugin().getConfig().getBoolean("switches.banMessageBroadcastSwitch");
 	}
 
 	// Messages
@@ -73,14 +73,13 @@ public class Vars {
 		public static String targetNotOnline = prefix + Main.getPlugin().getConfig().getString("messages.targetNotOnline");
 		public static String immune = prefix + Main.getPlugin().getConfig().getString("messages.immune");
 
-		public static String semibanMessage = Main.getPlugin().getConfig().getString("messages.semibanMessage");
-
-		public static String banMessagePlayer = Main.getPlugin().getConfig().getString("banmessage.banMessagePlayer");
-		public static String banMessageBroadcast = Main.getPlugin().getConfig().getString("banmessage.banMessageBroadcast");
-
 		public static String addedBlacklist = prefix + Main.getPlugin().getConfig().getString("messages.addedBlacklist");
 		public static String removedBlacklist = prefix + Main.getPlugin().getConfig().getString("messages.removedBlacklist");
 		public static String allreadyInBlacklist = prefix + Main.getPlugin().getConfig().getString("messages.allreadyInBlacklist");
 		public static String notInBlacklist = prefix + Main.getPlugin().getConfig().getString("messages.notInBlacklist");
+
+		public static String banMessagePlayer = Main.getPlugin().getConfig().getString("messages.banMessagePlayer");
+		public static String banMessageBroadcast = Main.getPlugin().getConfig().getString("messages.banMessageBroadcast");
+		public static String semiBanMessage = Main.getPlugin().getConfig().getString("messages.semiBanMessage");
 	}
 }

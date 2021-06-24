@@ -36,7 +36,7 @@ public class ConfigLoader {
 		reloadBlacklist();
 	}
 
-	// Reload Blacklist
+	// Reload blacklist
 	public static void reloadBlacklist() {
 		if (blacklistFile == null) {
 			blacklistFile = new File(Main.getPlugin().getDataFolder(), "blacklist.yml");
@@ -49,7 +49,7 @@ public class ConfigLoader {
 		}
 	}
 
-	// Get Blacklist
+	// Get blacklist
 	public static FileConfiguration getBlacklist() {
 		if (Vars.blacklist == null) {
 			reloadBlacklist();
@@ -57,7 +57,7 @@ public class ConfigLoader {
 		return Vars.blacklist;
 	}
 
-	// Save Blacklist
+	// Save blacklist
 	public static void saveBlacklist() {
 		if (Vars.blacklist == null || blacklistFile == null) {
 			return;

@@ -6,7 +6,6 @@
 
 package de.gaming12846.trollplus.features;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -14,6 +13,7 @@ import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityExplodeEvent;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import de.gaming12846.trollplus.main.Main;
 import de.gaming12846.trollplus.utilitys.Vars;
@@ -22,19 +22,26 @@ public class TNTTrack implements Listener {
 
 	public static void TNTTrack() {
 
-		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Main.getPlugin(), new Runnable() {
+		if (Vars.Lists.tntTrackList.contains(Vars.target.getName())) {
 
-			@Override
-			public void run() {
+			new BukkitRunnable() {
 
-				if (Vars.Lists.tnttrackList.contains(Vars.target.getName())) {
-					Entity tnt = Vars.target.getWorld().spawn(Vars.target.getLocation(), TNTPrimed.class);
-					((TNTPrimed) tnt).setFuseTicks(100);
-					((TNTPrimed) tnt).setCustomName("TNTTrack");
-					((TNTPrimed) tnt).getWorld().playSound(Vars.target.getLocation(), Sound.ENTITY_TNT_PRIMED, 20, 1);
+				@Override
+				public void run() {
+
+					if (Vars.Lists.tntTrackList.contains(Vars.target.getName())) {
+
+						if (Vars.Lists.tntTrackList.contains(Vars.target.getName())) {
+							Entity tnt = Vars.target.getWorld().spawn(Vars.target.getLocation(), TNTPrimed.class);
+							((TNTPrimed) tnt).setFuseTicks(100);
+							((TNTPrimed) tnt).setCustomName("TNTTrack");
+							((TNTPrimed) tnt).getWorld().playSound(Vars.target.getLocation(), Sound.ENTITY_TNT_PRIMED, 20, 1);
+						}
+					} else
+						cancel();
 				}
-			}
-		}, 30, 30);
+			}.runTaskTimer(Main.getPlugin(), 15, 15);
+		}
 	}
 
 	@EventHandler

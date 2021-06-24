@@ -22,21 +22,17 @@ public class SemiBan implements Listener {
 	public void onPlayerInteract(PlayerInteractEvent e) {
 		Player p = e.getPlayer();
 
-		if (Vars.Lists.semibanList.contains(p.getName())) {
+		if (Vars.Lists.semiBanList.contains(p.getName()))
 			e.setCancelled(true);
-		}
 	}
 
 	@EventHandler
 	public void onAsyncPlayerChat(AsyncPlayerChatEvent e) {
 		Player p = e.getPlayer();
 
-		if (Vars.Lists.semibanList.contains(p.getName())) {
+		if (Vars.Lists.semiBanList.contains(p.getName())) {
 			e.setCancelled(true);
-			String message = e.getMessage();
-			String semiBanMessage = "";
-			semiBanMessage = Vars.Messages.semibanMessage.replace("[Player]", p.getName());
-			p.sendMessage(semiBanMessage + " " + message);
+			p.sendMessage(Vars.Messages.semiBanMessage.replace("[Player]", p.getName()) + " " + e.getMessage());
 		}
 	}
 
@@ -44,7 +40,7 @@ public class SemiBan implements Listener {
 	public void onEntityDamageByEntity(EntityDamageByEntityEvent e) {
 		Entity damager = e.getDamager();
 
-		if (Vars.Lists.semibanList.contains(damager.getName()))
+		if (Vars.Lists.semiBanList.contains(damager.getName()))
 			e.setCancelled(true);
 	}
 }

@@ -6,12 +6,12 @@
 
 package de.gaming12846.trollplus.features;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
-import org.bukkit.Bukkit;
+import org.apache.commons.lang.math.RandomUtils;
 import org.bukkit.Sound;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import de.gaming12846.trollplus.main.Main;
 import de.gaming12846.trollplus.utilitys.Vars;
@@ -20,45 +20,26 @@ public class SpamSounds {
 
 	public static void SpamSounds() {
 
-		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Main.getPlugin(), new Runnable() {
+		if (Vars.Lists.spamSoundsList.contains(Vars.target.getName())) {
 
-			@Override
-			public void run() {
+			new BukkitRunnable() {
 
-				if (Vars.Lists.spamsoundsList.contains(Vars.target.getName())) {
-					List<Sound> sounds = new ArrayList<>();
-					sounds.add(Sound.ENTITY_EXPERIENCE_BOTTLE_THROW);
-					sounds.add(Sound.ENTITY_PLAYER_HURT);
-					sounds.add(Sound.ENTITY_CHICKEN_DEATH);
-					sounds.add(Sound.ENTITY_WOLF_GROWL);
-					sounds.add(Sound.BLOCK_BELL_USE);
-					sounds.add(Sound.BLOCK_ANVIL_FALL);
-					sounds.add(Sound.ENTITY_WITHER_DEATH);
-					sounds.add(Sound.ENTITY_WOLF_DEATH);
-					sounds.add(Sound.BLOCK_IRON_DOOR_CLOSE);
-					sounds.add(Sound.BLOCK_CHEST_OPEN);
-					sounds.add(Sound.ENTITY_PIG_HURT);
-					sounds.add(Sound.BLOCK_GRAVEL_BREAK);
-					sounds.add(Sound.ENTITY_IRON_GOLEM_ATTACK);
-					sounds.add(Sound.ENTITY_FOX_BITE);
-					sounds.add(Sound.ENTITY_SKELETON_DEATH);
-					sounds.add(Sound.ENTITY_VILLAGER_YES);
-					sounds.add(Sound.ENTITY_WITCH_DRINK);
-					sounds.add(Sound.BLOCK_PORTAL_AMBIENT);
-					sounds.add(Sound.ENTITY_ILLUSIONER_DEATH);
-					sounds.add(Sound.ENTITY_SHULKER_BULLET_HIT);
+				@Override
+				public void run() {
 
-					Random random = new Random();
-					Sound sound = sounds.get(random.nextInt(sounds.size()));
-					int rand = 0;
-					while (true) {
-						rand = random.nextInt(11);
-						if (rand != 0)
-							break;
-					}
-					Vars.target.playSound(Vars.target.getLocation(), sound, 30, rand);
+					if (Vars.Lists.spamSoundsList.contains(Vars.target.getName())) {
+
+						List<Sound> sounds = Arrays.asList(Sound.ENTITY_FOX_BITE, Sound.ENTITY_VILLAGER_YES, Sound.ENTITY_PLAYER_HURT,
+								Sound.ENTITY_CHICKEN_DEATH, Sound.ENTITY_WOLF_GROWL, Sound.BLOCK_BELL_USE, Sound.BLOCK_ANVIL_FALL,
+								Sound.ENTITY_WITHER_DEATH, Sound.ENTITY_WOLF_DEATH, Sound.BLOCK_IRON_DOOR_CLOSE, Sound.BLOCK_CHEST_OPEN,
+								Sound.ENTITY_PIG_HURT, Sound.BLOCK_GRAVEL_BREAK, Sound.ENTITY_SHULKER_BULLET_HIT, Sound.ENTITY_ILLUSIONER_DEATH,
+								Sound.BLOCK_PORTAL_AMBIENT, Sound.BLOCK_CANDLE_BREAK, Sound.ENTITY_BAT_HURT, Sound.ITEM_AXE_WAX_OFF);
+						Vars.target.playSound(Vars.target.getLocation(), sounds.get(RandomUtils.JVM_RANDOM.nextInt(sounds.size())),
+								RandomUtils.JVM_RANDOM.nextInt(), RandomUtils.JVM_RANDOM.nextInt());
+					} else
+						cancel();
 				}
-			}
-		}, 5, 5);
+			}.runTaskTimer(Main.getPlugin(), 5, 5);
+		}
 	}
 }

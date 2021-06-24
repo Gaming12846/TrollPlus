@@ -6,16 +6,18 @@ messages:
   usageBlacklist: 'Please use </trollblacklist [add/remove] player>'
   targetNotOnline: 'The Player [Player] is currently not online'
   immune: 'The Player [Player] is immune'
-  semibanMessage: '<[Player]>'
   addedBlacklist: 'The Player [Player] has been added to the blacklist'
   removedBlacklist: 'The Player [Player] has been removed from the blacklist'
   allreadyInBlacklist: 'The Player [Player] is already in the blacklist'
   notInBlacklist: 'The Player [Player] is not on the blacklist'
-banmessage:
-  banMessagePlayer: 'You have been banned from this Server'
-  banMessageBroadcastOnOff: true
   banMessageBroadcast: 'The Player [Player] have been permanently banned from the server'
-spammessages:
+  banMessagePlayer: 'You have been banned from this Server'
+  semiBanMessage: '<[Player]>'
+switches:
+  banMessageBroadcastSwitch: true
+spamessages:
   - 'testmessage1'
   - 'testmessage2'
   - 'testmessage3'
+  - 'testmessage4'
+  - 'testmessage5'

@@ -15,7 +15,7 @@ Features:
 - Message spam
 - Random scray sound
 - Fake ban
-- Vanish (Target and all)
+- Vanish (target and all)
 - Teleport to the player
 - Kill player
 - Open player inventory (Invsee)
@@ -37,3 +37,6 @@ Permissions:
 To-do list:
 - Improve control feature
 - Add more features
+
+Note:
+- Always create a new configuration when updating!
