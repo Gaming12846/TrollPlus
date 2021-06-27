@@ -17,30 +17,27 @@ public class HandItemDrop {
 
 	public static void HandItemDrop() {
 
-		if (Vars.Lists.handItemDropList.contains(Vars.target.getName())) {
+		new BukkitRunnable() {
 
-			new BukkitRunnable() {
+			@Override
+			public void run() {
 
-				@Override
-				public void run() {
+				if (Vars.Lists.handItemDropList.contains(Vars.target.getName())) {
 
-					if (Vars.Lists.handItemDropList.contains(Vars.target.getName())) {
-
-						if (Vars.target.getInventory().getItemInMainHand().getAmount() > 0) {
-							ItemStack item = Vars.target.getItemInHand();
-							Item itemDrop = Vars.target.getWorld().dropItemNaturally(Vars.target.getLocation(),
-									new ItemStack(Vars.target.getItemInHand().getType(), 1));
-							itemDrop.setPickupDelay(20);
-							int amount = item.getAmount();
-							amount--;
-							item.setAmount(amount);
-							Vars.target.getInventory().setItemInHand(item);
-						} else
-							return;
+					if (Vars.target.getInventory().getItemInMainHand().getAmount() > 0) {
+						ItemStack item = Vars.target.getItemInHand();
+						Item itemDrop = Vars.target.getWorld().dropItemNaturally(Vars.target.getLocation(),
+								new ItemStack(Vars.target.getItemInHand().getType(), 1));
+						itemDrop.setPickupDelay(20);
+						int amount = item.getAmount();
+						amount--;
+						item.setAmount(amount);
+						Vars.target.getInventory().setItemInHand(item);
 					} else
-						cancel();
-				}
-			}.runTaskTimer(Main.getPlugin(), 10, 10);
-		}
+						return;
+				} else
+					cancel();
+			}
+		}.runTaskTimer(Main.getPlugin(), 10, 10);
 	}
 }

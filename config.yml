@@ -1,4 +1,4 @@
-# Config for TrollPlus v1.3.1 by Gaming12846
+# Config for Troll Plus v1.3.2 by Gaming12846
 messages:
   noPermission: 'You have no permission to do that'
   noConsole: 'The console cannot use this command'
@@ -16,8 +16,8 @@ messages:
 switches:
   banMessageBroadcastSwitch: true
 spamessages:
-  - 'testmessage1'
-  - 'testmessage2'
-  - 'testmessage3'
-  - 'testmessage4'
-  - 'testmessage5'
+  - 'spammessage1'
+  - 'spammessage2'
+  - 'spammessage3'
+  - 'spammessage4'
+  - 'spammessage5'

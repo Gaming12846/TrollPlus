@@ -22,26 +22,23 @@ public class TNTTrack implements Listener {
 
 	public static void TNTTrack() {
 
-		if (Vars.Lists.tntTrackList.contains(Vars.target.getName())) {
+		new BukkitRunnable() {
 
-			new BukkitRunnable() {
+			@Override
+			public void run() {
 
-				@Override
-				public void run() {
+				if (Vars.Lists.tntTrackList.contains(Vars.target.getName())) {
 
 					if (Vars.Lists.tntTrackList.contains(Vars.target.getName())) {
-
-						if (Vars.Lists.tntTrackList.contains(Vars.target.getName())) {
-							Entity tnt = Vars.target.getWorld().spawn(Vars.target.getLocation(), TNTPrimed.class);
-							((TNTPrimed) tnt).setFuseTicks(100);
-							((TNTPrimed) tnt).setCustomName("TNTTrack");
-							((TNTPrimed) tnt).getWorld().playSound(Vars.target.getLocation(), Sound.ENTITY_TNT_PRIMED, 20, 1);
-						}
-					} else
-						cancel();
-				}
-			}.runTaskTimer(Main.getPlugin(), 15, 15);
-		}
+						Entity tnt = Vars.target.getWorld().spawn(Vars.target.getLocation(), TNTPrimed.class);
+						((TNTPrimed) tnt).setFuseTicks(100);
+						((TNTPrimed) tnt).setCustomName("TNTTrack");
+						((TNTPrimed) tnt).getWorld().playSound(Vars.target.getLocation(), Sound.ENTITY_TNT_PRIMED, 20, 1);
+					}
+				} else
+					cancel();
+			}
+		}.runTaskTimer(Main.getPlugin(), 15, 15);
 	}
 
 	@EventHandler

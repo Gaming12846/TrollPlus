@@ -1,4 +1,4 @@
-# TrollPlus v1.3.1
+# Troll Plus v1.3.2
 A simple plugin for trolling players in Minecraft
 
 Native Minecraft Version: 1.17
@@ -21,6 +21,7 @@ Features:
 - Open player inventory (Invsee)
 - Semi ban
 - TNT track
+- Mob spawner
 
 Commands:
 - /troll player

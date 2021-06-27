@@ -68,8 +68,10 @@ public class TrollCommand implements CommandExecutor {
 										ItemBuilder.createItem(Material.TRIPWIRE_HOOK, 0, ChatColor.WHITE + "Semi ban " + Vars.Status.semiBanStatus));
 								Vars.trollmenu.setItem(28,
 										ItemBuilder.createItem(Material.TNT, 0, ChatColor.WHITE + "TNT track " + Vars.Status.tntTrackStatus));
-								Vars.trollmenu.setItem(30, ItemBuilder.createItem(Material.PAPER, 0, ChatColor.WHITE + "Fake ban"));
-								Vars.trollmenu.setItem(32, ItemBuilder.createItem(Material.MUSIC_DISC_11, 0, ChatColor.WHITE + "Random scary sound"));
+								Vars.trollmenu.setItem(30,
+										ItemBuilder.createItem(Material.SPAWNER, 0, ChatColor.WHITE + "Mob spawner " + Vars.Status.mobSpawnerStatus));
+								Vars.trollmenu.setItem(32, ItemBuilder.createItem(Material.PAPER, 0, ChatColor.WHITE + "Fake ban"));
+								Vars.trollmenu.setItem(34, ItemBuilder.createItem(Material.MUSIC_DISC_11, 0, ChatColor.WHITE + "Random scary sound"));
 
 								// Placeholder
 								int[] placeholderArray = new int[] { 0, 1, 2, 3, 5, 6, 7, 8, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 49, 52 };

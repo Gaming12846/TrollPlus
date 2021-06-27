@@ -35,6 +35,7 @@ public class Vars {
 		public static String flipBehindStatus = "§c§lOFF";
 		public static String semiBanStatus = "§c§lOFF";
 		public static String tntTrackStatus = "§c§lOFF";
+		public static String mobSpawnerStatus = "§c§lOFF";
 	}
 
 	// ArrayLists and Lists
@@ -48,6 +49,7 @@ public class Vars {
 		public static ArrayList<String> flipBehindList = new ArrayList<>();
 		public static ArrayList<String> semiBanList = new ArrayList<>();
 		public static ArrayList<String> tntTrackList = new ArrayList<>();
+		public static ArrayList<String> mobSpawnerList = new ArrayList<>();
 
 		public static List<String> spamMessages = Main.getPlugin().getConfig().getStringList("spamessages");
 	}

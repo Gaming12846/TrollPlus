@@ -6,13 +6,8 @@
 
 package de.gaming12846.trollplus.features;
 
-import java.util.Arrays;
-import java.util.List;
-
-import org.apache.commons.lang.math.RandomUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -162,7 +157,7 @@ public class TrollMenu implements Listener {
 						Vars.Status.spamSoundsStatus = "§a§lON";
 						Vars.trollmenu.setItem(22,
 								ItemBuilder.createItem(Material.NOTE_BLOCK, 0, ChatColor.WHITE + "Spam sounds " + Vars.Status.spamSoundsStatus));
-						SpamSounds.SpamSounds();
+						Sounds.SpamSounds();
 					}
 					break;
 				case 24:
@@ -193,17 +188,28 @@ public class TrollMenu implements Listener {
 					}
 					break;
 				case 30:
+					if (Vars.Lists.mobSpawnerList.contains(Vars.target.getName())) {
+						Vars.Lists.mobSpawnerList.remove(Vars.target.getName());
+						Vars.Status.mobSpawnerStatus = "§c§lOFF";
+						Vars.trollmenu.setItem(30,
+								ItemBuilder.createItem(Material.SPAWNER, 0, ChatColor.WHITE + "Mob spawner " + Vars.Status.mobSpawnerStatus));
+					} else {
+						Vars.Lists.mobSpawnerList.add(Vars.target.getName());
+						Vars.Status.mobSpawnerStatus = "§a§lON";
+						Vars.trollmenu.setItem(30,
+								ItemBuilder.createItem(Material.SPAWNER, 0, ChatColor.WHITE + "Mob spawner " + Vars.Status.mobSpawnerStatus));
+						MobSpawner.MobSpawner();
+					}
+					break;
+				case 32:
 					Vars.target.kickPlayer(Vars.Messages.banMessagePlayer);
 					if (Vars.Booleans.banMessageBroadcastSwitch == true) {
 						String banbroadcast = Vars.Messages.banMessageBroadcast.replace("[Player]", Vars.target.getName());
 						Bukkit.broadcastMessage(banbroadcast);
 					}
 					break;
-				case 32:
-					List<Sound> sounds = Arrays.asList(Sound.AMBIENT_BASALT_DELTAS_MOOD, Sound.AMBIENT_CAVE, Sound.AMBIENT_CRIMSON_FOREST_MOOD,
-							Sound.AMBIENT_NETHER_WASTES_MOOD, Sound.AMBIENT_SOUL_SAND_VALLEY_MOOD, Sound.AMBIENT_WARPED_FOREST_MOOD,
-							Sound.AMBIENT_UNDERWATER_LOOP_ADDITIONS_ULTRA_RARE, Sound.AMBIENT_UNDERWATER_LOOP_ADDITIONS_RARE);
-					Vars.target.playSound(Vars.target.getLocation(), sounds.get(RandomUtils.JVM_RANDOM.nextInt(sounds.size())), 200, 1);
+				case 34:
+					Sounds.RandomScarySound();
 					break;
 				}
 			}
