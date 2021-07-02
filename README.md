@@ -1,4 +1,4 @@
-# Troll Plus v1.3.2
+# TrollPlus v1.3.3
 A simple plugin for trolling players in Minecraft
 
 Native Minecraft Version: 1.17
@@ -9,7 +9,7 @@ Features:
 - Blacklist
 - Freeze player
 - Hand item drop
-- Player control (Testing)
+- Player control
 - Flip Behind player when interacting
 - Sound spam
 - Message spam
@@ -36,7 +36,7 @@ Permissions:
 - troll.blacklist
 
 To-do list:
-- Improve control feature
+- Improve control feature (Smooth it out (At the moment I have no idea how to do it xD))
 - Add more features
 
 Note:

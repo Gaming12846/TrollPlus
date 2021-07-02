@@ -8,6 +8,7 @@ package de.gaming12846.trollplus.features;
 
 import org.apache.commons.lang.math.RandomUtils;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import de.gaming12846.trollplus.main.Main;
@@ -15,14 +16,13 @@ import de.gaming12846.trollplus.utilitys.Vars;
 
 public class SpamMessages {
 
-	public static void SpamMessages() {
-
+	public static void spamMessages(Player victim) {
 		new BukkitRunnable() {
 
 			@Override
 			public void run() {
 
-				if (Vars.Lists.spamMessagesList.contains(Vars.target.getName())) {
+				if (Vars.Lists.spamMessagesList.contains(victim.getName())) {
 
 					StringBuilder stringBuilder1 = new StringBuilder();
 					for (Character character : Vars.Lists.spamMessages.get(RandomUtils.JVM_RANDOM.nextInt(Vars.Lists.spamMessages.size()))
@@ -42,8 +42,8 @@ public class SpamMessages {
 						stringBuilder3.append(ChatColor.getByChar(Integer.toHexString(RandomUtils.JVM_RANDOM.nextInt(16))));
 						stringBuilder3.append(character);
 					}
-					Vars.target.sendTitle(stringBuilder1.toString(), stringBuilder2.toString(), 3, 10, 3);
-					Vars.target.sendMessage(stringBuilder3.toString());
+					victim.sendTitle(stringBuilder1.toString(), stringBuilder2.toString(), 3, 10, 3);
+					victim.sendMessage(stringBuilder3.toString());
 				} else
 					cancel();
 			}

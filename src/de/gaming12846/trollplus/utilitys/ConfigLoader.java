@@ -26,10 +26,10 @@ public class ConfigLoader {
 		File Config = new File(Main.getPlugin().getDataFolder(), "config.yml");
 
 		if (Config.exists()) {
-			Main.getPlugin().getLogger().info("Config was loaded successfully");
+			Main.logger.info(Vars.consolePrefix + "Config was loaded successfully");
 			Main.getPlugin().reloadConfig();
 		} else {
-			Main.getPlugin().getLogger().info("Can't find a config, create a new one");
+			Main.logger.info(Vars.consolePrefix + "Can't find a config, create a new one");
 			Main.getPlugin().getConfig().options().copyDefaults(true);
 			Main.getPlugin().saveConfig();
 		}
@@ -38,9 +38,9 @@ public class ConfigLoader {
 
 	// Reload blacklist
 	public static void reloadBlacklist() {
-		if (blacklistFile == null) {
+		if (blacklistFile == null)
 			blacklistFile = new File(Main.getPlugin().getDataFolder(), "blacklist.yml");
-		}
+
 		Vars.blacklist = YamlConfiguration.loadConfiguration(blacklistFile);
 		InputStream defConfigStream = Main.getPlugin().getResource("blacklist.yml");
 		if (defConfigStream != null) {
@@ -51,21 +51,19 @@ public class ConfigLoader {
 
 	// Get blacklist
 	public static FileConfiguration getBlacklist() {
-		if (Vars.blacklist == null) {
+		if (Vars.blacklist == null)
 			reloadBlacklist();
-		}
 		return Vars.blacklist;
 	}
 
 	// Save blacklist
 	public static void saveBlacklist() {
-		if (Vars.blacklist == null || blacklistFile == null) {
+		if (Vars.blacklist == null || blacklistFile == null)
 			return;
-		}
 		try {
 			Vars.blacklist.save(blacklistFile);
 		} catch (IOException ex) {
-			Main.getPlugin().getLogger().info("Failed to save to the blacklist");
+			Main.logger.warning(Vars.consolePrefix + "Failed to save to the blacklist");
 		}
 	}
 }

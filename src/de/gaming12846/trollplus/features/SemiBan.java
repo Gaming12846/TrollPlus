@@ -11,8 +11,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerPickupItemEvent;
 
 import de.gaming12846.trollplus.utilitys.Vars;
 
@@ -27,13 +30,27 @@ public class SemiBan implements Listener {
 	}
 
 	@EventHandler
-	public void onAsyncPlayerChat(AsyncPlayerChatEvent e) {
+	public void onInventoryClickEvent(InventoryClickEvent e) {
+		Player p = (Player) e.getWhoClicked();
+
+		if (Vars.Lists.semiBanList.contains(p.getName()))
+			e.setCancelled(true);
+	}
+
+	@EventHandler
+	public void onPlayerDropItemEvent(PlayerDropItemEvent e) {
 		Player p = e.getPlayer();
 
-		if (Vars.Lists.semiBanList.contains(p.getName())) {
+		if (Vars.Lists.semiBanList.contains(p.getName()))
 			e.setCancelled(true);
-			p.sendMessage(Vars.Messages.semiBanMessage.replace("[Player]", p.getName()) + " " + e.getMessage());
-		}
+	}
+
+	@EventHandler
+	public void onPlayerPickupItemEvent(PlayerPickupItemEvent e) {
+		Player p = e.getPlayer();
+
+		if (Vars.Lists.semiBanList.contains(p.getName()))
+			e.setCancelled(true);
 	}
 
 	@EventHandler
@@ -42,5 +59,15 @@ public class SemiBan implements Listener {
 
 		if (Vars.Lists.semiBanList.contains(damager.getName()))
 			e.setCancelled(true);
+	}
+
+	@EventHandler
+	public void onAsyncPlayerChat(AsyncPlayerChatEvent e) {
+		Player p = e.getPlayer();
+
+		if (Vars.Lists.semiBanList.contains(p.getName())) {
+			e.setCancelled(true);
+			p.sendMessage(Vars.Messages.semiBanMessage.replace("[Player]", p.getName()) + " " + e.getMessage());
+		}
 	}
 }

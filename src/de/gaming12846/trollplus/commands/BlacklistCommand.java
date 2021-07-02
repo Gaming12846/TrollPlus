@@ -20,7 +20,6 @@ public class BlacklistCommand implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-
 		if (cmd.getName().equalsIgnoreCase("trollblacklist")) {
 
 			if (sender.hasPermission("troll.blacklist")) {
@@ -43,7 +42,9 @@ public class BlacklistCommand implements CommandExecutor {
 										ChatColor.BOLD + args[1] + ChatColor.RESET);
 								sender.sendMessage(allreadyInBlacklist);
 							}
+
 						} else if (args[0].equalsIgnoreCase("remove")) {
+
 							if (Vars.blacklist.contains(t.getUniqueId().toString())) {
 								Vars.blacklist.set(t.getUniqueId().toString(), null);
 								ConfigLoader.saveBlacklist();
@@ -55,6 +56,7 @@ public class BlacklistCommand implements CommandExecutor {
 								notInBlacklist = Vars.Messages.notInBlacklist.replace("[Player]", ChatColor.BOLD + args[1] + ChatColor.RESET);
 								sender.sendMessage(notInBlacklist);
 							}
+
 						} else
 							sender.sendMessage(Vars.Messages.usageBlacklist);
 					} else {

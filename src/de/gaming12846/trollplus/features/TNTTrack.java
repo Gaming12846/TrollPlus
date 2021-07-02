@@ -9,6 +9,7 @@ package de.gaming12846.trollplus.features;
 import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,20 +21,19 @@ import de.gaming12846.trollplus.utilitys.Vars;
 
 public class TNTTrack implements Listener {
 
-	public static void TNTTrack() {
-
+	public static void tntTrack(Player victim) {
 		new BukkitRunnable() {
 
 			@Override
 			public void run() {
 
-				if (Vars.Lists.tntTrackList.contains(Vars.target.getName())) {
+				if (Vars.Lists.tntTrackList.contains(victim.getName())) {
 
-					if (Vars.Lists.tntTrackList.contains(Vars.target.getName())) {
-						Entity tnt = Vars.target.getWorld().spawn(Vars.target.getLocation(), TNTPrimed.class);
+					if (Vars.Lists.tntTrackList.contains(victim.getName())) {
+						Entity tnt = victim.getWorld().spawn(victim.getLocation(), TNTPrimed.class);
 						((TNTPrimed) tnt).setFuseTicks(100);
 						((TNTPrimed) tnt).setCustomName("TNTTrack");
-						((TNTPrimed) tnt).getWorld().playSound(Vars.target.getLocation(), Sound.ENTITY_TNT_PRIMED, 20, 1);
+						((TNTPrimed) tnt).getWorld().playSound(victim.getLocation(), Sound.ENTITY_TNT_PRIMED, 20, 1);
 					}
 				} else
 					cancel();

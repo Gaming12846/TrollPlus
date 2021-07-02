@@ -22,7 +22,6 @@ public class TrollCommand implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-
 		if (cmd.getName().equalsIgnoreCase("troll")) {
 
 			if (sender instanceof Player) {
@@ -37,6 +36,7 @@ public class TrollCommand implements CommandExecutor {
 
 							if (!ConfigLoader.getBlacklist().contains(t.getUniqueId().toString())) {
 								Vars.target = t;
+								Vars.executer = p;
 
 								// Create inventory
 								Vars.trollmenu = Bukkit.createInventory(null, 54, "Troll §c§l" + Vars.target.getName());

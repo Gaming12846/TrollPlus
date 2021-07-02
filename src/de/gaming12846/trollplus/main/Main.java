@@ -23,10 +23,12 @@ import de.gaming12846.trollplus.features.TNTTrack;
 import de.gaming12846.trollplus.features.TrollMenu;
 import de.gaming12846.trollplus.utilitys.ConfigLoader;
 import de.gaming12846.trollplus.utilitys.UpdateChecker;
+import de.gaming12846.trollplus.utilitys.Vars;
 
 public class Main extends JavaPlugin {
 
 	private static Main plugin;
+	public static Logger logger = Bukkit.getLogger();
 
 	// Plugin disable
 	@Override
@@ -37,7 +39,6 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		plugin = this;
-		Logger logger = this.getLogger();
 
 		ConfigLoader.ConfigLoader();
 		registerCommands();
@@ -48,9 +49,11 @@ public class Main extends JavaPlugin {
 
 		new UpdateChecker(this, 81193).getVersion(version -> {
 			if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
-				logger.info("There is no new update available");
+				logger.info(Vars.consolePrefix + "There is no new update available");
 			} else {
-				logger.info("There is a new update available");
+				logger.info(Vars.consolePrefix + "There is a new update available");
+				logger.info(Vars.consolePrefix
+						+ "To download the latest version visit: https://www.spigotmc.org/resources/troll-plus.81193/ or https://github.com/Gaming12846/TrollPlus/releases/");
 			}
 		});
 	}

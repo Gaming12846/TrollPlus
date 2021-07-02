@@ -22,7 +22,7 @@ import net.md_5.bungee.api.ChatColor;
 public class TrollMenu implements Listener {
 
 	@EventHandler
-	public void onClick(InventoryClickEvent e) {
+	public void onInventoryClick(InventoryClickEvent e) {
 		Player p = (Player) e.getWhoClicked();
 
 		try {
@@ -47,7 +47,7 @@ public class TrollMenu implements Listener {
 					p.teleport(Vars.target);
 					break;
 				case 47:
-					if (Vars.Lists.vanishList.contains(p.getName()) && Vars.Status.vanishStatus == "§b§lAll") {
+					if (Vars.Lists.vanishList.contains(Vars.target.getName()) && Vars.Status.vanishStatus == "§b§lAll") {
 						Vars.Lists.vanishList.remove(Vars.target.getName());
 						for (Player online : Bukkit.getServer().getOnlinePlayers()) {
 							online.showPlayer(p);
@@ -55,7 +55,7 @@ public class TrollMenu implements Listener {
 						Vars.Status.vanishStatus = "§c§lOFF";
 						Vars.trollmenu.setItem(47,
 								ItemBuilder.createItem(Material.POTION, 0, ChatColor.WHITE + "Vanish " + Vars.Status.vanishStatus));
-					} else if (Vars.Lists.vanishList.contains(p.getName())) {
+					} else if (Vars.Lists.vanishList.contains(Vars.target.getName())) {
 						Vars.target.showPlayer(p);
 						for (Player online : Bukkit.getServer().getOnlinePlayers()) {
 							online.hidePlayer(p);
@@ -80,7 +80,7 @@ public class TrollMenu implements Listener {
 						Vars.trollmenu.setItem(10, ItemBuilder.createItem(Material.ICE, 0, ChatColor.WHITE + "Freeze " + Vars.Status.freezeStatus));
 					} else {
 						Vars.Lists.freezeList.add(Vars.target.getName());
-						Vars.target.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, Integer.MAX_VALUE, 10));
+						Vars.target.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, Integer.MAX_VALUE, 6));
 						Vars.Status.freezeStatus = "§a§lON";
 						Vars.trollmenu.setItem(10, ItemBuilder.createItem(Material.ICE, 0, ChatColor.WHITE + "Freeze " + Vars.Status.freezeStatus));
 					}
@@ -96,28 +96,23 @@ public class TrollMenu implements Listener {
 						Vars.Status.handItemDropStatus = "§a§lON";
 						Vars.trollmenu.setItem(12,
 								ItemBuilder.createItem(Material.SHEARS, 0, ChatColor.WHITE + "Hand item drop " + Vars.Status.handItemDropStatus));
-						HandItemDrop.HandItemDrop();
+						HandItemDrop.handItemDrop(Vars.target);
 					}
 					break;
 				case 14:
-					if (Vars.HashMaps.controller.containsKey(p)) {
-						// if (Vars.controlList.contains(Vars.target.getName())) {
-						// Vars.controlList.remove(Vars.target.getName());
-						Vars.HashMaps.controller.remove(p, Vars.target);
+					if (Vars.Lists.controlList.containsKey(Vars.target)) {
+						Vars.Lists.controlList.remove(Vars.target);
 						Vars.Status.controlStatus = "§c§lOFF";
 						Vars.trollmenu.setItem(14,
 								ItemBuilder.createItem(Material.LEAD, 0, ChatColor.WHITE + "Control " + Vars.Status.controlStatus));
-						Vars.target.showPlayer(p);
-						p.showPlayer(Vars.target);
-					} else {
-						// Vars.controlList.add(Vars.target.getName());
-						Vars.HashMaps.controller.put(p, Vars.target);
+					} else if (Vars.target != p) {
+						Vars.Lists.controlList.put(Vars.target, p);
 						Vars.Status.controlStatus = "§a§lON";
 						Vars.trollmenu.setItem(14,
 								ItemBuilder.createItem(Material.LEAD, 0, ChatColor.WHITE + "Control " + Vars.Status.controlStatus));
-						Vars.target.hidePlayer(p);
-						p.hidePlayer(Vars.target);
-					}
+						Control.newControl(Vars.target, p);
+					} else
+						p.sendMessage(Vars.Messages.notAllowedControl);
 					break;
 				case 16:
 					if (Vars.Lists.flipBehindList.contains(Vars.target.getName())) {
@@ -143,7 +138,7 @@ public class TrollMenu implements Listener {
 						Vars.Status.spamMessagesStatus = "§a§lON";
 						Vars.trollmenu.setItem(20, ItemBuilder.createItem(Material.LEGACY_BOOK_AND_QUILL, 0,
 								ChatColor.WHITE + "Spam messages " + Vars.Status.spamMessagesStatus));
-						SpamMessages.SpamMessages();
+						SpamMessages.spamMessages(Vars.target);
 					}
 					break;
 				case 22:
@@ -157,7 +152,7 @@ public class TrollMenu implements Listener {
 						Vars.Status.spamSoundsStatus = "§a§lON";
 						Vars.trollmenu.setItem(22,
 								ItemBuilder.createItem(Material.NOTE_BLOCK, 0, ChatColor.WHITE + "Spam sounds " + Vars.Status.spamSoundsStatus));
-						Sounds.SpamSounds();
+						Sounds.spamSounds(Vars.target);
 					}
 					break;
 				case 24:
@@ -184,7 +179,7 @@ public class TrollMenu implements Listener {
 						Vars.Status.tntTrackStatus = "§a§lON";
 						Vars.trollmenu.setItem(28,
 								ItemBuilder.createItem(Material.TNT, 0, ChatColor.WHITE + "TNT track " + Vars.Status.tntTrackStatus));
-						TNTTrack.TNTTrack();
+						TNTTrack.tntTrack(Vars.target);
 					}
 					break;
 				case 30:
@@ -198,7 +193,7 @@ public class TrollMenu implements Listener {
 						Vars.Status.mobSpawnerStatus = "§a§lON";
 						Vars.trollmenu.setItem(30,
 								ItemBuilder.createItem(Material.SPAWNER, 0, ChatColor.WHITE + "Mob spawner " + Vars.Status.mobSpawnerStatus));
-						MobSpawner.MobSpawner();
+						MobSpawner.mobSpawner(Vars.target);
 					}
 					break;
 				case 32:
@@ -209,7 +204,7 @@ public class TrollMenu implements Listener {
 					}
 					break;
 				case 34:
-					Sounds.RandomScarySound();
+					Sounds.randomScarySound(Vars.target);
 					break;
 				}
 			}

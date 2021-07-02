@@ -15,6 +15,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Consumer;
 
+import de.gaming12846.trollplus.main.Main;
+
 public class UpdateChecker {
 
 	private JavaPlugin plugin;
@@ -33,7 +35,7 @@ public class UpdateChecker {
 					consumer.accept(scanner.next());
 				}
 			} catch (IOException exception) {
-				this.plugin.getLogger().info("Cannot look for updates: " + exception.getMessage());
+				Main.logger.warning(Vars.consolePrefix + "Cannot look for updates: " + exception.getMessage());
 			}
 		});
 	}

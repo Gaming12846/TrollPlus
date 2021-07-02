@@ -18,11 +18,13 @@ import de.gaming12846.trollplus.main.Main;
 
 public class Vars {
 	public static Player target = null;
+	public static Player executer = null;
 	public static Inventory trollmenu = null;
 
 	public static FileConfiguration blacklist = null;
 
 	public static String prefix = "§8[§c§lTrollPlus§8]§f ";
+	public static String consolePrefix = "[TrollPlus] ";
 
 	// Status
 	public static class Status {
@@ -43,7 +45,7 @@ public class Vars {
 		public static ArrayList<String> vanishList = new ArrayList<>();
 		public static ArrayList<String> freezeList = new ArrayList<>();
 		public static ArrayList<String> handItemDropList = new ArrayList<>();
-		public static ArrayList<String> controlList = new ArrayList<>();
+		public static HashMap<Player, Player> controlList = new HashMap<>();
 		public static ArrayList<String> spamMessagesList = new ArrayList<>();
 		public static ArrayList<String> spamSoundsList = new ArrayList<>();
 		public static ArrayList<String> flipBehindList = new ArrayList<>();
@@ -52,11 +54,6 @@ public class Vars {
 		public static ArrayList<String> mobSpawnerList = new ArrayList<>();
 
 		public static List<String> spamMessages = Main.getPlugin().getConfig().getStringList("spamessages");
-	}
-
-	// HashMaps
-	public static class HashMaps {
-		public static HashMap<Player, Player> controller = new HashMap<>();
 	}
 
 	// Booleans
@@ -74,6 +71,7 @@ public class Vars {
 
 		public static String targetNotOnline = prefix + Main.getPlugin().getConfig().getString("messages.targetNotOnline");
 		public static String immune = prefix + Main.getPlugin().getConfig().getString("messages.immune");
+		public static String notAllowedControl = prefix + Main.getPlugin().getConfig().getString("messages.notAllowedControl");
 
 		public static String addedBlacklist = prefix + Main.getPlugin().getConfig().getString("messages.addedBlacklist");
 		public static String removedBlacklist = prefix + Main.getPlugin().getConfig().getString("messages.removedBlacklist");

@@ -1,4 +1,4 @@
-# Config for Troll Plus v1.3.2 by Gaming12846
+# Config for TrollPlus v1.3.3 by Gaming12846 <https://www.spigotmc.org/resources/troll-plus.81193/> <https://github.com/Gaming12846/TrollPlus/>
 messages:
   noPermission: 'You have no permission to do that'
   noConsole: 'The console cannot use this command'
@@ -6,6 +6,7 @@ messages:
   usageBlacklist: 'Please use </trollblacklist [add/remove] player>'
   targetNotOnline: 'The Player [Player] is currently not online'
   immune: 'The Player [Player] is immune'
+  notAllowedControl: 'You cannot control yourself'
   addedBlacklist: 'The Player [Player] has been added to the blacklist'
   removedBlacklist: 'The Player [Player] has been removed from the blacklist'
   allreadyInBlacklist: 'The Player [Player] is already in the blacklist'
