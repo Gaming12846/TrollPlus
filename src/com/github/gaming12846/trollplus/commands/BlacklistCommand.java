@@ -1,10 +1,4 @@
-/**
- * TrollPlus
- * 
- * @author Gaming12846
- */
-
-package de.gaming12846.trollplus.commands;
+package com.github.gaming12846.trollplus.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -12,15 +6,20 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import de.gaming12846.trollplus.utilitys.ConfigLoader;
-import de.gaming12846.trollplus.utilitys.Vars;
+import com.github.gaming12846.trollplus.utils.ConfigLoader;
+import com.github.gaming12846.trollplus.utils.Vars;
+
 import net.md_5.bungee.api.ChatColor;
 
+/**
+ * TrollPlus com.github.gaming12846.trollplus.commands BlacklistCommand.java
+ *
+ * @author Gaming12846
+ */
 public class BlacklistCommand implements CommandExecutor {
-
 	@Override
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		if (cmd.getName().equalsIgnoreCase("trollblacklist")) {
+	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+		if (command.getName().equalsIgnoreCase("trollblacklist")) {
 
 			if (sender.hasPermission("troll.blacklist")) {
 
@@ -28,6 +27,7 @@ public class BlacklistCommand implements CommandExecutor {
 					Player t = Bukkit.getPlayer(args[1]);
 
 					if (t != null) {
+
 						if (args[0].equalsIgnoreCase("add")) {
 
 							if (!Vars.blacklist.contains(t.getUniqueId().toString())) {
@@ -38,8 +38,7 @@ public class BlacklistCommand implements CommandExecutor {
 								sender.sendMessage(addedBlacklist);
 							} else {
 								String allreadyInBlacklist = "";
-								allreadyInBlacklist = Vars.Messages.allreadyInBlacklist.replace("[Player]",
-										ChatColor.BOLD + args[1] + ChatColor.RESET);
+								allreadyInBlacklist = Vars.Messages.allreadyInBlacklist.replace("[Player]", ChatColor.BOLD + args[1] + ChatColor.RESET);
 								sender.sendMessage(allreadyInBlacklist);
 							}
 
@@ -68,6 +67,7 @@ public class BlacklistCommand implements CommandExecutor {
 			} else
 				sender.sendMessage(Vars.Messages.noPermission);
 		}
+
 		return true;
 	}
 }

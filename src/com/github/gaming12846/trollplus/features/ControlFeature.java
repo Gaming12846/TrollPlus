@@ -1,10 +1,4 @@
-/**
- * TrollPlus
- * 
- * @author Gaming12846
- */
-
-package de.gaming12846.trollplus.features;
+package com.github.gaming12846.trollplus.features;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -23,13 +17,18 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import de.gaming12846.trollplus.main.Main;
-import de.gaming12846.trollplus.utilitys.ItemBuilder;
-import de.gaming12846.trollplus.utilitys.Vars;
+import com.github.gaming12846.trollplus.TrollPlus;
+import com.github.gaming12846.trollplus.utils.ItemBuilder;
+import com.github.gaming12846.trollplus.utils.Vars;
+
 import net.md_5.bungee.api.ChatColor;
 
-public class Control implements Listener {
-
+/**
+ * TrollPlus com.github.gaming12846.trollplus.features ControlFeature.java
+ *
+ * @author Gaming12846
+ */
+public class ControlFeature implements Listener {
 	private static String message = null;
 	private static boolean messageBoolean = false;
 
@@ -118,6 +117,7 @@ public class Control implements Listener {
 			for (Player online : Bukkit.getServer().getOnlinePlayers()) {
 				online.showPlayer(Vars.executer);
 			}
+
 			Vars.executer.showPlayer(Vars.target);
 		}
 	}
@@ -126,6 +126,7 @@ public class Control implements Listener {
 		for (Player online : Bukkit.getServer().getOnlinePlayers()) {
 			online.hidePlayer(controller);
 		}
+
 		controller.hidePlayer(target);
 
 		location = Vars.executer.getLocation();
@@ -139,22 +140,19 @@ public class Control implements Listener {
 		controller.getInventory().setItemInOffHand(target.getInventory().getItemInOffHand());
 
 		new BukkitRunnable() {
-
 			@Override
 			public void run() {
 
 				if (Vars.Lists.controlList.containsKey(target)) {
 
 					if (messageBoolean == true) {
-
 						target.chat(message);
 						messageBoolean = false;
 					}
 
-					if (target.getLocation() != controller.getLocation()) {
-
+					if (target.getLocation() != controller.getLocation())
 						target.teleport(controller);
-					}
+
 				} else {
 					target.getInventory().setContents(controller.getInventory().getContents());
 					target.getInventory().setArmorContents(controller.getInventory().getArmorContents());
@@ -168,11 +166,12 @@ public class Control implements Listener {
 					for (Player online : Bukkit.getServer().getOnlinePlayers()) {
 						online.showPlayer(controller);
 					}
+
 					controller.showPlayer(target);
 
 					cancel();
 				}
 			}
-		}.runTaskTimer(Main.getPlugin(), 0, 1);
+		}.runTaskTimer(TrollPlus.getPlugin(), 0, 1);
 	}
 }

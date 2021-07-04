@@ -1,18 +1,18 @@
-main: de.gaming12846.trollplus.main.Main
 name: TrollPlus
+main: com.github.gaming12846.trollplus.TrollPlus
 version: 1.3.3
+description: A simple plugin for trolling players in Minecraft
+website: https://www.spigotmc.org/resources/81193/ https://github.com/Gaming12846/TrollPlus https://discord.com/invite/XvK2UMfGEJ
+author: Gaming12846
 api-version: 1.17
 
-description: A simple plugin for trolling players in Minecraft
-author: Gaming12846
-website: https://www.spigotmc.org/resources/troll-plus.81193 https://github.com/Gaming12846/TrollPlus https://discord.com/invite/XvK2UMfGEJ
 
 commands:
-     troll:
-          description: Opens the troll menu
-          aliases: [t]
-          usage: Simply type </troll Player>
-     trollblacklist:
-          description: Add or remove players from the blacklist
-          aliases: [tb]
-          usage: Simply type </trollblacklist [add/remove] Player>
+  troll:
+    description: Opens the troll menu
+    usage: Simply type </troll Player>
+    aliases: [t]
+  trollblacklist:
+    description: Add or remove players from the blacklist
+    usage: Simply type </trollblacklist [add/remove] Player>
+    aliases: [tb]

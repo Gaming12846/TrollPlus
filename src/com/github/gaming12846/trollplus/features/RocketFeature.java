@@ -1,10 +1,4 @@
-/**
- * TrollPlus
- * 
- * @author Gaming12846
- */
-
-package de.gaming12846.trollplus.features;
+package com.github.gaming12846.trollplus.features;
 
 import java.util.ArrayList;
 
@@ -17,10 +11,15 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import de.gaming12846.trollplus.main.Main;
-import de.gaming12846.trollplus.utilitys.Vars;
+import com.github.gaming12846.trollplus.TrollPlus;
+import com.github.gaming12846.trollplus.utils.Vars;
 
-public class Rocket implements Listener {
+/**
+ * TrollPlus com.github.gaming12846.trollplus.features RocketFeature.java
+ *
+ * @author Gaming12846
+ */
+public class RocketFeature implements Listener {
 	static ArrayList<Player> noFallDamage = new ArrayList<Player>();
 	static int i = 0;
 
@@ -30,13 +29,14 @@ public class Rocket implements Listener {
 
 		Vars.target.getWorld().spawnParticle(Particle.EXPLOSION_LARGE, Vars.target.getLocation(), 1);
 		Particle[] particles = new Particle[] { Particle.FIREWORKS_SPARK, Particle.LAVA, Particle.FLAME, };
+
 		for (Particle particle : particles) {
 			Vars.target.getWorld().spawnParticle(particle, Vars.target.getLocation(), 25);
 		}
+
 		Vars.target.getWorld().playSound(Vars.target.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 20, 1);
 
 		new BukkitRunnable() {
-
 			@Override
 			public void run() {
 
@@ -51,7 +51,7 @@ public class Rocket implements Listener {
 					cancel();
 				}
 			}
-		}.runTaskTimer(Main.getPlugin(), 0, 5);
+		}.runTaskTimer(TrollPlus.getPlugin(), 0, 5);
 	}
 
 	@EventHandler

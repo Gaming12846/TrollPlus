@@ -1,10 +1,4 @@
-/**
- * TrollPlus
- * 
- * @author Gaming12846
- */
-
-package de.gaming12846.trollplus.features;
+package com.github.gaming12846.trollplus.features;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,9 +6,14 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 
-import de.gaming12846.trollplus.utilitys.Vars;
+import com.github.gaming12846.trollplus.utils.Vars;
 
-public class Freeze implements Listener {
+/**
+ * TrollPlus com.github.gaming12846.trollplus.features FreezeFeature.java
+ *
+ * @author Gaming12846
+ */
+public class FreezeFeature implements Listener {
 
 	@EventHandler
 	public void onPlayerMove(PlayerMoveEvent e) {

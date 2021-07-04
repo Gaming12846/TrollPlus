@@ -1,10 +1,4 @@
-/**
- * TrollPlus
- * 
- * @author Gaming12846
- */
-
-package de.gaming12846.trollplus.utilitys;
+package com.github.gaming12846.trollplus.utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +9,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
+/**
+ * TrollPlus com.github.gaming12846.trollplus.utils ItemBuilder.java
+ *
+ * @author Gaming12846
+ */
 public class ItemBuilder {
 	// Easy method to create an itemstack
 	public static ItemStack createItem(Material mat, int subid, String name) {

@@ -1,24 +1,22 @@
-/**
- * TrollPlus
- * 
- * @author Gaming12846
- */
-
-package de.gaming12846.trollplus.features;
+package com.github.gaming12846.trollplus.features;
 
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import de.gaming12846.trollplus.main.Main;
-import de.gaming12846.trollplus.utilitys.Vars;
+import com.github.gaming12846.trollplus.TrollPlus;
+import com.github.gaming12846.trollplus.utils.Vars;
 
-public class HandItemDrop {
+/**
+ * TrollPlus com.github.gaming12846.trollplus.features HandItemDropFeature.java
+ *
+ * @author Gaming12846
+ */
+public class HandItemDropFeature {
 
 	public static void handItemDrop(Player target) {
 		new BukkitRunnable() {
-
 			@Override
 			public void run() {
 
@@ -40,6 +38,6 @@ public class HandItemDrop {
 				} else
 					cancel();
 			}
-		}.runTaskTimer(Main.getPlugin(), 0, 10);
+		}.runTaskTimer(TrollPlus.getPlugin(), 0, 10);
 	}
 }

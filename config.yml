@@ -1,24 +1,29 @@
-# Config for TrollPlus v1.3.3 by Gaming12846 <https://www.spigotmc.org/resources/troll-plus.81193> <https://github.com/Gaming12846/TrollPlus> <https://discord.com/invite/XvK2UMfGEJ>
-switches:
-  banMessageBroadcastSwitch: true
-messages:
-  noPermission: 'You have no permission to do that'
-  noConsole: 'The console cannot use this command'
-  usageTrollmenu: 'Please use </troll player>'
-  usageBlacklist: 'Please use </trollblacklist [add/remove] player>'
-  targetNotOnline: 'The Player [Player] is currently not online'
-  immune: 'The Player [Player] is immune'
-  notAllowedControl: 'You cannot control yourself'
-  addedBlacklist: 'The Player [Player] has been added to the blacklist'
-  removedBlacklist: 'The Player [Player] has been removed from the blacklist'
-  allreadyInBlacklist: 'The Player [Player] is already in the blacklist'
-  notInBlacklist: 'The Player [Player] is not on the blacklist'
-  banMessageBroadcast: 'The Player [Player] have been permanently banned from the server'
-  banMessagePlayer: 'You have been banned from this Server'
-  semiBanMessage: '<[Player]>'
-spamessages:
-  - 'spammessage1'
-  - 'spammessage2'
-  - 'spammessage3'
-  - 'spammessage4'
-  - 'spammessage5'
+# Configuration for TrollPlus v1.3.3 by Gaming12846 <https://www.spigotmc.org/resources/81193/> <https://github.com/Gaming12846/TrollPlus> <https://discord.com/invite/XvK2UMfGEJ>
+CheckForUpdates: true
+MetricsEnabled: true
+
+Features:
+  BanMessageBroadcastSwitch: true
+  
+Messages:
+  NoPermission: 'You have no permission to do that'
+  NoConsole: 'The console cannot use this command'
+  UsageTrollmenu: 'Please use </troll player>'
+  UsageBlacklist: 'Please use </trollblacklist [add/remove] player>'
+  TargetNotOnline: 'The Player [Player] is currently not online'
+  Immune: 'The Player [Player] is immune'
+  NotAllowedControl: 'You cannot control yourself'
+  AddedBlacklist: 'The Player [Player] has been added to the blacklist'
+  RemovedBlacklist: 'The Player [Player] has been removed from the blacklist'
+  AllreadyInBlacklist: 'The Player [Player] is already in the blacklist'
+  NotInBlacklist: 'The Player [Player] is not on the blacklist'
+  BanMessageBroadcast: 'The Player [Player] have been permanently banned from the server'
+  BanMessagePlayer: 'You have been banned from this Server'
+  SemiBanMessage: '<[Player]>'
+  
+SpamMessages:
+  - 'Spammessage1'
+  - 'Spammessage2'
+  - 'Spammessage3'
+  - 'Spammessage4'
+  - 'Spammessage5'

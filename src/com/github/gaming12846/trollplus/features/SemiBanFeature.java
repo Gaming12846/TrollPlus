@@ -1,10 +1,4 @@
-/**
- * TrollPlus
- * 
- * @author Gaming12846
- */
-
-package de.gaming12846.trollplus.features;
+package com.github.gaming12846.trollplus.features;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -17,9 +11,14 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 
-import de.gaming12846.trollplus.utilitys.Vars;
+import com.github.gaming12846.trollplus.utils.Vars;
 
-public class SemiBan implements Listener {
+/**
+ * TrollPlus com.github.gaming12846.trollplus.features SemiBanFeature.java
+ *
+ * @author Gaming12846
+ */
+public class SemiBanFeature implements Listener {
 
 	@EventHandler
 	public void onPlayerInteract(PlayerInteractEvent e) {

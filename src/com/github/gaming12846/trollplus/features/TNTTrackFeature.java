@@ -1,10 +1,4 @@
-/**
- * TrollPlus
- * 
- * @author Gaming12846
- */
-
-package de.gaming12846.trollplus.features;
+package com.github.gaming12846.trollplus.features;
 
 import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
@@ -16,14 +10,18 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import de.gaming12846.trollplus.main.Main;
-import de.gaming12846.trollplus.utilitys.Vars;
+import com.github.gaming12846.trollplus.TrollPlus;
+import com.github.gaming12846.trollplus.utils.Vars;
 
-public class TNTTrack implements Listener {
+/**
+ * TrollPlus com.github.gaming12846.trollplus.features TNTTrackFeature.java
+ *
+ * @author Gaming12846
+ */
+public class TNTTrackFeature implements Listener {
 
 	public static void tntTrack(Player target) {
 		new BukkitRunnable() {
-
 			@Override
 			public void run() {
 
@@ -38,7 +36,7 @@ public class TNTTrack implements Listener {
 				} else
 					cancel();
 			}
-		}.runTaskTimer(Main.getPlugin(), 0, 15);
+		}.runTaskTimer(TrollPlus.getPlugin(), 0, 15);
 	}
 
 	@EventHandler
