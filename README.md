@@ -27,9 +27,9 @@ A simple plugin for trolling players in Minecraft.
 - Freeze player
 - Hand item drop
 - Player control
-- Flip Behind player when interacting
+- Flip behind player when interacting
 - Sound spam
-- Message spam
+- Message spam (You can add as many messages as you want)
 - Random scray sound
 - Fake ban
 - Vanish (Target and all)
@@ -40,6 +40,7 @@ A simple plugin for trolling players in Minecraft.
 - TNT track
 - Mob spawner
 - Rocket
+- Fake op
 
 ## Commands:
 - /troll player
@@ -54,9 +55,9 @@ A simple plugin for trolling players in Minecraft.
 - troll.blacklist
 
 ## To-do list:
-- Improve control feature (Smooth it out (At the moment I have no idea how to do it xD))
+- Improve control feature (Smooth it out, at the moment I have no idea how to do it)
 - Add more features
-- Remove static spam
+- Clean up code (remove static spam)
 
-## Note:
+## Notes:
 - Always create a new configuration when updating!

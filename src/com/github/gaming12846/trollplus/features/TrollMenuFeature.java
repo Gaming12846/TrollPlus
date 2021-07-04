@@ -25,7 +25,7 @@ public class TrollMenuFeature implements Listener {
 	public void onInventoryClick(InventoryClickEvent e) {
 		Player p = (Player) e.getWhoClicked();
 
-		if (e.getView().getTitle().equalsIgnoreCase("Troll §c§l" + Vars.target.getName())) {
+		if (Vars.target != null && e.getView().getTitle().equalsIgnoreCase("Troll §c§l" + Vars.target.getName())) {
 			e.setCancelled(true);
 
 			switch (e.getSlot()) {
@@ -181,9 +181,10 @@ public class TrollMenuFeature implements Listener {
 				break;
 			case 32:
 				Vars.target.kickPlayer(Vars.Messages.banMessagePlayer);
+
 				if (Vars.Booleans.banMessageBroadcastSwitch == true) {
-					String banbroadcast = Vars.Messages.banMessageBroadcast.replace("[Player]", Vars.target.getName());
-					Bukkit.broadcastMessage(banbroadcast);
+					String banMessageBroadcast = Vars.Messages.banMessageBroadcast.replace("[Player]", Vars.target.getName());
+					Bukkit.broadcastMessage(banMessageBroadcast);
 				}
 				break;
 			case 34:
@@ -191,6 +192,15 @@ public class TrollMenuFeature implements Listener {
 				break;
 			case 38:
 				RocketFeature.rocket(Vars.target);
+				break;
+			case 40:
+				if (Vars.Booleans.fakeOpMessageBroadcastSwitch == true) {
+					String fakeOpMessageBroadcast = Vars.Messages.fakeOpMessageBroadcast.replace("[Player]", Vars.target.getName());
+					Bukkit.broadcastMessage(ChatColor.GRAY + fakeOpMessageBroadcast);
+				} else {
+					String fakeOpMessage = Vars.Messages.fakeOpMessageBroadcast.replace("[Player]", Vars.target.getName());
+					Vars.target.sendMessage(ChatColor.GRAY + fakeOpMessage);
+				}
 				break;
 			}
 		}

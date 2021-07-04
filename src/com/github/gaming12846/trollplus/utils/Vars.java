@@ -16,7 +16,7 @@ import com.github.gaming12846.trollplus.TrollPlus;
  * @author Gaming12846
  */
 public class Vars {
-	static String prefix = "§8[§c§lTrollPlus§8]§f ";
+	public static String prefix = "§8[§c§lTrollPlus§8]§f ";
 	public static String consolePrefix = "[TrollPlus] ";
 
 	public static FileConfiguration blacklist = null;
@@ -60,6 +60,7 @@ public class Vars {
 		public static boolean checkForUpdates = TrollPlus.getPlugin().getConfig().getBoolean("CheckForUpdates");
 		public static boolean metricsEnabled = TrollPlus.getPlugin().getConfig().getBoolean("MetricsEnabled");
 		public static boolean banMessageBroadcastSwitch = TrollPlus.getPlugin().getConfig().getBoolean("Features.BanMessageBroadcastSwitch");
+		public static boolean fakeOpMessageBroadcastSwitch = TrollPlus.getPlugin().getConfig().getBoolean("Features.FakeOpMessageBroadcastSwitch");
 	}
 
 	// Messages
@@ -82,5 +83,6 @@ public class Vars {
 		public static String banMessagePlayer = TrollPlus.getPlugin().getConfig().getString("Messages.BanMessagePlayer");
 		public static String banMessageBroadcast = TrollPlus.getPlugin().getConfig().getString("Messages.BanMessageBroadcast");
 		public static String semiBanMessage = TrollPlus.getPlugin().getConfig().getString("Messages.SemiBanMessage");
+		public static String fakeOpMessageBroadcast = TrollPlus.getPlugin().getConfig().getString("Messages.FakeOpMessageBroadcast");
 	}
 }

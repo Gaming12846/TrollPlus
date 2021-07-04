@@ -4,6 +4,7 @@ MetricsEnabled: true
 
 Features:
   BanMessageBroadcastSwitch: true
+  FakeOpMessageBroadcastSwitch: true
   
 Messages:
   NoPermission: 'You have no permission to do that'
@@ -20,6 +21,7 @@ Messages:
   BanMessageBroadcast: 'The Player [Player] have been permanently banned from the server'
   BanMessagePlayer: 'You have been banned from this Server'
   SemiBanMessage: '<[Player]>'
+  FakeOpMessageBroadcast: '[Server: Made [Player] a server operator]'
   
 SpamMessages:
   - 'Spammessage1'
