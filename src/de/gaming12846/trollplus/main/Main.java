@@ -18,6 +18,7 @@ import de.gaming12846.trollplus.commands.TrollCommand;
 import de.gaming12846.trollplus.features.Control;
 import de.gaming12846.trollplus.features.FlipBehind;
 import de.gaming12846.trollplus.features.Freeze;
+import de.gaming12846.trollplus.features.Rocket;
 import de.gaming12846.trollplus.features.SemiBan;
 import de.gaming12846.trollplus.features.TNTTrack;
 import de.gaming12846.trollplus.features.TrollMenu;
@@ -53,7 +54,7 @@ public class Main extends JavaPlugin {
 			} else {
 				logger.info(Vars.consolePrefix + "There is a new update available");
 				logger.info(Vars.consolePrefix
-						+ "To download the latest version visit: https://www.spigotmc.org/resources/troll-plus.81193/ or https://github.com/Gaming12846/TrollPlus/releases/");
+						+ "To download the latest version visit: https://www.spigotmc.org/resources/troll-plus.81193 , https://github.com/Gaming12846/TrollPlus/releases or https://discord.com/invite/XvK2UMfGEJ");
 			}
 		});
 	}
@@ -77,5 +78,6 @@ public class Main extends JavaPlugin {
 		pm.registerEvents(new FlipBehind(), this);
 		pm.registerEvents(new SemiBan(), this);
 		pm.registerEvents(new TNTTrack(), this);
+		pm.registerEvents(new Rocket(), this);
 	}
 }

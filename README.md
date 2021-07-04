@@ -15,13 +15,14 @@ Features:
 - Message spam
 - Random scray sound
 - Fake ban
-- Vanish (target and all)
+- Vanish (Target and all)
 - Teleport to the player
 - Kill player
 - Open player inventory (Invsee)
 - Semi ban
 - TNT track
 - Mob spawner
+- Rocket
 
 Commands:
 - /troll player

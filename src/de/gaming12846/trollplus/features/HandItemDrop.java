@@ -16,30 +16,30 @@ import de.gaming12846.trollplus.utilitys.Vars;
 
 public class HandItemDrop {
 
-	public static void handItemDrop(Player victim) {
+	public static void handItemDrop(Player target) {
 		new BukkitRunnable() {
 
 			@Override
 			public void run() {
 
-				if (Vars.Lists.handItemDropList.contains(victim.getName())) {
+				if (Vars.Lists.handItemDropList.contains(target.getName())) {
 
-					if (victim.getInventory().getItemInMainHand().getAmount() > 0) {
-						ItemStack item = victim.getInventory().getItemInHand();
-						ItemStack dropItem = new ItemStack(victim.getInventory().getItemInHand().getType(), 1);
+					if (target.getInventory().getItemInMainHand().getAmount() > 0) {
+						ItemStack item = target.getInventory().getItemInHand();
+						ItemStack dropItem = new ItemStack(target.getInventory().getItemInHand().getType(), 1);
 						dropItem.setAmount(1);
-						dropItem.setItemMeta(victim.getInventory().getItemInHand().getItemMeta());
-						Item itemDrop = victim.getWorld().dropItemNaturally(victim.getLocation(), dropItem);
+						dropItem.setItemMeta(target.getInventory().getItemInHand().getItemMeta());
+						Item itemDrop = target.getWorld().dropItemNaturally(target.getLocation(), dropItem);
 						itemDrop.setPickupDelay(20);
 						int amount = item.getAmount();
 						amount--;
 						item.setAmount(amount);
-						victim.getInventory().setItemInHand(item);
+						target.getInventory().setItemInHand(item);
 					} else
 						return;
 				} else
 					cancel();
 			}
-		}.runTaskTimer(Main.getPlugin(), 10, 10);
+		}.runTaskTimer(Main.getPlugin(), 0, 10);
 	}
 }

@@ -198,13 +198,16 @@ public class TrollMenu implements Listener {
 					break;
 				case 32:
 					Vars.target.kickPlayer(Vars.Messages.banMessagePlayer);
-					if (Vars.Booleans.banMessageBroadcastSwitch == true) {
+					if (Vars.Switches.banMessageBroadcastSwitch == true) {
 						String banbroadcast = Vars.Messages.banMessageBroadcast.replace("[Player]", Vars.target.getName());
 						Bukkit.broadcastMessage(banbroadcast);
 					}
 					break;
 				case 34:
 					Sounds.randomScarySound(Vars.target);
+					break;
+				case 38:
+					Rocket.rocket(Vars.target);
 					break;
 				}
 			}

@@ -17,14 +17,14 @@ import org.bukkit.inventory.Inventory;
 import de.gaming12846.trollplus.main.Main;
 
 public class Vars {
-	public static Player target = null;
-	public static Player executer = null;
-	public static Inventory trollmenu = null;
+	public static String prefix = "§8[§c§lTrollPlus§8]§f ";
+	public static String consolePrefix = "[TrollPlus] ";
 
 	public static FileConfiguration blacklist = null;
 
-	public static String prefix = "§8[§c§lTrollPlus§8]§f ";
-	public static String consolePrefix = "[TrollPlus] ";
+	public static Player target = null;
+	public static Player executer = null;
+	public static Inventory trollmenu = null;
 
 	// Status
 	public static class Status {
@@ -56,8 +56,8 @@ public class Vars {
 		public static List<String> spamMessages = Main.getPlugin().getConfig().getStringList("spamessages");
 	}
 
-	// Booleans
-	public static class Booleans {
+	// Switches
+	public static class Switches {
 		public static boolean banMessageBroadcastSwitch = Main.getPlugin().getConfig().getBoolean("switches.banMessageBroadcastSwitch");
 	}
 

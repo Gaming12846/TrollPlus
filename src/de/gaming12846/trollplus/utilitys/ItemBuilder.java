@@ -16,7 +16,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
 public class ItemBuilder {
-
 	// Easy method to create an itemstack
 	public static ItemStack createItem(Material mat, int subid, String name) {
 		ItemStack item = new ItemStack(mat, 1, (short) subid);

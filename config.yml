@@ -1,4 +1,6 @@
-# Config for TrollPlus v1.3.3 by Gaming12846 <https://www.spigotmc.org/resources/troll-plus.81193/> <https://github.com/Gaming12846/TrollPlus/>
+# Config for TrollPlus v1.3.3 by Gaming12846 <https://www.spigotmc.org/resources/troll-plus.81193> <https://github.com/Gaming12846/TrollPlus> <https://discord.com/invite/XvK2UMfGEJ>
+switches:
+  banMessageBroadcastSwitch: true
 messages:
   noPermission: 'You have no permission to do that'
   noConsole: 'The console cannot use this command'
@@ -14,8 +16,6 @@ messages:
   banMessageBroadcast: 'The Player [Player] have been permanently banned from the server'
   banMessagePlayer: 'You have been banned from this Server'
   semiBanMessage: '<[Player]>'
-switches:
-  banMessageBroadcastSwitch: true
 spamessages:
   - 'spammessage1'
   - 'spammessage2'

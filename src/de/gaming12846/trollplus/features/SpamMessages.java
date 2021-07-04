@@ -16,13 +16,13 @@ import de.gaming12846.trollplus.utilitys.Vars;
 
 public class SpamMessages {
 
-	public static void spamMessages(Player victim) {
+	public static void spamMessages(Player target) {
 		new BukkitRunnable() {
 
 			@Override
 			public void run() {
 
-				if (Vars.Lists.spamMessagesList.contains(victim.getName())) {
+				if (Vars.Lists.spamMessagesList.contains(target.getName())) {
 
 					StringBuilder stringBuilder1 = new StringBuilder();
 					for (Character character : Vars.Lists.spamMessages.get(RandomUtils.JVM_RANDOM.nextInt(Vars.Lists.spamMessages.size()))
@@ -42,11 +42,11 @@ public class SpamMessages {
 						stringBuilder3.append(ChatColor.getByChar(Integer.toHexString(RandomUtils.JVM_RANDOM.nextInt(16))));
 						stringBuilder3.append(character);
 					}
-					victim.sendTitle(stringBuilder1.toString(), stringBuilder2.toString(), 3, 10, 3);
-					victim.sendMessage(stringBuilder3.toString());
+					target.sendTitle(stringBuilder1.toString(), stringBuilder2.toString(), 3, 10, 3);
+					target.sendMessage(stringBuilder3.toString());
 				} else
 					cancel();
 			}
-		}.runTaskTimer(Main.getPlugin(), 15, 15);
+		}.runTaskTimer(Main.getPlugin(), 0, 15);
 	}
 }

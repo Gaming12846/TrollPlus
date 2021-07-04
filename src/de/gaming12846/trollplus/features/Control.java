@@ -48,7 +48,7 @@ public class Control implements Listener {
 	}
 
 	@EventHandler
-	public void onInventoryClickEvent(InventoryClickEvent e) {
+	public void onInventoryClick(InventoryClickEvent e) {
 		Player p = (Player) e.getWhoClicked();
 
 		if (Vars.Lists.controlList.containsKey(p))
@@ -56,7 +56,7 @@ public class Control implements Listener {
 	}
 
 	@EventHandler
-	public void onPlayerDropItemEvent(PlayerDropItemEvent e) {
+	public void onPlayerDropItem(PlayerDropItemEvent e) {
 		Player p = e.getPlayer();
 
 		if (Vars.Lists.controlList.containsKey(p))
@@ -64,7 +64,7 @@ public class Control implements Listener {
 	}
 
 	@EventHandler
-	public void onPlayerPickupItemEvent(PlayerPickupItemEvent e) {
+	public void onPlayerPickupItem(PlayerPickupItemEvent e) {
 		Player p = e.getPlayer();
 
 		if (Vars.Lists.controlList.containsKey(p))
@@ -98,7 +98,7 @@ public class Control implements Listener {
 	}
 
 	@EventHandler
-	public void onPlayerQuitEvent(PlayerQuitEvent e) {
+	public void onPlayerQuit(PlayerQuitEvent e) {
 		Player p = e.getPlayer();
 
 		if (Vars.Lists.controlList.containsKey(p)) {
@@ -122,44 +122,43 @@ public class Control implements Listener {
 		}
 	}
 
-	public static void newControl(Player victim, Player controller) {
+	public static void newControl(Player target, Player controller) {
 		for (Player online : Bukkit.getServer().getOnlinePlayers()) {
 			online.hidePlayer(controller);
 		}
-		controller.hidePlayer(victim);
+		controller.hidePlayer(target);
 
 		location = Vars.executer.getLocation();
 		inventory = Vars.executer.getInventory().getContents();
 		armor = Vars.executer.getInventory().getArmorContents();
 		offHandItem = Vars.executer.getInventory().getItemInOffHand();
 
-		controller.teleport(victim);
-		controller.getInventory().setContents(victim.getInventory().getContents());
-		controller.getInventory().setArmorContents(victim.getInventory().getArmorContents());
-		controller.getInventory().setItemInOffHand(victim.getInventory().getItemInOffHand());
+		controller.teleport(target);
+		controller.getInventory().setContents(target.getInventory().getContents());
+		controller.getInventory().setArmorContents(target.getInventory().getArmorContents());
+		controller.getInventory().setItemInOffHand(target.getInventory().getItemInOffHand());
 
 		new BukkitRunnable() {
 
 			@Override
 			public void run() {
 
-				if (Vars.Lists.controlList.containsKey(victim)) {
+				if (Vars.Lists.controlList.containsKey(target)) {
 
 					if (messageBoolean == true) {
 
-						victim.chat(message);
+						target.chat(message);
 						messageBoolean = false;
 					}
 
-					if (victim.getLocation() != controller.getLocation()) {
+					if (target.getLocation() != controller.getLocation()) {
 
-						victim.teleport(controller);
+						target.teleport(controller);
 					}
 				} else {
-
-					victim.getInventory().setContents(controller.getInventory().getContents());
-					victim.getInventory().setArmorContents(controller.getInventory().getArmorContents());
-					victim.getInventory().setItemInOffHand(controller.getInventory().getItemInOffHand());
+					target.getInventory().setContents(controller.getInventory().getContents());
+					target.getInventory().setArmorContents(controller.getInventory().getArmorContents());
+					target.getInventory().setItemInOffHand(controller.getInventory().getItemInOffHand());
 
 					controller.getInventory().setContents(inventory);
 					controller.getInventory().setArmorContents(armor);
@@ -169,11 +168,11 @@ public class Control implements Listener {
 					for (Player online : Bukkit.getServer().getOnlinePlayers()) {
 						online.showPlayer(controller);
 					}
-					controller.showPlayer(victim);
+					controller.showPlayer(target);
 
 					cancel();
 				}
 			}
-		}.runTaskTimer(Main.getPlugin(), 1, 1);
+		}.runTaskTimer(Main.getPlugin(), 0, 1);
 	}
 }
