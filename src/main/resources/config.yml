@@ -1,6 +1,6 @@
 # Configuration for TrollPlus v${project.version} by Gaming12846
 CheckForUpdates: true
-MetricsEnabled: false
+MetricsEnabled: true
 
 # Feature spam messages (You can add as many messages as you want)
 SpamMessages:
