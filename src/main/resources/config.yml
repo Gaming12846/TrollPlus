@@ -1,0 +1,23 @@
+# Configuration for TrollPlus v${project.version} by Gaming12846
+CheckForUpdates: true
+MetricsEnabled: false
+
+# Feature spam messages (You can add as many messages as you want)
+SpamMessages:
+  - "Hello my friend"
+  - "Whassup"
+  - "LoLoLoLo"
+  - "xDxDxDxDxD"
+  - "XoXoXoXo"
+
+# Feature semi ban
+SemiBanMessageReplace: "<[PLAYER]>"
+
+# Feature fake ban
+FakeBanMessageBroadcastEnabled: true
+FakeBanMessagePlayer: "You have been banned from this Server"
+FakeBanMessagePlayerBroadcast: "The Player [PLAYER] have been permanently banned from the server"
+
+# Feature fake op
+FakeOpMessageBroadcastEnabled: true
+FakeOpMessage: "[Server: Made [PLAYER] a server operator]"
