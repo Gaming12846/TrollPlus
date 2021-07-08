@@ -7,7 +7,7 @@
 
 # TrollPlus
 
-A simple plugin for trolling players in Minecraft.
+You always wanted to troll your friends in Minecraft and watch their reactions? Then you are exactly right here! This plugin allows you to troll them in different ways.
 
 ## Features
 - Blocklist
@@ -18,7 +18,7 @@ A simple plugin for trolling players in Minecraft.
 - Freeze player
 - Hand item drop
 - Control player
-- Flip behind
+- Flip behind on interact
 - Spam messages (You can add as many messages as you want)
 - Spam sounds
 - Semi ban
@@ -29,24 +29,27 @@ A simple plugin for trolling players in Minecraft.
 - Fake ban
 - Fake op
 
-## Commands
-- /trollplus <version|reload|blocklist|troll>
+## Command
+- /trollplus <version> - Displays informations and the version of the TollPlus currently installed on your server
+- /trollplus <reload> - Reload the plugin's configuration and blocklist file
+- /trollplus <blocklist> <add|remove> - Add or remove players to/from the blocklist
+- /trollplus <troll> <player> - Troll players with multiple features​
 
-## Aliases
-- /trollplus : [troll+]
+## Alias
+- /trollplus : [/troll+]
 
-## Permissions
-- trollplus.reload
-- trollplus.blocklist.add
-- trollplus.blocklist.remove
-- trollplus.troll
-
-## To-do list
-- Improve control feature (Smooth it out, at the moment I have no idea how to do it)
-- Add more features
+## Permission nodes
+- trollplus.reload - Operators - Allow the use of the '/trollplus reload' subcommand
+- trollplus.blocklist.add - Operators - Allow the use of the '/trollplus blocklist add' subcommand
+- trollplus.blocklist.remove - Operators - Allow the use of the '/trollplus blocklist remove' subcommand
+- trollplus.troll - Operators - Allow the use of the '/trollplus troll' subcommand
 
 ## Notes
 - Always create a new configuration when updating
+
+## To-do list
+- Improve control feature (Smooth it out)
+- Add more features
 
 ## Need help?
 Feel free to join my discord
