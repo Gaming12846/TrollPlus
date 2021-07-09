@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack;
 public final class VMConstants {
 
     // Plugin prefix
-    public static final String PLUGIN_PREFIX = "§8[§c§lTrollPlus§8]§f ";
+    public static final String PLUGIN_PREFIX = "§8[§l§cTrollPlus§8]§r ";
 
     // Configuration options
     public static final String CONFIG_CHECK_FOR_UPDATES = "CheckForUpdates";

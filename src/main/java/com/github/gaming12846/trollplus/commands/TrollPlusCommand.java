@@ -64,7 +64,7 @@ public final class TrollPlusCommand implements CommandExecutor {
             }
 
             if (!sender.hasPermission(VMConstants.PERMISSION_RELOAD)) {
-                sender.sendMessage(VMConstants.PLUGIN_PREFIX + ChatColor.RED + "You have insufficient permissions to perform this command");
+                sender.sendMessage(ChatColor.RED + "You have insufficient permissions to perform this command");
                 return true;
             }
 
@@ -84,7 +84,7 @@ public final class TrollPlusCommand implements CommandExecutor {
             // Blocklist add subcommand
             if (args[1].equalsIgnoreCase("add")) {
                 if (!sender.hasPermission(VMConstants.PERMISSION_BLOCKLIST_ADD)) {
-                    sender.sendMessage(VMConstants.PLUGIN_PREFIX + ChatColor.RED + "You have insufficient permissions to perform this command");
+                    sender.sendMessage(ChatColor.RED + "You have insufficient permissions to perform this command");
                     return true;
                 }
 
@@ -117,7 +117,7 @@ public final class TrollPlusCommand implements CommandExecutor {
             // Blocklist remove subcommand
             else if (args[1].equalsIgnoreCase("remove")) {
                 if (!sender.hasPermission(VMConstants.PERMISSION_BLOCKLIST_REMOVE)) {
-                    sender.sendMessage(VMConstants.PLUGIN_PREFIX + ChatColor.RED + "You have insufficient permissions to perform this command");
+                    sender.sendMessage(ChatColor.RED + "You have insufficient permissions to perform this command");
                     return true;
                 }
 
@@ -152,7 +152,7 @@ public final class TrollPlusCommand implements CommandExecutor {
         // Troll subcommand
         else if (args[0].equalsIgnoreCase("troll")) {
             if (!sender.hasPermission(VMConstants.PERMISSION_TROLL)) {
-                sender.sendMessage(VMConstants.PLUGIN_PREFIX + ChatColor.RED + "You have insufficient permissions to perform this command");
+                sender.sendMessage(ChatColor.RED + "You have insufficient permissions to perform this command");
                 return true;
             }
 
@@ -162,7 +162,7 @@ public final class TrollPlusCommand implements CommandExecutor {
             }
 
             if (!(sender instanceof Player)) {
-                sender.sendMessage(VMConstants.PLUGIN_PREFIX + "TrollPlus cannot open trollmenu from the console");
+                sender.sendMessage("TrollPlus " + label + " subcommand cannot be used from the console");
                 return true;
             }
 
@@ -185,7 +185,7 @@ public final class TrollPlusCommand implements CommandExecutor {
             VMConstants.TARGET = target;
 
             // Create inventory
-            VMConstants.TROLLMENU = Bukkit.createInventory(null, 54, "Trollmenu " + ChatColor.RED + ChatColor.BOLD + target.getName());
+            VMConstants.TROLLMENU = Bukkit.createInventory(null, 54, "Trollmenu " + ChatColor.GOLD + ChatColor.BOLD + target.getName());
 
             // Add features
             VMConstants.TROLLMENU.setItem(53, ItemBuilder.createItem(Material.BARRIER, 1, 0, ChatColor.GRAY + "Close"));
@@ -193,7 +193,7 @@ public final class TrollPlusCommand implements CommandExecutor {
             VMConstants.TROLLMENU.setItem(50, ItemBuilder.createItem(Material.WITHER_SKELETON_SKULL, 1, 0, ChatColor.WHITE + "Kill"));
             VMConstants.TROLLMENU.setItem(48, ItemBuilder.createItem(Material.ENDER_PEARL, 1, 0, ChatColor.WHITE + "Teleport to player"));
             VMConstants.TROLLMENU.setItem(47, ItemBuilder.createItem(Material.POTION, 1, 0, ChatColor.WHITE + "Vanish " + VMConstants.STATUS_VANISH));
-            VMConstants.TROLLMENU.setItem(4, ItemBuilder.createSkull(1, 3, ChatColor.RED + target.getName(), target.getName()));
+            VMConstants.TROLLMENU.setItem(4, ItemBuilder.createSkull(1, 3, ChatColor.GOLD + target.getName(), target.getName()));
 
             VMConstants.TROLLMENU.setItem(10, ItemBuilder.createItem(Material.ICE, 1, 0, ChatColor.WHITE + "Freeze " + VMConstants.STATUS_FREEZE));
             VMConstants.TROLLMENU.setItem(12,

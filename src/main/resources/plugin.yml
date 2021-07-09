@@ -18,13 +18,13 @@ permissions:
     description: Allow the use of the '/trollplus reload' subcommand
     default: op
 
-  trollplus.blocklist.add:
-    description: Allow the use of the '/trollplus blocklist add' subcommand
+  trollplus.blocklist.*:
+    description: Allow the use of the '/trollplus blocklist' subcommand
     default: op
-  trollplus.blocklist.remove:
-    description: Allow the use of the '/trollplus blocklist remove' subcommand
-    default: op
+    children:
+      trollplus.blocklist.add: true
+      trollplus.blocklist.remove: true
 
-trollplus.troll:
-  description: Allow the use of the '/trollplus troll' subcommand
-  default: op
+  trollplus.troll:
+    description: Allow the use of the '/trollplus troll' subcommand
+    default: op

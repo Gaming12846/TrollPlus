@@ -49,7 +49,7 @@ public final class InventoryClickListener implements Listener {
 
         Player target = VMConstants.TARGET;
 
-        if (target == null || !event.getView().getTitle().equals("Trollmenu " + ChatColor.RED + ChatColor.BOLD + target.getName())) {
+        if (target == null || !event.getView().getTitle().equals("Trollmenu " + ChatColor.GOLD + ChatColor.BOLD + target.getName())) {
             return;
         }
 
