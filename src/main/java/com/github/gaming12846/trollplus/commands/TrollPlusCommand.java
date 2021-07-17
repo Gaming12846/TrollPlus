@@ -93,15 +93,10 @@ public final class TrollPlusCommand implements CommandExecutor {
                     return true;
                 }
 
-                OfflinePlayer offlineTarget = Bukkit.getOfflinePlayer(args[2]);
-                if (!(offlineTarget instanceof Player)) {
-                    sender.sendMessage(VMConstants.PLUGIN_PREFIX + "The target " + ChatColor.BOLD + args[2] + ChatColor.RESET + " is not a player");
-                    return true;
-                }
-
                 ConfigWrapper blocklistConfigWrapper = plugin.getBlocklistConfig();
                 FileConfiguration blocklistConfig = blocklistConfigWrapper.asRawConfig();
 
+                OfflinePlayer offlineTarget = Bukkit.getOfflinePlayer(args[2]);
                 if (blocklistConfig.contains(offlineTarget.getUniqueId().toString())) {
                     sender.sendMessage(VMConstants.PLUGIN_PREFIX + "The player " + ChatColor.BOLD + offlineTarget.getName() + ChatColor.RESET + " is allready in the blocklist");
                     return true;
@@ -126,15 +121,10 @@ public final class TrollPlusCommand implements CommandExecutor {
                     return true;
                 }
 
-                OfflinePlayer offlineTarget = Bukkit.getOfflinePlayer(args[2]);
-                if (!(offlineTarget instanceof Player)) {
-                    sender.sendMessage(VMConstants.PLUGIN_PREFIX + "The target " + ChatColor.BOLD + args[2] + ChatColor.RESET + " is not a player");
-                    return true;
-                }
-
                 ConfigWrapper blocklistConfigWrapper = plugin.getBlocklistConfig();
                 FileConfiguration blocklistConfig = blocklistConfigWrapper.asRawConfig();
 
+                OfflinePlayer offlineTarget = Bukkit.getOfflinePlayer(args[2]);
                 if (!blocklistConfig.contains(offlineTarget.getUniqueId().toString())) {
                     sender.sendMessage(VMConstants.PLUGIN_PREFIX + "The player " + ChatColor.BOLD + offlineTarget.getName() + ChatColor.RESET + " is not in the blocklist");
                     return true;
@@ -169,7 +159,7 @@ public final class TrollPlusCommand implements CommandExecutor {
             Player player = (Player) sender;
             Player target = Bukkit.getPlayer(args[1]);
             if (target == null) {
-                player.sendMessage(VMConstants.PLUGIN_PREFIX + "The player " + ChatColor.BOLD + target.getName() + ChatColor.RESET + " is currently not online");
+                player.sendMessage(VMConstants.PLUGIN_PREFIX + "The player " + ChatColor.BOLD + args[1] + ChatColor.RESET + " is currently not online");
                 return true;
             }
 

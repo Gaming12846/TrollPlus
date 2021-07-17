@@ -5,7 +5,6 @@ import com.github.gaming12846.trollplus.utils.ItemBuilder;
 import com.github.gaming12846.trollplus.utils.VMConstants;
 import org.apache.commons.lang.math.RandomUtils;
 import org.bukkit.*;
-import org.bukkit.block.Block;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -318,7 +317,6 @@ public final class InventoryClickListener implements Listener {
 
                 ItemStack item = target.getInventory().getItemInHand();
                 ItemStack dropItem = new ItemStack(item.getType(), 1);
-                dropItem.setAmount(1);
                 dropItem.setItemMeta(item.getItemMeta());
                 Item itemDrop = target.getWorld().dropItemNaturally(target.getLocation(), dropItem);
                 itemDrop.setPickupDelay(20);
@@ -508,6 +506,7 @@ public final class InventoryClickListener implements Listener {
         target.setMetadata("TROLLPLUS_ROCKET_NO_FALL_DAMAGE", new FixedMetadataValue(plugin, target.getName()));
 
         target.getWorld().spawnParticle(Particle.EXPLOSION_LARGE, target.getLocation(), 1);
+
         Particle[] particles = new Particle[]{
                 Particle.FIREWORKS_SPARK, Particle.LAVA, Particle.FLAME
         };
@@ -542,8 +541,8 @@ public final class InventoryClickListener implements Listener {
                     if (!finalTargetAllowToFlight) {
                         target.setAllowFlight(false);
                     }
-                    rocket = 0;
 
+                    rocket = 0;
                 }
             }
 

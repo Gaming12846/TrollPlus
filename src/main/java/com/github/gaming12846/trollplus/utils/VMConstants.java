@@ -63,6 +63,5 @@ public final class VMConstants {
     public static String STATUS_SEMI_BAN = "§c§lOFF";
     public static String STATUS_TNT_TRACK = "§c§lOFF";
     public static String STATUS_MOB_SPAWNER = "§c§lOFF";
-    public static String STATUS_FALLING_ANVIL = "§c§lOFF";
 
 }
