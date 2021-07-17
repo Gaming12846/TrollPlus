@@ -170,7 +170,7 @@ public final class InventoryClickListener implements Listener {
                 if (!target.hasMetadata("TROLLPLUS_SPAM_MESSAGES")) {
                     target.setMetadata("TROLLPLUS_SPAM_MESSAGES", new FixedMetadataValue(plugin, target.getName()));
                     VMConstants.STATUS_SPAM_MESSAGES = "§a§lON";
-                    VMConstants.TROLLMENU.setItem(20, ItemBuilder.createItem(Material.LEGACY_BOOK_AND_QUILL, 1, 0,
+                    VMConstants.TROLLMENU.setItem(20, ItemBuilder.createItem(Material.WRITABLE_BOOK, 1, 0,
                             ChatColor.WHITE + "Spam messages " + VMConstants.STATUS_SPAM_MESSAGES));
                     spamMessages(target);
                     return;
@@ -178,7 +178,7 @@ public final class InventoryClickListener implements Listener {
 
                 target.removeMetadata("TROLLPLUS_SPAM_MESSAGES", plugin);
                 VMConstants.STATUS_SPAM_MESSAGES = "§c§lOFF";
-                VMConstants.TROLLMENU.setItem(20, ItemBuilder.createItem(Material.LEGACY_BOOK_AND_QUILL, 1, 0,
+                VMConstants.TROLLMENU.setItem(20, ItemBuilder.createItem(Material.WRITABLE_BOOK, 1, 0,
                         ChatColor.WHITE + "Spam messages " + VMConstants.STATUS_SPAM_MESSAGES));
 
                 break;
