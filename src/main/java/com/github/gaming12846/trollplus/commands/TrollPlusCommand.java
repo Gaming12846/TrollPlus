@@ -94,7 +94,7 @@ public final class TrollPlusCommand implements CommandExecutor {
                 }
 
                 OfflinePlayer offlineTarget = Bukkit.getOfflinePlayer(args[2]);
-                if (offlineTarget == null) {
+                if (!(offlineTarget instanceof Player)) {
                     sender.sendMessage(VMConstants.PLUGIN_PREFIX + "The target " + ChatColor.BOLD + args[2] + ChatColor.RESET + " is not a player");
                     return true;
                 }
@@ -127,7 +127,7 @@ public final class TrollPlusCommand implements CommandExecutor {
                 }
 
                 OfflinePlayer offlineTarget = Bukkit.getOfflinePlayer(args[2]);
-                if (offlineTarget == null) {
+                if (!(offlineTarget instanceof Player)) {
                     sender.sendMessage(VMConstants.PLUGIN_PREFIX + "The target " + ChatColor.BOLD + args[2] + ChatColor.RESET + " is not a player");
                     return true;
                 }
@@ -201,7 +201,7 @@ public final class TrollPlusCommand implements CommandExecutor {
             VMConstants.TROLLMENU.setItem(14, ItemBuilder.createItem(Material.LEAD, 1, 0, ChatColor.WHITE + "Control " + VMConstants.STATUS_CONTROL));
             VMConstants.TROLLMENU.setItem(16,
                     ItemBuilder.createItem(Material.COMPASS, 1, 0, ChatColor.WHITE + "Flip behind " + VMConstants.STATUS_FLIP_BEHIND));
-            VMConstants.TROLLMENU.setItem(20, ItemBuilder.createItem(Material.LEGACY_BOOK_AND_QUILL, 1, 0,
+            VMConstants.TROLLMENU.setItem(20, ItemBuilder.createItem(Material.WRITABLE_BOOK, 1, 0,
                     ChatColor.WHITE + "Spam messages " + VMConstants.STATUS_SPAM_MESSAGES));
             VMConstants.TROLLMENU.setItem(22,
                     ItemBuilder.createItem(Material.NOTE_BLOCK, 1, 0, ChatColor.WHITE + "Spam sounds " + VMConstants.STATUS_SPAM_SOUNDS));
