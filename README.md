@@ -61,10 +61,7 @@ You always wanted to troll your friends in Minecraft and watch their reactions? 
 
 ## Need help?
 
-Feel free to join my
-discord [![Join](https://img.shields.io/badge/Join-blue)](https://discord.com/invite/XvK2UMfGEJ) [![Discord online](https://img.shields.io/discord/860788206106574848?label=Online&logo=discord&color=blue)](https://discord.com/invite/XvK2UMfGEJ)
-
-Or if you'd like to contact me privately, send me a message on SpigotMC.
+Feel free to contact me on Discord Jonathan#0690 or send me a message on SpigotMC.
 
 ## Bugs and suggestions
 
