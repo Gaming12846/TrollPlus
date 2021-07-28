@@ -200,7 +200,7 @@ public final class TrollPlusCommand implements CommandExecutor {
             VMConstants.TROLLMENU.setItem(24,
                     ItemBuilder.createItemWithLore(Material.TRIPWIRE_HOOK, 1, 0, ChatColor.WHITE + "Semi ban " + VMConstants.STATUS_SEMI_BAN, Arrays.asList("Prevents the target from building, interacting, causing damage and writing")));
             VMConstants.TROLLMENU.setItem(28,
-                    ItemBuilder.createItemWithLore(Material.TNT, 1, 0, ChatColor.WHITE + "TNT track " + VMConstants.STATUS_TNT_TRACK, Arrays.asList("Spawn primed TNT behind at target")));
+                    ItemBuilder.createItemWithLore(Material.TNT, 1, 0, ChatColor.WHITE + "TNT track " + VMConstants.STATUS_TNT_TRACK, Arrays.asList("Spawn primed TNT at the target")));
             VMConstants.TROLLMENU.setItem(30,
                     ItemBuilder.createItemWithLore(Material.SPAWNER, 1, 0, ChatColor.WHITE + "Mob spawner " + VMConstants.STATUS_MOB_SPAWNER, Arrays.asList("Spawn random mobs at the target")));
             VMConstants.TROLLMENU.setItem(34, ItemBuilder.createItemWithLore(Material.MUSIC_DISC_11, 1, 0, ChatColor.WHITE + "Random scary sound", Arrays.asList("Play a random scary sound to scare the target")));
