@@ -13,16 +13,16 @@ You always wanted to troll your friends in Minecraft and watch their reactions? 
 ## Features
 
 - Blocklist
-- Open players inventory (Invsee)
-- Kill player
-- Teleport to the player
+- Open target inventory (Invsee)
+- Kill target
+- Teleport target
 - Vanish (Target and all)
-- Freeze player
+- Freeze target
 - Hand item drop
-- Control player
-- Flip behind on interact
-- Spam messages (You can add as many messages as you want)
-- Spam sounds
+- Control target
+- Flip backwards on interact
+- Spam random messages (You can add as many messages as you want)
+- Spam random sounds
 - Semi ban
 - TNT track
 - Mob spawner

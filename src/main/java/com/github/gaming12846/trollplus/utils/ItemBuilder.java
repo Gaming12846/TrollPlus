@@ -26,12 +26,12 @@ public final class ItemBuilder {
     }
 
     // Create an itemstack with lore
-    public static ItemStack createItemLore(Material mat, int amount, int subId, String name, List<String> lore) {
+    public static ItemStack createItemWithLore(Material mat, int amount, int subId, String name, List<String> lore) {
         ItemStack item = new ItemStack(mat, amount, (short) subId);
         ItemMeta meta = item.getItemMeta();
         final List<String> formatted = new ArrayList<String>();
-        for (String str : lore) {
-            formatted.add(ChatColor.WHITE + str);
+        for (String string : lore) {
+            formatted.add(ChatColor.GRAY + string);
         }
         meta.setLore(formatted);
         meta.setDisplayName(name);

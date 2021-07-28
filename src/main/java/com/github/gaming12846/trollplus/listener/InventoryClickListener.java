@@ -45,7 +45,6 @@ public final class InventoryClickListener implements Listener {
             event.setCancelled(true);
         }
 
-
         Player target = VMConstants.TARGET;
 
         if (target == null || !event.getView().getTitle().equals("Trollmenu " + ChatColor.GOLD + ChatColor.BOLD + target.getName())) {
@@ -72,6 +71,11 @@ public final class InventoryClickListener implements Listener {
 
                 break;
             case 48:
+                if (target == player) {
+                    player.sendMessage(VMConstants.PLUGIN_PREFIX + "Nice try, but you're already in your own position :)");
+                    return;
+                }
+
                 player.teleport(target);
 
                 break;
@@ -80,7 +84,7 @@ public final class InventoryClickListener implements Listener {
                     target.setMetadata("TROLLPLUS_VANISH", new FixedMetadataValue(plugin, target.getName()));
                     target.hidePlayer(player);
                     VMConstants.STATUS_VANISH = "§a§lTarget";
-                    VMConstants.TROLLMENU.setItem(47, ItemBuilder.createItem(Material.POTION, 1, 0, ChatColor.WHITE + "Vanish " + VMConstants.STATUS_VANISH));
+                    VMConstants.TROLLMENU.setItem(47, ItemBuilder.createItemWithLore(Material.POTION, 1, 0, ChatColor.WHITE + "Vanish " + VMConstants.STATUS_VANISH, Arrays.asList("Disappear for the target or for all players")));
                     return;
                 }
 
@@ -90,7 +94,7 @@ public final class InventoryClickListener implements Listener {
                         online.hidePlayer(player);
                     }
                     VMConstants.STATUS_VANISH = "§b§lAll";
-                    VMConstants.TROLLMENU.setItem(47, ItemBuilder.createItem(Material.POTION, 1, 0, ChatColor.WHITE + "Vanish " + VMConstants.STATUS_VANISH));
+                    VMConstants.TROLLMENU.setItem(47, ItemBuilder.createItemWithLore(Material.POTION, 1, 0, ChatColor.WHITE + "Vanish " + VMConstants.STATUS_VANISH, Arrays.asList("Disappear for the target or for all players")));
                     return;
                 }
 
@@ -99,7 +103,7 @@ public final class InventoryClickListener implements Listener {
                     online.showPlayer(player);
                 }
                 VMConstants.STATUS_VANISH = "§c§lOFF";
-                VMConstants.TROLLMENU.setItem(47, ItemBuilder.createItem(Material.POTION, 1, 0, ChatColor.WHITE + "Vanish " + VMConstants.STATUS_VANISH));
+                VMConstants.TROLLMENU.setItem(47, ItemBuilder.createItemWithLore(Material.POTION, 1, 0, ChatColor.WHITE + "Vanish " + VMConstants.STATUS_VANISH, Arrays.asList("Disappear for the target or for all players")));
 
                 break;
             case 10:
@@ -107,33 +111,35 @@ public final class InventoryClickListener implements Listener {
                     target.setMetadata("TROLLPLUS_FREEZE", new FixedMetadataValue(plugin, target.getName()));
                     target.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, Integer.MAX_VALUE, 6));
                     VMConstants.STATUS_FREEZE = "§a§lON";
-                    VMConstants.TROLLMENU.setItem(10, ItemBuilder.createItem(Material.ICE, 1, 0, ChatColor.WHITE + "Freeze " + VMConstants.STATUS_FREEZE));
+                    VMConstants.TROLLMENU.setItem(10, ItemBuilder.createItemWithLore(Material.ICE, 1, 0, ChatColor.WHITE + "Freeze " + VMConstants.STATUS_FREEZE, Arrays.asList("Freeze the target")));
                     return;
                 }
 
                 target.removeMetadata("TROLLPLUS_FREEZE", plugin);
                 target.removePotionEffect(PotionEffectType.SLOW);
                 VMConstants.STATUS_FREEZE = "§c§lOFF";
-                VMConstants.TROLLMENU.setItem(10, ItemBuilder.createItem(Material.ICE, 1, 0, ChatColor.WHITE + "Freeze " + VMConstants.STATUS_FREEZE));
+                VMConstants.TROLLMENU.setItem(10, ItemBuilder.createItemWithLore(Material.ICE, 1, 0, ChatColor.WHITE + "Freeze " + VMConstants.STATUS_FREEZE, Arrays.asList("Freeze the target")));
 
                 break;
             case 12:
                 if (!target.hasMetadata("TROLLPLUS_HAND_ITEM_DROP")) {
                     target.setMetadata("TROLLPLUS_HAND_ITEM_DROP", new FixedMetadataValue(plugin, target.getName()));
                     VMConstants.STATUS_HAND_ITEM_DROP = "§a§lON";
-                    VMConstants.TROLLMENU.setItem(12, ItemBuilder.createItem(Material.SHEARS, 1, 0, ChatColor.WHITE + "Hand item drop " + VMConstants.STATUS_HAND_ITEM_DROP));
+                    VMConstants.TROLLMENU.setItem(12,
+                            ItemBuilder.createItemWithLore(Material.SHEARS, 1, 0, ChatColor.WHITE + "Hand item drop " + VMConstants.STATUS_HAND_ITEM_DROP, Arrays.asList("Automatic dropping of the hand item from the target")));
                     handItemDrop(target);
                     return;
                 }
 
                 target.removeMetadata("TROLLPLUS_HAND_ITEM_DROP", plugin);
                 VMConstants.STATUS_HAND_ITEM_DROP = "§c§lOFF";
-                VMConstants.TROLLMENU.setItem(12, ItemBuilder.createItem(Material.SHEARS, 1, 0, ChatColor.WHITE + "Hand item drop " + VMConstants.STATUS_HAND_ITEM_DROP));
+                VMConstants.TROLLMENU.setItem(12,
+                        ItemBuilder.createItemWithLore(Material.SHEARS, 1, 0, ChatColor.WHITE + "Hand item drop " + VMConstants.STATUS_HAND_ITEM_DROP, Arrays.asList("Automatic dropping of the hand item from the target")));
 
                 break;
             case 14:
                 if (target == player) {
-                    player.sendMessage(VMConstants.PLUGIN_PREFIX + ChatColor.RED + "Your cannot control yourself");
+                    player.sendMessage(VMConstants.PLUGIN_PREFIX + "Nice try, but you're already in control :)");
                     return;
                 }
 
@@ -141,7 +147,7 @@ public final class InventoryClickListener implements Listener {
                     target.setMetadata("TROLLPLUS_CONTROL_TARGET", new FixedMetadataValue(plugin, target.getName()));
                     player.setMetadata("TROLLPLUS_CONTROL_PLAYER", new FixedMetadataValue(plugin, player.getName()));
                     VMConstants.STATUS_CONTROL = "§a§lON";
-                    VMConstants.TROLLMENU.setItem(14, ItemBuilder.createItem(Material.LEAD, 1, 0, ChatColor.WHITE + "Control " + VMConstants.STATUS_CONTROL));
+                    VMConstants.TROLLMENU.setItem(14, ItemBuilder.createItemWithLore(Material.LEAD, 1, 0, ChatColor.WHITE + "Control " + VMConstants.STATUS_CONTROL, Arrays.asList("Completely control the target")));
                     control(target, player);
                     return;
                 }
@@ -149,92 +155,102 @@ public final class InventoryClickListener implements Listener {
                 target.removeMetadata("TROLLPLUS_CONTROL_TARGET", plugin);
                 player.removeMetadata("TROLLPLUS_CONTROL_PLAYER", plugin);
                 VMConstants.STATUS_CONTROL = "§c§lOFF";
-                VMConstants.TROLLMENU.setItem(14, ItemBuilder.createItem(Material.LEAD, 1, 0, ChatColor.WHITE + "Control " + VMConstants.STATUS_CONTROL));
+                VMConstants.TROLLMENU.setItem(14, ItemBuilder.createItemWithLore(Material.LEAD, 1, 0, ChatColor.WHITE + "Control " + VMConstants.STATUS_CONTROL, Arrays.asList("Completely control the target")));
 
                 break;
             case 16:
                 if (!target.hasMetadata("TROLLPLUS_FLIP_BEHIND")) {
                     target.setMetadata("TROLLPLUS_FLIP_BEHIND", new FixedMetadataValue(plugin, target.getName()));
                     VMConstants.STATUS_FLIP_BEHIND = "§a§lON";
-                    VMConstants.TROLLMENU.setItem(16, ItemBuilder.createItem(Material.COMPASS, 1, 0, ChatColor.WHITE + "Flip behind " + VMConstants.STATUS_FLIP_BEHIND));
+                    VMConstants.TROLLMENU.setItem(16,
+                            ItemBuilder.createItemWithLore(Material.COMPASS, 1, 0, ChatColor.WHITE + "Flip backwards " + VMConstants.STATUS_FLIP_BEHIND, Arrays.asList("Flip the target backwards when interacting with something")));
                     return;
                 }
 
                 target.removeMetadata("TROLLPLUS_FLIP_BEHIND", plugin);
                 VMConstants.STATUS_FLIP_BEHIND = "§c§lOFF";
-                VMConstants.TROLLMENU.setItem(16, ItemBuilder.createItem(Material.COMPASS, 1, 0, ChatColor.WHITE + "Flip behind " + VMConstants.STATUS_FLIP_BEHIND));
+                VMConstants.TROLLMENU.setItem(16,
+                        ItemBuilder.createItemWithLore(Material.COMPASS, 1, 0, ChatColor.WHITE + "Flip backwards " + VMConstants.STATUS_FLIP_BEHIND, Arrays.asList("Flip the target backwards when interacting with something")));
 
                 break;
             case 20:
                 if (!target.hasMetadata("TROLLPLUS_SPAM_MESSAGES")) {
                     target.setMetadata("TROLLPLUS_SPAM_MESSAGES", new FixedMetadataValue(plugin, target.getName()));
                     VMConstants.STATUS_SPAM_MESSAGES = "§a§lON";
-                    VMConstants.TROLLMENU.setItem(20, ItemBuilder.createItem(Material.WRITABLE_BOOK, 1, 0,
-                            ChatColor.WHITE + "Spam messages " + VMConstants.STATUS_SPAM_MESSAGES));
+                    VMConstants.TROLLMENU.setItem(20, ItemBuilder.createItemWithLore(Material.WRITABLE_BOOK, 1, 0,
+                            ChatColor.WHITE + "Spam messages " + VMConstants.STATUS_SPAM_MESSAGES, Arrays.asList("Spam the target with random custom messages")));
                     spamMessages(target);
                     return;
                 }
 
                 target.removeMetadata("TROLLPLUS_SPAM_MESSAGES", plugin);
                 VMConstants.STATUS_SPAM_MESSAGES = "§c§lOFF";
-                VMConstants.TROLLMENU.setItem(20, ItemBuilder.createItem(Material.WRITABLE_BOOK, 1, 0,
-                        ChatColor.WHITE + "Spam messages " + VMConstants.STATUS_SPAM_MESSAGES));
+                VMConstants.TROLLMENU.setItem(20, ItemBuilder.createItemWithLore(Material.WRITABLE_BOOK, 1, 0,
+                        ChatColor.WHITE + "Spam messages " + VMConstants.STATUS_SPAM_MESSAGES, Arrays.asList("Spam the target with random custom messages")));
 
                 break;
             case 22:
                 if (!target.hasMetadata("TROLLPLUS_SPAM_SOUNDS")) {
                     target.setMetadata("TROLLPLUS_SPAM_SOUNDS", new FixedMetadataValue(plugin, target.getName()));
                     VMConstants.STATUS_SPAM_SOUNDS = "§a§lON";
-                    VMConstants.TROLLMENU.setItem(22, ItemBuilder.createItem(Material.NOTE_BLOCK, 1, 0, ChatColor.WHITE + "Spam sounds " + VMConstants.STATUS_SPAM_SOUNDS));
+                    VMConstants.TROLLMENU.setItem(22,
+                            ItemBuilder.createItemWithLore(Material.NOTE_BLOCK, 1, 0, ChatColor.WHITE + "Spam sounds " + VMConstants.STATUS_SPAM_SOUNDS, Arrays.asList("Spam the target with random sounds")));
                     spamSounds(target);
                     return;
                 }
 
                 target.removeMetadata("TROLLPLUS_SPAM_SOUNDS", plugin);
                 VMConstants.STATUS_SPAM_SOUNDS = "§c§lOFF";
-                VMConstants.TROLLMENU.setItem(22, ItemBuilder.createItem(Material.NOTE_BLOCK, 1, 0, ChatColor.WHITE + "Spam sounds " + VMConstants.STATUS_SPAM_SOUNDS));
+                VMConstants.TROLLMENU.setItem(22,
+                        ItemBuilder.createItemWithLore(Material.NOTE_BLOCK, 1, 0, ChatColor.WHITE + "Spam sounds " + VMConstants.STATUS_SPAM_SOUNDS, Arrays.asList("Spam the target with random sounds")));
 
                 break;
             case 24:
                 if (!target.hasMetadata("TROLLPLUS_SEMI_BAN")) {
                     target.setMetadata("TROLLPLUS_SEMI_BAN", new FixedMetadataValue(plugin, target.getName()));
                     VMConstants.STATUS_SEMI_BAN = "§a§lON";
-                    VMConstants.TROLLMENU.setItem(24, ItemBuilder.createItem(Material.TRIPWIRE_HOOK, 1, 0, ChatColor.WHITE + "Semi ban " + VMConstants.STATUS_SEMI_BAN));
+                    VMConstants.TROLLMENU.setItem(24,
+                            ItemBuilder.createItemWithLore(Material.TRIPWIRE_HOOK, 1, 0, ChatColor.WHITE + "Semi ban " + VMConstants.STATUS_SEMI_BAN, Arrays.asList("Prevents the target from building, interacting, causing damage and writing")));
                     spamSounds(target);
                     return;
                 }
 
                 target.removeMetadata("TROLLPLUS_SEMI_BAN", plugin);
                 VMConstants.STATUS_SEMI_BAN = "§c§lOFF";
-                VMConstants.TROLLMENU.setItem(24, ItemBuilder.createItem(Material.TRIPWIRE_HOOK, 1, 0, ChatColor.WHITE + "Semi ban " + VMConstants.STATUS_SEMI_BAN));
+                VMConstants.TROLLMENU.setItem(24,
+                        ItemBuilder.createItemWithLore(Material.TRIPWIRE_HOOK, 1, 0, ChatColor.WHITE + "Semi ban " + VMConstants.STATUS_SEMI_BAN, Arrays.asList("Prevents the target from building, interacting, causing damage and writing")));
 
                 break;
             case 28:
                 if (!target.hasMetadata("TROLLPLUS_TNT_TRACK")) {
                     target.setMetadata("TROLLPLUS_TNT_TRACK", new FixedMetadataValue(plugin, target.getName()));
                     VMConstants.STATUS_TNT_TRACK = "§a§lON";
-                    VMConstants.TROLLMENU.setItem(28, ItemBuilder.createItem(Material.TNT, 1, 0, ChatColor.WHITE + "TNT track " + VMConstants.STATUS_TNT_TRACK));
+                    VMConstants.TROLLMENU.setItem(28,
+                            ItemBuilder.createItemWithLore(Material.TNT, 1, 0, ChatColor.WHITE + "TNT track " + VMConstants.STATUS_TNT_TRACK, Arrays.asList("Spawn primed TNT at the target")));
                     tntTrack(target);
                     return;
                 }
 
                 target.removeMetadata("TROLLPLUS_TNT_TRACK", plugin);
                 VMConstants.STATUS_TNT_TRACK = "§c§lOFF";
-                VMConstants.TROLLMENU.setItem(28, ItemBuilder.createItem(Material.TNT, 1, 0, ChatColor.WHITE + "TNT track " + VMConstants.STATUS_TNT_TRACK));
+                VMConstants.TROLLMENU.setItem(28,
+                        ItemBuilder.createItemWithLore(Material.TNT, 1, 0, ChatColor.WHITE + "TNT track " + VMConstants.STATUS_TNT_TRACK, Arrays.asList("Spawn primed TNT at the target")));
 
                 break;
             case 30:
                 if (!target.hasMetadata("TROLLPLUS_MOB_SPAWNER")) {
                     target.setMetadata("TROLLPLUS_MOB_SPAWNER", new FixedMetadataValue(plugin, target.getName()));
                     VMConstants.STATUS_MOB_SPAWNER = "§a§lON";
-                    VMConstants.TROLLMENU.setItem(30, ItemBuilder.createItem(Material.SPAWNER, 1, 0, ChatColor.WHITE + "Mob spawner " + VMConstants.STATUS_MOB_SPAWNER));
+                    VMConstants.TROLLMENU.setItem(30,
+                            ItemBuilder.createItemWithLore(Material.SPAWNER, 1, 0, ChatColor.WHITE + "Mob spawner " + VMConstants.STATUS_MOB_SPAWNER, Arrays.asList("Spawn random mobs at the target")));
                     mobSpawner(target);
                     return;
                 }
 
                 target.removeMetadata("TROLLPLUS_MOB_SPAWNER", plugin);
                 VMConstants.STATUS_MOB_SPAWNER = "§c§lOFF";
-                VMConstants.TROLLMENU.setItem(30, ItemBuilder.createItem(Material.SPAWNER, 1, 0, ChatColor.WHITE + "Mob spawner " + VMConstants.STATUS_MOB_SPAWNER));
+                VMConstants.TROLLMENU.setItem(30,
+                        ItemBuilder.createItemWithLore(Material.SPAWNER, 1, 0, ChatColor.WHITE + "Mob spawner " + VMConstants.STATUS_MOB_SPAWNER, Arrays.asList("Spawn random mobs at the target")));
 
                 break;
             case 34:
@@ -490,7 +506,7 @@ public final class InventoryClickListener implements Listener {
     // Feature rocket
     private void rocket(Player target, Player player) {
         if (target.getLocation().getBlockY() < target.getWorld().getHighestBlockYAt(target.getLocation())) {
-            player.sendMessage(VMConstants.PLUGIN_PREFIX + ChatColor.RED + "Cannot launch because the player " + ChatColor.BOLD + target.getName() + ChatColor.RESET + ChatColor.RED + " is not under the open sky");
+            player.sendMessage(VMConstants.PLUGIN_PREFIX + "Cannot launch because the player " + ChatColor.BOLD + target.getName() + ChatColor.RESET + " is not under the open sky.");
             return;
         }
 
@@ -526,7 +542,7 @@ public final class InventoryClickListener implements Listener {
             public void run() {
                 if (rocket < 50) {
                     if (target.getLocation().getBlockY() < target.getWorld().getHighestBlockYAt(target.getLocation())) {
-                        player.sendMessage(VMConstants.PLUGIN_PREFIX + ChatColor.RED + "Launch stopped because the player " + ChatColor.BOLD + target.getName() + ChatColor.RESET + ChatColor.RED + " is no longer under the open sky");
+                        player.sendMessage(VMConstants.PLUGIN_PREFIX + "Launch stopped because the player " + ChatColor.BOLD + target.getName() + ChatColor.RESET + " is no longer under the open sky.");
                         if (!finalTargetAllowToFlight) {
                             target.setAllowFlight(false);
                         }

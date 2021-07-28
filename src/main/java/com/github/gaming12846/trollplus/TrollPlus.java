@@ -43,12 +43,12 @@ public final class TrollPlus extends JavaPlugin {
 
         // Update checker
         if (getConfig().getBoolean(VMConstants.CONFIG_CHECK_FOR_UPDATES, true)) {
-            this.getLogger().info("Checking for updates");
+            this.getLogger().info("Checking for updates ...");
 
             new UpdateChecker(this, 81193).getVersion(version -> {
 
                 if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
-                    this.getLogger().info("There is no new update available");
+                    this.getLogger().info("There is no new update available.");
                 } else {
                     this.getLogger().info("A new update is available! To download it visit SpigotMC: https://www.spigotmc.org/resources/81193/");
                 }
