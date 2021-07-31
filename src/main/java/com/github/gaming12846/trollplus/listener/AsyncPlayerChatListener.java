@@ -26,7 +26,7 @@ public final class AsyncPlayerChatListener implements Listener {
 
         // Feature control
         if (player.hasMetadata("TROLLPLUS_CONTROL_TARGET")) {
-            if (VMConstants.CONTROL_MESSAGE_BOOLEAN == false) {
+            if (!VMConstants.CONTROL_MESSAGE_BOOLEAN) {
                 event.setCancelled(true);
             }
         }
@@ -42,7 +42,7 @@ public final class AsyncPlayerChatListener implements Listener {
             event.setCancelled(true);
 
             String semiBanMessageReplace = plugin.getConfig().getString(VMConstants.CONFIG_SEMI_BAN_MESSAGE_REPLACE, "");
-            if (semiBanMessageReplace == null) {
+            if (semiBanMessageReplace.isEmpty()) {
                 semiBanMessageReplace = "";
             }
 
@@ -51,7 +51,6 @@ public final class AsyncPlayerChatListener implements Listener {
             }
         }
 
-        return;
     }
 
 }

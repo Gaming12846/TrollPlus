@@ -26,7 +26,6 @@ public final class PlayerPickupItemListener implements Listener {
             event.setCancelled(true);
         }
 
-        return;
     }
 
 }

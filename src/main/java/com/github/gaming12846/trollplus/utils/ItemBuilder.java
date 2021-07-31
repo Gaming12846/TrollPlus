@@ -20,6 +20,7 @@ public final class ItemBuilder {
     public static ItemStack createItem(Material mat, int amount, int subId, String name) {
         ItemStack item = new ItemStack(mat, 1, (short) subId);
         ItemMeta meta = item.getItemMeta();
+        assert meta != null;
         meta.setDisplayName(name);
         item.setItemMeta(meta);
         return item;
@@ -29,10 +30,11 @@ public final class ItemBuilder {
     public static ItemStack createItemWithLore(Material mat, int amount, int subId, String name, List<String> lore) {
         ItemStack item = new ItemStack(mat, amount, (short) subId);
         ItemMeta meta = item.getItemMeta();
-        final List<String> formatted = new ArrayList<String>();
+        final List<String> formatted = new ArrayList<>();
         for (String string : lore) {
             formatted.add(ChatColor.GRAY + string);
         }
+        assert meta != null;
         meta.setLore(formatted);
         meta.setDisplayName(name);
         item.setItemMeta(meta);
@@ -43,6 +45,7 @@ public final class ItemBuilder {
     public static ItemStack createSkull(int amount, int subId, String name, String owner) {
         ItemStack skull = new ItemStack(Material.PLAYER_HEAD, 1, (short) subId);
         SkullMeta meta = (SkullMeta) skull.getItemMeta();
+        assert meta != null;
         meta.setOwner(owner);
         meta.setDisplayName(name);
         skull.setItemMeta(meta);

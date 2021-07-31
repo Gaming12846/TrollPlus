@@ -39,7 +39,6 @@ public final class PlayerInteractListener implements Listener {
             event.setCancelled(true);
         }
 
-        return;
     }
 
 }

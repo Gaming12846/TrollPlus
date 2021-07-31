@@ -34,7 +34,6 @@ public final class EntityDamageListener implements Listener {
             }
         }
 
-        return;
     }
 
 }

@@ -21,7 +21,6 @@ public final class PlayerMoveListener implements Listener {
             event.setCancelled(true);
         }
 
-        return;
     }
 
 }

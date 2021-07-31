@@ -26,7 +26,6 @@ public final class PlayerDropItemListener implements Listener {
             event.setCancelled(true);
         }
 
-        return;
     }
 
 }

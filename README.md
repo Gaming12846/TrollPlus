@@ -26,14 +26,14 @@ You always wanted to troll your friends in Minecraft and watch their reactions? 
 - Semi ban
 - TNT track
 - Mob spawner
-- Random scray sound
+- Random scary sound
 - Rocket
 - Fake ban
 - Fake op
 
 ## Commands
 
-- /trollplus version - Displays informations and the version of the TollPlus currently installed on your server
+- /trollplus version - Displays information and the version of the TollPlus currently installed on your server
 - /trollplus reload - Reload the plugin's configuration and blocklist file
 - /trollplus blocklist add|remove - Add or remove players to/from the blocklist
 - /trollplus troll player - Troll players with multiple features

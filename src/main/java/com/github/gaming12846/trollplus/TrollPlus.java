@@ -10,6 +10,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Objects;
+
 /**
  * TrollPlus main.java.com.github.gaming12846.trollplus TrollPlus.java
  *
@@ -74,7 +76,7 @@ public final class TrollPlus extends JavaPlugin {
 
     // Register commands
     private void registerCommands() {
-        this.getCommand("trollplus").setExecutor(new TrollPlusCommand(this));
+        Objects.requireNonNull(this.getCommand("trollplus")).setExecutor(new TrollPlusCommand(this));
     }
 
     // ConfigWrapper blocklist config

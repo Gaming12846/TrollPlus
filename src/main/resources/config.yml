@@ -5,7 +5,7 @@ MetricsEnabled: true
 # Feature spam messages (You can add as many messages as you want)
 SpamMessages:
   - "Hello my friend"
-  - "Whassup"
+  - "Wasp"
   - "LoLoLoLo"
   - "xDxDxDxDxD"
   - "XoXoXoXo"
