@@ -41,7 +41,7 @@ public final class ItemBuilder {
         return item;
     }
 
-    // Create an skull
+    // Create a skull
     public static ItemStack createSkull(int amount, int subId, String name, String owner) {
         ItemStack skull = new ItemStack(Material.PLAYER_HEAD, 1, (short) subId);
         SkullMeta meta = (SkullMeta) skull.getItemMeta();

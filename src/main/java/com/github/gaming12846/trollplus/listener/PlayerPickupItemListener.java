@@ -16,6 +16,11 @@ public final class PlayerPickupItemListener implements Listener {
     private void onPlayerPickupItemEvent(PlayerPickupItemEvent event) {
         Player player = event.getPlayer();
 
+        // Feature freeze
+        if (player.hasMetadata("TROLLPLUS_FREEZE")) {
+            event.setCancelled(true);
+        }
+
         // Feature control
         if (player.hasMetadata("TROLLPLUS_CONTROL_TARGET")) {
             event.setCancelled(true);

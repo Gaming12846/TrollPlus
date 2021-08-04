@@ -41,8 +41,8 @@ public final class VMConstants {
     // Target player
     public static Player TARGET = null;
 
-    // Inventory trollmenu
-    public static Inventory TROLLMENU = null;
+    // Inventory troll menu
+    public static Inventory TROLL_MENU = null;
 
     // Feature Control
     public static String CONTROL_MESSAGE = null;
@@ -63,5 +63,6 @@ public final class VMConstants {
     public static String STATUS_SEMI_BAN = "§c§lOFF";
     public static String STATUS_TNT_TRACK = "§c§lOFF";
     public static String STATUS_MOB_SPAWNER = "§c§lOFF";
+    public static String STATUS_SLOWLY_KILL = "§c§lOFF";
 
 }

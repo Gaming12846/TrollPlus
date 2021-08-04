@@ -16,6 +16,11 @@ public final class PlayerDropItemListener implements Listener {
     private void onPlayerDropItem(PlayerDropItemEvent event) {
         Player player = event.getPlayer();
 
+        // Feature freeze
+        if (player.hasMetadata("TROLLPLUS_FREEZE")) {
+            event.setCancelled(true);
+        }
+
         // Feature control
         if (player.hasMetadata("TROLLPLUS_CONTROL_TARGET")) {
             event.setCancelled(true);

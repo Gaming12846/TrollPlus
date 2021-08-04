@@ -16,6 +16,11 @@ public final class EntityDamageByEntityListener implements Listener {
     private void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
         Entity damager = event.getDamager();
 
+        // Feature freeze
+        if (damager.hasMetadata("TROLLPLUS_FREEZE")) {
+            event.setCancelled(true);
+        }
+
         // Feature control
         if (damager.hasMetadata("TROLLPLUS_CONTROL_TARGET")) {
             event.setCancelled(true);
