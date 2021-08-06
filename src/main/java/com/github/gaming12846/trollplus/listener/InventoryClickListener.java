@@ -493,50 +493,51 @@ public final class InventoryClickListener implements Listener {
     private void rocket(Player target, Player player) {
         if (target.getLocation().getBlockY() < target.getWorld().getHighestBlockYAt(target.getLocation())) {
             player.sendMessage(VMConstants.PLUGIN_PREFIX + "Cannot launch because the player " + ChatColor.BOLD + target.getName() + ChatColor.RESET + " is not under the open sky.");
+            target.removeMetadata("TROLLPLUS_ROCKET_NO_FALL_DAMAGE", plugin);
             return;
-        }
-
-        boolean targetAllowToFlight = false;
-        if (target.getAllowFlight()) {
-            target.setAllowFlight(false);
-            target.setAllowFlight(true);
-            targetAllowToFlight = true;
-        } else {
-            target.setAllowFlight(true);
         }
 
         target.setMetadata("TROLLPLUS_ROCKET_NO_FALL_DAMAGE", new FixedMetadataValue(plugin, target.getName()));
 
-        target.getWorld().spawnParticle(Particle.EXPLOSION_LARGE, target.getLocation(), 1);
+        boolean targetAllowedToFlight = false;
+        if (!target.getAllowFlight()) {
+            target.setAllowFlight(true);
+        } else {
+            target.setAllowFlight(false);
+            target.setAllowFlight(true);
+            targetAllowedToFlight = true;
+        }
 
+        target.getWorld().spawnParticle(Particle.EXPLOSION_LARGE, target.getLocation(), 1);
         Particle[] particles = new Particle[]{
                 Particle.FIREWORKS_SPARK, Particle.LAVA, Particle.FLAME
         };
-
         for (Particle particle : particles) {
             target.getWorld().spawnParticle(particle, target.getLocation(), 25);
         }
 
         target.getWorld().playSound(target.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 20, 1);
 
-        Boolean finalTargetAllowToFlight = targetAllowToFlight;
+        Boolean finalTargetAllowToFlight = targetAllowedToFlight;
         new BukkitRunnable() {
 
             int rocket = 0;
 
             @Override
             public void run() {
-                if (rocket < 50) {
+                if (rocket < 22) {
                     if (target.getLocation().getBlockY() < target.getWorld().getHighestBlockYAt(target.getLocation())) {
-                        player.sendMessage(VMConstants.PLUGIN_PREFIX + "Launch stopped because the player " + ChatColor.BOLD + target.getName() + ChatColor.RESET + " is no longer under the open sky.");
                         if (!finalTargetAllowToFlight) {
                             target.setAllowFlight(false);
                         }
-                        rocket = 0;
+                        player.sendMessage(VMConstants.PLUGIN_PREFIX + "Launch stopped because the player " + ChatColor.BOLD + target.getName() + ChatColor.RESET + " is no longer under the open sky.");
+
                         cancel();
+                        rocket = 0;
                         return;
                     }
 
+                    player.sendMessage("" + rocket);
                     target.setVelocity(target.getVelocity().setY(20));
                     rocket++;
                 } else {
@@ -545,10 +546,11 @@ public final class InventoryClickListener implements Listener {
                     }
 
                     rocket = 0;
+                    cancel();
                 }
             }
 
-        }.runTaskTimer(plugin, 0, 5);
+        }.runTaskTimer(plugin, 0, 6);
     }
 
     // Feature fake ban
