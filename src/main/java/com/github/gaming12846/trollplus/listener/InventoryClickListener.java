@@ -262,29 +262,25 @@ public final class InventoryClickListener implements Listener {
                 VMConstants.TROLL_MENU.setItem(30,
                         ItemBuilder.createItemWithLore(Material.SPAWNER, 1, 0, ChatColor.WHITE + "Mob spawner " + VMConstants.STATUS_MOB_SPAWNER, Collections.singletonList("Spawn random mobs at the target")));
 
-                break;
-            case 32:
-                if (!target.hasMetadata("TROLLPLUS_SLOWLY_KILL")) {
-                    target.setMetadata("TROLLPLUS_SLOWLY_KILL", new FixedMetadataValue(plugin, target.getName()));
-                    VMConstants.STATUS_SLOWLY_KILL = "§a§lON";
-                    VMConstants.TROLL_MENU.setItem(32,
-                            ItemBuilder.createItemWithLore(Material.SKELETON_SKULL, 1, 0, ChatColor.WHITE + "Slowly kill " + VMConstants.STATUS_SLOWLY_KILL, Collections.singletonList("Slowly kills the target")));
-                    slowlyKill(target);
-                    return;
-                }
+                    break;
+                case 32:
+                    if (!target.hasMetadata("TROLLPLUS_SLOWLY_KILL")) {
+                        target.setMetadata("TROLLPLUS_SLOWLY_KILL", new FixedMetadataValue(plugin, target.getName()));
+                        VMConstants.STATUS_SLOWLY_KILL = "§a§lON";
+                        VMConstants.TROLL_MENU.setItem(32,
+                                ItemBuilder.createItemWithLore(Material.SKELETON_SKULL, 1, 0, ChatColor.WHITE + "Slowly kill " + VMConstants.STATUS_SLOWLY_KILL, Collections.singletonList("Slowly kills the target")));
+                        slowlyKill(target, player);
+                        return;
+                    }
 
                 target.removeMetadata("TROLLPLUS_SLOWLY_KILL", plugin);
                 VMConstants.STATUS_SLOWLY_KILL = "§c§lOFF";
                 VMConstants.TROLL_MENU.setItem(32,
                         ItemBuilder.createItemWithLore(Material.SKELETON_SKULL, 1, 0, ChatColor.WHITE + "Slowly kill " + VMConstants.STATUS_SLOWLY_KILL, Collections.singletonList("Slowly kills the target")));
 
-                break;
-            case 34:
-                List<Sound> sounds = Arrays.asList(Sound.AMBIENT_BASALT_DELTAS_MOOD, Sound.AMBIENT_CAVE, Sound.AMBIENT_CRIMSON_FOREST_MOOD, Sound.AMBIENT_NETHER_WASTES_MOOD,
-                        Sound.AMBIENT_SOUL_SAND_VALLEY_MOOD, Sound.AMBIENT_WARPED_FOREST_MOOD, Sound.AMBIENT_UNDERWATER_LOOP_ADDITIONS_ULTRA_RARE,
-                        Sound.AMBIENT_UNDERWATER_LOOP_ADDITIONS_RARE);
-
-                target.playSound(target.getLocation(), sounds.get(RandomUtils.JVM_RANDOM.nextInt(sounds.size())), 200, 1);
+                    break;
+                case 34:
+                    randomScarySound(target);
 
                 break;
             case 38:
@@ -489,10 +485,42 @@ public final class InventoryClickListener implements Listener {
         }.runTaskTimer(plugin, 0, 15);
     }
 
+    // Feature slowly kill
+    private void slowlyKill(Player target, Player player) {
+        new BukkitRunnable() {
+
+            @Override
+            public void run() {
+                if (!target.hasMetadata("TROLLPLUS_SLOWLY_KILL")) {
+                    cancel();
+                    return;
+                }
+
+                if (target.getGameMode() == GameMode.CREATIVE || target.getGameMode() == GameMode.SPECTATOR) {
+                    player.sendMessage(VMConstants.PLUGIN_PREFIX + "Cannot slowly kill because the target " + ChatColor.BOLD + target.getName() + ChatColor.RESET + " is not in survival or adventure mode.");
+                    cancel();
+                    return;
+                }
+
+                target.damage(1);
+            }
+
+        }.runTaskTimer(plugin, 0, 80);
+    }
+
+    // Feature random scary sound
+    private void randomScarySound(Player target) {
+        List<Sound> sounds = Arrays.asList(Sound.AMBIENT_BASALT_DELTAS_MOOD, Sound.AMBIENT_CAVE, Sound.AMBIENT_CRIMSON_FOREST_MOOD, Sound.AMBIENT_NETHER_WASTES_MOOD,
+                Sound.AMBIENT_SOUL_SAND_VALLEY_MOOD, Sound.AMBIENT_WARPED_FOREST_MOOD, Sound.AMBIENT_UNDERWATER_LOOP_ADDITIONS_ULTRA_RARE,
+                Sound.AMBIENT_UNDERWATER_LOOP_ADDITIONS_RARE);
+
+        target.playSound(target.getLocation(), sounds.get(RandomUtils.JVM_RANDOM.nextInt(sounds.size())), 200, 1);
+    }
+
     // Feature rocket
     private void rocket(Player target, Player player) {
         if (target.getLocation().getBlockY() < target.getWorld().getHighestBlockYAt(target.getLocation())) {
-            player.sendMessage(VMConstants.PLUGIN_PREFIX + "Cannot launch because the player " + ChatColor.BOLD + target.getName() + ChatColor.RESET + " is not under the open sky.");
+            player.sendMessage(VMConstants.PLUGIN_PREFIX + "Cannot launch because the target " + ChatColor.BOLD + target.getName() + ChatColor.RESET + " is not under the open sky.");
             target.removeMetadata("TROLLPLUS_ROCKET_NO_FALL_DAMAGE", plugin);
             return;
         }
@@ -530,7 +558,7 @@ public final class InventoryClickListener implements Listener {
                         if (!finalTargetAllowToFlight) {
                             target.setAllowFlight(false);
                         }
-                        player.sendMessage(VMConstants.PLUGIN_PREFIX + "Launch stopped because the player " + ChatColor.BOLD + target.getName() + ChatColor.RESET + " is no longer under the open sky.");
+                        player.sendMessage(VMConstants.PLUGIN_PREFIX + "Launch stopped because the target " + ChatColor.BOLD + target.getName() + ChatColor.RESET + " is no longer under the open sky.");
 
                         cancel();
                         rocket = 0;
@@ -588,23 +616,6 @@ public final class InventoryClickListener implements Listener {
             String fakeOpMessageReplace = fakeOpMessage.replace("[PLAYER]", target.getName());
             Bukkit.broadcastMessage(ChatColor.GRAY + fakeOpMessageReplace);
         }
-    }
-
-    // Feature fake op
-    private void slowlyKill(Player target) {
-        new BukkitRunnable() {
-
-            @Override
-            public void run() {
-                if (!target.hasMetadata("TROLLPLUS_SLOWLY_KILL")) {
-                    cancel();
-                    return;
-                }
-
-                target.damage(1);
-            }
-
-        }.runTaskTimer(plugin, 0, 80);
     }
 
 }

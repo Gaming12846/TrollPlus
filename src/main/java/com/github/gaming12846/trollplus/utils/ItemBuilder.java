@@ -16,16 +16,6 @@ import java.util.List;
  */
 public final class ItemBuilder {
 
-    // Create an itemstack
-    public static ItemStack createItem(Material mat, int amount, int subId, String name) {
-        ItemStack item = new ItemStack(mat, 1, (short) subId);
-        ItemMeta meta = item.getItemMeta();
-        assert meta != null;
-        meta.setDisplayName(name);
-        item.setItemMeta(meta);
-        return item;
-    }
-
     // Create an itemstack with lore
     public static ItemStack createItemWithLore(Material mat, int amount, int subId, String name, List<String> lore) {
         ItemStack item = new ItemStack(mat, amount, (short) subId);

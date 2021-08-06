@@ -176,11 +176,12 @@ public final class TrollPlusCommand implements CommandExecutor {
             // Set target
             VMConstants.TARGET = target;
 
-            // Create inventory
+            // Create troll menu
             VMConstants.TROLL_MENU = Bukkit.createInventory(null, 54, "Troll menu " + ChatColor.GOLD + ChatColor.BOLD + target.getName());
 
             // Add features
             VMConstants.TROLL_MENU.setItem(53, ItemBuilder.createItemWithLore(Material.BARRIER, 1, 0, ChatColor.RED + "Close", Collections.singletonList("Close the troll menu")));
+
             VMConstants.TROLL_MENU.setItem(51, ItemBuilder.createItemWithLore(Material.CHEST, 1, 0, ChatColor.WHITE + "Invsee", Collections.singletonList("Open the target inventory")));
             VMConstants.TROLL_MENU.setItem(50, ItemBuilder.createItemWithLore(Material.WITHER_SKELETON_SKULL, 1, 0, ChatColor.WHITE + "Kill", Collections.singletonList("Kill the target")));
             VMConstants.TROLL_MENU.setItem(48, ItemBuilder.createItemWithLore(Material.ENDER_PEARL, 1, 0, ChatColor.WHITE + "Teleport", Collections.singletonList("Teleport to the target")));
@@ -210,10 +211,16 @@ public final class TrollPlusCommand implements CommandExecutor {
             VMConstants.TROLL_MENU.setItem(40, ItemBuilder.createItemWithLore(Material.PAPER, 1, 0, ChatColor.WHITE + "Fake ban", Collections.singletonList("Make the target think they got banned")));
             VMConstants.TROLL_MENU.setItem(42, ItemBuilder.createItemWithLore(Material.ENCHANTED_GOLDEN_APPLE, 1, 0, ChatColor.WHITE + "Fake op", Collections.singletonList("Make the target think they got op")));
 
-            // Placeholder
+            // Placeholders
             int[] placeholderArray = new int[]{0, 1, 2, 3, 5, 6, 7, 8, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 49, 52};
             for (int slot : placeholderArray) {
                 VMConstants.TROLL_MENU.setItem(slot, ItemBuilder.createItemWithLore(Material.RED_STAINED_GLASS_PANE, 1, 0, " ", Collections.singletonList("Just lonely placeholders :(")));
+            }
+
+            // Placeholders
+            int[] placeholderArray2 = new int[]{11, 13, 15, 19, 21, 23, 25, 29, 31, 33, 37, 39, 41, 43};
+            for (int slot : placeholderArray2) {
+                VMConstants.TROLL_MENU.setItem(slot, ItemBuilder.createItemWithLore(Material.GRAY_STAINED_GLASS_PANE, 1, 0, " ", Collections.singletonList("Just lonely placeholders :(")));
             }
 
             player.openInventory(VMConstants.TROLL_MENU);
