@@ -30,7 +30,6 @@ public final class PlayerPickupItemListener implements Listener {
         if (player.hasMetadata("TROLLPLUS_SEMI_BAN")) {
             event.setCancelled(true);
         }
-
     }
 
 }

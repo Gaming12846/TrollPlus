@@ -12,6 +12,8 @@ You always wanted to troll your friends in Minecraft and watch their reactions? 
 
 ## Features
 
+### Troll menu
+
 - Blocklist
 - Open target inventory (Invsee)
 - Kill target
@@ -26,21 +28,30 @@ You always wanted to troll your friends in Minecraft and watch their reactions? 
 - Semi ban
 - TNT track
 - Mob spawner
+- Slowly kill
 - Random scary sound
 - Rocket
 - Fake ban
 - Fake op
+
+### Troll bows
+
+- Explosion bow
+- TNT bow
+- Lightning bolt bow
+- Silverfish bow
 
 ## Commands
 
 - /trollplus version - Displays information and the version of the TollPlus currently installed on your server
 - /trollplus reload - Reload the plugin's configuration and blocklist file
 - /trollplus blocklist add|remove - Add or remove players to/from the blocklist
-- /trollplus troll player - Troll players with multiple features
+- /trollplus troll player - Open the troll menu with multiple features
+- /trollplus bows - Open the troll bow menu
 
 ## Alias
 
-- /trollplus : [/troll+]
+- /trollplus : [ /troll+ ]
 
 ## Permission nodes
 
@@ -49,6 +60,7 @@ You always wanted to troll your friends in Minecraft and watch their reactions? 
 - trollplus.blocklist.add - Operators - Allow the use of the '/trollplus blocklist add' subcommand
 - trollplus.blocklist.remove - Operators - Allow the use of the '/trollplus blocklist remove' subcommand
 - trollplus.troll - Operators - Allow the use of the '/trollplus troll' subcommand
+- trollplus.bows - Operators - Allow the use of the '/trollplus bows' subcommand
 
 ## Note
 

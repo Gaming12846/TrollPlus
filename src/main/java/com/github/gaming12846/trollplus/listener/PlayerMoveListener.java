@@ -20,7 +20,6 @@ public final class PlayerMoveListener implements Listener {
         if (player.hasMetadata("TROLLPLUS_FREEZE")) {
             event.setCancelled(true);
         }
-
     }
 
 }

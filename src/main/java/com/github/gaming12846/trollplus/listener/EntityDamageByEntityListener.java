@@ -30,7 +30,6 @@ public final class EntityDamageByEntityListener implements Listener {
         if (damager.hasMetadata("TROLLPLUS_SEMI_BAN")) {
             event.setCancelled(true);
         }
-
     }
 
 }

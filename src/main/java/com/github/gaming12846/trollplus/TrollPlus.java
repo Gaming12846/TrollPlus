@@ -19,6 +19,7 @@ import java.util.Objects;
  */
 public final class TrollPlus extends JavaPlugin {
 
+    public boolean updateAvailable = false;
     private ConfigWrapper blocklistConfig;
 
     @Override
@@ -29,11 +30,9 @@ public final class TrollPlus extends JavaPlugin {
         this.blocklistConfig = new ConfigWrapper(this, "blocklist.yml");
 
         // Register events
-        this.getLogger().info("Registering events");
         registerEvents();
 
         // Register commands
-        this.getLogger().info("Registering commands");
         registerCommands();
 
         // Metrics
@@ -53,6 +52,7 @@ public final class TrollPlus extends JavaPlugin {
                     this.getLogger().info("There is no new update available.");
                 } else {
                     this.getLogger().info("A new update is available! To download it visit SpigotMC: https://www.spigotmc.org/resources/81193/");
+                    updateAvailable = true;
                 }
 
             });

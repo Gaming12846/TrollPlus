@@ -57,17 +57,22 @@ public final class TrollPlusCommand implements CommandExecutor {
             sender.sendMessage(ChatColor.RED + "Report bugs to: " + ChatColor.WHITE + "https://github.com/Gaming12846/TrollPlus/issues");
             sender.sendMessage("");
             sender.sendMessage(headerFooter);
+
+            if (plugin.updateAvailable) {
+                sender.sendMessage("");
+                sender.sendMessage(VMConstants.PLUGIN_PREFIX + "A new update is available! To download it visit SpigotMC: https://www.spigotmc.org/resources/81193/");
+            }
         }
 
         // Reload subcommand
         else if (args[0].equalsIgnoreCase("reload")) {
-            if (args.length != 1) {
-                sender.sendMessage(VMConstants.PLUGIN_PREFIX + ChatColor.RED + "Invalid command syntax! " + ChatColor.WHITE + "Use /" + label + " reload");
+            if (!sender.hasPermission(VMConstants.PERMISSION_RELOAD)) {
+                sender.sendMessage(ChatColor.RED + "You have insufficient permissions to perform this command!");
                 return true;
             }
 
-            if (!sender.hasPermission(VMConstants.PERMISSION_RELOAD)) {
-                sender.sendMessage(ChatColor.RED + "You have insufficient permissions to perform this command!");
+            if (args.length != 1) {
+                sender.sendMessage(VMConstants.PLUGIN_PREFIX + ChatColor.RED + "Invalid command syntax! " + ChatColor.WHITE + "Use /" + label + " reload");
                 return true;
             }
 
@@ -79,6 +84,11 @@ public final class TrollPlusCommand implements CommandExecutor {
 
         // Blocklist subcommand
         else if (args[0].equalsIgnoreCase("blocklist")) {
+            if (!sender.hasPermission(VMConstants.PERMISSION_BLOCKLIST_ADD) || !sender.hasPermission(VMConstants.PERMISSION_BLOCKLIST_REMOVE)) {
+                sender.sendMessage(ChatColor.RED + "You have insufficient permissions to perform this command!");
+                return true;
+            }
+
             if (args.length < 2) {
                 sender.sendMessage(VMConstants.PLUGIN_PREFIX + ChatColor.RED + "Invalid command syntax! " + ChatColor.WHITE + "Use /" + label + " blocklist <add|remove>");
                 return true;

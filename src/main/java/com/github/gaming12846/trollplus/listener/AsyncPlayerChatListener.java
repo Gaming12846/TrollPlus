@@ -50,7 +50,6 @@ public final class AsyncPlayerChatListener implements Listener {
                 player.sendMessage(semiBanMessageReplace.replace("[PLAYER]", player.getName()) + " " + event.getMessage());
             }
         }
-
     }
 
 }

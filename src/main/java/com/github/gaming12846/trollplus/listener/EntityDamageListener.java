@@ -33,7 +33,6 @@ public final class EntityDamageListener implements Listener {
                 player.removeMetadata("TROLLPLUS_ROCKET_NO_FALL_DAMAGE", plugin);
             }
         }
-
     }
 
 }

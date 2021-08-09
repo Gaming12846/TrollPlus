@@ -49,7 +49,7 @@ public final class VMConstants {
     // Inventory troll menu
     public static Inventory TROLL_MENU = null;
 
-    // Feature Control
+    // Feature control
     public static String CONTROL_MESSAGE = null;
     public static Boolean CONTROL_MESSAGE_BOOLEAN = false;
     public static Location CONTROL_PLAYER_LOCATION = null;

@@ -504,8 +504,8 @@ public final class InventoryClickListener implements Listener {
                 }
 
                 TNTPrimed tnt = target.getWorld().spawn(target.getLocation(), TNTPrimed.class);
-                tnt.setFuseTicks(100);
-                tnt.setCustomName("TROLLPLUS_TNT_TRACK_TNT");
+                tnt.setFuseTicks(80);
+                tnt.setMetadata("TROLLPLUS_TNT", new FixedMetadataValue(plugin, tnt));
                 tnt.getWorld().playSound(target.getLocation(), Sound.ENTITY_TNT_PRIMED, 20, 1);
             }
 
@@ -546,6 +546,10 @@ public final class InventoryClickListener implements Listener {
 
                 if (target.getGameMode() == GameMode.CREATIVE || target.getGameMode() == GameMode.SPECTATOR) {
                     player.sendMessage(VMConstants.PLUGIN_PREFIX + "Cannot slowly kill because the target " + ChatColor.BOLD + target.getName() + ChatColor.RESET + " is not in survival or adventure mode.");
+                    target.removeMetadata("TROLLPLUS_SLOWLY_KILL", plugin);
+                    VMConstants.STATUS_SLOWLY_KILL = "§c§lOFF";
+                    VMConstants.TROLL_MENU.setItem(32,
+                            ItemBuilder.createItemWithLore(Material.SKELETON_SKULL, 1, 0, ChatColor.WHITE + "Slowly kill " + VMConstants.STATUS_SLOWLY_KILL, Collections.singletonList("Slowly kills the target")));
                     cancel();
                     return;
                 }
