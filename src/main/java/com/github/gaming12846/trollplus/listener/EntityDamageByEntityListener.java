@@ -1,5 +1,6 @@
 package com.github.gaming12846.trollplus.listener;
 
+import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -24,6 +25,13 @@ public final class EntityDamageByEntityListener implements Listener {
         // Feature control
         if (damager.hasMetadata("TROLLPLUS_CONTROL_TARGET")) {
             event.setCancelled(true);
+        }
+
+        // Feature flip behind
+        if (damager.hasMetadata("TROLLPLUS_FLIP_BEHIND")) {
+            Location location = new Location(damager.getLocation().getWorld(), damager.getLocation().getX(), damager.getLocation().getY(), damager.getLocation().getZ());
+            location.setYaw(damager.getLocation().getYaw() + 180);
+            damager.teleport(location);
         }
 
         // Feature semi ban

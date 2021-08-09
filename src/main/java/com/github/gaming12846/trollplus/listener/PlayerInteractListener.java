@@ -30,7 +30,7 @@ public final class PlayerInteractListener implements Listener {
         // Feature flip behind
         if (player.hasMetadata("TROLLPLUS_FLIP_BEHIND")) {
             Location location = new Location(player.getLocation().getWorld(), player.getLocation().getX(), player.getLocation().getY(), player.getLocation().getZ());
-            location.setYaw(player.getEyeLocation().getYaw() + 180);
+            location.setYaw(player.getLocation().getYaw() + 180);
             player.teleport(location);
         }
 
