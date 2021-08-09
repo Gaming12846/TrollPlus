@@ -21,3 +21,7 @@ FakeBanMessagePlayerBroadcast: "The Player [PLAYER] have been permanently banned
 # Feature fake op
 FakeOpMessageBroadcastEnabled: true
 FakeOpMessage: "[Server: Made [PLAYER] a server operator]"
+
+# Feature tnt track and bows
+SetFire: false
+BreakBlocks: false

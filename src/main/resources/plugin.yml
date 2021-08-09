@@ -10,8 +10,8 @@ website: https://www.spigotmc.org/resources/81193/
 commands:
   trollplus:
     description: The main command for TrollPlus
-    usage: /trollplus <version|reload|blocklist|troll>
-    aliases: [troll+]
+    usage: /trollplus <version|reload|blocklist|troll|bows>
+    aliases: [ troll+ ]
 
 permissions:
   trollplus.reload:
@@ -27,4 +27,8 @@ permissions:
 
   trollplus.troll:
     description: Allow the use of the '/trollplus troll' subcommand
+    default: op
+
+  trollplus.bows:
+    description: Allow the use of the '/trollplus bows' subcommand
     default: op

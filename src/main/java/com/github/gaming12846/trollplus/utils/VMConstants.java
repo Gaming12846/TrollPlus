@@ -30,6 +30,9 @@ public final class VMConstants {
     public static final String CONFIG_FAKE_OP_MESSAGE_BROADCAST_ENABLED = "FakeOpMessageBroadcastEnabled";
     public static final String CONFIG_FAKE_OP_MESSAGE = "FakeOpMessage";
 
+    public static final String CONFIG_SET_FIRE = "SetFire";
+    public static final String CONFIG_BREAK_BLOCKS = "BreakBlocks";
+
     // Permission nodes
     public static final String PERMISSION_RELOAD = "trollplus.reload";
 
@@ -37,6 +40,8 @@ public final class VMConstants {
     public static final String PERMISSION_BLOCKLIST_REMOVE = "trollplus.blocklist.remove";
 
     public static final String PERMISSION_TROLL = "trollplus.troll";
+
+    public static final String PERMISSION_BOWS = "trollplus.bows";
 
     // Target player
     public static Player TARGET = null;

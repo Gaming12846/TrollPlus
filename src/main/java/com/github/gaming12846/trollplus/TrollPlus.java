@@ -64,14 +64,17 @@ public final class TrollPlus extends JavaPlugin {
         PluginManager pluginManager = Bukkit.getPluginManager();
 
         pluginManager.registerEvents(new AsyncPlayerChatListener(this), this);
+        pluginManager.registerEvents(new BlockIgniteListener(this), this);
         pluginManager.registerEvents(new EntityDamageByEntityListener(), this);
         pluginManager.registerEvents(new EntityDamageListener(this), this);
-        pluginManager.registerEvents(new EntityExplodeListener(), this);
+        pluginManager.registerEvents(new EntityExplodeListener(this), this);
         pluginManager.registerEvents(new InventoryClickListener(this), this);
         pluginManager.registerEvents(new PlayerDropItemListener(), this);
         pluginManager.registerEvents(new PlayerInteractListener(), this);
         pluginManager.registerEvents(new PlayerMoveListener(), this);
         pluginManager.registerEvents(new PlayerPickupItemListener(), this);
+        pluginManager.registerEvents(new ProjectileHitListener(this), this);
+        pluginManager.registerEvents(new ProjectileLaunchListener(this), this);
     }
 
     // Register commands

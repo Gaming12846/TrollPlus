@@ -14,6 +14,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.PluginDescriptionFile;
 
 import java.util.Collections;
@@ -34,7 +35,7 @@ public final class TrollPlusCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (args.length == 0) {
-            sender.sendMessage(VMConstants.PLUGIN_PREFIX + ChatColor.RED + "Invalid command syntax! " + ChatColor.WHITE + "Use /" + label + " <version|reload|blocklist|troll>");
+            sender.sendMessage(VMConstants.PLUGIN_PREFIX + ChatColor.RED + "Invalid command syntax! " + ChatColor.WHITE + "Use /" + label + " <version|reload|blocklist|troll|bows>");
             return true;
         }
 
@@ -226,9 +227,47 @@ public final class TrollPlusCommand implements CommandExecutor {
             player.openInventory(VMConstants.TROLL_MENU);
         }
 
+        // Bows subcommand
+        else if (args[0].equalsIgnoreCase("bows")) {
+            if (!(sender instanceof Player)) {
+                sender.sendMessage(VMConstants.PLUGIN_PREFIX + args[0] + " subcommand cannot be used from the console.");
+                return true;
+            }
+
+            if (!sender.hasPermission(VMConstants.PERMISSION_BOWS)) {
+                sender.sendMessage(ChatColor.RED + "You have insufficient permissions to perform this command!");
+                return true;
+            }
+
+            if (args.length != 1) {
+                sender.sendMessage(VMConstants.PLUGIN_PREFIX + ChatColor.RED + "Invalid command syntax! " + ChatColor.WHITE + "Use /" + label + " bows");
+                return true;
+            }
+
+            // Create bows menu
+            Inventory bows_menu = Bukkit.createInventory(null, 9, "Bows menu");
+
+            // Add bows
+            bows_menu.setItem(8, ItemBuilder.createItemWithLore(Material.BARRIER, 1, 0, ChatColor.RED + "Close", Collections.singletonList("Close the bow menu")));
+
+            bows_menu.setItem(0, ItemBuilder.createBow(1, 0, "Explosion bow", Collections.singletonList("Gives the explosion bow")));
+            bows_menu.setItem(1, ItemBuilder.createBow(1, 0, "TNT bow", Collections.singletonList("Gives the TNT bow")));
+            bows_menu.setItem(2, ItemBuilder.createBow(1, 0, "Lightning bolt bow", Collections.singletonList("Gives the lightning bolt bow")));
+            bows_menu.setItem(3, ItemBuilder.createBow(1, 0, "Silverfish bow", Collections.singletonList("Gives the silverfish bow")));
+
+            // Placeholders
+            int[] placeholderArray = new int[]{4, 5, 6, 7};
+            for (int slot : placeholderArray) {
+                bows_menu.setItem(slot, ItemBuilder.createItemWithLore(Material.GRAY_STAINED_GLASS_PANE, 1, 0, " ", Collections.singletonList("Just lonely placeholders :(")));
+            }
+
+            Player player = (Player) sender;
+            player.openInventory(bows_menu);
+        }
+
         // Unknown command usage
         else {
-            sender.sendMessage(VMConstants.PLUGIN_PREFIX + ChatColor.RED + "Invalid command syntax! " + ChatColor.WHITE + "Use /" + label + " <version|reload|blocklist|troll>");
+            sender.sendMessage(VMConstants.PLUGIN_PREFIX + ChatColor.RED + "Invalid command syntax! " + ChatColor.WHITE + "Use /" + label + " <version|reload|blocklist|troll|bows>");
             return true;
         }
 

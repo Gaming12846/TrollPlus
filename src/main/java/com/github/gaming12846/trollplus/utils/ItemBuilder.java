@@ -42,4 +42,23 @@ public final class ItemBuilder {
         return skull;
     }
 
+    // Create a bow
+    public static ItemStack createBow(int amount, int subId, String name, List<String> lore) {
+        ItemStack item = new ItemStack(Material.BOW, amount, (short) subId);
+        ItemMeta meta = item.getItemMeta();
+
+        assert meta != null;
+        meta.setDisplayName(ChatColor.RED + name);
+        meta.setUnbreakable(true);
+        meta.addEnchant(Enchantment.ARROW_INFINITE, 1, false);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_UNBREAKABLE);
+        final List<String> formatted = new ArrayList<>();
+        for (String string : lore) {
+            formatted.add(ChatColor.GRAY + string);
+        }
+        meta.setLore(formatted);
+        item.setItemMeta(meta);
+        return item;
+    }
+
 }
