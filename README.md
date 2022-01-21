@@ -46,12 +46,13 @@ You always wanted to troll your friends in Minecraft and watch their reactions? 
 - /trollplus version - Displays information and the version of the TollPlus currently installed on your server
 - /trollplus reload - Reload the plugin's configuration and blocklist file
 - /trollplus blocklist add|remove - Add or remove players to/from the blocklist
-- /trollplus troll player - Open the troll menu with multiple features
-- /trollplus bows - Open the troll bow menu
+- /troll player - Open the troll menu with multiple features
+- /trollbows - Open the troll bow menu
 
 ## Alias
 
 - /trollplus : [ /troll+ ]
+- /trollbows : [ /trollbow ]
 
 ## Permission nodes
 
@@ -59,8 +60,8 @@ You always wanted to troll your friends in Minecraft and watch their reactions? 
 - trollplus.blocklist.* - Operators - Allow the full use of the '/trollplus blocklist' subcommand
 - trollplus.blocklist.add - Operators - Allow the use of the '/trollplus blocklist add' subcommand
 - trollplus.blocklist.remove - Operators - Allow the use of the '/trollplus blocklist remove' subcommand
-- trollplus.troll - Operators - Allow the use of the '/trollplus troll' subcommand
-- trollplus.bows - Operators - Allow the use of the '/trollplus bows' subcommand
+- trollplus.troll - Operators - Allow the use of the '/troll' command
+- trollplus.bows - Operators - Allow the use of the '/trollbows' command
 
 ## Note
 
@@ -73,7 +74,7 @@ You always wanted to troll your friends in Minecraft and watch their reactions? 
 
 ## Need help?
 
-Feel free to contact me on Discord Jonathan#0690 or send me a message on SpigotMC.
+Feel free to send me a message on SpigotMC.
 
 ## Bugs and suggestions
 

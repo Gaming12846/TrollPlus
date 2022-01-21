@@ -1,5 +1,7 @@
 package com.github.gaming12846.trollplus;
 
+import com.github.gaming12846.trollplus.commands.TrollBowsCommand;
+import com.github.gaming12846.trollplus.commands.TrollCommand;
 import com.github.gaming12846.trollplus.commands.TrollPlusCommand;
 import com.github.gaming12846.trollplus.listener.*;
 import com.github.gaming12846.trollplus.metrics.BStats;
@@ -80,6 +82,8 @@ public final class TrollPlus extends JavaPlugin {
     // Register commands
     private void registerCommands() {
         Objects.requireNonNull(this.getCommand("trollplus")).setExecutor(new TrollPlusCommand(this));
+        Objects.requireNonNull(this.getCommand("troll")).setExecutor(new TrollCommand(this));
+        Objects.requireNonNull(this.getCommand("trollbows")).setExecutor(new TrollBowsCommand());
     }
 
     // ConfigWrapper blocklist config

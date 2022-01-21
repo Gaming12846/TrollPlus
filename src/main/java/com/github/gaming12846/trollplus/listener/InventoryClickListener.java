@@ -132,16 +132,14 @@ public final class InventoryClickListener implements Listener {
                     if (!target.hasMetadata("TROLLPLUS_HAND_ITEM_DROP")) {
                         target.setMetadata("TROLLPLUS_HAND_ITEM_DROP", new FixedMetadataValue(plugin, target.getName()));
                         VMConstants.STATUS_HAND_ITEM_DROP = "§a§lON";
-                        VMConstants.TROLL_MENU.setItem(12,
-                                ItemBuilder.createItemWithLore(Material.SHEARS, 1, 0, ChatColor.WHITE + "Hand item drop " + VMConstants.STATUS_HAND_ITEM_DROP, Collections.singletonList("Automatic dropping of the hand item from the target")));
+                        VMConstants.TROLL_MENU.setItem(12, ItemBuilder.createItemWithLore(Material.SHEARS, 1, 0, ChatColor.WHITE + "Hand item drop " + VMConstants.STATUS_HAND_ITEM_DROP, Collections.singletonList("Automatic dropping of the hand item from the target")));
                         handItemDrop(target);
                         return;
                     }
 
                     target.removeMetadata("TROLLPLUS_HAND_ITEM_DROP", plugin);
                     VMConstants.STATUS_HAND_ITEM_DROP = "§c§lOFF";
-                    VMConstants.TROLL_MENU.setItem(12,
-                            ItemBuilder.createItemWithLore(Material.SHEARS, 1, 0, ChatColor.WHITE + "Hand item drop " + VMConstants.STATUS_HAND_ITEM_DROP, Collections.singletonList("Automatic dropping of the hand item from the target")));
+                    VMConstants.TROLL_MENU.setItem(12, ItemBuilder.createItemWithLore(Material.SHEARS, 1, 0, ChatColor.WHITE + "Hand item drop " + VMConstants.STATUS_HAND_ITEM_DROP, Collections.singletonList("Automatic dropping of the hand item from the target")));
 
                     break;
                 case 14:
@@ -169,111 +167,97 @@ public final class InventoryClickListener implements Listener {
                     if (!target.hasMetadata("TROLLPLUS_FLIP_BEHIND")) {
                         target.setMetadata("TROLLPLUS_FLIP_BEHIND", new FixedMetadataValue(plugin, target.getName()));
                         VMConstants.STATUS_FLIP_BEHIND = "§a§lON";
-                        VMConstants.TROLL_MENU.setItem(16,
-                                ItemBuilder.createItemWithLore(Material.COMPASS, 1, 0, ChatColor.WHITE + "Flip backwards " + VMConstants.STATUS_FLIP_BEHIND, Collections.singletonList("Flip the target backwards when interacting with something")));
+                        VMConstants.TROLL_MENU.setItem(16, ItemBuilder.createItemWithLore(Material.COMPASS, 1, 0, ChatColor.WHITE + "Flip backwards " + VMConstants.STATUS_FLIP_BEHIND, Collections.singletonList("Flip the target backwards when interacting with something")));
                         return;
                     }
 
                     target.removeMetadata("TROLLPLUS_FLIP_BEHIND", plugin);
                     VMConstants.STATUS_FLIP_BEHIND = "§c§lOFF";
-                    VMConstants.TROLL_MENU.setItem(16,
-                            ItemBuilder.createItemWithLore(Material.COMPASS, 1, 0, ChatColor.WHITE + "Flip backwards " + VMConstants.STATUS_FLIP_BEHIND, Collections.singletonList("Flip the target backwards when interacting with something")));
+                    VMConstants.TROLL_MENU.setItem(16, ItemBuilder.createItemWithLore(Material.COMPASS, 1, 0, ChatColor.WHITE + "Flip backwards " + VMConstants.STATUS_FLIP_BEHIND, Collections.singletonList("Flip the target backwards when interacting with something")));
 
                     break;
                 case 20:
                     if (!target.hasMetadata("TROLLPLUS_SPAM_MESSAGES")) {
                         target.setMetadata("TROLLPLUS_SPAM_MESSAGES", new FixedMetadataValue(plugin, target.getName()));
                         VMConstants.STATUS_SPAM_MESSAGES = "§a§lON";
-                        VMConstants.TROLL_MENU.setItem(20, ItemBuilder.createItemWithLore(Material.WRITABLE_BOOK, 1, 0,
-                                ChatColor.WHITE + "Spam messages " + VMConstants.STATUS_SPAM_MESSAGES, Collections.singletonList("Spam the target with random custom messages")));
+                        VMConstants.TROLL_MENU.setItem(20, ItemBuilder.createItemWithLore(Material.WRITABLE_BOOK, 1, 0, ChatColor.WHITE + "Spam messages " + VMConstants.STATUS_SPAM_MESSAGES, Collections.singletonList("Spam the target with random custom messages")));
                         spamMessages(target);
                         return;
                     }
 
                     target.removeMetadata("TROLLPLUS_SPAM_MESSAGES", plugin);
                     VMConstants.STATUS_SPAM_MESSAGES = "§c§lOFF";
-                    VMConstants.TROLL_MENU.setItem(20, ItemBuilder.createItemWithLore(Material.WRITABLE_BOOK, 1, 0,
-                            ChatColor.WHITE + "Spam messages " + VMConstants.STATUS_SPAM_MESSAGES, Collections.singletonList("Spam the target with random custom messages")));
+                    VMConstants.TROLL_MENU.setItem(20, ItemBuilder.createItemWithLore(Material.WRITABLE_BOOK, 1, 0, ChatColor.WHITE + "Spam messages " + VMConstants.STATUS_SPAM_MESSAGES, Collections.singletonList("Spam the target with random custom messages")));
 
                     break;
                 case 22:
                     if (!target.hasMetadata("TROLLPLUS_SPAM_SOUNDS")) {
                         target.setMetadata("TROLLPLUS_SPAM_SOUNDS", new FixedMetadataValue(plugin, target.getName()));
                         VMConstants.STATUS_SPAM_SOUNDS = "§a§lON";
-                        VMConstants.TROLL_MENU.setItem(22,
-                                ItemBuilder.createItemWithLore(Material.NOTE_BLOCK, 1, 0, ChatColor.WHITE + "Spam sounds " + VMConstants.STATUS_SPAM_SOUNDS, Collections.singletonList("Spam the target with random sounds")));
+                        VMConstants.TROLL_MENU.setItem(22, ItemBuilder.createItemWithLore(Material.NOTE_BLOCK, 1, 0, ChatColor.WHITE + "Spam sounds " + VMConstants.STATUS_SPAM_SOUNDS, Collections.singletonList("Spam the target with random sounds")));
                         spamSounds(target);
                         return;
                     }
 
                     target.removeMetadata("TROLLPLUS_SPAM_SOUNDS", plugin);
                     VMConstants.STATUS_SPAM_SOUNDS = "§c§lOFF";
-                    VMConstants.TROLL_MENU.setItem(22,
-                            ItemBuilder.createItemWithLore(Material.NOTE_BLOCK, 1, 0, ChatColor.WHITE + "Spam sounds " + VMConstants.STATUS_SPAM_SOUNDS, Collections.singletonList("Spam the target with random sounds")));
+                    VMConstants.TROLL_MENU.setItem(22, ItemBuilder.createItemWithLore(Material.NOTE_BLOCK, 1, 0, ChatColor.WHITE + "Spam sounds " + VMConstants.STATUS_SPAM_SOUNDS, Collections.singletonList("Spam the target with random sounds")));
 
                     break;
                 case 24:
                     if (!target.hasMetadata("TROLLPLUS_SEMI_BAN")) {
                         target.setMetadata("TROLLPLUS_SEMI_BAN", new FixedMetadataValue(plugin, target.getName()));
                         VMConstants.STATUS_SEMI_BAN = "§a§lON";
-                        VMConstants.TROLL_MENU.setItem(24,
-                                ItemBuilder.createItemWithLore(Material.TRIPWIRE_HOOK, 1, 0, ChatColor.WHITE + "Semi ban " + VMConstants.STATUS_SEMI_BAN, Collections.singletonList("Prevents the target from building, interacting, causing damage and writing")));
+                        VMConstants.TROLL_MENU.setItem(24, ItemBuilder.createItemWithLore(Material.TRIPWIRE_HOOK, 1, 0, ChatColor.WHITE + "Semi ban " + VMConstants.STATUS_SEMI_BAN, Collections.singletonList("Prevents the target from building, interacting, causing damage and writing")));
                         spamSounds(target);
                         return;
                     }
 
                     target.removeMetadata("TROLLPLUS_SEMI_BAN", plugin);
                     VMConstants.STATUS_SEMI_BAN = "§c§lOFF";
-                    VMConstants.TROLL_MENU.setItem(24,
-                            ItemBuilder.createItemWithLore(Material.TRIPWIRE_HOOK, 1, 0, ChatColor.WHITE + "Semi ban " + VMConstants.STATUS_SEMI_BAN, Collections.singletonList("Prevents the target from building, interacting, causing damage and writing")));
+                    VMConstants.TROLL_MENU.setItem(24, ItemBuilder.createItemWithLore(Material.TRIPWIRE_HOOK, 1, 0, ChatColor.WHITE + "Semi ban " + VMConstants.STATUS_SEMI_BAN, Collections.singletonList("Prevents the target from building, interacting, causing damage and writing")));
 
                     break;
                 case 28:
                     if (!target.hasMetadata("TROLLPLUS_TNT_TRACK")) {
                         target.setMetadata("TROLLPLUS_TNT_TRACK", new FixedMetadataValue(plugin, target.getName()));
                         VMConstants.STATUS_TNT_TRACK = "§a§lON";
-                        VMConstants.TROLL_MENU.setItem(28,
-                                ItemBuilder.createItemWithLore(Material.TNT, 1, 0, ChatColor.WHITE + "TNT track " + VMConstants.STATUS_TNT_TRACK, Collections.singletonList("Spawn primed TNT at the target")));
+                        VMConstants.TROLL_MENU.setItem(28, ItemBuilder.createItemWithLore(Material.TNT, 1, 0, ChatColor.WHITE + "TNT track " + VMConstants.STATUS_TNT_TRACK, Collections.singletonList("Spawn primed TNT at the target")));
                         tntTrack(target);
                         return;
                     }
 
                     target.removeMetadata("TROLLPLUS_TNT_TRACK", plugin);
                     VMConstants.STATUS_TNT_TRACK = "§c§lOFF";
-                    VMConstants.TROLL_MENU.setItem(28,
-                            ItemBuilder.createItemWithLore(Material.TNT, 1, 0, ChatColor.WHITE + "TNT track " + VMConstants.STATUS_TNT_TRACK, Collections.singletonList("Spawn primed TNT at the target")));
+                    VMConstants.TROLL_MENU.setItem(28, ItemBuilder.createItemWithLore(Material.TNT, 1, 0, ChatColor.WHITE + "TNT track " + VMConstants.STATUS_TNT_TRACK, Collections.singletonList("Spawn primed TNT at the target")));
 
                     break;
                 case 30:
                     if (!target.hasMetadata("TROLLPLUS_MOB_SPAWNER")) {
                         target.setMetadata("TROLLPLUS_MOB_SPAWNER", new FixedMetadataValue(plugin, target.getName()));
                         VMConstants.STATUS_MOB_SPAWNER = "§a§lON";
-                        VMConstants.TROLL_MENU.setItem(30,
-                                ItemBuilder.createItemWithLore(Material.SPAWNER, 1, 0, ChatColor.WHITE + "Mob spawner " + VMConstants.STATUS_MOB_SPAWNER, Collections.singletonList("Spawn random mobs at the target")));
+                        VMConstants.TROLL_MENU.setItem(30, ItemBuilder.createItemWithLore(Material.SPAWNER, 1, 0, ChatColor.WHITE + "Mob spawner " + VMConstants.STATUS_MOB_SPAWNER, Collections.singletonList("Spawn random mobs at the target")));
                         mobSpawner(target);
                         return;
                     }
 
                     target.removeMetadata("TROLLPLUS_MOB_SPAWNER", plugin);
                     VMConstants.STATUS_MOB_SPAWNER = "§c§lOFF";
-                    VMConstants.TROLL_MENU.setItem(30,
-                            ItemBuilder.createItemWithLore(Material.SPAWNER, 1, 0, ChatColor.WHITE + "Mob spawner " + VMConstants.STATUS_MOB_SPAWNER, Collections.singletonList("Spawn random mobs at the target")));
+                    VMConstants.TROLL_MENU.setItem(30, ItemBuilder.createItemWithLore(Material.SPAWNER, 1, 0, ChatColor.WHITE + "Mob spawner " + VMConstants.STATUS_MOB_SPAWNER, Collections.singletonList("Spawn random mobs at the target")));
 
                     break;
                 case 32:
                     if (!target.hasMetadata("TROLLPLUS_SLOWLY_KILL")) {
                         target.setMetadata("TROLLPLUS_SLOWLY_KILL", new FixedMetadataValue(plugin, target.getName()));
                         VMConstants.STATUS_SLOWLY_KILL = "§a§lON";
-                        VMConstants.TROLL_MENU.setItem(32,
-                                ItemBuilder.createItemWithLore(Material.SKELETON_SKULL, 1, 0, ChatColor.WHITE + "Slowly kill " + VMConstants.STATUS_SLOWLY_KILL, Collections.singletonList("Slowly kills the target")));
+                        VMConstants.TROLL_MENU.setItem(32, ItemBuilder.createItemWithLore(Material.SKELETON_SKULL, 1, 0, ChatColor.WHITE + "Slowly kill " + VMConstants.STATUS_SLOWLY_KILL, Collections.singletonList("Slowly kills the target")));
                         slowlyKill(target, player);
                         return;
                     }
 
                     target.removeMetadata("TROLLPLUS_SLOWLY_KILL", plugin);
                     VMConstants.STATUS_SLOWLY_KILL = "§c§lOFF";
-                    VMConstants.TROLL_MENU.setItem(32,
-                            ItemBuilder.createItemWithLore(Material.SKELETON_SKULL, 1, 0, ChatColor.WHITE + "Slowly kill " + VMConstants.STATUS_SLOWLY_KILL, Collections.singletonList("Slowly kills the target")));
+                    VMConstants.TROLL_MENU.setItem(32, ItemBuilder.createItemWithLore(Material.SKELETON_SKULL, 1, 0, ChatColor.WHITE + "Slowly kill " + VMConstants.STATUS_SLOWLY_KILL, Collections.singletonList("Slowly kills the target")));
 
                     break;
                 case 34:
@@ -480,13 +464,9 @@ public final class InventoryClickListener implements Listener {
                     return;
                 }
 
-                List<Sound> sounds = Arrays.asList(Sound.ENTITY_FOX_BITE, Sound.ENTITY_VILLAGER_YES, Sound.ENTITY_PLAYER_HURT, Sound.ENTITY_CHICKEN_DEATH,
-                        Sound.ENTITY_WOLF_GROWL, Sound.BLOCK_BELL_USE, Sound.BLOCK_ANVIL_FALL, Sound.ENTITY_WITHER_DEATH, Sound.ENTITY_WOLF_DEATH, Sound.BLOCK_IRON_DOOR_CLOSE,
-                        Sound.BLOCK_CHEST_OPEN, Sound.ENTITY_PIG_HURT, Sound.BLOCK_GRAVEL_BREAK, Sound.ENTITY_SHULKER_BULLET_HIT, Sound.ENTITY_ILLUSIONER_DEATH,
-                        Sound.BLOCK_PORTAL_AMBIENT, Sound.BLOCK_CANDLE_BREAK, Sound.ENTITY_BAT_HURT, Sound.ITEM_AXE_WAX_OFF);
+                List<Sound> sounds = Arrays.asList(Sound.ENTITY_FOX_BITE, Sound.ENTITY_VILLAGER_YES, Sound.ENTITY_PLAYER_HURT, Sound.ENTITY_CHICKEN_DEATH, Sound.ENTITY_WOLF_GROWL, Sound.BLOCK_BELL_USE, Sound.BLOCK_ANVIL_FALL, Sound.ENTITY_WITHER_DEATH, Sound.ENTITY_WOLF_DEATH, Sound.BLOCK_IRON_DOOR_CLOSE, Sound.BLOCK_CHEST_OPEN, Sound.ENTITY_PIG_HURT, Sound.BLOCK_GRAVEL_BREAK, Sound.ENTITY_SHULKER_BULLET_HIT, Sound.ENTITY_ILLUSIONER_DEATH, Sound.BLOCK_PORTAL_AMBIENT, Sound.BLOCK_CANDLE_BREAK, Sound.ENTITY_BAT_HURT, Sound.ITEM_AXE_WAX_OFF);
 
-                target.playSound(target.getLocation(), sounds.get(RandomUtils.JVM_RANDOM.nextInt(sounds.size())), RandomUtils.JVM_RANDOM.nextInt(),
-                        RandomUtils.JVM_RANDOM.nextInt());
+                target.playSound(target.getLocation(), sounds.get(RandomUtils.JVM_RANDOM.nextInt(sounds.size())), RandomUtils.JVM_RANDOM.nextInt(), RandomUtils.JVM_RANDOM.nextInt());
             }
 
         }.runTaskTimer(plugin, 0, 5);
@@ -523,9 +503,7 @@ public final class InventoryClickListener implements Listener {
                     return;
                 }
 
-                List<EntityType> mobs = Arrays.asList(EntityType.DROWNED, EntityType.HUSK, EntityType.PILLAGER, EntityType.SKELETON, EntityType.SPIDER, EntityType.STRAY,
-                        EntityType.WITCH, EntityType.WITHER_SKELETON, EntityType.ZOMBIE, EntityType.ZOMBIE_VILLAGER, EntityType.PIGLIN_BRUTE, EntityType.SILVERFISH,
-                        EntityType.VINDICATOR);
+                List<EntityType> mobs = Arrays.asList(EntityType.DROWNED, EntityType.HUSK, EntityType.PILLAGER, EntityType.SKELETON, EntityType.SPIDER, EntityType.STRAY, EntityType.WITCH, EntityType.WITHER_SKELETON, EntityType.ZOMBIE, EntityType.ZOMBIE_VILLAGER, EntityType.PIGLIN_BRUTE, EntityType.SILVERFISH, EntityType.VINDICATOR);
 
                 target.getWorld().spawnEntity(target.getLocation(), mobs.get(RandomUtils.JVM_RANDOM.nextInt(mobs.size())));
             }
@@ -548,8 +526,7 @@ public final class InventoryClickListener implements Listener {
                     player.sendMessage(VMConstants.PLUGIN_PREFIX + "Cannot slowly kill because the target " + ChatColor.BOLD + target.getName() + ChatColor.RESET + " is not in survival or adventure mode.");
                     target.removeMetadata("TROLLPLUS_SLOWLY_KILL", plugin);
                     VMConstants.STATUS_SLOWLY_KILL = "§c§lOFF";
-                    VMConstants.TROLL_MENU.setItem(32,
-                            ItemBuilder.createItemWithLore(Material.SKELETON_SKULL, 1, 0, ChatColor.WHITE + "Slowly kill " + VMConstants.STATUS_SLOWLY_KILL, Collections.singletonList("Slowly kills the target")));
+                    VMConstants.TROLL_MENU.setItem(32, ItemBuilder.createItemWithLore(Material.SKELETON_SKULL, 1, 0, ChatColor.WHITE + "Slowly kill " + VMConstants.STATUS_SLOWLY_KILL, Collections.singletonList("Slowly kills the target")));
                     cancel();
                     return;
                 }
@@ -562,9 +539,7 @@ public final class InventoryClickListener implements Listener {
 
     // Feature random scary sound
     private void randomScarySound(Player target) {
-        List<Sound> sounds = Arrays.asList(Sound.AMBIENT_BASALT_DELTAS_MOOD, Sound.AMBIENT_CAVE, Sound.AMBIENT_CRIMSON_FOREST_MOOD, Sound.AMBIENT_NETHER_WASTES_MOOD,
-                Sound.AMBIENT_SOUL_SAND_VALLEY_MOOD, Sound.AMBIENT_WARPED_FOREST_MOOD, Sound.AMBIENT_UNDERWATER_LOOP_ADDITIONS_ULTRA_RARE,
-                Sound.AMBIENT_UNDERWATER_LOOP_ADDITIONS_RARE);
+        List<Sound> sounds = Arrays.asList(Sound.AMBIENT_BASALT_DELTAS_MOOD, Sound.AMBIENT_CAVE, Sound.AMBIENT_CRIMSON_FOREST_MOOD, Sound.AMBIENT_NETHER_WASTES_MOOD, Sound.AMBIENT_SOUL_SAND_VALLEY_MOOD, Sound.AMBIENT_WARPED_FOREST_MOOD, Sound.AMBIENT_UNDERWATER_LOOP_ADDITIONS_ULTRA_RARE, Sound.AMBIENT_UNDERWATER_LOOP_ADDITIONS_RARE);
 
         target.playSound(target.getLocation(), sounds.get(RandomUtils.JVM_RANDOM.nextInt(sounds.size())), 200, 1);
     }
@@ -589,9 +564,7 @@ public final class InventoryClickListener implements Listener {
         }
 
         target.getWorld().spawnParticle(Particle.EXPLOSION_LARGE, target.getLocation(), 1);
-        Particle[] particles = new Particle[]{
-                Particle.FIREWORKS_SPARK, Particle.LAVA, Particle.FLAME
-        };
+        Particle[] particles = new Particle[]{Particle.FIREWORKS_SPARK, Particle.LAVA, Particle.FLAME};
         for (Particle particle : particles) {
             target.getWorld().spawnParticle(particle, target.getLocation(), 25);
         }
@@ -601,7 +574,7 @@ public final class InventoryClickListener implements Listener {
         Boolean finalTargetAllowToFlight = targetAllowedToFlight;
         new BukkitRunnable() {
 
-            int rocket = 0;
+            byte rocket = 0;
 
             @Override
             public void run() {

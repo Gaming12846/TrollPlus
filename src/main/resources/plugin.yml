@@ -9,9 +9,18 @@ website: https://www.spigotmc.org/resources/81193/
 
 commands:
   trollplus:
-    description: The main command for TrollPlus
-    usage: /trollplus <version|reload|blocklist|troll|bows>
+    description: The essentials command for TrollPlus
+    usage: /trollplus <version|reload|blocklist>
     aliases: [ troll+ ]
+
+  troll:
+    description: Open the troll menu with multiple features
+    usage: /troll <PLAYER>
+
+  trollbows:
+    description: Open the troll bow menu
+    usage: /trollbows
+    aliases: [ trollbow ]
 
 permissions:
   trollplus.reload:
@@ -26,9 +35,9 @@ permissions:
       trollplus.blocklist.remove: true
 
   trollplus.troll:
-    description: Allow the use of the '/trollplus troll' subcommand
+    description: Allow the use of the '/troll' command
     default: op
 
   trollplus.bows:
-    description: Allow the use of the '/trollplus bows' subcommand
+    description: Allow the use of the '/trollbows' command
     default: op

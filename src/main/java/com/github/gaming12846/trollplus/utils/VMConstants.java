@@ -16,8 +16,8 @@ public final class VMConstants {
     public static final String PLUGIN_PREFIX = "§8[§l§cTrollPlus§8]§r ";
 
     // Configuration options
-    public static final String CONFIG_CHECK_FOR_UPDATES = "CheckForUpdates";
     public static final String CONFIG_METRICS_ENABLED = "MetricsEnabled";
+    public static final String CONFIG_CHECK_FOR_UPDATES = "CheckForUpdates";
 
     public static final String CONFIG_SPAM_MESSAGES = "SpamMessages";
 
@@ -41,7 +41,7 @@ public final class VMConstants {
 
     public static final String PERMISSION_TROLL = "trollplus.troll";
 
-    public static final String PERMISSION_BOWS = "trollplus.bows";
+    public static final String PERMISSION_TROLLBOWS = "trollplus.bows";
 
     // Target player
     public static Player TARGET = null;

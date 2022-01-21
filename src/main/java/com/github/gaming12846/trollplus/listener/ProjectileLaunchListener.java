@@ -83,7 +83,7 @@ public final class ProjectileLaunchListener implements Listener {
                         return;
                     }
 
-                    arrow.getWorld().spawnParticle(Particle.LIGHT, arrow.getLocation(), 1, 0, 0, 0, 0);
+                    arrow.getWorld().spawnParticle(Particle.FLASH, arrow.getLocation(), 1, 0, 0, 0, 0);
                 }
 
             }.runTaskTimer(plugin, 0, 1);

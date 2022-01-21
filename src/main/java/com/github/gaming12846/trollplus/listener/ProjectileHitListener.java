@@ -63,7 +63,7 @@ public final class ProjectileHitListener implements Listener {
 
             arrow.getWorld().playSound(arrow.getLocation(), Sound.ENTITY_SILVERFISH_STEP, 20, 1);
             arrow.getWorld().spawnParticle(Particle.EXPLOSION_LARGE, arrow.getLocation(), 1);
-            for (int i = 0; i < 5; i++) {
+            for (byte i = 0; i < 5; i++) {
                 arrow.getWorld().spawnEntity(arrow.getLocation().add(RandomUtils.JVM_RANDOM.nextInt(2), RandomUtils.JVM_RANDOM.nextInt(2), RandomUtils.JVM_RANDOM.nextInt(2)), EntityType.SILVERFISH);
             }
         }
