@@ -10,7 +10,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
  *
  * @author Gaming12846
  */
-public final class PlayerMoveListener implements Listener {
+public class PlayerMoveListener implements Listener {
 
     @EventHandler
     private void onPlayerMove(PlayerMoveEvent event) {

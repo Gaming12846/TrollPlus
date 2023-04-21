@@ -16,7 +16,7 @@ import java.util.Objects;
  *
  * @author Gaming12846
  */
-public final class EntityExplodeListener implements Listener {
+public class EntityExplodeListener implements Listener {
 
     private final TrollPlus plugin;
 

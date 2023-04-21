@@ -12,7 +12,7 @@ import org.bukkit.event.block.BlockIgniteEvent;
  *
  * @author Gaming12846
  */
-public final class BlockIgniteListener implements Listener {
+public class BlockIgniteListener implements Listener {
 
     private final TrollPlus plugin;
 

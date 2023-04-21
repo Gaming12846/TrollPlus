@@ -3,6 +3,7 @@ package com.github.gaming12846.trollplus.utils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -16,11 +17,11 @@ import java.util.List;
  *
  * @author Gaming12846
  */
-public final class ItemBuilder {
+public class ItemBuilder {
 
     // Create an itemstack with lore
-    public static ItemStack createItemWithLore(Material mat, int amount, int subId, String name, List<String> lore) {
-        ItemStack item = new ItemStack(mat, amount, (short) subId);
+    public static ItemStack createItemWithLore(Material mat, int amount, String name, List<String> lore) {
+        ItemStack item = new ItemStack(mat, amount);
         ItemMeta meta = item.getItemMeta();
 
         assert meta != null;
@@ -35,20 +36,20 @@ public final class ItemBuilder {
     }
 
     // Create a skull
-    public static ItemStack createSkull(int amount, int subId, String name, String owner) {
-        ItemStack skull = new ItemStack(Material.PLAYER_HEAD, 1, (short) subId);
+    public static ItemStack createSkull(int amount, String name, Player owner) {
+        ItemStack skull = new ItemStack(Material.PLAYER_HEAD, amount);
         SkullMeta meta = (SkullMeta) skull.getItemMeta();
 
         assert meta != null;
         meta.setDisplayName(name);
-        meta.setOwner(owner);
+        meta.setOwningPlayer(owner);
         skull.setItemMeta(meta);
         return skull;
     }
 
     // Create a bow
-    public static ItemStack createBow(int amount, int subId, String name, List<String> lore) {
-        ItemStack item = new ItemStack(Material.BOW, amount, (short) subId);
+    public static ItemStack createBow(int amount, String name, List<String> lore) {
+        ItemStack item = new ItemStack(Material.BOW, amount);
         ItemMeta meta = item.getItemMeta();
 
         assert meta != null;

@@ -16,7 +16,7 @@ import org.bukkit.metadata.FixedMetadataValue;
  *
  * @author Gaming12846
  */
-public final class ProjectileHitListener implements Listener {
+public class ProjectileHitListener implements Listener {
 
     private final TrollPlus plugin;
 
@@ -26,12 +26,12 @@ public final class ProjectileHitListener implements Listener {
 
     @EventHandler
     private void onProjectileHitEvent(ProjectileHitEvent event) {
-        Arrow arrow = (Arrow) event.getEntity();
-        if (!(arrow.getShooter() instanceof Player)) {
+        if (!(event.getEntity().getShooter() instanceof Player)) {
             return;
         }
 
-        Player player = (Player) arrow.getShooter();
+        Arrow arrow = (Arrow) event.getEntity();
+
         // Explosion bow
         if (arrow.hasMetadata("TROLLPLUS_EXPLOSION_ARROW")) {
             arrow.removeMetadata("TROLLPLUS_EXPLOSION_ARROW", plugin);

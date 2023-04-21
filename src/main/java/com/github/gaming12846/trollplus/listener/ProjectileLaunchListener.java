@@ -16,7 +16,7 @@ import org.bukkit.scheduler.BukkitRunnable;
  *
  * @author Gaming12846
  */
-public final class ProjectileLaunchListener implements Listener {
+public class ProjectileLaunchListener implements Listener {
 
     private final TrollPlus plugin;
 
@@ -26,10 +26,11 @@ public final class ProjectileLaunchListener implements Listener {
 
     @EventHandler
     private void onProjectileLaunchEvent(ProjectileLaunchEvent event) {
-        Arrow arrow = (Arrow) event.getEntity();
-        if (!(arrow.getShooter() instanceof Player)) {
+        if (!(event.getEntity().getShooter() instanceof Player)) {
             return;
         }
+
+        Arrow arrow = (Arrow) event.getEntity();
 
         Player player = (Player) arrow.getShooter();
         // Explosion bow

@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
  *
  * @author Gaming12846
  */
-public final class VMConstants {
+public class VMConstants {
 
     // Plugin prefix
     public static final String PLUGIN_PREFIX = "§8[§l§cTrollPlus§8]§r ";
@@ -34,8 +34,11 @@ public final class VMConstants {
     public static final String CONFIG_BREAK_BLOCKS = "BreakBlocks";
 
     // Permission nodes
+    public static final String PERMISSION_ALL = "trollplus.*";
+
     public static final String PERMISSION_RELOAD = "trollplus.reload";
 
+    public static final String PERMISSION_BLOCKLIST_ALL = "trollplus.blocklist.*";
     public static final String PERMISSION_BLOCKLIST_ADD = "trollplus.blocklist.add";
     public static final String PERMISSION_BLOCKLIST_REMOVE = "trollplus.blocklist.remove";
 

@@ -19,7 +19,7 @@ import java.util.Objects;
  *
  * @author Gaming12846
  */
-public final class TrollPlus extends JavaPlugin {
+public class TrollPlus extends JavaPlugin {
 
     public boolean updateAvailable = false;
     private ConfigWrapper blocklistConfig;
@@ -51,7 +51,7 @@ public final class TrollPlus extends JavaPlugin {
             new UpdateChecker(this, 81193).getVersion(version -> {
 
                 if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
-                    this.getLogger().info("There is no new update available.");
+                    this.getLogger().info("There is no new update available");
                 } else {
                     this.getLogger().info("A new update is available! To download it visit SpigotMC: https://www.spigotmc.org/resources/81193/");
                     updateAvailable = true;
@@ -74,7 +74,7 @@ public final class TrollPlus extends JavaPlugin {
         pluginManager.registerEvents(new PlayerDropItemListener(), this);
         pluginManager.registerEvents(new PlayerInteractListener(), this);
         pluginManager.registerEvents(new PlayerMoveListener(), this);
-        pluginManager.registerEvents(new PlayerPickupItemListener(), this);
+        pluginManager.registerEvents(new EntityPickupItemEvent(), this);
         pluginManager.registerEvents(new ProjectileHitListener(this), this);
         pluginManager.registerEvents(new ProjectileLaunchListener(this), this);
     }

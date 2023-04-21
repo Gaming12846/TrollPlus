@@ -12,7 +12,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
  *
  * @author Gaming12846
  */
-public final class EntityDamageListener implements Listener {
+public class EntityDamageListener implements Listener {
 
     private final TrollPlus plugin;
 

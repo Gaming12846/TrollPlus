@@ -11,7 +11,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
  *
  * @author Gaming12846
  */
-public final class EntityDamageByEntityListener implements Listener {
+public class EntityDamageByEntityListener implements Listener {
 
     @EventHandler
     private void onEntityDamageByEntity(EntityDamageByEntityEvent event) {

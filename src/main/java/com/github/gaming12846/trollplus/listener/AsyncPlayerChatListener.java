@@ -12,7 +12,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
  *
  * @author Gaming12846
  */
-public final class AsyncPlayerChatListener implements Listener {
+public class AsyncPlayerChatListener implements Listener {
 
     private final TrollPlus plugin;
 

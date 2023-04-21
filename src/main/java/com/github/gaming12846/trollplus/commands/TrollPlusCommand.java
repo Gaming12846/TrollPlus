@@ -18,7 +18,7 @@ import org.bukkit.plugin.PluginDescriptionFile;
  *
  * @author Gaming12846
  */
-public final class TrollPlusCommand implements CommandExecutor {
+public class TrollPlusCommand implements CommandExecutor {
 
     private final TrollPlus plugin;
 
@@ -60,8 +60,8 @@ public final class TrollPlusCommand implements CommandExecutor {
 
         // Reload subcommand
         else if (args[0].equalsIgnoreCase("reload")) {
-            if (!sender.hasPermission(VMConstants.PERMISSION_RELOAD)) {
-                sender.sendMessage(ChatColor.RED + "You have insufficient permissions to perform this command!");
+            if (!sender.hasPermission(VMConstants.PERMISSION_ALL) || !sender.hasPermission(VMConstants.PERMISSION_RELOAD)) {
+                sender.sendMessage(ChatColor.RED + "You have insufficient permissions to perform this command");
                 return true;
             }
 
@@ -73,13 +73,13 @@ public final class TrollPlusCommand implements CommandExecutor {
             plugin.reloadConfig();
             plugin.getBlocklistConfig().reload();
 
-            sender.sendMessage(VMConstants.PLUGIN_PREFIX + ChatColor.GREEN + "Configuration and blocklist successfully reloaded.");
+            sender.sendMessage(VMConstants.PLUGIN_PREFIX + ChatColor.GREEN + "Configuration and blocklist successfully reloaded");
         }
 
         // Blocklist subcommand
         else if (args[0].equalsIgnoreCase("blocklist")) {
-            if (!sender.hasPermission(VMConstants.PERMISSION_BLOCKLIST_ADD) || !sender.hasPermission(VMConstants.PERMISSION_BLOCKLIST_REMOVE)) {
-                sender.sendMessage(ChatColor.RED + "You have insufficient permissions to perform this command!");
+            if (!sender.hasPermission(VMConstants.PERMISSION_ALL) || !sender.hasPermission(VMConstants.PERMISSION_BLOCKLIST_ALL) || !sender.hasPermission(VMConstants.PERMISSION_BLOCKLIST_ADD) || !sender.hasPermission(VMConstants.PERMISSION_BLOCKLIST_REMOVE)) {
+                sender.sendMessage(ChatColor.RED + "You have insufficient permissions to perform this command");
                 return true;
             }
 
@@ -90,8 +90,8 @@ public final class TrollPlusCommand implements CommandExecutor {
 
             // Blocklist add subcommand
             if (args[1].equalsIgnoreCase("add")) {
-                if (!sender.hasPermission(VMConstants.PERMISSION_BLOCKLIST_ADD)) {
-                    sender.sendMessage(ChatColor.RED + "You have insufficient permissions to perform this command!");
+                if (!sender.hasPermission(VMConstants.PERMISSION_ALL) || !sender.hasPermission(VMConstants.PERMISSION_BLOCKLIST_ALL) || !sender.hasPermission(VMConstants.PERMISSION_BLOCKLIST_ADD)) {
+                    sender.sendMessage(ChatColor.RED + "You have insufficient permissions to perform this command");
                     return true;
                 }
 
@@ -105,12 +105,12 @@ public final class TrollPlusCommand implements CommandExecutor {
 
                 OfflinePlayer offlineTarget = Bukkit.getOfflinePlayer(args[2]);
                 if (blocklistConfig.contains(offlineTarget.getUniqueId().toString())) {
-                    sender.sendMessage(VMConstants.PLUGIN_PREFIX + "The player " + ChatColor.BOLD + offlineTarget.getName() + ChatColor.RESET + " is already in the blocklist.");
+                    sender.sendMessage(VMConstants.PLUGIN_PREFIX + "The player " + ChatColor.BOLD + offlineTarget.getName() + ChatColor.RESET + " is already in the blocklist");
                     return true;
                 }
 
                 blocklistConfig.set(offlineTarget.getUniqueId().toString(), offlineTarget.getName());
-                sender.sendMessage(VMConstants.PLUGIN_PREFIX + "The player " + ChatColor.BOLD + offlineTarget.getName() + ChatColor.RESET + " has been added to the blocklist.");
+                sender.sendMessage(VMConstants.PLUGIN_PREFIX + "The player " + ChatColor.BOLD + offlineTarget.getName() + ChatColor.RESET + " has been added to the blocklist");
 
                 blocklistConfigWrapper.save();
                 blocklistConfigWrapper.reload();
@@ -118,8 +118,8 @@ public final class TrollPlusCommand implements CommandExecutor {
 
             // Blocklist remove subcommand
             else if (args[1].equalsIgnoreCase("remove")) {
-                if (!sender.hasPermission(VMConstants.PERMISSION_BLOCKLIST_REMOVE)) {
-                    sender.sendMessage(ChatColor.RED + "You have insufficient permissions to perform this command!");
+                if (!sender.hasPermission(VMConstants.PERMISSION_ALL) || !sender.hasPermission(VMConstants.PERMISSION_BLOCKLIST_ALL) || !sender.hasPermission(VMConstants.PERMISSION_BLOCKLIST_REMOVE)) {
+                    sender.sendMessage(ChatColor.RED + "You have insufficient permissions to perform this command");
                     return true;
                 }
 
@@ -131,14 +131,15 @@ public final class TrollPlusCommand implements CommandExecutor {
                 ConfigWrapper blocklistConfigWrapper = plugin.getBlocklistConfig();
                 FileConfiguration blocklistConfig = blocklistConfigWrapper.asRawConfig();
 
+
                 OfflinePlayer offlineTarget = Bukkit.getOfflinePlayer(args[2]);
                 if (!blocklistConfig.contains(offlineTarget.getUniqueId().toString())) {
-                    sender.sendMessage(VMConstants.PLUGIN_PREFIX + "The player " + ChatColor.BOLD + offlineTarget.getName() + ChatColor.RESET + " is not in the blocklist.");
+                    sender.sendMessage(VMConstants.PLUGIN_PREFIX + "The player " + ChatColor.BOLD + offlineTarget.getName() + ChatColor.RESET + " is not in the blocklist");
                     return true;
                 }
 
                 blocklistConfig.set(offlineTarget.getUniqueId().toString(), null);
-                sender.sendMessage(VMConstants.PLUGIN_PREFIX + "The player " + ChatColor.BOLD + offlineTarget.getName() + ChatColor.RESET + " has been removed from the blocklist.");
+                sender.sendMessage(VMConstants.PLUGIN_PREFIX + "The player " + ChatColor.BOLD + offlineTarget.getName() + ChatColor.RESET + " has been removed from the blocklist");
 
                 blocklistConfigWrapper.save();
                 blocklistConfigWrapper.reload();

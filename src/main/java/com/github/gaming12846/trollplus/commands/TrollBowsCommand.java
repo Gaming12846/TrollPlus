@@ -23,12 +23,12 @@ public class TrollBowsCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(VMConstants.PLUGIN_PREFIX + label + " command cannot be used from the console.");
+            sender.sendMessage(VMConstants.PLUGIN_PREFIX + label + " command cannot be used from the console");
             return true;
         }
 
-        if (!sender.hasPermission(VMConstants.PERMISSION_TROLLBOWS)) {
-            sender.sendMessage(ChatColor.RED + "You have insufficient permissions to perform this command!");
+        if (!sender.hasPermission(VMConstants.PERMISSION_ALL) || !sender.hasPermission(VMConstants.PERMISSION_TROLLBOWS)) {
+            sender.sendMessage(ChatColor.RED + "You have insufficient permissions to perform this command");
             return true;
         }
 
@@ -38,26 +38,26 @@ public class TrollBowsCommand implements CommandExecutor {
         }
 
         // Create bows menu
-        Inventory bows_menu = Bukkit.createInventory(null, 9, "Bows menu");
+        Inventory bows_menu = Bukkit.createInventory(null, 9, "Trollbows");
 
         // Add bows
-        bows_menu.setItem(8, ItemBuilder.createItemWithLore(Material.BARRIER, 1, 0, ChatColor.RED + "Close", Collections.singletonList("Close the bow menu")));
+        bows_menu.setItem(8, ItemBuilder.createItemWithLore(Material.BARRIER, 1, ChatColor.RED + "Close", Collections.singletonList("Close the bow menu")));
 
-        bows_menu.setItem(0, ItemBuilder.createBow(1, 0, "Explosion bow", Collections.singletonList("Gives the explosion bow")));
-        bows_menu.setItem(1, ItemBuilder.createBow(1, 0, "TNT bow", Collections.singletonList("Gives the TNT bow")));
-        bows_menu.setItem(2, ItemBuilder.createBow(1, 0, "Lightning bolt bow", Collections.singletonList("Gives the lightning bolt bow")));
-        bows_menu.setItem(3, ItemBuilder.createBow(1, 0, "Silverfish bow", Collections.singletonList("Gives the silverfish bow")));
+        bows_menu.setItem(0, ItemBuilder.createBow(1, "Explosion bow", Collections.singletonList("Gives the explosion bow")));
+        bows_menu.setItem(1, ItemBuilder.createBow(1, "TNT bow", Collections.singletonList("Gives the TNT bow")));
+        bows_menu.setItem(2, ItemBuilder.createBow(1, "Lightning bolt bow", Collections.singletonList("Gives the lightning bolt bow")));
+        bows_menu.setItem(3, ItemBuilder.createBow(1, "Silverfish bow", Collections.singletonList("Gives the silverfish bow")));
 
         // Placeholders
-        byte[] placeholderArray = new byte[]{5, 6, 7};
+        byte[] placeholderArray = new byte[]{4, 5, 6, 7};
         for (byte slot : placeholderArray) {
-            bows_menu.setItem(slot, ItemBuilder.createItemWithLore(Material.GRAY_STAINED_GLASS_PANE, 1, 0, " ", Collections.singletonList("Just lonely placeholders :(")));
+            bows_menu.setItem(slot, ItemBuilder.createItemWithLore(Material.GRAY_STAINED_GLASS_PANE, 1, " ", Collections.singletonList("Just a lonely placeholder :(")));
         }
 
         Player player = (Player) sender;
         player.openInventory(bows_menu);
 
-        return false;
+        return true;
     }
 
 }

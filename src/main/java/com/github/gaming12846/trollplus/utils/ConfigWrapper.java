@@ -18,7 +18,7 @@ import java.io.InputStreamReader;
  * @author Gaming12846
  * @credits 2008Choco
  */
-public final class ConfigWrapper {
+public class ConfigWrapper {
 
     private final JavaPlugin plugin;
     private final String rawPath;

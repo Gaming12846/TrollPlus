@@ -14,7 +14,7 @@ import java.util.Scanner;
  *
  * @author Gaming12846
  */
-public final class UpdateChecker {
+public class UpdateChecker {
 
     private final JavaPlugin plugin;
     private final int resourceId;

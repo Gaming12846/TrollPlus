@@ -34,7 +34,7 @@ You always wanted to troll your friends in Minecraft and watch their reactions? 
 - Fake ban
 - Fake op
 
-### Troll bows
+### Trollbows
 
 - Explosion bow
 - TNT bow
@@ -45,9 +45,10 @@ You always wanted to troll your friends in Minecraft and watch their reactions? 
 
 - /trollplus version - Displays information and the version of the TollPlus currently installed on your server
 - /trollplus reload - Reload the plugin's configuration and blocklist file
-- /trollplus blocklist add|remove - Add or remove players to/from the blocklist
-- /troll player - Open the troll menu with multiple features
-- /trollbows - Open the troll bow menu
+- /trollplus blocklist add - Add players to the blocklist
+- /trollplus blocklist remove - Remove players from the blocklist
+- /troll player - Opens the troll menu for a player with multiple features
+- /trollbows - Opens the trollbow menu
 
 ## Alias
 
@@ -56,12 +57,13 @@ You always wanted to troll your friends in Minecraft and watch their reactions? 
 
 ## Permission nodes
 
-- trollplus.reload - Operators - Allow the use of the '/trollplus reload' subcommand
-- trollplus.blocklist.* - Operators - Allow the full use of the '/trollplus blocklist' subcommand
-- trollplus.blocklist.add - Operators - Allow the use of the '/trollplus blocklist add' subcommand
-- trollplus.blocklist.remove - Operators - Allow the use of the '/trollplus blocklist remove' subcommand
-- trollplus.troll - Operators - Allow the use of the '/troll' command
-- trollplus.bows - Operators - Allow the use of the '/trollbows' command
+- trollplus.* - Operators - Gives access to all TrollPlus commands
+- trollplus.reload - Operators - Allows you to use the '/trollplus reload' subcommand
+- trollplus.blocklist.* - Operators - Allows you to use the '/trollplus blocklist' subcommand
+- trollplus.blocklist.add - Operators - Allows you to use the '/trollplus blocklist add' subcommand
+- trollplus.blocklist.remove - Operators - Allows you to use the '/trollplus blocklist remove' subcommand
+- trollplus.troll - Operators - Allows you to use the '/troll' command
+- trollplus.bows - Operators - Allows you to use the '/trollbows' command
 
 ## Note
 

@@ -11,7 +11,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
  *
  * @author Gaming12846
  */
-public final class PlayerInteractListener implements Listener {
+public class PlayerInteractListener implements Listener {
 
     @EventHandler
     private void onPlayerInteract(PlayerInteractEvent event) {
