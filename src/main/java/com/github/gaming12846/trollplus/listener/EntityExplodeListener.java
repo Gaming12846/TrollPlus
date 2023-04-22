@@ -25,7 +25,7 @@ public class EntityExplodeListener implements Listener {
     }
 
     @EventHandler
-    public void onEntityExplode(EntityExplodeEvent event) {
+    private void onEntityExplode(EntityExplodeEvent event) {
         Entity entity = event.getEntity();
 
         // Feature tnt track and tnt bow

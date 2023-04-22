@@ -48,7 +48,7 @@ public class TrollPlusCommand implements CommandExecutor {
             sender.sendMessage(ChatColor.RED + "Version: " + ChatColor.WHITE + description.getVersion());
             sender.sendMessage(ChatColor.RED + "Developer: " + ChatColor.WHITE + description.getAuthors().get(0));
             sender.sendMessage(ChatColor.RED + "Plugin website: " + ChatColor.WHITE + description.getWebsite());
-            sender.sendMessage(ChatColor.RED + "Report bugs to: " + ChatColor.WHITE + "https://github.com/Gaming12846/TrollPlus/issues");
+            sender.sendMessage(ChatColor.RED + "Report bugs to: " + ChatColor.WHITE + "https://github.com/Gaming12846/TrollPlus/issues/");
             sender.sendMessage("");
             sender.sendMessage(headerFooter);
 

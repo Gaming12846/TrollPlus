@@ -6,6 +6,7 @@ import com.github.gaming12846.trollplus.commands.TrollPlusCommand;
 import com.github.gaming12846.trollplus.listener.*;
 import com.github.gaming12846.trollplus.metrics.BStats;
 import com.github.gaming12846.trollplus.utils.ConfigWrapper;
+import com.github.gaming12846.trollplus.utils.TabCompleter;
 import com.github.gaming12846.trollplus.utils.UpdateChecker;
 import com.github.gaming12846.trollplus.utils.VMConstants;
 import org.bukkit.Bukkit;
@@ -36,6 +37,9 @@ public class TrollPlus extends JavaPlugin {
 
         // Register commands
         registerCommands();
+
+        // Register tabcompleter
+        registerTabCompleter();
 
         // Metrics
         if (getConfig().getBoolean(VMConstants.CONFIG_METRICS_ENABLED, true)) {
@@ -84,6 +88,13 @@ public class TrollPlus extends JavaPlugin {
         Objects.requireNonNull(this.getCommand("trollplus")).setExecutor(new TrollPlusCommand(this));
         Objects.requireNonNull(this.getCommand("troll")).setExecutor(new TrollCommand(this));
         Objects.requireNonNull(this.getCommand("trollbows")).setExecutor(new TrollBowsCommand());
+    }
+
+    // Register tabcompleter
+    private void registerTabCompleter() {
+        Objects.requireNonNull(this.getCommand("trollplus")).setTabCompleter(new TabCompleter());
+        Objects.requireNonNull(this.getCommand("troll")).setTabCompleter(new TabCompleter());
+        Objects.requireNonNull(this.getCommand("trollbows")).setTabCompleter(new TabCompleter());
     }
 
     // ConfigWrapper blocklist config
