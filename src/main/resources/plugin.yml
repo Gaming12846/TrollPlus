@@ -51,3 +51,6 @@ permissions:
   trollplus.bows:
     description: Allows you to use the '/trollbows' command
     default: op
+  trollplus.ignoreimmune:
+      description: Allows you to use the '/troll' command on immune players
+      default: op

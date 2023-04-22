@@ -46,6 +46,8 @@ public class VMConstants {
 
     public static final String PERMISSION_TROLLBOWS = "trollplus.bows";
 
+    public static final String PERMISSION_IGNORE_IMMUNE = "trollplus.ignoreimmune";
+
     // Target player
     public static Player TARGET = null;
 

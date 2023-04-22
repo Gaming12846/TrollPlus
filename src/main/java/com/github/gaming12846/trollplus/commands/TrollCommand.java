@@ -35,17 +35,17 @@ public class TrollCommand implements CommandExecutor {
             return true;
         }
 
-        if (!sender.hasPermission(VMConstants.PERMISSION_ALL) || !sender.hasPermission(VMConstants.PERMISSION_TROLL)) {
+        Player player = (Player) sender;
+        if (!player.hasPermission(VMConstants.PERMISSION_ALL) || !sender.hasPermission(VMConstants.PERMISSION_TROLL)) {
             sender.sendMessage(ChatColor.RED + "You have insufficient permissions to perform this command");
             return true;
         }
 
         if (args.length != 1) {
-            sender.sendMessage(VMConstants.PLUGIN_PREFIX + ChatColor.RED + "Invalid command syntax! " + ChatColor.WHITE + "Use /" + label + " <player>");
+            player.sendMessage(VMConstants.PLUGIN_PREFIX + ChatColor.RED + "Invalid command syntax! " + ChatColor.WHITE + "Use /" + label + " <player>");
             return true;
         }
 
-        Player player = (Player) sender;
         Player target = Bukkit.getPlayer(args[0]);
         if (target == null) {
             player.sendMessage(VMConstants.PLUGIN_PREFIX + "The player " + ChatColor.BOLD + args[0] + ChatColor.RESET + " is currently not online");
@@ -55,8 +55,8 @@ public class TrollCommand implements CommandExecutor {
         ConfigWrapper blocklistConfigWrapper = plugin.getBlocklistConfig();
         FileConfiguration blocklistConfig = blocklistConfigWrapper.asRawConfig();
 
-        if (blocklistConfig.contains(target.getUniqueId().toString())) {
-            sender.sendMessage(VMConstants.PLUGIN_PREFIX + "The player " + ChatColor.BOLD + target.getName() + ChatColor.RESET + " is immune");
+        if (blocklistConfig.contains(target.getUniqueId().toString()) && !player.hasPermission(VMConstants.PERMISSION_IGNORE_IMMUNE)) {
+            player.sendMessage(VMConstants.PLUGIN_PREFIX + "The player " + ChatColor.BOLD + target.getName() + ChatColor.RESET + " is immune");
             return true;
         }
 
