@@ -13,38 +13,38 @@ import org.bukkit.inventory.ItemStack;
 public class VMConstants {
 
     // Plugin prefix
-    public static String PLUGIN_PREFIX = "§8[§l§cTrollPlus§8]§r ";
+    public static final String PLUGIN_PREFIX = "§8[§l§cTrollPlus§8]§r ";
 
     // Configuration options
-    public static String CONFIG_METRICS_ENABLED = "MetricsEnabled";
-    public static String CONFIG_CHECK_FOR_UPDATES = "CheckForUpdates";
+    public static final String CONFIG_METRICS_ENABLED = "MetricsEnabled";
+    public static final String CONFIG_CHECK_FOR_UPDATES = "CheckForUpdates";
 
-    public static String CONFIG_SPAM_MESSAGES = "SpamMessages";
+    public static final String CONFIG_SPAM_MESSAGES = "SpamMessages";
 
-    public static String CONFIG_SEMI_BAN_MESSAGE_REPLACE = "SemiBanMessageReplace";
+    public static final String CONFIG_SEMI_BAN_MESSAGE_REPLACE = "SemiBanMessageReplace";
 
-    public static String CONFIG_FAKE_BAN_MESSAGE_BROADCAST_ENABLED = "FakeBanMessageBroadcastEnabled";
-    public static String CONFIG_FAKE_BAN_MESSAGE_PLAYER = "FakeBanMessagePlayer";
-    public static String CONFIG_FAKE_BAN_MESSAGE_BROADCAST = "FakeBanMessagePlayerBroadcast";
+    public static final String CONFIG_FAKE_BAN_MESSAGE_BROADCAST_ENABLED = "FakeBanMessageBroadcastEnabled";
+    public static final String CONFIG_FAKE_BAN_MESSAGE_PLAYER = "FakeBanMessagePlayer";
+    public static final String CONFIG_FAKE_BAN_MESSAGE_BROADCAST = "FakeBanMessagePlayerBroadcast";
 
-    public static String CONFIG_FAKE_OP_MESSAGE_BROADCAST_ENABLED = "FakeOpMessageBroadcastEnabled";
-    public static String CONFIG_FAKE_OP_MESSAGE = "FakeOpMessage";
+    public static final String CONFIG_FAKE_OP_MESSAGE_BROADCAST_ENABLED = "FakeOpMessageBroadcastEnabled";
+    public static final String CONFIG_FAKE_OP_MESSAGE = "FakeOpMessage";
 
-    public static String CONFIG_SET_FIRE = "SetFire";
-    public static String CONFIG_BREAK_BLOCKS = "BreakBlocks";
+    public static final String CONFIG_SET_FIRE = "SetFire";
+    public static final String CONFIG_BREAK_BLOCKS = "BreakBlocks";
 
     // Permission nodes
-    public static String PERMISSION_ALL = "trollplus.*";
+    public static final String PERMISSION_ALL = "trollplus.*";
 
-    public static String PERMISSION_RELOAD = "trollplus.reload";
+    public static final String PERMISSION_RELOAD = "trollplus.reload";
 
-    public static String PERMISSION_BLOCKLIST_ALL = "trollplus.blocklist.*";
-    public static String PERMISSION_BLOCKLIST_ADD = "trollplus.blocklist.add";
-    public static String PERMISSION_BLOCKLIST_REMOVE = "trollplus.blocklist.remove";
+    public static final String PERMISSION_BLOCKLIST_ALL = "trollplus.blocklist.*";
+    public static final String PERMISSION_BLOCKLIST_ADD = "trollplus.blocklist.add";
+    public static final String PERMISSION_BLOCKLIST_REMOVE = "trollplus.blocklist.remove";
 
-    public static String PERMISSION_TROLL = "trollplus.troll";
+    public static final String PERMISSION_TROLL = "trollplus.troll";
 
-    public static String PERMISSION_TROLLBOWS = "trollplus.bows";
+    public static final String PERMISSION_TROLLBOWS = "trollplus.bows";
 
     // Target player
     public static Player TARGET = null;
