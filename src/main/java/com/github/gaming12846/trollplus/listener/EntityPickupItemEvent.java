@@ -10,9 +10,10 @@ import org.bukkit.event.Listener;
  * @author Gaming12846
  */
 public class EntityPickupItemEvent implements Listener {
-
     @EventHandler
     private void onEntityPickupItemEvent(org.bukkit.event.entity.EntityPickupItemEvent event) {
+        if (!(event.getEntity() instanceof Player)) return;
+
         Player player = (Player) event.getEntity();
 
         // Feature freeze

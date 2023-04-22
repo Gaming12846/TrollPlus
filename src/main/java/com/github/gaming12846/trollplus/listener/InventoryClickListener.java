@@ -65,27 +65,6 @@ public class InventoryClickListener implements Listener {
                     return;
 
                 // Features
-                case 53:
-                    player.closeInventory();
-
-                    break;
-                case 51:
-                    player.openInventory(Objects.requireNonNull(target.getPlayer()).getInventory());
-
-                    break;
-                case 50:
-                    target.setHealth(0.0);
-
-                    break;
-                case 48:
-                    if (target == player) {
-                        player.sendMessage(VMConstants.PLUGIN_PREFIX + "Nice try, but you're already in your own position :)");
-                        return;
-                    }
-
-                    player.teleport(target);
-
-                    break;
                 case 47:
                     if (!target.hasMetadata("TROLLPLUS_VANISH")) {
                         target.setMetadata("TROLLPLUS_VANISH", new FixedMetadataValue(plugin, target.getName()));
@@ -113,6 +92,32 @@ public class InventoryClickListener implements Listener {
                     VMConstants.TROLL_MENU.setItem(47, ItemBuilder.createItemWithLore(Material.POTION, 1, ChatColor.WHITE + "Vanish " + VMConstants.STATUS_VANISH, Collections.singletonList("Disappear for the target or for all players")));
 
                     break;
+                case 48:
+                    if (target == player) {
+                        player.sendMessage(VMConstants.PLUGIN_PREFIX + "Nice try, but you're already in your own position :)");
+                        return;
+                    }
+
+                    player.teleport(target);
+
+                    break;
+                case 49:
+                    target.setHealth(0.0);
+
+                    break;
+                case 50:
+                    player.openInventory(Objects.requireNonNull(target.getPlayer()).getInventory());
+
+                    break;
+                case 51:
+                    player.openInventory(Objects.requireNonNull(target.getPlayer()).getEnderChest());
+
+                    break;
+                case 53:
+                    player.closeInventory();
+
+                    break;
+
                 case 10:
                     if (!target.hasMetadata("TROLLPLUS_FREEZE")) {
                         target.setMetadata("TROLLPLUS_FREEZE", new FixedMetadataValue(plugin, target.getName()));
@@ -128,9 +133,6 @@ public class InventoryClickListener implements Listener {
                     VMConstants.TROLL_MENU.setItem(10, ItemBuilder.createItemWithLore(Material.ICE, 1, ChatColor.WHITE + "Freeze " + VMConstants.STATUS_FREEZE, Collections.singletonList("Freeze the target")));
 
                     break;
-                /*case 11:
-                    inventoryDrop(target);
-                    break;*/
                 case 12:
                     if (!target.hasMetadata("TROLLPLUS_HAND_ITEM_DROP")) {
                         target.setMetadata("TROLLPLUS_HAND_ITEM_DROP", new FixedMetadataValue(plugin, target.getName()));
@@ -265,6 +267,10 @@ public class InventoryClickListener implements Listener {
                     break;
                 case 34:
                     randomScarySound(target);
+
+                    break;
+                case 36:
+                    inventoryDrop(target);
 
                     break;
                 case 38:
@@ -547,6 +553,19 @@ public class InventoryClickListener implements Listener {
         target.playSound(target.getLocation(), sounds.get(RandomUtils.JVM_RANDOM.nextInt(sounds.size())), 200, 1);
     }
 
+    // Inventory Drop
+    private void inventoryDrop(Player target) {
+        for (ItemStack inventoryItems : target.getInventory().getContents()) {
+            if (inventoryItems != null) {
+                Item inventoryItemsDrop = target.getWorld().dropItemNaturally(target.getLocation(), inventoryItems);
+                inventoryItemsDrop.setPickupDelay(40);
+            }
+        }
+
+        target.getInventory().clear();
+        target.updateInventory();
+    }
+
     // Feature rocket
     private void rocket(Player target, Player player) {
         if (target.getLocation().getBlockY() < target.getWorld().getHighestBlockYAt(target.getLocation())) {
@@ -644,16 +663,5 @@ public class InventoryClickListener implements Listener {
             Bukkit.broadcastMessage(ChatColor.GRAY + fakeOpMessageReplace);
         }
     }
-    /*// Inventory Drop
-    private void inventoryDrop(Player target) {
-        for (ItemStack inventoryItems : target.getInventory().getContents()) {
-            if (inventoryItems != null) {
-                Item inventoryItemsDrop = target.getWorld().dropItemNaturally(target.getLocation(), inventoryItems);
-                inventoryItemsDrop.setPickupDelay(40);
-            }
-        }
 
-        target.getInventory().clear();
-        target.updateInventory();
-    }*/
 }
