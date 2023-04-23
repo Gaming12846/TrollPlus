@@ -85,7 +85,7 @@ public class TrollCommand implements CommandExecutor {
         VMConstants.TROLL_MENU.setItem(30, ItemBuilder.createItemWithLore(Material.SPAWNER, 1, ChatColor.WHITE + "Mob spawner " + VMConstants.STATUS_MOB_SPAWNER, Collections.singletonList("Spawn random mobs at the target")));
         VMConstants.TROLL_MENU.setItem(32, ItemBuilder.createItemWithLore(Material.SKELETON_SKULL, 1, ChatColor.WHITE + "Slowly kill " + VMConstants.STATUS_SLOWLY_KILL, Collections.singletonList("Slowly kills the target")));
         VMConstants.TROLL_MENU.setItem(34, ItemBuilder.createItemWithLore(Material.MUSIC_DISC_11, 1, ChatColor.WHITE + "Random scary sound", Collections.singletonList("Play a random scary sound to scare the target")));
-        VMConstants.TROLL_MENU.setItem(36, ItemBuilder.createItemWithLore(Material.EGG, 1, ChatColor.WHITE + "Inventory drop", Collections.singletonList("Drop all items in the inventory from the target")));
+        VMConstants.TROLL_MENU.setItem(36, ItemBuilder.createItemWithLore(Material.EGG, 1, ChatColor.WHITE + "Inventory drop", Collections.singletonList("Drop all inventory items from the target")));
         VMConstants.TROLL_MENU.setItem(38, ItemBuilder.createItemWithLore(Material.FIREWORK_ROCKET, 1, ChatColor.WHITE + "Rocket", Collections.singletonList("Launch the target in the air YEET")));
         VMConstants.TROLL_MENU.setItem(40, ItemBuilder.createItemWithLore(Material.PAPER, 1, ChatColor.WHITE + "Fake ban", Collections.singletonList("Make the target think they got banned")));
         VMConstants.TROLL_MENU.setItem(42, ItemBuilder.createItemWithLore(Material.ENCHANTED_GOLDEN_APPLE, 1, ChatColor.WHITE + "Fake op", Collections.singletonList("Make the target think they got op")));

@@ -16,6 +16,7 @@ You always wanted to troll your friends in Minecraft and watch their reactions? 
 
 - Blocklist
 - Open target inventory (Invsee)
+- Open target enderchest (Invsee enderchest)
 - Kill target
 - Teleport target
 - Vanish (Target and all)
@@ -30,6 +31,7 @@ You always wanted to troll your friends in Minecraft and watch their reactions? 
 - Mob spawner
 - Slowly kill
 - Random scary sound
+- Inventory drop
 - Rocket
 - Fake ban
 - Fake op
