@@ -26,13 +26,12 @@ public class ProjectileLaunchListener implements Listener {
 
     @EventHandler
     private void onProjectileLaunchEvent(ProjectileLaunchEvent event) {
-        if (!(event.getEntity().getShooter() instanceof Player)) {
-            return;
-        }
+        if (!(event.getEntity().getShooter() instanceof Player)) return;
 
         Arrow arrow = (Arrow) event.getEntity();
 
         Player player = (Player) arrow.getShooter();
+
         // Explosion bow
         if (player.getInventory().getItemInMainHand().getItemMeta() != null && player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(ChatColor.RED + "Explosion bow")) {
             arrow.setMetadata("TROLLPLUS_EXPLOSION_ARROW", new FixedMetadataValue(plugin, arrow));
@@ -41,7 +40,7 @@ public class ProjectileLaunchListener implements Listener {
 
                 @Override
                 public void run() {
-                    if (arrow.isOnGround()) {
+                    if (arrow.isInBlock()) {
                         cancel();
                         return;
                     }
@@ -60,7 +59,7 @@ public class ProjectileLaunchListener implements Listener {
 
                 @Override
                 public void run() {
-                    if (arrow.isOnGround()) {
+                    if (arrow.isInBlock()) {
                         cancel();
                         return;
                     }
@@ -79,7 +78,7 @@ public class ProjectileLaunchListener implements Listener {
 
                 @Override
                 public void run() {
-                    if (arrow.isOnGround()) {
+                    if (arrow.isInBlock()) {
                         cancel();
                         return;
                     }
@@ -98,7 +97,7 @@ public class ProjectileLaunchListener implements Listener {
 
                 @Override
                 public void run() {
-                    if (arrow.isOnGround()) {
+                    if (arrow.isInBlock()) {
                         cancel();
                         return;
                     }

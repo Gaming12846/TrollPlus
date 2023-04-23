@@ -12,6 +12,7 @@ import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.potion.PotionEffect;
@@ -57,7 +58,7 @@ public class InventoryClickListener implements Listener {
 
         Player target = VMConstants.TARGET;
 
-        if (target != null && event.getView().getTitle().equals("Troll " + ChatColor.GOLD + ChatColor.BOLD + target.getName())) {
+        if (event.getView().getTitle().equals("Troll " + ChatColor.GOLD + ChatColor.BOLD + target.getName()) && !Objects.requireNonNull(event.getClickedInventory()).getType().equals(InventoryType.PLAYER)) {
             event.setCancelled(true);
 
             switch (event.getSlot()) {
@@ -287,7 +288,7 @@ public class InventoryClickListener implements Listener {
                     break;
             }
 
-        } else if (event.getView().getTitle().equals("Trollbows")) {
+        } else if (event.getView().getTitle().equals("Trollbows") && !Objects.requireNonNull(event.getClickedInventory()).getType().equals(InventoryType.PLAYER)) {
             event.setCancelled(true);
 
             switch (event.getSlot()) {

@@ -19,7 +19,6 @@ import java.util.Collections;
  * @author Gaming12846
  */
 public class TrollBowsCommand implements CommandExecutor {
-// TODO Fix animations when hit entity
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
