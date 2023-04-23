@@ -12,7 +12,6 @@ import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.potion.PotionEffect;
@@ -30,7 +29,6 @@ import java.util.Objects;
  * @author Gaming12846
  */
 public class InventoryClickListener implements Listener {
-
     private final TrollPlus plugin;
 
     public InventoryClickListener(TrollPlus plugin) {
@@ -42,29 +40,22 @@ public class InventoryClickListener implements Listener {
         Player player = (Player) event.getWhoClicked();
 
         // Feature freeze
-        if (player.hasMetadata("TROLLPLUS_FREEZE")) {
-            event.setCancelled(true);
-        }
+        if (player.hasMetadata("TROLLPLUS_FREEZE")) event.setCancelled(true);
 
         // Feature control
-        if (player.hasMetadata("TROLLPLUS_CONTROL_TARGET")) {
-            event.setCancelled(true);
-        }
+        if (player.hasMetadata("TROLLPLUS_CONTROL_TARGET")) event.setCancelled(true);
 
         // Feature semi ban
-        if (player.hasMetadata("TROLLPLUS_SEMI_BAN")) {
-            event.setCancelled(true);
-        }
+        if (player.hasMetadata("TROLLPLUS_SEMI_BAN")) event.setCancelled(true);
 
         Player target = VMConstants.TARGET;
 
-        if (event.getView().getTitle().equals("Troll " + ChatColor.GOLD + ChatColor.BOLD + target.getName()) && !Objects.requireNonNull(event.getClickedInventory()).getType().equals(InventoryType.PLAYER)) {
+        if (Objects.equals(event.getClickedInventory(), VMConstants.TROLL_MENU)) {
             event.setCancelled(true);
 
             switch (event.getSlot()) {
                 default:
                     return;
-
                 // Features
                 case 47:
                     if (!target.hasMetadata("TROLLPLUS_VANISH")) {
@@ -288,49 +279,50 @@ public class InventoryClickListener implements Listener {
                     break;
             }
 
-        } else if (event.getView().getTitle().equals("Trollbows") && !Objects.requireNonNull(event.getClickedInventory()).getType().equals(InventoryType.PLAYER)) {
+        } else if (Objects.equals(event.getClickedInventory(), VMConstants.BOWS_MENU)) {
             event.setCancelled(true);
+
+            ItemStack arrow = new ItemStack(Material.ARROW, 1);
 
             switch (event.getSlot()) {
                 default:
                     return;
-
                 // Features
                 case 8:
                     player.closeInventory();
 
                     break;
                 case 0:
-                    if (player.getGameMode() != GameMode.CREATIVE && !player.getInventory().contains(new ItemStack(Material.ARROW))) {
+                    if (player.getGameMode() != GameMode.CREATIVE && !player.getInventory().contains(Material.ARROW)) {
                         player.getInventory().addItem(ItemBuilder.createBow(1, "Explosion bow", Collections.singletonList("Create an explosion on hit")));
-                        player.getInventory().addItem(new ItemStack(Material.ARROW));
+                        player.getInventory().addItem(arrow);
                         return;
                     }
                     player.getInventory().addItem(ItemBuilder.createBow(1, "Explosion bow", Collections.singletonList("Create an explosion on hit")));
 
                     break;
                 case 1:
-                    if (player.getGameMode() != GameMode.CREATIVE && !player.getInventory().contains(new ItemStack(Material.ARROW))) {
+                    if (player.getGameMode() != GameMode.CREATIVE && !player.getInventory().contains(Material.ARROW)) {
                         player.getInventory().addItem(ItemBuilder.createBow(1, "TNT bow", Collections.singletonList("Create an primed TNT on hit")));
-                        player.getInventory().addItem(new ItemStack(Material.ARROW));
+                        player.getInventory().addItem(arrow);
                         return;
                     }
                     player.getInventory().addItem(ItemBuilder.createBow(1, "TNT bow", Collections.singletonList("Create an primed TNT on hit")));
 
                     break;
                 case 2:
-                    if (player.getGameMode() != GameMode.CREATIVE && !player.getInventory().contains(new ItemStack(Material.ARROW))) {
+                    if (player.getGameMode() != GameMode.CREATIVE && !player.getInventory().contains(Material.ARROW)) {
                         player.getInventory().addItem(ItemBuilder.createBow(1, "Lightning bolt bow", Collections.singletonList("Create an lightning bolt on hit")));
-                        player.getInventory().addItem(new ItemStack(Material.ARROW));
+                        player.getInventory().addItem(arrow);
                         return;
                     }
                     player.getInventory().addItem(ItemBuilder.createBow(1, "Lightning bolt bow", Collections.singletonList("Create an lightning bolt on hit")));
 
                     break;
                 case 3:
-                    if (player.getGameMode() != GameMode.CREATIVE && !player.getInventory().contains(new ItemStack(Material.ARROW))) {
+                    if (player.getGameMode() != GameMode.CREATIVE && !player.getInventory().contains(Material.ARROW)) {
                         player.getInventory().addItem(ItemBuilder.createBow(1, "Silverfish bow", Collections.singletonList("Spawn silverfishes on hit")));
-                        player.getInventory().addItem(new ItemStack(Material.ARROW));
+                        player.getInventory().addItem(arrow);
                         return;
                     }
                     player.getInventory().addItem(ItemBuilder.createBow(1, "Silverfish bow", Collections.singletonList("Spawn silverfishes on hit")));
@@ -343,7 +335,6 @@ public class InventoryClickListener implements Listener {
     // Feature hand item drop
     private void handItemDrop(Player target) {
         new BukkitRunnable() {
-
             @Override
             public void run() {
                 if (!target.hasMetadata("TROLLPLUS_HAND_ITEM_DROP")) {
@@ -351,9 +342,7 @@ public class InventoryClickListener implements Listener {
                     return;
                 }
 
-                if (target.getInventory().getItemInMainHand().getType() == Material.AIR) {
-                    return;
-                }
+                if (target.getInventory().getItemInMainHand().getType() == Material.AIR) return;
 
                 ItemStack item = target.getInventory().getItemInMainHand();
                 ItemStack dropItem = new ItemStack(item.getType(), 1);
@@ -365,7 +354,6 @@ public class InventoryClickListener implements Listener {
                 item.setAmount(amount);
                 target.getInventory().setItemInMainHand(item);
             }
-
         }.runTaskTimer(plugin, 0, 10);
     }
 
@@ -388,7 +376,6 @@ public class InventoryClickListener implements Listener {
         player.getInventory().setItemInOffHand(target.getInventory().getItemInOffHand());
 
         new BukkitRunnable() {
-
             @Override
             public void run() {
                 if (!target.hasMetadata("TROLLPLUS_CONTROL_TARGET")) {
@@ -416,18 +403,14 @@ public class InventoryClickListener implements Listener {
                     VMConstants.CONTROL_MESSAGE_BOOLEAN = false;
                 }
 
-                if (target.getLocation() != player.getLocation()) {
-                    target.teleport(player);
-                }
+                if (target.getLocation() != player.getLocation()) target.teleport(player);
             }
-
         }.runTaskTimer(plugin, 0, 1);
     }
 
     // Feature spam messages
     private void spamMessages(Player target) {
         new BukkitRunnable() {
-
             @Override
             public void run() {
                 if (!target.hasMetadata("TROLLPLUS_SPAM_MESSAGES")) {
@@ -459,14 +442,12 @@ public class InventoryClickListener implements Listener {
                 target.sendMessage(stringBuilderChat.toString());
                 target.sendTitle(stringBuilderTitle.toString(), stringBuilderTitle2.toString(), 3, 10, 3);
             }
-
         }.runTaskTimer(plugin, 0, 15);
     }
 
     // Feature spam sounds
     private void spamSounds(Player target) {
         new BukkitRunnable() {
-
             @Override
             public void run() {
                 if (!target.hasMetadata("TROLLPLUS_SPAM_SOUNDS")) {
@@ -478,14 +459,12 @@ public class InventoryClickListener implements Listener {
 
                 target.playSound(target.getLocation(), sounds.get(RandomUtils.JVM_RANDOM.nextInt(sounds.size())), RandomUtils.JVM_RANDOM.nextInt(), RandomUtils.JVM_RANDOM.nextInt());
             }
-
         }.runTaskTimer(plugin, 0, 5);
     }
 
     // Feature tnt track
     private void tntTrack(Player target) {
         new BukkitRunnable() {
-
             @Override
             public void run() {
                 if (!target.hasMetadata("TROLLPLUS_TNT_TRACK")) {
@@ -498,14 +477,12 @@ public class InventoryClickListener implements Listener {
                 tnt.setMetadata("TROLLPLUS_TNT", new FixedMetadataValue(plugin, tnt));
                 tnt.getWorld().playSound(target.getLocation(), Sound.ENTITY_TNT_PRIMED, 20, 1);
             }
-
         }.runTaskTimer(plugin, 0, 15);
     }
 
     // Feature mob spawner
     private void mobSpawner(Player target) {
         new BukkitRunnable() {
-
             @Override
             public void run() {
                 if (!target.hasMetadata("TROLLPLUS_MOB_SPAWNER")) {
@@ -517,14 +494,12 @@ public class InventoryClickListener implements Listener {
 
                 target.getWorld().spawnEntity(target.getLocation(), mobs.get(RandomUtils.JVM_RANDOM.nextInt(mobs.size())));
             }
-
         }.runTaskTimer(plugin, 0, 15);
     }
 
     // Feature slowly kill
     private void slowlyKill(Player target, Player player) {
         new BukkitRunnable() {
-
             @Override
             public void run() {
                 if (!target.hasMetadata("TROLLPLUS_SLOWLY_KILL")) {
@@ -533,7 +508,7 @@ public class InventoryClickListener implements Listener {
                 }
 
                 if (target.getGameMode() == GameMode.CREATIVE || target.getGameMode() == GameMode.SPECTATOR) {
-                    player.sendMessage(VMConstants.PLUGIN_PREFIX + "Cannot slowly kill because the target " + ChatColor.BOLD + target.getName() + ChatColor.RESET + " is not in survival or adventure mode.");
+                    player.sendMessage(VMConstants.PLUGIN_PREFIX + "Cannot slowly kill because the target " + ChatColor.BOLD + target.getName() + ChatColor.RESET + " is not in survival or adventure mode");
                     target.removeMetadata("TROLLPLUS_SLOWLY_KILL", plugin);
                     VMConstants.STATUS_SLOWLY_KILL = "§c§lOFF";
                     VMConstants.TROLL_MENU.setItem(32, ItemBuilder.createItemWithLore(Material.SKELETON_SKULL, 1, ChatColor.WHITE + "Slowly kill " + VMConstants.STATUS_SLOWLY_KILL, Collections.singletonList("Slowly kills the target")));
@@ -543,7 +518,6 @@ public class InventoryClickListener implements Listener {
 
                 target.damage(1);
             }
-
         }.runTaskTimer(plugin, 0, 80);
     }
 
@@ -570,7 +544,7 @@ public class InventoryClickListener implements Listener {
     // Feature rocket
     private void rocket(Player target, Player player) {
         if (target.getLocation().getBlockY() < target.getWorld().getHighestBlockYAt(target.getLocation())) {
-            player.sendMessage(VMConstants.PLUGIN_PREFIX + "Cannot launch because the target " + ChatColor.BOLD + target.getName() + ChatColor.RESET + " is not under the open sky.");
+            player.sendMessage(VMConstants.PLUGIN_PREFIX + "Cannot launch because the target " + ChatColor.BOLD + target.getName() + ChatColor.RESET + " is not under the open sky");
             target.removeMetadata("TROLLPLUS_ROCKET_NO_FALL_DAMAGE", plugin);
             return;
         }
@@ -596,17 +570,15 @@ public class InventoryClickListener implements Listener {
 
         Boolean finalTargetAllowToFlight = targetAllowedToFlight;
         new BukkitRunnable() {
-
             byte rocket = 0;
 
             @Override
             public void run() {
                 if (rocket < 22) {
                     if (target.getLocation().getBlockY() < target.getWorld().getHighestBlockYAt(target.getLocation())) {
-                        if (!finalTargetAllowToFlight) {
-                            target.setAllowFlight(false);
-                        }
-                        player.sendMessage(VMConstants.PLUGIN_PREFIX + "Launch stopped because the target " + ChatColor.BOLD + target.getName() + ChatColor.RESET + " is no longer under the open sky.");
+                        if (!finalTargetAllowToFlight) target.setAllowFlight(false);
+
+                        player.sendMessage(VMConstants.PLUGIN_PREFIX + "Launch stopped because the target " + ChatColor.BOLD + target.getName() + ChatColor.RESET + " is no longer under the open sky");
 
                         cancel();
                         rocket = 0;
@@ -616,15 +588,12 @@ public class InventoryClickListener implements Listener {
                     target.setVelocity(target.getVelocity().setY(20));
                     rocket++;
                 } else {
-                    if (!finalTargetAllowToFlight) {
-                        target.setAllowFlight(false);
-                    }
+                    if (!finalTargetAllowToFlight) target.setAllowFlight(false);
 
                     rocket = 0;
                     cancel();
                 }
             }
-
         }.runTaskTimer(plugin, 0, 6);
     }
 
@@ -632,9 +601,7 @@ public class InventoryClickListener implements Listener {
     private void fakeBan(Player target) {
         String fakeBanMessagePlayer = plugin.getConfig().getString(VMConstants.CONFIG_FAKE_BAN_MESSAGE_PLAYER, "");
 
-        if (!fakeBanMessagePlayer.isEmpty()) {
-            target.kickPlayer(fakeBanMessagePlayer);
-        }
+        if (!fakeBanMessagePlayer.isEmpty()) target.kickPlayer(fakeBanMessagePlayer);
 
         if (plugin.getConfig().getBoolean(VMConstants.CONFIG_FAKE_BAN_MESSAGE_BROADCAST_ENABLED, true)) {
             String fakeBanMessageBroadcast = plugin.getConfig().getString(VMConstants.CONFIG_FAKE_BAN_MESSAGE_BROADCAST, "");
@@ -664,5 +631,4 @@ public class InventoryClickListener implements Listener {
             Bukkit.broadcastMessage(ChatColor.GRAY + fakeOpMessageReplace);
         }
     }
-
 }

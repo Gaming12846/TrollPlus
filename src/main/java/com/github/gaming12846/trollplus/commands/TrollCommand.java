@@ -21,7 +21,6 @@ import java.util.Collections;
  * @author Gaming12846
  */
 public class TrollCommand implements CommandExecutor {
-
     private final TrollPlus plugin;
 
     public TrollCommand(TrollPlus plugin) {
@@ -37,7 +36,7 @@ public class TrollCommand implements CommandExecutor {
 
         Player player = (Player) sender;
         if (!player.hasPermission(VMConstants.PERMISSION_ALL) || !sender.hasPermission(VMConstants.PERMISSION_TROLL)) {
-            sender.sendMessage(ChatColor.RED + "You have insufficient permissions to perform this command");
+            sender.sendMessage(VMConstants.PLUGIN_NO_PERMISSION);
             return true;
         }
 
@@ -103,9 +102,14 @@ public class TrollCommand implements CommandExecutor {
             VMConstants.TROLL_MENU.setItem(slot, ItemBuilder.createItemWithLore(Material.GRAY_STAINED_GLASS_PANE, 1, " ", Collections.singletonList("Just a lonely placeholder :(")));
         }
 
+        // Placeholders coming soon
+        byte[] placeholderArray3 = new byte[]{18, 26, 44};
+        for (byte slot : placeholderArray3) {
+            VMConstants.TROLL_MENU.setItem(slot, ItemBuilder.createItemWithLore(Material.REDSTONE, 1, "Coming soon", Collections.singletonList("A lonely placeholder for upcoming features")));
+        }
+
         player.openInventory(VMConstants.TROLL_MENU);
 
         return true;
     }
-
 }

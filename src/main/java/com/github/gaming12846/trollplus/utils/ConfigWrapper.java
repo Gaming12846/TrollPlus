@@ -19,7 +19,6 @@ import java.io.InputStreamReader;
  * @credits 2008Choco
  */
 public class ConfigWrapper {
-
     private final JavaPlugin plugin;
     private final String rawPath;
 
@@ -76,5 +75,4 @@ public class ConfigWrapper {
 
         this.config.setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(defaultConfigStream, Charsets.UTF_8)));
     }
-
 }

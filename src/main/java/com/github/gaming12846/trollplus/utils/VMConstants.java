@@ -11,9 +11,9 @@ import org.bukkit.inventory.ItemStack;
  * @author Gaming12846
  */
 public class VMConstants {
-
-    // Plugin prefix
+    // Presets
     public static final String PLUGIN_PREFIX = "§8[§l§cTrollPlus§8]§r ";
+    public static final String PLUGIN_NO_PERMISSION = "§cYou have insufficient permissions to perform this command";
 
     // Configuration options
     public static final String CONFIG_METRICS_ENABLED = "MetricsEnabled";
@@ -51,8 +51,9 @@ public class VMConstants {
     // Target player
     public static Player TARGET = null;
 
-    // Inventory troll menu
+    // Inventorys
     public static Inventory TROLL_MENU = null;
+    public static Inventory BOWS_MENU = null;
 
     // Feature control
     public static String CONTROL_MESSAGE = null;

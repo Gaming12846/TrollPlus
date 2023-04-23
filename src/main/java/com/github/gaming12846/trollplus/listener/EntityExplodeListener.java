@@ -17,7 +17,6 @@ import java.util.Objects;
  * @author Gaming12846
  */
 public class EntityExplodeListener implements Listener {
-
     private final TrollPlus plugin;
 
     public EntityExplodeListener(TrollPlus plugin) {
@@ -30,12 +29,10 @@ public class EntityExplodeListener implements Listener {
 
         // Feature tnt track and tnt bow
         if (entity instanceof TNTPrimed && entity.hasMetadata("TROLLPLUS_TNT")) {
-            if (plugin.getConfig().getBoolean(VMConstants.CONFIG_BREAK_BLOCKS, true)) {
-                return;
-            }
+            if (plugin.getConfig().getBoolean(VMConstants.CONFIG_BREAK_BLOCKS, true)) return;
+
             event.setCancelled(true);
             Objects.requireNonNull(entity.getLocation().getWorld()).playSound(entity.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 20, 1);
         }
     }
-
 }

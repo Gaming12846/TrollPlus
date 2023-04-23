@@ -18,7 +18,6 @@ import java.util.List;
  * @author Gaming12846
  */
 public class ItemBuilder {
-
     // Create an itemstack with lore
     public static ItemStack createItemWithLore(Material mat, int amount, String name, List<String> lore) {
         ItemStack item = new ItemStack(mat, amount);
@@ -65,5 +64,4 @@ public class ItemBuilder {
         item.setItemMeta(meta);
         return item;
     }
-
 }

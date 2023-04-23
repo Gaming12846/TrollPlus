@@ -17,7 +17,6 @@ import org.bukkit.metadata.FixedMetadataValue;
  * @author Gaming12846
  */
 public class ProjectileHitListener implements Listener {
-
     private final TrollPlus plugin;
 
     public ProjectileHitListener(TrollPlus plugin) {
@@ -26,9 +25,7 @@ public class ProjectileHitListener implements Listener {
 
     @EventHandler
     private void onProjectileHitEvent(ProjectileHitEvent event) {
-        if (!(event.getEntity().getShooter() instanceof Player)) {
-            return;
-        }
+        if (!(event.getEntity().getShooter() instanceof Player)) return;
 
         Arrow arrow = (Arrow) event.getEntity();
 
@@ -68,5 +65,4 @@ public class ProjectileHitListener implements Listener {
             }
         }
     }
-
 }

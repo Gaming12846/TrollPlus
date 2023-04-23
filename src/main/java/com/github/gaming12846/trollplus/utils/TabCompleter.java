@@ -14,7 +14,6 @@ import java.util.List;
  * @author Gaming12846
  */
 public class TabCompleter implements org.bukkit.command.TabCompleter {
-
     List<String> results = new ArrayList<>();
 
     @Override
@@ -53,5 +52,4 @@ public class TabCompleter implements org.bukkit.command.TabCompleter {
         } else if (cmd.getLabel().equalsIgnoreCase("trollbows")) results.clear();
         return results;
     }
-
 }

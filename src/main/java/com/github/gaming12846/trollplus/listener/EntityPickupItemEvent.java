@@ -17,19 +17,12 @@ public class EntityPickupItemEvent implements Listener {
         Player player = (Player) event.getEntity();
 
         // Feature freeze
-        if (player.hasMetadata("TROLLPLUS_FREEZE")) {
-            event.setCancelled(true);
-        }
+        if (player.hasMetadata("TROLLPLUS_FREEZE")) event.setCancelled(true);
 
         // Feature control
-        if (player.hasMetadata("TROLLPLUS_CONTROL_TARGET")) {
-            event.setCancelled(true);
-        }
+        if (player.hasMetadata("TROLLPLUS_CONTROL_TARGET")) event.setCancelled(true);
 
         // Feature semi ban
-        if (player.hasMetadata("TROLLPLUS_SEMI_BAN")) {
-            event.setCancelled(true);
-        }
+        if (player.hasMetadata("TROLLPLUS_SEMI_BAN")) event.setCancelled(true);
     }
-
 }

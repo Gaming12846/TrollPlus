@@ -19,7 +19,6 @@ import org.bukkit.plugin.PluginDescriptionFile;
  * @author Gaming12846
  */
 public class TrollPlusCommand implements CommandExecutor {
-
     private final TrollPlus plugin;
 
     public TrollPlusCommand(TrollPlus plugin) {
@@ -48,20 +47,20 @@ public class TrollPlusCommand implements CommandExecutor {
             sender.sendMessage(ChatColor.RED + "Version: " + ChatColor.WHITE + description.getVersion());
             sender.sendMessage(ChatColor.RED + "Developer: " + ChatColor.WHITE + description.getAuthors().get(0));
             sender.sendMessage(ChatColor.RED + "Plugin website: " + ChatColor.WHITE + description.getWebsite());
-            sender.sendMessage(ChatColor.RED + "Report bugs to: " + ChatColor.WHITE + "https://github.com/Gaming12846/TrollPlus/issues/");
+            sender.sendMessage(ChatColor.RED + "Report bugs to: " + ChatColor.WHITE + "https://github.com/Gaming12846/TrollPlus/issues");
             sender.sendMessage("");
             sender.sendMessage(headerFooter);
 
             if (plugin.updateAvailable) {
                 sender.sendMessage("");
-                sender.sendMessage(VMConstants.PLUGIN_PREFIX + "A new update is available! To download it visit SpigotMC: https://www.spigotmc.org/resources/81193/");
+                sender.sendMessage(VMConstants.PLUGIN_PREFIX + "A new update is available! To download it visit SpigotMC: https://www.spigotmc.org/resources/81193");
             }
         }
 
         // Reload subcommand
         else if (args[0].equalsIgnoreCase("reload")) {
             if (!sender.hasPermission(VMConstants.PERMISSION_ALL) || !sender.hasPermission(VMConstants.PERMISSION_RELOAD)) {
-                sender.sendMessage(ChatColor.RED + "You have insufficient permissions to perform this command");
+                sender.sendMessage(VMConstants.PLUGIN_NO_PERMISSION);
                 return true;
             }
 
@@ -79,7 +78,7 @@ public class TrollPlusCommand implements CommandExecutor {
         // Blocklist subcommand
         else if (args[0].equalsIgnoreCase("blocklist")) {
             if (!sender.hasPermission(VMConstants.PERMISSION_ALL) || !sender.hasPermission(VMConstants.PERMISSION_BLOCKLIST_ALL) || !sender.hasPermission(VMConstants.PERMISSION_BLOCKLIST_ADD) || !sender.hasPermission(VMConstants.PERMISSION_BLOCKLIST_REMOVE)) {
-                sender.sendMessage(ChatColor.RED + "You have insufficient permissions to perform this command");
+                sender.sendMessage(VMConstants.PLUGIN_NO_PERMISSION);
                 return true;
             }
 
@@ -91,7 +90,7 @@ public class TrollPlusCommand implements CommandExecutor {
             // Blocklist add subcommand
             if (args[1].equalsIgnoreCase("add")) {
                 if (!sender.hasPermission(VMConstants.PERMISSION_ALL) || !sender.hasPermission(VMConstants.PERMISSION_BLOCKLIST_ALL) || !sender.hasPermission(VMConstants.PERMISSION_BLOCKLIST_ADD)) {
-                    sender.sendMessage(ChatColor.RED + "You have insufficient permissions to perform this command");
+                    sender.sendMessage(VMConstants.PLUGIN_NO_PERMISSION);
                     return true;
                 }
 
@@ -119,7 +118,7 @@ public class TrollPlusCommand implements CommandExecutor {
             // Blocklist remove subcommand
             else if (args[1].equalsIgnoreCase("remove")) {
                 if (!sender.hasPermission(VMConstants.PERMISSION_ALL) || !sender.hasPermission(VMConstants.PERMISSION_BLOCKLIST_ALL) || !sender.hasPermission(VMConstants.PERMISSION_BLOCKLIST_REMOVE)) {
-                    sender.sendMessage(ChatColor.RED + "You have insufficient permissions to perform this command");
+                    sender.sendMessage(VMConstants.PLUGIN_NO_PERMISSION);
                     return true;
                 }
 
@@ -144,7 +143,6 @@ public class TrollPlusCommand implements CommandExecutor {
                 blocklistConfigWrapper.save();
                 blocklistConfigWrapper.reload();
             }
-
         }
 
         // Unknown command usage
@@ -155,5 +153,4 @@ public class TrollPlusCommand implements CommandExecutor {
 
         return true;
     }
-
 }

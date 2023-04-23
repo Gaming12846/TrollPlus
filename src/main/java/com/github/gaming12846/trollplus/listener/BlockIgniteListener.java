@@ -13,7 +13,6 @@ import org.bukkit.event.block.BlockIgniteEvent;
  * @author Gaming12846
  */
 public class BlockIgniteListener implements Listener {
-
     private final TrollPlus plugin;
 
     public BlockIgniteListener(TrollPlus plugin) {
@@ -27,10 +26,9 @@ public class BlockIgniteListener implements Listener {
         // Lightning bolt bow
         if (!plugin.getConfig().getBoolean(VMConstants.CONFIG_SET_FIRE, true)) {
             assert entity != null;
-            if (event.getCause() == BlockIgniteEvent.IgniteCause.LIGHTNING && entity.hasMetadata("TROLLPLUS_LIGHTNING_BOLT")) {
+
+            if (event.getCause() == BlockIgniteEvent.IgniteCause.LIGHTNING && entity.hasMetadata("TROLLPLUS_LIGHTNING_BOLT"))
                 event.setCancelled(true);
-            }
         }
     }
-
 }

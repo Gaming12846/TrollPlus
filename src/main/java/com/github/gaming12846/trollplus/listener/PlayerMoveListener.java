@@ -11,15 +11,11 @@ import org.bukkit.event.player.PlayerMoveEvent;
  * @author Gaming12846
  */
 public class PlayerMoveListener implements Listener {
-
     @EventHandler
     private void onPlayerMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
 
         // Feature freeze
-        if (player.hasMetadata("TROLLPLUS_FREEZE")) {
-            event.setCancelled(true);
-        }
+        if (player.hasMetadata("TROLLPLUS_FREEZE")) event.setCancelled(true);
     }
-
 }

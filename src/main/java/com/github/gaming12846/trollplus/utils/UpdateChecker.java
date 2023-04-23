@@ -15,7 +15,6 @@ import java.util.Scanner;
  * @author Gaming12846
  */
 public class UpdateChecker {
-
     private final JavaPlugin plugin;
     private final int resourceId;
 
@@ -39,5 +38,4 @@ public class UpdateChecker {
 
         });
     }
-
 }

@@ -12,20 +12,15 @@ import org.bukkit.event.player.PlayerInteractEvent;
  * @author Gaming12846
  */
 public class PlayerInteractListener implements Listener {
-
     @EventHandler
     private void onPlayerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
 
         // Feature freeze
-        if (player.hasMetadata("TROLLPLUS_FREEZE")) {
-            event.setCancelled(true);
-        }
+        if (player.hasMetadata("TROLLPLUS_FREEZE")) event.setCancelled(true);
 
         // Feature control
-        if (player.hasMetadata("TROLLPLUS_CONTROL_TARGET")) {
-            event.setCancelled(true);
-        }
+        if (player.hasMetadata("TROLLPLUS_CONTROL_TARGET")) event.setCancelled(true);
 
         // Feature flip behind
         if (player.hasMetadata("TROLLPLUS_FLIP_BEHIND")) {
@@ -35,9 +30,6 @@ public class PlayerInteractListener implements Listener {
         }
 
         // Feature semi ban
-        if (player.hasMetadata("TROLLPLUS_SEMI_BAN")) {
-            event.setCancelled(true);
-        }
+        if (player.hasMetadata("TROLLPLUS_SEMI_BAN")) event.setCancelled(true);
     }
-
 }

@@ -21,17 +21,11 @@ import java.util.Objects;
  * @author Gaming12846
  */
 public class TrollPlus extends JavaPlugin {
-
     public boolean updateAvailable = false;
     private ConfigWrapper blocklistConfig;
 
     @Override
     public void onEnable() {
-        // Configs
-        this.saveDefaultConfig();
-
-        this.blocklistConfig = new ConfigWrapper(this, "blocklist.yml");
-
         // Register events
         registerEvents();
 
@@ -40,6 +34,11 @@ public class TrollPlus extends JavaPlugin {
 
         // Register tabcompleter
         registerTabCompleter();
+
+        // Configs
+        this.saveDefaultConfig();
+
+        this.blocklistConfig = new ConfigWrapper(this, "blocklist.yml");
 
         // Metrics
         if (getConfig().getBoolean(VMConstants.CONFIG_METRICS_ENABLED, true)) {
@@ -57,7 +56,8 @@ public class TrollPlus extends JavaPlugin {
                 if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
                     this.getLogger().info("There is no new update available");
                 } else {
-                    this.getLogger().info("A new update is available! To download it visit SpigotMC: https://www.spigotmc.org/resources/81193/");
+                    this.getLogger().info("A new update is available! To download it visit SpigotMC: https://www.spigotmc.org/resources/81193");
+
                     updateAvailable = true;
                 }
 
@@ -101,5 +101,4 @@ public class TrollPlus extends JavaPlugin {
     public ConfigWrapper getBlocklistConfig() {
         return blocklistConfig;
     }
-
 }

@@ -5,7 +5,7 @@ api-version: 1.17
 prefix: TrollPlus
 authors: [ Gaming12846 ]
 description: A simple plugin for trolling players in Minecraft
-website: https://www.spigotmc.org/resources/81193/
+website: https://www.spigotmc.org/resources/81193
 
 commands:
   trollplus:
@@ -52,5 +52,5 @@ permissions:
     description: Allows you to use the '/trollbows' command
     default: op
   trollplus.ignoreimmune:
-      description: Allows you to use the '/troll' command on immune players
-      default: op
+    description: Allows you to use the '/troll' command on immune players
+    default: op

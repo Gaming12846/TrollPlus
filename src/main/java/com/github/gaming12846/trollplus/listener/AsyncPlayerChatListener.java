@@ -13,7 +13,6 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
  * @author Gaming12846
  */
 public class AsyncPlayerChatListener implements Listener {
-
     private final TrollPlus plugin;
 
     public AsyncPlayerChatListener(TrollPlus plugin) {
@@ -26,9 +25,7 @@ public class AsyncPlayerChatListener implements Listener {
 
         // Feature control
         if (player.hasMetadata("TROLLPLUS_CONTROL_TARGET")) {
-            if (!VMConstants.CONTROL_MESSAGE_BOOLEAN) {
-                event.setCancelled(true);
-            }
+            if (!VMConstants.CONTROL_MESSAGE_BOOLEAN) event.setCancelled(true);
         }
 
         if (player.hasMetadata("TROLLPLUS_CONTROL_PLAYER")) {
@@ -42,14 +39,10 @@ public class AsyncPlayerChatListener implements Listener {
             event.setCancelled(true);
 
             String semiBanMessageReplace = plugin.getConfig().getString(VMConstants.CONFIG_SEMI_BAN_MESSAGE_REPLACE, "");
-            if (semiBanMessageReplace.isEmpty()) {
-                semiBanMessageReplace = "";
-            }
+            if (semiBanMessageReplace.isEmpty()) semiBanMessageReplace = "";
 
-            if (!semiBanMessageReplace.isEmpty()) {
+            if (!semiBanMessageReplace.isEmpty())
                 player.sendMessage(semiBanMessageReplace.replace("[PLAYER]", player.getName()) + " " + event.getMessage());
-            }
         }
     }
-
 }
