@@ -6,7 +6,7 @@
 
     <groupId>de.gaming12846</groupId>
     <artifactId>TrollPlus</artifactId>
-    <version>1.4.3</version>
+    <version>1.4.4-pre1</version>
     <packaging>jar</packaging>
 
     <name>TrollPlus</name>
@@ -69,11 +69,6 @@
             <artifactId>spigot-api</artifactId>
             <version>1.19.4-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.12.0</version>
         </dependency>
     </dependencies>
 </project>
