@@ -1,17 +1,19 @@
-package com.github.gaming12846.trollplus.listener;
+/*
+ *
+ *  * This file is part of TrollPlus.
+ *  * Copyright (C) 2023 Gaming12846
+ *
+ */
 
-import com.github.gaming12846.trollplus.TrollPlus;
-import com.github.gaming12846.trollplus.utils.VMConstants;
+package de.gaming12846.trollplus.listener;
+
+import de.gaming12846.trollplus.TrollPlus;
+import de.gaming12846.trollplus.utils.Constants;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-/**
- * TrollPlus com.github.gaming12846.trollplus.listener AsyncPlayerChatListener.java
- *
- * @author Gaming12846
- */
 public class AsyncPlayerChatListener implements Listener {
     private final TrollPlus plugin;
 
@@ -25,24 +27,24 @@ public class AsyncPlayerChatListener implements Listener {
 
         // Feature control
         if (player.hasMetadata("TROLLPLUS_CONTROL_TARGET")) {
-            if (!VMConstants.CONTROL_MESSAGE_BOOLEAN) event.setCancelled(true);
+            if (!Constants.CONTROL_MESSAGE_BOOLEAN) event.setCancelled(true);
         }
 
         if (player.hasMetadata("TROLLPLUS_CONTROL_PLAYER")) {
             event.setCancelled(true);
-            VMConstants.CONTROL_MESSAGE = event.getMessage();
-            VMConstants.CONTROL_MESSAGE_BOOLEAN = true;
+            Constants.CONTROL_MESSAGE = event.getMessage();
+            Constants.CONTROL_MESSAGE_BOOLEAN = true;
         }
 
         // Feature semi ban
         if (player.hasMetadata("TROLLPLUS_SEMI_BAN")) {
             event.setCancelled(true);
 
-            String semiBanMessageReplace = plugin.getConfig().getString(VMConstants.CONFIG_SEMI_BAN_MESSAGE_REPLACE, "");
+            String semiBanMessageReplace = plugin.getConfig().getString("semi-ban-message-replace", "");
             if (semiBanMessageReplace.isEmpty()) semiBanMessageReplace = "";
 
             if (!semiBanMessageReplace.isEmpty())
-                player.sendMessage(semiBanMessageReplace.replace("[PLAYER]", player.getName()) + " " + event.getMessage());
+                player.sendMessage(semiBanMessageReplace.replace("[player]", player.getName()) + " " + event.getMessage());
         }
     }
 }

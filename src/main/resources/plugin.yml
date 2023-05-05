@@ -1,23 +1,23 @@
 name: TrollPlus
-version: ${project.version}
-main: com.github.gaming12846.trollplus.TrollPlus
-api-version: 1.17
+version: '${project.version}'
+main: de.gaming12846.trollplus.TrollPlus
+api-version: 1.19
 prefix: TrollPlus
-authors: [ Gaming12846 ]
-description: A simple plugin for trolling players in Minecraft
+author: Gaming12846
+description: A simple plugin to troll players in Minecraft
 website: https://www.spigotmc.org/resources/81193
 
 commands:
   trollplus:
-    description: The essentials command for TrollPlus
-    usage: /<command> <version|reload|blocklist>
+    description: The main command for TrollPlus
+    usage: /<command> [version|reload|blocklist]
     aliases: [ troll+ ]
   troll:
-    description: Open the troll menu with multiple features
+    description: Open the troll GUI
     permission: trollplus.troll
-    usage: /<command> <player>
+    usage: /<command> [player]
   trollbows:
-    description: Open the troll bow menu
+    description: Open the trollbows GUI
     permission: trollplus.bows
     usage: /<command>
     aliases: [ trollbow ]
@@ -25,32 +25,33 @@ commands:
 permissions:
   trollplus.*:
     description: Gives access to all TrollPlus commands
+    default: op
     children:
       trollplus.reload: true
       trollplus.blocklist.*: true
       trollplus.troll: true
       trollplus.bows: true
   trollplus.reload:
-    description: Allows you to use the '/trollplus reload' subcommand
+    description: Gives access to the /trollplus <reload> subcommand
     default: op
   trollplus.blocklist.*:
-    description: Allows you to use all '/trollplus blocklist' subcommands
+    description: Gives access to all /trollplus <blocklist> subcommands
     default: op
     children:
       trollplus.blocklist.add: true
       trollplus.blocklist.remove: true
   trollplus.blocklist.add:
-    description: Allows you to use all '/trollplus blocklist add' subcommands
+    description: Gives access to the /trollplus <blocklist> <add> subcommand
     default: op
   trollplus.blocklist.remove:
-    description: Allows you to use all '/trollplus blocklist remove' subcommands
+    description: AGives access to the /trollplus <blocklist> <remove> subcommand
     default: op
   trollplus.troll:
-    description: Allows you to use the '/troll' command
+    description: Gives access to the /troll command
     default: op
   trollplus.bows:
-    description: Allows you to use the '/trollbows' command
+    description: Gives access to the /trollbows command
     default: op
   trollplus.ignoreimmune:
-    description: Allows you to use the '/troll' command on immune players
+    description: Allows the use of the /troll command on immune players
     default: op

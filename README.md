@@ -8,7 +8,8 @@
 
 # TrollPlus
 
-You always wanted to troll your friends in Minecraft and watch their reactions? Then you are exactly right here! This plugin allows you to troll them in different ways.
+You always wanted to troll your friends in Minecraft and watch their reactions? Then you are exactly right here! This
+plugin allows you to troll them in different ways.
 
 ## Features
 
@@ -82,9 +83,11 @@ Feel free to send me a message on SpigotMC.
 
 ## Bugs and suggestions
 
-Bugs and suggestions should be reported by [opening a ticket on GitHub](https://github.com/Gaming12846/TrollPlus/issues).
+Bugs and suggestions should be reported
+by [opening a ticket on GitHub](https://github.com/Gaming12846/TrollPlus/issues).
 
-It took a while to create this plugin. So if you find it useful or funny, a nice review on SpigotMC would be appreciated.
+It took a while to create this plugin. So if you find it useful or funny, a nice review on SpigotMC would be
+appreciated.
 
 ## License
 

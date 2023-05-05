@@ -1,7 +1,13 @@
-package com.github.gaming12846.trollplus.listener;
+/*
+ *
+ *  * This file is part of TrollPlus.
+ *  * Copyright (C) 2023 Gaming12846
+ *
+ */
 
-import com.github.gaming12846.trollplus.TrollPlus;
-import com.github.gaming12846.trollplus.utils.VMConstants;
+package de.gaming12846.trollplus.listener;
+
+import de.gaming12846.trollplus.TrollPlus;
 import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.TNTPrimed;
@@ -11,11 +17,6 @@ import org.bukkit.event.entity.EntityExplodeEvent;
 
 import java.util.Objects;
 
-/**
- * TrollPlus com.github.gaming12846.trollplus.listener EntityExplodeListener.java
- *
- * @author Gaming12846
- */
 public class EntityExplodeListener implements Listener {
     private final TrollPlus plugin;
 
@@ -29,7 +30,7 @@ public class EntityExplodeListener implements Listener {
 
         // Feature tnt track and tnt bow
         if (entity instanceof TNTPrimed && entity.hasMetadata("TROLLPLUS_TNT")) {
-            if (plugin.getConfig().getBoolean(VMConstants.CONFIG_BREAK_BLOCKS, true)) return;
+            if (plugin.getConfig().getBoolean("break-blocks", true)) return;
 
             event.setCancelled(true);
             Objects.requireNonNull(entity.getLocation().getWorld()).playSound(entity.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 20, 1);

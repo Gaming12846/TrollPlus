@@ -1,27 +1,50 @@
-# Configuration for TrollPlus v${project.version} by Gaming12846
-MetricsEnabled: true
-CheckForUpdates: true
+#############################################################
+#*---------------------------------------------------------*#
+#|                        TrollPlus                        |#
+#*---------------------------------------------------------*#
+#############################################################
 
-# Feature spam messages (You can add as many messages as you want)
-SpamMessages:
+# This is the config file for TrollPlus.
+# This config was generated for version ${project.version}.
+
+# If you need help, you can send me a message on SpigotMC.
+
+#####################Global settings#########################
+
+# Set the language for the plugin, available options are default, en and de.
+language: default
+
+# Enable the metrics.
+metrics-enabled: true
+# Enable the update checker.
+check-for-updates: true
+
+#####################Features settings#######################
+
+# Add spam messages for the "Spam messages" feature (You can add as many messages as you like).
+spam-messages:
   - "Hello my friend"
   - "Wasp"
   - "LoLoLoLo"
   - "xDxDxDxDxD"
   - "XoXoXoXo"
 
-# Feature semi ban
-SemiBanMessageReplace: "<[PLAYER]>"
+# Set the format for the player name when sending messages for the "Semi ban" feature.
+semi-ban-message-replace: "<[player]>"
 
-# Feature fake ban
-FakeBanMessageBroadcastEnabled: true
-FakeBanMessagePlayer: "You have been banned from this Server"
-FakeBanMessagePlayerBroadcast: "The Player [PLAYER] have been permanently banned from the server"
+# Set the message for the player when he is kicked with the "Fake ban" feature.
+fake-ban-message-player: "You have been banned from this Server"
+# Enable the broadcast message for the "Fake ban" feature.
+fake-ban-message-broadcast-enabled: true
+# Set the message for all players on the server when the player is kicked with the "Fake ban" feature.
+fake-ban-message-broadcast: "The Player [player] have been permanently banned from the server"
 
-# Feature fake op
-FakeOpMessageBroadcastEnabled: true
-FakeOpMessage: "[Server: Made [PLAYER] a server operator]"
+# Enable the broadcast message for the "Fake op" feature.
+fake-op-message-broadcast-enabled: true
+# Set the message for the player and all players (if enabled) on the server when the player is appointed as a operator with the "Fake op" feature.
+fake-op-message: "[Server: Made [player] a server operator]"
 
-# Feature tnt track and trollbows
-SetFire: false
-BreakBlocks: false
+# Enable that a fire can be set for the "TNT track" feature and the "Trollbows".
+set-fire: false
+# Enable that explosions can destroy blocks for the "TNT track" feature and the "Trollbows".
+break-blocks: false

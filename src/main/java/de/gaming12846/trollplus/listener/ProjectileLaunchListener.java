@@ -1,6 +1,13 @@
-package com.github.gaming12846.trollplus.listener;
+/*
+ *
+ *  * This file is part of TrollPlus.
+ *  * Copyright (C) 2023 Gaming12846
+ *
+ */
 
-import com.github.gaming12846.trollplus.TrollPlus;
+package de.gaming12846.trollplus.listener;
+
+import de.gaming12846.trollplus.TrollPlus;
 import org.bukkit.ChatColor;
 import org.bukkit.Particle;
 import org.bukkit.entity.Arrow;
@@ -11,11 +18,6 @@ import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
 
-/**
- * TrollPlus com.github.gaming12846.trollplus.listener ProjectileLaunchListener.java
- *
- * @author Gaming12846
- */
 public class ProjectileLaunchListener implements Listener {
     private final TrollPlus plugin;
 
@@ -28,7 +30,6 @@ public class ProjectileLaunchListener implements Listener {
         if (!(event.getEntity().getShooter() instanceof Player)) return;
 
         Arrow arrow = (Arrow) event.getEntity();
-
         Player player = (Player) arrow.getShooter();
 
         if (player.getInventory().getItemInMainHand().getItemMeta() == null) return;

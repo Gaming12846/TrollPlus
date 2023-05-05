@@ -1,4 +1,11 @@
-package com.github.gaming12846.trollplus.listener;
+/*
+ *
+ *  * This file is part of TrollPlus.
+ *  * Copyright (C) 2023 Gaming12846
+ *
+ */
+
+package de.gaming12846.trollplus.listener;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
@@ -6,11 +13,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
-/**
- * TrollPlus com.github.gaming12846.trollplus.listener EntityDamageByEntityListener.java
- *
- * @author Gaming12846
- */
 public class EntityDamageByEntityListener implements Listener {
     @EventHandler
     private void onEntityDamageByEntity(EntityDamageByEntityEvent event) {

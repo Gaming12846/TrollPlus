@@ -1,20 +1,21 @@
-package com.github.gaming12846.trollplus.listener;
+/*
+ *
+ *  * This file is part of TrollPlus.
+ *  * Copyright (C) 2023 Gaming12846
+ *
+ */
+
+package de.gaming12846.trollplus.listener;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerDropItemEvent;
 
-/**
- * TrollPlus com.github.gaming12846.trollplus.listener PlayerPickupItemListener.java
- *
- * @author Gaming12846
- */
-public class EntityPickupItemEvent implements Listener {
+public class PlayerDropItemListener implements Listener {
     @EventHandler
-    private void onEntityPickupItemEvent(org.bukkit.event.entity.EntityPickupItemEvent event) {
-        if (!(event.getEntity() instanceof Player)) return;
-
-        Player player = (Player) event.getEntity();
+    private void onPlayerDropItem(PlayerDropItemEvent event) {
+        Player player = event.getPlayer();
 
         // Feature freeze
         if (player.hasMetadata("TROLLPLUS_FREEZE")) event.setCancelled(true);

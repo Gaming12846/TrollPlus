@@ -1,17 +1,19 @@
-package com.github.gaming12846.trollplus.listener;
+/*
+ *
+ *  * This file is part of TrollPlus.
+ *  * Copyright (C) 2023 Gaming12846
+ *
+ */
 
-import com.github.gaming12846.trollplus.TrollPlus;
+package de.gaming12846.trollplus.listener;
+
+import de.gaming12846.trollplus.TrollPlus;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 
-/**
- * TrollPlus com.github.gaming12846.trollplus.listener EntityDamageListener.java
- *
- * @author Gaming12846
- */
 public class EntityDamageListener implements Listener {
     private final TrollPlus plugin;
 

@@ -1,10 +1,18 @@
-package com.github.gaming12846.trollplus.listener;
+/*
+ *
+ *  * This file is part of TrollPlus.
+ *  * Copyright (C) 2023 Gaming12846
+ *
+ */
 
-import com.github.gaming12846.trollplus.TrollPlus;
-import com.github.gaming12846.trollplus.utils.ItemBuilder;
-import com.github.gaming12846.trollplus.utils.VMConstants;
-import org.apache.commons.lang.math.RandomUtils;
+package de.gaming12846.trollplus.listener;
+
+import de.gaming12846.trollplus.TrollPlus;
+import de.gaming12846.trollplus.utils.Constants;
+import de.gaming12846.trollplus.utils.ItemBuilder;
+import org.apache.commons.lang3.RandomUtils;
 import org.bukkit.*;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -12,6 +20,7 @@ import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.potion.PotionEffect;
@@ -19,15 +28,9 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * TrollPlus com.github.gaming12846.trollplus.listener InventoryClickListener.java
- *
- * @author Gaming12846
- */
 public class InventoryClickListener implements Listener {
     private final TrollPlus plugin;
 
@@ -38,7 +41,6 @@ public class InventoryClickListener implements Listener {
     @EventHandler
     private void onInventoryClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
-
         // Feature freeze
         if (player.hasMetadata("TROLLPLUS_FREEZE")) event.setCancelled(true);
 
@@ -48,9 +50,12 @@ public class InventoryClickListener implements Listener {
         // Feature semi ban
         if (player.hasMetadata("TROLLPLUS_SEMI_BAN")) event.setCancelled(true);
 
-        Player target = VMConstants.TARGET;
+        FileConfiguration langConfig = plugin.getLanguageConfig().getConfig();
 
-        if (Objects.equals(event.getClickedInventory(), VMConstants.TROLL_MENU)) {
+        Inventory troll_GUI = Constants.TROLL_GUI;
+        Player target = Constants.TARGET;
+
+        if (Objects.equals(event.getClickedInventory(), troll_GUI)) {
             event.setCancelled(true);
 
             switch (event.getSlot()) {
@@ -61,18 +66,18 @@ public class InventoryClickListener implements Listener {
                     if (!target.hasMetadata("TROLLPLUS_VANISH")) {
                         target.setMetadata("TROLLPLUS_VANISH", new FixedMetadataValue(plugin, target.getName()));
                         target.hidePlayer(plugin, player);
-                        VMConstants.STATUS_VANISH = "§a§lTarget";
-                        VMConstants.TROLL_MENU.setItem(47, ItemBuilder.createItemWithLore(Material.POTION, 1, ChatColor.WHITE + "Vanish " + VMConstants.STATUS_VANISH, Collections.singletonList("Disappear for the target or for all players")));
+                        Constants.STATUS_VANISH = 1;
+                        troll_GUI.setItem(47, ItemBuilder.createItemWithLore(Material.POTION, ChatColor.WHITE + langConfig.getString("troll-vanish") + " " + Constants.getVanishStatus(Constants.STATUS_VANISH), langConfig.getString("troll-vanish-description")));
                         return;
                     }
 
-                    if (Objects.equals(VMConstants.STATUS_VANISH, "§a§lTarget")) {
+                    if (Constants.STATUS_VANISH.equals(1)) {
                         target.showPlayer(plugin, player);
                         for (Player online : Bukkit.getServer().getOnlinePlayers()) {
                             online.hidePlayer(plugin, player);
                         }
-                        VMConstants.STATUS_VANISH = "§b§lAll";
-                        VMConstants.TROLL_MENU.setItem(47, ItemBuilder.createItemWithLore(Material.POTION, 1, ChatColor.WHITE + "Vanish " + VMConstants.STATUS_VANISH, Collections.singletonList("Disappear for the target or for all players")));
+                        Constants.STATUS_VANISH = 2;
+                        troll_GUI.setItem(47, ItemBuilder.createItemWithLore(Material.POTION, ChatColor.WHITE + langConfig.getString("troll-vanish") + " " + Constants.getVanishStatus(Constants.STATUS_VANISH), langConfig.getString("troll-vanish-description")));
                         return;
                     }
 
@@ -80,13 +85,13 @@ public class InventoryClickListener implements Listener {
                     for (Player online : Bukkit.getServer().getOnlinePlayers()) {
                         online.showPlayer(plugin, player);
                     }
-                    VMConstants.STATUS_VANISH = "§c§lOFF";
-                    VMConstants.TROLL_MENU.setItem(47, ItemBuilder.createItemWithLore(Material.POTION, 1, ChatColor.WHITE + "Vanish " + VMConstants.STATUS_VANISH, Collections.singletonList("Disappear for the target or for all players")));
+                    Constants.STATUS_VANISH = 0;
+                    troll_GUI.setItem(47, ItemBuilder.createItemWithLore(Material.POTION, ChatColor.WHITE + langConfig.getString("troll-vanish") + " " + Constants.getVanishStatus(Constants.STATUS_VANISH), langConfig.getString("troll-vanish-description")));
 
                     break;
                 case 48:
                     if (target == player) {
-                        player.sendMessage(VMConstants.PLUGIN_PREFIX + "Nice try, but you're already in your own position :)");
+                        player.sendMessage(Constants.PLUGIN_PREFIX + langConfig.getString("troll-teleport-not-available"));
                         return;
                     }
 
@@ -114,147 +119,147 @@ public class InventoryClickListener implements Listener {
                     if (!target.hasMetadata("TROLLPLUS_FREEZE")) {
                         target.setMetadata("TROLLPLUS_FREEZE", new FixedMetadataValue(plugin, target.getName()));
                         target.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, Integer.MAX_VALUE, 6));
-                        VMConstants.STATUS_FREEZE = "§a§lON";
-                        VMConstants.TROLL_MENU.setItem(10, ItemBuilder.createItemWithLore(Material.ICE, 1, ChatColor.WHITE + "Freeze " + VMConstants.STATUS_FREEZE, Collections.singletonList("Freeze the target")));
+                        Constants.STATUS_FREEZE = true;
+                        troll_GUI.setItem(10, ItemBuilder.createItemWithLore(Material.ICE, ChatColor.WHITE + langConfig.getString("troll-freeze") + " " + Constants.getFeatureStatus(Constants.STATUS_FREEZE), langConfig.getString("troll-freeze-description")));
                         return;
                     }
 
                     target.removeMetadata("TROLLPLUS_FREEZE", plugin);
                     target.removePotionEffect(PotionEffectType.SLOW);
-                    VMConstants.STATUS_FREEZE = "§c§lOFF";
-                    VMConstants.TROLL_MENU.setItem(10, ItemBuilder.createItemWithLore(Material.ICE, 1, ChatColor.WHITE + "Freeze " + VMConstants.STATUS_FREEZE, Collections.singletonList("Freeze the target")));
+                    Constants.STATUS_FREEZE = false;
+                    troll_GUI.setItem(10, ItemBuilder.createItemWithLore(Material.ICE, ChatColor.WHITE + langConfig.getString("troll-freeze") + " " + Constants.getFeatureStatus(Constants.STATUS_FREEZE), langConfig.getString("troll-freeze-description")));
 
                     break;
                 case 12:
                     if (!target.hasMetadata("TROLLPLUS_HAND_ITEM_DROP")) {
                         target.setMetadata("TROLLPLUS_HAND_ITEM_DROP", new FixedMetadataValue(plugin, target.getName()));
-                        VMConstants.STATUS_HAND_ITEM_DROP = "§a§lON";
-                        VMConstants.TROLL_MENU.setItem(12, ItemBuilder.createItemWithLore(Material.SHEARS, 1, ChatColor.WHITE + "Hand item drop " + VMConstants.STATUS_HAND_ITEM_DROP, Collections.singletonList("Automatic dropping of the hand item from the target")));
+                        Constants.STATUS_HAND_ITEM_DROP = true;
+                        troll_GUI.setItem(12, ItemBuilder.createItemWithLore(Material.SHEARS, ChatColor.WHITE + langConfig.getString("troll-hand-item-drop") + " " + Constants.getFeatureStatus(Constants.STATUS_HAND_ITEM_DROP), langConfig.getString("troll-hand-item-drop-description")));
                         handItemDrop(target);
                         return;
                     }
 
                     target.removeMetadata("TROLLPLUS_HAND_ITEM_DROP", plugin);
-                    VMConstants.STATUS_HAND_ITEM_DROP = "§c§lOFF";
-                    VMConstants.TROLL_MENU.setItem(12, ItemBuilder.createItemWithLore(Material.SHEARS, 1, ChatColor.WHITE + "Hand item drop " + VMConstants.STATUS_HAND_ITEM_DROP, Collections.singletonList("Automatic dropping of the hand item from the target")));
+                    Constants.STATUS_HAND_ITEM_DROP = false;
+                    troll_GUI.setItem(12, ItemBuilder.createItemWithLore(Material.SHEARS, ChatColor.WHITE + langConfig.getString("troll-hand-item-drop") + " " + Constants.getFeatureStatus(Constants.STATUS_HAND_ITEM_DROP), langConfig.getString("troll-hand-item-drop-description")));
 
                     break;
                 case 14:
                     if (target == player) {
-                        player.sendMessage(VMConstants.PLUGIN_PREFIX + "Nice try, but you're already in control :)");
+                        player.sendMessage(Constants.PLUGIN_PREFIX + langConfig.getString("troll-control-not-available"));
                         return;
                     }
 
                     if (!target.hasMetadata("TROLLPLUS_CONTROL_TARGET")) {
                         target.setMetadata("TROLLPLUS_CONTROL_TARGET", new FixedMetadataValue(plugin, target.getName()));
                         player.setMetadata("TROLLPLUS_CONTROL_PLAYER", new FixedMetadataValue(plugin, player.getName()));
-                        VMConstants.STATUS_CONTROL = "§a§lON";
-                        VMConstants.TROLL_MENU.setItem(14, ItemBuilder.createItemWithLore(Material.LEAD, 1, ChatColor.WHITE + "Control " + VMConstants.STATUS_CONTROL, Collections.singletonList("Completely control the target")));
+                        Constants.STATUS_CONTROL = true;
+                        troll_GUI.setItem(14, ItemBuilder.createItemWithLore(Material.LEAD, ChatColor.WHITE + langConfig.getString("troll-control") + " " + Constants.getFeatureStatus(Constants.STATUS_CONTROL), langConfig.getString("troll-control-description")));
                         control(target, player);
                         return;
                     }
 
                     target.removeMetadata("TROLLPLUS_CONTROL_TARGET", plugin);
                     player.removeMetadata("TROLLPLUS_CONTROL_PLAYER", plugin);
-                    VMConstants.STATUS_CONTROL = "§c§lOFF";
-                    VMConstants.TROLL_MENU.setItem(14, ItemBuilder.createItemWithLore(Material.LEAD, 1, ChatColor.WHITE + "Control " + VMConstants.STATUS_CONTROL, Collections.singletonList("Completely control the target")));
+                    Constants.STATUS_CONTROL = false;
+                    troll_GUI.setItem(14, ItemBuilder.createItemWithLore(Material.LEAD, ChatColor.WHITE + langConfig.getString("troll-control") + " " + Constants.getFeatureStatus(Constants.STATUS_CONTROL), langConfig.getString("troll-control-description")));
 
                     break;
                 case 16:
                     if (!target.hasMetadata("TROLLPLUS_FLIP_BEHIND")) {
                         target.setMetadata("TROLLPLUS_FLIP_BEHIND", new FixedMetadataValue(plugin, target.getName()));
-                        VMConstants.STATUS_FLIP_BEHIND = "§a§lON";
-                        VMConstants.TROLL_MENU.setItem(16, ItemBuilder.createItemWithLore(Material.COMPASS, 1, ChatColor.WHITE + "Flip backwards " + VMConstants.STATUS_FLIP_BEHIND, Collections.singletonList("Flip the target backwards when interacting with something")));
+                        Constants.STATUS_FLIP_BACKWARDS = true;
+                        troll_GUI.setItem(16, ItemBuilder.createItemWithLore(Material.COMPASS, ChatColor.WHITE + langConfig.getString("troll-flip-backwards") + " " + Constants.getFeatureStatus(Constants.STATUS_FLIP_BACKWARDS), langConfig.getString("troll-flip-backwards-description")));
                         return;
                     }
 
                     target.removeMetadata("TROLLPLUS_FLIP_BEHIND", plugin);
-                    VMConstants.STATUS_FLIP_BEHIND = "§c§lOFF";
-                    VMConstants.TROLL_MENU.setItem(16, ItemBuilder.createItemWithLore(Material.COMPASS, 1, ChatColor.WHITE + "Flip backwards " + VMConstants.STATUS_FLIP_BEHIND, Collections.singletonList("Flip the target backwards when interacting with something")));
+                    Constants.STATUS_FLIP_BACKWARDS = false;
+                    troll_GUI.setItem(16, ItemBuilder.createItemWithLore(Material.COMPASS, ChatColor.WHITE + langConfig.getString("troll-flip-backwards") + " " + Constants.getFeatureStatus(Constants.STATUS_FLIP_BACKWARDS), langConfig.getString("troll-flip-backwards-description")));
 
                     break;
                 case 20:
                     if (!target.hasMetadata("TROLLPLUS_SPAM_MESSAGES")) {
                         target.setMetadata("TROLLPLUS_SPAM_MESSAGES", new FixedMetadataValue(plugin, target.getName()));
-                        VMConstants.STATUS_SPAM_MESSAGES = "§a§lON";
-                        VMConstants.TROLL_MENU.setItem(20, ItemBuilder.createItemWithLore(Material.WRITABLE_BOOK, 1, ChatColor.WHITE + "Spam messages " + VMConstants.STATUS_SPAM_MESSAGES, Collections.singletonList("Spam the target with random custom messages")));
+                        Constants.STATUS_SPAM_MESSAGES = true;
+                        troll_GUI.setItem(20, ItemBuilder.createItemWithLore(Material.WRITABLE_BOOK, ChatColor.WHITE + langConfig.getString("troll-spam-messages") + " " + Constants.getFeatureStatus(Constants.STATUS_SPAM_MESSAGES), langConfig.getString("troll-spam-messages-description")));
                         spamMessages(target);
                         return;
                     }
 
                     target.removeMetadata("TROLLPLUS_SPAM_MESSAGES", plugin);
-                    VMConstants.STATUS_SPAM_MESSAGES = "§c§lOFF";
-                    VMConstants.TROLL_MENU.setItem(20, ItemBuilder.createItemWithLore(Material.WRITABLE_BOOK, 1, ChatColor.WHITE + "Spam messages " + VMConstants.STATUS_SPAM_MESSAGES, Collections.singletonList("Spam the target with random custom messages")));
+                    Constants.STATUS_SPAM_MESSAGES = false;
+                    troll_GUI.setItem(20, ItemBuilder.createItemWithLore(Material.WRITABLE_BOOK, ChatColor.WHITE + langConfig.getString("troll-spam-messages") + " " + Constants.getFeatureStatus(Constants.STATUS_SPAM_MESSAGES), langConfig.getString("troll-spam-messages-description")));
 
                     break;
                 case 22:
                     if (!target.hasMetadata("TROLLPLUS_SPAM_SOUNDS")) {
                         target.setMetadata("TROLLPLUS_SPAM_SOUNDS", new FixedMetadataValue(plugin, target.getName()));
-                        VMConstants.STATUS_SPAM_SOUNDS = "§a§lON";
-                        VMConstants.TROLL_MENU.setItem(22, ItemBuilder.createItemWithLore(Material.NOTE_BLOCK, 1, ChatColor.WHITE + "Spam sounds " + VMConstants.STATUS_SPAM_SOUNDS, Collections.singletonList("Spam the target with random sounds")));
+                        Constants.STATUS_SPAM_SOUNDS = true;
+                        troll_GUI.setItem(22, ItemBuilder.createItemWithLore(Material.NOTE_BLOCK, ChatColor.WHITE + langConfig.getString("troll-spam-sounds") + " " + Constants.getFeatureStatus(Constants.STATUS_SPAM_SOUNDS), langConfig.getString("troll-spam-sounds-description")));
                         spamSounds(target);
                         return;
                     }
 
                     target.removeMetadata("TROLLPLUS_SPAM_SOUNDS", plugin);
-                    VMConstants.STATUS_SPAM_SOUNDS = "§c§lOFF";
-                    VMConstants.TROLL_MENU.setItem(22, ItemBuilder.createItemWithLore(Material.NOTE_BLOCK, 1, ChatColor.WHITE + "Spam sounds " + VMConstants.STATUS_SPAM_SOUNDS, Collections.singletonList("Spam the target with random sounds")));
+                    Constants.STATUS_SPAM_SOUNDS = false;
+                    troll_GUI.setItem(22, ItemBuilder.createItemWithLore(Material.NOTE_BLOCK, ChatColor.WHITE + langConfig.getString("troll-spam-sounds") + " " + Constants.getFeatureStatus(Constants.STATUS_SPAM_SOUNDS), langConfig.getString("troll-spam-sounds-description")));
 
                     break;
                 case 24:
                     if (!target.hasMetadata("TROLLPLUS_SEMI_BAN")) {
                         target.setMetadata("TROLLPLUS_SEMI_BAN", new FixedMetadataValue(plugin, target.getName()));
-                        VMConstants.STATUS_SEMI_BAN = "§a§lON";
-                        VMConstants.TROLL_MENU.setItem(24, ItemBuilder.createItemWithLore(Material.TRIPWIRE_HOOK, 1, ChatColor.WHITE + "Semi ban " + VMConstants.STATUS_SEMI_BAN, Collections.singletonList("Prevents the target from building, interacting, causing damage and writing")));
+                        Constants.STATUS_SEMI_BAN = true;
+                        troll_GUI.setItem(24, ItemBuilder.createItemWithLore(Material.TRIPWIRE_HOOK, ChatColor.WHITE + langConfig.getString("troll-semi-ban") + " " + Constants.getFeatureStatus(Constants.STATUS_SEMI_BAN), langConfig.getString("troll-semi-ban-description")));
                         spamSounds(target);
                         return;
                     }
 
                     target.removeMetadata("TROLLPLUS_SEMI_BAN", plugin);
-                    VMConstants.STATUS_SEMI_BAN = "§c§lOFF";
-                    VMConstants.TROLL_MENU.setItem(24, ItemBuilder.createItemWithLore(Material.TRIPWIRE_HOOK, 1, ChatColor.WHITE + "Semi ban " + VMConstants.STATUS_SEMI_BAN, Collections.singletonList("Prevents the target from building, interacting, causing damage and writing")));
+                    Constants.STATUS_SEMI_BAN = false;
+                    troll_GUI.setItem(24, ItemBuilder.createItemWithLore(Material.TRIPWIRE_HOOK, ChatColor.WHITE + langConfig.getString("troll-semi-ban") + " " + Constants.getFeatureStatus(Constants.STATUS_SEMI_BAN), langConfig.getString("troll-semi-ban-description")));
 
                     break;
                 case 28:
                     if (!target.hasMetadata("TROLLPLUS_TNT_TRACK")) {
                         target.setMetadata("TROLLPLUS_TNT_TRACK", new FixedMetadataValue(plugin, target.getName()));
-                        VMConstants.STATUS_TNT_TRACK = "§a§lON";
-                        VMConstants.TROLL_MENU.setItem(28, ItemBuilder.createItemWithLore(Material.TNT, 1, ChatColor.WHITE + "TNT track " + VMConstants.STATUS_TNT_TRACK, Collections.singletonList("Spawn primed TNT at the target")));
+                        Constants.STATUS_TNT_TRACK = true;
+                        troll_GUI.setItem(28, ItemBuilder.createItemWithLore(Material.TNT, ChatColor.WHITE + langConfig.getString("troll-tnt-track") + " " + Constants.getFeatureStatus(Constants.STATUS_TNT_TRACK), langConfig.getString("troll-tnt-track-description")));
                         tntTrack(target);
                         return;
                     }
 
                     target.removeMetadata("TROLLPLUS_TNT_TRACK", plugin);
-                    VMConstants.STATUS_TNT_TRACK = "§c§lOFF";
-                    VMConstants.TROLL_MENU.setItem(28, ItemBuilder.createItemWithLore(Material.TNT, 1, ChatColor.WHITE + "TNT track " + VMConstants.STATUS_TNT_TRACK, Collections.singletonList("Spawn primed TNT at the target")));
+                    Constants.STATUS_TNT_TRACK = false;
+                    troll_GUI.setItem(28, ItemBuilder.createItemWithLore(Material.TNT, ChatColor.WHITE + langConfig.getString("troll-tnt-track") + " " + Constants.getFeatureStatus(Constants.STATUS_TNT_TRACK), langConfig.getString("troll-tnt-track-description")));
 
                     break;
                 case 30:
                     if (!target.hasMetadata("TROLLPLUS_MOB_SPAWNER")) {
                         target.setMetadata("TROLLPLUS_MOB_SPAWNER", new FixedMetadataValue(plugin, target.getName()));
-                        VMConstants.STATUS_MOB_SPAWNER = "§a§lON";
-                        VMConstants.TROLL_MENU.setItem(30, ItemBuilder.createItemWithLore(Material.SPAWNER, 1, ChatColor.WHITE + "Mob spawner " + VMConstants.STATUS_MOB_SPAWNER, Collections.singletonList("Spawn random mobs at the target")));
+                        Constants.STATUS_MOB_SPAWNER = true;
+                        troll_GUI.setItem(30, ItemBuilder.createItemWithLore(Material.SPAWNER, ChatColor.WHITE + langConfig.getString("troll-mob-spawner") + " " + Constants.getFeatureStatus(Constants.STATUS_MOB_SPAWNER), langConfig.getString("troll-mob-spawner-description")));
                         mobSpawner(target);
                         return;
                     }
 
                     target.removeMetadata("TROLLPLUS_MOB_SPAWNER", plugin);
-                    VMConstants.STATUS_MOB_SPAWNER = "§c§lOFF";
-                    VMConstants.TROLL_MENU.setItem(30, ItemBuilder.createItemWithLore(Material.SPAWNER, 1, ChatColor.WHITE + "Mob spawner " + VMConstants.STATUS_MOB_SPAWNER, Collections.singletonList("Spawn random mobs at the target")));
+                    Constants.STATUS_MOB_SPAWNER = false;
+                    troll_GUI.setItem(30, ItemBuilder.createItemWithLore(Material.SPAWNER, ChatColor.WHITE + langConfig.getString("troll-mob-spawner") + " " + Constants.getFeatureStatus(Constants.STATUS_MOB_SPAWNER), langConfig.getString("troll-mob-spawner-description")));
 
                     break;
                 case 32:
                     if (!target.hasMetadata("TROLLPLUS_SLOWLY_KILL")) {
                         target.setMetadata("TROLLPLUS_SLOWLY_KILL", new FixedMetadataValue(plugin, target.getName()));
-                        VMConstants.STATUS_SLOWLY_KILL = "§a§lON";
-                        VMConstants.TROLL_MENU.setItem(32, ItemBuilder.createItemWithLore(Material.SKELETON_SKULL, 1, ChatColor.WHITE + "Slowly kill " + VMConstants.STATUS_SLOWLY_KILL, Collections.singletonList("Slowly kills the target")));
+                        Constants.STATUS_SLOWLY_KILL = true;
+                        troll_GUI.setItem(32, ItemBuilder.createItemWithLore(Material.SKELETON_SKULL, ChatColor.WHITE + langConfig.getString("troll-slowly-kill") + " " + Constants.getFeatureStatus(Constants.STATUS_SLOWLY_KILL), langConfig.getString("troll-slowly-kill-description")));
                         slowlyKill(target, player);
                         return;
                     }
 
                     target.removeMetadata("TROLLPLUS_SLOWLY_KILL", plugin);
-                    VMConstants.STATUS_SLOWLY_KILL = "§c§lOFF";
-                    VMConstants.TROLL_MENU.setItem(32, ItemBuilder.createItemWithLore(Material.SKELETON_SKULL, 1, ChatColor.WHITE + "Slowly kill " + VMConstants.STATUS_SLOWLY_KILL, Collections.singletonList("Slowly kills the target")));
+                    Constants.STATUS_SLOWLY_KILL = false;
+                    troll_GUI.setItem(32, ItemBuilder.createItemWithLore(Material.SKELETON_SKULL, ChatColor.WHITE + langConfig.getString("troll-slowly-kill") + " " + Constants.getFeatureStatus(Constants.STATUS_SLOWLY_KILL), langConfig.getString("troll-slowly-kill-description")));
 
                     break;
                 case 34:
@@ -266,6 +271,11 @@ public class InventoryClickListener implements Listener {
 
                     break;
                 case 38:
+                    if (target.getLocation().getBlockY() < target.getWorld().getHighestBlockYAt(target.getLocation())) {
+                        player.sendMessage(Constants.PLUGIN_PREFIX + langConfig.getString("troll-rocket-cannot-launch"));
+                        target.removeMetadata("TROLLPLUS_ROCKET_NO_FALL_DAMAGE", plugin);
+                        break;
+                    }
                     rocket(target, player);
 
                     break;
@@ -279,7 +289,7 @@ public class InventoryClickListener implements Listener {
                     break;
             }
 
-        } else if (Objects.equals(event.getClickedInventory(), VMConstants.BOWS_MENU)) {
+        } else if (Objects.equals(event.getClickedInventory(), Constants.TROLLBOWS_GUI)) {
             event.setCancelled(true);
 
             ItemStack arrow = new ItemStack(Material.ARROW, 1);
@@ -294,38 +304,38 @@ public class InventoryClickListener implements Listener {
                     break;
                 case 0:
                     if (player.getGameMode() != GameMode.CREATIVE && !player.getInventory().contains(Material.ARROW)) {
-                        player.getInventory().addItem(ItemBuilder.createBow(1, "Explosion bow", Collections.singletonList("Create an explosion on hit")));
+                        player.getInventory().addItem(ItemBuilder.createBow(langConfig.getString("trollbows-explosion-bow"), langConfig.getString("trollbows-explosion-bow-description")));
                         player.getInventory().addItem(arrow);
                         return;
                     }
-                    player.getInventory().addItem(ItemBuilder.createBow(1, "Explosion bow", Collections.singletonList("Create an explosion on hit")));
+                    player.getInventory().addItem(ItemBuilder.createBow(langConfig.getString("trollbows-explosion-bow"), langConfig.getString("trollbows-explosion-bow-description")));
 
                     break;
                 case 1:
                     if (player.getGameMode() != GameMode.CREATIVE && !player.getInventory().contains(Material.ARROW)) {
-                        player.getInventory().addItem(ItemBuilder.createBow(1, "TNT bow", Collections.singletonList("Create an primed TNT on hit")));
+                        player.getInventory().addItem(ItemBuilder.createBow(langConfig.getString("trollbows-tnt-bow"), langConfig.getString("trollbows-tnt-bow-description")));
                         player.getInventory().addItem(arrow);
                         return;
                     }
-                    player.getInventory().addItem(ItemBuilder.createBow(1, "TNT bow", Collections.singletonList("Create an primed TNT on hit")));
+                    player.getInventory().addItem(ItemBuilder.createBow(langConfig.getString("trollbows-tnt-bow"), langConfig.getString("trollbows-tnt-bow-description")));
 
                     break;
                 case 2:
                     if (player.getGameMode() != GameMode.CREATIVE && !player.getInventory().contains(Material.ARROW)) {
-                        player.getInventory().addItem(ItemBuilder.createBow(1, "Lightning bolt bow", Collections.singletonList("Create an lightning bolt on hit")));
+                        player.getInventory().addItem(ItemBuilder.createBow(langConfig.getString("trollbows-lighting-bolt-bow"), langConfig.getString("trollbows-lighting-bolt-bow-description")));
                         player.getInventory().addItem(arrow);
                         return;
                     }
-                    player.getInventory().addItem(ItemBuilder.createBow(1, "Lightning bolt bow", Collections.singletonList("Create an lightning bolt on hit")));
+                    player.getInventory().addItem(ItemBuilder.createBow(langConfig.getString("trollbows-lighting-bolt-bow"), langConfig.getString("trollbows-lighting-bolt-bow-description")));
 
                     break;
                 case 3:
                     if (player.getGameMode() != GameMode.CREATIVE && !player.getInventory().contains(Material.ARROW)) {
-                        player.getInventory().addItem(ItemBuilder.createBow(1, "Silverfish bow", Collections.singletonList("Spawn silverfishes on hit")));
+                        player.getInventory().addItem(ItemBuilder.createBow(langConfig.getString("trollbows-silverfish-bow"), langConfig.getString("trollbows-silverfish-bow-description")));
                         player.getInventory().addItem(arrow);
                         return;
                     }
-                    player.getInventory().addItem(ItemBuilder.createBow(1, "Silverfish bow", Collections.singletonList("Spawn silverfishes on hit")));
+                    player.getInventory().addItem(ItemBuilder.createBow(langConfig.getString("trollbows-silverfish-bow"), langConfig.getString("trollbows-silverfish-bow-description")));
 
                     break;
             }
@@ -354,7 +364,7 @@ public class InventoryClickListener implements Listener {
                 item.setAmount(amount);
                 target.getInventory().setItemInMainHand(item);
             }
-        }.runTaskTimer(plugin, 0, 10);
+        }.runTaskTimer(plugin, 0, 20);
     }
 
     // Feature control
@@ -365,10 +375,10 @@ public class InventoryClickListener implements Listener {
 
         player.hidePlayer(plugin, target);
 
-        VMConstants.CONTROL_PLAYER_LOCATION = player.getLocation();
-        VMConstants.CONTROL_PLAYER_INVENTORY = player.getInventory().getContents();
-        VMConstants.CONTROL_PLAYER_ARMOR = player.getInventory().getArmorContents();
-        VMConstants.CONTROL_PLAYER_OFF_HAND_ITEM = player.getInventory().getItemInOffHand();
+        Location player_location = player.getLocation();
+        ItemStack[] player_inventory = player.getInventory().getContents();
+        ItemStack[] player_armor = player.getInventory().getArmorContents();
+        ItemStack player_off_hand_item = player.getInventory().getItemInOffHand();
 
         player.teleport(target);
         player.getInventory().setContents(target.getInventory().getContents());
@@ -383,10 +393,10 @@ public class InventoryClickListener implements Listener {
                     target.getInventory().setArmorContents(player.getInventory().getArmorContents());
                     target.getInventory().setItemInOffHand(player.getInventory().getItemInOffHand());
 
-                    player.getInventory().setContents(VMConstants.CONTROL_PLAYER_INVENTORY);
-                    player.getInventory().setArmorContents(VMConstants.CONTROL_PLAYER_ARMOR);
-                    player.getInventory().setItemInOffHand(VMConstants.CONTROL_PLAYER_OFF_HAND_ITEM);
-                    player.teleport(VMConstants.CONTROL_PLAYER_LOCATION);
+                    player.getInventory().setContents(player_inventory);
+                    player.getInventory().setArmorContents(player_armor);
+                    player.getInventory().setItemInOffHand(player_off_hand_item);
+                    player.teleport(player_location);
 
                     for (Player online : Bukkit.getServer().getOnlinePlayers()) {
                         online.showPlayer(plugin, player);
@@ -398,9 +408,9 @@ public class InventoryClickListener implements Listener {
                     return;
                 }
 
-                if (VMConstants.CONTROL_MESSAGE_BOOLEAN) {
-                    target.chat(VMConstants.CONTROL_MESSAGE);
-                    VMConstants.CONTROL_MESSAGE_BOOLEAN = false;
+                if (Constants.CONTROL_MESSAGE_BOOLEAN) {
+                    target.chat(Constants.CONTROL_MESSAGE);
+                    Constants.CONTROL_MESSAGE_BOOLEAN = false;
                 }
 
                 if (target.getLocation() != player.getLocation()) target.teleport(player);
@@ -418,31 +428,31 @@ public class InventoryClickListener implements Listener {
                     return;
                 }
 
-                List<String> spamMessages = plugin.getConfig().getStringList(VMConstants.CONFIG_SPAM_MESSAGES);
+                List<String> spamMessages = plugin.getConfig().getStringList("spam-messages");
 
                 StringBuilder stringBuilderChat = new StringBuilder();
                 StringBuilder stringBuilderTitle = new StringBuilder();
                 StringBuilder stringBuilderTitle2 = new StringBuilder();
 
-                for (Character character : spamMessages.get(RandomUtils.JVM_RANDOM.nextInt(spamMessages.size())).toCharArray()) {
-                    stringBuilderChat.append(ChatColor.getByChar(Integer.toHexString(RandomUtils.JVM_RANDOM.nextInt(16))));
+                for (Character character : spamMessages.get(RandomUtils.nextInt(0, spamMessages.size())).toCharArray()) {
+                    stringBuilderChat.append(ChatColor.getByChar(Integer.toHexString(RandomUtils.nextInt(0, 16))));
                     stringBuilderChat.append(character);
                 }
 
-                for (Character character : spamMessages.get(RandomUtils.JVM_RANDOM.nextInt(spamMessages.size())).toCharArray()) {
-                    stringBuilderTitle.append(ChatColor.getByChar(Integer.toHexString(RandomUtils.JVM_RANDOM.nextInt(16))));
+                for (Character character : spamMessages.get(RandomUtils.nextInt(0, spamMessages.size())).toCharArray()) {
+                    stringBuilderTitle.append(ChatColor.getByChar(Integer.toHexString(RandomUtils.nextInt(0, 16))));
                     stringBuilderTitle.append(character);
                 }
 
-                for (Character character : spamMessages.get(RandomUtils.JVM_RANDOM.nextInt(spamMessages.size())).toCharArray()) {
-                    stringBuilderTitle2.append(ChatColor.getByChar(Integer.toHexString(RandomUtils.JVM_RANDOM.nextInt(16))));
+                for (Character character : spamMessages.get(RandomUtils.nextInt(0, spamMessages.size())).toCharArray()) {
+                    stringBuilderTitle2.append(ChatColor.getByChar(Integer.toHexString(RandomUtils.nextInt(0, 16))));
                     stringBuilderTitle2.append(character);
                 }
 
                 target.sendMessage(stringBuilderChat.toString());
                 target.sendTitle(stringBuilderTitle.toString(), stringBuilderTitle2.toString(), 3, 10, 3);
             }
-        }.runTaskTimer(plugin, 0, 15);
+        }.runTaskTimer(plugin, 0, 10);
     }
 
     // Feature spam sounds
@@ -457,7 +467,7 @@ public class InventoryClickListener implements Listener {
 
                 List<Sound> sounds = Arrays.asList(Sound.ENTITY_FOX_BITE, Sound.ENTITY_VILLAGER_YES, Sound.ENTITY_PLAYER_HURT, Sound.ENTITY_CHICKEN_DEATH, Sound.ENTITY_WOLF_GROWL, Sound.BLOCK_BELL_USE, Sound.BLOCK_ANVIL_FALL, Sound.ENTITY_WITHER_DEATH, Sound.ENTITY_WOLF_DEATH, Sound.BLOCK_IRON_DOOR_CLOSE, Sound.BLOCK_CHEST_OPEN, Sound.ENTITY_PIG_HURT, Sound.BLOCK_GRAVEL_BREAK, Sound.ENTITY_SHULKER_BULLET_HIT, Sound.ENTITY_ILLUSIONER_DEATH, Sound.BLOCK_PORTAL_AMBIENT, Sound.BLOCK_CANDLE_BREAK, Sound.ENTITY_BAT_HURT, Sound.ITEM_AXE_WAX_OFF);
 
-                target.playSound(target.getLocation(), sounds.get(RandomUtils.JVM_RANDOM.nextInt(sounds.size())), RandomUtils.JVM_RANDOM.nextInt(), RandomUtils.JVM_RANDOM.nextInt());
+                target.playSound(target.getLocation(), sounds.get(RandomUtils.nextInt(0, sounds.size())), RandomUtils.nextInt(), RandomUtils.nextInt());
             }
         }.runTaskTimer(plugin, 0, 5);
     }
@@ -477,7 +487,7 @@ public class InventoryClickListener implements Listener {
                 tnt.setMetadata("TROLLPLUS_TNT", new FixedMetadataValue(plugin, tnt));
                 tnt.getWorld().playSound(target.getLocation(), Sound.ENTITY_TNT_PRIMED, 20, 1);
             }
-        }.runTaskTimer(plugin, 0, 15);
+        }.runTaskTimer(plugin, 0, 20);
     }
 
     // Feature mob spawner
@@ -492,9 +502,9 @@ public class InventoryClickListener implements Listener {
 
                 List<EntityType> mobs = Arrays.asList(EntityType.DROWNED, EntityType.HUSK, EntityType.PILLAGER, EntityType.SKELETON, EntityType.SPIDER, EntityType.STRAY, EntityType.WITCH, EntityType.WITHER_SKELETON, EntityType.ZOMBIE, EntityType.ZOMBIE_VILLAGER, EntityType.PIGLIN_BRUTE, EntityType.SILVERFISH, EntityType.VINDICATOR);
 
-                target.getWorld().spawnEntity(target.getLocation(), mobs.get(RandomUtils.JVM_RANDOM.nextInt(mobs.size())));
+                target.getWorld().spawnEntity(target.getLocation(), mobs.get(RandomUtils.nextInt(0, mobs.size())));
             }
-        }.runTaskTimer(plugin, 0, 15);
+        }.runTaskTimer(plugin, 0, 20);
     }
 
     // Feature slowly kill
@@ -508,24 +518,26 @@ public class InventoryClickListener implements Listener {
                 }
 
                 if (target.getGameMode() == GameMode.CREATIVE || target.getGameMode() == GameMode.SPECTATOR) {
-                    player.sendMessage(VMConstants.PLUGIN_PREFIX + "Cannot slowly kill because the target " + ChatColor.BOLD + target.getName() + ChatColor.RESET + " is not in survival or adventure mode");
+                    FileConfiguration langConfig = plugin.getLanguageConfig().getConfig();
+
+                    player.sendMessage(Constants.PLUGIN_PREFIX + langConfig.getString("troll-slowly-kill-not-available"));
                     target.removeMetadata("TROLLPLUS_SLOWLY_KILL", plugin);
-                    VMConstants.STATUS_SLOWLY_KILL = "§c§lOFF";
-                    VMConstants.TROLL_MENU.setItem(32, ItemBuilder.createItemWithLore(Material.SKELETON_SKULL, 1, ChatColor.WHITE + "Slowly kill " + VMConstants.STATUS_SLOWLY_KILL, Collections.singletonList("Slowly kills the target")));
+                    Constants.STATUS_SLOWLY_KILL = false;
+                    Constants.TROLL_GUI.setItem(32, ItemBuilder.createItemWithLore(Material.SKELETON_SKULL, ChatColor.WHITE + langConfig.getString("troll-slowly-kill") + " " + Constants.getFeatureStatus(Constants.STATUS_SLOWLY_KILL), langConfig.getString("troll-slowly-kill-description")));
                     cancel();
                     return;
                 }
 
                 target.damage(1);
             }
-        }.runTaskTimer(plugin, 0, 80);
+        }.runTaskTimer(plugin, 0, 60);
     }
 
     // Feature random scary sound
     private void randomScarySound(Player target) {
         List<Sound> sounds = Arrays.asList(Sound.AMBIENT_BASALT_DELTAS_MOOD, Sound.AMBIENT_CAVE, Sound.AMBIENT_CRIMSON_FOREST_MOOD, Sound.AMBIENT_NETHER_WASTES_MOOD, Sound.AMBIENT_SOUL_SAND_VALLEY_MOOD, Sound.AMBIENT_WARPED_FOREST_MOOD, Sound.AMBIENT_UNDERWATER_LOOP_ADDITIONS_ULTRA_RARE, Sound.AMBIENT_UNDERWATER_LOOP_ADDITIONS_RARE);
 
-        target.playSound(target.getLocation(), sounds.get(RandomUtils.JVM_RANDOM.nextInt(sounds.size())), 200, 1);
+        target.playSound(target.getLocation(), sounds.get(RandomUtils.nextInt(0, sounds.size())), 200, 1);
     }
 
     // Inventory Drop
@@ -543,12 +555,6 @@ public class InventoryClickListener implements Listener {
 
     // Feature rocket
     private void rocket(Player target, Player player) {
-        if (target.getLocation().getBlockY() < target.getWorld().getHighestBlockYAt(target.getLocation())) {
-            player.sendMessage(VMConstants.PLUGIN_PREFIX + "Cannot launch because the target " + ChatColor.BOLD + target.getName() + ChatColor.RESET + " is not under the open sky");
-            target.removeMetadata("TROLLPLUS_ROCKET_NO_FALL_DAMAGE", plugin);
-            return;
-        }
-
         target.setMetadata("TROLLPLUS_ROCKET_NO_FALL_DAMAGE", new FixedMetadataValue(plugin, target.getName()));
 
         boolean targetAllowedToFlight = false;
@@ -578,7 +584,7 @@ public class InventoryClickListener implements Listener {
                     if (target.getLocation().getBlockY() < target.getWorld().getHighestBlockYAt(target.getLocation())) {
                         if (!finalTargetAllowToFlight) target.setAllowFlight(false);
 
-                        player.sendMessage(VMConstants.PLUGIN_PREFIX + "Launch stopped because the target " + ChatColor.BOLD + target.getName() + ChatColor.RESET + " is no longer under the open sky");
+                        player.sendMessage(Constants.PLUGIN_PREFIX + plugin.getLanguageConfig().getConfig().getString("troll-rocket-launch-stopped"));
 
                         cancel();
                         rocket = 0;
@@ -594,20 +600,20 @@ public class InventoryClickListener implements Listener {
                     cancel();
                 }
             }
-        }.runTaskTimer(plugin, 0, 6);
+        }.runTaskTimer(plugin, 0, 5);
     }
 
     // Feature fake ban
     private void fakeBan(Player target) {
-        String fakeBanMessagePlayer = plugin.getConfig().getString(VMConstants.CONFIG_FAKE_BAN_MESSAGE_PLAYER, "");
+        String fakeBanMessagePlayer = plugin.getConfig().getString("fake-ban-message-player", "");
 
         if (!fakeBanMessagePlayer.isEmpty()) target.kickPlayer(fakeBanMessagePlayer);
 
-        if (plugin.getConfig().getBoolean(VMConstants.CONFIG_FAKE_BAN_MESSAGE_BROADCAST_ENABLED, true)) {
-            String fakeBanMessageBroadcast = plugin.getConfig().getString(VMConstants.CONFIG_FAKE_BAN_MESSAGE_BROADCAST, "");
+        if (plugin.getConfig().getBoolean("fake-ban-message-broadcast-enabled", true)) {
+            String fakeBanMessageBroadcast = plugin.getConfig().getString("fake-ban-message-broadcast", "");
 
             if (!fakeBanMessageBroadcast.isEmpty()) {
-                String fakeBanMessageBroadcastReplace = fakeBanMessageBroadcast.replace("[PLAYER]", target.getName());
+                String fakeBanMessageBroadcastReplace = fakeBanMessageBroadcast.replace("[player]", target.getName());
                 Bukkit.broadcastMessage(fakeBanMessageBroadcastReplace);
             }
         }
@@ -615,19 +621,19 @@ public class InventoryClickListener implements Listener {
 
     // Feature fake op
     private void fakeOp(Player target) {
-        String fakeOpMessage = plugin.getConfig().getString(VMConstants.CONFIG_FAKE_OP_MESSAGE, "");
+        String fakeOpMessage = plugin.getConfig().getString("fake-op-message", "");
 
-        if (!plugin.getConfig().getBoolean(VMConstants.CONFIG_FAKE_OP_MESSAGE_BROADCAST_ENABLED, true)) {
+        if (!plugin.getConfig().getBoolean("fake-op-message-broadcast-enabled", true)) {
 
             if (!fakeOpMessage.isEmpty()) {
-                String fakeOpMessageReplace = fakeOpMessage.replace("[PLAYER]", target.getName());
+                String fakeOpMessageReplace = fakeOpMessage.replace("[player]", target.getName());
                 target.sendMessage(ChatColor.GRAY + fakeOpMessageReplace);
             }
             return;
         }
 
         if (!fakeOpMessage.isEmpty()) {
-            String fakeOpMessageReplace = fakeOpMessage.replace("[PLAYER]", target.getName());
+            String fakeOpMessageReplace = fakeOpMessage.replace("[player]", target.getName());
             Bukkit.broadcastMessage(ChatColor.GRAY + fakeOpMessageReplace);
         }
     }

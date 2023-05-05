@@ -1,0 +1,107 @@
+# This is the en language config file for TrollPlus.
+# This language config was generated for version ${project.version}.
+# Language config by: Gaming12846
+
+############################Global###########################
+
+metrics-enabled: "Enabling plugin metrics"
+
+checking-updates: "Checking for updates ..."
+no-update-available: "There is no new update available"
+update-available: "A new update is available! To download it visit SpigotMC:"
+unable-check-updates: "Unable to check for updates:"
+
+no-permission: "You do not have sufficient permissions to execute this command"
+no-console: "command cannot be used from the console"
+invalid-syntax: "Invalid command syntax! [colour-code]Use /" # The "[colour-code]" must be included in the message
+
+#######################"Trollplus" command###################
+
+trollplus-version: "Version:"
+trollplus-developer: "Developer:"
+trollplus-plugin-website: "Plugin website:"
+trollplus-report-bugs: "Report bugs to:"
+trollplus-reload: "Configurations were successfully reloaded"
+
+trollplus-player: "The player"
+trollplus-already-in-blocklist: "is already in the blocklist"
+trollplus-added-to-blocklist: "was added to the blocklist"
+trollplus-not-in-blocklist: "is not in the blocklist"
+trollplus-removed-from-blocklist: "has been removed from the blocklist"
+
+#######################"Troll" command#######################
+
+troll-player: "The player"
+troll-not-online: "is currently not online"
+troll-is-immune: "is immune"
+
+troll-teleport-not-available: "Nice try, but you are already in your own position :)"
+troll-control-not-available: "Nice try, but you're already in control :)"
+troll-slowly-kill-not-available: "Cannot slowly kill because the target not in survival or adventure mode"
+troll-rocket-cannot-launch: "Cannot launch because the target is not under the open sky"
+troll-rocket-launch-stopped: "Launch stopped because the target is no longer under the open sky"
+
+#######################"Troll" GUI###########################
+
+troll-close: "Close"
+troll-close-description: "Close the troll GUI"
+troll-vanish: "Vanish"
+troll-vanish-description: "Disappear for the target or for all players on the server"
+troll-teleport: "Teleport"
+troll-teleport-description: "Teleport to the target"
+troll-kill: "Kill"
+troll-kill-description: "Kill the target"
+troll-invsee: "Invsee"
+troll-invsee-description: "Open the target inventory"
+troll-invsee-ender-chest: "Invsee ender chest"
+troll-invsee-ender-chest-description: "Open the target ender chest"
+
+troll-freeze: "Freeze"
+troll-freeze-description: "Freeze the target and prevent it from moving, interacting or dropping/picking up items"
+troll-hand-item-drop: "Hand item drop"
+troll-hand-item-drop-description: "Automatic dropping of the hand item from the target"
+troll-control: "Control"
+troll-control-description: "Complete control over the target, including moving, interacting, causing damage, dropping/picking up items and chatting"
+troll-flip-backwards: "Flip backwards"
+troll-flip-backwards-description: "Flip the target backwards (180) when interacting with something (includes breaking blocks and hitting entities)"
+troll-spam-messages: "Spam messages"
+troll-spam-messages-description: "Spam the target with random custom messages"
+troll-spam-sounds: "Spam sounds"
+troll-spam-sounds-description: "Spam the target with random sounds"
+troll-semi-ban: "Semi ban"
+troll-semi-ban-description: "Prevents the target from building, interacting, causing damage, dropping/picking up items and chatting"
+troll-tnt-track: "TNT track"
+troll-tnt-track-description: "Spawn primed TNT at the target position every few seconds"
+troll-mob-spawner: "Mob spawner"
+troll-mob-spawner-description: "Make random mobs appear at the target position"
+troll-slowly-kill: "Slowly kill"
+troll-slowly-kill-description: "Kills the target slowly by dealing damage to the target every few seconds"
+troll-random-scary-sound: "Random scary sound"
+troll-random-scary-sound-description: "Plays a random scary sound at the target position to scare the target"
+troll-inventory-drop: "Inventory drop"
+troll-inventory-drop-description: "Drop all of the target's inventory items, including armour and items from the off hand"
+troll-rocket: "Rocket"
+troll-rocket-description: "Launch the target into the air like a firework"
+troll-fake-ban: "Fake ban"
+troll-fake-ban-description: "The target is made to think that they got banned"
+troll-fake-op: "Fake op"
+troll-fake-op-description: "The target is made to think that they got operator permissions"
+
+#######################"Trollbows" GUI#######################
+
+trollbows-close: "Close"
+trollbows-close-description: "Close the trollbow GUI"
+trollbows-explosion-bow: "Explosion bow"
+trollbows-explosion-bow-description: "A bow that creates an explosion when the arrow hits"
+trollbows-tnt-bow: "TNT bow"
+trollbows-tnt-bow-description: "A bow that creates an TNT when the arrow hits"
+trollbows-lighting-bolt-bow: "Lightning bolt bow"
+trollbows-lighting-bolt-bow-description: "A bow that creates an lighting bolt when the arrow hits"
+trollbows-silverfish-bow: "Silverfish bow"
+trollbows-silverfish-bow-description: "A bow that creates an horde of silverfish when the arrow hits"
+
+#######################GUIs##################################
+
+gui-placeholder-description: "Just a lonely placeholder :("
+gui-placeholder-coming-soon: "Coming soon"
+gui-placeholder-coming-soon-description: "Just a lonely placeholder for upcoming features :("

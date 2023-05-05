@@ -1,17 +1,16 @@
-package com.github.gaming12846.trollplus.listener;
+/*
+ *  * This file is part of TrollPlus.
+ *  * Copyright (C) 2023 Gaming12846
+ */
 
-import com.github.gaming12846.trollplus.TrollPlus;
-import com.github.gaming12846.trollplus.utils.VMConstants;
+package de.gaming12846.trollplus.listener;
+
+import de.gaming12846.trollplus.TrollPlus;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockIgniteEvent;
 
-/**
- * TrollPlus com.github.gaming12846.trollplus.listener BlockIgniteListener.java
- *
- * @author Gaming12846
- */
 public class BlockIgniteListener implements Listener {
     private final TrollPlus plugin;
 
@@ -24,7 +23,7 @@ public class BlockIgniteListener implements Listener {
         Entity entity = event.getIgnitingEntity();
 
         // Lightning bolt bow
-        if (!plugin.getConfig().getBoolean(VMConstants.CONFIG_SET_FIRE, true)) {
+        if (!plugin.getConfig().getBoolean("set-fire", true)) {
             assert entity != null;
 
             if (event.getCause() == BlockIgniteEvent.IgniteCause.LIGHTNING && entity.hasMetadata("TROLLPLUS_LIGHTNING_BOLT"))

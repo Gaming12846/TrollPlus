@@ -1,8 +1,14 @@
-package com.github.gaming12846.trollplus.listener;
+/*
+ *
+ *  * This file is part of TrollPlus.
+ *  * Copyright (C) 2023 Gaming12846
+ *
+ */
 
-import com.github.gaming12846.trollplus.TrollPlus;
-import com.github.gaming12846.trollplus.utils.VMConstants;
-import org.apache.commons.lang.math.RandomUtils;
+package de.gaming12846.trollplus.listener;
+
+import de.gaming12846.trollplus.TrollPlus;
+import org.apache.commons.lang3.RandomUtils;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.*;
@@ -11,11 +17,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.metadata.FixedMetadataValue;
 
-/**
- * TrollPlus com.github.gaming12846.trollplus.listener ProjectileHitListener.java
- *
- * @author Gaming12846
- */
 public class ProjectileHitListener implements Listener {
     private final TrollPlus plugin;
 
@@ -33,7 +34,7 @@ public class ProjectileHitListener implements Listener {
         if (arrow.hasMetadata("TROLLPLUS_EXPLOSION_ARROW")) {
             arrow.removeMetadata("TROLLPLUS_EXPLOSION_ARROW", plugin);
 
-            arrow.getWorld().createExplosion(arrow.getLocation(), 2, plugin.getConfig().getBoolean(VMConstants.CONFIG_SET_FIRE), plugin.getConfig().getBoolean(VMConstants.CONFIG_BREAK_BLOCKS));
+            arrow.getWorld().createExplosion(arrow.getLocation(), 2, plugin.getConfig().getBoolean("set-fire"), plugin.getConfig().getBoolean("break-blocks"));
         }
 
         // TNT bow
@@ -60,8 +61,9 @@ public class ProjectileHitListener implements Listener {
 
             arrow.getWorld().playSound(arrow.getLocation(), Sound.ENTITY_SILVERFISH_STEP, 20, 1);
             arrow.getWorld().spawnParticle(Particle.EXPLOSION_LARGE, arrow.getLocation(), 1);
-            for (byte i = 0; i < 5; i++) {
-                arrow.getWorld().spawnEntity(arrow.getLocation().add(RandomUtils.JVM_RANDOM.nextInt(2), RandomUtils.JVM_RANDOM.nextInt(2), RandomUtils.JVM_RANDOM.nextInt(2)), EntityType.SILVERFISH);
+
+            for (byte i = 0; i < RandomUtils.nextInt(3, 5); i++) {
+                arrow.getWorld().spawnEntity(arrow.getLocation().add(RandomUtils.nextInt(0, 2), RandomUtils.nextInt(0, 2), RandomUtils.nextInt(0, 2)), EntityType.SILVERFISH);
             }
         }
     }
