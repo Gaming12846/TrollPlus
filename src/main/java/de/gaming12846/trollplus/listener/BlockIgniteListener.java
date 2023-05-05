@@ -1,6 +1,6 @@
 /*
- *  * This file is part of TrollPlus.
- *  * Copyright (C) 2023 Gaming12846
+ * This file is part of TrollPlus.
+ * Copyright (C) 2023 Gaming12846
  */
 
 package de.gaming12846.trollplus.listener;

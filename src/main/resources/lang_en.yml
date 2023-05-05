@@ -79,7 +79,7 @@ troll-slowly-kill-description: "Kills the target slowly by dealing damage to the
 troll-random-scary-sound: "Random scary sound"
 troll-random-scary-sound-description: "Plays a random scary sound at the target position to scare the target"
 troll-inventory-drop: "Inventory drop"
-troll-inventory-drop-description: "Drop all of the target's inventory items, including armour and items from the off hand"
+troll-inventory-drop-description: "Drop all the target's inventory items, including armor and items from the offhand"
 troll-rocket: "Rocket"
 troll-rocket-description: "Launch the target into the air like a firework"
 troll-fake-ban: "Fake ban"
@@ -96,9 +96,9 @@ trollbows-explosion-bow-description: "A bow that creates an explosion when the a
 trollbows-tnt-bow: "TNT bow"
 trollbows-tnt-bow-description: "A bow that creates an TNT when the arrow hits"
 trollbows-lighting-bolt-bow: "Lightning bolt bow"
-trollbows-lighting-bolt-bow-description: "A bow that creates an lighting bolt when the arrow hits"
+trollbows-lighting-bolt-bow-description: "A bow that creates a lighting bolt when the arrow hits"
 trollbows-silverfish-bow: "Silverfish bow"
-trollbows-silverfish-bow-description: "A bow that creates an horde of silverfish when the arrow hits"
+trollbows-silverfish-bow-description: "A bow that creates a horde of silverfish when the arrow hits"
 
 #######################GUIs##################################
 

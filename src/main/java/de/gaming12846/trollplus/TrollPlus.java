@@ -1,6 +1,6 @@
 /*
- * This file is part of $project.name.
- * Copyright (C) $today.year Gaming12846
+ * This file is part of TrollPlus.
+ * Copyright (C) 2023 Gaming12846
  *
  * TrollPlus is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

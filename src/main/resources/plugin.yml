@@ -44,7 +44,7 @@ permissions:
     description: Gives access to the /trollplus <blocklist> <add> subcommand
     default: op
   trollplus.blocklist.remove:
-    description: AGives access to the /trollplus <blocklist> <remove> subcommand
+    description: Gives access to the /trollplus <blocklist> <remove> subcommand
     default: op
   trollplus.troll:
     description: Gives access to the /troll command
