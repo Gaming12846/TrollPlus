@@ -26,6 +26,7 @@ public class ItemBuilder {
 
         assert meta != null;
         meta.setDisplayName(name);
+        meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
 
         List<String> lore2 = Collections.singletonList(lore);
         final List<String> formatted = new ArrayList<>();

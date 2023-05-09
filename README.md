@@ -77,6 +77,7 @@ plugin allows you to troll them in different ways.
 ## Note
 
 - Always create a new configuration when updating!
+- The plugin collects anonymous statistics if you do not deactivate them. To see the statistics, visit [bStats](https://bstats.org/plugin/bukkit/TrollPlus).
 
 ## To-do list
 
