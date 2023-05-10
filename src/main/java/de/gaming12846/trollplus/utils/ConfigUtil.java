@@ -42,11 +42,6 @@ public class ConfigUtil {
         }
     }
 
-    // Get the config file
-    public File getFile() {
-        return this.file;
-    }
-
     // Get the config
     public FileConfiguration getConfig() {
         return this.configuration;

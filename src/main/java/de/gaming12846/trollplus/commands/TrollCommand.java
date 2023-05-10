@@ -8,7 +8,7 @@ package de.gaming12846.trollplus.commands;
 import de.gaming12846.trollplus.TrollPlus;
 import de.gaming12846.trollplus.utils.Constants;
 import de.gaming12846.trollplus.utils.ItemBuilder;
-import de.gaming12846.trollplus.utils.TrollGUIBuilder;
+import de.gaming12846.trollplus.utils.guis.TrollGUIBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -60,11 +60,8 @@ public class TrollCommand implements CommandExecutor {
             return true;
         }
 
-        // Create troll menu
-        trollGUI = new TrollGUIBuilder("Troll " + ChatColor.GOLD + ChatColor.BOLD + target.getName(), 54);
-
-        // Set target
-        trollGUI.setTarget(target);
+        // Create troll GUI
+        trollGUI = new TrollGUIBuilder("Troll " + ChatColor.GOLD + ChatColor.BOLD + target.getName(), 54, target);
 
         // Add features
         trollGUI.addItem(4, ItemBuilder.createSkull(ChatColor.GOLD + target.getName(), target.getPlayer()));

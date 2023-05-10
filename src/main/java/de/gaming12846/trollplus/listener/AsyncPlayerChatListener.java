@@ -6,7 +6,7 @@
 package de.gaming12846.trollplus.listener;
 
 import de.gaming12846.trollplus.TrollPlus;
-import de.gaming12846.trollplus.utils.Constants;
+import de.gaming12846.trollplus.utils.ControlUtil;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -23,15 +23,16 @@ public class AsyncPlayerChatListener implements Listener {
     private void onAsyncPlayerChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
 
+        ControlUtil controlUtil = plugin.getInventoryClickListener().controlUtil;
+
         // Feature control
         if (player.hasMetadata("TROLLPLUS_CONTROL_TARGET")) {
-            if (!Constants.CONTROL_MESSAGE_BOOLEAN) event.setCancelled(true);
+            if (controlUtil.getControlMessage() != null) event.setCancelled(true);
         }
 
         if (player.hasMetadata("TROLLPLUS_CONTROL_PLAYER")) {
             event.setCancelled(true);
-            Constants.CONTROL_MESSAGE = event.getMessage();
-            Constants.CONTROL_MESSAGE_BOOLEAN = true;
+            controlUtil.setControlMessage(event.getMessage());
         }
 
         // Feature semi ban

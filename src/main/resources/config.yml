@@ -54,7 +54,7 @@ fake-ban-message-broadcast: "The Player [player] have been permanently banned fr
 
 # Enable the broadcast message for the "Fake op" feature.
 fake-op-message-broadcast-enabled: true
-# Set the message for the player and all players (if enabled) on the server when the player is appointed as a operator with the "Fake op" feature.
+# Set the message for the player and all players (if enabled) on the server when the player is appointed as an operator with the "Fake op" feature.
 fake-op-message: "[Server: Made [player] a server operator]"
 
 # Enable that a fire can be set for the "TNT track" feature and the "Trollbows".

@@ -7,9 +7,6 @@ package de.gaming12846.trollplus.utils;
 
 import de.gaming12846.trollplus.TrollPlus;
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
 
 public class Constants {
     // Plugin presets
@@ -25,17 +22,6 @@ public class Constants {
     public static String PLUGIN_NO_PERMISSION;
     public static String PLUGIN_NO_CONSOLE;
     public static String PLUGIN_INVALID_SYNTAX;
-
-    // Inventorys
-    public static Inventory TROLLBOWS_GUI;
-
-    // Feature control
-    public static Boolean CONTROL_MESSAGE_BOOLEAN = false;
-    public static String CONTROL_MESSAGE = null;
-    public static Location CONTROL_PLAYER_LOCATION;
-    public static ItemStack[] CONTROL_PLAYER_INVENTORY;
-    public static ItemStack[] CONTROL_PLAYER_ARMOR;
-    public static ItemStack CONTROL_PLAYER_OFF_HAND_ITEM;
 
     // Plugin info messages presets
     public Constants(TrollPlus plugin) {

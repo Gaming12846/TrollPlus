@@ -7,8 +7,9 @@ package de.gaming12846.trollplus.listener;
 
 import de.gaming12846.trollplus.TrollPlus;
 import de.gaming12846.trollplus.utils.Constants;
+import de.gaming12846.trollplus.utils.ControlUtil;
 import de.gaming12846.trollplus.utils.ItemBuilder;
-import de.gaming12846.trollplus.utils.TrollGUIBuilder;
+import de.gaming12846.trollplus.utils.guis.TrollGUIBuilder;
 import org.apache.commons.lang3.RandomUtils;
 import org.bukkit.*;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -31,6 +32,7 @@ import java.util.Objects;
 
 public class InventoryClickListener implements Listener {
     private final TrollPlus plugin;
+    public ControlUtil controlUtil;
 
     public InventoryClickListener(TrollPlus plugin) {
         this.plugin = plugin;
@@ -50,13 +52,10 @@ public class InventoryClickListener implements Listener {
 
         FileConfiguration langConfig = plugin.getLanguageConfig().getConfig();
 
-        TrollGUIBuilder trollGUI = plugin.getTrollCommand().trollGUI.getGUIBuilder();
+        if (plugin.getTrollCommand().trollGUI != null && Objects.equals(event.getClickedInventory(), plugin.getTrollCommand().trollGUI.getGUI())) {
+            TrollGUIBuilder trollGUI = plugin.getTrollCommand().trollGUI.getGUIBuilder();
+            Player target = trollGUI.getTarget();
 
-        assert trollGUI != null;
-
-        Player target = trollGUI.getTarget();
-
-        if (Objects.equals(event.getClickedInventory(), trollGUI.getGUI())) {
             event.setCancelled(true);
 
             switch (event.getSlot()) {
@@ -152,12 +151,15 @@ public class InventoryClickListener implements Listener {
                         target.setMetadata("TROLLPLUS_CONTROL_TARGET", new FixedMetadataValue(plugin, target.getName()));
                         player.setMetadata("TROLLPLUS_CONTROL_PLAYER", new FixedMetadataValue(plugin, player.getName()));
                         trollGUI.addItem(14, ItemBuilder.createItemWithLore(Material.LEAD, ChatColor.WHITE + langConfig.getString("troll-control") + " " + trollGUI.getStatus("TROLLPLUS_CONTROL_TARGET"), langConfig.getString("troll-control-description")));
-                        control(target, player);
+
+                        //control(target, player);
+                        controlUtil = new ControlUtil(plugin, target, player);
+                        controlUtil.control();
                         return;
                     }
 
                     target.removeMetadata("TROLLPLUS_CONTROL_TARGET", plugin);
-                    player.removeMetadata("TROLLPLUS_CONTROL_PLAYER", plugin);
+                    target.removeMetadata("TROLLPLUS_CONTROL_PLAYER", plugin);
                     trollGUI.addItem(14, ItemBuilder.createItemWithLore(Material.LEAD, ChatColor.WHITE + langConfig.getString("troll-control") + " " + trollGUI.getStatus("TROLLPLUS_CONTROL_TARGET"), langConfig.getString("troll-control-description")));
 
                     break;
@@ -272,7 +274,7 @@ public class InventoryClickListener implements Listener {
                     break;
             }
 
-        } else if (Objects.equals(event.getClickedInventory(), Constants.TROLLBOWS_GUI)) {
+        } else if (plugin.getTrollBowsCommand().trollBowsGUI != null && Objects.equals(event.getClickedInventory(), plugin.getTrollBowsCommand().trollBowsGUI.getGUI())) {
             event.setCancelled(true);
 
             ItemStack arrow = new ItemStack(Material.ARROW, 1);
@@ -348,62 +350,6 @@ public class InventoryClickListener implements Listener {
                 target.getInventory().setItemInMainHand(item);
             }
         }.runTaskTimer(plugin, 0, 20);
-    }
-
-    // Feature control
-    private void control(Player target, Player player) {
-        for (Player online : Bukkit.getServer().getOnlinePlayers()) {
-            online.hidePlayer(plugin, player);
-        }
-
-        player.hidePlayer(plugin, target);
-
-        Location player_location = player.getLocation();
-        ItemStack[] player_inventory = player.getInventory().getContents();
-        ItemStack[] player_armor = player.getInventory().getArmorContents();
-        ItemStack player_off_hand_item = player.getInventory().getItemInOffHand();
-
-        player.teleport(target);
-        player.getInventory().setContents(target.getInventory().getContents());
-        player.getInventory().setArmorContents(target.getInventory().getArmorContents());
-        player.getInventory().setItemInOffHand(target.getInventory().getItemInOffHand());
-
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                if (!target.hasMetadata("TROLLPLUS_CONTROL_TARGET")) {
-                    target.getInventory().setContents(player.getInventory().getContents());
-                    target.getInventory().setArmorContents(player.getInventory().getArmorContents());
-                    target.getInventory().setItemInOffHand(player.getInventory().getItemInOffHand());
-
-                    player.getInventory().setContents(player_inventory);
-                    player.getInventory().setArmorContents(player_armor);
-                    player.getInventory().setItemInOffHand(player_off_hand_item);
-                    if (plugin.getConfig().getBoolean("control-teleport-back", true)) player.teleport(player_location);
-
-                    for (Player online : Bukkit.getServer().getOnlinePlayers()) {
-                        online.showPlayer(plugin, player);
-                    }
-
-                    player.showPlayer(plugin, target);
-
-                    cancel();
-                    return;
-                }
-
-                if (Constants.CONTROL_MESSAGE_BOOLEAN) {
-                    target.chat(Constants.CONTROL_MESSAGE);
-                    Constants.CONTROL_MESSAGE_BOOLEAN = false;
-                }
-
-                if (target.getLocation() != player.getLocation()) target.teleport(player);
-                if (!player.getInventory().equals(target.getInventory()) || !Arrays.equals(player.getInventory().getArmorContents(), target.getInventory().getArmorContents()) || !player.getInventory().getItemInOffHand().equals(target.getInventory().getItemInOffHand())) {
-                    target.getInventory().setContents(player.getInventory().getContents());
-                    target.getInventory().setArmorContents(player.getInventory().getArmorContents());
-                    target.getInventory().setItemInOffHand(player.getInventory().getItemInOffHand());
-                }
-            }
-        }.runTaskTimer(plugin, 0, 1);
     }
 
     // Feature spam messages
@@ -505,6 +451,7 @@ public class InventoryClickListener implements Listener {
                     cancel();
                     return;
                 }
+
 
                 if (target.getGameMode() == GameMode.CREATIVE || target.getGameMode() == GameMode.SPECTATOR) {
                     FileConfiguration langConfig = plugin.getLanguageConfig().getConfig();

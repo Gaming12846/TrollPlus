@@ -3,7 +3,7 @@
  * Copyright (C) 2023 Gaming12846
  */
 
-package de.gaming12846.trollplus.utils;
+package de.gaming12846.trollplus.utils.guis;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -12,12 +12,11 @@ import org.bukkit.inventory.ItemStack;
 
 public class TrollGUIBuilder {
     private final Inventory inv;
-    private Player target;
+    private final Player player;
 
-    public TrollGUIBuilder(String name, Integer size) {
+    public TrollGUIBuilder(String name, Integer size, Player target) {
         inv = Bukkit.createInventory(null, size, name);
-
-        target = null;
+        player = target;
     }
 
     public void addItem(Integer index, ItemStack item) {
@@ -34,15 +33,11 @@ public class TrollGUIBuilder {
     }
 
     public Player getTarget() {
-        return target;
-    }
-
-    public void setTarget(Player player) {
-        target = player;
+        return player;
     }
 
     public String getStatus(String metadata) {
-        if (target.hasMetadata(metadata)) return "§a§lON";
+        if (player.hasMetadata(metadata)) return "§a§lON";
         return "§c§lOFF";
     }
 }

@@ -43,7 +43,9 @@ public class TrollPlus extends JavaPlugin {
     private ConfigUtil langenConfig;
     private ConfigUtil langdeConfig;
 
+    private InventoryClickListener inventoryClickListener;
     private TrollCommand trollCommand;
+    private TrollBowsCommand trollBowsCommand;
 
     @Override
     public void onEnable() {
@@ -98,15 +100,18 @@ public class TrollPlus extends JavaPlugin {
 
     // Register listeners
     private void registerListener(PluginManager pm) {
+        inventoryClickListener = new InventoryClickListener(this);
+
         pm.registerEvents(new AsyncPlayerChatListener(this), this);
         pm.registerEvents(new BlockIgniteListener(this), this);
         pm.registerEvents(new EntityDamageByEntityListener(), this);
         pm.registerEvents(new EntityDamageListener(this), this);
         pm.registerEvents(new EntityExplodeListener(this), this);
         pm.registerEvents(new EntityPickupItemEvent(), this);
-        pm.registerEvents(new InventoryClickListener(this), this);
+        pm.registerEvents(inventoryClickListener, this);
         pm.registerEvents(new PlayerDropItemListener(), this);
         pm.registerEvents(new PlayerInteractListener(), this);
+        pm.registerEvents(new PlayerJoinListener(this), this);
         pm.registerEvents(new PlayerMoveListener(), this);
         pm.registerEvents(new PlayerQuitListener(this), this);
         pm.registerEvents(new ProjectileHitListener(this), this);
@@ -116,10 +121,11 @@ public class TrollPlus extends JavaPlugin {
     // Register commands
     private void registerCommands() {
         trollCommand = new TrollCommand(this);
+        trollBowsCommand = new TrollBowsCommand(this);
 
         Objects.requireNonNull(this.getCommand("trollplus")).setExecutor(new TrollPlusCommand(this));
         Objects.requireNonNull(this.getCommand("troll")).setExecutor(trollCommand);
-        Objects.requireNonNull(this.getCommand("trollbows")).setExecutor(new TrollBowsCommand(this));
+        Objects.requireNonNull(this.getCommand("trollbows")).setExecutor(trollBowsCommand);
     }
 
     // Register tabcompleter
@@ -135,7 +141,6 @@ public class TrollPlus extends JavaPlugin {
             BUKKIT_LOGGER.info(Constants.PLUGIN_CONSOLE_PREFIX + getLanguageConfig().getConfig().getString("checking-updates"));
 
             new UpdateChecker(this, 81193).getVersion(version -> {
-
                 if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
                     BUKKIT_LOGGER.info(Constants.PLUGIN_CONSOLE_PREFIX + getLanguageConfig().getConfig().getString("no-update-available"));
                 } else {
@@ -143,13 +148,22 @@ public class TrollPlus extends JavaPlugin {
 
                     updateAvailable = true;
                 }
-
             });
         }
+    }
+
+    // Get InventoryClickListener
+    public InventoryClickListener getInventoryClickListener() {
+        return inventoryClickListener;
     }
 
     // Get TrollCommand
     public TrollCommand getTrollCommand() {
         return trollCommand;
+    }
+
+    // Get TrollBowsCommand
+    public TrollBowsCommand getTrollBowsCommand() {
+        return trollBowsCommand;
     }
 }
