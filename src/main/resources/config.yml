@@ -11,8 +11,8 @@
 
 #####################Global settings#########################
 
-# Set the language for the plugin, available options are default, en and de.
-language: default
+# Set the language for the plugin, available options are custom and en.
+language: en
 
 # Enable the metrics.
 metrics-enabled: true

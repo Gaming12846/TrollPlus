@@ -1,6 +1,4 @@
-# This is the default language config file for TrollPlus.
-# If you want to translate the plugin, use this file.
-# If you want, you can send me your translated language config file and I can add it to the plugin.
+# This is the english language config file for TrollPlus.
 # This language config was generated for version ${project.version}.
 # Language config by: Gaming12846
 
@@ -15,7 +13,8 @@ unable-check-updates: "Unable to check for updates:"
 
 no-permission: "You do not have sufficient permissions to execute this command"
 no-console: "command cannot be used from the console"
-invalid-syntax: "Invalid command syntax! [color-code]Use /" # The "[color-code]" must be included in the message
+invalid-syntax: "Invalid command syntax!"
+invalid-syntax-use: "Use /"
 
 #######################"Trollplus" command###################
 
@@ -25,15 +24,15 @@ trollplus-plugin-website: "Plugin website:"
 trollplus-report-bugs: "Report bugs to:"
 trollplus-reload: "Configurations were successfully reloaded"
 
-trollplus-already-in-blocklist: "The player [player] is already in the blocklist" # The "[player]" must be included in the message
-trollplus-added-to-blocklist: "The player [player] was added to the blocklist" # The "[player]" must be included in the message
-trollplus-not-in-blocklist: "The player [player] is not in the blocklist" # The "[player]" must be included in the message
-trollplus-removed-from-blocklist: "The player [player] has been removed from the blocklist" # The "[player]" must be included in the message
+trollplus-already-in-blocklist: "The player [player] is already in the blocklist" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+trollplus-added-to-blocklist: "The player [player] was added to the blocklist" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+trollplus-not-in-blocklist: "The player [player] is not in the blocklist" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+trollplus-removed-from-blocklist: "The player [player] has been removed from the blocklist" # The "[player]" must be included in the message as it will be replaced by the name of the player.
 
 #######################"Troll" command#######################
 
-troll-player-not-online: "The player [player] is currently not online" # The "[player]" must be included in the message
-troll-player-is-immune: "The player [player] is immune" # The "[player]" must be included in the message
+troll-player-not-online: "The player [player] is currently not online" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+troll-player-is-immune: "The player [player] is immune" # The "[player]" must be included in the message as it will be replaced by the name of the player.
 
 troll-vanish-not-available: "Sorry mate, but you can't hide from yourself"
 troll-teleport-not-available: "Nice try, but you are already in your own position :)"

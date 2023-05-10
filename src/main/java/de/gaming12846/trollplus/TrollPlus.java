@@ -39,9 +39,8 @@ public class TrollPlus extends JavaPlugin {
 
     // Create ConfigUtils
     private ConfigUtil blocklistConfig;
-    private ConfigUtil langConfig;
-    private ConfigUtil langenConfig;
-    private ConfigUtil langdeConfig;
+    private ConfigUtil langCustomConfig;
+    private ConfigUtil langEnglishConfig;
 
     private InventoryClickListener inventoryClickListener;
     private TrollCommand trollCommand;
@@ -77,21 +76,16 @@ public class TrollPlus extends JavaPlugin {
         this.saveDefaultConfig();
 
         blocklistConfig = new ConfigUtil(this, "blocklist.yml");
-        langConfig = new ConfigUtil(this, "lang.yml");
-        langenConfig = new ConfigUtil(this, "lang_en.yml");
-        langdeConfig = new ConfigUtil(this, "lang_de.yml");
+        langCustomConfig = new ConfigUtil(this, "lang_custom.yml");
+        langEnglishConfig = new ConfigUtil(this, "lang_en.yml");
 
         Constants constants = new Constants(this);
     }
 
     public ConfigUtil getLanguageConfig() {
-        if (Objects.equals(getConfig().getString("language"), "en")) {
-            return langenConfig;
-        } else if (Objects.equals(getConfig().getString("language"), "de")) {
-            return langdeConfig;
-        } else {
-            return langConfig;
-        }
+        if (Objects.equals(getConfig().getString("language"), "custom")) {
+            return langCustomConfig;
+        } else return langEnglishConfig;
     }
 
     public ConfigUtil getBlocklistConfig() {

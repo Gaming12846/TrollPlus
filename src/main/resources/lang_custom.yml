@@ -1,0 +1,109 @@
+# This is the custom language config file for TrollPlus.
+# If you want to translate the plugin, use this file.
+# If you want, you can send me your translated language config file and I can add it to the plugin.
+# This language config was generated for version ${project.version}.
+# Language config by:
+
+############################Global###########################
+
+metrics-enabled: ""
+
+checking-updates: ""
+no-update-available: ""
+update-available: ""
+unable-check-updates: ""
+
+no-permission: ""
+no-console: ""
+invalid-syntax: ""
+invalid-syntax-use: ""
+
+#######################"Trollplus" command###################
+
+trollplus-version: ""
+trollplus-developer: ""
+trollplus-plugin-website: ""
+trollplus-report-bugs: ":"
+trollplus-reload: ""
+
+trollplus-already-in-blocklist: "[player]" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+trollplus-added-to-blocklist: "[player]" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+trollplus-not-in-blocklist: "[player]" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+trollplus-removed-from-blocklist: "[player]" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+
+#######################"Troll" command#######################
+
+troll-player-not-online: "[player]" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+troll-player-is-immune: "[player]" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+
+troll-vanish-not-available: ""
+troll-teleport-not-available: ""
+troll-control-not-available: ""
+troll-slowly-kill-not-available: ""
+troll-rocket-cannot-launch: ""
+troll-rocket-launch-stopped: ""
+
+#######################"Troll" GUI###########################
+
+troll-close: ""
+troll-close-description: ""
+troll-vanish: ""
+troll-vanish-description: ""
+troll-teleport: ""
+troll-teleport-description: ""
+troll-kill: ""
+troll-kill-description: ""
+troll-invsee: ""
+troll-invsee-description: ""
+troll-invsee-ender-chest: ""
+troll-invsee-ender-chest-description: ""
+
+troll-freeze: ""
+troll-freeze-description: ""
+troll-hand-item-drop: ""
+troll-hand-item-drop-description: ""
+troll-control: ""
+troll-control-description: ""
+troll-flip-backwards: ""
+troll-flip-backwards-description: ""
+troll-spam-messages: ""
+troll-spam-messages-description: ""
+troll-spam-sounds: ""
+troll-spam-sounds-description: ""
+troll-semi-ban: ""
+troll-semi-ban-description: ""
+troll-tnt-track: ""
+troll-tnt-track-description: ""
+troll-mob-spawner: ""
+troll-mob-spawner-description: ""
+troll-slowly-kill: ""
+troll-slowly-kill-description: ""
+troll-random-scary-sound: ""
+troll-random-scary-sound-description: ""
+troll-inventory-drop: ""
+troll-inventory-drop-description: ""
+troll-rocket: ""
+troll-rocket-description: ""
+troll-fake-ban: ""
+troll-fake-ban-description: ""
+troll-fake-op: ""
+troll-fake-op-description: ""
+
+#######################"Trollbows" GUI#######################
+
+trollbows-close: ""
+trollbows-close-description: ""
+trollbows-explosion-bow: ""
+trollbows-explosion-bow-description: ""
+trollbows-tnt-bow: ""
+trollbows-tnt-bow-description: ""
+trollbows-lighting-bolt-bow: ""
+trollbows-lighting-bolt-bow-description: ""
+trollbows-silverfish-bow: ""
+trollbows-silverfish-bow-description: ""
+
+#######################GUIs##################################
+
+gui-placeholder-description: ""
+gui-placeholder-coming-soon: ""
+gui-placeholder-coming-soon-description: ""
