@@ -106,12 +106,14 @@ public class TrollPlusCommand implements CommandExecutor {
 
                 OfflinePlayer offlineTarget = Bukkit.getOfflinePlayer(args[2]);
                 if (blocklistConfig.getConfig().contains(offlineTarget.getUniqueId().toString())) {
-                    sender.sendMessage(Constants.PLUGIN_PREFIX + langConfig.getString("trollplus-player") + " " + ChatColor.BOLD + offlineTarget.getName() + ChatColor.RESET + " " + langConfig.getString("trollplus-already-in-blocklist"));
+                    String alreadyInBlocklistReplace = Constants.PLUGIN_PREFIX + plugin.getLanguageConfig().getConfig().getString("trollplus-already-in-blocklist-syntax");
+                    sender.sendMessage(alreadyInBlocklistReplace.replace("[player]", ChatColor.RED + ChatColor.BOLD.toString() + offlineTarget.getName() + ChatColor.RESET));
                     return true;
                 }
 
                 blocklistConfig.getConfig().set(offlineTarget.getUniqueId().toString(), offlineTarget.getName());
-                sender.sendMessage(Constants.PLUGIN_PREFIX + langConfig.getString("trollplus-player") + " " + ChatColor.BOLD + offlineTarget.getName() + ChatColor.RESET + " " + langConfig.getString("trollplus-added-to-blocklist"));
+                String addedToBlocklistReplace = Constants.PLUGIN_PREFIX + plugin.getLanguageConfig().getConfig().getString("trollplus-added-to-blocklist");
+                sender.sendMessage(addedToBlocklistReplace.replace("[player]", ChatColor.RED + ChatColor.BOLD.toString() + offlineTarget.getName() + ChatColor.RESET));
 
                 blocklistConfig.save();
                 blocklistConfig.reload();
@@ -132,12 +134,14 @@ public class TrollPlusCommand implements CommandExecutor {
 
                 OfflinePlayer offlineTarget = Bukkit.getOfflinePlayer(args[2]);
                 if (!blocklistConfig.getConfig().contains(offlineTarget.getUniqueId().toString())) {
-                    sender.sendMessage(Constants.PLUGIN_PREFIX + langConfig.getString("trollplus-player") + " " + ChatColor.BOLD + offlineTarget.getName() + ChatColor.RESET + " " + langConfig.getString("trollplus-not-in-blocklist"));
+                    String notInBlocklistReplace = Constants.PLUGIN_PREFIX + plugin.getLanguageConfig().getConfig().getString("trollplus-not-in-blocklist");
+                    sender.sendMessage(notInBlocklistReplace.replace("[player]", ChatColor.RED + ChatColor.BOLD.toString() + offlineTarget.getName() + ChatColor.RESET));
                     return true;
                 }
 
                 blocklistConfig.getConfig().set(offlineTarget.getUniqueId().toString(), null);
-                sender.sendMessage(Constants.PLUGIN_PREFIX + langConfig.getString("trollplus-player") + " " + ChatColor.BOLD + offlineTarget.getName() + ChatColor.RESET + " " + langConfig.getString("trollplus-removed-from-blocklist"));
+                String removedFromBlocklistReplace = Constants.PLUGIN_PREFIX + plugin.getLanguageConfig().getConfig().getString("trollplus-removed-from-blocklist");
+                sender.sendMessage(removedFromBlocklistReplace.replace("[player]", ChatColor.RED + ChatColor.BOLD.toString() + offlineTarget.getName() + ChatColor.RESET));
 
                 blocklistConfig.save();
                 blocklistConfig.reload();

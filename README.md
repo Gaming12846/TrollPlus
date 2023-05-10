@@ -23,7 +23,7 @@ plugin allows you to troll them in different ways.
 - **Invsee ender chest** - Open the target ender chest
 - **Kill** - Kill the target
 - **Teleport** - Teleport to the target
-- **Vanish (Target and all)** - Disappear for the target or for all players on the server
+- **Vanish** - Disappear for the target
 - **Freeze** - Freeze the target and prevent it from moving, interacting or dropping/picking up items
 - **Hand item drop** - Automatic dropping of the hand item from the target
 - **Control** - Complete control over the target, including moving, interacting, causing damage, dropping/picking up items

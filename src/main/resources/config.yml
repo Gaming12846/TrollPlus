@@ -21,6 +21,12 @@ check-for-updates: true
 
 #####################Features settings#######################
 
+# Deactivate the active troll features when the target leaves the server.
+deactivate-features-on-quit: true
+
+# Teleports the player back to the starting position
+control-teleport-back: true
+
 # Add spam messages for the "Spam messages" feature (You can add as many messages as you like).
 spam-messages:
   - "Hello my friend"

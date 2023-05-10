@@ -1,4 +1,6 @@
-# This is the en language config file for TrollPlus.
+# This is the default language config file for TrollPlus.
+# If you want to translate the plugin, use this file.
+# If you want, you can send me your translated language config file and I can add it to the plugin.
 # This language config was generated for version ${project.version}.
 # Language config by: Gaming12846
 
@@ -13,7 +15,7 @@ unable-check-updates: "Unable to check for updates:"
 
 no-permission: "You do not have sufficient permissions to execute this command"
 no-console: "command cannot be used from the console"
-invalid-syntax: "Invalid command syntax! [colour-code]Use /" # The "[colour-code]" must be included in the message
+invalid-syntax: "Invalid command syntax! [color-code]Use /" # The "[color-code]" must be included in the message
 
 #######################"Trollplus" command###################
 
@@ -23,18 +25,17 @@ trollplus-plugin-website: "Plugin website:"
 trollplus-report-bugs: "Report bugs to:"
 trollplus-reload: "Configurations were successfully reloaded"
 
-trollplus-player: "The player"
-trollplus-already-in-blocklist: "is already in the blocklist"
-trollplus-added-to-blocklist: "was added to the blocklist"
-trollplus-not-in-blocklist: "is not in the blocklist"
-trollplus-removed-from-blocklist: "has been removed from the blocklist"
+trollplus-already-in-blocklist: "The player [player] is already in the blocklist" # The "[player]" must be included in the message
+trollplus-added-to-blocklist: "The player [player] was added to the blocklist" # The "[player]" must be included in the message
+trollplus-not-in-blocklist: "The player [player] is not in the blocklist" # The "[player]" must be included in the message
+trollplus-removed-from-blocklist: "The player [player] has been removed from the blocklist" # The "[player]" must be included in the message
 
 #######################"Troll" command#######################
 
-troll-player: "The player"
-troll-not-online: "is currently not online"
-troll-is-immune: "is immune"
+troll-player-not-online: "The player [player] is currently not online" # The "[player]" must be included in the message
+troll-player-is-immune: "The player [player] is immune" # The "[player]" must be included in the message
 
+troll-vanish-not-available: "Sorry mate, but you can't hide from yourself"
 troll-teleport-not-available: "Nice try, but you are already in your own position :)"
 troll-control-not-available: "Nice try, but you're already in control :)"
 troll-slowly-kill-not-available: "Cannot slowly kill because the target not in survival or adventure mode"
@@ -46,7 +47,7 @@ troll-rocket-launch-stopped: "Launch stopped because the target is no longer und
 troll-close: "Close"
 troll-close-description: "Close the troll GUI"
 troll-vanish: "Vanish"
-troll-vanish-description: "Disappear for the target or for all players on the server"
+troll-vanish-description: "Disappear for the target"
 troll-teleport: "Teleport"
 troll-teleport-description: "Teleport to the target"
 troll-kill: "Kill"

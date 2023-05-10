@@ -40,8 +40,10 @@ public class TrollPlus extends JavaPlugin {
     // Create ConfigUtils
     private ConfigUtil blocklistConfig;
     private ConfigUtil langConfig;
-    private ConfigUtil lang_enConfig;
-    private ConfigUtil lang_deConfig;
+    private ConfigUtil langenConfig;
+    private ConfigUtil langdeConfig;
+
+    private TrollCommand trollCommand;
 
     @Override
     public void onEnable() {
@@ -74,17 +76,17 @@ public class TrollPlus extends JavaPlugin {
 
         blocklistConfig = new ConfigUtil(this, "blocklist.yml");
         langConfig = new ConfigUtil(this, "lang.yml");
-        lang_enConfig = new ConfigUtil(this, "lang_en.yml");
-        lang_deConfig = new ConfigUtil(this, "lang_de.yml");
+        langenConfig = new ConfigUtil(this, "lang_en.yml");
+        langdeConfig = new ConfigUtil(this, "lang_de.yml");
 
         Constants constants = new Constants(this);
     }
 
     public ConfigUtil getLanguageConfig() {
         if (Objects.equals(getConfig().getString("language"), "en")) {
-            return lang_enConfig;
+            return langenConfig;
         } else if (Objects.equals(getConfig().getString("language"), "de")) {
-            return lang_deConfig;
+            return langdeConfig;
         } else {
             return langConfig;
         }
@@ -101,19 +103,22 @@ public class TrollPlus extends JavaPlugin {
         pm.registerEvents(new EntityDamageByEntityListener(), this);
         pm.registerEvents(new EntityDamageListener(this), this);
         pm.registerEvents(new EntityExplodeListener(this), this);
+        pm.registerEvents(new EntityPickupItemEvent(), this);
         pm.registerEvents(new InventoryClickListener(this), this);
         pm.registerEvents(new PlayerDropItemListener(), this);
         pm.registerEvents(new PlayerInteractListener(), this);
         pm.registerEvents(new PlayerMoveListener(), this);
-        pm.registerEvents(new EntityPickupItemEvent(), this);
+        pm.registerEvents(new PlayerQuitListener(this), this);
         pm.registerEvents(new ProjectileHitListener(this), this);
         pm.registerEvents(new ProjectileLaunchListener(this), this);
     }
 
     // Register commands
     private void registerCommands() {
+        trollCommand = new TrollCommand(this);
+
         Objects.requireNonNull(this.getCommand("trollplus")).setExecutor(new TrollPlusCommand(this));
-        Objects.requireNonNull(this.getCommand("troll")).setExecutor(new TrollCommand(this));
+        Objects.requireNonNull(this.getCommand("troll")).setExecutor(trollCommand);
         Objects.requireNonNull(this.getCommand("trollbows")).setExecutor(new TrollBowsCommand(this));
     }
 
@@ -141,5 +146,10 @@ public class TrollPlus extends JavaPlugin {
 
             });
         }
+    }
+
+    // Get TrollCommand
+    public TrollCommand getTrollCommand() {
+        return trollCommand;
     }
 }
