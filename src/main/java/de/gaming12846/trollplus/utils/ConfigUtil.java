@@ -58,7 +58,7 @@ public class ConfigUtil {
         if (!file.exists()) {
             plugin.saveResource(path, false);
         }
-        
+
         this.configuration = YamlConfiguration.loadConfiguration(file);
 
         final InputStream defaultConfigStream = plugin.getResource(path);

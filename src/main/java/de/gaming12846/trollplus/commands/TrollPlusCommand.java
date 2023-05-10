@@ -58,10 +58,9 @@ public class TrollPlusCommand implements CommandExecutor {
                 sender.sendMessage(Constants.PLUGIN_PREFIX + langConfig.getString("update-available") + " https://www.spigotmc.org/resources/81193");
             }
         }
-
         // Reload subcommand
         else if (args[0].equalsIgnoreCase("reload")) {
-            if (!sender.hasPermission(Constants.PERMISSION_ALL) || !sender.hasPermission(Constants.PERMISSION_RELOAD)) {
+            if (!sender.hasPermission(Constants.PERMISSION_RELOAD)) {
                 sender.sendMessage(Constants.PLUGIN_NO_PERMISSION);
                 return true;
             }
@@ -77,10 +76,9 @@ public class TrollPlusCommand implements CommandExecutor {
 
             sender.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.GREEN + langConfig.getString("trollplus-reload"));
         }
-
         // Blocklist subcommand
         else if (args[0].equalsIgnoreCase("blocklist")) {
-            if (!sender.hasPermission(Constants.PERMISSION_ALL) || !sender.hasPermission(Constants.PERMISSION_BLOCKLIST_ALL) || !sender.hasPermission(Constants.PERMISSION_BLOCKLIST_ADD) || !sender.hasPermission(Constants.PERMISSION_BLOCKLIST_REMOVE)) {
+            if (!sender.hasPermission(Constants.PERMISSION_BLOCKLIST_ADD) || !sender.hasPermission(Constants.PERMISSION_BLOCKLIST_REMOVE)) {
                 sender.sendMessage(Constants.PLUGIN_NO_PERMISSION);
                 return true;
             }
@@ -94,7 +92,7 @@ public class TrollPlusCommand implements CommandExecutor {
 
             // Blocklist add subcommand
             if (args[1].equalsIgnoreCase("add")) {
-                if (!sender.hasPermission(Constants.PERMISSION_ALL) || !sender.hasPermission(Constants.PERMISSION_BLOCKLIST_ALL) || !sender.hasPermission(Constants.PERMISSION_BLOCKLIST_ADD)) {
+                if (!sender.hasPermission(Constants.PERMISSION_BLOCKLIST_ADD)) {
                     sender.sendMessage(Constants.PLUGIN_NO_PERMISSION);
                     return true;
                 }
@@ -106,7 +104,7 @@ public class TrollPlusCommand implements CommandExecutor {
 
                 OfflinePlayer offlineTarget = Bukkit.getOfflinePlayer(args[2]);
                 if (blocklistConfig.getConfig().contains(offlineTarget.getUniqueId().toString())) {
-                    String alreadyInBlocklistReplace = Constants.PLUGIN_PREFIX + plugin.getLanguageConfig().getConfig().getString("trollplus-already-in-blocklist-syntax");
+                    String alreadyInBlocklistReplace = Constants.PLUGIN_PREFIX + plugin.getLanguageConfig().getConfig().getString("trollplus-already-in-blocklist");
                     sender.sendMessage(alreadyInBlocklistReplace.replace("[player]", ChatColor.RED + ChatColor.BOLD.toString() + offlineTarget.getName() + ChatColor.RESET));
                     return true;
                 }
@@ -118,10 +116,9 @@ public class TrollPlusCommand implements CommandExecutor {
                 blocklistConfig.save();
                 blocklistConfig.reload();
             }
-
             // Blocklist remove subcommand
             else if (args[1].equalsIgnoreCase("remove")) {
-                if (!sender.hasPermission(Constants.PERMISSION_ALL) || !sender.hasPermission(Constants.PERMISSION_BLOCKLIST_ALL) || !sender.hasPermission(Constants.PERMISSION_BLOCKLIST_REMOVE)) {
+                if (!sender.hasPermission(Constants.PERMISSION_BLOCKLIST_REMOVE)) {
                     sender.sendMessage(Constants.PLUGIN_NO_PERMISSION);
                     return true;
                 }
@@ -147,7 +144,6 @@ public class TrollPlusCommand implements CommandExecutor {
                 blocklistConfig.reload();
             }
         }
-
         // Unknown command usage
         else {
             sender.sendMessage(Constants.PLUGIN_INVALID_SYNTAX + label + " <version|reload|blocklist>");

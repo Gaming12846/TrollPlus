@@ -24,7 +24,14 @@ check-for-updates: true
 # Deactivate the active troll features when the target leaves the server.
 deactivate-features-on-quit: true
 
-# Teleports the player back to the starting position
+# Enable the join and quit message when a player goes vanish with the "Vanish" feature.
+vanish-join-quit-message-enabled: false
+# Set the message when a player goes vanish.
+vanish-quit-message: "[player] left the game"
+# Set the message when a player leaves vanish.
+vanish-join-message: "[player] joined the game"
+
+# Teleports the player back to the starting position.
 control-teleport-back: true
 
 # Add spam messages for the "Spam messages" feature (You can add as many messages as you like).

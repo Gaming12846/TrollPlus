@@ -8,9 +8,8 @@
 
 # TrollPlus
 
-Have you always wanted to troll your friends in Minecraft and watch their reactions? Then you've come to the right
-place! This
-plugin allows you to troll them in different ways.
+Have you always wanted to troll your friends in Minecraft and watch their reactions? Then you've come to the right place!
+This plugin allows you to troll them in different ways.
 
 ## Features
 
@@ -26,10 +25,8 @@ plugin allows you to troll them in different ways.
 - **Vanish** - Disappear for the target
 - **Freeze** - Freeze the target and prevent it from moving, interacting or dropping/picking up items
 - **Hand item drop** - Automatic dropping of the hand item from the target
-- **Control** - Complete control over the target, including moving, interacting, causing damage, dropping/picking up items
-  and chatting
-- **Flip backwards** - Flip the target backwards (180) when interacting with something (includes breaking blocks and hitting
-  entities
+- **Control** - Complete control over the target, including moving, interacting, causing damage, dropping/picking up items and chatting
+- **Flip backwards** - Flip the target backwards (180) when interacting with something (includes breaking blocks and hitting entities
 - **Spam random messages** - Spam the target with random custom messages (You can add as many messages as you want)
 - **Spam random sounds** - Spam the target with random sounds
 - **Semi ban** - Prevents the target from building, interacting, causing damage, dropping/picking up items and chatting
@@ -45,7 +42,7 @@ plugin allows you to troll them in different ways.
 ### Trollbows
 
 - **Explosion bow** - A bow that creates an explosion when the arrow hits
-- **TNT bow** - A bow that creates an TNT when the arrow hits
+- **TNT bow** - A bow that creates a TNT when the arrow hits
 - **Lightning bolt bow** - A bow that creates a lighting bolt when the arrow hits
 - **Silverfish bow** - A bow that creates a horde of silverfish when the arrow hits
 
@@ -72,16 +69,17 @@ plugin allows you to troll them in different ways.
 - **trollplus.blocklist.remove** - Operators - Gives access to the /trollplus <blocklist> <remove> subcommand
 - **trollplus.troll** - Operators - Gives access to the /troll command
 - **trollplus.bows** - Operators - Gives access to the /trollbows command
-- **trollplus.ignoreimmune** - Operators - Allows the use of the /troll command on immune players
 
 ## Note
 
 - Always create a new configuration when updating!
-- The plugin collects anonymous statistics if you do not deactivate them. To see the statistics, visit [bStats](https://bstats.org/plugin/bukkit/TrollPlus).
+- The plugin collects anonymous statistics if you do not deactivate them.
+To see the statistics, visit [bStats](https://bstats.org/plugin/bukkit/TrollPlus).
 
 ## To-do list
 
 - Improve the control feature (Smooth it out)
+- Add a trollmode (Feel free to write me a message with suggestions)
 - Add more features (Feel free to write me a message with function suggestions)
 
 ## Need help?

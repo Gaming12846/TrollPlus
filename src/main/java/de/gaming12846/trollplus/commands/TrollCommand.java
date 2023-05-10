@@ -7,8 +7,8 @@ package de.gaming12846.trollplus.commands;
 
 import de.gaming12846.trollplus.TrollPlus;
 import de.gaming12846.trollplus.utils.Constants;
-import de.gaming12846.trollplus.utils.TrollGUIBuilder;
 import de.gaming12846.trollplus.utils.ItemBuilder;
+import de.gaming12846.trollplus.utils.TrollGUIBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -35,7 +35,7 @@ public class TrollCommand implements CommandExecutor {
         }
 
         Player player = (Player) sender;
-        if (!player.hasPermission(Constants.PERMISSION_ALL) || !player.hasPermission(Constants.PERMISSION_TROLL)) {
+        if (!player.hasPermission(Constants.PERMISSION_TROLL)) {
             player.sendMessage(Constants.PLUGIN_NO_PERMISSION);
             return true;
         }
@@ -54,7 +54,7 @@ public class TrollCommand implements CommandExecutor {
             return true;
         }
 
-        if (plugin.getBlocklistConfig().getConfig().contains(target.getUniqueId().toString()) && !player.hasPermission(Constants.PERMISSION_IGNORE_IMMUNE)) {
+        if (plugin.getBlocklistConfig().getConfig().contains(target.getUniqueId().toString())) {
             String playerIsImmuneReplace = Constants.PLUGIN_PREFIX + plugin.getLanguageConfig().getConfig().getString("troll-player-is-immune");
             player.sendMessage(playerIsImmuneReplace.replace("[player]", ChatColor.RED + ChatColor.BOLD.toString() + args[0] + ChatColor.RESET));
             return true;

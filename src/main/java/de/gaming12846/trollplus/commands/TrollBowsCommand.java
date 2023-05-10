@@ -32,7 +32,7 @@ public class TrollBowsCommand implements CommandExecutor {
         }
 
         Player player = (Player) sender;
-        if (!player.hasPermission(Constants.PERMISSION_ALL) || !player.hasPermission(Constants.PERMISSION_TROLLBOWS)) {
+        if (!player.hasPermission(Constants.PERMISSION_TROLLBOWS)) {
             player.sendMessage(Constants.PLUGIN_NO_PERMISSION);
             return true;
         }

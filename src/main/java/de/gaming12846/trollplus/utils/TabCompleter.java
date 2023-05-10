@@ -22,19 +22,27 @@ public class TabCompleter implements org.bukkit.command.TabCompleter {
             if (args.length == 1) {
                 results.clear();
                 results.add("version");
-                results.add("reload");
-                results.add("blocklist");
+                if (sender.hasPermission(Constants.PERMISSION_RELOAD)) {
+                    results.add("reload");
+                }
+                if (sender.hasPermission(Constants.PERMISSION_BLOCKLIST_ADD) || sender.hasPermission(Constants.PERMISSION_BLOCKLIST_REMOVE)) {
+                    results.add("blocklist");
+                }
             } else if (args.length == 2 && args[0].equals("blocklist")) {
                 results.clear();
-                results.add("add");
-                results.add("remove");
-            } else if (args.length == 3 && args[0].equals("blocklist")) {
+                if (sender.hasPermission(Constants.PERMISSION_BLOCKLIST_ADD)) {
+                    results.add("add");
+                }
+                if (sender.hasPermission(Constants.PERMISSION_BLOCKLIST_REMOVE)) {
+                    results.add("remove");
+                }
+            } else if (args.length == 3 && args[0].equals("blocklist") && sender.hasPermission(Constants.PERMISSION_BLOCKLIST_ADD) || sender.hasPermission(Constants.PERMISSION_BLOCKLIST_REMOVE)) {
                 results.clear();
                 for (Player p : Bukkit.getOnlinePlayers()) {
                     results.add(p.getName());
                 }
             } else results.clear();
-        } else if (cmd.getLabel().equalsIgnoreCase("troll")) {
+        } else if (cmd.getLabel().equalsIgnoreCase("troll") && sender.hasPermission(Constants.PERMISSION_TROLL)) {
             if (args.length == 1) {
                 results.clear();
 

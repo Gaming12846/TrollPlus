@@ -14,11 +14,9 @@ commands:
     aliases: [ troll+ ]
   troll:
     description: Open the troll GUI
-    permission: trollplus.troll
     usage: /<command> [player]
   trollbows:
     description: Open the trollbows GUI
-    permission: trollplus.bows
     usage: /<command>
     aliases: [ trollbow ]
 
@@ -51,7 +49,4 @@ permissions:
     default: op
   trollplus.bows:
     description: Gives access to the /trollbows command
-    default: op
-  trollplus.ignoreimmune:
-    description: Allows the use of the /troll command on immune players
     default: op

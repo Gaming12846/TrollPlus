@@ -72,12 +72,22 @@ public class InventoryClickListener implements Listener {
                     if (!target.hasMetadata("TROLLPLUS_VANISH")) {
                         target.setMetadata("TROLLPLUS_VANISH", new FixedMetadataValue(plugin, target.getName()));
                         target.hidePlayer(plugin, player);
+                        if (plugin.getConfig().getBoolean("vanish-join-quit-message-enabled", true)) {
+                            String vanishQuitMessage = plugin.getConfig().getString("vanish-quit-message");
+                            assert vanishQuitMessage != null;
+                            target.sendMessage(vanishQuitMessage.replace("[player]", player.getName()));
+                        }
                         trollGUI.addItem(47, ItemBuilder.createItemWithLore(Material.POTION, ChatColor.WHITE + langConfig.getString("troll-vanish") + " " + trollGUI.getStatus("TROLLPLUS_VANISH"), langConfig.getString("troll-vanish-description")));
                         return;
                     }
 
                     target.removeMetadata("TROLLPLUS_VANISH", plugin);
                     target.showPlayer(plugin, player);
+                    if (plugin.getConfig().getBoolean("vanish-join-quit-message-enabled", true)) {
+                        String vanishJoinMessage = plugin.getConfig().getString("vanish-join-message");
+                        assert vanishJoinMessage != null;
+                        target.sendMessage(vanishJoinMessage.replace("[player]", player.getName()));
+                    }
                     trollGUI.addItem(47, ItemBuilder.createItemWithLore(Material.POTION, ChatColor.WHITE + langConfig.getString("troll-vanish") + " " + trollGUI.getStatus("TROLLPLUS_VANISH"), langConfig.getString("troll-vanish-description")));
 
                     break;
@@ -369,7 +379,7 @@ public class InventoryClickListener implements Listener {
                     player.getInventory().setContents(player_inventory);
                     player.getInventory().setArmorContents(player_armor);
                     player.getInventory().setItemInOffHand(player_off_hand_item);
-                    player.teleport(player_location);
+                    if (plugin.getConfig().getBoolean("control-teleport-back", true)) player.teleport(player_location);
 
                     for (Player online : Bukkit.getServer().getOnlinePlayers()) {
                         online.showPlayer(plugin, player);
@@ -387,7 +397,7 @@ public class InventoryClickListener implements Listener {
                 }
 
                 if (target.getLocation() != player.getLocation()) target.teleport(player);
-                if (!player.getInventory().equals(target.getInventory()) || !player.getInventory().getArmorContents().equals(target.getInventory().getArmorContents()) || !player.getInventory().getItemInOffHand().equals(target.getInventory().getItemInOffHand())) {
+                if (!player.getInventory().equals(target.getInventory()) || !Arrays.equals(player.getInventory().getArmorContents(), target.getInventory().getArmorContents()) || !player.getInventory().getItemInOffHand().equals(target.getInventory().getItemInOffHand())) {
                     target.getInventory().setContents(player.getInventory().getContents());
                     target.getInventory().setArmorContents(player.getInventory().getArmorContents());
                     target.getInventory().setItemInOffHand(player.getInventory().getItemInOffHand());
