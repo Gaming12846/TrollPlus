@@ -26,6 +26,7 @@ public class ProjectileLaunchListener implements Listener {
     @EventHandler
     private void onProjectileLaunchEvent(ProjectileLaunchEvent event) {
         if (!(event.getEntity().getShooter() instanceof Player)) return;
+        if (!(event.getEntity() instanceof Arrow)) return;
 
         Arrow arrow = (Arrow) event.getEntity();
         Player player = (Player) arrow.getShooter();
