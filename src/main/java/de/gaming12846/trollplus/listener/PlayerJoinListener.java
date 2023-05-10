@@ -27,9 +27,12 @@ public class PlayerJoinListener implements Listener {
         if (player.hasMetadata("TROLLPLUS_CONTROL_PLAYER")) {
             ControlUtil controlUtil = plugin.getInventoryClickListener().controlUtil;
 
+            player.setInvulnerable(false);
             player.getInventory().setContents(controlUtil.getPlayerInventory());
             player.getInventory().setArmorContents(controlUtil.getPlayerArmor());
             player.getInventory().setItemInOffHand(controlUtil.getPlayerOffHandItem());
+            player.setLevel(controlUtil.getPlayerLevel());
+            player.setExp(controlUtil.getPlayerExp());
             if (plugin.getConfig().getBoolean("control-teleport-back", true))
                 player.teleport(controlUtil.getPlayerLocation());
             player.removeMetadata("TROLLPLUS_CONTROL_PLAYER", plugin);

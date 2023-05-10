@@ -27,12 +27,13 @@ public class AsyncPlayerChatListener implements Listener {
 
         // Feature control
         if (player.hasMetadata("TROLLPLUS_CONTROL_TARGET")) {
-            if (controlUtil.getControlMessage() != null) event.setCancelled(true);
+            if (!controlUtil.getControlMessageBoolean()) event.setCancelled(true);
         }
 
         if (player.hasMetadata("TROLLPLUS_CONTROL_PLAYER")) {
             event.setCancelled(true);
             controlUtil.setControlMessage(event.getMessage());
+            controlUtil.setControlMessageBoolean(true);
         }
 
         // Feature semi ban

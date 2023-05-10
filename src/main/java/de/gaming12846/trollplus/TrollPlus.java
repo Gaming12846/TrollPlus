@@ -109,8 +109,10 @@ public class TrollPlus extends JavaPlugin {
         pm.registerEvents(new EntityExplodeListener(this), this);
         pm.registerEvents(new EntityPickupItemEvent(), this);
         pm.registerEvents(inventoryClickListener, this);
+        pm.registerEvents(new PlayerDeathListener(this), this);
         pm.registerEvents(new PlayerDropItemListener(), this);
         pm.registerEvents(new PlayerInteractListener(), this);
+        pm.registerEvents(new PlayerItemHeldListener(), this);
         pm.registerEvents(new PlayerJoinListener(this), this);
         pm.registerEvents(new PlayerMoveListener(), this);
         pm.registerEvents(new PlayerQuitListener(this), this);
