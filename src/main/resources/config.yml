@@ -11,7 +11,7 @@
 
 #####################Global settings#########################
 
-# Set the language for the plugin, available options are custom and en.
+# Set the language for the plugin, available options are custom, en and zhcn.
 language: en
 
 # Enable the metrics.

@@ -23,7 +23,7 @@ invalid-syntax-use: ""
 trollplus-version: ""
 trollplus-developer: ""
 trollplus-plugin-website: ""
-trollplus-report-bugs: ":"
+trollplus-report-bugs: ""
 trollplus-reload: ""
 
 trollplus-already-in-blocklist: "[player]" # The "[player]" must be included in the message as it will be replaced by the name of the player.
