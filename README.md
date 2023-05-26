@@ -8,14 +8,14 @@
 
 # TrollPlus
 
-Have you always wanted to troll your friends in Minecraft and watch their reactions? Then you've come to the right place!
-This plugin allows you to troll them in different ways.
+Have you always wanted to troll your friends in Minecraft and watch their reactions?
+Then you've come to the right place! This plugin allows you to troll them in different ways.
 
 ## Features
 
 ### Troll menu
 
-- **Fully customisable language configuration** - You can translate every message, description and item name into the
+- **Fully customizable language configuration** - You can translate every message, description and item name into the
   language of your choice
 - **Blocklist** - Protect players from having the troll command executed on them
 - **Invsee** - Open the target inventory
@@ -25,8 +25,10 @@ This plugin allows you to troll them in different ways.
 - **Vanish** - Disappear for the target
 - **Freeze** - Freeze the target and prevent it from moving, interacting or dropping/picking up items
 - **Hand item drop** - Automatic dropping of the hand item from the target
-- **Control** - Complete control over the target, including moving, interacting, causing damage, dropping/picking up items and chatting
-- **Flip backwards** - Flip the target backwards (180) when interacting with something (includes breaking blocks and hitting entities
+- **Control** - Complete control over the target, including moving, interacting, causing damage, dropping/picking up
+  items and chatting
+- **Flip backwards** - Flip the target backwards (180) when interacting with something (includes breaking blocks and
+  hitting entities
 - **Spam random messages** - Spam the target with random custom messages (You can add as many messages as you want)
 - **Spam random sounds** - Spam the target with random sounds
 - **Semi ban** - Prevents the target from building, interacting, causing damage, dropping/picking up items and chatting
@@ -49,13 +51,13 @@ This plugin allows you to troll them in different ways.
 ## Commands
 
 - **/trollplus version** - Displays information and the version of the TollPlus currently installed on your server
-- **/trollplus reload** - Reload the plugin's configuration and blocklist file
+- **/trollplus reload** - Reload the plugin's configuration, language and blocklist file
 - **/trollplus blocklist add** - Add players to the blocklist
 - **/trollplus blocklist remove** - Remove players from the blocklist
 - **/troll [player]** - Open the troll GUI for a player
 - **/trollbows** - Open the trollbows GUI
 
-## Alias
+## Aliases
 
 - **/trollplus** : [ /troll+ ]
 - **/trollbows** : [ /trollbow ]
@@ -70,11 +72,11 @@ This plugin allows you to troll them in different ways.
 - **trollplus.troll** - Operators - Gives access to the /troll command
 - **trollplus.bows** - Operators - Gives access to the /trollbows command
 
-## Note
+## Notes
 
 - Always create a new configuration when updating!
-- The plugin collects anonymous statistics if you do not deactivate them.
-To see the statistics, visit [bStats](https://bstats.org/plugin/bukkit/TrollPlus).
+- The plugin collects anonymous statistics if you do not deactivate them. To see the statistics,
+  visit [bStats](https://bstats.org/plugin/bukkit/TrollPlus).
 
 ## To-do list
 

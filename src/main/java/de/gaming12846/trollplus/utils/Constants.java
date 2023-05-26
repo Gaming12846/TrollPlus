@@ -19,11 +19,12 @@ public class Constants {
     public static final String PERMISSION_BLOCKLIST_REMOVE = "trollplus.blocklist.remove";
     public static final String PERMISSION_TROLL = "trollplus.troll";
     public static final String PERMISSION_TROLLBOWS = "trollplus.bows";
+
+    // Plugin info messages presets
     public static String PLUGIN_NO_PERMISSION;
     public static String PLUGIN_NO_CONSOLE;
     public static String PLUGIN_INVALID_SYNTAX;
 
-    // Plugin info messages presets
     public Constants(TrollPlus plugin) {
         PLUGIN_NO_PERMISSION = ChatColor.RED + plugin.getLanguageConfig().getConfig().getString("no-permission");
         PLUGIN_NO_CONSOLE = " " + plugin.getLanguageConfig().getConfig().getString("no-console");

@@ -54,8 +54,7 @@ public class TrollPlusCommand implements CommandExecutor {
             sender.sendMessage(headerFooter);
 
             if (plugin.updateAvailable) {
-                sender.sendMessage("");
-                sender.sendMessage(Constants.PLUGIN_PREFIX + langConfig.getString("update-available") + " https://www.spigotmc.org/resources/81193");
+                sender.sendMessage(langConfig.getString("update-available") + " https://www.spigotmc.org/resources/81193");
             }
         }
         // Reload subcommand
