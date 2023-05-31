@@ -36,6 +36,11 @@ public class TrollPlusCommand implements CommandExecutor {
 
         // Version subcommand
         if (args[0].equalsIgnoreCase("version")) {
+            if (!sender.hasPermission(Constants.PERMISSION_VERSION)) {
+                sender.sendMessage(Constants.PLUGIN_NO_PERMISSION);
+                return true;
+            }
+
             if (args.length != 1) {
                 sender.sendMessage(Constants.PLUGIN_INVALID_SYNTAX + label + " version");
                 return true;

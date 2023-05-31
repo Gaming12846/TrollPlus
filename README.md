@@ -72,17 +72,17 @@ Then you've come to the right place! This plugin allows you to troll them in dif
 - **trollplus.troll** - Operators - Gives access to the /troll command
 - **trollplus.bows** - Operators - Gives access to the /trollbows command
 
-## Notes
-
-- Always create a new configuration when updating!
-- The plugin collects anonymous statistics if you do not deactivate them. To see the statistics,
-  visit [bStats](https://bstats.org/plugin/bukkit/TrollPlus).
-
 ## To-do list
 
 - Improve the control feature (Smooth it out)
 - Add a trollmode (Feel free to write me a message with suggestions)
 - Add more features (Feel free to write me a message with function suggestions)
+
+## Notes
+
+- Always create a new configuration when updating!
+- The plugin collects anonymous statistics if you do not deactivate them. To see the statistics,
+  visit [bStats](https://bstats.org/plugin/bukkit/TrollPlus).
 
 ## Need help?
 

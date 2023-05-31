@@ -26,9 +26,7 @@ public class ConfigUtil {
         this.path = path;
         this.file = new File(plugin.getDataFolder(), path);
 
-        if (!file.exists()) {
-            plugin.saveResource(path, false);
-        }
+        if (!file.exists()) plugin.saveResource(path, false);
 
         this.configuration = YamlConfiguration.loadConfiguration(this.file);
     }
@@ -50,16 +48,12 @@ public class ConfigUtil {
     // Reload the config
     public void reload() {
         plugin.saveDefaultConfig();
-        if (!file.exists()) {
-            plugin.saveResource(path, false);
-        }
+        if (!file.exists()) plugin.saveResource(path, false);
 
         this.configuration = YamlConfiguration.loadConfiguration(file);
 
         final InputStream defaultConfigStream = plugin.getResource(path);
-        if (defaultConfigStream == null) {
-            return;
-        }
+        if (defaultConfigStream == null) return;
 
         this.configuration.setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(defaultConfigStream, Charsets.UTF_8)));
     }

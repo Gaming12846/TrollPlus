@@ -25,10 +25,14 @@ permissions:
     description: Gives access to all TrollPlus commands
     default: op
     children:
+      trollplus.version: true
       trollplus.reload: true
       trollplus.blocklist.*: true
       trollplus.troll: true
       trollplus.bows: true
+  trollplus.version:
+    description: Gives access to the /trollplus <version> subcommand
+    default: true
   trollplus.reload:
     description: Gives access to the /trollplus <reload> subcommand
     default: op

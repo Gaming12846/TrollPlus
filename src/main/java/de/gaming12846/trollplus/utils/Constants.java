@@ -14,6 +14,7 @@ public class Constants {
     public static final String PLUGIN_CONSOLE_PREFIX = "[TrollPlus] ";
 
     // Permission nodes
+    public static final String PERMISSION_VERSION = "trollplus.version";
     public static final String PERMISSION_RELOAD = "trollplus.reload";
     public static final String PERMISSION_BLOCKLIST_ADD = "trollplus.blocklist.add";
     public static final String PERMISSION_BLOCKLIST_REMOVE = "trollplus.blocklist.remove";
