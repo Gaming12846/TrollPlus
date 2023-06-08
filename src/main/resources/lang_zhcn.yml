@@ -43,6 +43,8 @@ troll-rocket-launch-stopped: "Launch stopped because the target is no longer und
 
 #######################"Troll" GUI###########################
 
+troll-status-on: "On"
+troll-status-off: "Off"
 troll-close: "关闭"
 troll-close-description: "关闭 troll GUI"
 troll-vanish: "隐身"
@@ -99,6 +101,27 @@ trollbows-lighting-bolt-bow: "闪电弓"
 trollbows-lighting-bolt-bow-description: "发射弓箭时产生闪电"
 trollbows-silverfish-bow: "河豚弓"
 trollbows-silverfish-bow-description: "发射弓箭时生成河豚"
+
+#######################"Settings" GUI#######################
+
+trollsettings-status-on: "On"
+trollsettings-status-off: "OFF"
+trollsettings-close: "关闭"
+trollsettings-close-description: "关闭 settings GUI"
+trollsettings-language: "Language:"
+trollsettings-language-description: "Set the language for the plugin, available options are custom, en and zhcn"
+trollsettings-metrics-enabled: "Metrics:"
+trollsettings-metrics-enabled-description: "Enable or disable the plugin metrics"
+trollsettings-check-for-updates: "Check for updates:"
+trollsettings-check-for-updates-description: "Enable or disable the update checker"
+trollsettings-deactivate-features-on-quit: "Deactivate features on quit:"
+trollsettings-deactivate-features-on-quit-description: "Deactivate the active troll features when the target leaves the server"
+trollsettings-control-teleport-back: "Control teleport back:"
+trollsettings-control-teleport-back-description: "Teleports the player back to the starting position"
+trollsettings-set-fire: "Set fire:"
+trollsettings-set-fire-description: "Enable or disable that a fire can be set for the 'TNT track' feature and the 'Trollbows'"
+trollsettings-break-blocks: "Break blocks:"
+trollsettings-break-blocks-description: "Enable or disable that explosions can destroy blocks for the 'TNT track' feature and the 'Trollbows'"
 
 #######################GUIs##################################
 

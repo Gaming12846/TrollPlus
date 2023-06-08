@@ -21,21 +21,15 @@ public class TabCompleter implements org.bukkit.command.TabCompleter {
         if (cmd.getLabel().equalsIgnoreCase("trollplus")) {
             if (args.length == 1) {
                 results.clear();
-                results.add("version");
-                if (sender.hasPermission(Constants.PERMISSION_RELOAD)) {
-                    results.add("reload");
-                }
-                if (sender.hasPermission(Constants.PERMISSION_BLOCKLIST_ADD) || sender.hasPermission(Constants.PERMISSION_BLOCKLIST_REMOVE)) {
+                if (sender.hasPermission(Constants.PERMISSION_VERSION)) results.add("version");
+                if (sender.hasPermission(Constants.PERMISSION_RELOAD)) results.add("reload");
+                if (sender.hasPermission(Constants.PERMISSION_BLOCKLIST_ADD) || sender.hasPermission(Constants.PERMISSION_BLOCKLIST_REMOVE))
                     results.add("blocklist");
-                }
+                if (sender.hasPermission(Constants.PERMISSION_SETTINGS)) results.add("settings");
             } else if (args.length == 2 && args[0].equals("blocklist")) {
                 results.clear();
-                if (sender.hasPermission(Constants.PERMISSION_BLOCKLIST_ADD)) {
-                    results.add("add");
-                }
-                if (sender.hasPermission(Constants.PERMISSION_BLOCKLIST_REMOVE)) {
-                    results.add("remove");
-                }
+                if (sender.hasPermission(Constants.PERMISSION_BLOCKLIST_ADD)) results.add("add");
+                if (sender.hasPermission(Constants.PERMISSION_BLOCKLIST_REMOVE)) results.add("remove");
             } else if (args.length == 3 && args[0].equals("blocklist") && sender.hasPermission(Constants.PERMISSION_BLOCKLIST_ADD) || sender.hasPermission(Constants.PERMISSION_BLOCKLIST_REMOVE)) {
                 results.clear();
                 for (Player p : Bukkit.getOnlinePlayers()) {

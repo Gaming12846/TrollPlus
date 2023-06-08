@@ -1,0 +1,63 @@
+/*
+ * This file is part of TrollPlus.
+ * Copyright (C) 2023 Gaming12846
+ */
+
+package de.gaming12846.trollplus.utils;
+
+import de.gaming12846.trollplus.TrollPlus;
+import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+
+public class GUIUtil {
+    private final Inventory inv;
+    private Player player;
+    private FileConfiguration langConfig;
+
+    // GUIUtil for Trollbows
+    public GUIUtil(String name, Integer size) {
+        inv = Bukkit.createInventory(null, size, name);
+    }
+
+    // GUIUtil for Troll
+    public GUIUtil(String name, Integer size, Player target, TrollPlus plugin) {
+        inv = Bukkit.createInventory(null, size, name);
+        player = target;
+        langConfig = plugin.getLanguageConfig().getConfig();
+    }
+
+    // GUIUtil for TrollPlus settings
+    public GUIUtil(String name, Integer size, TrollPlus plugin) {
+        inv = Bukkit.createInventory(null, size, name);
+        langConfig = plugin.getLanguageConfig().getConfig();
+    }
+
+    public void addItem(Integer index, ItemStack item) {
+        inv.setItem(index, item);
+    }
+
+    public Inventory getGUI() {
+        return inv;
+    }
+
+    public GUIUtil getGUIUtil() {
+        return this;
+    }
+
+    public Player getTarget() {
+        return player;
+    }
+
+    public String getStatus(String metadata) {
+        if (player.hasMetadata(metadata)) return "§a§l" + langConfig.getString("troll-status-on");
+        return "§c§l" + langConfig.getString("troll-status-off");
+    }
+
+    public String getConfigStatus(Boolean configboolean) {
+        if (configboolean) return "§a§l" + langConfig.getString("trollsettings-status-on");
+        return "§c§l" + langConfig.getString("trollsettings-status-off");
+    }
+}

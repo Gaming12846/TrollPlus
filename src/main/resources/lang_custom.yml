@@ -45,6 +45,8 @@ troll-rocket-launch-stopped: ""
 
 #######################"Troll" GUI###########################
 
+troll-status-on: ""
+troll-status-off: ""
 troll-close: ""
 troll-close-description: ""
 troll-vanish: ""
@@ -101,6 +103,27 @@ trollbows-lighting-bolt-bow: ""
 trollbows-lighting-bolt-bow-description: ""
 trollbows-silverfish-bow: ""
 trollbows-silverfish-bow-description: ""
+
+#######################"Settings" GUI#######################
+
+trollsettings-status-on: ""
+trollsettings-status-off: ""
+trollsettings-close: ""
+trollsettings-close-description: ""
+trollsettings-language: ""
+trollsettings-language-description: ""
+trollsettings-metrics-enabled: ""
+trollsettings-metrics-enabled-description: ""
+trollsettings-check-for-updates: ""
+trollsettings-check-for-updates-description: ""
+trollsettings-deactivate-features-on-quit: ""
+trollsettings-deactivate-features-on-quit-description: ""
+trollsettings-control-teleport-back: ""
+trollsettings-control-teleport-back-description: ""
+trollsettings-set-fire: ""
+trollsettings-set-fire-description: ""
+trollsettings-break-blocks: ""
+trollsettings-break-blocks-description: ""
 
 #######################GUIs##################################
 

@@ -11,27 +11,27 @@
 
 #####################Global settings#########################
 
-# Set the language for the plugin, available options are custom, en and zhcn.
+# Set the language for the plugin, available options are custom, en and zhcn. [Default = en]
 language: en
 
-# Enable the metrics.
+# Enable or disable the plugin metrics. [Default = true]
 metrics-enabled: true
-# Enable the update checker.
+# Enable or disable the update checker. [Default = true]
 check-for-updates: true
 
 #####################Features settings#######################
 
-# Deactivate the active troll features when the target leaves the server.
+# Deactivate the active troll features when the target leaves the server. [Default = true]
 deactivate-features-on-quit: true
 
-# Enable the join and quit message when a player goes vanish with the "Vanish" feature.
+# Enable or disable the join and quit message when a player goes vanish with the "Vanish" feature. [Default = false]
 vanish-join-quit-message-enabled: false
 # Set the message when a player goes vanish.
 vanish-quit-message: "[player] left the game"
 # Set the message when a player leaves vanish.
 vanish-join-message: "[player] joined the game"
 
-# Teleports the player back to the starting position.
+# Teleports the player back to the starting position. [Default = true]
 control-teleport-back: true
 
 # Add spam messages for the "Spam messages" feature (You can add as many messages as you like).
@@ -47,17 +47,17 @@ semi-ban-message-replace: "<[player]>"
 
 # Set the message for the player when he is kicked with the "Fake ban" feature.
 fake-ban-message-player: "You have been banned from this Server"
-# Enable the broadcast message for the "Fake ban" feature.
+# Enable or disable the broadcast message for the "Fake ban" feature. [Default = true]
 fake-ban-message-broadcast-enabled: true
 # Set the message for all players on the server when the player is kicked with the "Fake ban" feature.
 fake-ban-message-broadcast: "The Player [player] have been permanently banned from the server"
 
-# Enable the broadcast message for the "Fake op" feature.
+# Enable or disable the broadcast message for the "Fake op" feature. [Default = true]
 fake-op-message-broadcast-enabled: true
 # Set the message for the player and all players (if enabled) on the server when the player is appointed as an operator with the "Fake op" feature.
 fake-op-message: "[Server: Made [player] a server operator]"
 
-# Enable that a fire can be set for the "TNT track" feature and the "Trollbows".
+# Enable or disable that a fire can be set for the "TNT track" feature and the "Trollbows". [Default = false]
 set-fire: false
-# Enable that explosions can destroy blocks for the "TNT track" feature and the "Trollbows".
+# Enable or disable that explosions can destroy blocks for the "TNT track" feature and the "Trollbows". [Default = false]
 break-blocks: false

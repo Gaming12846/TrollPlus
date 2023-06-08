@@ -18,6 +18,7 @@ public class Constants {
     public static final String PERMISSION_RELOAD = "trollplus.reload";
     public static final String PERMISSION_BLOCKLIST_ADD = "trollplus.blocklist.add";
     public static final String PERMISSION_BLOCKLIST_REMOVE = "trollplus.blocklist.remove";
+    public static final String PERMISSION_SETTINGS = "trollplus.settings";
     public static final String PERMISSION_TROLL = "trollplus.troll";
     public static final String PERMISSION_TROLLBOWS = "trollplus.bows";
 

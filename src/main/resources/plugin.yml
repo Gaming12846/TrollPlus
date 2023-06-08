@@ -10,7 +10,7 @@ website: https://www.spigotmc.org/resources/81193
 commands:
   trollplus:
     description: The main command for TrollPlus
-    usage: /<command> [version|reload|blocklist]
+    usage: /<command> [version|reload|blocklist|settings]
     aliases: [ troll+ ]
   troll:
     description: Open the troll GUI
@@ -47,6 +47,9 @@ permissions:
     default: op
   trollplus.blocklist.remove:
     description: Gives access to the /trollplus <blocklist> <remove> subcommand
+    default: op
+  trollplus.settings:
+    description: Gives access to the /trollplus <settings> subcommand
     default: op
   trollplus.troll:
     description: Gives access to the /troll command

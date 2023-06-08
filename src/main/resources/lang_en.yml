@@ -43,6 +43,8 @@ troll-rocket-launch-stopped: "Launch stopped because the target is no longer und
 
 #######################"Troll" GUI###########################
 
+troll-status-on: "On"
+troll-status-off: "Off"
 troll-close: "Close"
 troll-close-description: "Close the troll GUI"
 troll-vanish: "Vanish"
@@ -99,6 +101,27 @@ trollbows-lighting-bolt-bow: "Lightning bolt bow"
 trollbows-lighting-bolt-bow-description: "A bow that creates a lighting bolt when the arrow hits"
 trollbows-silverfish-bow: "Silverfish bow"
 trollbows-silverfish-bow-description: "A bow that creates a horde of silverfish when the arrow hits"
+
+#######################"Settings" GUI#######################
+
+trollsettings-status-on: "On"
+trollsettings-status-off: "OFF"
+trollsettings-close: "Close"
+trollsettings-close-description: "Close the settings GUI"
+trollsettings-language: "Language:"
+trollsettings-language-description: "Set the language for the plugin, available options are custom, en and zhcn"
+trollsettings-metrics-enabled: "Metrics:"
+trollsettings-metrics-enabled-description: "Enable or disable the plugin metrics"
+trollsettings-check-for-updates: "Check for updates:"
+trollsettings-check-for-updates-description: "Enable or disable the update checker"
+trollsettings-deactivate-features-on-quit: "Deactivate features on quit:"
+trollsettings-deactivate-features-on-quit-description: "Deactivate the active troll features when the target leaves the server"
+trollsettings-control-teleport-back: "Control teleport back:"
+trollsettings-control-teleport-back-description: "Teleports the player back to the starting position"
+trollsettings-set-fire: "Set fire:"
+trollsettings-set-fire-description: "Enable or disable that a fire can be set for the 'TNT track' feature and the 'Trollbows'"
+trollsettings-break-blocks: "Break blocks:"
+trollsettings-break-blocks-description: "Enable or disable that explosions can destroy blocks for the 'TNT track' feature and the 'Trollbows'"
 
 #######################GUIs##################################
 

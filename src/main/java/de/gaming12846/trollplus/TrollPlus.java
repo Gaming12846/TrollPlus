@@ -44,6 +44,7 @@ public class TrollPlus extends JavaPlugin {
     private ConfigUtil langSimplifiedChineseConfig;
 
     private InventoryClickListener inventoryClickListener;
+    private TrollPlusCommand trollPlusCommand;
     private TrollCommand trollCommand;
     private TrollBowsCommand trollBowsCommand;
 
@@ -120,10 +121,11 @@ public class TrollPlus extends JavaPlugin {
 
     // Register commands
     private void registerCommands() {
+        trollPlusCommand = new TrollPlusCommand(this);
         trollCommand = new TrollCommand(this);
         trollBowsCommand = new TrollBowsCommand(this);
 
-        Objects.requireNonNull(this.getCommand("trollplus")).setExecutor(new TrollPlusCommand(this));
+        Objects.requireNonNull(this.getCommand("trollplus")).setExecutor(trollPlusCommand);
         Objects.requireNonNull(this.getCommand("troll")).setExecutor(trollCommand);
         Objects.requireNonNull(this.getCommand("trollbows")).setExecutor(trollBowsCommand);
     }
@@ -155,6 +157,11 @@ public class TrollPlus extends JavaPlugin {
     // Get InventoryClickListener
     public InventoryClickListener getInventoryClickListener() {
         return inventoryClickListener;
+    }
+
+    // Get TrollBowsCommand
+    public TrollPlusCommand getTrollPlusCommand() {
+        return trollPlusCommand;
     }
 
     // Get TrollCommand

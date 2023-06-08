@@ -7,8 +7,8 @@ package de.gaming12846.trollplus.commands;
 
 import de.gaming12846.trollplus.TrollPlus;
 import de.gaming12846.trollplus.utils.Constants;
+import de.gaming12846.trollplus.utils.GUIUtil;
 import de.gaming12846.trollplus.utils.ItemBuilder;
-import de.gaming12846.trollplus.utils.guis.TrollGUIBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -21,7 +21,7 @@ import org.bukkit.entity.Player;
 
 public class TrollCommand implements CommandExecutor {
     private final TrollPlus plugin;
-    public TrollGUIBuilder trollGUI;
+    public GUIUtil trollGUI;
 
     public TrollCommand(TrollPlus plugin) {
         this.plugin = plugin;
@@ -61,7 +61,7 @@ public class TrollCommand implements CommandExecutor {
         }
 
         // Create troll GUI
-        trollGUI = new TrollGUIBuilder("Troll " + ChatColor.GOLD + ChatColor.BOLD + target.getName(), 54, target);
+        trollGUI = new GUIUtil("Troll " + ChatColor.GOLD + ChatColor.BOLD + target.getName(), 54, target, plugin);
 
         // Add features
         trollGUI.addItem(4, ItemBuilder.createSkull(ChatColor.GOLD + target.getName(), target.getPlayer()));

@@ -7,8 +7,8 @@ package de.gaming12846.trollplus.commands;
 
 import de.gaming12846.trollplus.TrollPlus;
 import de.gaming12846.trollplus.utils.Constants;
+import de.gaming12846.trollplus.utils.GUIUtil;
 import de.gaming12846.trollplus.utils.ItemBuilder;
-import de.gaming12846.trollplus.utils.guis.TrollBowsGUIBuilder;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -19,7 +19,7 @@ import org.bukkit.entity.Player;
 
 public class TrollBowsCommand implements CommandExecutor {
     private final TrollPlus plugin;
-    public TrollBowsGUIBuilder trollBowsGUI;
+    public GUIUtil trollBowsGUI;
 
     public TrollBowsCommand(TrollPlus plugin) {
         this.plugin = plugin;
@@ -46,7 +46,7 @@ public class TrollBowsCommand implements CommandExecutor {
         FileConfiguration langConfig = plugin.getLanguageConfig().getConfig();
 
         // Create trollbows GUI
-        trollBowsGUI = new TrollBowsGUIBuilder("Trollbows", 9);
+        trollBowsGUI = new GUIUtil("Trollbows", 9);
 
         // Add trollbows
         trollBowsGUI.addItem(8, ItemBuilder.createItemWithLore(Material.BARRIER, ChatColor.RED + langConfig.getString("trollbows-close"), langConfig.getString("trollbows-close-description")));
