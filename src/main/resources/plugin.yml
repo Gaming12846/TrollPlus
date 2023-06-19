@@ -1,7 +1,7 @@
 name: TrollPlus
 version: '${project.version}'
 main: de.gaming12846.trollplus.TrollPlus
-api-version: 1.19
+api-version: '1.20'
 prefix: TrollPlus
 author: Gaming12846
 description: A simple plugin to troll players in Minecraft
