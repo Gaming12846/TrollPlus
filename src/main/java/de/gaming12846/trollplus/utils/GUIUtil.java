@@ -52,12 +52,12 @@ public class GUIUtil {
     }
 
     public String getStatus(String metadata) {
-        if (player.hasMetadata(metadata)) return "§a§l" + langConfig.getString("troll-status-on");
-        return "§c§l" + langConfig.getString("troll-status-off");
+        if (player.hasMetadata(metadata)) return "§a§l" + langConfig.getString("troll-gui.status-on");
+        return "§c§l" + langConfig.getString("troll-gui.status-off");
     }
 
     public String getConfigStatus(Boolean configboolean) {
-        if (configboolean) return "§a§l" + langConfig.getString("trollsettings-status-on");
-        return "§c§l" + langConfig.getString("trollsettings-status-off");
+        if (configboolean) return "§a§l" + langConfig.getString("trollsettings.status-on");
+        return "§c§l" + langConfig.getString("trollsettings.status-off");
     }
 }

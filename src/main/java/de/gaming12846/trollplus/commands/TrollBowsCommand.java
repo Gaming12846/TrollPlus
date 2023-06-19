@@ -49,17 +49,17 @@ public class TrollBowsCommand implements CommandExecutor {
         trollBowsGUI = new GUIUtil("Trollbows", 9);
 
         // Add trollbows
-        trollBowsGUI.addItem(8, ItemBuilder.createItemWithLore(Material.BARRIER, ChatColor.RED + langConfig.getString("trollbows-close"), langConfig.getString("trollbows-close-description")));
+        trollBowsGUI.addItem(8, ItemBuilder.createItemWithLore(Material.BARRIER, ChatColor.RED + langConfig.getString("trollbows.close"), langConfig.getString("trollbows.close-description")));
 
-        trollBowsGUI.addItem(0, ItemBuilder.createBow(langConfig.getString("trollbows-explosion-bow"), langConfig.getString("trollbows-explosion-bow-description")));
-        trollBowsGUI.addItem(1, ItemBuilder.createBow(langConfig.getString("trollbows-tnt-bow"), langConfig.getString("trollbows-tnt-bow-description")));
-        trollBowsGUI.addItem(2, ItemBuilder.createBow(langConfig.getString("trollbows-lighting-bolt-bow"), langConfig.getString("trollbows-lighting-bolt-bow-description")));
-        trollBowsGUI.addItem(3, ItemBuilder.createBow(langConfig.getString("trollbows-silverfish-bow"), langConfig.getString("trollbows-silverfish-bow-description")));
+        trollBowsGUI.addItem(0, ItemBuilder.createBow(langConfig.getString("trollbows.explosion-bow"), langConfig.getString("trollbows.explosion-bow-description")));
+        trollBowsGUI.addItem(1, ItemBuilder.createBow(langConfig.getString("trollbows.tnt-bow"), langConfig.getString("trollbows.tnt-bow-description")));
+        trollBowsGUI.addItem(2, ItemBuilder.createBow(langConfig.getString("trollbows.lighting-bolt-bow"), langConfig.getString("trollbows.lighting-bolt-bow-description")));
+        trollBowsGUI.addItem(3, ItemBuilder.createBow(langConfig.getString("trollbows.silverfish-bow"), langConfig.getString("trollbows.silverfish-bow-description")));
 
         // Placeholders
         byte[] placeholderArray = new byte[]{4, 5, 6, 7};
         for (int slot : placeholderArray) {
-            trollBowsGUI.addItem(slot, ItemBuilder.createItemWithLore(Material.GRAY_STAINED_GLASS_PANE, " ", langConfig.getString("gui-placeholder-description")));
+            trollBowsGUI.addItem(slot, ItemBuilder.createItemWithLore(Material.GRAY_STAINED_GLASS_PANE, " ", langConfig.getString("guis.placeholder-description")));
         }
 
         player.openInventory(trollBowsGUI.getGUI());

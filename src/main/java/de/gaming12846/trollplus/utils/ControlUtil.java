@@ -80,16 +80,12 @@ public class ControlUtil {
         controlMessageBoolean = bool;
     }
 
-    public String getControlMessage() {
-        return controlMessage;
-    }
-
     public void setControlMessage(String message) {
         controlMessage = message;
     }
 
     public void control() {
-        boolean allowFlight = false;
+        boolean allowFlight = true;
 
         for (Player online : Bukkit.getServer().getOnlinePlayers()) {
             online.hidePlayer(plugin, playerPlayer);
@@ -105,8 +101,12 @@ public class ControlUtil {
         playerPlayer.setLevel(playerTarget.getLevel());
         playerPlayer.setExp(playerTarget.getExp());
 
-        if (!playerTarget.getAllowFlight()) playerTarget.setAllowFlight(true);
+        if (!playerTarget.getAllowFlight()) {
+            allowFlight = false;
+            playerTarget.setAllowFlight(true);
+        }
 
+        boolean finalAllowFlight = allowFlight;
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -120,7 +120,7 @@ public class ControlUtil {
                     if (plugin.getConfig().getBoolean("control-teleport-back", true))
                         playerPlayer.teleport(playerLocation);
 
-                    if (!playerTarget.getAllowFlight()) playerTarget.setAllowFlight(false);
+                    if (!finalAllowFlight) playerTarget.setAllowFlight(false);
 
                     for (Player online : Bukkit.getServer().getOnlinePlayers()) {
                         online.showPlayer(plugin, playerPlayer);
