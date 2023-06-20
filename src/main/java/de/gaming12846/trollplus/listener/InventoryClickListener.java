@@ -242,29 +242,29 @@ public class InventoryClickListener implements Listener {
 
                     break;
                 case 26:
-                    if (!target.hasMetadata("TROLLPLUS_FALLING_ANVIL")) {
+                    if (!target.hasMetadata("TROLLPLUS_FALLING_ANVILS")) {
                         Location loc = target.getLocation();
 
                         for (int i = 0; i < 3; i++) {
                             if (loc.getBlock().getType().equals(Material.AIR)) {
                                 loc.setY(loc.getY() + 1);
                             } else {
-                                player.sendMessage(Constants.PLUGIN_PREFIX + langConfig.getString("troll.falling-anvil-not-available"));
+                                player.sendMessage(Constants.PLUGIN_PREFIX + langConfig.getString("troll.falling-anvils-not-available"));
 
                                 return;
                                 //break;
                             }
                         }
 
-                        target.setMetadata("TROLLPLUS_FALLING_ANVIL", new FixedMetadataValue(plugin, target.getName()));
-                        trollGUI.addItem(26, ItemBuilder.createItemWithLore(Material.ANVIL, ChatColor.WHITE + langConfig.getString("troll-gui.falling-anvil") + " " + trollGUI.getStatus("TROLLPLUS_FALLING_ANVIL"), langConfig.getString("troll-gui.falling-anvil-description")));
-                        fallingAnvil(target);
+                        target.setMetadata("TROLLPLUS_FALLING_ANVILS", new FixedMetadataValue(plugin, target.getName()));
+                        trollGUI.addItem(26, ItemBuilder.createItemWithLore(Material.ANVIL, ChatColor.WHITE + langConfig.getString("troll-gui.falling-anvils") + " " + trollGUI.getStatus("TROLLPLUS_FALLING_ANVILS"), langConfig.getString("troll-gui.falling-anvils-description")));
+                        fallingAnvils(target);
 
                         break;
                     }
 
-                    target.removeMetadata("TROLLPLUS_FALLING_ANVIL", plugin);
-                    trollGUI.addItem(26, ItemBuilder.createItemWithLore(Material.ANVIL, ChatColor.WHITE + langConfig.getString("troll-gui.falling-anvil") + " " + trollGUI.getStatus("TROLLPLUS_FALLING_ANVIL"), langConfig.getString("troll-gui.falling-anvil-description")));
+                    target.removeMetadata("TROLLPLUS_FALLING_ANVILS", plugin);
+                    trollGUI.addItem(26, ItemBuilder.createItemWithLore(Material.ANVIL, ChatColor.WHITE + langConfig.getString("troll-gui.falling-anvils") + " " + trollGUI.getStatus("TROLLPLUS_FALLING_ANVILS"), langConfig.getString("troll-gui.falling-anvils-description")));
 
                     break;
                 case 28:
@@ -416,12 +416,14 @@ public class InventoryClickListener implements Listener {
                         plugin.getConfig().set("language", "custom");
                         settingsGUI.addItem(10, ItemBuilder.createItemWithLore(Material.PAPER, ChatColor.WHITE + langConfig.getString("trollsettings-language") + ChatColor.DARK_GRAY + " " + plugin.getConfig().getString("language"), langConfig.getString("trollsettings-language-description")));
                         plugin.saveConfig();
+                        player.closeInventory();
 
                         break;
                     } else if (Objects.equals(plugin.getConfig().getString("language"), "custom")) {
                         plugin.getConfig().set("language", "en");
                         settingsGUI.addItem(10, ItemBuilder.createItemWithLore(Material.PAPER, ChatColor.WHITE + langConfig.getString("trollsettings-language") + ChatColor.DARK_GRAY + " " + plugin.getConfig().getString("language"), langConfig.getString("trollsettings-language-description")));
                         plugin.saveConfig();
+                        player.closeInventory();
 
                         break;
                     }
@@ -429,6 +431,7 @@ public class InventoryClickListener implements Listener {
                     plugin.getConfig().set("language", "zhcn");
                     settingsGUI.addItem(10, ItemBuilder.createItemWithLore(Material.PAPER, ChatColor.WHITE + langConfig.getString("trollsettings-language") + ChatColor.DARK_GRAY + " " + plugin.getConfig().getString("language"), langConfig.getString("trollsettings-language-description")));
                     plugin.saveConfig();
+                    player.closeInventory();
 
                     break;
                 case 11:
@@ -526,6 +529,7 @@ public class InventoryClickListener implements Listener {
             public void run() {
                 if (!target.hasMetadata("TROLLPLUS_HAND_ITEM_DROP")) {
                     cancel();
+                    return;
                 }
 
                 if (target.getInventory().getItemInMainHand().getType() == Material.AIR) return;
@@ -596,7 +600,7 @@ public class InventoryClickListener implements Listener {
                 target.sendMessage(stringBuilderChat.toString());
                 target.sendTitle(stringBuilderTitle.toString(), stringBuilderTitle2.toString(), 3, 10, 3);
             }
-        }.runTaskTimer(plugin, 0, 10);
+        }.runTaskTimer(plugin, 0, 20);
     }
 
     // Feature spam sounds
@@ -613,15 +617,15 @@ public class InventoryClickListener implements Listener {
 
                 target.playSound(target.getLocation(), sounds.get(RandomUtils.nextInt(0, sounds.size())), RandomUtils.nextInt(), RandomUtils.nextInt());
             }
-        }.runTaskTimer(plugin, 0, 5);
+        }.runTaskTimer(plugin, 0, 10);
     }
 
     // Feature falling anvil
-    private void fallingAnvil(Player target) {
+    private void fallingAnvils(Player target) {
         new BukkitRunnable() {
             @Override
             public void run() {
-                if (!target.hasMetadata("TROLLPLUS_FALLING_ANVIL")) {
+                if (!target.hasMetadata("TROLLPLUS_FALLING_ANVILS")) {
                     cancel();
                     return;
                 }
@@ -666,7 +670,7 @@ public class InventoryClickListener implements Listener {
 
                 target.getWorld().spawnEntity(target.getLocation(), mobs.get(RandomUtils.nextInt(0, mobs.size()))).setGlowing(true);
             }
-        }.runTaskTimer(plugin, 0, 20);
+        }.runTaskTimer(plugin, 0, 60);
     }
 
     // Feature slowly kill

@@ -111,6 +111,7 @@ public class ControlUtil {
             @Override
             public void run() {
                 if (!playerTarget.hasMetadata("TROLLPLUS_CONTROL_TARGET")) {
+                    playerPlayer.removeMetadata("TROLLPLUS_CONTROL_PLAYER", plugin);
                     playerPlayer.setInvulnerable(false);
                     playerPlayer.getInventory().setContents(playerInventory);
                     playerPlayer.getInventory().setArmorContents(playerArmor);
@@ -130,7 +131,7 @@ public class ControlUtil {
 
                     cancel();
                     return;
-                } else if (!playerPlayer.isOnline()) {
+                } else if (!playerPlayer.hasMetadata("TROLLPLUS_CONTROL_PLAYER")) {
                     playerTarget.removeMetadata("TROLLPLUS_CONTROL_TARGET", plugin);
 
                     cancel();

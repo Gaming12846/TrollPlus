@@ -33,13 +33,17 @@ public class PlayerQuitListener implements Listener {
             player.removePotionEffect(PotionEffectType.SLOW);
             player.removeMetadata("TROLLPLUS_HAND_ITEM_DROP", plugin);
             player.removeMetadata("TROLLPLUS_CONTROL_TARGET", plugin);
+            player.removeMetadata("TROLLPLUS_CONTROL_PLAYER", plugin);
             player.removeMetadata("TROLLPLUS_FLIP_BEHIND", plugin);
+            player.removeMetadata("TROLLPLUS_SPANK", plugin);
             player.removeMetadata("TROLLPLUS_SPAM_MESSAGES", plugin);
             player.removeMetadata("TROLLPLUS_SPAM_SOUNDS", plugin);
             player.removeMetadata("TROLLPLUS_SEMI_BAN", plugin);
+            player.removeMetadata("TROLLPLUS_FALLING_ANVILS", plugin);
             player.removeMetadata("TROLLPLUS_TNT_TRACK", plugin);
             player.removeMetadata("TROLLPLUS_MOB_SPAWNER", plugin);
             player.removeMetadata("TROLLPLUS_SLOWLY_KILL", plugin);
+            player.removeMetadata("TROLLPLUS_ROCKET_NO_FALL_DAMAGE", plugin);
         }
     }
 }

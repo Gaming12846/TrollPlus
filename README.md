@@ -15,23 +15,27 @@ Then you've come to the right place! This plugin allows you to troll them in dif
 
 ### Troll menu
 
+- **Highly customizable plugin configuration** - You can configure most of the features
 - **Fully customizable language configuration** - You can translate every message, description and item name into the
   language of your choice
 - **Blocklist** - Protect players from having the troll command executed on them
-- **Invsee** - Open the target inventory
-- **Invsee ender chest** - Open the target ender chest
+- **Vanish** - Disappear for the target
 - **Kill** - Kill the target
 - **Teleport** - Teleport to the target
-- **Vanish** - Disappear for the target
+- **Random troll** - Randomly selects a troll to troll the target
+- **Invsee** - Open the target inventory
+- **Invsee ender chest** - Open the target ender chest
 - **Freeze** - Freeze the target and prevent it from moving, interacting or dropping/picking up items
 - **Hand item drop** - Automatic dropping of the hand item from the target
 - **Control** - Complete control over the target, including moving, interacting, causing damage, dropping/picking up
   items and chatting
 - **Flip backwards** - Flip the target backwards (180) when interacting with something (includes breaking blocks and
   hitting entities
+- **Spank** - Spank the target with random knockback
 - **Spam random messages** - Spam the target with random custom messages (You can add as many messages as you want)
 - **Spam random sounds** - Spam the target with random sounds
 - **Semi ban** - Prevents the target from building, interacting, causing damage, dropping/picking up items and chatting
+- **Falling anvils** - Drops anvils on the target
 - **TNT track** - Spawn primed TNT at the target position every few seconds
 - **Mob spawner** - Make random mobs appear at the target position
 - **Slowly kill** - Kills the target slowly by dealing damage to the target every few seconds
@@ -40,6 +44,7 @@ Then you've come to the right place! This plugin allows you to troll them in dif
 - **Rocket** - Launch the target into the air like a firework
 - **Fake ban** - The target is made to think that they got banned
 - **Fake op** - The target is made to think that they got operator permissions
+- **Freefall** - Teleports the target into the air and drop it
 
 ### Trollbows
 
@@ -54,6 +59,7 @@ Then you've come to the right place! This plugin allows you to troll them in dif
 - **/trollplus reload** - Reload the plugin's configuration, language and blocklist file
 - **/trollplus blocklist add** - Add players to the blocklist
 - **/trollplus blocklist remove** - Remove players from the blocklist
+- **/trollplus settings** - Open the settings GUI
 - **/troll [player]** - Open the troll GUI for a player
 - **/trollbows** - Open the trollbows GUI
 
@@ -69,6 +75,7 @@ Then you've come to the right place! This plugin allows you to troll them in dif
 - **trollplus.blocklist.*** - Operators - Gives access to all /trollplus <blocklist> subcommands
 - **trollplus.blocklist.add** - Operators - Gives access to the /trollplus <blocklist> <add> subcommand
 - **trollplus.blocklist.remove** - Operators - Gives access to the /trollplus <blocklist> <remove> subcommand
+- **trollplus.settings** - Operators - Gives access to the /trollplus <settings> subcommand
 - **trollplus.troll** - Operators - Gives access to the /troll command
 - **trollplus.bows** - Operators - Gives access to the /trollbows command
 
