@@ -6,7 +6,7 @@
 
     <groupId>de.gaming12846</groupId>
     <artifactId>TrollPlus</artifactId>
-    <version>1.4.5</version>
+    <version>1.4.5.1</version>
     <packaging>jar</packaging>
 
     <name>TrollPlus</name>

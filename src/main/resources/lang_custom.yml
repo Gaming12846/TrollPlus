@@ -124,6 +124,7 @@ trollsettings:
   close-description: ""
   language: ""
   language-description: ""
+  language-successfully-changed: ""
   metrics-enabled: ""
   metrics-enabled-description: ""
   check-for-updates: ""

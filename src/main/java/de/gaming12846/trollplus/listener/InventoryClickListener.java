@@ -414,107 +414,112 @@ public class InventoryClickListener implements Listener {
                 case 10:
                     if (Objects.equals(plugin.getConfig().getString("language"), "zhcn")) {
                         plugin.getConfig().set("language", "custom");
-                        settingsGUI.addItem(10, ItemBuilder.createItemWithLore(Material.PAPER, ChatColor.WHITE + langConfig.getString("trollsettings-language") + ChatColor.DARK_GRAY + " " + plugin.getConfig().getString("language"), langConfig.getString("trollsettings-language-description")));
+                        settingsGUI.addItem(10, ItemBuilder.createItemWithLore(Material.PAPER, ChatColor.WHITE + langConfig.getString("trollsettings.language") + ChatColor.DARK_GRAY + " " + plugin.getConfig().getString("language"), langConfig.getString("trollsettings.language-description")));
                         plugin.saveConfig();
+                        player.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.GREEN + langConfig.getString("trollsettings.language-successfully-changed"));
                         player.closeInventory();
 
                         break;
                     } else if (Objects.equals(plugin.getConfig().getString("language"), "custom")) {
                         plugin.getConfig().set("language", "en");
-                        settingsGUI.addItem(10, ItemBuilder.createItemWithLore(Material.PAPER, ChatColor.WHITE + langConfig.getString("trollsettings-language") + ChatColor.DARK_GRAY + " " + plugin.getConfig().getString("language"), langConfig.getString("trollsettings-language-description")));
+                        settingsGUI.addItem(10, ItemBuilder.createItemWithLore(Material.PAPER, ChatColor.WHITE + langConfig.getString("trollsettings.language") + ChatColor.DARK_GRAY + " " + plugin.getConfig().getString("language"), langConfig.getString("trollsettings.language-description")));
                         plugin.saveConfig();
+                        player.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.GREEN + langConfig.getString("trollsettings.language-successfully-changed"));
+
                         player.closeInventory();
 
                         break;
                     }
 
                     plugin.getConfig().set("language", "zhcn");
-                    settingsGUI.addItem(10, ItemBuilder.createItemWithLore(Material.PAPER, ChatColor.WHITE + langConfig.getString("trollsettings-language") + ChatColor.DARK_GRAY + " " + plugin.getConfig().getString("language"), langConfig.getString("trollsettings-language-description")));
+                    settingsGUI.addItem(10, ItemBuilder.createItemWithLore(Material.PAPER, ChatColor.WHITE + langConfig.getString("trollsettings.language") + ChatColor.DARK_GRAY + " " + plugin.getConfig().getString("language"), langConfig.getString("trollsettings.language-description")));
                     plugin.saveConfig();
+                    player.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.GREEN + langConfig.getString("trollsettings.language-successfully-changed"));
+
                     player.closeInventory();
 
                     break;
                 case 11:
                     if (plugin.getConfig().getBoolean("metrics-enabled")) {
                         plugin.getConfig().set("metrics-enabled", false);
-                        settingsGUI.addItem(11, ItemBuilder.createItemWithLore(Material.BOOK, ChatColor.WHITE + langConfig.getString("trollsettings-metrics-enabled") + ChatColor.DARK_GRAY + " " + settingsGUI.getConfigStatus(plugin.getConfig().getBoolean("metrics-enabled")), langConfig.getString("trollsettings-metrics-enabled-description")));
+                        settingsGUI.addItem(11, ItemBuilder.createItemWithLore(Material.BOOK, ChatColor.WHITE + langConfig.getString("trollsettings.metrics-enabled") + ChatColor.DARK_GRAY + " " + settingsGUI.getConfigStatus(plugin.getConfig().getBoolean("metrics-enabled")), langConfig.getString("trollsettings.metrics-enabled-description")));
                         plugin.saveConfig();
 
                         break;
                     }
 
                     plugin.getConfig().set("metrics-enabled", true);
-                    settingsGUI.addItem(11, ItemBuilder.createItemWithLore(Material.BOOK, ChatColor.WHITE + langConfig.getString("trollsettings-metrics-enabled") + ChatColor.DARK_GRAY + " " + settingsGUI.getConfigStatus(plugin.getConfig().getBoolean("metrics-enabled")), langConfig.getString("trollsettings-metrics-enabled-description")));
+                    settingsGUI.addItem(11, ItemBuilder.createItemWithLore(Material.BOOK, ChatColor.WHITE + langConfig.getString("trollsettings.metrics-enabled") + ChatColor.DARK_GRAY + " " + settingsGUI.getConfigStatus(plugin.getConfig().getBoolean("metrics-enabled")), langConfig.getString("trollsettings.metrics-enabled-description")));
                     plugin.saveConfig();
 
                     break;
                 case 12:
                     if (plugin.getConfig().getBoolean("check-for-updates")) {
                         plugin.getConfig().set("check-for-updates", false);
-                        settingsGUI.addItem(12, ItemBuilder.createItemWithLore(Material.GLOWSTONE, ChatColor.WHITE + langConfig.getString("trollsettings-check-for-updates") + ChatColor.DARK_GRAY + " " + settingsGUI.getConfigStatus(plugin.getConfig().getBoolean("check-for-updates")), langConfig.getString("trollsettings-check-for-updates-description")));
+                        settingsGUI.addItem(12, ItemBuilder.createItemWithLore(Material.GLOWSTONE, ChatColor.WHITE + langConfig.getString("trollsettings.check-for-updates") + ChatColor.DARK_GRAY + " " + settingsGUI.getConfigStatus(plugin.getConfig().getBoolean("check-for-updates")), langConfig.getString("trollsettings.check-for-updates-description")));
                         plugin.saveConfig();
 
                         break;
                     }
 
                     plugin.getConfig().set("check-for-updates", true);
-                    settingsGUI.addItem(12, ItemBuilder.createItemWithLore(Material.GLOWSTONE, ChatColor.WHITE + langConfig.getString("trollsettings-check-for-updates") + ChatColor.DARK_GRAY + " " + settingsGUI.getConfigStatus(plugin.getConfig().getBoolean("check-for-updates")), langConfig.getString("trollsettings-check-for-updates-description")));
+                    settingsGUI.addItem(12, ItemBuilder.createItemWithLore(Material.GLOWSTONE, ChatColor.WHITE + langConfig.getString("trollsettings.check-for-updates") + ChatColor.DARK_GRAY + " " + settingsGUI.getConfigStatus(plugin.getConfig().getBoolean("check-for-updates")), langConfig.getString("trollsettings.check-for-updates-description")));
                     plugin.saveConfig();
 
                     break;
                 case 13:
                     if (plugin.getConfig().getBoolean("deactivate-features-on-quit")) {
                         plugin.getConfig().set("deactivate-features-on-quit", false);
-                        settingsGUI.addItem(13, ItemBuilder.createItemWithLore(Material.REDSTONE_LAMP, ChatColor.WHITE + langConfig.getString("trollsettings-deactivate-features-on-quit") + ChatColor.DARK_GRAY + " " + settingsGUI.getConfigStatus(plugin.getConfig().getBoolean("deactivate-features-on-quit")), langConfig.getString("trollsettings-deactivate-features-on-quit-description")));
+                        settingsGUI.addItem(13, ItemBuilder.createItemWithLore(Material.REDSTONE_LAMP, ChatColor.WHITE + langConfig.getString("trollsettings.deactivate-features-on-quit") + ChatColor.DARK_GRAY + " " + settingsGUI.getConfigStatus(plugin.getConfig().getBoolean("deactivate-features-on-quit")), langConfig.getString("trollsettings.deactivate-features-on-quit-description")));
                         plugin.saveConfig();
 
                         break;
                     }
 
                     plugin.getConfig().set("deactivate-features-on-quit", true);
-                    settingsGUI.addItem(13, ItemBuilder.createItemWithLore(Material.REDSTONE_LAMP, ChatColor.WHITE + langConfig.getString("trollsettings-deactivate-features-on-quit") + ChatColor.DARK_GRAY + " " + settingsGUI.getConfigStatus(plugin.getConfig().getBoolean("deactivate-features-on-quit")), langConfig.getString("trollsettings-deactivate-features-on-quit-description")));
+                    settingsGUI.addItem(13, ItemBuilder.createItemWithLore(Material.REDSTONE_LAMP, ChatColor.WHITE + langConfig.getString("trollsettings.deactivate-features-on-quit") + ChatColor.DARK_GRAY + " " + settingsGUI.getConfigStatus(plugin.getConfig().getBoolean("deactivate-features-on-quit")), langConfig.getString("trollsettings.deactivate-features-on-quit-description")));
                     plugin.saveConfig();
 
                     break;
                 case 14:
                     if (plugin.getConfig().getBoolean("control-teleport-back")) {
                         plugin.getConfig().set("control-teleport-back", false);
-                        settingsGUI.addItem(14, ItemBuilder.createItemWithLore(Material.ENDER_PEARL, ChatColor.WHITE + langConfig.getString("trollsettings-control-teleport-back") + ChatColor.DARK_GRAY + " " + settingsGUI.getConfigStatus(plugin.getConfig().getBoolean("control-teleport-back")), langConfig.getString("trollsettings-control-teleport-back-description")));
+                        settingsGUI.addItem(14, ItemBuilder.createItemWithLore(Material.ENDER_PEARL, ChatColor.WHITE + langConfig.getString("trollsettings.control-teleport-back") + ChatColor.DARK_GRAY + " " + settingsGUI.getConfigStatus(plugin.getConfig().getBoolean("control-teleport-back")), langConfig.getString("trollsettings.control-teleport-back-description")));
                         plugin.saveConfig();
 
                         break;
                     }
 
                     plugin.getConfig().set("control-teleport-back", true);
-                    settingsGUI.addItem(14, ItemBuilder.createItemWithLore(Material.ENDER_PEARL, ChatColor.WHITE + langConfig.getString("trollsettings-control-teleport-back") + ChatColor.DARK_GRAY + " " + settingsGUI.getConfigStatus(plugin.getConfig().getBoolean("control-teleport-back")), langConfig.getString("trollsettings-control-teleport-back-description")));
+                    settingsGUI.addItem(14, ItemBuilder.createItemWithLore(Material.ENDER_PEARL, ChatColor.WHITE + langConfig.getString("trollsettings.control-teleport-back") + ChatColor.DARK_GRAY + " " + settingsGUI.getConfigStatus(plugin.getConfig().getBoolean("control-teleport-back")), langConfig.getString("trollsettings.control-teleport-back-description")));
                     plugin.saveConfig();
 
                     break;
                 case 15:
                     if (plugin.getConfig().getBoolean("set-fire")) {
                         plugin.getConfig().set("set-fire", false);
-                        settingsGUI.addItem(15, ItemBuilder.createItemWithLore(Material.FIRE_CHARGE, ChatColor.WHITE + langConfig.getString("trollsettings-set-fire") + ChatColor.DARK_GRAY + " " + settingsGUI.getConfigStatus(plugin.getConfig().getBoolean("set-fire")), langConfig.getString("trollsettings-set-fire-description")));
+                        settingsGUI.addItem(15, ItemBuilder.createItemWithLore(Material.FIRE_CHARGE, ChatColor.WHITE + langConfig.getString("trollsettings.set-fire") + ChatColor.DARK_GRAY + " " + settingsGUI.getConfigStatus(plugin.getConfig().getBoolean("set-fire")), langConfig.getString("trollsettings.set-fire-description")));
                         plugin.saveConfig();
 
                         break;
                     }
 
                     plugin.getConfig().set("set-fire", true);
-                    settingsGUI.addItem(15, ItemBuilder.createItemWithLore(Material.FIRE_CHARGE, ChatColor.WHITE + langConfig.getString("trollsettings-set-fire") + ChatColor.DARK_GRAY + " " + settingsGUI.getConfigStatus(plugin.getConfig().getBoolean("set-fire")), langConfig.getString("trollsettings-set-fire-description")));
+                    settingsGUI.addItem(15, ItemBuilder.createItemWithLore(Material.FIRE_CHARGE, ChatColor.WHITE + langConfig.getString("trollsettings.set-fire") + ChatColor.DARK_GRAY + " " + settingsGUI.getConfigStatus(plugin.getConfig().getBoolean("set-fire")), langConfig.getString("trollsettings.set-fire-description")));
                     plugin.saveConfig();
 
                     break;
                 case 16:
                     if (plugin.getConfig().getBoolean("break-blocks")) {
                         plugin.getConfig().set("break-blocks", false);
-                        settingsGUI.addItem(16, ItemBuilder.createItemWithLore(Material.NETHERITE_PICKAXE, ChatColor.WHITE + langConfig.getString("trollsettings-break-blocks") + ChatColor.DARK_GRAY + " " + settingsGUI.getConfigStatus(plugin.getConfig().getBoolean("break-blocks")), langConfig.getString("trollsettings-break-blocks-description")));
+                        settingsGUI.addItem(16, ItemBuilder.createItemWithLore(Material.DIAMOND_PICKAXE, ChatColor.WHITE + langConfig.getString("trollsettings.break-blocks") + ChatColor.DARK_GRAY + " " + settingsGUI.getConfigStatus(plugin.getConfig().getBoolean("break-blocks")), langConfig.getString("trollsettings.break-blocks-description")));
                         plugin.saveConfig();
 
                         break;
                     }
 
                     plugin.getConfig().set("break-blocks", true);
-                    settingsGUI.addItem(16, ItemBuilder.createItemWithLore(Material.NETHERITE_PICKAXE, ChatColor.WHITE + langConfig.getString("trollsettings-break-blocks") + ChatColor.DARK_GRAY + " " + settingsGUI.getConfigStatus(plugin.getConfig().getBoolean("break-blocks")), langConfig.getString("trollsettings-break-blocks-description")));
+                    settingsGUI.addItem(16, ItemBuilder.createItemWithLore(Material.DIAMOND_PICKAXE, ChatColor.WHITE + langConfig.getString("trollsettings.break-blocks") + ChatColor.DARK_GRAY + " " + settingsGUI.getConfigStatus(plugin.getConfig().getBoolean("break-blocks")), langConfig.getString("trollsettings.break-blocks-description")));
                     plugin.saveConfig();
 
                     break;
@@ -754,6 +759,10 @@ public class InventoryClickListener implements Listener {
                     }
 
                     target.setVelocity(target.getVelocity().setY(20));
+
+                    if (target.isFlying())
+                        target.setFlying(false);
+
                     rocket++;
                 } else {
                     if (!finalTargetAllowToFlight) target.setAllowFlight(false);
