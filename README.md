@@ -13,12 +13,17 @@ Then you've come to the right place! This plugin allows you to troll them in dif
 
 ## Features
 
-### Troll menu
+### General
 
 - **Highly customizable plugin configuration** - You can configure most of the features
 - **Fully customizable language configuration** - You can translate every message, description and item name into the
   language of your choice
 - **Blocklist** - Protect players from having the troll command executed on them
+
+### Troll menu
+
+![Troll menu](https://up.picr.de/45943955mv.png)
+
 - **Vanish** - Disappear for the target
 - **Kill** - Kill the target
 - **Teleport** - Teleport to the target
@@ -48,10 +53,16 @@ Then you've come to the right place! This plugin allows you to troll them in dif
 
 ### Trollbows
 
+![Trollbows](https://up.picr.de/45943956ef.png)
+
 - **Explosion bow** - A bow that creates an explosion when the arrow hits
 - **TNT bow** - A bow that creates a TNT when the arrow hits
 - **Lightning bolt bow** - A bow that creates a lighting bolt when the arrow hits
 - **Silverfish bow** - A bow that creates a horde of silverfish when the arrow hits
+
+### TrollPlus settings
+
+![TrollPlus settings](https://up.picr.de/45943957jn.png)
 
 ## Commands
 
@@ -71,6 +82,7 @@ Then you've come to the right place! This plugin allows you to troll them in dif
 ## Permission nodes
 
 - **trollplus.*** - Operators - Gives access to all TrollPlus commands
+- **trollplus.version** - Default - Gives access to the /trollplus <version> subcommand
 - **trollplus.reload** - Operators - Gives access to the /trollplus <reload> subcommand
 - **trollplus.blocklist.*** - Operators - Gives access to all /trollplus <blocklist> subcommands
 - **trollplus.blocklist.add** - Operators - Gives access to the /trollplus <blocklist> <add> subcommand
