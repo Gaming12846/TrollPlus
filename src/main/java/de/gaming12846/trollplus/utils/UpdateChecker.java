@@ -14,6 +14,8 @@ import java.net.URL;
 import java.util.Scanner;
 import java.util.function.Consumer;
 
+import static de.gaming12846.trollplus.TrollPlus.BUKKIT_LOGGER;
+
 // From: https://www.spigotmc.org/wiki/creating-an-update-checker-that-checks-for-updates
 public class UpdateChecker {
     private final TrollPlus plugin;
@@ -31,7 +33,7 @@ public class UpdateChecker {
                     consumer.accept(scanner.next());
                 }
             } catch (IOException exception) {
-                plugin.getLogger().info(Constants.PLUGIN_PREFIX + plugin.getLanguageConfig().getConfig().getString("unable-check-updates") + " " + exception.getMessage());
+                BUKKIT_LOGGER.info(Constants.PLUGIN_CONSOLE_PREFIX + plugin.getLanguageConfig().getConfig().getString("unable-check-updates") + " " + exception.getMessage());
             }
         });
     }
