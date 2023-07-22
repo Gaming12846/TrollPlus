@@ -11,7 +11,7 @@
 
 # If you need help, you can send me a message on SpigotMC.
 
-#####################Global settings#########################
+#######################Global settings#######################
 
 # Set the language for the plugin, available options are custom, en and zhcn. [Default = en]
 language: en
@@ -21,46 +21,28 @@ metrics-enabled: true
 # Enable or disable the update checker. [Default = true]
 check-for-updates: true
 
-#####################Features settings#######################
+######################Features settings######################
 
 # Deactivate the active troll features when the target leaves the server. [Default = true]
 deactivate-features-on-quit: true
 
 # Enable or disable the join and quit message when a player goes vanish with the "Vanish" feature. [Default = false]
 vanish-join-quit-message-enabled: false
-# Set the message when a player goes vanish. [Default = "[player] left the game"]
-vanish-quit-message: "[player] left the game" # The "[player]" must be included in the message as it will be replaced by the name of the player.
-# Set the message when a player leaves vanish. [Default = "[player] joined the game"]
-vanish-join-message: "[player] joined the game" # The "[player]" must be included in the message as it will be replaced by the name of the player.
 
 # Teleports the player back to the starting position. [Default = true]
 control-teleport-back: true
 
-# Add spam messages for the "Spam messages" feature (You can add as many messages as you like).
-spam-messages:
-  - "Hello my friend"
-  - "Wasp"
-  - "LoLoLoLo"
-  - "xDxDxDxDxD"
-  - "XoXoXoXo"
-
-# Set the format for the player name when sending messages for the "Semi ban" feature. [Default = true]
+# Set the format for the player name when sending messages for the "Semi ban" feature. [Default = "<[player]>"]
 semi-ban-message-replace: "<[player]>" # The "[player]" must be included in the message as it will be replaced by the name of the player.
 
 # Set the rocket charges that determine how many times the target will be launched. [Default = 20]
 rocket-charges: 20
 
-# Set the message for the player when he is kicked with the "Fake ban" feature. [Default = "You have been banned from this Server"]
-fake-ban-message-player: "You have been banned from this Server"
 # Enable or disable the broadcast message for the "Fake ban" feature. [Default = true]
 fake-ban-message-broadcast-enabled: true
-# Set the message for all players on the server when the player is kicked with the "Fake ban" feature. [Default = "The Player [player] have been permanently banned from the server"]
-fake-ban-message-broadcast: "The Player [player] have been permanently banned from the server" # The "[player]" must be included in the message as it will be replaced by the name of the player.
 
 # Enable or disable the broadcast message for the "Fake op" feature. [Default = true]
 fake-op-message-broadcast-enabled: true
-# Set the message for the player and all players (if enabled) on the server when the player is appointed as an operator with the "Fake op" feature. [Default = "[Server: Made [player] a server operator]"]
-fake-op-message: "[Server: Made [player] a server operator]" # The "[player]" must be included in the message as it will be replaced by the name of the player.
 
 # Set the height to which the target is teleported with the "Freefall" feature. [Default = 100]
 freefall-height: 100

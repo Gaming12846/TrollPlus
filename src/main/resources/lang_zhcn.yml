@@ -1,8 +1,8 @@
 # This is the simplified chinese language config file for TrollPlus.
 # This language config was generated for version ${project.version}.
-# Language config by: ranyouHigh
+# Language config by: ranyouHigh and Stars
 
-############################Global###########################
+###########################Global############################
 
 metrics-enabled: "正在开启插件数据收集功能"
 
@@ -16,7 +16,7 @@ no-console: "无法从控制台执行命令"
 invalid-syntax: "无效的指令参数！"
 invalid-syntax-use: "请使用 /"
 
-#######################"Trollplus" command###################
+#####################"Trollplus" command#####################
 
 trollplus:
   version: "版本："
@@ -37,24 +37,25 @@ troll:
   vanish-not-available: "对不起，你不能隐身自己"
   teleport-not-available: "做得很好，但你已经处于自己的位置了 :)"
   control-not-available: "做得很好，但你已经被控制了 :)"
-  falling-anvils-not-available: "Falling anvil cannot be activated because the target is under a block"
+  falling-anvils-not-available: "无法坠落铁砧，因为目标在方块下"
   slowly-kill-not-available: "无法缓慢杀伤，因为目标未处于生存或冒险模式"
   rocket-cannot-launch: "无法发射，因为目标头顶有方块"
-  rocket-launch-stopped: "Launch stopped because the target is no longer under the open sky"
-  freefall-cannot-fall: "Free fall cannot be activated because the target is not under the open sky"
+  rocket-launch-stopped: "发射停止，因为目标不再暴露在开放的区域"
+  freefall-cannot-fall: "无法自由落体，因为目标不再暴露在开放的区域"
 
-#######################"Troll" GUI###########################
+#########################"Troll" GUI#########################
 
 troll-gui:
-  status-on: "On"
-  status-off: "Off"
+  title: "Troll"
+  status-on: "开启"
+  status-off: "关闭"
   close: "关闭"
-  close-description: "关闭 troll GUI"
+  close-description: "关闭 Troll GUI"
   vanish: "隐身"
   vanish-description: "使目标玩家隐身"
   teleport: "传送"
-  random-troll: "Random troll"
-  random-troll-description: "Randomly selects a troll to troll the target"
+  random-troll: "随机 Troll"
+  random-troll-description: "随机选择一个 Troll 项目"
   teleport-description: "传送到目标玩家身边"
   kill: "杀死"
   kill-description: "强制杀死目标玩家"
@@ -70,16 +71,16 @@ troll-gui:
   control-description: "完全控制目标玩家，包括移动，交互，造成伤害，掉落/捡起物品以及聊天"
   flip-backwards: "向后翻转"
   flip-backwards-description: "当目标玩家交互方块或攻击生物实体时，强制让其向后180度翻转"
-  spank: "Spank"
-  spank-description: "Spank the target with random knockback"
+  spank: "打巴掌"
+  spank-description: "用随机的击退效果击退目标玩家"
   spam-messages: "消息刷屏"
   spam-messages-description: "使用随机的消息刷屏目标玩家"
-  spam-sounds: "杂音"
+  spam-sounds: "噪音"
   spam-sounds-description: "给目标玩家随机播放声音"
   semi-ban: "类封禁"
   semi-ban-description: "使目标玩家无法建筑，交互，造成伤害，掉落/捡起物品以及聊天"
-  falling-anvils: "Falling anvils"
-  falling-anvils-description: "Drops anvils on the target"
+  falling-anvils: "坠落铁砧"
+  falling-anvils-description: "在目标玩家头顶坠落铁砧"
   tnt-track: "TNT追踪"
   tnt-track-description: "在目标玩家的当前位置不断生成TNT（TNT爆炸默认不会破坏方块）"
   mob-spawner: "生成怪物"
@@ -96,14 +97,15 @@ troll-gui:
   fake-ban-description: "让目标玩家以为他们被封禁了（会踢出目标玩家但是马上就能进来）"
   fake-op: "假op"
   fake-op-description: "让目标玩家以为他们获得了op"
-  freefall: "Freefall"
-  freefall-description: "Teleports the target into the air and drop it"
+  freefall: "自由落体"
+  freefall-description: "把目标玩家传送至空中并丢下他"
 
 #######################"Trollbows" GUI#######################
 
 trollbows:
+  title: "Trollbows"
   close: "关闭"
-  close-description: "关闭 trollbow GUI"
+  close-description: "关闭 Trollbows GUI"
   explosion-bow: "爆炸弓"
   explosion-bow-description: "发射弓箭时产生爆炸效果"
   tnt-bow: "TNT弓"
@@ -113,30 +115,56 @@ trollbows:
   silverfish-bow: "河豚弓"
   silverfish-bow-description: "发射弓箭时生成河豚"
 
+####################Features translations####################
+
+vanish:
+  # Set the message when a player goes vanish.
+  quit-message: "[player] left the game" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+  # Set the message when a player leaves vanish.
+  join-message: "[player] joined the game" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+
+# Add spam messages for the "Spam messages" feature (You can add as many messages as you like).
+spam-messages:
+  - "Hello my friend"
+  - "Wasp"
+  - "LoLoLoLo"
+  - "xDxDxDxDxD"
+  - "XoXoXoXo"
+
+fake-ban:
+  # Set the message for the player when he is kicked with the "Fake ban" feature.
+  message-player: "You have been banned from this Server"
+  # Set the message for all players on the server when the player is kicked with the "Fake ban" feature.
+  message-broadcast: "The Player [player] have been permanently banned from the server" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+
+# Set the message for the player and all players (if enabled) on the server when the player is appointed as an operator with the "Fake op" feature.
+fake-op-message: "[Server: Made [player] a server operator]" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+
 #######################"Settings" GUI#######################
 
 trollsettings:
-  status-on: "On"
-  status-off: "OFF"
+  title: "TrollPlus settings"
+  status-on: "开启"
+  status-off: "关闭"
   close: "关闭"
-  close-description: "关闭 setting GUI"
-  language: "Language:"
-  language-description: "Set the language for the plugin, available options are custom, en and zhcn"
-  language-successfully-changed: "The language has been successfully changed!"
+  close-description: "关闭 Setting GUI"
+  language: "语言:"
+  language-description: "设置插件的语言，可选项是 custom, en 和 zhcn"
+  language-successfully-changed: "语言成功更改!"
   metrics-enabled: "Metrics:"
-  metrics-enabled-description: "Enable or disable the plugin metrics"
-  check-for-updates: "Check for updates:"
-  check-for-updates-description: "Enable or disable the update checker"
-  deactivate-features-on-quit: "Deactivate features on quit:"
-  deactivate-features-on-quit-description: "Deactivate the active troll features when the target leaves the server"
-  control-teleport-back: "Control teleport back:"
-  control-teleport-back-description: "Teleports the player back to the starting position"
-  set-fire: "Set fire:"
-  set-fire-description: "Enable or disable that a fire can be set for the 'TNT track' feature and the 'Trollbows'"
-  break-blocks: "Break blocks:"
-  break-blocks-description: "Enable or disable that explosions can destroy blocks for the 'TNT track' feature and the 'Trollbows'"
+  metrics-enabled-description: "开启或关闭插件Metrics"
+  check-for-updates: "更新检查:"
+  check-for-updates-description: "开启或关闭插件更新检查"
+  deactivate-features-on-quit: "在玩家退出时关闭功能:"
+  deactivate-features-on-quit-description: "当目标玩家离开服务器时关闭对他的所有 Troll 功能"
+  control-teleport-back: "控制:"
+  control-teleport-back-description: "将玩家重新传送回最初位置"
+  set-fire: "着火:"
+  set-fire-description: "开启或关闭 'TNT追踪' 和 'Trollbows' 功能施加的火焰效果"
+  break-blocks: "破坏方块:"
+  break-blocks-description: "开启或关闭 'TNT追踪' 和 'Trollbows' 功能施加的破坏方块效果"
 
-#######################GUIs##################################
+############################GUIs#############################
 
 guis:
   placeholder-description: "仅仅用于占位 :("

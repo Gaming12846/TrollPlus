@@ -4,7 +4,7 @@
 # This language config was generated for version ${project.version}.
 # Language config by:
 
-############################Global###########################
+###########################Global############################
 
 metrics-enabled: ""
 
@@ -18,7 +18,7 @@ no-console: ""
 invalid-syntax: ""
 invalid-syntax-use: ""
 
-#######################"Trollplus" command###################
+#####################"Trollplus" command#####################
 
 trollplus:
   version: ""
@@ -45,9 +45,10 @@ troll:
   rocket-launch-stopped: ""
   freefall-cannot-fall: ""
 
-#######################"Troll" GUI###########################
+#########################"Troll" GUI#########################
 
 troll-gui:
+  title: ""
   status-on: ""
   status-off: ""
   close: ""
@@ -104,6 +105,7 @@ troll-gui:
 #######################"Trollbows" GUI#######################
 
 trollbows:
+  title: ""
   close: ""
   close-description: ""
   explosion-bow: ""
@@ -115,9 +117,35 @@ trollbows:
   silverfish-bow: ""
   silverfish-bow-description: ""
 
+####################Features translations####################
+
+vanish:
+  # Set the message when a player goes vanish.
+  quit-message: "" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+  # Set the message when a player leaves vanish.
+  join-message: "" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+
+# Add spam messages for the "Spam messages" feature (You can add as many messages as you like).
+spam-messages:
+  - ""
+  - ""
+  - ""
+  - ""
+  - ""
+
+fake-ban:
+  # Set the message for the player when he is kicked with the "Fake ban" feature.
+  message-player: ""
+  # Set the message for all players on the server when the player is kicked with the "Fake ban" feature.
+  message-broadcast: "" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+
+# Set the message for the player and all players (if enabled) on the server when the player is appointed as an operator with the "Fake op" feature.
+fake-op-message: "" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+
 #######################"Settings" GUI#######################
 
 trollsettings:
+  title: ""
   status-on: ""
   status-off: ""
   close: ""
@@ -138,7 +166,7 @@ trollsettings:
   break-blocks: ""
   break-blocks-description: ""
 
-#######################GUIs##################################
+############################GUIs#############################
 
 guis:
   placeholder-description: ""

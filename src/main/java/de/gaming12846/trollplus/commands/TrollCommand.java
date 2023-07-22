@@ -61,7 +61,7 @@ public class TrollCommand implements CommandExecutor {
         }
 
         // Create troll GUI
-        trollGUI = new GUIUtil("Troll " + ChatColor.GOLD + ChatColor.BOLD + target.getName(), 54, target, plugin);
+        trollGUI = new GUIUtil(langConfig.getString("troll-gui.title") + " " + ChatColor.GOLD + ChatColor.BOLD + target.getName(), 54, target, plugin);
 
         // Add features
         trollGUI.addItem(4, ItemBuilder.createSkull(ChatColor.GOLD + target.getName(), target.getPlayer()));

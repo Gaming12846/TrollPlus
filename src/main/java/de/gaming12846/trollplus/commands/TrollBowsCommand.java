@@ -46,7 +46,7 @@ public class TrollBowsCommand implements CommandExecutor {
         FileConfiguration langConfig = plugin.getLanguageConfig().getConfig();
 
         // Create trollbows GUI
-        trollBowsGUI = new GUIUtil("Trollbows", 9);
+        trollBowsGUI = new GUIUtil(langConfig.getString("trollbows.title"), 9);
 
         // Add trollbows
         trollBowsGUI.addItem(8, ItemBuilder.createItemWithLore(Material.BARRIER, ChatColor.RED + langConfig.getString("trollbows.close"), langConfig.getString("trollbows.close-description")));

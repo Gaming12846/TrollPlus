@@ -34,9 +34,11 @@ import java.util.Objects;
 public class InventoryClickListener implements Listener {
     private final TrollPlus plugin;
     public ControlUtil controlUtil;
+    private final FileConfiguration langConfig;
 
     public InventoryClickListener(TrollPlus plugin) {
         this.plugin = plugin;
+        langConfig = plugin.getLanguageConfig().getConfig();
     }
 
     @EventHandler
@@ -51,7 +53,6 @@ public class InventoryClickListener implements Listener {
         // Feature semi ban
         if (player.hasMetadata("TROLLPLUS_SEMI_BAN")) event.setCancelled(true);
 
-        FileConfiguration langConfig = plugin.getLanguageConfig().getConfig();
 
         if (plugin.getTrollCommand().trollGUI != null && Objects.equals(event.getClickedInventory(), plugin.getTrollCommand().trollGUI.getGUI())) {
             int slot = event.getSlot();
@@ -79,7 +80,7 @@ public class InventoryClickListener implements Listener {
                         target.setMetadata("TROLLPLUS_VANISH", new FixedMetadataValue(plugin, target.getName()));
                         target.hidePlayer(plugin, player);
                         if (plugin.getConfig().getBoolean("vanish-join-quit-message-enabled", true)) {
-                            String vanishQuitMessage = plugin.getConfig().getString("vanish-quit-message");
+                            String vanishQuitMessage = langConfig.getString("vanish.quit-message");
                             assert vanishQuitMessage != null;
                             target.sendMessage(vanishQuitMessage.replace("[player]", player.getName()));
                         }
@@ -92,7 +93,7 @@ public class InventoryClickListener implements Listener {
                     target.removeMetadata("TROLLPLUS_VANISH", plugin);
                     target.showPlayer(plugin, player);
                     if (plugin.getConfig().getBoolean("vanish-join-quit-message-enabled", true)) {
-                        String vanishJoinMessage = plugin.getConfig().getString("vanish-join-message");
+                        String vanishJoinMessage = langConfig.getString("vanish.join-message");
                         assert vanishJoinMessage != null;
                         target.sendMessage(vanishJoinMessage.replace("[player]", player.getName()));
                     }
@@ -581,7 +582,9 @@ public class InventoryClickListener implements Listener {
                     return;
                 }
 
-                List<String> spamMessages = plugin.getConfig().getStringList("spam-messages");
+                plugin.getConfig().getStringList("");
+
+                List<String> spamMessages = langConfig.getStringList("spam-messages");
 
                 StringBuilder stringBuilderChat = new StringBuilder();
                 StringBuilder stringBuilderTitle = new StringBuilder();
@@ -690,8 +693,6 @@ public class InventoryClickListener implements Listener {
                 }
 
                 if (target.getGameMode() == GameMode.CREATIVE || target.getGameMode() == GameMode.SPECTATOR) {
-                    FileConfiguration langConfig = plugin.getLanguageConfig().getConfig();
-
                     player.sendMessage(Constants.PLUGIN_PREFIX + langConfig.getString("troll.slowly-kill-not-available"));
                     target.removeMetadata("TROLLPLUS_SLOWLY_KILL", plugin);
                     GUIUtil trollGUI = plugin.getTrollCommand().trollGUI.getGUIUtil();
@@ -775,37 +776,35 @@ public class InventoryClickListener implements Listener {
 
     // Feature fake ban
     private void fakeBan(Player target) {
-        String fakeBanMessagePlayer = plugin.getConfig().getString("fake-ban-message-player", "");
+        String fakeBanMessagePlayer = langConfig.getString("fake-ban.message-player");
 
-        if (!fakeBanMessagePlayer.isEmpty()) target.kickPlayer(fakeBanMessagePlayer);
+        if (fakeBanMessagePlayer != null) {
+            target.kickPlayer(fakeBanMessagePlayer);
+        } else target.kickPlayer("");
 
         if (plugin.getConfig().getBoolean("fake-ban-message-broadcast-enabled", true)) {
-            String fakeBanMessageBroadcast = plugin.getConfig().getString("fake-ban-message-broadcast", "");
+            String fakeBanMessageBroadcast = langConfig.getString("fake-ban.message-broadcast");
 
-            if (!fakeBanMessageBroadcast.isEmpty()) {
-                String fakeBanMessageBroadcastReplace = fakeBanMessageBroadcast.replace("[player]", target.getName());
-                Bukkit.broadcastMessage(fakeBanMessageBroadcastReplace);
-            }
+            assert fakeBanMessageBroadcast != null;
+            String fakeBanMessageBroadcastReplace = fakeBanMessageBroadcast.replace("[player]", target.getName());
+            Bukkit.broadcastMessage(fakeBanMessageBroadcastReplace);
         }
     }
 
     // Feature fake op
     private void fakeOp(Player target) {
-        String fakeOpMessage = plugin.getConfig().getString("fake-op-message", "");
+        String fakeOpMessage = langConfig.getString("fake-op-message");
 
+        assert fakeOpMessage != null;
         if (!plugin.getConfig().getBoolean("fake-op-message-broadcast-enabled", true)) {
 
-            if (!fakeOpMessage.isEmpty()) {
-                String fakeOpMessageReplace = fakeOpMessage.replace("[player]", target.getName());
-                target.sendMessage(ChatColor.GRAY + fakeOpMessageReplace);
-            }
+            String fakeOpMessageReplace = fakeOpMessage.replace("[player]", target.getName());
+            target.sendMessage(ChatColor.GRAY + fakeOpMessageReplace);
             return;
         }
 
-        if (!fakeOpMessage.isEmpty()) {
-            String fakeOpMessageReplace = fakeOpMessage.replace("[player]", target.getName());
-            Bukkit.broadcastMessage(ChatColor.GRAY + fakeOpMessageReplace);
-        }
+        String fakeOpMessageReplace = fakeOpMessage.replace("[player]", target.getName());
+        Bukkit.broadcastMessage(ChatColor.GRAY + fakeOpMessageReplace);
     }
 
     // Feature freefall

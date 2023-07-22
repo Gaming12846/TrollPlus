@@ -2,7 +2,7 @@
 # This language config was generated for version ${project.version}.
 # Language config by: Gaming12846
 
-############################Global###########################
+###########################Global############################
 
 metrics-enabled: "Enabling plugin metrics"
 
@@ -16,7 +16,7 @@ no-console: "command cannot be used from the console"
 invalid-syntax: "Invalid command syntax!"
 invalid-syntax-use: "Use /"
 
-#######################"Trollplus" command###################
+#####################"Trollplus" command#####################
 
 trollplus:
   version: "Version:"
@@ -43,9 +43,10 @@ troll:
   rocket-launch-stopped: "Launch stopped because the target is no longer under the open sky"
   freefall-cannot-fall: "Free fall cannot be activated because the target is not under the open sky"
 
-#######################"Troll" GUI###########################
+#########################"Troll" GUI#########################
 
 troll-gui:
+  title: "Troll"
   status-on: "On"
   status-off: "Off"
   close: "Close"
@@ -102,8 +103,9 @@ troll-gui:
 #######################"Trollbows" GUI#######################
 
 trollbows:
+  title: "Trollbows"
   close: "Close"
-  close-description: "Close the trollbow GUI"
+  close-description: "Close the trollbows GUI"
   explosion-bow: "Explosion bow"
   explosion-bow-description: "A bow that creates an explosion when the arrow hits"
   tnt-bow: "TNT bow"
@@ -113,9 +115,35 @@ trollbows:
   silverfish-bow: "Silverfish bow"
   silverfish-bow-description: "A bow that creates a horde of silverfish when the arrow hits"
 
+####################Features translations####################
+
+vanish:
+  # Set the message when a player goes vanish.
+  quit-message: "[player] left the game" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+  # Set the message when a player leaves vanish.
+  join-message: "[player] joined the game" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+
+# Add spam messages for the "Spam messages" feature (You can add as many messages as you like).
+spam-messages:
+  - "Hello my friend"
+  - "Wasp"
+  - "LoLoLoLo"
+  - "xDxDxDxDxD"
+  - "XoXoXoXo"
+
+fake-ban:
+  # Set the message for the player when he is kicked with the "Fake ban" feature.
+  message-player: "You have been banned from this Server"
+  # Set the message for all players on the server when the player is kicked with the "Fake ban" feature.
+  message-broadcast: "The Player [player] have been permanently banned from the server" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+
+# Set the message for the player and all players (if enabled) on the server when the player is appointed as an operator with the "Fake op" feature.
+fake-op-message: "[Server: Made [player] a server operator]" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+
 #######################"Settings" GUI#######################
 
 trollsettings:
+  title: "TrollPlus settings"
   status-on: "On"
   status-off: "OFF"
   close: "Close"
@@ -136,7 +164,7 @@ trollsettings:
   break-blocks: "Break blocks:"
   break-blocks-description: "Enable or disable that explosions can destroy blocks for the 'TNT track' feature and the 'Trollbows'"
 
-#######################GUIs##################################
+############################GUIs#############################
 
 guis:
   placeholder-description: "Just a lonely placeholder :("

@@ -167,7 +167,7 @@ public class TrollPlusCommand implements CommandExecutor {
             Player player = (Player) sender;
 
             // Create troll GUI
-            settingsGUI = new GUIUtil("TrollPlus settings", 27, plugin);
+            settingsGUI = new GUIUtil(langConfig.getString("trollsettings.title"), 27, plugin);
 
             settingsGUI.addItem(26, ItemBuilder.createItemWithLore(Material.BARRIER, ChatColor.RED + langConfig.getString("trollsettings.close"), langConfig.getString("trollsettings.close-description")));
 
