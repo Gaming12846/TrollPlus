@@ -119,26 +119,27 @@ trollbows:
 
 vanish:
   # Set the message when a player goes vanish.
-  quit-message: "[player] left the game" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+  quit-message: "[player]离开了游戏" # The "[player]" must be included in the message as it will be replaced by the name of the player.
   # Set the message when a player leaves vanish.
-  join-message: "[player] joined the game" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+  join-message: "[player]加入了游戏" # The "[player]" must be included in the message as it will be replaced by the name of the player.
 
-# Add spam messages for the "Spam messages" feature (You can add as many messages as you like).
+# 给 "消息刷屏" 功能的信息 (你可以加你想要的信息).
 spam-messages:
-  - "Hello my friend"
-  - "Wasp"
+  - "你好我的朋友"
+  - "Troll"
   - "LoLoLoLo"
   - "xDxDxDxDxD"
   - "XoXoXoXo"
 
 fake-ban:
-  # Set the message for the player when he is kicked with the "Fake ban" feature.
-  message-player: "You have been banned from this Server"
-  # Set the message for all players on the server when the player is kicked with the "Fake ban" feature.
-  message-broadcast: "The Player [player] have been permanently banned from the server" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+  # 设置"假封禁"界面显示的信息.
+  message-player: "你已被服务器封禁"
+  # 设置"假封禁"向服务器所有玩家显示的信息
+  message-broadcast: "玩家 [player] 被" # The "[player]" must be included in the message as it will be replaced by the name of the player.
 
-# Set the message for the player and all players (if enabled) on the server when the player is appointed as an operator with the "Fake op" feature.
-fake-op-message: "[Server: Made [player] a server operator]" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+# 设置玩家或全服玩家（如果开启）被使用"假op"功能显示的信息
+# "Server:"不要改，什么语言
+fake-op-message: "[Server: 已将 [player] 设为服务器管理员]" # The "[player]" must be included in the message as it will be replaced by the name of the player.
 
 #######################"Settings" GUI#######################
 
