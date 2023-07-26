@@ -25,7 +25,6 @@ public class BlockIgniteListener implements Listener {
         // Lightning bolt bow
         if (!plugin.getConfig().getBoolean("set-fire", true)) {
             assert entity != null;
-
             if (event.getCause() == BlockIgniteEvent.IgniteCause.LIGHTNING && entity.hasMetadata("TROLLPLUS_LIGHTNING_BOLT"))
                 event.setCancelled(true);
         }

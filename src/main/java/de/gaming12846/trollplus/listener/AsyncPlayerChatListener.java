@@ -26,9 +26,8 @@ public class AsyncPlayerChatListener implements Listener {
         ControlUtil controlUtil = plugin.getInventoryClickListener().controlUtil;
 
         // Feature control
-        if (player.hasMetadata("TROLLPLUS_CONTROL_TARGET")) {
+        if (player.hasMetadata("TROLLPLUS_CONTROL_TARGET"))
             if (!controlUtil.getControlMessageBoolean()) event.setCancelled(true);
-        }
 
         if (player.hasMetadata("TROLLPLUS_CONTROL_PLAYER")) {
             event.setCancelled(true);

@@ -29,11 +29,10 @@ public class UpdateChecker {
     public void getVersion(final Consumer<String> consumer) {
         Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
             try (InputStream inputStream = new URL("https://api.spigotmc.org/legacy/update.php?resource=" + this.resourceId).openStream(); Scanner scanner = new Scanner(inputStream)) {
-                if (scanner.hasNext()) {
+                if (scanner.hasNext())
                     consumer.accept(scanner.next());
-                }
             } catch (IOException exception) {
-                BUKKIT_LOGGER.info(Constants.PLUGIN_CONSOLE_PREFIX + plugin.getLanguageConfig().getConfig().getString("unable-check-updates") + " " + exception.getMessage());
+                BUKKIT_LOGGER.info(Constants.PLUGIN_CONSOLE_PREFIX + plugin.getLanguageConfig().getString("unable-check-updates") + " " + exception.getMessage());
             }
         });
     }
