@@ -7,7 +7,6 @@ package de.gaming12846.trollplus.utils;
 
 import de.gaming12846.trollplus.TrollPlus;
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -15,7 +14,7 @@ import org.bukkit.inventory.ItemStack;
 public class GUIUtil {
     private final Inventory inv;
     private Player player;
-    private FileConfiguration langConfig;
+    private ConfigUtil langConfig;
 
     // GUIUtil for Trollbows
     public GUIUtil(String name, Integer size) {
@@ -26,13 +25,13 @@ public class GUIUtil {
     public GUIUtil(String name, Integer size, Player target, TrollPlus plugin) {
         inv = Bukkit.createInventory(null, size, name);
         player = target;
-        langConfig = plugin.getLanguageConfig().getConfig();
+        langConfig = plugin.getLanguageConfig();
     }
 
     // GUIUtil for TrollPlus settings
     public GUIUtil(String name, Integer size, TrollPlus plugin) {
         inv = Bukkit.createInventory(null, size, name);
-        langConfig = plugin.getLanguageConfig().getConfig();
+        langConfig = plugin.getLanguageConfig();
     }
 
     public void addItem(Integer index, ItemStack item) {

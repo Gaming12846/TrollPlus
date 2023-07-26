@@ -6,6 +6,7 @@
 package de.gaming12846.trollplus.commands;
 
 import de.gaming12846.trollplus.TrollPlus;
+import de.gaming12846.trollplus.utils.ConfigUtil;
 import de.gaming12846.trollplus.utils.Constants;
 import de.gaming12846.trollplus.utils.GUIUtil;
 import de.gaming12846.trollplus.utils.ItemBuilder;
@@ -15,9 +16,7 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
-
 
 public class TrollCommand implements CommandExecutor {
     private final TrollPlus plugin;
@@ -29,33 +28,33 @@ public class TrollCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        ConfigUtil langConfig = plugin.getLanguageConfig();
+
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Constants.PLUGIN_PREFIX + label + Constants.PLUGIN_NO_CONSOLE);
+            sender.sendMessage(Constants.PLUGIN_CONSOLE_PREFIX + label + " settings" + langConfig.getConfig().getString("no-console"));
             return true;
         }
 
         Player player = (Player) sender;
         if (!player.hasPermission(Constants.PERMISSION_TROLL)) {
-            player.sendMessage(Constants.PLUGIN_NO_PERMISSION);
+            player.sendMessage(ChatColor.RED + langConfig.getString("no-permission"));
             return true;
         }
 
         if (args.length != 1) {
-            player.sendMessage(Constants.PLUGIN_INVALID_SYNTAX + label + " <player>");
+            player.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.RED + langConfig.getString("invalid-syntax") + " " + ChatColor.RESET + langConfig.getString("invalid-syntax-use") + label + " <player>");
             return true;
         }
 
-        FileConfiguration langConfig = plugin.getLanguageConfig().getConfig();
-
         Player target = Bukkit.getPlayer(args[0]);
         if (target == null) {
-            String playerNotOnlineReplace = Constants.PLUGIN_PREFIX + plugin.getLanguageConfig().getConfig().getString("troll.player-not-online");
+            String playerNotOnlineReplace = Constants.PLUGIN_PREFIX + langConfig.getString("troll.player-not-online");
             player.sendMessage(playerNotOnlineReplace.replace("[player]", ChatColor.RED + ChatColor.BOLD.toString() + args[0] + ChatColor.RESET));
             return true;
         }
 
         if (plugin.getBlocklistConfig().getConfig().contains(target.getUniqueId().toString())) {
-            String playerIsImmuneReplace = Constants.PLUGIN_PREFIX + plugin.getLanguageConfig().getConfig().getString("troll.player-is-immune");
+            String playerIsImmuneReplace = Constants.PLUGIN_PREFIX + langConfig.getString("troll.player-is-immune");
             player.sendMessage(playerIsImmuneReplace.replace("[player]", ChatColor.RED + ChatColor.BOLD.toString() + args[0] + ChatColor.RESET));
             return true;
         }

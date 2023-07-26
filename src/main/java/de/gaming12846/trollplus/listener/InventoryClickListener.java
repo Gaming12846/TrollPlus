@@ -6,13 +6,9 @@
 package de.gaming12846.trollplus.listener;
 
 import de.gaming12846.trollplus.TrollPlus;
-import de.gaming12846.trollplus.utils.Constants;
-import de.gaming12846.trollplus.utils.ControlUtil;
-import de.gaming12846.trollplus.utils.GUIUtil;
-import de.gaming12846.trollplus.utils.ItemBuilder;
+import de.gaming12846.trollplus.utils.*;
 import org.apache.commons.lang3.RandomUtils;
 import org.bukkit.*;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -34,11 +30,11 @@ import java.util.Objects;
 public class InventoryClickListener implements Listener {
     private final TrollPlus plugin;
     public ControlUtil controlUtil;
-    private final FileConfiguration langConfig;
+    private final ConfigUtil langConfig;
 
     public InventoryClickListener(TrollPlus plugin) {
         this.plugin = plugin;
-        langConfig = plugin.getLanguageConfig().getConfig();
+        langConfig = plugin.getLanguageConfig();
     }
 
     @EventHandler
@@ -582,8 +578,6 @@ public class InventoryClickListener implements Listener {
                     return;
                 }
 
-                plugin.getConfig().getStringList("");
-
                 List<String> spamMessages = langConfig.getStringList("spam-messages");
 
                 StringBuilder stringBuilderChat = new StringBuilder();
@@ -753,7 +747,7 @@ public class InventoryClickListener implements Listener {
                     if (target.getLocation().getBlockY() < target.getWorld().getHighestBlockYAt(target.getLocation())) {
                         if (!finalTargetAllowToFlight) target.setAllowFlight(false);
 
-                        player.sendMessage(Constants.PLUGIN_PREFIX + plugin.getLanguageConfig().getConfig().getString("troll.rocket-launch-stopped"));
+                        player.sendMessage(Constants.PLUGIN_PREFIX + plugin.getLanguageConfig().getString("troll.rocket-launch-stopped"));
 
                         cancel();
                         return;
@@ -815,7 +809,7 @@ public class InventoryClickListener implements Listener {
             if (loc.getBlock().getType().equals(Material.AIR)) {
                 loc.setY(loc.getY() + 1);
             } else {
-                player.sendMessage(Objects.requireNonNull(plugin.getLanguageConfig().getConfig().getString("troll.freefall-cannot-fall")));
+                player.sendMessage(Objects.requireNonNull(plugin.getLanguageConfig().getString("troll.freefall-cannot-fall")));
                 return;
             }
         }

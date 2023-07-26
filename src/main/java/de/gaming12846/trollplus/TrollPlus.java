@@ -38,10 +38,10 @@ public class TrollPlus extends JavaPlugin {
     public boolean updateAvailable = false;
 
     // Create ConfigUtils
-    private ConfigUtil blocklistConfig;
-    private ConfigUtil langCustomConfig;
-    private ConfigUtil langEnglishConfig;
-    private ConfigUtil langSimplifiedChineseConfig;
+    public ConfigUtil blocklistConfig;
+    public ConfigUtil langCustomConfig;
+    public ConfigUtil langEnglishConfig;
+    public ConfigUtil langSimplifiedChineseConfig;
 
     private InventoryClickListener inventoryClickListener;
     private TrollPlusCommand trollPlusCommand;
@@ -67,7 +67,7 @@ public class TrollPlus extends JavaPlugin {
 
         // Metrics bStats
         if (getConfig().getBoolean("metrics-enabled", true)) {
-            BUKKIT_LOGGER.info(Constants.PLUGIN_CONSOLE_PREFIX + getLanguageConfig().getConfig().getString("metrics-enabled"));
+            BUKKIT_LOGGER.info(Constants.PLUGIN_CONSOLE_PREFIX + getLanguageConfig().getString("metrics-enabled"));
 
             Metrics metrics = new Metrics(this, 11761);
         }
@@ -81,18 +81,20 @@ public class TrollPlus extends JavaPlugin {
         langCustomConfig = new ConfigUtil(this, "lang_custom.yml");
         langEnglishConfig = new ConfigUtil(this, "lang_en.yml");
         langSimplifiedChineseConfig = new ConfigUtil(this, "lang_zhcn.yml");
-
-        Constants constants = new Constants(this);
     }
 
+    // Get language config
     public ConfigUtil getLanguageConfig() {
-        if (Objects.equals(getConfig().getString("language"), "custom")) {
+        String language = getConfig().getString("language");
+        assert language != null;
+        if (language.equalsIgnoreCase("custom")) {
             return langCustomConfig;
-        } else if (Objects.equals(getConfig().getString("language"), "zhcn")) {
+        } else if (language.equalsIgnoreCase("zhcn")) {
             return langSimplifiedChineseConfig;
         } else return langEnglishConfig;
     }
 
+    // Get blocklist config
     public ConfigUtil getBlocklistConfig() {
         return blocklistConfig;
     }
@@ -137,16 +139,16 @@ public class TrollPlus extends JavaPlugin {
         Objects.requireNonNull(this.getCommand("trollbows")).setTabCompleter(new TabCompleter());
     }
 
-    // Check for Update
+    // Check for updates
     private void checkUpdate() {
         if (getConfig().getBoolean("check-for-updates", true)) {
-            BUKKIT_LOGGER.info(Constants.PLUGIN_CONSOLE_PREFIX + getLanguageConfig().getConfig().getString("checking-updates"));
+            BUKKIT_LOGGER.info(Constants.PLUGIN_CONSOLE_PREFIX + getLanguageConfig().getString("checking-updates"));
 
             new UpdateChecker(this, 81193).getVersion(version -> {
                 if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
-                    BUKKIT_LOGGER.info(Constants.PLUGIN_CONSOLE_PREFIX + getLanguageConfig().getConfig().getString("no-update-available"));
+                    BUKKIT_LOGGER.info(Constants.PLUGIN_CONSOLE_PREFIX + getLanguageConfig().getString("no-update-available"));
                 } else {
-                    BUKKIT_LOGGER.info(Constants.PLUGIN_CONSOLE_PREFIX + getLanguageConfig().getConfig().getString("update-available") + " https://www.spigotmc.org/resources/81193");
+                    BUKKIT_LOGGER.info(Constants.PLUGIN_CONSOLE_PREFIX + getLanguageConfig().getString("update-available") + " https://www.spigotmc.org/resources/81193");
 
                     updateAvailable = true;
                 }

@@ -49,7 +49,7 @@ Then you've come to the right place! This plugin allows you to troll them in dif
 - **Rocket** - Launch the target into the air like a firework
 - **Fake ban** - The target is made to think that they got banned
 - **Fake op** - The target is made to think that they got operator permissions
-- **Freefall** - Teleports the target into the air and drop it
+- **Freefall** - Teleports the target into the air and lets it fall freely
 
 ### Trollbows
 
@@ -114,6 +114,12 @@ by [opening a ticket on GitHub](https://github.com/Gaming12846/TrollPlus/issues)
 
 It took me a while to create this plugin. So if you find it useful or fun, I would appreciate a nice review on SpigotMC
 and a star on GitHub.
+
+## Credits
+
+### Translations
+
+- **Simplified chinese language** - ranyouHigh and Stars
 
 ## License
 

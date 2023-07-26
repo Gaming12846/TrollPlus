@@ -70,7 +70,7 @@ troll-gui:
   control: "Control"
   control-description: "Complete control over the target, including moving, interacting, causing damage, dropping/picking up items and chatting"
   flip-backwards: "Flip backwards"
-  flip-backwards-description: "Flip the target backwards (180) when interacting with something (includes breaking blocks and hitting entities)"
+  flip-backwards-description: "Flip the target backwards (180) when interacting with something (Includes breaking blocks and hitting entities)"
   spank: "Spank"
   spank-description: "Spank the target with random knockback"
   spam-messages: "Spam messages"
@@ -98,7 +98,7 @@ troll-gui:
   fake-op: "Fake op"
   fake-op-description: "The target is made to think that they got operator permissions"
   freefall: "Freefall"
-  freefall-description: "Teleports the target into the air and drop it"
+  freefall-description: "Teleports the target into the air and lets it fall freely"
 
 #######################"Trollbows" GUI#######################
 
@@ -126,7 +126,7 @@ vanish:
 # Add spam messages for the "Spam messages" feature (You can add as many messages as you like).
 spam-messages:
   - "Hello my friend"
-  - "Wasp"
+  - "Troll"
   - "LoLoLoLo"
   - "xDxDxDxDxD"
   - "XoXoXoXo"
@@ -152,9 +152,9 @@ trollsettings:
   language-description: "Set the language for the plugin, available options are custom, en and zhcn"
   language-successfully-changed: "The language has been successfully changed!"
   metrics-enabled: "Metrics:"
-  metrics-enabled-description: "Enable or disable the plugin metrics"
+  metrics-enabled-description: "Enable or disable the plugin metrics (Will be applied at the next restart/reload)"
   check-for-updates: "Check for updates:"
-  check-for-updates-description: "Enable or disable the update checker"
+  check-for-updates-description: "Enable or disable the update checker (Will be applied at the next restart/reload)"
   deactivate-features-on-quit: "Deactivate features on quit:"
   deactivate-features-on-quit-description: "Deactivate the active troll features when the target leaves the server"
   control-teleport-back: "Control teleport back:"

@@ -18,7 +18,6 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginDescriptionFile;
 
@@ -32,22 +31,22 @@ public class TrollPlusCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        ConfigUtil langConfig = plugin.getLanguageConfig();
+
         if (args.length == 0) {
-            sender.sendMessage(Constants.PLUGIN_INVALID_SYNTAX + label + " <version|reload|blocklist|settings>");
+            sender.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.RED + langConfig.getString("invalid-syntax") + " " + ChatColor.RESET + langConfig.getString("invalid-syntax-use") + label + " <version|reload|blocklist|settings>");
             return true;
         }
-
-        FileConfiguration langConfig = plugin.getLanguageConfig().getConfig();
 
         // Version subcommand
         if (args[0].equalsIgnoreCase("version")) {
             if (!sender.hasPermission(Constants.PERMISSION_VERSION)) {
-                sender.sendMessage(Constants.PLUGIN_NO_PERMISSION);
+                sender.sendMessage(ChatColor.RED + langConfig.getString("no-permission"));
                 return true;
             }
 
             if (args.length != 1) {
-                sender.sendMessage(Constants.PLUGIN_INVALID_SYNTAX + label + " version");
+                sender.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.RED + langConfig.getString("invalid-syntax") + " " + ChatColor.RESET + langConfig.getString("invalid-syntax-use") + label + " version");
                 return true;
             }
 
@@ -63,37 +62,38 @@ public class TrollPlusCommand implements CommandExecutor {
             sender.sendMessage("");
             sender.sendMessage(headerFooter);
 
-            if (plugin.updateAvailable) {
+            if (plugin.updateAvailable)
                 sender.sendMessage(langConfig.getString("update-available") + " https://www.spigotmc.org/resources/81193");
-            }
         }
         // Reload subcommand
         else if (args[0].equalsIgnoreCase("reload")) {
             if (!sender.hasPermission(Constants.PERMISSION_RELOAD)) {
-                sender.sendMessage(Constants.PLUGIN_NO_PERMISSION);
+                sender.sendMessage(ChatColor.RED + plugin.getLanguageConfig().getString("no-permission"));
                 return true;
             }
 
             if (args.length != 1) {
-                sender.sendMessage(Constants.PLUGIN_INVALID_SYNTAX + label + " reload");
+                sender.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.RED + langConfig.getConfig().getString("invalid-syntax") + " " + ChatColor.RESET + langConfig.getString("invalid-syntax-use") + label + " reload");
                 return true;
             }
 
+            plugin.blocklistConfig.reload();
+            plugin.langCustomConfig.reload();
+            plugin.langEnglishConfig.reload();
+            plugin.langSimplifiedChineseConfig.reload();
             plugin.reloadConfig();
-            plugin.getBlocklistConfig().reload();
-            plugin.getLanguageConfig().reload();
 
             sender.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.GREEN + langConfig.getString("trollplus.reload"));
         }
         // Blocklist subcommand
         else if (args[0].equalsIgnoreCase("blocklist")) {
             if (!sender.hasPermission(Constants.PERMISSION_BLOCKLIST_ADD) || !sender.hasPermission(Constants.PERMISSION_BLOCKLIST_REMOVE)) {
-                sender.sendMessage(Constants.PLUGIN_NO_PERMISSION);
+                sender.sendMessage(ChatColor.RED + langConfig.getConfig().getString("no-permission"));
                 return true;
             }
 
             if (args.length < 2) {
-                sender.sendMessage(Constants.PLUGIN_INVALID_SYNTAX + label + " blocklist <add|remove>");
+                sender.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.RED + langConfig.getConfig().getString("invalid-syntax") + " " + ChatColor.RESET + langConfig.getConfig().getString("invalid-syntax-use") + label + " blocklist <add|remove>");
                 return true;
             }
 
@@ -102,24 +102,24 @@ public class TrollPlusCommand implements CommandExecutor {
             // Blocklist add subcommand
             if (args[1].equalsIgnoreCase("add")) {
                 if (!sender.hasPermission(Constants.PERMISSION_BLOCKLIST_ADD)) {
-                    sender.sendMessage(Constants.PLUGIN_NO_PERMISSION);
+                    sender.sendMessage(ChatColor.RED + langConfig.getString("no-permission"));
                     return true;
                 }
 
                 if (args.length != 3) {
-                    sender.sendMessage(Constants.PLUGIN_INVALID_SYNTAX + label + " blocklist add <player>");
+                    sender.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.RED + langConfig.getString("invalid-syntax") + " " + ChatColor.RESET + langConfig.getString("invalid-syntax-use") + label + " blocklist add <player>");
                     return true;
                 }
 
                 OfflinePlayer offlineTarget = Bukkit.getOfflinePlayer(args[2]);
                 if (blocklistConfig.getConfig().contains(offlineTarget.getUniqueId().toString())) {
-                    String alreadyInBlocklistReplace = Constants.PLUGIN_PREFIX + plugin.getLanguageConfig().getConfig().getString("trollplus.already-in-blocklist");
+                    String alreadyInBlocklistReplace = Constants.PLUGIN_PREFIX + langConfig.getString("trollplus.already-in-blocklist");
                     sender.sendMessage(alreadyInBlocklistReplace.replace("[player]", ChatColor.RED + ChatColor.BOLD.toString() + offlineTarget.getName() + ChatColor.RESET));
                     return true;
                 }
 
                 blocklistConfig.getConfig().set(offlineTarget.getUniqueId().toString(), offlineTarget.getName());
-                String addedToBlocklistReplace = Constants.PLUGIN_PREFIX + plugin.getLanguageConfig().getConfig().getString("trollplus.added-to-blocklist");
+                String addedToBlocklistReplace = Constants.PLUGIN_PREFIX + langConfig.getString("trollplus.added-to-blocklist");
                 sender.sendMessage(addedToBlocklistReplace.replace("[player]", ChatColor.RED + ChatColor.BOLD.toString() + offlineTarget.getName() + ChatColor.RESET));
 
                 blocklistConfig.save();
@@ -128,25 +128,25 @@ public class TrollPlusCommand implements CommandExecutor {
             // Blocklist remove subcommand
             else if (args[1].equalsIgnoreCase("remove")) {
                 if (!sender.hasPermission(Constants.PERMISSION_BLOCKLIST_REMOVE)) {
-                    sender.sendMessage(Constants.PLUGIN_NO_PERMISSION);
+                    sender.sendMessage(ChatColor.RED + langConfig.getString("no-permission"));
                     return true;
                 }
 
                 if (args.length != 3) {
-                    sender.sendMessage(Constants.PLUGIN_INVALID_SYNTAX + label + " blocklist remove <player>");
+                    sender.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.RED + langConfig.getString("invalid-syntax") + " " + ChatColor.RESET + langConfig.getString("invalid-syntax-use") + label + " blocklist remove <player>");
                     return true;
 
                 }
 
                 OfflinePlayer offlineTarget = Bukkit.getOfflinePlayer(args[2]);
                 if (!blocklistConfig.getConfig().contains(offlineTarget.getUniqueId().toString())) {
-                    String notInBlocklistReplace = Constants.PLUGIN_PREFIX + plugin.getLanguageConfig().getConfig().getString("trollplus.not-in-blocklist");
+                    String notInBlocklistReplace = Constants.PLUGIN_PREFIX + langConfig.getString("trollplus.not-in-blocklist");
                     sender.sendMessage(notInBlocklistReplace.replace("[player]", ChatColor.RED + ChatColor.BOLD.toString() + offlineTarget.getName() + ChatColor.RESET));
                     return true;
                 }
 
                 blocklistConfig.getConfig().set(offlineTarget.getUniqueId().toString(), null);
-                String removedFromBlocklistReplace = Constants.PLUGIN_PREFIX + plugin.getLanguageConfig().getConfig().getString("trollplus.removed-from-blocklist");
+                String removedFromBlocklistReplace = Constants.PLUGIN_PREFIX + langConfig.getString("trollplus.removed-from-blocklist");
                 sender.sendMessage(removedFromBlocklistReplace.replace("[player]", ChatColor.RED + ChatColor.BOLD.toString() + offlineTarget.getName() + ChatColor.RESET));
 
                 blocklistConfig.save();
@@ -155,12 +155,17 @@ public class TrollPlusCommand implements CommandExecutor {
             // Settings subcommand
         } else if (args[0].equalsIgnoreCase("settings")) {
             if (!(sender instanceof Player)) {
-                sender.sendMessage(Constants.PLUGIN_PREFIX + label + " settings" + Constants.PLUGIN_NO_CONSOLE);
+                sender.sendMessage(Constants.PLUGIN_CONSOLE_PREFIX + label + " settings" + langConfig.getString("no-console"));
                 return true;
             }
 
             if (!sender.hasPermission(Constants.PERMISSION_SETTINGS)) {
-                sender.sendMessage(Constants.PLUGIN_NO_PERMISSION);
+                sender.sendMessage(ChatColor.RED + langConfig.getString("no-permission"));
+                return true;
+            }
+
+            if (args.length != 1) {
+                sender.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.RED + langConfig.getString("invalid-syntax") + " " + ChatColor.RESET + langConfig.getString("invalid-syntax-use") + label + " settings");
                 return true;
             }
 
@@ -189,7 +194,7 @@ public class TrollPlusCommand implements CommandExecutor {
         }
         // Unknown command usage
         else {
-            sender.sendMessage(Constants.PLUGIN_INVALID_SYNTAX + label + " <version|reload|blocklist|settings>");
+            sender.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.RED + plugin.getLanguageConfig().getConfig().getString("invalid-syntax") + " " + ChatColor.RESET + plugin.getLanguageConfig().getConfig().getString("invalid-syntax-use") + label + " <version|reload|blocklist|settings>");
             return true;
         }
 
