@@ -6,6 +6,7 @@
 package de.gaming12846.trollplus.listener;
 
 import de.gaming12846.trollplus.TrollPlus;
+import de.gaming12846.trollplus.utils.ConfigUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.Particle;
 import org.bukkit.entity.Arrow;
@@ -13,6 +14,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -28,13 +30,16 @@ public class ProjectileLaunchListener implements Listener {
         if (!(event.getEntity().getShooter() instanceof Player)) return;
         if (!(event.getEntity() instanceof Arrow)) return;
 
+        ConfigUtil langConfig = plugin.getLanguageConfig();
+
         Arrow arrow = (Arrow) event.getEntity();
         Player player = (Player) arrow.getShooter();
+        ItemMeta itemMeta = player.getInventory().getItemInMainHand().getItemMeta();
 
-        if (player.getInventory().getItemInMainHand().getItemMeta() == null) return;
+        assert itemMeta != null;
 
         // Explosion bow
-        if (player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(ChatColor.RED + "Explosion bow")) {
+        if (itemMeta.getDisplayName().equals(ChatColor.RED + langConfig.getString("trollbows.explosion-bow")) && itemMeta.isUnbreakable()) {
             arrow.setMetadata("TROLLPLUS_EXPLOSION_ARROW", new FixedMetadataValue(plugin, arrow));
 
             new BukkitRunnable() {
@@ -51,7 +56,7 @@ public class ProjectileLaunchListener implements Listener {
         }
 
         // TNT bow
-        if (player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(ChatColor.RED + "TNT bow")) {
+        if (itemMeta.getDisplayName().equals(ChatColor.RED + langConfig.getString("trollbows.tnt-bow")) && itemMeta.isUnbreakable()) {
             arrow.setMetadata("TROLLPLUS_TNT_ARROW", new FixedMetadataValue(plugin, arrow));
 
             new BukkitRunnable() {
@@ -68,7 +73,7 @@ public class ProjectileLaunchListener implements Listener {
         }
 
         // Lightning bolt bow
-        if (player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(ChatColor.RED + "Lightning bolt bow")) {
+        if (itemMeta.getDisplayName().equals(ChatColor.RED + langConfig.getString("trollbows.lighting-bolt-bow")) && itemMeta.isUnbreakable()) {
             arrow.setMetadata("TROLLPLUS_LIGHTNING_BOLT_ARROW", new FixedMetadataValue(plugin, arrow));
 
             new BukkitRunnable() {
@@ -85,7 +90,7 @@ public class ProjectileLaunchListener implements Listener {
         }
 
         // Silverfish bow
-        if (player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(ChatColor.RED + "Silverfish bow")) {
+        if (itemMeta.getDisplayName().equals(ChatColor.RED + langConfig.getString("trollbows.silverfish-bow")) && itemMeta.isUnbreakable()) {
             arrow.setMetadata("TROLLPLUS_SILVERFISH_ARROW", new FixedMetadataValue(plugin, arrow));
 
             new BukkitRunnable() {
