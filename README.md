@@ -17,7 +17,7 @@ Then you've come to the right place! This plugin allows you to troll them in dif
 
 - **Highly customizable plugin configuration** - You can configure most of the features
 - **Fully customizable language configuration** - You can translate every message, description and item name into the
-  language of your choice
+  language of your choice (Pre-translated languages are English, German and Simplified Chinese)
 - **Blocklist** - Protect players from having the troll command executed on them
 
 ### Troll menu
@@ -94,8 +94,8 @@ Then you've come to the right place! This plugin allows you to troll them in dif
 ## To-do list
 
 - Improve the control feature (Smooth it out)
-- Add a trollmode (Feel free to write me a message with suggestions)
-- Add more features (Feel free to write me a message with function suggestions)
+- Add a trollmode (Feel free to write me a message with suggestions or open an issue on GitHub)
+- Add more features (Feel free to write me a message with function suggestions or open an issue on GitHub)
 
 ## Notes
 
@@ -115,11 +115,15 @@ by [opening a ticket on GitHub](https://github.com/Gaming12846/TrollPlus/issues)
 It took me a while to create this plugin. So if you find it useful or fun, I would appreciate a nice review on SpigotMC
 and a star on GitHub.
 
+## Changelog
+
+[Changelog](https://github.com/Gaming12846/TrollPlus/blob/master/CHANGELOG.md)
+
 ## Credits
 
 ### Translations
 
-- **Simplified chinese language** - ranyouHigh and Stars
+- **Simplified Chinese language** - ranyouHigh and Stars
 
 ## License
 
