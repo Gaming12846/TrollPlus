@@ -409,7 +409,15 @@ public class InventoryClickListener implements Listener {
                     break;
                 // TrollPlus settings
                 case 10:
-                    if (Objects.equals(plugin.getConfig().getString("language"), "zhcn")) {
+                    if (Objects.equals(plugin.getConfig().getString("language"), "de")) {
+                        plugin.getConfig().set("language", "zhcn");
+                        settingsGUI.addItem(10, ItemBuilder.createItemWithLore(Material.PAPER, ChatColor.WHITE + langConfig.getString("trollsettings.language") + ChatColor.DARK_GRAY + " " + plugin.getConfig().getString("language"), langConfig.getString("trollsettings.language-description")));
+                        plugin.saveConfig();
+                        player.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.GREEN + langConfig.getString("trollsettings.language-successfully-changed"));
+                        player.closeInventory();
+
+                        break;
+                    } else if (Objects.equals(plugin.getConfig().getString("language"), "zhcn")) {
                         plugin.getConfig().set("language", "custom");
                         settingsGUI.addItem(10, ItemBuilder.createItemWithLore(Material.PAPER, ChatColor.WHITE + langConfig.getString("trollsettings.language") + ChatColor.DARK_GRAY + " " + plugin.getConfig().getString("language"), langConfig.getString("trollsettings.language-description")));
                         plugin.saveConfig();
@@ -428,7 +436,7 @@ public class InventoryClickListener implements Listener {
                         break;
                     }
 
-                    plugin.getConfig().set("language", "zhcn");
+                    plugin.getConfig().set("language", "de");
                     settingsGUI.addItem(10, ItemBuilder.createItemWithLore(Material.PAPER, ChatColor.WHITE + langConfig.getString("trollsettings.language") + ChatColor.DARK_GRAY + " " + plugin.getConfig().getString("language"), langConfig.getString("trollsettings.language-description")));
                     plugin.saveConfig();
                     player.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.GREEN + langConfig.getString("trollsettings.language-successfully-changed"));

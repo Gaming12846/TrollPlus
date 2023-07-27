@@ -150,7 +150,7 @@ trollsettings:
   close: "关闭"
   close-description: "关闭 Setting GUI"
   language: "语言:"
-  language-description: "设置插件的语言，可选项是 custom, en 和 zhcn"
+  language-description: "设置插件的语言，可选项是 custom, en, de 和 zhcn"
   language-successfully-changed: "语言成功更改!"
   metrics-enabled: "Metrics:"
   metrics-enabled-description: "开启或关闭插件Metrics"

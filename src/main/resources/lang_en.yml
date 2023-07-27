@@ -12,7 +12,7 @@ update-available: "A new update is available! To download it visit SpigotMC:"
 unable-check-updates: "Unable to check for updates:"
 
 no-permission: "You do not have sufficient permissions to execute this command"
-no-console: "command cannot be used from the console"
+no-console: "Command cannot be used from the console"
 invalid-syntax: "Invalid command syntax!"
 invalid-syntax-use: "Use /"
 
@@ -38,9 +38,9 @@ troll:
   teleport-not-available: "Nice try, but you are already in your own position :)"
   control-not-available: "Nice try, but you're already in control :)"
   falling-anvils-not-available: "Falling anvil cannot be activated because the target is under a block"
-  slowly-kill-not-available: "Slow kill cannot be activated because the target is not in survival or adventure mode"
+  slowly-kill-not-available: "Slowly kill cannot be activated because the target is not in survival or adventure mode"
   rocket-cannot-launch: "Cannot launch because the target is not under the open sky"
-  rocket-launch-stopped: "Launch stopped because the target is no longer under the open sky"
+  rocket-launch-stopped: "Rocket launch stopped because the target is no longer under the open sky"
   freefall-cannot-fall: "Free fall cannot be activated because the target is not under the open sky"
 
 #########################"Troll" GUI#########################
@@ -70,7 +70,7 @@ troll-gui:
   control: "Control"
   control-description: "Complete control over the target, including moving, interacting, causing damage, dropping/picking up items and chatting"
   flip-backwards: "Flip backwards"
-  flip-backwards-description: "Flip the target backwards (180) when interacting with something (Includes breaking blocks and hitting entities)"
+  flip-backwards-description: "Flip the target backwards (180°) when interacting with something (Includes breaking blocks and hitting entities)"
   spank: "Spank"
   spank-description: "Spank the target with random knockback"
   spam-messages: "Spam messages"
@@ -149,7 +149,7 @@ trollsettings:
   close: "Close"
   close-description: "Close the settings GUI"
   language: "Language:"
-  language-description: "Set the language for the plugin, available options are custom, en and zhcn"
+  language-description: "Set the language for the plugin, available options are custom, en, de and zhcn"
   language-successfully-changed: "The language has been successfully changed!"
   metrics-enabled: "Metrics:"
   metrics-enabled-description: "Enable or disable the plugin metrics (Will be applied at the next restart/reload)"
@@ -160,9 +160,9 @@ trollsettings:
   control-teleport-back: "Control teleport back:"
   control-teleport-back-description: "Teleports the player back to the starting position"
   set-fire: "Set fire:"
-  set-fire-description: "Enable or disable that a fire can be set for the 'TNT track' feature and the 'Trollbows'"
+  set-fire-description: "Enable or disable that a fire can be set for the 'TNT track' feature and the Trollbows"
   break-blocks: "Break blocks:"
-  break-blocks-description: "Enable or disable that explosions can destroy blocks for the 'TNT track' feature and the 'Trollbows'"
+  break-blocks-description: "Enable or disable that explosions can destroy blocks for the 'TNT track' feature and the Trollbows"
 
 ############################GUIs#############################
 
