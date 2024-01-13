@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2023 Gaming12846
+ * Copyright (C) 2024 Gaming12846
  */
 
 package de.gaming12846.trollplus.utils;
@@ -13,8 +13,6 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.Scanner;
 import java.util.function.Consumer;
-
-import static de.gaming12846.trollplus.TrollPlus.BUKKIT_LOGGER;
 
 // From: https://www.spigotmc.org/wiki/creating-an-update-checker-that-checks-for-updates
 public class UpdateChecker {
@@ -32,7 +30,7 @@ public class UpdateChecker {
                 if (scanner.hasNext())
                     consumer.accept(scanner.next());
             } catch (IOException exception) {
-                BUKKIT_LOGGER.info(Constants.PLUGIN_CONSOLE_PREFIX + plugin.getLanguageConfig().getString("unable-check-updates") + " " + exception.getMessage());
+                plugin.LOGGER.info(plugin.getLanguageConfig().getString("unable-check-updates") + " " + exception.getMessage());
             }
         });
     }

@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2023 Gaming12846
+ * Copyright (C) 2024 Gaming12846
  */
 
 package de.gaming12846.trollplus.utils;
@@ -10,7 +10,6 @@ import org.bukkit.ChatColor;
 public class Constants {
     // Plugin presets
     public static final String PLUGIN_PREFIX = ChatColor.DARK_GRAY + "[" + ChatColor.DARK_RED + ChatColor.BOLD + "TrollPlus" + ChatColor.RESET + ChatColor.DARK_GRAY + "]" + ChatColor.RESET + " ";
-    public static final String PLUGIN_CONSOLE_PREFIX = "[TrollPlus] ";
 
     // Permission nodes
     public static final String PERMISSION_VERSION = "trollplus.version";

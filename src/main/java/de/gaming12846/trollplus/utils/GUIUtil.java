@@ -1,12 +1,13 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2023 Gaming12846
+ * Copyright (C) 2024 Gaming12846
  */
 
 package de.gaming12846.trollplus.utils;
 
 import de.gaming12846.trollplus.TrollPlus;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -36,6 +37,10 @@ public class GUIUtil {
 
     public void addItem(Integer index, ItemStack item) {
         inv.setItem(index, item);
+    }
+
+    public void addItemWithLore(Integer index, Material material, String name, String lore) {
+        inv.setItem(index, ItemBuilder.createItemWithLore(material, name, lore));
     }
 
     public Inventory getGUI() {

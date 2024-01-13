@@ -23,7 +23,6 @@ import de.gaming12846.trollplus.commands.TrollCommand;
 import de.gaming12846.trollplus.commands.TrollPlusCommand;
 import de.gaming12846.trollplus.listener.*;
 import de.gaming12846.trollplus.utils.ConfigUtil;
-import de.gaming12846.trollplus.utils.Constants;
 import de.gaming12846.trollplus.utils.TabCompleter;
 import de.gaming12846.trollplus.utils.UpdateChecker;
 import org.bstats.bukkit.Metrics;
@@ -34,7 +33,7 @@ import java.util.Objects;
 import java.util.logging.Logger;
 
 public class TrollPlus extends JavaPlugin {
-    public static final Logger BUKKIT_LOGGER = Logger.getLogger("TrollPlus");
+    public final Logger LOGGER = getLogger();
     public boolean updateAvailable = false;
 
     // Create ConfigUtils
@@ -63,15 +62,15 @@ public class TrollPlus extends JavaPlugin {
         // Register tabcompleter
         registerTabCompleter();
 
-        // Check for updates
-        checkUpdate();
-
         // Metrics bStats
         if (getConfig().getBoolean("metrics-enabled", true)) {
-            BUKKIT_LOGGER.info(Constants.PLUGIN_CONSOLE_PREFIX + getLanguageConfig().getString("metrics-enabled"));
+            LOGGER.info(getLanguageConfig().getString("metrics-enabled"));
 
             Metrics metrics = new Metrics(this, 11761);
         }
+
+        // Check for updates
+        checkUpdate();
     }
 
     // Load configs
@@ -146,13 +145,13 @@ public class TrollPlus extends JavaPlugin {
     // Check for updates
     private void checkUpdate() {
         if (getConfig().getBoolean("check-for-updates", true)) {
-            BUKKIT_LOGGER.info(Constants.PLUGIN_CONSOLE_PREFIX + getLanguageConfig().getString("checking-updates"));
+            LOGGER.info(getLanguageConfig().getString("checking-updates"));
 
             new UpdateChecker(this, 81193).getVersion(version -> {
                 if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
-                    BUKKIT_LOGGER.info(Constants.PLUGIN_CONSOLE_PREFIX + getLanguageConfig().getString("no-update-available"));
+                    LOGGER.info(getLanguageConfig().getString("no-update-available"));
                 } else {
-                    BUKKIT_LOGGER.info(Constants.PLUGIN_CONSOLE_PREFIX + getLanguageConfig().getString("update-available") + " https://www.spigotmc.org/resources/81193");
+                    LOGGER.info(getLanguageConfig().getString("update-available") + " https://www.spigotmc.org/resources/81193");
 
                     updateAvailable = true;
                 }

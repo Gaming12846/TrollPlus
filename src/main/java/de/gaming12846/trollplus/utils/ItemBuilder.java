@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2023 Gaming12846
+ * Copyright (C) 2024 Gaming12846
  */
 
 package de.gaming12846.trollplus.utils;
@@ -20,8 +20,8 @@ import java.util.List;
 
 public class ItemBuilder {
     // Create an ItemStack with lore
-    public static ItemStack createItemWithLore(Material mat, String name, String lore) {
-        ItemStack item = new ItemStack(mat);
+    public static ItemStack createItemWithLore(Material material, String name, String lore) {
+        ItemStack item = new ItemStack(material);
         ItemMeta meta = item.getItemMeta();
 
         assert meta != null;

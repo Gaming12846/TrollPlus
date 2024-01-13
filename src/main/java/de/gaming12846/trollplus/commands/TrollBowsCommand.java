@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2023 Gaming12846
+ * Copyright (C) 2024 Gaming12846
  */
 
 package de.gaming12846.trollplus.commands;
@@ -31,7 +31,7 @@ public class TrollBowsCommand implements CommandExecutor {
         ConfigUtil langConfig = plugin.getLanguageConfig();
 
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Constants.PLUGIN_CONSOLE_PREFIX + label + langConfig.getString("no-console"));
+            sender.sendMessage(Constants.PLUGIN_PREFIX + langConfig.getString("no-console"));
             return true;
         }
 
@@ -50,7 +50,7 @@ public class TrollBowsCommand implements CommandExecutor {
         trollBowsGUI = new GUIUtil(langConfig.getString("trollbows.title"), 9);
 
         // Add trollbows
-        trollBowsGUI.addItem(8, ItemBuilder.createItemWithLore(Material.BARRIER, ChatColor.RED + langConfig.getString("trollbows.close"), langConfig.getString("trollbows.close-description")));
+        trollBowsGUI.addItemWithLore(8, Material.BARRIER, ChatColor.RED + langConfig.getString("trollbows.close"), langConfig.getString("trollbows.close-description"));
 
         trollBowsGUI.addItem(0, ItemBuilder.createBow(langConfig.getString("trollbows.explosion-bow"), langConfig.getString("trollbows.explosion-bow-description")));
         trollBowsGUI.addItem(1, ItemBuilder.createBow(langConfig.getString("trollbows.tnt-bow"), langConfig.getString("trollbows.tnt-bow-description")));

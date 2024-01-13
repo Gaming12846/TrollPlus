@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2023 Gaming12846
+ * Copyright (C) 2024 Gaming12846
  */
 
 package de.gaming12846.trollplus.utils;
@@ -37,7 +37,7 @@ public class ConfigUtil {
         try {
             this.configuration.save(file);
         } catch (Exception e) {
-            TrollPlus.BUKKIT_LOGGER.warning(e.toString());
+            plugin.getLogger().warning(e.toString());
         }
     }
 

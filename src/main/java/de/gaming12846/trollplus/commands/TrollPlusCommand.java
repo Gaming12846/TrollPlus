@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2023 Gaming12846
+ * Copyright (C) 2024 Gaming12846
  */
 
 package de.gaming12846.trollplus.commands;
@@ -53,14 +53,14 @@ public class TrollPlusCommand implements CommandExecutor {
             PluginDescriptionFile description = plugin.getDescription();
             String headerFooter = ChatColor.DARK_GRAY.toString() + ChatColor.BOLD + StringUtils.repeat("-", 44);
 
-            sender.sendMessage(headerFooter);
-            sender.sendMessage("");
-            sender.sendMessage(ChatColor.RED + langConfig.getString("trollplus.version") + " " + ChatColor.WHITE + description.getVersion());
-            sender.sendMessage(ChatColor.RED + langConfig.getString("trollplus.developer") + " " + ChatColor.WHITE + description.getAuthors().get(0));
-            sender.sendMessage(ChatColor.RED + langConfig.getString("trollplus.plugin-website") + " " + ChatColor.WHITE + description.getWebsite());
-            sender.sendMessage(ChatColor.RED + langConfig.getString("trollplus.report-bugs") + ChatColor.WHITE + " https://github.com/Gaming12846/TrollPlus/issues");
-            sender.sendMessage("");
-            sender.sendMessage(headerFooter);
+            sender.sendMessage(Constants.PLUGIN_PREFIX + headerFooter);
+            sender.sendMessage(Constants.PLUGIN_PREFIX);
+            sender.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.RED + langConfig.getString("trollplus.version") + " " + ChatColor.WHITE + description.getVersion());
+            sender.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.RED + langConfig.getString("trollplus.developer") + " " + ChatColor.WHITE + description.getAuthors().get(0));
+            sender.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.RED + langConfig.getString("trollplus.plugin-website") + " " + ChatColor.WHITE + description.getWebsite());
+            sender.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.RED + langConfig.getString("trollplus.report-bugs") + ChatColor.WHITE + " https://github.com/Gaming12846/TrollPlus/issues");
+            sender.sendMessage(Constants.PLUGIN_PREFIX);
+            sender.sendMessage(Constants.PLUGIN_PREFIX + headerFooter);
 
             if (plugin.updateAvailable)
                 sender.sendMessage(langConfig.getString("update-available") + " https://www.spigotmc.org/resources/81193");
@@ -155,7 +155,7 @@ public class TrollPlusCommand implements CommandExecutor {
             // Settings subcommand
         } else if (args[0].equalsIgnoreCase("settings")) {
             if (!(sender instanceof Player)) {
-                sender.sendMessage(Constants.PLUGIN_CONSOLE_PREFIX + label + " settings" + langConfig.getString("no-console"));
+                sender.sendMessage(Constants.PLUGIN_PREFIX + langConfig.getString("no-console"));
                 return true;
             }
 
