@@ -51,14 +51,16 @@ public class TrollPlusCommand implements CommandExecutor {
             }
 
             PluginDescriptionFile description = plugin.getDescription();
-            String headerFooter = ChatColor.DARK_GRAY.toString() + ChatColor.BOLD + StringUtils.repeat("-", 44);
+            String headerFooter = ChatColor.DARK_GRAY.toString() + ChatColor.BOLD + StringUtils.repeat("-", 36);
 
             sender.sendMessage(Constants.PLUGIN_PREFIX + headerFooter);
             sender.sendMessage(Constants.PLUGIN_PREFIX);
             sender.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.RED + langConfig.getString("trollplus.version") + " " + ChatColor.WHITE + description.getVersion());
             sender.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.RED + langConfig.getString("trollplus.developer") + " " + ChatColor.WHITE + description.getAuthors().get(0));
-            sender.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.RED + langConfig.getString("trollplus.plugin-website") + " " + ChatColor.WHITE + description.getWebsite());
-            sender.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.RED + langConfig.getString("trollplus.report-bugs") + ChatColor.WHITE + " https://github.com/Gaming12846/TrollPlus/issues");
+            sender.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.RED + langConfig.getString("trollplus.plugin-website"));
+            sender.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.WHITE + description.getWebsite());
+            sender.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.RED + langConfig.getString("trollplus.report-bugs"));
+            sender.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.WHITE + "https://github.com/Gaming12846/TrollPlus/issues");
             sender.sendMessage(Constants.PLUGIN_PREFIX);
             sender.sendMessage(Constants.PLUGIN_PREFIX + headerFooter);
 
