@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2023 Gaming12846
+ * Copyright (C) 2024 Gaming12846
  *
  * TrollPlus is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,11 +22,11 @@ import de.gaming12846.trollplus.commands.TrollBowsCommand;
 import de.gaming12846.trollplus.commands.TrollCommand;
 import de.gaming12846.trollplus.commands.TrollPlusCommand;
 import de.gaming12846.trollplus.listener.*;
-import de.gaming12846.trollplus.metrics.Metrics;
 import de.gaming12846.trollplus.utils.ConfigUtil;
 import de.gaming12846.trollplus.utils.Constants;
 import de.gaming12846.trollplus.utils.TabCompleter;
 import de.gaming12846.trollplus.utils.UpdateChecker;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -127,13 +127,13 @@ public class TrollPlus extends JavaPlugin {
 
     // Register commands
     private void registerCommands() {
-        trollPlusCommand = new TrollPlusCommand(this);
-        trollCommand = new TrollCommand(this);
         trollBowsCommand = new TrollBowsCommand(this);
+        trollCommand = new TrollCommand(this);
+        trollPlusCommand = new TrollPlusCommand(this);
 
-        Objects.requireNonNull(this.getCommand("trollplus")).setExecutor(trollPlusCommand);
-        Objects.requireNonNull(this.getCommand("troll")).setExecutor(trollCommand);
         Objects.requireNonNull(this.getCommand("trollbows")).setExecutor(trollBowsCommand);
+        Objects.requireNonNull(this.getCommand("troll")).setExecutor(trollCommand);
+        Objects.requireNonNull(this.getCommand("trollplus")).setExecutor(trollPlusCommand);
     }
 
     // Register tabcompleter
