@@ -49,7 +49,6 @@ public class InventoryClickListener implements Listener {
         // Feature semi ban
         if (player.hasMetadata("TROLLPLUS_SEMI_BAN")) event.setCancelled(true);
 
-
         if (plugin.getTrollCommand().trollGUI != null && Objects.equals(event.getClickedInventory(), plugin.getTrollCommand().trollGUI.getGUI())) {
             int slot = event.getSlot();
             GUIUtil trollGUI = plugin.getTrollCommand().trollGUI.getGUIUtil();

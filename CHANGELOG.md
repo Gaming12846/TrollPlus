@@ -1,6 +1,6 @@
 # Changelog TrollPlus
 
-## [1.4.5.2] | Fix - Latest stable release
+## [1.4.5.2] - Latest stable release
 
 - Fixed that some translations were not changed after reloading with the TrollPlus command and changing the language in the TrollPlus settings GUI
 - Updated simplified chinese language (Thanks to Stars)

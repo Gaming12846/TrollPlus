@@ -81,9 +81,9 @@ _(This picture shows the troll settings GUI in the game)_
 - The plugin collects anonymous statistics if you do not deactivate them. To see the statistics,
   visit [bStats](https://bstats.org/plugin/bukkit/TrollPlus).
 
-## Do you need help, have found an bug or you have any suggestions?
+## Do you need help, have found an bug or have any suggestions?
 
-Feel free to send me a message on [SpigotMC](https://www.spigotmc.org/members/gaming12846.305963/) or add me on Discord
+Feel free to send me a message on [SpigotMC](https://www.spigotmc.org/members/gaming12846.305963) or add me on Discord
 at **jonathan2404**.
 
 Bugs and suggestions should be reported

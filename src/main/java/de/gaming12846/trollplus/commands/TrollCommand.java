@@ -64,7 +64,6 @@ public class TrollCommand implements CommandExecutor {
 
         // Add features
         trollGUI.addItem(4, ItemBuilder.createSkull(ChatColor.GOLD + target.getName(), target.getPlayer()));
-        trollGUI.addItemWithLore(4, Material.POTION, ChatColor.WHITE + langConfig.getString("troll-gui.vanish") + " " + trollGUI.getStatus("TROLLPLUS_VANISH"), langConfig.getString("troll-gui.vanish-description"));
         trollGUI.addItemWithLore(45, Material.POTION, ChatColor.WHITE + langConfig.getString("troll-gui.vanish") + " " + trollGUI.getStatus("TROLLPLUS_VANISH"), langConfig.getString("troll-gui.vanish-description"));
         trollGUI.addItemWithLore(46, Material.ENDER_PEARL, ChatColor.WHITE + langConfig.getString("troll-gui.teleport"), langConfig.getString("troll-gui.teleport-description"));
         trollGUI.addItemWithLore(47, Material.WITHER_SKELETON_SKULL, ChatColor.WHITE + langConfig.getString("troll-gui.kill"), langConfig.getString("troll-gui.kill-description"));
