@@ -26,28 +26,69 @@ check-for-updates: true
 # Deactivate the active troll features when the target leaves the server. [Default = true]
 deactivate-features-on-quit: true
 
-# Enable or disable the join and quit message when a player goes vanish with the "Vanish" feature. [Default = false]
-vanish-join-quit-message-enabled: false
-
-# Teleports the player back to the starting position. [Default = true]
-control-teleport-back: true
-
-# Set the format for the player name when sending messages for the "Semi ban" feature. [Default = "<[player]>"]
-semi-ban-message-replace: "<[player]>" # The "[player]" must be included in the message as it will be replaced by the name of the player.
-
-# Set the rocket charges that determine how many times the target will be launched. [Default = 20]
-rocket-charges: 20
-
-# Enable or disable the broadcast message for the "Fake ban" feature. [Default = true]
-fake-ban-message-broadcast-enabled: true
-
-# Enable or disable the broadcast message for the "Fake op" feature. [Default = true]
-fake-op-message-broadcast-enabled: true
-
-# Set the height to which the target is teleported with the "Freefall" feature. [Default = 100]
-freefall-height: 100
-
 # Enable or disable that a fire can be set for the "TNT track" feature and the "Trollbows". [Default = false]
 set-fire: false
 # Enable or disable that explosions can destroy blocks for the "TNT track" feature and the "Trollbows". [Default = false]
 break-blocks: false
+
+#######################Troll settings########################
+
+# Feature "Vanish"
+# Enable or disable the join and quit message when a player goes vanish. [Default = false]
+vanish-join-quit-message-enabled: false
+
+# Feature "Hand item drop"
+# Determines the delay between dropping the hand item in ticks. [Default = 20]
+hand-item-drop-delay: 20
+
+# Feature "Control"
+# Teleports the player back to the starting position. [Default = true]
+control-teleport-back: true
+
+# Feature "Spank"
+# Determines the delay between the spanking of the player in ticks. [Default = 100]
+spank-delay: 100
+
+# Feature "Spam messages"
+# Determines the delay between the spam messages to the player in ticks. [Default = 20]
+spam-messages-delay: 20
+
+# Feature "Spam sounds"
+# Determines the delay between the spam sounds to the player in ticks. [Default = 10]
+spam-sounds-delay: 10
+
+# Feature "Semi ban"
+# Set the format for the player name when sending messages for the "Semi ban" feature. [Default = "<[player]>"]
+semi-ban-message-replace: "<[player]>" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+
+# Feature "Falling anvils"
+# Determines the delay between the falling anvils in ticks. [Default = 20]
+falling-anvils-delay: 20
+
+# Feature "TNT track"
+# Determines the delay between the tnts in ticks. [Default = 20]
+tnt-track-delay: 20
+
+# Feature "Mob spawner"
+# Determines the delay between the mob spawns in ticks. [Default = 60]
+mob-spawner-delay: 60
+
+# Feature "Slowly kill"
+# Determines the delay between dealing damage in ticks. [Default = 60]
+slowly-kill-delay: 60
+
+# Feature "Rocket"
+# Set the rocket charges that determine how many times the target will be launched. [Default = 20]
+rocket-charges: 20
+
+# Feature "Fake ban"
+# Enable or disable the broadcast message. [Default = true]
+fake-ban-message-broadcast-enabled: true
+
+# Feature "Fake op"
+# Enable or disable the broadcast message. [Default = true]
+fake-op-message-broadcast-enabled: true
+
+# Feature "Freefall"
+# Set the height to which the target is teleported. [Default = 100]
+freefall-height: 100

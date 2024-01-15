@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2023 Gaming12846
+ * Copyright (C) 2024 Gaming12846
  */
 
 package de.gaming12846.trollplus.listener;
@@ -554,7 +554,7 @@ public class InventoryClickListener implements Listener {
                 item.setAmount(amount);
                 target.getInventory().setItemInMainHand(item);
             }
-        }.runTaskTimer(plugin, 0, 20);
+        }.runTaskTimer(plugin, 0, plugin.getConfig().getInt("hand-item-drop-delay"));
     }
 
     // Feature Spank (Knockback)
@@ -573,7 +573,7 @@ public class InventoryClickListener implements Listener {
 
                 target.setVelocity(new Vector(x, y, z));
             }
-        }.runTaskTimer(plugin, 0, 100);
+        }.runTaskTimer(plugin, 0, plugin.getConfig().getInt("spank-delay"));
     }
 
     // Feature spam messages
@@ -610,7 +610,7 @@ public class InventoryClickListener implements Listener {
                 target.sendMessage(stringBuilderChat.toString());
                 target.sendTitle(stringBuilderTitle.toString(), stringBuilderTitle2.toString(), 3, 10, 3);
             }
-        }.runTaskTimer(plugin, 0, 20);
+        }.runTaskTimer(plugin, 0, plugin.getConfig().getInt("spam-messages-delay"));
     }
 
     // Feature spam sounds
@@ -627,7 +627,7 @@ public class InventoryClickListener implements Listener {
 
                 target.playSound(target.getLocation(), sounds.get(RandomUtils.nextInt(0, sounds.size())), RandomUtils.nextInt(), RandomUtils.nextInt());
             }
-        }.runTaskTimer(plugin, 0, 10);
+        }.runTaskTimer(plugin, 0, plugin.getConfig().getInt("spam-sounds-delay"));
     }
 
     // Feature falling anvil
@@ -645,7 +645,7 @@ public class InventoryClickListener implements Listener {
 
                 if (loc.getBlock().getType().equals(Material.AIR)) loc.getBlock().setType(Material.DAMAGED_ANVIL);
             }
-        }.runTaskTimer(plugin, 0, 20);
+        }.runTaskTimer(plugin, 0, plugin.getConfig().getInt("falling-anvils-delay"));
     }
 
     // Feature tnt track
@@ -663,7 +663,7 @@ public class InventoryClickListener implements Listener {
                 tnt.setMetadata("TROLLPLUS_TNT", new FixedMetadataValue(plugin, tnt));
                 tnt.getWorld().playSound(target.getLocation(), Sound.ENTITY_TNT_PRIMED, 20, 1);
             }
-        }.runTaskTimer(plugin, 0, 20);
+        }.runTaskTimer(plugin, 0, plugin.getConfig().getInt("tnt-track-delay"));
     }
 
     // Feature mob spawner
@@ -680,7 +680,7 @@ public class InventoryClickListener implements Listener {
 
                 target.getWorld().spawnEntity(target.getLocation(), mobs.get(RandomUtils.nextInt(0, mobs.size()))).setGlowing(true);
             }
-        }.runTaskTimer(plugin, 0, 60);
+        }.runTaskTimer(plugin, 0, plugin.getConfig().getInt("mob-spawner-delay"));
     }
 
     // Feature slowly kill
@@ -705,7 +705,7 @@ public class InventoryClickListener implements Listener {
 
                 target.damage(1);
             }
-        }.runTaskTimer(plugin, 0, 60);
+        }.runTaskTimer(plugin, 0, plugin.getConfig().getInt("slowly-kill-delay"));
     }
 
     // Feature random scary sound
