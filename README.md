@@ -1,15 +1,20 @@
-[![Latest Version](https://img.shields.io/spiget/version/81193?label=Latest%20version&color=blueviolet)](https://github.com/Gaming12846/TrollPlus/releases)
+[![Latest version](https://img.shields.io/spiget/version/81193?label=Latest%20version&color=blueviolet)](https://github.com/Gaming12846/TrollPlus/releases)
 [![Issues](https://img.shields.io/github/issues/Gaming12846/TrollPlus?label=Issues)](https://github.com/Gaming12846/TrollPlus/issues)
 [![Pull requests](https://img.shields.io/github/issues-pr/Gaming12846/TrollPlus?label=Pull%20requests)](https://github.com/Gaming12846/TrollPlus/pulls)
+[![License](https://img.shields.io/github/license/Gaming12846/TrollPlus?label=License&color=red)](https://github.com/Gaming12846/TrollPlus/blob/master/LICENSE)
 
-[![Spigot](https://img.shields.io/badge/Spigot-orange)](https://www.spigotmc.org/resources/81193/)
+[![Spigot](https://img.shields.io/badge/Spigot-orange)](https://www.spigotmc.org/resources/81193)
 [![Rating](https://img.shields.io/spiget/rating/81193?label=Rating&color=orange)](https://www.spigotmc.org/resources/81193/reviews)
-[![Tested minecraft versions](https://img.shields.io/spiget/tested-versions/81193?label=Tested%20minecraft%20versions)](https://www.spigotmc.org/resources/81193/)
 
 # TrollPlus
 
 Have you always wanted to troll your friends in Minecraft and watch their reactions?
-Then you've come to the right place! This plugin allows you to troll them in different ways.
+Then you've come to the right place!This plugin allows you to troll them in different ways.
+
+This plugin is tested from Minecraft version 1.13 to 1.20.4 on spigot and paper.
+
+All important things such as installation and the use of commands and permissions can be found in
+the [wiki](https://github.com/Gaming12846/TrollPlus/wiki).
 
 ## Features
 
@@ -22,7 +27,9 @@ Then you've come to the right place! This plugin allows you to troll them in dif
 
 ### Troll menu
 
-![Troll menu](https://up.picr.de/45943955mv.png)
+![](https://up.picr.de/45943955mv.png)
+
+_(This picture shows the troll GUI in the game)_
 
 - **Vanish** - Disappear for the target
 - **Kill** - Kill the target
@@ -53,7 +60,9 @@ Then you've come to the right place! This plugin allows you to troll them in dif
 
 ### Trollbows
 
-![Trollbows](https://up.picr.de/45943956ef.png)
+![](https://up.picr.de/45943956ef.png)
+
+_(This picture shows the trollbows GUI in the game)_
 
 - **Explosion bow** - A bow that creates an explosion when the arrow hits
 - **TNT bow** - A bow that creates a TNT when the arrow hits
@@ -62,40 +71,9 @@ Then you've come to the right place! This plugin allows you to troll them in dif
 
 ### TrollPlus settings
 
-![TrollPlus settings](https://up.picr.de/45943957jn.png)
+![](https://up.picr.de/45943957jn.png)
 
-## Commands
-
-- **/trollplus version** - Displays information and the version of the TollPlus currently installed on your server
-- **/trollplus reload** - Reload the plugin's configuration, language and blocklist file
-- **/trollplus blocklist add** - Add players to the blocklist
-- **/trollplus blocklist remove** - Remove players from the blocklist
-- **/trollplus settings** - Open the settings GUI
-- **/troll [player]** - Open the troll GUI for a player
-- **/trollbows** - Open the trollbows GUI
-
-## Aliases
-
-- **/trollplus** : [ /troll+ ]
-- **/trollbows** : [ /trollbow ]
-
-## Permission nodes
-
-- **trollplus.*** - Operators - Gives access to all TrollPlus commands
-- **trollplus.version** - Default - Gives access to the /trollplus <version> subcommand
-- **trollplus.reload** - Operators - Gives access to the /trollplus <reload> subcommand
-- **trollplus.blocklist.*** - Operators - Gives access to all /trollplus <blocklist> subcommands
-- **trollplus.blocklist.add** - Operators - Gives access to the /trollplus <blocklist> <add> subcommand
-- **trollplus.blocklist.remove** - Operators - Gives access to the /trollplus <blocklist> <remove> subcommand
-- **trollplus.settings** - Operators - Gives access to the /trollplus <settings> subcommand
-- **trollplus.troll** - Operators - Gives access to the /troll command
-- **trollplus.bows** - Operators - Gives access to the /trollbows command
-
-## To-do list
-
-- Improve the control feature (Smooth it out)
-- Add a trollmode (Feel free to write me a message with suggestions or open an issue on GitHub)
-- Add more features (Feel free to write me a message with function suggestions or open an issue on GitHub)
+_(This picture shows the troll settings GUI in the game)_
 
 ## Notes
 
@@ -103,11 +81,10 @@ Then you've come to the right place! This plugin allows you to troll them in dif
 - The plugin collects anonymous statistics if you do not deactivate them. To see the statistics,
   visit [bStats](https://bstats.org/plugin/bukkit/TrollPlus).
 
-## Need help?
+## Do you need help, have found an bug or you have any suggestions?
 
-Feel free to send me a message on SpigotMC.
-
-## Bugs and suggestions
+Feel free to send me a message on [SpigotMC](https://www.spigotmc.org/members/gaming12846.305963/) or add me on Discord
+at **jonathan2404**.
 
 Bugs and suggestions should be reported
 by [opening a ticket on GitHub](https://github.com/Gaming12846/TrollPlus/issues).
@@ -115,16 +92,17 @@ by [opening a ticket on GitHub](https://github.com/Gaming12846/TrollPlus/issues)
 It took me a while to create this plugin. So if you find it useful or fun, I would appreciate a nice review on SpigotMC
 and a star on GitHub.
 
-## Changelog
+## Important links
 
-[Changelog](https://github.com/Gaming12846/TrollPlus/blob/master/CHANGELOG.md)
+- [Wiki](https://github.com/Gaming12846/TrollPlus/wiki)
+- [Issues](https://github.com/Gaming12846/TrollPlus/issues)
+- [Pull requests](https://github.com/Gaming12846/TrollPlus/pulls)
+- [Changelog](https://github.com/Gaming12846/TrollPlus/blob/master/CHANGELOG.md)
+- [SpigotMC](https://www.spigotmc.org/resources/81193)
+- [bStats](https://bstats.org/plugin/bukkit/TrollPlus)
 
 ## Credits
 
 ### Translations
 
 - **Simplified Chinese language** - ranyouHigh and Stars
-
-## License
-
-[![License](https://img.shields.io/github/license/Gaming12846/TrollPlus?label=License&color=red)](https://github.com/Gaming12846/TrollPlus/blob/master/LICENSE)
