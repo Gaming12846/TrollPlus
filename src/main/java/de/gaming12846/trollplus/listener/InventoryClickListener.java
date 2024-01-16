@@ -822,6 +822,7 @@ public class InventoryClickListener implements Listener {
     // Feature freefall
     private void freefall(Player target, Player player) {
         Location loc = target.getLocation();
+        loc.setY(loc.getY() + 1);
 
         for (int i = 0; i < plugin.getConfig().getInt("freefall-height"); i++) {
             if (loc.getBlock().getType().equals(Material.AIR)) {
