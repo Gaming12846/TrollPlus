@@ -5,6 +5,8 @@
 
 [![Spigot](https://img.shields.io/badge/Spigot-orange)](https://www.spigotmc.org/resources/81193)
 [![Rating](https://img.shields.io/spiget/rating/81193?label=Rating&color=orange)](https://www.spigotmc.org/resources/81193/reviews)
+[![CurseForge](https://img.shields.io/badge/CurseForge-darkred)](https://www.curseforge.com/minecraft/bukkit-plugins/trollplus-gaming12846)
+[![Downlaods](https://img.shields.io/curseforge/dt/962653?label=Downloads&color=darkred)](https://www.curseforge.com/minecraft/bukkit-plugins/trollplus-gaming12846)
 
 # TrollPlus
 
@@ -83,7 +85,7 @@ _(This picture shows the troll settings GUI in the game)_
 
 ## Do you need help, have found an bug or have any suggestions?
 
-Feel free to send me a message on [SpigotMC](https://www.spigotmc.org/members/gaming12846.305963).
+Feel free to send me a message on CurseForge or [SpigotMC](https://www.spigotmc.org/members/gaming12846.305963).
 
 Bugs and suggestions should be reported
 by [opening a ticket on GitHub](https://github.com/Gaming12846/TrollPlus/issues).
