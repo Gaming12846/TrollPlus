@@ -1,6 +1,13 @@
 # Changelog TrollPlus
 
-## [1.4.5.2] - Latest stable release
+## [1.4.6] - Latest stable release
+
+- Added new configuration options
+- Fixed an issue with the "Freefall" feature
+- Fixed compatibility with older Minecraft versions
+- Improved the code
+
+## [1.4.5.2]
 
 - Fixed that some translations were not changed after reloading with the TrollPlus command and changing the language in the TrollPlus settings GUI
 - Updated simplified chinese language (Thanks to Stars)

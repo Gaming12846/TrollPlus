@@ -1,12 +1,13 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2023 Gaming12846
+ * Copyright (C) 2024 Gaming12846
  */
 
 package de.gaming12846.trollplus.listener;
 
 import de.gaming12846.trollplus.TrollPlus;
 import org.apache.commons.lang3.RandomUtils;
+import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.*;
@@ -33,7 +34,8 @@ public class ProjectileHitListener implements Listener {
         if (arrow.hasMetadata("TROLLPLUS_EXPLOSION_ARROW")) {
             arrow.removeMetadata("TROLLPLUS_EXPLOSION_ARROW", plugin);
 
-            arrow.getWorld().createExplosion(arrow.getLocation(), 2, plugin.getConfig().getBoolean("set-fire"), plugin.getConfig().getBoolean("break-blocks"));
+            Location location = arrow.getLocation();
+            arrow.getWorld().createExplosion(location.getX(), location.getY(), location.getZ(), 2, plugin.getConfig().getBoolean("set-fire"), plugin.getConfig().getBoolean("break-blocks"));
         }
 
         // TNT bow

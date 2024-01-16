@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2023 Gaming12846
+ * Copyright (C) 2024 Gaming12846
  */
 
 package de.gaming12846.trollplus.listener;
@@ -76,17 +76,31 @@ public class ProjectileLaunchListener implements Listener {
         if (itemMeta.getDisplayName().equals(ChatColor.RED + langConfig.getString("trollbows.lighting-bolt-bow")) && itemMeta.isUnbreakable()) {
             arrow.setMetadata("TROLLPLUS_LIGHTNING_BOLT_ARROW", new FixedMetadataValue(plugin, arrow));
 
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    if (arrow.isInBlock()) {
-                        cancel();
-                        return;
-                    }
+            if (plugin.getServer().getBukkitVersion().contains("1.13")) {
+                new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        if (arrow.isInBlock()) {
+                            cancel();
+                            return;
+                        }
 
-                    arrow.getWorld().spawnParticle(Particle.FLASH, arrow.getLocation(), 1, 0, 0, 0, 0);
-                }
-            }.runTaskTimer(plugin, 0, 1);
+                        arrow.getWorld().spawnParticle(Particle.FIREWORKS_SPARK, arrow.getLocation(), 1, 0, 0, 0, 0);
+                    }
+                }.runTaskTimer(plugin, 0, 1);
+            } else {
+                new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        if (arrow.isInBlock()) {
+                            cancel();
+                            return;
+                        }
+
+                        arrow.getWorld().spawnParticle(Particle.FLASH, arrow.getLocation(), 1, 0, 0, 0, 0);
+                    }
+                }.runTaskTimer(plugin, 0, 1);
+            }
         }
 
         // Silverfish bow

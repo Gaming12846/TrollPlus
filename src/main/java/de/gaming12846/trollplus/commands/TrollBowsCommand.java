@@ -5,7 +5,6 @@
 
 package de.gaming12846.trollplus.commands;
 
-
 import de.gaming12846.trollplus.TrollPlus;
 import de.gaming12846.trollplus.utils.ConfigUtil;
 import de.gaming12846.trollplus.utils.Constants;
