@@ -11,7 +11,7 @@
 Have you always wanted to troll your friends in Minecraft and watch their reactions?
 Then you've come to the right place!This plugin allows you to troll them in different ways.
 
-This plugin is tested from Minecraft version 1.13 to 1.20.4 on spigot and paper.
+This plugin is tested from Minecraft version 1.13.2 to 1.20.4 on spigot and paper.
 
 All important things such as installation and the use of commands and permissions can be found in
 the [wiki](https://github.com/Gaming12846/TrollPlus/wiki).
@@ -77,7 +77,7 @@ _(This picture shows the troll settings GUI in the game)_
 
 ## Notes
 
-- Always create a new configuration when updating!
+- Always create or update your configuration when you update the plugin
 - The plugin collects anonymous statistics if you do not deactivate them. To see the statistics,
   visit [bStats](https://bstats.org/plugin/bukkit/TrollPlus).
 
