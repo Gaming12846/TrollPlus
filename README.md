@@ -83,8 +83,7 @@ _(This picture shows the troll settings GUI in the game)_
 
 ## Do you need help, have found an bug or have any suggestions?
 
-Feel free to send me a message on [SpigotMC](https://www.spigotmc.org/members/gaming12846.305963) or add me on Discord
-at **jonathan2404**.
+Feel free to send me a message on [SpigotMC](https://www.spigotmc.org/members/gaming12846.305963).
 
 Bugs and suggestions should be reported
 by [opening a ticket on GitHub](https://github.com/Gaming12846/TrollPlus/issues).
