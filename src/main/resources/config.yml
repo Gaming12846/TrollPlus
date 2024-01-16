@@ -11,6 +11,8 @@
 
 # If you need help, you can send me a message on SpigotMC.
 
+version: 1.0
+
 #######################Global settings#######################
 
 # Set the language for the plugin, available options are custom, en, de and zhcn. [Default = en]

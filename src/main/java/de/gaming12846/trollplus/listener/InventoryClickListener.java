@@ -6,7 +6,10 @@
 package de.gaming12846.trollplus.listener;
 
 import de.gaming12846.trollplus.TrollPlus;
-import de.gaming12846.trollplus.utils.*;
+import de.gaming12846.trollplus.utils.ConfigUtil;
+import de.gaming12846.trollplus.utils.ControlUtil;
+import de.gaming12846.trollplus.utils.GUIUtil;
+import de.gaming12846.trollplus.utils.ItemBuilder;
 import org.apache.commons.lang3.RandomUtils;
 import org.bukkit.*;
 import org.bukkit.entity.EntityType;
@@ -26,6 +29,8 @@ import org.bukkit.util.Vector;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+
+import static de.gaming12846.trollplus.utils.Constants.PLUGIN_PREFIX;
 
 public class InventoryClickListener implements Listener {
     private final TrollPlus plugin;
@@ -56,6 +61,12 @@ public class InventoryClickListener implements Listener {
 
             event.setCancelled(true);
 
+            if (!target.isOnline()) {
+                player.closeInventory();
+                player.sendMessage(PLUGIN_PREFIX + langConfig.getString("troll.player-quit"));
+                return;
+            }
+
             if (slot == 49) {
                 int[] slots = new int[]{10, 12, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44};
                 slot = slots[RandomUtils.nextInt(0, slots.length)];
@@ -66,7 +77,7 @@ public class InventoryClickListener implements Listener {
                     return;
                 case 45:
                     if (target == player) {
-                        player.sendMessage(Constants.PLUGIN_PREFIX + langConfig.getString("troll.vanish-not-available"));
+                        player.sendMessage(PLUGIN_PREFIX + langConfig.getString("troll.vanish-not-available"));
 
                         break;
                     }
@@ -80,7 +91,7 @@ public class InventoryClickListener implements Listener {
                             target.sendMessage(vanishQuitMessage.replace("[player]", player.getName()));
                         }
 
-                        trollGUI.addItem(47, ItemBuilder.createItemWithLore(Material.POTION, ChatColor.WHITE + langConfig.getString("troll-gui.vanish") + " " + trollGUI.getStatus("TROLLPLUS_VANISH"), langConfig.getString("troll-gui.vanish-description")));
+                        trollGUI.addItem(45, ItemBuilder.createItemWithLore(Material.POTION, ChatColor.WHITE + langConfig.getString("troll-gui.vanish") + " " + trollGUI.getStatus("TROLLPLUS_VANISH"), langConfig.getString("troll-gui.vanish-description")));
 
                         break;
                     }
@@ -93,12 +104,12 @@ public class InventoryClickListener implements Listener {
                         target.sendMessage(vanishJoinMessage.replace("[player]", player.getName()));
                     }
 
-                    trollGUI.addItem(47, ItemBuilder.createItemWithLore(Material.POTION, ChatColor.WHITE + langConfig.getString("troll-gui.vanish") + " " + trollGUI.getStatus("TROLLPLUS_VANISH"), langConfig.getString("troll-gui.vanish-description")));
+                    trollGUI.addItem(45, ItemBuilder.createItemWithLore(Material.POTION, ChatColor.WHITE + langConfig.getString("troll-gui.vanish") + " " + trollGUI.getStatus("TROLLPLUS_VANISH"), langConfig.getString("troll-gui.vanish-description")));
 
                     break;
                 case 46:
                     if (target == player) {
-                        player.sendMessage(Constants.PLUGIN_PREFIX + langConfig.getString("troll.teleport-not-available"));
+                        player.sendMessage(PLUGIN_PREFIX + langConfig.getString("troll.teleport-not-available"));
 
                         break;
                     }
@@ -152,7 +163,7 @@ public class InventoryClickListener implements Listener {
                     break;
                 case 14:
                     if (target == player) {
-                        player.sendMessage(Constants.PLUGIN_PREFIX + langConfig.getString("troll.control-not-available"));
+                        player.sendMessage(PLUGIN_PREFIX + langConfig.getString("troll.control-not-available"));
 
                         break;
                     }
@@ -245,7 +256,7 @@ public class InventoryClickListener implements Listener {
                             if (loc.getBlock().getType().equals(Material.AIR)) {
                                 loc.setY(loc.getY() + 1);
                             } else {
-                                player.sendMessage(Constants.PLUGIN_PREFIX + langConfig.getString("troll.falling-anvils-not-available"));
+                                player.sendMessage(PLUGIN_PREFIX + langConfig.getString("troll.falling-anvils-not-available"));
 
                                 return;
                                 //break;
@@ -313,7 +324,7 @@ public class InventoryClickListener implements Listener {
                     break;
                 case 38:
                     if (target.getLocation().getBlockY() < target.getWorld().getHighestBlockYAt(target.getLocation())) {
-                        player.sendMessage(Constants.PLUGIN_PREFIX + langConfig.getString("troll.rocket-cannot-launch"));
+                        player.sendMessage(PLUGIN_PREFIX + langConfig.getString("troll.rocket-cannot-launch"));
                         target.removeMetadata("TROLLPLUS_ROCKET_NO_FALL_DAMAGE", plugin);
 
                         break;
@@ -412,7 +423,7 @@ public class InventoryClickListener implements Listener {
                         plugin.getConfig().set("language", "zhcn");
                         settingsGUI.addItem(10, ItemBuilder.createItemWithLore(Material.PAPER, ChatColor.WHITE + langConfig.getString("trollsettings.language") + ChatColor.DARK_GRAY + " " + plugin.getConfig().getString("language"), langConfig.getString("trollsettings.language-description")));
                         plugin.saveConfig();
-                        player.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.GREEN + langConfig.getString("trollsettings.language-successfully-changed"));
+                        player.sendMessage(PLUGIN_PREFIX + ChatColor.GREEN + langConfig.getString("trollsettings.language-successfully-changed"));
                         player.closeInventory();
 
                         break;
@@ -420,7 +431,7 @@ public class InventoryClickListener implements Listener {
                         plugin.getConfig().set("language", "custom");
                         settingsGUI.addItem(10, ItemBuilder.createItemWithLore(Material.PAPER, ChatColor.WHITE + langConfig.getString("trollsettings.language") + ChatColor.DARK_GRAY + " " + plugin.getConfig().getString("language"), langConfig.getString("trollsettings.language-description")));
                         plugin.saveConfig();
-                        player.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.GREEN + langConfig.getString("trollsettings.language-successfully-changed"));
+                        player.sendMessage(PLUGIN_PREFIX + ChatColor.GREEN + langConfig.getString("trollsettings.language-successfully-changed"));
                         player.closeInventory();
 
                         break;
@@ -428,7 +439,7 @@ public class InventoryClickListener implements Listener {
                         plugin.getConfig().set("language", "en");
                         settingsGUI.addItem(10, ItemBuilder.createItemWithLore(Material.PAPER, ChatColor.WHITE + langConfig.getString("trollsettings.language") + ChatColor.DARK_GRAY + " " + plugin.getConfig().getString("language"), langConfig.getString("trollsettings.language-description")));
                         plugin.saveConfig();
-                        player.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.GREEN + langConfig.getString("trollsettings.language-successfully-changed"));
+                        player.sendMessage(PLUGIN_PREFIX + ChatColor.GREEN + langConfig.getString("trollsettings.language-successfully-changed"));
 
                         player.closeInventory();
 
@@ -438,7 +449,7 @@ public class InventoryClickListener implements Listener {
                     plugin.getConfig().set("language", "de");
                     settingsGUI.addItem(10, ItemBuilder.createItemWithLore(Material.PAPER, ChatColor.WHITE + langConfig.getString("trollsettings.language") + ChatColor.DARK_GRAY + " " + plugin.getConfig().getString("language"), langConfig.getString("trollsettings.language-description")));
                     plugin.saveConfig();
-                    player.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.GREEN + langConfig.getString("trollsettings.language-successfully-changed"));
+                    player.sendMessage(PLUGIN_PREFIX + ChatColor.GREEN + langConfig.getString("trollsettings.language-successfully-changed"));
 
                     player.closeInventory();
 
@@ -694,7 +705,7 @@ public class InventoryClickListener implements Listener {
                 }
 
                 if (target.getGameMode() == GameMode.CREATIVE || target.getGameMode() == GameMode.SPECTATOR) {
-                    player.sendMessage(Constants.PLUGIN_PREFIX + langConfig.getString("troll.slowly-kill-not-available"));
+                    player.sendMessage(PLUGIN_PREFIX + langConfig.getString("troll.slowly-kill-not-available"));
                     target.removeMetadata("TROLLPLUS_SLOWLY_KILL", plugin);
                     GUIUtil trollGUI = plugin.getTrollCommand().trollGUI.getGUIUtil();
                     trollGUI.addItem(32, ItemBuilder.createItemWithLore(Material.SKELETON_SKULL, ChatColor.WHITE + langConfig.getString("troll-gui.slowly-kill") + " " + trollGUI.getStatus("TROLLPLUS_SLOWLY_KILL"), langConfig.getString("troll-gui.slowly-kill-description")));
@@ -754,7 +765,7 @@ public class InventoryClickListener implements Listener {
                     if (target.getLocation().getBlockY() < target.getWorld().getHighestBlockYAt(target.getLocation())) {
                         if (!finalTargetAllowToFlight) target.setAllowFlight(false);
 
-                        player.sendMessage(Constants.PLUGIN_PREFIX + plugin.getLanguageConfig().getString("troll.rocket-launch-stopped"));
+                        player.sendMessage(PLUGIN_PREFIX + plugin.getLanguageConfig().getString("troll.rocket-launch-stopped"));
 
                         cancel();
                         return;

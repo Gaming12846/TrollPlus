@@ -2,6 +2,8 @@
 # This language config was generated for version ${project.version}.
 # Language config by: Gaming12846
 
+version: 1.0
+
 ###########################Global############################
 
 metrics-enabled: "Aktivieren von Pluginmetriken"
@@ -10,6 +12,9 @@ checking-updates: "Überprüft auf Updates ..."
 no-update-available: "Es ist kein neues Update verfügbar"
 update-available: "Ein neues Update is verfügbar! Zum downloaden SpigotMC besuchen:"
 unable-check-updates: "Suche nach Updates nicht möglich:"
+
+config-outdated: "Die Konfigurationsdatei ist veraltet! Bitte aktualisieren die Konfigurationsdatei auf die neueste Version. Das Plugin wird versuchen sie trotzdem zu laden, es können jedoch Fehler auftreten"
+language-config-outdated: "Die Sprachkonfigurationsdatei ist veraltet! Bitte aktualisieren die Sprachkonfigurationsdatei auf die neueste Version. Das Plugin wird versuchen sie trotzdem zu laden, es können jedoch Fehler auftreten"
 
 no-permission: "Du hast nicht genügend Rechte, um diesen Befehl auszuführen"
 no-console: "Der Befehl kann nicht von der Konsole benutzt werden"
@@ -34,6 +39,7 @@ trollplus:
 troll:
   player-not-online: "Der Spieler [player] ist momentan nicht online" # "[player]" muss in der Nachricht enthalten sein, da es durch den Namen des Spielers ersetzt wird.
   player-is-immune: "Der Spieler [player] ist immun" # "[player]" muss in der Nachricht enthalten sein, da es durch den Namen des Spielers ersetzt wird.
+  player-quit: "Der ausgewählte Spieler hat das Spiel verlassen"
   vanish-not-available: "Tut mir leid Kumpel, aber du kannst dich nicht vor dir selbst verstecken"
   teleport-not-available: "Netter Versuch, aber du bist bereits auf deiner eigenen Position :)"
   control-not-available: "Netter Versuch, aber du hast dich bereits unter Kontrolle (hoffentlich) :)"

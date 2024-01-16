@@ -4,6 +4,8 @@
 # This language config was generated for version ${project.version}.
 # Language config by:
 
+version: 1.0
+
 ###########################Global############################
 
 metrics-enabled: ""
@@ -12,6 +14,9 @@ checking-updates: ""
 no-update-available: ""
 update-available: ""
 unable-check-updates: ""
+
+config-outdated: ""
+language-config-outdated: ""
 
 no-permission: ""
 no-console: ""
@@ -36,6 +41,7 @@ trollplus:
 troll:
   player-not-online: "[player]" # The "[player]" must be included in the message as it will be replaced by the name of the player.
   player-is-immune: "[player]" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+  player-quit: ""
   vanish-not-available: ""
   teleport-not-available: ""
   control-not-available: ""

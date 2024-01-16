@@ -35,6 +35,8 @@ import java.util.logging.Logger;
 public class TrollPlus extends JavaPlugin {
     public final Logger LOGGER = getLogger();
     public boolean updateAvailable = false;
+    public String configVersion = "1.0";
+    public String languageConfigVersion = "1.0";
 
     // Create ConfigUtils
     public ConfigUtil blocklistConfig;
@@ -82,6 +84,12 @@ public class TrollPlus extends JavaPlugin {
         langGermanConfig = new ConfigUtil(this, "lang_de.yml");
         langSimplifiedChineseConfig = new ConfigUtil(this, "lang_zhcn.yml");
         langEnglishConfig = new ConfigUtil(this, "lang_en.yml");
+
+        if (!configVersion.equalsIgnoreCase(this.getConfig().getString("version")))
+            LOGGER.warning(getLanguageConfig().getConfig().getString("config-outdated"));
+
+        if (!languageConfigVersion.equalsIgnoreCase(getLanguageConfig().getConfig().getString("version")))
+            LOGGER.warning(getLanguageConfig().getConfig().getString("language-config-outdated"));
     }
 
     // Get language config
