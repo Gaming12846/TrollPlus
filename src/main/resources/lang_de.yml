@@ -48,6 +48,7 @@ troll:
   rocket-cannot-launch: "Start nicht möglich, da das Ziel sich nicht unter freiem Himmel befindet"
   rocket-launch-stopped: "Raketenstart gestoppt, da das Ziel nicht mehr unter freiem Himmel ist"
   freefall-cannot-fall: "Freie Fall kann nicht aktiviert werden, da sich das Ziel nicht unter freiem Himmel befindet"
+  kill-message: "ist wegen Dummheit gestorben"
 
 #########################"Troll" GUI#########################
 

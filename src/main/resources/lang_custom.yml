@@ -50,6 +50,7 @@ troll:
   rocket-cannot-launch: ""
   rocket-launch-stopped: ""
   freefall-cannot-fall: ""
+  kill-message: ""
 
 #########################"Troll" GUI#########################
 

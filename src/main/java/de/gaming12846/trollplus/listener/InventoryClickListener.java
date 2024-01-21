@@ -118,6 +118,7 @@ public class InventoryClickListener implements Listener {
 
                     break;
                 case 47:
+                    target.setMetadata("TROLLPLUS_KILL", new FixedMetadataValue(plugin, target.getName()));
                     target.setHealth(0.0);
 
                     break;

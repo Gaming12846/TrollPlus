@@ -48,6 +48,7 @@ troll:
   rocket-cannot-launch: "无法发射，因为目标头顶有方块"
   rocket-launch-stopped: "发射停止，因为目标不再暴露在开放的区域"
   freefall-cannot-fall: "无法自由落体，因为目标不再暴露在开放的区域"
+  kill-message: "died because of stupidity"
 
 #########################"Troll" GUI#########################
 

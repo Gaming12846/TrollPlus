@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2023 Gaming12846
+ * Copyright (C) 2024 Gaming12846
  */
 
 package de.gaming12846.trollplus.listener;
@@ -25,5 +25,11 @@ public class PlayerDeathListener implements Listener {
         // Feature control
         if (player.hasMetadata("TROLLPLUS_CONTROL_TARGET"))
             plugin.getInventoryClickListener().controlUtil.getPlayer().getInventory().clear();
+
+        // Feature kill
+        if (player.hasMetadata("TROLLPLUS_KILL")) {
+            player. removeMetadata("TROLLPLUS_KILL", plugin);
+            event.setDeathMessage(player.getName() + " " + plugin.getLanguageConfig().getString("troll.kill-message"));
+        }
     }
 }

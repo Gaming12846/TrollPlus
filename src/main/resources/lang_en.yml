@@ -48,6 +48,7 @@ troll:
   rocket-cannot-launch: "Cannot launch because the target is not under the open sky"
   rocket-launch-stopped: "Rocket launch stopped because the target is no longer under the open sky"
   freefall-cannot-fall: "Free fall cannot be activated because the target is not under the open sky"
+  kill-message: "died because of stupidity"
 
 #########################"Troll" GUI#########################
 
