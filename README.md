@@ -1,4 +1,4 @@
-[![Latest version](https://img.shields.io/spiget/version/81193?label=Latest%20version&color=blueviolet)](https://github.com/Gaming12846/TrollPlus/releases)
+[![Latest version](https://img.shields.io/github/v/release/gaming12846/TrollPlus?label=Latest%20release&color=blueviolet)](https://github.com/Gaming12846/TrollPlus/releases)
 [![Issues](https://img.shields.io/github/issues/Gaming12846/TrollPlus?label=Issues)](https://github.com/Gaming12846/TrollPlus/issues)
 [![Pull requests](https://img.shields.io/github/issues-pr/Gaming12846/TrollPlus?label=Pull%20requests)](https://github.com/Gaming12846/TrollPlus/pulls)
 [![License](https://img.shields.io/github/license/Gaming12846/TrollPlus?label=License&color=red)](https://github.com/Gaming12846/TrollPlus/blob/master/LICENSE)
@@ -6,7 +6,6 @@
 [![Spigot](https://img.shields.io/badge/Spigot-orange)](https://www.spigotmc.org/resources/81193)
 [![Rating](https://img.shields.io/spiget/rating/81193?label=Rating&color=orange)](https://www.spigotmc.org/resources/81193/reviews)
 [![CurseForge](https://img.shields.io/badge/CurseForge-darkred)](https://www.curseforge.com/minecraft/bukkit-plugins/trollplus-gaming12846)
-[![Downlaods](https://img.shields.io/curseforge/dt/962653?label=Downloads&color=darkred)](https://www.curseforge.com/minecraft/bukkit-plugins/trollplus-gaming12846)
 
 # TrollPlus
 
@@ -85,13 +84,14 @@ _(This picture shows the troll settings GUI in the game)_
 
 ## Do you need help, have found an bug or have any suggestions?
 
-Feel free to send me a message on CurseForge or [SpigotMC](https://www.spigotmc.org/members/gaming12846.305963).
+Feel free to send me a message on [CurseForge](https://www.curseforge.com/members/gaming12846/projects)
+or [SpigotMC](https://www.spigotmc.org/members/gaming12846.305963).
 
 Bugs and suggestions should be reported
 by [opening a ticket on GitHub](https://github.com/Gaming12846/TrollPlus/issues).
 
-It took me a while to create this plugin. So if you find it useful or fun, I would appreciate a nice review on SpigotMC
-and a star on GitHub.
+It took me a while to create this plugin. So if you find it useful or fun, I would appreciate a nice review on
+SpigotMC, CurseForge and a star on GitHub.
 
 ## Important links
 
@@ -100,10 +100,11 @@ and a star on GitHub.
 - [Pull requests](https://github.com/Gaming12846/TrollPlus/pulls)
 - [Changelog](https://github.com/Gaming12846/TrollPlus/blob/master/CHANGELOG.md)
 - [SpigotMC](https://www.spigotmc.org/resources/81193)
+- [CurseForge](https://www.curseforge.com/minecraft/bukkit-plugins/trollplus-gaming12846)
 - [bStats](https://bstats.org/plugin/bukkit/TrollPlus)
 
 ## Credits
 
 ### Translations
 
-- **Simplified Chinese language** - ranyouHigh and Stars
+- **Simplified Chinese** - ranyouHigh and Stars
