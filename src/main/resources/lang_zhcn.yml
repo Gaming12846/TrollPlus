@@ -10,11 +10,11 @@ metrics-enabled: "正在开启插件数据收集功能"
 
 checking-updates: "正在检查更新..."
 no-update-available: "已是最新版本"
-update-available: "发现新版本！请前往SpigotMC页面下载最新版本："
+update-available: "发现新版本！请前往 SpigotMC 页面下载最新版本："
 unable-check-updates: "检查新版本失败："
 
-config-outdated: "Your configuration is out of date! Please update your configuration to the latest version. The plugin will try to load it anyway, but errors may occur"
-language-config-outdated: "Your language configuration is out of date! Please update your language configuration to the latest version. The plugin will try to load it anyway, but errors may occur"
+config-outdated: "您的配置已过时！请将您的配置更新到最新版本。插件无论如何都会尝试加载它，但可能会出现错误"
+language-config-outdated: "您的翻译文件已过时！请将您的翻译文件更新到最新版本。插件无论如何都会尝试加载它，但可能会出现错误"
 
 no-permission: "您没有足够的权限执行此命令"
 no-console: "无法从控制台执行命令"
@@ -27,7 +27,7 @@ trollplus:
   version: "版本："
   developer: "开发者："
   plugin-website: "插件官网："
-  report-bugs: "请将bug反馈至："
+  report-bugs: "请将 Bug 反馈至："
   reload: "配置文件重载成功"
   already-in-blocklist: "玩家 [player] 已经在黑名单中了" # The "[player]" must be included in the message as it will be replaced by the name of the player.
   added-to-blocklist: "玩家 [player] 已被添加至黑名单中" # The "[player]" must be included in the message as it will be replaced by the name of the player.
