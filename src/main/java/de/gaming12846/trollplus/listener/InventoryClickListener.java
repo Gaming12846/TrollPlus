@@ -138,14 +138,14 @@ public class InventoryClickListener implements Listener {
                 case 10:
                     if (!target.hasMetadata("TROLLPLUS_FREEZE")) {
                         target.setMetadata("TROLLPLUS_FREEZE", new FixedMetadataValue(plugin, target.getName()));
-                        target.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, Integer.MAX_VALUE, 6));
+                        target.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, Integer.MAX_VALUE, 6));
                         trollGUI.addItem(10, ItemBuilder.createItemWithLore(Material.ICE, ChatColor.WHITE + langConfig.getString("troll-gui.freeze") + " " + trollGUI.getStatus("TROLLPLUS_FREEZE"), langConfig.getString("troll-gui.freeze-description")));
 
                         break;
                     }
 
                     target.removeMetadata("TROLLPLUS_FREEZE", plugin);
-                    target.removePotionEffect(PotionEffectType.SLOW);
+                    target.removePotionEffect(PotionEffectType.SLOWNESS);
                     trollGUI.addItem(10, ItemBuilder.createItemWithLore(Material.ICE, ChatColor.WHITE + langConfig.getString("troll-gui.freeze") + " " + trollGUI.getStatus("TROLLPLUS_FREEZE"), langConfig.getString("troll-gui.freeze-description")));
 
                     break;
@@ -429,6 +429,14 @@ public class InventoryClickListener implements Listener {
 
                         break;
                     } else if (Objects.equals(plugin.getConfig().getString("language"), "zhcn")) {
+                        plugin.getConfig().set("language", "zhtw");
+                        settingsGUI.addItem(10, ItemBuilder.createItemWithLore(Material.PAPER, ChatColor.WHITE + langConfig.getString("trollsettings.language") + ChatColor.DARK_GRAY + " " + plugin.getConfig().getString("language"), langConfig.getString("trollsettings.language-description")));
+                        plugin.saveConfig();
+                        player.sendMessage(PLUGIN_PREFIX + ChatColor.GREEN + langConfig.getString("trollsettings.language-successfully-changed"));
+                        player.closeInventory();
+
+                        break;
+                    } else if (Objects.equals(plugin.getConfig().getString("language"), "zhtw")) {
                         plugin.getConfig().set("language", "custom");
                         settingsGUI.addItem(10, ItemBuilder.createItemWithLore(Material.PAPER, ChatColor.WHITE + langConfig.getString("trollsettings.language") + ChatColor.DARK_GRAY + " " + plugin.getConfig().getString("language"), langConfig.getString("trollsettings.language-description")));
                         plugin.saveConfig();
@@ -762,8 +770,8 @@ public class InventoryClickListener implements Listener {
         } else
             targetAllowedToFlight = true;
 
-        target.getWorld().spawnParticle(Particle.EXPLOSION_LARGE, target.getLocation(), 1);
-        Particle[] particles = new Particle[]{Particle.FIREWORKS_SPARK, Particle.LAVA, Particle.FLAME};
+        target.getWorld().spawnParticle(Particle.EXPLOSION_EMITTER, target.getLocation(), 1);
+        Particle[] particles = new Particle[]{Particle.EXPLOSION_EMITTER, Particle.LAVA, Particle.FLAME};
         for (Particle particle : particles) {
             target.getWorld().spawnParticle(particle, target.getLocation(), 25);
         }

@@ -50,7 +50,7 @@ public class ProjectileLaunchListener implements Listener {
                         return;
                     }
 
-                    arrow.getWorld().spawnParticle(Particle.FIREWORKS_SPARK, arrow.getLocation(), 1, 0, 0, 0, 0);
+                    arrow.getWorld().spawnParticle(Particle.FIREWORK, arrow.getLocation(), 1, 0, 0, 0, 0);
                 }
             }.runTaskTimer(plugin, 0, 1);
         }
@@ -67,7 +67,7 @@ public class ProjectileLaunchListener implements Listener {
                         return;
                     }
 
-                    arrow.getWorld().spawnParticle(Particle.SMOKE_NORMAL, arrow.getLocation(), 1, 0, 0, 0, 0);
+                    arrow.getWorld().spawnParticle(Particle.SMOKE, arrow.getLocation(), 1, 0, 0, 0, 0);
                 }
             }.runTaskTimer(plugin, 0, 1);
         }
@@ -85,7 +85,7 @@ public class ProjectileLaunchListener implements Listener {
                             return;
                         }
 
-                        arrow.getWorld().spawnParticle(Particle.FIREWORKS_SPARK, arrow.getLocation(), 1, 0, 0, 0, 0);
+                        arrow.getWorld().spawnParticle(Particle.FIREWORK, arrow.getLocation(), 1, 0, 0, 0, 0);
                     }
                 }.runTaskTimer(plugin, 0, 1);
             } else {

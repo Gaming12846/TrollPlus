@@ -43,6 +43,7 @@ public class TrollPlus extends JavaPlugin {
     public ConfigUtil langCustomConfig;
     public ConfigUtil langGermanConfig;
     public ConfigUtil langSimplifiedChineseConfig;
+    public ConfigUtil langTraditionalChineseConfig;
     public ConfigUtil langEnglishConfig;
 
     private InventoryClickListener inventoryClickListener;
@@ -83,6 +84,7 @@ public class TrollPlus extends JavaPlugin {
         langCustomConfig = new ConfigUtil(this, "lang_custom.yml");
         langGermanConfig = new ConfigUtil(this, "lang_de.yml");
         langSimplifiedChineseConfig = new ConfigUtil(this, "lang_zhcn.yml");
+        langTraditionalChineseConfig = new ConfigUtil(this, "lang-zhtw.yml");
         langEnglishConfig = new ConfigUtil(this, "lang_en.yml");
 
         if (!configVersion.equalsIgnoreCase(this.getConfig().getString("version")))
@@ -102,7 +104,9 @@ public class TrollPlus extends JavaPlugin {
             return langGermanConfig;
         } else if (language.equalsIgnoreCase("zhcn")) {
             return langSimplifiedChineseConfig;
-        } else return langEnglishConfig;
+        } else if (language.equalsIgnoreCase("zhtw")) {
+            return langTraditionalChineseConfig;
+        }else return langEnglishConfig;
     }
 
     // Get blocklist config

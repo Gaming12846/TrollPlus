@@ -26,7 +26,7 @@ public class ItemBuilder {
 
         assert meta != null;
         meta.setDisplayName(name);
-        meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+        meta.addItemFlags(ItemFlag.HIDE_ADDITIONAL_TOOLTIP);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         List<String> lore2 = Collections.singletonList(lore);
@@ -62,7 +62,7 @@ public class ItemBuilder {
         assert meta != null;
         meta.setDisplayName(ChatColor.RED + name);
         meta.setUnbreakable(true);
-        meta.addEnchant(Enchantment.ARROW_INFINITE, 1, false);
+        meta.addEnchant(Enchantment.INFINITY, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_UNBREAKABLE);
 
         List<String> lore2 = Collections.singletonList(lore);

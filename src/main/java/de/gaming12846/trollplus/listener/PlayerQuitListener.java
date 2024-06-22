@@ -30,7 +30,7 @@ public class PlayerQuitListener implements Listener {
                 online.showPlayer(plugin, player);
             }
             player.removeMetadata("TROLLPLUS_FREEZE", plugin);
-            player.removePotionEffect(PotionEffectType.SLOW);
+            player.removePotionEffect(PotionEffectType.SLOWNESS);
             player.removeMetadata("TROLLPLUS_HAND_ITEM_DROP", plugin);
             player.removeMetadata("TROLLPLUS_CONTROL_TARGET", plugin);
             player.removeMetadata("TROLLPLUS_CONTROL_PLAYER", plugin);
