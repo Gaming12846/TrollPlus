@@ -84,7 +84,7 @@ public class TrollPlus extends JavaPlugin {
         langCustomConfig = new ConfigUtil(this, "lang_custom.yml");
         langGermanConfig = new ConfigUtil(this, "lang_de.yml");
         langSimplifiedChineseConfig = new ConfigUtil(this, "lang_zhcn.yml");
-        langTraditionalChineseConfig = new ConfigUtil(this, "lang-zhtw.yml");
+        langTraditionalChineseConfig = new ConfigUtil(this, "lang_zhtw.yml");
         langEnglishConfig = new ConfigUtil(this, "lang_en.yml");
 
         if (!configVersion.equalsIgnoreCase(this.getConfig().getString("version")))
