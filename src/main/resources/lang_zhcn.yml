@@ -1,10 +1,10 @@
-# This is the simplified chinese language config file for TrollPlus.
-# This language config was generated for version ${project.version}.
-# Language config by: ranyouHigh and Stars
+# 这是为Troll Plus制作的简体中文翻译
+# 这个语言文件适用于插件版本 ${project.version}
+# 语言文件贡献者: ranyouHigh and Stars
 
 version: 1.0
 
-###########################Global############################
+###########################全局############################
 
 metrics-enabled: "正在开启插件数据收集功能"
 
@@ -21,7 +21,7 @@ no-console: "无法从控制台执行命令"
 invalid-syntax: "无效的指令参数！"
 invalid-syntax-use: "请使用 /"
 
-#####################"Trollplus" command#####################
+#####################"Trollplus" 指令#####################
 
 trollplus:
   version: "版本："
@@ -29,17 +29,17 @@ trollplus:
   plugin-website: "插件官网："
   report-bugs: "请将 Bug 反馈至："
   reload: "配置文件重载成功"
-  already-in-blocklist: "玩家 [player] 已经在黑名单中了" # The "[player]" must be included in the message as it will be replaced by the name of the player.
-  added-to-blocklist: "玩家 [player] 已被添加至黑名单中" # The "[player]" must be included in the message as it will be replaced by the name of the player.
-  not-in-blocklist: "玩家 [player] 不在黑名单中" # The "[player]" must be included in the message as it will be replaced by the name of the player.
-  removed-from-blocklist: "玩家 [player] 已从黑名单中移除" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+  already-in-blocklist: "玩家 [player] 已经在黑名单中了" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
+  added-to-blocklist: "玩家 [player] 已被添加至黑名单中" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
+  not-in-blocklist: "玩家 [player] 不在黑名单中" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
+  removed-from-blocklist: "玩家 [player] 已从黑名单中移除" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
 
-#######################"Troll" command#######################
+#######################"Troll" 指令#######################
 
 troll:
-  player-not-online: "玩家 [player] 目前不在线" # The "[player]" must be included in the message as it will be replaced by the name of the player.
-  player-is-immune: "玩家 [player] 当前处于受保护状态中" # The "[player]" must be included in the message as it will be replaced by the name of the player.
-  player-quit: "The selected player has left the game"
+  player-not-online: "玩家 [player] 目前不在线" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
+  player-is-immune: "玩家 [player] 当前处于受保护状态中" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
+  player-quit: "指定的玩家已经退出游戏"
   vanish-not-available: "对不起，你不能隐身自己"
   teleport-not-available: "做得很好，但你已经处于自己的位置了 :)"
   control-not-available: "做得很好，但你已经被控制了 :)"
@@ -48,7 +48,7 @@ troll:
   rocket-cannot-launch: "无法发射，因为目标头顶有方块"
   rocket-launch-stopped: "发射停止，因为目标不再暴露在开放的区域"
   freefall-cannot-fall: "无法自由落体，因为目标不再暴露在开放的区域"
-  kill-message: "died because of stupidity"
+  kill-message: "由于愚蠢而死亡"
 
 #########################"Troll" GUI#########################
 
@@ -122,13 +122,13 @@ trollbows:
   silverfish-bow: "河豚弓"
   silverfish-bow-description: "发射弓箭时生成河豚"
 
-####################Features translations####################
+####################功能翻译####################
 
 vanish:
-  # Set the message when a player goes vanish.
-  quit-message: "[player]离开了游戏" # The "[player]" must be included in the message as it will be replaced by the name of the player.
-  # Set the message when a player leaves vanish.
-  join-message: "[player]加入了游戏" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+  # 设置当玩家消失时的信息（原版是英文，所以这里也用英文）
+  quit-message: "[player] left the game" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
+  # 设置当玩家脱离消失时的信息（原版是英文，所以这里也用英文）
+  join-message: "[player] joined the game" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
 
 # 给 "消息刷屏" 功能的信息 (你可以加你想要的信息).
 spam-messages:
@@ -142,22 +142,22 @@ fake-ban:
   # 设置"假封禁"界面显示的信息.
   message-player: "你已被服务器封禁"
   # 设置"假封禁"向服务器所有玩家显示的信息
-  message-broadcast: "玩家 [player] 被" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+  message-broadcast: "玩家 [player] 被服务器封禁" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
 
 # 设置玩家或全服玩家（如果开启）被使用"假op"功能显示的信息
-# "Server:"不要改，什么语言
-fake-op-message: "[Server: 已将 [player] 设为服务器管理员]" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+# （原版是英文，所以这里也用英文）
+fake-op-message: "[Server: Made [player] a server operator]" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
 
-#######################"Settings" GUI#######################
+#######################"设置" GUI#######################
 
 trollsettings:
-  title: "TrollPlus settings"
+  title: "TrollPlus 设置"
   status-on: "开启"
   status-off: "关闭"
   close: "关闭"
-  close-description: "关闭 Setting GUI"
+  close-description: "关闭设置 GUI"
   language: "语言:"
-  language-description: "设置插件的语言，可选项是 custom, en, de 和 zhcn"
+  language-description: "设置插件的语言，可选项是 custom, en, de, zhcn 和 zhtw"
   language-successfully-changed: "语言成功更改!"
   metrics-enabled: "Metrics:"
   metrics-enabled-description: "开启或关闭插件Metrics"

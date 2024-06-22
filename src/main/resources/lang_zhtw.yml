@@ -1,0 +1,181 @@
+# 這是爲Troll Plus制作的繁體中文翻譯
+# 這個語言文件適用于插件版本 ${project.version}
+# 語言文件貢獻者: Stars
+# （直接用的簡體轉繁體，有懂tw繁體中文的可以幫忙檢查下有沒有問題）
+
+version: 1.0
+
+###########################全局############################
+
+metrics-enabled: "正在開啓插件數據收集功能"
+
+checking-updates: "正在檢查更新..."
+no-update-available: "已是最新版本"
+update-available: "發現新版本！請前往 SpigotMC 頁面下載最新版本："
+unable-check-updates: "檢查新版本失敗："
+
+config-outdated: "您的配置已過時！請將您的配置更新到最新版本。插件無論如何都會嘗試加載它，但可能會出現錯誤"
+language-config-outdated: "您的翻譯文件已過時！請將您的翻譯文件更新到最新版本。插件無論如何都會嘗試加載它，但可能會出現錯誤"
+
+no-permission: "您沒有足夠的權限執行此命令"
+no-console: "無法從控制台執行命令"
+invalid-syntax: "無效的指令參數！"
+invalid-syntax-use: "請使用 /"
+
+#####################"Trollplus" 指令#####################
+
+trollplus:
+  version: "版本："
+  developer: "開發者："
+  plugin-website: "插件官網："
+  report-bugs: "請將 Bug 反饋至："
+  reload: "配置文件重載成功"
+  already-in-blocklist: "玩家 [player] 已經在黑名單中了" # "[player]" 必須包含在信息內，因爲它會被替換成玩家的名稱
+  added-to-blocklist: "玩家 [player] 已被添加至黑名單中" # "[player]" 必須包含在信息內，因爲它會被替換成玩家的名稱
+  not-in-blocklist: "玩家 [player] 不在黑名單中" # "[player]" 必須包含在信息內，因爲它會被替換成玩家的名稱
+  removed-from-blocklist: "玩家 [player] 已從黑名單中移除" # "[player]" 必須包含在信息內，因爲它會被替換成玩家的名稱
+
+#######################"Troll" 指令#######################
+
+troll:
+  player-not-online: "玩家 [player] 目前不在線" # "[player]" 必須包含在信息內，因爲它會被替換成玩家的名稱
+  player-is-immune: "玩家 [player] 當前處于受保護狀態中" # "[player]" 必須包含在信息內，因爲它會被替換成玩家的名稱
+  player-quit: "指定的玩家已經退出遊戲"
+  vanish-not-available: "對不起，妳不能隱身自己"
+  teleport-not-available: "做得很好，但妳已經處于自己的位置了 :)"
+  control-not-available: "做得很好，但妳已經被控制了 :)"
+  falling-anvils-not-available: "無法墜落鐵砧，因爲目標在方塊下"
+  slowly-kill-not-available: "無法緩慢殺傷，因爲目標未處于生存或冒險模式"
+  rocket-cannot-launch: "無法發射，因爲目標頭頂有方塊"
+  rocket-launch-stopped: "發射停止，因爲目標不再暴露在開放的區域"
+  freefall-cannot-fall: "無法自由落體，因爲目標不再暴露在開放的區域"
+  kill-message: "由于愚蠢而死亡"
+
+#########################"Troll" GUI#########################
+
+troll-gui:
+  title: "Troll"
+  status-on: "開啓"
+  status-off: "關閉"
+  close: "關閉"
+  close-description: "關閉 Troll GUI"
+  vanish: "隱身"
+  vanish-description: "使目標玩家隱身"
+  teleport: "傳送"
+  random-troll: "隨機 Troll"
+  random-troll-description: "隨機選擇壹個 Troll 項目"
+  teleport-description: "傳送到目標玩家身邊"
+  kill: "殺死"
+  kill-description: "強制殺死目標玩家"
+  invsee: "查看背包"
+  invsee-description: "打開目標玩家的背包"
+  invsee-ender-chest: "查看末影箱"
+  invsee-ender-chest-description: "打開目標玩家的末影箱"
+  freeze: "冰凍"
+  freeze-description: "使目標玩家無法移動，交互以及掉落/撿起物品"
+  hand-item-drop: "掉落手上的物品"
+  hand-item-drop-description: "掉落玩家當前手上拿著的物品"
+  control: "控制"
+  control-description: "完全控制目標玩家，包括移動，交互，造成傷害，掉落/撿起物品以及聊天"
+  flip-backwards: "向後翻轉"
+  flip-backwards-description: "當目標玩家交互方塊或攻擊生物實體時，強制讓其向後180度翻轉"
+  spank: "打巴掌"
+  spank-description: "用隨機的擊退效果擊退目標玩家"
+  spam-messages: "消息刷屏"
+  spam-messages-description: "使用隨機的消息刷屏目標玩家"
+  spam-sounds: "噪音"
+  spam-sounds-description: "給目標玩家隨機播放聲音"
+  semi-ban: "類封禁"
+  semi-ban-description: "使目標玩家無法建築，交互，造成傷害，掉落/撿起物品以及聊天"
+  falling-anvils: "墜落鐵砧"
+  falling-anvils-description: "在目標玩家頭頂墜落鐵砧"
+  tnt-track: "TNT追蹤"
+  tnt-track-description: "在目標玩家的當前位置不斷生成TNT（TNT爆炸默認不會破壞方塊）"
+  mob-spawner: "生成怪物"
+  mob-spawner-description: "在目標玩家的當前位置隨機生成不同種類的怪物"
+  slowly-kill: "慢性殺傷"
+  slowly-kill-description: "通過慢慢地對目標玩家造成傷害讓其死去"
+  random-scary-sound: "恐怖音樂"
+  random-scary-sound-description: "通過不斷地播放隨機的恐怖音樂來讓目標玩家受到驚嚇"
+  inventory-drop: "掉落身上所有物品"
+  inventory-drop-description: "掉落目標身上的所有物品，包括盔甲以及副手上拿的物品"
+  rocket: "發射"
+  rocket-description: "將目標玩家像煙花壹樣發射至天空"
+  fake-ban: "假封禁"
+  fake-ban-description: "讓目標玩家以爲他們被封禁了（會踢出目標玩家但是馬上就能進來）"
+  fake-op: "假op"
+  fake-op-description: "讓目標玩家以爲他們獲得了op"
+  freefall: "自由落體"
+  freefall-description: "把目標玩家傳送至空中並丟下他"
+
+#######################"Trollbows" GUI#######################
+
+trollbows:
+  title: "Trollbows"
+  close: "關閉"
+  close-description: "關閉 Trollbows GUI"
+  explosion-bow: "爆炸弓"
+  explosion-bow-description: "發射弓箭時産生爆炸效果"
+  tnt-bow: "TNT弓"
+  tnt-bow-description: "發射弓箭時生成TNT"
+  lighting-bolt-bow: "閃電弓"
+  lighting-bolt-bow-description: "發射弓箭時産生閃電"
+  silverfish-bow: "河豚弓"
+  silverfish-bow-description: "發射弓箭時生成河豚"
+
+####################功能翻譯####################
+
+vanish:
+  # 設置當玩家消失時的信息（原版是英文，所以這裏也用英文）
+  quit-message: "[player] left the game" # "[player]" 必須包含在信息內，因爲它會被替換成玩家的名稱
+  # 設置當玩家脫離消失時的信息（原版是英文，所以這裏也用英文）
+  join-message: "[player] joined the game" # "[player]" 必須包含在信息內，因爲它會被替換成玩家的名稱
+
+# 給 "消息刷屏" 功能的信息 (妳可以加妳想要的信息).
+spam-messages:
+  - "妳好我的朋友"
+  - "Troll"
+  - "LoLoLoLo"
+  - "xDxDxDxDxD"
+  - "XoXoXoXo"
+
+fake-ban:
+  # 設置"假封禁"界面顯示的信息.
+  message-player: "妳已被服務器封禁"
+  # 設置"假封禁"向服務器所有玩家顯示的信息
+  message-broadcast: "玩家 [player] 被服務器封禁" # "[player]" 必須包含在信息內，因爲它會被替換成玩家的名稱
+
+# 設置玩家或全服玩家（如果開啓）被使用"假op"功能顯示的信息
+# （原版是英文，所以這裏也用英文）
+fake-op-message: "[Server: Made [player] a server operator]" # "[player]" 必須包含在信息內，因爲它會被替換成玩家的名稱
+
+#######################"設置" GUI#######################
+
+trollsettings:
+  title: "TrollPlus 設置"
+  status-on: "開啓"
+  status-off: "關閉"
+  close: "關閉"
+  close-description: "關閉設置 GUI"
+  language: "語言:"
+  language-description: "設置插件的語言，可選項是 custom, en, de, zhcn 和 zhtw"
+  language-successfully-changed: "語言成功更改!"
+  metrics-enabled: "Metrics:"
+  metrics-enabled-description: "開啓或關閉插件Metrics"
+  check-for-updates: "更新檢查:"
+  check-for-updates-description: "開啓或關閉插件更新檢查"
+  deactivate-features-on-quit: "在玩家退出時關閉功能:"
+  deactivate-features-on-quit-description: "當目標玩家離開服務器時關閉對他的所有 Troll 功能"
+  control-teleport-back: "控制:"
+  control-teleport-back-description: "將玩家重新傳送回最初位置"
+  set-fire: "著火:"
+  set-fire-description: "開啓或關閉 'TNT追蹤' 和 'Trollbows' 功能施加的火焰效果"
+  break-blocks: "破壞方塊:"
+  break-blocks-description: "開啓或關閉 'TNT追蹤' 和 'Trollbows' 功能施加的破壞方塊效果"
+
+############################GUIs#############################
+
+guis:
+  placeholder-description: "僅僅用于占位 :("
+  placeholder-coming-soon: "更多功能即將推出"
+  placeholder-coming-soon-description: "僅僅給未到來的功能作占位 :("

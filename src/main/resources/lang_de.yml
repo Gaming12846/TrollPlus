@@ -156,7 +156,7 @@ trollsettings:
   close: "Schließen"
   close-description: "Schließe das Einstellungenmenüs"
   language: "Sprache:"
-  language-description: "Legen Sie die Sprache für das Plugin fest. Verfügbare Optionen sind custom, en, de und zhcn"
+  language-description: "Legen Sie die Sprache für das Plugin fest. Verfügbare Optionen sind custom, en, de, zhcn und zhtw"
   language-successfully-changed: "Die Sprache wurde erfolgreich geändert!"
   metrics-enabled: "Metriken:"
   metrics-enabled-description: "Aktivieren oder Deaktivieren der Pluginmetriken (Wird beim nächsten Neustart/Neuladen angewendet)"
