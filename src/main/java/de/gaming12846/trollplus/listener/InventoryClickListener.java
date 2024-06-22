@@ -770,8 +770,8 @@ public class InventoryClickListener implements Listener {
         } else
             targetAllowedToFlight = true;
 
-        target.getWorld().spawnParticle(Particle.EXPLOSION_EMITTER, target.getLocation(), 1);
-        Particle[] particles = new Particle[]{Particle.EXPLOSION_EMITTER, Particle.LAVA, Particle.FLAME};
+        target.getWorld().spawnParticle(Particle.EXPLOSION, target.getLocation(), 1);
+        Particle[] particles = new Particle[]{Particle.FIREWORK, Particle.LAVA, Particle.FLAME};
         for (Particle particle : particles) {
             target.getWorld().spawnParticle(particle, target.getLocation(), 25);
         }
