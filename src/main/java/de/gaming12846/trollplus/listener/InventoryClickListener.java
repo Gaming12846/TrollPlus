@@ -834,12 +834,12 @@ public class InventoryClickListener implements Listener {
         if (!plugin.getConfig().getBoolean("fake-op-message-broadcast-enabled", true)) {
 
             String fakeOpMessageReplace = fakeOpMessage.replace("[player]", target.getName());
-            target.sendMessage(ChatColor.GRAY + fakeOpMessageReplace);
+            target.sendMessage(ChatColor.GRAY + "" + ChatColor.ITALIC + fakeOpMessageReplace);
             return;
         }
 
         String fakeOpMessageReplace = fakeOpMessage.replace("[player]", target.getName());
-        Bukkit.broadcastMessage(ChatColor.GRAY + fakeOpMessageReplace);
+        Bukkit.broadcastMessage(ChatColor.GRAY + "" + ChatColor.ITALIC + fakeOpMessageReplace);
     }
 
     // Feature freefall
