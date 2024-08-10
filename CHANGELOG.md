@@ -1,85 +1,95 @@
-# Changelog TrollPlus
+# Changelog for TrollPlus
 
-## [1.4.6] - Latest stable release
+## [1.4.7] - Latest Stable Release
 
-- Added new configuration options
-- Fixed an issue with the "Freefall" feature
-- Fixed compatibility with older Minecraft versions
-- Improved the code
+- Updated to Minecraft version 1.21.1
+- Added Traditional Chinese language support
+- Rewrote and improved a lot of code
+
+## [1.4.6]
+
+- Introduced new configuration options
+- Fixed issue with the "Freefall" feature
+- Enhanced compatibility with older Minecraft versions
+- Improved overall code quality
 
 ## [1.4.5.2]
 
-- Fixed that some translations were not changed after reloading with the TrollPlus command and changing the language in the TrollPlus settings GUI
-- Updated simplified chinese language (Thanks to Stars)
-- Moved strings from the config in the language config files
-- Fixed TrollBow with other languages than english
-- Added german language
-- Updated english language
+- Resolved issue where some translations were not updated after reloading with the TrollPlus command or changing the
+  language in the settings GUI
+- Updated Simplified Chinese language (Thanks to Stars)
+- Moved configuration strings to language config files
+- Fixed TrollBow functionality for non-English languages
+- Added German language support
+- Updated English language strings
 
 ## [1.4.5.1] | Hotfix
 
-- Fixed settings GUI
-- Added support for older versions
+- Fixed settings GUI issues
+- Added support for older versions of Minecraft
 
 ## [1.4.5]
 
-- Added four new features (Spank, Falling anvils, Freefall and Random troll)
-- Added Simplified Chinese language (not finished)
-- Added trollplus.version permission
-- Added /trollplus settings subcommand
-- Added new configuration options
-- Updated to native Minecraft 1.20
-- Spelling corrected
-- Improved and fixed some minor things
+- Added four new features:
+    - Spank
+    - Falling Anvils
+    - Freefall
+    - Random Troll
+- Introduced Simplified Chinese language (partial)
+- Added `trollplus.version` permission
+- Added `/trollplus settings` subcommand
+- Introduced new configuration options
+- Updated to Minecraft 1.20
+- Corrected spelling errors
+- Made minor improvements and fixes
 
-## [1.4.4] | Big update!
+## [1.4.4] | Major Update!
 
-- Added fully customisable language configuration
-- Fixed multiple use of the troll command
-- Fixed control messages and improved the feature control
-- Fixed arrow errors in events
-- Added quit checker for features
-- Removed item attributes
-- Removed static abuse
-- Optimised and cleaned up the code
+- Added fully customizable language configuration
+- Fixed multiple uses of the troll command
+- Improved control feature and fixed related messages
+- Resolved arrow errors in events
+- Added feature to check if a player has quit for feature deactivation
+- Removed item attributes and static abuse
+- Optimized and cleaned up the code
 
 ## [1.4.4-pre1]
 
-- Added fully customisable language configuration
+- Added fully customizable language configuration
 - Optimized and cleaned up the code
 
 ## [1.4.3]
 
-- Added tabcompleter
-- Added ignore immune
-- Added Inventory drop and Invsee enderchest
-- Fixed EntityPickupItemEvent
-- Fixed trollbow animations
-- Fixed errorcode inventorys
+- Added tab completion for commands
+- Introduced "Ignore Immune" feature
+- Added Inventory Drop and Ender Chest view features
+- Fixed issues with `EntityPickupItemEvent`
+- Resolved TrollBow animation problems
+- Fixed inventory-related error codes
 - Cleaned up and improved the code
 
 ## [1.4.2]
 
 - Cleaned up and improved the code
 - Fixed several bugs
-- Improved performance
+- Enhanced performance
 
-## [1.4.1] | Bow update!
+## [1.4.1] | Bow Update!
 
-- Added troll bows
-  - Explosion bow
-  - TNT bow
-  - Lightning bolt bow
-  - Silverfish bow
-- Added slowly kill
-- Reworked menu and added desriptions
-- Improved freeze, flip behind, tnt track, update checker and more
-- Cleaned up
+- Added new troll bows:
+    - Explosion Bow
+    - TNT Bow
+    - Lightning Bolt Bow
+    - Silverfish Bow
+- Introduced Slowly Kill feature
+- Reworked menu and added descriptions
+- Improved features like Freeze, Flip Backwards, TNT Track, Update Checker, and more
+- General code cleanup
 
 ## [1.4]
 
-- Recoded the plugin
-- Added rocket
-- Added fake op
-- Improved a lot of things
+- Recoded the plugin from scratch
+- Added Rocket feature
+- Introduced Fake OP functionality
+- Made numerous improvements
 - Updated LICENSE
