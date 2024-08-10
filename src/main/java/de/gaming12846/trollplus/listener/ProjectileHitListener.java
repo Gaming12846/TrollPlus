@@ -61,7 +61,8 @@ public class ProjectileHitListener implements Listener {
             arrow.removeMetadata("TROLLPLUS_SILVERFISH_ARROW", plugin);
 
             arrow.getWorld().playSound(arrow.getLocation(), Sound.ENTITY_SILVERFISH_STEP, 20, 1);
-            arrow.getWorld().spawnParticle(Particle.EXPLOSION_LARGE, arrow.getLocation(), 1);
+            // EXPLOSION_LARGE was removed in 1.21
+            arrow.getWorld().spawnParticle(Particle.EXPLOSION, arrow.getLocation(), 1);
 
             for (byte i = 0; i < RandomUtils.nextInt(3, 5); i++) {
                 arrow.getWorld().spawnEntity(arrow.getLocation().add(RandomUtils.nextInt(0, 2), RandomUtils.nextInt(0, 2), RandomUtils.nextInt(0, 2)), EntityType.SILVERFISH);

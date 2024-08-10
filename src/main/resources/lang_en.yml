@@ -156,7 +156,7 @@ trollsettings:
   close: "Close"
   close-description: "Close the settings GUI"
   language: "Language:"
-  language-description: "Set the language for the plugin, available options are custom, en, de and zhcn"
+  language-description: "Set the language for the plugin, available options are custom, en, de, zhcn and zhtw"
   language-successfully-changed: "The language has been successfully changed!"
   metrics-enabled: "Metrics:"
   metrics-enabled-description: "Enable or disable the plugin metrics (Will be applied at the next restart/reload)"
