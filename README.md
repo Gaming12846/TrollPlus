@@ -9,95 +9,94 @@
 
 # TrollPlus
 
-Have you always wanted to troll your friends in Minecraft and watch their reactions?
-Then you've come to the right place! This plugin allows you to troll them in different ways.
+Are you looking to have some fun and prank your friends in Minecraft? **TrollPlus** is the perfect plugin for you! It
+allows you to execute various pranks and tricks on other players, making their Minecraft experience both fun and
+surprising.
 
-This plugin is tested from Minecraft version 1.13.2 to 1.20.4 on CraftBukkit, Spigot and Paper.
+This plugin is compatible with Minecraft versions **1.13 to 1.21.1** on Spigot and Paper.
 
-All important things such as installation and the use of commands and permissions can be found in
+For installation instructions, command usage, and permissions, please refer to
 the [wiki](https://github.com/Gaming12846/TrollPlus/wiki).
 
 ## Features
 
 ### General
 
-- **Highly customizable plugin configuration** - You can configure most of the features
-- **Fully customizable language configuration** - You can translate every message, description and item name into the
-  language of your choice (Pre-translated languages are English, German and Simplified Chinese)
-- **Blocklist** - Protect players from having the troll command executed on them
+- **Highly Customizable Plugin Configuration:** Configure most of the features to suit your needs.
+- **Fully Customizable Language Configuration:** Translate messages, descriptions, and item names into your preferred
+  language. (Available languages: English, German, Traditional Chinese, Simplified Chinese)
+- **Blocklist:** Protect players by preventing the troll command from being executed on them.
 
-### Troll menu
+### Troll Menu
 
-![](https://up.picr.de/45943955mv.png)
+![Troll Menu](https://up.picr.de/45943955mv.png)
 
-_(This picture shows the troll GUI in the game)_
+_The troll GUI in the game._
 
-- **Vanish** - Disappear for the target
-- **Kill** - Kill the target
-- **Teleport** - Teleport to the target
-- **Random troll** - Randomly selects a troll to troll the target
-- **Invsee** - Open the target inventory
-- **Invsee ender chest** - Open the target ender chest
-- **Freeze** - Freeze the target and prevent it from moving, interacting or dropping/picking up items
-- **Hand item drop** - Automatic dropping of the hand item from the target
-- **Control** - Complete control over the target, including moving, interacting, causing damage, dropping/picking up
-  items and chatting
-- **Flip backwards** - Flip the target backwards (180) when interacting with something (includes breaking blocks and
-  hitting entities
-- **Spank** - Spank the target with random knockback
-- **Spam random messages** - Spam the target with random custom messages (You can add as many messages as you want)
-- **Spam random sounds** - Spam the target with random sounds
-- **Semi ban** - Prevents the target from building, interacting, causing damage, dropping/picking up items and chatting
-- **Falling anvils** - Drops anvils on the target
-- **TNT track** - Spawn primed TNT at the target position every few seconds
-- **Mob spawner** - Make random mobs appear at the target position
-- **Slowly kill** - Kills the target slowly by dealing damage to the target every few seconds
-- **Random scary sound** - Plays a random scary sound at the target position to scare the target
-- **Inventory drop** - Drop all the target's inventory items, including armor and items from the offhand
-- **Rocket** - Launch the target into the air like a firework
-- **Fake ban** - The target is made to think that they got banned
-- **Fake op** - The target is made to think that they got operator permissions
-- **Freefall** - Teleports the target into the air and lets it fall freely
+- **Vanish:** Make yourself invisible to the target.
+- **Kill:** Instantly kill the target.
+- **Teleport:** Teleport to the target’s location.
+- **Random Troll:** Randomly select a troll action for the target.
+- **Invsee:** Open the target’s inventory.
+- **Invsee Ender Chest:** Open the target’s Ender Chest.
+- **Freeze:** Prevent the target from moving, interacting, or dropping/picking up items.
+- **Hand Item Drop:** Automatically drop the item in the target’s hand.
+- **Control:** Gain complete control over the target’s movements, interactions, and actions.
+- **Flip Backwards:** Flip the target 180 degrees when they interact with something.
+- **Spank:** Apply random knockback to the target.
+- **Spam Random Messages:** Flood the target with custom messages (add as many as you like).
+- **Spam Random Sounds:** Play random sounds to the target.
+- **Semi Ban:** Restrict the target from building, interacting, and performing other actions.
+- **Falling Anvils:** Drop anvils on the target.
+- **TNT Track:** Spawn primed TNT at the target’s location periodically.
+- **Mob Spawner:** Spawn random mobs at the target’s location.
+- **Slowly Kill:** Inflict gradual damage to the target over time.
+- **Random Scary Sound:** Play a random scary sound at the target’s location.
+- **Inventory Drop:** Drop all items from the target’s inventory, including armor and offhand items.
+- **Rocket:** Launch the target into the air like a firework.
+- **Fake Ban:** Simulate a ban to trick the target.
+- **Fake OP:** Simulate operator permissions for the target.
+- **Freefall:** Teleport the target into the air and let them fall.
 
 ### Trollbows
 
-![](https://up.picr.de/45943956ef.png)
+![Trollbows](https://up.picr.de/45943956ef.png)
 
-_(This picture shows the trollbows GUI in the game)_
+_The trollbows GUI in the game._
 
-- **Explosion bow** - A bow that creates an explosion when the arrow hits
-- **TNT bow** - A bow that creates a TNT when the arrow hits
-- **Lightning bolt bow** - A bow that creates a lighting bolt when the arrow hits
-- **Silverfish bow** - A bow that creates a horde of silverfish when the arrow hits
+- **Explosion Bow:** Creates an explosion upon arrow impact.
+- **TNT Bow:** Generates TNT on arrow impact.
+- **Lightning Bolt Bow:** Summons a lightning bolt when the arrow hits.
+- **Silverfish Bow:** Spawns a horde of silverfish upon arrow impact.
 
-### TrollPlus settings
+### TrollPlus Settings
 
-![](https://up.picr.de/45943957jn.png)
+![Settings](https://up.picr.de/45943957jn.png)
 
-_(This picture shows the troll settings GUI in the game)_
+_The TrollPlus settings GUI in the game._
 
 ## Notes
 
-- Always create or update your configuration when you update the plugin.
-- The plugin collects anonymous statistics if you do not deactivate them. To see the statistics,
-  visit [bStats](https://bstats.org/plugin/bukkit/TrollPlus).
+- Ensure you create or update your configuration files when updating the plugin.
+- The plugin collects anonymous statistics by default. You can view these statistics
+  at [bStats](https://bstats.org/plugin/bukkit/TrollPlus).
 
-## Do you need help, have found an bug or have any suggestions?
+## Need Help or Have Suggestions?
 
-Feel free to send me a message on [CurseForge](https://www.curseforge.com/members/gaming12846/projects)
-or [SpigotMC](https://www.spigotmc.org/members/gaming12846.305963).
+If you need assistance, have found a bug, or have suggestions, feel free to contact me
+through [SpigotMC](https://www.spigotmc.org/members/gaming12846.305963)
+or [CurseForge](https://www.curseforge.com/members/gaming12846/projects).
 
-Bugs and suggestions should be reported
-by [opening a ticket on GitHub](https://github.com/Gaming12846/TrollPlus/issues).
+Report bugs and suggestions by [opening a ticket on GitHub](https://github.com/Gaming12846/TrollPlus/issues).
 
-It took me a while to create this plugin. So if you find it useful or fun, I would appreciate a nice review on
-SpigotMC, CurseForge and a star on GitHub.
+If you find the plugin useful or entertaining, consider leaving a review on SpigotMC, CurseForge, and give a star on
+GitHub.
 
-## Important links
+## Important Links
 
 - [Wiki](https://github.com/Gaming12846/TrollPlus/wiki)
 - [Issues](https://github.com/Gaming12846/TrollPlus/issues)
-- [Pull requests](https://github.com/Gaming12846/TrollPlus/pulls)
+- [Pull Requests](https://github.com/Gaming12846/TrollPlus/pulls)
 - [Changelog](https://github.com/Gaming12846/TrollPlus/blob/master/CHANGELOG.md)
 - [SpigotMC](https://www.spigotmc.org/resources/81193)
 - [CurseForge](https://www.curseforge.com/minecraft/bukkit-plugins/trollplus-gaming12846)
@@ -107,4 +106,5 @@ SpigotMC, CurseForge and a star on GitHub.
 
 ### Translations
 
-- **Simplified Chinese** - ranyouHigh, Stars and xiaozhu2007
+- **Simplified Chinese:** ranyouHigh, Stars, xiaozhu2007
+- **Traditional Chinese:** Stars
