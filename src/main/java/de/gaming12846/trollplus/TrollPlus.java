@@ -35,8 +35,9 @@ import java.util.logging.Logger;
 public class TrollPlus extends JavaPlugin {
     public final Logger Logger = getLogger();
     public boolean updateAvailable = false;
-    public final String configVersion = "1.0";
-    public final String languageConfigVersion = "1.0";
+    public final String configVersion = "1.1";
+    public final String languageConfigVersion = "1.1";
+    public String bukkitVersion = getServer().getBukkitVersion();
 
     // Create ConfigUtils
     public ConfigUtil blocklistConfig;
