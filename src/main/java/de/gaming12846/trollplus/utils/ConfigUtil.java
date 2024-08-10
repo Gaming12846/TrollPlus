@@ -37,7 +37,7 @@ public class ConfigUtil {
         try {
             this.configuration.save(file);
         } catch (Exception e) {
-            plugin.LOGGER.warning(e.toString());
+            plugin.Logger.warning(e.toString());
         }
     }
 

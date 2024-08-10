@@ -33,7 +33,7 @@ import java.util.Objects;
 import java.util.logging.Logger;
 
 public class TrollPlus extends JavaPlugin {
-    public final Logger LOGGER = getLogger();
+    public final Logger Logger = getLogger();
     public boolean updateAvailable = false;
     public final String configVersion = "1.0";
     public final String languageConfigVersion = "1.0";
@@ -66,7 +66,7 @@ public class TrollPlus extends JavaPlugin {
 
         // Metrics bStats
         if (getConfig().getBoolean("metrics-enabled", true)) {
-            LOGGER.info(getLanguageConfig().getString("metrics-enabled"));
+            Logger.info(getLanguageConfig().getString("metrics-enabled"));
 
             Metrics metrics = new Metrics(this, 11761);
         }
@@ -86,10 +86,10 @@ public class TrollPlus extends JavaPlugin {
         langEnglishConfig = new ConfigUtil(this, "lang_en.yml");
 
         if (!configVersion.equalsIgnoreCase(this.getConfig().getString("version")))
-            LOGGER.warning(getLanguageConfig().getConfig().getString("config-outdated"));
+            Logger.warning(getLanguageConfig().getConfig().getString("config-outdated"));
 
         if (!languageConfigVersion.equalsIgnoreCase(getLanguageConfig().getConfig().getString("version")))
-            LOGGER.warning(getLanguageConfig().getConfig().getString("language-config-outdated"));
+            Logger.warning(getLanguageConfig().getConfig().getString("language-config-outdated"));
     }
 
     // Get language config
@@ -153,13 +153,13 @@ public class TrollPlus extends JavaPlugin {
     // Check for updates
     private void checkUpdate() {
         if (getConfig().getBoolean("check-for-updates", true)) {
-            LOGGER.info(getLanguageConfig().getString("checking-updates"));
+            Logger.info(getLanguageConfig().getString("checking-updates"));
 
             new UpdateChecker(this, 81193).getVersion(version -> {
                 if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
-                    LOGGER.info(getLanguageConfig().getString("no-update-available"));
+                    Logger.info(getLanguageConfig().getString("no-update-available"));
                 } else {
-                    LOGGER.info(getLanguageConfig().getString("update-available") + " https://www.spigotmc.org/resources/81193");
+                    Logger.info(getLanguageConfig().getString("update-available") + " https://www.spigotmc.org/resources/81193");
 
                     updateAvailable = true;
                 }

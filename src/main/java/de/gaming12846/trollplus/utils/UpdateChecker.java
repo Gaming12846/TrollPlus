@@ -30,7 +30,7 @@ public class UpdateChecker {
                 if (scanner.hasNext())
                     consumer.accept(scanner.next());
             } catch (IOException exception) {
-                plugin.LOGGER.info(plugin.getLanguageConfig().getString("unable-check-updates") + " " + exception.getMessage());
+                plugin.Logger.info(plugin.getLanguageConfig().getString("unable-check-updates") + " " + exception.getMessage());
             }
         });
     }
