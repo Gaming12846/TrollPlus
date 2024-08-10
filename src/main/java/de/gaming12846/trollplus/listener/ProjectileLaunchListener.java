@@ -18,106 +18,115 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
 
+// Listener for handling projectile launch events
 public class ProjectileLaunchListener implements Listener {
     private final TrollPlus plugin;
 
+    // Constructor for the ProjectileLaunchListener
     public ProjectileLaunchListener(TrollPlus plugin) {
         this.plugin = plugin;
     }
 
+    // Event handler for the ProjectileLaunchEvent
     @EventHandler
     private void onProjectileLaunchEvent(ProjectileLaunchEvent event) {
+        // Check if the projectile is an arrow shot by a player
         if (!(event.getEntity().getShooter() instanceof Player)) return;
         if (!(event.getEntity() instanceof Arrow)) return;
-
-        ConfigUtil langConfig = plugin.getLanguageConfig();
 
         Arrow arrow = (Arrow) event.getEntity();
         Player player = (Player) arrow.getShooter();
         ItemMeta itemMeta = player.getInventory().getItemInMainHand().getItemMeta();
 
-        assert itemMeta != null;
+        if (itemMeta == null) return;
 
-        // Explosion bow
-        if (itemMeta.getDisplayName().equals(ChatColor.RED + langConfig.getString("trollbows.explosion-bow")) && itemMeta.isUnbreakable()) {
-            arrow.setMetadata("TROLLPLUS_EXPLOSION_ARROW", new FixedMetadataValue(plugin, arrow));
+        ConfigUtil langConfig = plugin.getLanguageConfig();
+        String displayName = itemMeta.getDisplayName();
 
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    if (arrow.isInBlock()) {
-                        cancel();
-                        return;
-                    }
+        // Handle explosion arrow
+        if (displayName.equals(ChatColor.RED + langConfig.getString("trollbows.explosion-bow")) && itemMeta.isUnbreakable())
+            handleExplosionArrow(arrow);
 
-                    arrow.getWorld().spawnParticle(Particle.FIREWORK, arrow.getLocation(), 1, 0, 0, 0, 0);
+        // Handle TNT arrow
+        if (displayName.equals(ChatColor.RED + langConfig.getString("trollbows.tnt-bow")) && itemMeta.isUnbreakable())
+            handleTntArrow(arrow);
+
+        // Handle lightning bolt arrow
+        if (displayName.equals(ChatColor.RED + langConfig.getString("trollbows.lightning-bolt-bow")) && itemMeta.isUnbreakable())
+            handleLightningBoltArrow(arrow);
+
+        // Handle silverfish arrow
+        if (displayName.equals(ChatColor.RED + langConfig.getString("trollbows.silverfish-bow")) && itemMeta.isUnbreakable())
+            handleSilverfishArrow(arrow);
+    }
+
+    // Handles the explosion arrow effect
+    private void handleExplosionArrow(Arrow arrow) {
+        arrow.setMetadata("TROLLPLUS_EXPLOSION_ARROW", new FixedMetadataValue(plugin, arrow));
+
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                if (arrow.isInBlock()) {
+                    cancel();
+                    return;
                 }
-            }.runTaskTimer(plugin, 0, 1);
-        }
 
-        // TNT bow
-        if (itemMeta.getDisplayName().equals(ChatColor.RED + langConfig.getString("trollbows.tnt-bow")) && itemMeta.isUnbreakable()) {
-            arrow.setMetadata("TROLLPLUS_TNT_ARROW", new FixedMetadataValue(plugin, arrow));
-
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    if (arrow.isInBlock()) {
-                        cancel();
-                        return;
-                    }
-
-                    arrow.getWorld().spawnParticle(Particle.SMOKE, arrow.getLocation(), 1, 0, 0, 0, 0);
-                }
-            }.runTaskTimer(plugin, 0, 1);
-        }
-
-        // Lightning bolt bow
-        if (itemMeta.getDisplayName().equals(ChatColor.RED + langConfig.getString("trollbows.lighting-bolt-bow")) && itemMeta.isUnbreakable()) {
-            arrow.setMetadata("TROLLPLUS_LIGHTNING_BOLT_ARROW", new FixedMetadataValue(plugin, arrow));
-
-            if (plugin.getServer().getBukkitVersion().contains("1.13")) {
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        if (arrow.isInBlock()) {
-                            cancel();
-                            return;
-                        }
-
-                        arrow.getWorld().spawnParticle(Particle.FIREWORK, arrow.getLocation(), 1, 0, 0, 0, 0);
-                    }
-                }.runTaskTimer(plugin, 0, 1);
-            } else {
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        if (arrow.isInBlock()) {
-                            cancel();
-                            return;
-                        }
-
-                        arrow.getWorld().spawnParticle(Particle.FLASH, arrow.getLocation(), 1, 0, 0, 0, 0);
-                    }
-                }.runTaskTimer(plugin, 0, 1);
+                arrow.getWorld().spawnParticle(Particle.FIREWORK, arrow.getLocation(), 1, 0, 0, 0, 0);
             }
-        }
+        }.runTaskTimer(plugin, 0, 1);
+    }
 
-        // Silverfish bow
-        if (itemMeta.getDisplayName().equals(ChatColor.RED + langConfig.getString("trollbows.silverfish-bow")) && itemMeta.isUnbreakable()) {
-            arrow.setMetadata("TROLLPLUS_SILVERFISH_ARROW", new FixedMetadataValue(plugin, arrow));
+    // Handles the TNT arrow effect
+    private void handleTntArrow(Arrow arrow) {
+        arrow.setMetadata("TROLLPLUS_TNT_ARROW", new FixedMetadataValue(plugin, arrow));
 
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    if (arrow.isInBlock()) {
-                        cancel();
-                        return;
-                    }
-                    arrow.getWorld().spawnParticle(Particle.SPIT, arrow.getLocation(), 1, 0, 0, 0, 0);
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                if (arrow.isInBlock()) {
+                    cancel();
+                    return;
                 }
 
-            }.runTaskTimer(plugin, 0, 1);
-        }
+                arrow.getWorld().spawnParticle(Particle.SMOKE, arrow.getLocation(), 1, 0, 0, 0, 0);
+            }
+        }.runTaskTimer(plugin, 0, 1);
+    }
+
+    // Handles the lightning bolt arrow effect
+    private void handleLightningBoltArrow(Arrow arrow) {
+        arrow.setMetadata("TROLLPLUS_LIGHTNING_BOLT_ARROW", new FixedMetadataValue(plugin, arrow));
+
+        Particle particleType = plugin.getServer().getBukkitVersion().contains("1.13") ? Particle.FIREWORK : Particle.FLASH;
+
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                if (arrow.isInBlock()) {
+                    cancel();
+                    return;
+                }
+
+                arrow.getWorld().spawnParticle(particleType, arrow.getLocation(), 1, 0, 0, 0, 0);
+            }
+        }.runTaskTimer(plugin, 0, 1);
+    }
+
+    // Handles the silverfish arrow effect
+    private void handleSilverfishArrow(Arrow arrow) {
+        arrow.setMetadata("TROLLPLUS_SILVERFISH_ARROW", new FixedMetadataValue(plugin, arrow));
+
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                if (arrow.isInBlock()) {
+                    cancel();
+                    return;
+                }
+
+                arrow.getWorld().spawnParticle(Particle.SPIT, arrow.getLocation(), 1, 0, 0, 0, 0);
+            }
+        }.runTaskTimer(plugin, 0, 1);
     }
 }

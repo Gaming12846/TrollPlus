@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2023 Gaming12846
+ * Copyright (C) 2024 Gaming12846
  */
 
 package de.gaming12846.trollplus.listener;
@@ -15,21 +15,26 @@ import org.bukkit.event.entity.EntityExplodeEvent;
 
 import java.util.Objects;
 
+// Listener for handling entity explosion events
 public class EntityExplodeListener implements Listener {
     private final TrollPlus plugin;
 
+    // Constructor for the EntityExplodeListener
     public EntityExplodeListener(TrollPlus plugin) {
         this.plugin = plugin;
     }
 
+    // Event handler for the EntityExplodeEvent
     @EventHandler
     private void onEntityExplode(EntityExplodeEvent event) {
         Entity entity = event.getEntity();
 
-        // Feature tnt track and tnt bow
+        // Check if the exploding entity is a TNTPrimed entity with the "TROLLPLUS_TNT" metadata
         if (entity instanceof TNTPrimed && entity.hasMetadata("TROLLPLUS_TNT")) {
+            // If the plugin configuration allows block breaking, exit the method early
             if (plugin.getConfig().getBoolean("break-blocks", true)) return;
 
+            // Cancel the explosion event and play an explosion sound at the entity's location
             event.setCancelled(true);
             Objects.requireNonNull(entity.getLocation().getWorld()).playSound(entity.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 20, 1);
         }

@@ -17,53 +17,64 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+// Handles the 'trollbows' command which opens a GUI for players to interact with different types of troll bows
 public class TrollBowsCommand implements CommandExecutor {
     private final TrollPlus plugin;
     public GUIUtil trollBowsGUI;
 
+    // Constructor for the TrollBowsCommand
     public TrollBowsCommand(TrollPlus plugin) {
         this.plugin = plugin;
     }
 
+    // Executes the command logic when a player uses the "/trollbows" command
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         ConfigUtil langConfig = plugin.getLanguageConfig();
 
+        // Check if the command sender is not a player
         if (!(sender instanceof Player)) {
             sender.sendMessage(Constants.PLUGIN_PREFIX + langConfig.getString("no-console"));
             return true;
         }
 
         Player player = (Player) sender;
+
+        // Check if the player has the required permission
         if (!player.hasPermission(Constants.PERMISSION_TROLLBOWS)) {
             player.sendMessage(ChatColor.RED + langConfig.getString("no-permission"));
             return true;
         }
 
+        // Check if the command syntax is correct
         if (args.length != 0) {
             player.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.RED + langConfig.getString("invalid-syntax") + " " + ChatColor.RESET + langConfig.getString("invalid-syntax-use") + label);
             return true;
         }
 
-        // Create trollbows GUI
+        // Creates the TrollBows GUI for the player
+        createTrollBowsGUI(langConfig);
+
+        // Opens the TrollBows GUI for the player
+        player.openInventory(trollBowsGUI.getGUI());
+        return true;
+    }
+
+    // Creates the TrollBows GUI for the player
+    private void createTrollBowsGUI(ConfigUtil langConfig) {
         trollBowsGUI = new GUIUtil(langConfig.getString("trollbows.title"), 9);
 
-        // Add trollbows
+        // Add troll bows to the GUI
         trollBowsGUI.addItemWithLore(8, Material.BARRIER, ChatColor.RED + langConfig.getString("trollbows.close"), langConfig.getString("trollbows.close-description"));
-
         trollBowsGUI.addItem(0, ItemBuilder.createBow(langConfig.getString("trollbows.explosion-bow"), langConfig.getString("trollbows.explosion-bow-description")));
         trollBowsGUI.addItem(1, ItemBuilder.createBow(langConfig.getString("trollbows.tnt-bow"), langConfig.getString("trollbows.tnt-bow-description")));
-        trollBowsGUI.addItem(2, ItemBuilder.createBow(langConfig.getString("trollbows.lighting-bolt-bow"), langConfig.getString("trollbows.lighting-bolt-bow-description")));
+        trollBowsGUI.addItem(2, ItemBuilder.createBow(langConfig.getString("trollbows.lightning-bolt-bow"), langConfig.getString("trollbows.lightning-bolt-bow-description")));
         trollBowsGUI.addItem(3, ItemBuilder.createBow(langConfig.getString("trollbows.silverfish-bow"), langConfig.getString("trollbows.silverfish-bow-description")));
 
-        // Placeholders
-        byte[] placeholderArray = new byte[]{4, 5, 6, 7};
-        for (int slot : placeholderArray) {
+        // Add placeholders to the GUI
+        final byte[] placeholderSlots = {4, 5, 6, 7};
+        for (int slot : placeholderSlots) {
             trollBowsGUI.addItem(slot, ItemBuilder.createItemWithLore(Material.GRAY_STAINED_GLASS_PANE, " ", langConfig.getString("guis.placeholder-description")));
         }
-
-        player.openInventory(trollBowsGUI.getGUI());
-
-        return true;
     }
 }

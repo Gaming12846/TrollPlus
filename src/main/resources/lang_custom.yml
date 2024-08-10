@@ -4,6 +4,7 @@
 # This language config was generated for version ${project.version}.
 # Language config by:
 
+# Configuration Version
 version: 1.1
 
 ###########################Global############################
@@ -17,6 +18,7 @@ unable-check-updates: ""
 
 config-outdated: ""
 language-config-outdated: ""
+failed-to-safe-config: ""
 
 no-permission: ""
 no-console: ""
@@ -31,16 +33,16 @@ trollplus:
   plugin-website: ""
   report-bugs: ""
   reload: ""
-  already-in-blocklist: "[player]" # The "[player]" must be included in the message as it will be replaced by the name of the player.
-  added-to-blocklist: "[player]" # The "[player]" must be included in the message as it will be replaced by the name of the player.
-  not-in-blocklist: "[player]" # The "[player]" must be included in the message as it will be replaced by the name of the player.
-  removed-from-blocklist: "[player]" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+  already-in-blocklist: "[player]" # [player] will be replaced by the player's name.
+  added-to-blocklist: "[player]" # [player] will be replaced by the player's name.
+  not-in-blocklist: "[player]" # [player] will be replaced by the player's name.
+  removed-from-blocklist: "[player]"  # [player] will be replaced by the player's name.
 
 #######################"Troll" command#######################
 
 troll:
-  player-not-online: "[player]" # The "[player]" must be included in the message as it will be replaced by the name of the player.
-  player-is-immune: "[player]" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+  player-not-online: "[player]" # [player] will be replaced by the player's name.
+  player-is-immune: "[player]" # [player] will be replaced by the player's name.
   player-quit: ""
   vanish-not-available: ""
   teleport-not-available: ""
@@ -127,12 +129,10 @@ trollbows:
 ####################Features translations####################
 
 vanish:
-  # Set the message when a player goes vanish.
-  quit-message: "[player]" # The "[player]" must be included in the message as it will be replaced by the name of the player.
-  # Set the message when a player leaves vanish.
-  join-message: "[player]" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+  quit-message: "[player]" # [player] will be replaced by the player's name.
+  join-message: "[player]" # [player] will be replaced by the player's name.
 
-# Add spam messages for the "Spam messages" feature (You can add as many messages as you like).
+# Spam messages for the "Spam Messages" feature. Add as many as you like.
 spam-messages:
   - ""
   - ""
@@ -141,13 +141,10 @@ spam-messages:
   - ""
 
 fake-ban:
-  # Set the message for the player when he is kicked with the "Fake ban" feature.
   message-player: ""
-  # Set the message for all players on the server when the player is kicked with the "Fake ban" feature.
-  message-broadcast: "[player]" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+  message-broadcast: "[player]" # [player] will be replaced by the player's name.
 
-# Set the message for the player and all players (if enabled) on the server when the player is appointed as an operator with the "Fake op" feature.
-fake-op-message: "[player]" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+fake-op-message: "[player]" # [player] will be replaced by the player's name.
 
 #######################"Settings" GUI#######################
 

@@ -30,16 +30,14 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
-import java.util.logging.Logger;
 
+// The main class for the TrollPlus plugin
 public class TrollPlus extends JavaPlugin {
-    public final Logger Logger = getLogger();
-    public boolean updateAvailable = false;
     public final String configVersion = "1.1";
     public final String languageConfigVersion = "1.1";
-    public String bukkitVersion = getServer().getBukkitVersion();
+    public boolean updateAvailable = false;
 
-    // Create ConfigUtils
+    // ConfigUtil instances for various configuration files
     public ConfigUtil blocklistConfig;
     public ConfigUtil langCustomConfig;
     public ConfigUtil langGermanConfig;
@@ -47,37 +45,24 @@ public class TrollPlus extends JavaPlugin {
     public ConfigUtil langTraditionalChineseConfig;
     public ConfigUtil langEnglishConfig;
 
+    // Command and Listener instances
     private InventoryClickListener inventoryClickListener;
     private TrollPlusCommand trollPlusCommand;
     private TrollCommand trollCommand;
     private TrollBowsCommand trollBowsCommand;
 
+    // Called when the plugin is first enabled
     @Override
     public void onEnable() {
-        // Load configs
         loadConfigs();
-
-        // Register listeners
-        registerListener(getServer().getPluginManager());
-
-        // Register commands
+        registerListeners(getServer().getPluginManager());
         registerCommands();
-
-        // Register tabcompleter
-        registerTabCompleter();
-
-        // Metrics bStats
-        if (getConfig().getBoolean("metrics-enabled", true)) {
-            Logger.info(getLanguageConfig().getString("metrics-enabled"));
-
-            Metrics metrics = new Metrics(this, 11761);
-        }
-
-        // Check for updates
-        checkUpdate();
+        registerTabCompleters(new TabCompleter());
+        initializeMetrics();
+        checkForUpdates();
     }
 
-    // Load configs
+    // Loads the plugin's configuration files and checks their versions
     private void loadConfigs() {
         this.saveDefaultConfig();
 
@@ -89,105 +74,116 @@ public class TrollPlus extends JavaPlugin {
         langEnglishConfig = new ConfigUtil(this, "lang_en.yml");
 
         if (!configVersion.equalsIgnoreCase(this.getConfig().getString("version")))
-            Logger.warning(getLanguageConfig().getConfig().getString("config-outdated"));
+            getLogger().warning(getLanguageConfig().getConfig().getString("config-outdated"));
 
         if (!languageConfigVersion.equalsIgnoreCase(getLanguageConfig().getConfig().getString("version")))
-            Logger.warning(getLanguageConfig().getConfig().getString("language-config-outdated"));
+            getLogger().warning(getLanguageConfig().getConfig().getString("language-config-outdated"));
     }
 
-    // Get language config
+    // Retrieves the appropriate language configuration based on the plugin's config setting
     public ConfigUtil getLanguageConfig() {
         String language = getConfig().getString("language");
-        assert language != null;
-        if (language.equalsIgnoreCase("custom")) {
-            return langCustomConfig;
-        } else if (language.equalsIgnoreCase("de")) {
-            return langGermanConfig;
-        } else if (language.equalsIgnoreCase("zhcn")) {
-            return langSimplifiedChineseConfig;
-        } else if (language.equalsIgnoreCase("zhtw")) {
-            return langTraditionalChineseConfig;
-        }else return langEnglishConfig;
+        if (language == null) language = "en";
+
+        switch (language.toLowerCase()) {
+            case "custom":
+                return langCustomConfig;
+            case "de":
+                return langGermanConfig;
+            case "zhcn":
+                return langSimplifiedChineseConfig;
+            case "zhtw":
+                return langTraditionalChineseConfig;
+            default:
+                return langEnglishConfig;
+        }
     }
 
-    // Get blocklist config
+    // Retrieves the blocklist configuration
     public ConfigUtil getBlocklistConfig() {
         return blocklistConfig;
     }
 
-    // Register listeners
-    private void registerListener(PluginManager pm) {
+    // Registers events with the Bukkit plugin manager
+    private void registerListeners(PluginManager pluginManager) {
         inventoryClickListener = new InventoryClickListener(this);
 
-        pm.registerEvents(new AsyncPlayerChatListener(this), this);
-        pm.registerEvents(new BlockIgniteListener(this), this);
-        pm.registerEvents(new EntityDamageByEntityListener(), this);
-        pm.registerEvents(new EntityDamageListener(this), this);
-        pm.registerEvents(new EntityExplodeListener(this), this);
-        pm.registerEvents(new EntityPickupItemEvent(), this);
-        pm.registerEvents(inventoryClickListener, this);
-        pm.registerEvents(new PlayerDeathListener(this), this);
-        pm.registerEvents(new PlayerDropItemListener(), this);
-        pm.registerEvents(new PlayerInteractListener(), this);
-        pm.registerEvents(new PlayerItemHeldListener(), this);
-        pm.registerEvents(new PlayerJoinListener(this), this);
-        pm.registerEvents(new PlayerMoveListener(), this);
-        pm.registerEvents(new PlayerQuitListener(this), this);
-        pm.registerEvents(new ProjectileHitListener(this), this);
-        pm.registerEvents(new ProjectileLaunchListener(this), this);
+        pluginManager.registerEvents(new AsyncPlayerChatListener(this), this);
+        pluginManager.registerEvents(new BlockIgniteListener(this), this);
+        pluginManager.registerEvents(new EntityDamageByEntityListener(), this);
+        pluginManager.registerEvents(new EntityDamageListener(this), this);
+        pluginManager.registerEvents(new EntityExplodeListener(this), this);
+        pluginManager.registerEvents(new EntityPickupItemEvent(), this);
+        pluginManager.registerEvents(inventoryClickListener, this);
+        pluginManager.registerEvents(new PlayerDeathListener(this), this);
+        pluginManager.registerEvents(new PlayerDropItemListener(), this);
+        pluginManager.registerEvents(new PlayerInteractListener(), this);
+        pluginManager.registerEvents(new PlayerItemHeldListener(), this);
+        pluginManager.registerEvents(new PlayerJoinListener(this), this);
+        pluginManager.registerEvents(new PlayerMoveListener(), this);
+        pluginManager.registerEvents(new PlayerQuitListener(this), this);
+        pluginManager.registerEvents(new ProjectileHitListener(this), this);
+        pluginManager.registerEvents(new ProjectileLaunchListener(this), this);
     }
 
-    // Register commands
+    // Registers commands with their respective executors
     private void registerCommands() {
         trollBowsCommand = new TrollBowsCommand(this);
         trollCommand = new TrollCommand(this);
         trollPlusCommand = new TrollPlusCommand(this);
 
-        Objects.requireNonNull(this.getCommand("trollbows")).setExecutor(trollBowsCommand);
-        Objects.requireNonNull(this.getCommand("troll")).setExecutor(trollCommand);
-        Objects.requireNonNull(this.getCommand("trollplus")).setExecutor(trollPlusCommand);
+        Objects.requireNonNull(getCommand("trollbows")).setExecutor(trollBowsCommand);
+        Objects.requireNonNull(getCommand("troll")).setExecutor(trollCommand);
+        Objects.requireNonNull(getCommand("trollplus")).setExecutor(trollPlusCommand);
     }
 
-    // Register tabcompleter
-    private void registerTabCompleter() {
-        Objects.requireNonNull(this.getCommand("trollplus")).setTabCompleter(new TabCompleter());
-        Objects.requireNonNull(this.getCommand("troll")).setTabCompleter(new TabCompleter());
-        Objects.requireNonNull(this.getCommand("trollbows")).setTabCompleter(new TabCompleter());
+    // Registers tab completers for the plugin's commands
+    private void registerTabCompleters(TabCompleter tabCompleter) {
+        Objects.requireNonNull(getCommand("trollplus")).setTabCompleter(tabCompleter);
+        Objects.requireNonNull(getCommand("troll")).setTabCompleter(tabCompleter);
+        Objects.requireNonNull(getCommand("trollbows")).setTabCompleter(tabCompleter);
     }
 
-    // Check for updates
-    private void checkUpdate() {
+    // Initializes the bStats metrics for the plugin
+    private void initializeMetrics() {
+        if (getConfig().getBoolean("metrics-enabled", true)) {
+            getLogger().info(getLanguageConfig().getString("metrics-enabled"));
+            new Metrics(this, 11761);
+        }
+    }
+
+    // Checks for updates to the plugin and logs the result
+    private void checkForUpdates() {
         if (getConfig().getBoolean("check-for-updates", true)) {
-            Logger.info(getLanguageConfig().getString("checking-updates"));
+            getLogger().info(getLanguageConfig().getString("checking-updates"));
 
             new UpdateChecker(this, 81193).getVersion(version -> {
                 if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
-                    Logger.info(getLanguageConfig().getString("no-update-available"));
+                    getLogger().info(getLanguageConfig().getString("no-update-available"));
                 } else {
-                    Logger.info(getLanguageConfig().getString("update-available") + " https://www.spigotmc.org/resources/81193");
-
+                    getLogger().info(getLanguageConfig().getString("update-available") + " https://www.spigotmc.org/resources/81193");
                     updateAvailable = true;
                 }
             });
         }
     }
 
-    // Get InventoryClickListener
+    // Retrieves the InventoryClickListener instance
     public InventoryClickListener getInventoryClickListener() {
         return inventoryClickListener;
     }
 
-    // Get TrollBowsCommand
+    // Retrieves the TrollPlusCommand instance
     public TrollPlusCommand getTrollPlusCommand() {
         return trollPlusCommand;
     }
 
-    // Get TrollCommand
+    // Retrieves the TrollCommand instance
     public TrollCommand getTrollCommand() {
         return trollCommand;
     }
 
-    // Get TrollBowsCommand
+    // Retrieves the TrollBowsCommand instance
     public TrollBowsCommand getTrollBowsCommand() {
         return trollBowsCommand;
     }

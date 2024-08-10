@@ -9,51 +9,62 @@ website: ${project.url}
 
 commands:
   trollplus:
-    description: The main command for TrollPlus
+    description: Main command for TrollPlus, used for version info, reloading, and settings.
     usage: /<command> [version|reload|blocklist|settings]
     aliases: [ troll+ ]
+
   troll:
-    description: Open the troll GUI
+    description: Opens the Troll GUI.
     usage: /<command> [player]
+
   trollbows:
-    description: Open the trollbows GUI
+    description: Opens the Trollbows GUI.
     usage: /<command>
     aliases: [ trollbow ]
 
 permissions:
   trollplus.*:
-    description: Gives access to all TrollPlus commands
+    description: Grants access to all TrollPlus commands.
     default: op
     children:
       trollplus.version: true
       trollplus.reload: true
       trollplus.blocklist.*: true
+      trollplus.settings: true
       trollplus.troll: true
       trollplus.bows: true
+
   trollplus.version:
-    description: Gives access to the /trollplus <version> subcommand
+    description: Grants access to the /trollplus version subcommand.
     default: true
+
   trollplus.reload:
-    description: Gives access to the /trollplus <reload> subcommand
+    description: Grants access to the /trollplus reload subcommand.
     default: op
+
   trollplus.blocklist.*:
-    description: Gives access to all /trollplus <blocklist> subcommands
+    description: Grants access to all /trollplus blocklist subcommands.
     default: op
     children:
       trollplus.blocklist.add: true
       trollplus.blocklist.remove: true
+
   trollplus.blocklist.add:
-    description: Gives access to the /trollplus <blocklist> <add> subcommand
+    description: Grants access to the /trollplus blocklist add subcommand.
     default: op
+
   trollplus.blocklist.remove:
-    description: Gives access to the /trollplus <blocklist> <remove> subcommand
+    description: Grants access to the /trollplus blocklist remove subcommand.
     default: op
+
   trollplus.settings:
-    description: Gives access to the /trollplus <settings> subcommand
+    description: Grants access to the /trollplus settings subcommand.
     default: op
+
   trollplus.troll:
-    description: Gives access to the /troll command
+    description: Grants access to the /troll command.
     default: op
+
   trollplus.bows:
-    description: Gives access to the /trollbows command
+    description: Grants access to the /trollbows command.
     default: op

@@ -4,93 +4,96 @@
 #*---------------------------------------------------------*#
 #############################################################
 
-# This is the config file for TrollPlus.
+# This is the configuration file for TrollPlus.
 # This config was generated for version ${project.version}.
 
 # Always create or update your configuration when you update the plugin!
 
-# If you need help, you can send me a message on SpigotMC or CurseForge.
+# For support or questions, please reach out on SpigotMC or CurseForge.
 
+# Configuration Version
 version: 1.1
 
-#######################Global settings#######################
+####################### Global Settings #######################
 
-# Set the language for the plugin, available options are custom, en, de, zhcn and zhtw. [Default = en]
+# Language setting for the plugin. Options are: custom, en, de, zhcn, zhtw. [Default: en]
 language: en
 
-# Enable or disable the plugin metrics. [Default = true]
+# Enable or disable plugin metrics collection. [Default: true]
 metrics-enabled: true
-# Enable or disable the update checker. [Default = true]
+
+# Enable or disable the update checker. [Default: true]
 check-for-updates: true
 
-######################Features settings######################
+####################### Feature Settings #####################
 
-# Deactivate the active troll features when the target leaves the server. [Default = true]
+# Deactivate active troll features when the target leaves the server. [Default: true]
 deactivate-features-on-quit: true
 
-# Enable or disable that a fire can be set for the "TNT track" feature and the "Trollbows". [Default = false]
+# Allow setting fire for "TNT track" and "Trollbows" features. [Default: false]
 set-fire: false
-# Enable or disable that explosions can destroy blocks for the "TNT track" feature and the "Trollbows". [Default = false]
+
+# Allow explosions to destroy blocks for "TNT track" and "Trollbows" features. [Default: false]
 break-blocks: false
 
-#######################Troll settings########################
+####################### Troll Settings #######################
 
-# Feature "Vanish"
-# Enable or disable the join and quit message when a player goes vanish. [Default = false]
+# Vanish Feature
+# Enable or disable join and quit messages when a player goes vanish. [Default: false]
 vanish-join-quit-message-enabled: false
 
-# Feature "Hand item drop"
-# Determines the delay between dropping the hand item in ticks. [Default = 20]
+# Hand Item Drop Feature
+# Delay in ticks between dropping the hand item. [Default: 20]
 hand-item-drop-delay: 20
 
-# Feature "Control"
-# Teleports the player back to the starting position. [Default = true]
+# Control Feature
+# Enable or disable teleporting the player back to the starting position. [Default: true]
 control-teleport-back: true
 
-# Feature "Spank"
-# Determines the delay between the spanking of the player in ticks. [Default = 100]
+# Spank Feature
+# Delay in ticks between each spanking action. [Default: 100]
 spank-delay: 100
 
-# Feature "Spam messages"
-# Determines the delay between the spam messages to the player in ticks. [Default = 20]
+# Spam Messages Feature
+# Delay in ticks between spam messages to the player. [Default: 20]
 spam-messages-delay: 20
 
-# Feature "Spam sounds"
-# Determines the delay between the spam sounds to the player in ticks. [Default = 10]
+# Spam Sounds Feature
+# Delay in ticks between spam sounds to the player. [Default: 10]
 spam-sounds-delay: 10
 
-# Feature "Semi ban"
-# Set the format for the player name when sending messages for the "Semi ban" feature. [Default = "<[player]>"]
-semi-ban-message-replace: "<[player]>" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+# Semi Ban Feature
+# Format for the player name in the "Semi ban" messages. [Default: "<[player]>"]
+semi-ban-message-replace: "<[player]>" # The "[player]" tag will be replaced with the player's name.
 
-# Feature "Falling anvils"
-# Determines the delay between the falling anvils in ticks. [Default = 20]
+# Falling Anvils Feature
+# Delay in ticks between each falling anvil. [Default: 20]
 falling-anvils-delay: 20
 
-# Feature "TNT track"
-# Determines the delay between the tnts in ticks. [Default = 20]
+# TNT Track Feature
+# Delay in ticks between each TNT event. [Default: 20]
 tnt-track-delay: 20
 
-# Feature "Mob spawner"
-# Determines the delay between the mob spawns in ticks. [Default = 60]
+# Mob Spawner Feature
+# Delay in ticks between each mob spawn. [Default: 60]
 mob-spawner-delay: 60
 
-# Feature "Slowly kill"
-# Determines the delay between dealing damage in ticks. [Default = 60]
+# Slowly Kill Feature
+# Delay in ticks between each damage event for the "Slowly Kill" feature. [Default: 60]
 slowly-kill-delay: 60
 
-# Feature "Rocket"
-# Set the rocket charges that determine how many times the target will be launched. [Default = 20]
+# Rocket Feature
+# Number of charges determining how many times the target will be launched. [Default: 20]
 rocket-charges: 20
 
-# Feature "Fake ban"
-# Enable or disable the broadcast message. [Default = true]
+# Fake Ban Feature
+# Enable or disable broadcasting a message when a fake ban occurs. [Default: true]
 fake-ban-message-broadcast-enabled: true
 
-# Feature "Fake op"
-# Enable or disable the broadcast message. [Default = true]
+# Fake OP Feature
+# Enable or disable broadcasting a message when a fake op occurs. [Default: true]
 fake-op-message-broadcast-enabled: true
 
-# Feature "Freefall"
-# Set the height to which the target is teleported. [Default = 100]
+# Freefall Feature
+# Height to which the target is teleported for the freefall feature. [Default: 100]
 freefall-height: 100

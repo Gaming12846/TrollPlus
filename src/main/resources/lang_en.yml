@@ -2,24 +2,26 @@
 # This language config was generated for version ${project.version}.
 # Language config by: Gaming12846
 
+# Configuration Version
 version: 1.1
 
 ###########################Global############################
 
-metrics-enabled: "Enabling plugin metrics"
+metrics-enabled: "Plugin metrics are enabled"
 
-checking-updates: "Checking for updates ..."
-no-update-available: "There is no new update available"
-update-available: "A new update is available! To download it visit SpigotMC:"
-unable-check-updates: "Unable to check for updates:"
+checking-updates: "Checking for updates..."
+no-update-available: "No new updates available."
+update-available: "A new update is available! Download it from SpigotMC:"
+unable-check-updates: "Unable to check for updates."
 
-config-outdated: "Your configuration is out of date! Please update your configuration to the latest version. The plugin will try to load it anyway, but errors may occur"
-language-config-outdated: "Your language configuration is out of date! Please update your language configuration to the latest version. The plugin will try to load it anyway, but errors may occur"
+config-outdated: "Your configuration file is outdated! Please update it to the latest version. The plugin will attempt to load it, but errors may occur."
+language-config-outdated: "Your language configuration is outdated! Please update it to the latest version. The plugin will attempt to load it, but errors may occur."
+failed-to-save-config: "Failed to save configuration."
 
-no-permission: "You do not have sufficient permissions to execute this command"
-no-console: "Command cannot be used from the console"
+no-permission: "You do not have permission to execute this command."
+no-console: "This command cannot be used from the console."
 invalid-syntax: "Invalid command syntax!"
-invalid-syntax-use: "Use /"
+invalid-syntax-use: "Usage: /"
 
 #####################"Trollplus" command#####################
 
@@ -28,27 +30,27 @@ trollplus:
   developer: "Developer:"
   plugin-website: "Plugin website:"
   report-bugs: "Report bugs to:"
-  reload: "Configurations were successfully reloaded"
-  already-in-blocklist: "The player [player] is already in the blocklist" # The "[player]" must be included in the message as it will be replaced by the name of the player.
-  added-to-blocklist: "The player [player] was added to the blocklist" # The "[player]" must be included in the message as it will be replaced by the name of the player.
-  not-in-blocklist: "The player [player] is not in the blocklist" # The "[player]" must be included in the message as it will be replaced by the name of the player.
-  removed-from-blocklist: "The player [player] has been removed from the blocklist" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+  reload: "Configurations reloaded successfully."
+  already-in-blocklist: "Player [player] is already in the blocklist." # [player] will be replaced by the player's name.
+  added-to-blocklist: "Player [player] has been added to the blocklist." # [player] will be replaced by the player's name.
+  not-in-blocklist: "Player [player] is not in the blocklist." # [player] will be replaced by the player's name.
+  removed-from-blocklist: "Player [player] has been removed from the blocklist." # [player] will be replaced by the player's name.
 
 #######################"Troll" command#######################
 
 troll:
-  player-not-online: "The player [player] is currently not online" # The "[player]" must be included in the message as it will be replaced by the name of the player.
-  player-is-immune: "The player [player] is immune" # The "[player]" must be included in the message as it will be replaced by the name of the player.
-  player-quit: "The selected player has left the game"
-  vanish-not-available: "Sorry mate, but you can't hide from yourself"
-  teleport-not-available: "Nice try, but you are already in your own position :)"
-  control-not-available: "Nice try, but you're already in control :)"
-  falling-anvils-not-available: "Falling anvil cannot be activated because the target is under a block"
-  slowly-kill-not-available: "Slowly kill cannot be activated because the target is not in survival or adventure mode"
-  rocket-cannot-launch: "Cannot launch because the target is not under the open sky"
-  rocket-launch-stopped: "Rocket launch stopped because the target is no longer under the open sky"
-  freefall-cannot-fall: "Free fall cannot be activated because the target is not under the open sky"
-  kill-message: "died because of stupidity"
+  player-not-online: "Player [player] is not currently online." # [player] will be replaced by the player's name.
+  player-is-immune: "Player [player] is immune." # [player] will be replaced by the player's name.
+  player-quit: "The selected player has left the game."
+  vanish-not-available: "You cannot vanish from yourself."
+  teleport-not-available: "You are already at your starting position."
+  control-not-available: "You are already in control."
+  falling-anvils-not-available: "Falling anvils cannot be activated as the target is under a block."
+  slowly-kill-not-available: "Slowly kill cannot be activated because the target is not in survival or adventure mode."
+  rocket-cannot-launch: "Rocket cannot be launched as the target is not under open sky."
+  rocket-launch-stopped: "Rocket launch stopped as the target is no longer under open sky."
+  freefall-cannot-fall: "Free fall cannot be activated as the target is not under open sky."
+  kill-message: "died due to mishap."
 
 #########################"Troll" GUI#########################
 
@@ -57,123 +59,118 @@ troll-gui:
   status-on: "On"
   status-off: "Off"
   close: "Close"
-  close-description: "Close the troll GUI"
+  close-description: "Close the Troll GUI"
   vanish: "Vanish"
-  vanish-description: "Disappear for the target"
+  vanish-description: "Make the target disappear"
   teleport: "Teleport"
   teleport-description: "Teleport to the target"
-  random-troll: "Random troll"
-  random-troll-description: "Randomly selects a troll to troll the target"
+  random-troll: "Random Troll"
+  random-troll-description: "Randomly select a troll action for the target"
   kill: "Kill"
   kill-description: "Kill the target"
-  invsee: "Invsee"
-  invsee-description: "Open the target inventory"
-  invsee-ender-chest: "Invsee ender chest"
-  invsee-ender-chest-description: "Open the target ender chest"
+  invsee: "Inventory See"
+  invsee-description: "View the target's inventory"
+  invsee-ender-chest: "Ender Chest See"
+  invsee-ender-chest-description: "View the target's Ender Chest"
   freeze: "Freeze"
-  freeze-description: "Freeze the target and prevent it from moving, interacting or dropping/picking up items"
-  hand-item-drop: "Hand item drop"
-  hand-item-drop-description: "Automatic dropping of the hand item from the target"
+  freeze-description: "Prevent the target from moving, interacting, or dropping/picking up items"
+  hand-item-drop: "Hand Item Drop"
+  hand-item-drop-description: "Automatically drop the hand item from the target"
   control: "Control"
-  control-description: "Complete control over the target, including moving, interacting, causing damage, dropping/picking up items and chatting"
-  flip-backwards: "Flip backwards"
-  flip-backwards-description: "Flip the target backwards (180°) when interacting with something (Includes breaking blocks and hitting entities)"
+  control-description: "Take full control of the target's actions including movement, interaction, and chat"
+  flip-backwards: "Flip Backwards"
+  flip-backwards-description: "Flip the target backward (180°) when interacting with something (includes breaking blocks and hitting entities)"
   spank: "Spank"
   spank-description: "Spank the target with random knockback"
-  spam-messages: "Spam messages"
-  spam-messages-description: "Spam the target with random custom messages"
-  spam-sounds: "Spam sounds"
-  spam-sounds-description: "Spam the target with random sounds"
-  semi-ban: "Semi ban"
-  semi-ban-description: "Prevents the target from building, interacting, causing damage, dropping/picking up items and chatting"
-  falling-anvils: "Falling anvils"
-  falling-anvils-description: "Drops anvils on the target"
-  tnt-track: "TNT track"
-  tnt-track-description: "Spawn primed TNT at the target position every few seconds"
-  mob-spawner: "Mob spawner"
-  mob-spawner-description: "Make random mobs appear at the target position"
-  slowly-kill: "Slowly kill"
-  slowly-kill-description: "Kills the target slowly by dealing damage to the target every few seconds"
-  random-scary-sound: "Random scary sound"
-  random-scary-sound-description: "Plays a random scary sound at the target position to scare the target"
-  inventory-drop: "Inventory drop"
-  inventory-drop-description: "Drop all the target's inventory items, including armor and items from the offhand"
+  spam-messages: "Spam Messages"
+  spam-messages-description: "Send random custom messages to the target"
+  spam-sounds: "Spam Sounds"
+  spam-sounds-description: "Play random sounds to the target"
+  semi-ban: "Semi Ban"
+  semi-ban-description: "Prevent the target from building, interacting, causing damage, and chatting"
+  falling-anvils: "Falling Anvils"
+  falling-anvils-description: "Drop anvils on the target"
+  tnt-track: "TNT Track"
+  tnt-track-description: "Spawn primed TNT at the target's location at intervals"
+  mob-spawner: "Mob Spawner"
+  mob-spawner-description: "Spawn random mobs at the target's location"
+  slowly-kill: "Slowly Kill"
+  slowly-kill-description: "Inflict damage on the target at intervals"
+  random-scary-sound: "Random Scary Sound"
+  random-scary-sound-description: "Play a random scary sound at the target's location to frighten them"
+  inventory-drop: "Inventory Drop"
+  inventory-drop-description: "Drop all items from the target's inventory, including armor and offhand items"
   rocket: "Rocket"
   rocket-description: "Launch the target into the air like a firework"
-  fake-ban: "Fake ban"
-  fake-ban-description: "The target is made to think that they got banned"
-  fake-op: "Fake op"
-  fake-op-description: "The target is made to think that they got operator permissions"
+  fake-ban: "Fake Ban"
+  fake-ban-description: "Make the target believe they have been banned"
+  fake-op: "Fake OP"
+  fake-op-description: "Make the target believe they have been given operator permissions"
   freefall: "Freefall"
-  freefall-description: "Teleports the target into the air and lets it fall freely"
+  freefall-description: "Teleport the target into the air and let them fall freely"
 
 #######################"Trollbows" GUI#######################
 
 trollbows:
   title: "Trollbows"
   close: "Close"
-  close-description: "Close the trollbows GUI"
-  explosion-bow: "Explosion bow"
-  explosion-bow-description: "A bow that creates an explosion when the arrow hits"
-  tnt-bow: "TNT bow"
-  tnt-bow-description: "A bow that creates a TNT when the arrow hits"
-  lighting-bolt-bow: "Lightning bolt bow"
-  lighting-bolt-bow-description: "A bow that creates a lighting bolt when the arrow hits"
-  silverfish-bow: "Silverfish bow"
-  silverfish-bow-description: "A bow that creates a horde of silverfish when the arrow hits"
+  close-description: "Close the Trollbows GUI"
+  explosion-bow: "Explosion Bow"
+  explosion-bow-description: "A bow that creates an explosion on arrow impact"
+  tnt-bow: "TNT Bow"
+  tnt-bow-description: "A bow that spawns TNT on arrow impact"
+  lightning-bolt-bow: "Lightning Bolt Bow"
+  lightning-bolt-bow-description: "A bow that strikes with lightning on arrow impact"
+  silverfish-bow: "Silverfish Bow"
+  silverfish-bow-description: "A bow that spawns a horde of silverfish on arrow impact"
 
-####################Features translations####################
+####################Features Translations####################
 
 vanish:
-  # Set the message when a player goes vanish.
-  quit-message: "[player] left the game" # The "[player]" must be included in the message as it will be replaced by the name of the player.
-  # Set the message when a player leaves vanish.
-  join-message: "[player] joined the game" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+  quit-message: "[player] left the game." # [player] will be replaced by the player's name.
+  join-message: "[player] joined the game." # [player] will be replaced by the player's name.
 
-# Add spam messages for the "Spam messages" feature (You can add as many messages as you like).
+# Spam messages for the "Spam Messages" feature. Add as many as you like.
 spam-messages:
-  - "Hello my friend"
-  - "Troll"
-  - "LoLoLoLo"
+  - "Hello, friend!"
+  - "Troll alert!"
+  - "LoLoLoLoLo"
   - "xDxDxDxDxD"
   - "XoXoXoXo"
 
 fake-ban:
-  # Set the message for the player when he is kicked with the "Fake ban" feature.
-  message-player: "You have been banned from this Server"
-  # Set the message for all players on the server when the player is kicked with the "Fake ban" feature.
-  message-broadcast: "The Player [player] have been permanently banned from the server" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+  message-player: "You have been banned from this server."
+  message-broadcast: "Player [player] has been permanently banned from the server." # [player] will be replaced by the player's name.
 
-# Set the message for the player and all players (if enabled) on the server when the player is appointed as an operator with the "Fake op" feature.
-fake-op-message: "[Server: Made [player] a server operator]" # The "[player]" must be included in the message as it will be replaced by the name of the player.
+fake-op-message: "[Server: Made [player] a server operator]" # [player] will be replaced by the player's name.
 
 #######################"Settings" GUI#######################
 
 trollsettings:
-  title: "TrollPlus settings"
+  title: "TrollPlus Settings"
   status-on: "On"
-  status-off: "OFF"
+  status-off: "Off"
   close: "Close"
   close-description: "Close the settings GUI"
   language: "Language:"
-  language-description: "Set the language for the plugin, available options are custom, en, de, zhcn and zhtw"
-  language-successfully-changed: "The language has been successfully changed!"
+  language-description: "Set the plugin's language. Available options: custom, en, de, zhcn, zhtw."
+  language-successfully-changed: "Language changed successfully!"
   metrics-enabled: "Metrics:"
-  metrics-enabled-description: "Enable or disable the plugin metrics (Will be applied at the next restart/reload)"
-  check-for-updates: "Check for updates:"
-  check-for-updates-description: "Enable or disable the update checker (Will be applied at the next restart/reload)"
-  deactivate-features-on-quit: "Deactivate features on quit:"
-  deactivate-features-on-quit-description: "Deactivate the active troll features when the target leaves the server"
-  control-teleport-back: "Control teleport back:"
-  control-teleport-back-description: "Teleports the player back to the starting position"
-  set-fire: "Set fire:"
-  set-fire-description: "Enable or disable that a fire can be set for the 'TNT track' feature and the Trollbows"
-  break-blocks: "Break blocks:"
-  break-blocks-description: "Enable or disable that explosions can destroy blocks for the 'TNT track' feature and the Trollbows"
+  metrics-enabled-description: "Enable or disable plugin metrics (will take effect on the next restart/reload)."
+  check-for-updates: "Check for Updates:"
+  check-for-updates-description: "Enable or disable the update checker (will take effect on the next restart/reload)."
+  deactivate-features-on-quit: "Deactivate Features on Quit:"
+  deactivate-features-on-quit-description: "Deactivate active troll features when the target leaves the server."
+  control-teleport-back: "Control Teleport Back:"
+  control-teleport-back-description: "Teleport the player back to their original position."
+  set-fire: "Set Fire:"
+  set-fire-description: "Allow or disallow setting fire for 'TNT track' and Trollbows."
+  break-blocks: "Break Blocks:"
+  break-blocks-description: "Allow or disallow explosions from destroying blocks for 'TNT track' and Trollbows."
 
 ############################GUIs#############################
 
 guis:
-  placeholder-description: "Just a lonely placeholder :("
+  placeholder-description: "Just a placeholder for now."
   placeholder-coming-soon: "Coming soon"
-  placeholder-coming-soon-description: "Just a lonely placeholder for upcoming features :("
+  placeholder-coming-soon-description: "A placeholder for upcoming features."

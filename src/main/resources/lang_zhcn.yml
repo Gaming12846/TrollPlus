@@ -1,7 +1,8 @@
 # 这是为Troll Plus制作的简体中文翻译
 # 这个语言文件适用于插件版本 ${project.version}
-# 语言文件贡献者: ranyouHigh and Stars
+# 语言文件贡献者: ranyouHigh 和 Stars
 
+# 配置版本
 version: 1.1
 
 ###########################全局############################
@@ -15,6 +16,7 @@ unable-check-updates: "检查新版本失败："
 
 config-outdated: "您的配置已过时！请将您的配置更新到最新版本。插件无论如何都会尝试加载它，但可能会出现错误"
 language-config-outdated: "您的翻译文件已过时！请将您的翻译文件更新到最新版本。插件无论如何都会尝试加载它，但可能会出现错误"
+failed-to-safe-config: "保存配置失败："
 
 no-permission: "您没有足够的权限执行此命令"
 no-console: "无法从控制台执行命令"
@@ -125,9 +127,7 @@ trollbows:
 ####################功能翻译####################
 
 vanish:
-  # 设置当玩家消失时的信息（原版是英文，所以这里也用英文）
   quit-message: "[player] left the game" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
-  # 设置当玩家脱离消失时的信息（原版是英文，所以这里也用英文）
   join-message: "[player] joined the game" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
 
 # 给 "消息刷屏" 功能的信息 (你可以加你想要的信息).
@@ -139,13 +139,9 @@ spam-messages:
   - "XoXoXoXo"
 
 fake-ban:
-  # 设置"假封禁"界面显示的信息.
   message-player: "你已被服务器封禁"
-  # 设置"假封禁"向服务器所有玩家显示的信息
   message-broadcast: "玩家 [player] 被服务器封禁" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
 
-# 设置玩家或全服玩家（如果开启）被使用"假op"功能显示的信息
-# （原版是英文，所以这里也用英文）
 fake-op-message: "[Server: Made [player] a server operator]" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
 
 #######################"设置" GUI#######################

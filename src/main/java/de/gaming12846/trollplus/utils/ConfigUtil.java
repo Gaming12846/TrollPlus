@@ -15,57 +15,62 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
 
+// Utility class for managing configuration files
 public class ConfigUtil {
     private final TrollPlus plugin;
     private final File file;
     private final String path;
     private FileConfiguration configuration;
 
-    // Create a config
+    // Constructor for the ConfigUtil
     public ConfigUtil(TrollPlus plugin, String path) {
         this.plugin = plugin;
         this.path = path;
         this.file = new File(plugin.getDataFolder(), path);
 
+        // Check if the configuration file exists
         if (!file.exists()) plugin.saveResource(path, false);
 
+        // Load the configuration
         this.configuration = YamlConfiguration.loadConfiguration(this.file);
     }
 
-    // Save the config
+    // Saves the current configuration to the file
     public void save() {
         try {
             this.configuration.save(file);
         } catch (Exception e) {
-            plugin.Logger.warning(e.toString());
+            plugin.getLogger().warning(plugin.getLanguageConfig().getString("failed-to-safe-config") + " " + e.getMessage());
         }
     }
 
-    // Get the config
+    // Retrieves the FileConfiguration
     public FileConfiguration getConfig() {
         return this.configuration;
     }
 
-    // Reload the config
+    // Reloads the configuration from the file
     public void reload() {
+        // Ensure the default config is saved
         plugin.saveDefaultConfig();
+        // Check if the configuration file exists
         if (!file.exists()) plugin.saveResource(path, false);
 
         this.configuration = YamlConfiguration.loadConfiguration(file);
 
-        final InputStream defaultConfigStream = plugin.getResource(path);
-        if (defaultConfigStream == null) return;
-
-        this.configuration.setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(defaultConfigStream, Charsets.UTF_8)));
+        // Load default values from the resource
+        InputStream defaultConfigStream = plugin.getResource(path);
+        if (defaultConfigStream != null)
+            this.configuration.setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(defaultConfigStream, Charsets.UTF_8)));
     }
 
-    // Get string
+    // Retrieves a string value from the configuration
     public String getString(String string) {
-        return plugin.getLanguageConfig().getConfig().getString(string);
+        return getConfig().getString(string);
     }
 
-    // Get string list
+    // Retrieves a list of strings from the configuration
     public List<String> getStringList(String string) {
-        return plugin.getLanguageConfig().getConfig().getStringList(string);
+        return getConfig().getStringList(string);
     }
 }

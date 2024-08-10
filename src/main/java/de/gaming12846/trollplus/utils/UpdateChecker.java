@@ -14,23 +14,24 @@ import java.net.URL;
 import java.util.Scanner;
 import java.util.function.Consumer;
 
-// From: https://www.spigotmc.org/wiki/creating-an-update-checker-that-checks-for-updates
+// A utility class for checking updates for the plugin by querying the SpigotMC API
 public class UpdateChecker {
     private final TrollPlus plugin;
     private final int resourceId;
 
+    // Constructor for the UpdateChecker
     public UpdateChecker(TrollPlus plugin, int resourceId) {
         this.plugin = plugin;
         this.resourceId = resourceId;
     }
 
+    // Retrieves the latest version of the plugin from the SpigotMC API asynchronously
     public void getVersion(final Consumer<String> consumer) {
         Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
             try (InputStream inputStream = new URL("https://api.spigotmc.org/legacy/update.php?resource=" + this.resourceId).openStream(); Scanner scanner = new Scanner(inputStream)) {
-                if (scanner.hasNext())
-                    consumer.accept(scanner.next());
+                if (scanner.hasNext()) consumer.accept(scanner.next());
             } catch (IOException exception) {
-                plugin.Logger.info(plugin.getLanguageConfig().getString("unable-check-updates") + " " + exception.getMessage());
+                plugin.getLogger().warning(plugin.getLanguageConfig().getString("unable-check-updates") + " " + exception.getMessage());
             }
         });
     }
