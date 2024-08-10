@@ -107,4 +107,4 @@ SpigotMC, CurseForge and a star on GitHub.
 
 ### Translations
 
-- **Simplified Chinese** - ranyouHigh and Stars
+- **Simplified Chinese** - ranyouHigh, Stars and xiaozhu2007

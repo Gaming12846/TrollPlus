@@ -15,7 +15,7 @@ version: 1.0
 
 #######################Global settings#######################
 
-# Set the language for the plugin, available options are custom, en, de and zhcn. [Default = en]
+# Set the language for the plugin, available options are custom, en, de, zhcn and zhtw. [Default = en]
 language: en
 
 # Enable or disable the plugin metrics. [Default = true]
