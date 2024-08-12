@@ -136,7 +136,7 @@ public class ControlUtil {
 
                 synchronizePlayerStates();
             }
-        }.runTaskTimer(plugin, 0, 1);
+        }.runTaskTimer(plugin, 0, plugin.getConfig().getLong("control.period"));
     }
 
     // Ends the control process, restoring the controlling player's original state and visibility
@@ -149,7 +149,7 @@ public class ControlUtil {
         playerController.setLevel(playerLevel);
         playerController.setExp(playerExp);
 
-        if (plugin.getConfig().getBoolean("control-teleport-back", true)) playerController.teleport(playerLocation);
+        if (plugin.getConfig().getBoolean("control.teleport-back", true)) playerController.teleport(playerLocation);
 
         if (!wasFlightAllowed) {
             playerTarget.setAllowFlight(false);

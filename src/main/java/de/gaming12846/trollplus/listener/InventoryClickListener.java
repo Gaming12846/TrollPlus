@@ -37,6 +37,7 @@ import static de.gaming12846.trollplus.utils.Constants.PLUGIN_PREFIX;
 public class InventoryClickListener implements Listener {
     private final TrollPlus plugin;
     public ControlUtil controlUtil;
+    private GUIUtil languageGUI;
 
     // Constructor for the InventoryClickListener
     public InventoryClickListener(TrollPlus plugin) {
@@ -66,8 +67,10 @@ public class InventoryClickListener implements Listener {
             handleTrollGUI(event, player, langConfig);
         } else if (isMatchingInventory(clickedInventory, plugin.getTrollBowsCommand().trollBowsGUI)) {
             handleTrollBowsGUI(event, player, langConfig);
-        } else if (isMatchingInventory(clickedInventory, plugin.getTrollPlusCommand().settingsGUI))
+        } else if (isMatchingInventory(clickedInventory, plugin.getTrollPlusCommand().settingsGUI)) {
             handleSettingsGUI(event, player, langConfig);
+        } else if (isMatchingInventory(clickedInventory, languageGUI))
+            handleLanguageChangeGUI(event, player, langConfig);
     }
 
     // Helper method to check if the clicked inventory matches any of the GUIs
@@ -173,6 +176,8 @@ public class InventoryClickListener implements Listener {
                 handleFreefallFeature(target, player, langConfig);
                 break;
             default:
+                // No action for other slots
+                break;
         }
     }
 
@@ -186,22 +191,16 @@ public class InventoryClickListener implements Listener {
         if (!target.hasMetadata("TROLLPLUS_VANISH")) {
             target.setMetadata("TROLLPLUS_VANISH", new FixedMetadataValue(plugin, target.getName()));
             target.hidePlayer(plugin, player);
-            sendVanishMessage(player, langConfig, "vanish.quit-message");
+            if (plugin.getConfig().getBoolean("vanish.join-message-enabled", true) && langConfig.getString("vanish.quit-message") != null)
+                player.sendMessage(langConfig.getString("vanish.quit-message").replace("[player]", player.getName()));
         } else {
             target.removeMetadata("TROLLPLUS_VANISH", plugin);
             target.showPlayer(plugin, player);
-            sendVanishMessage(player, langConfig, "vanish.join-message");
+            if (plugin.getConfig().getBoolean("vanish.join-message-enabled", true) && langConfig.getString("vanish.join-message") != null)
+                player.sendMessage(langConfig.getString("vanish.join-message").replace("[player]", player.getName()));
         }
 
         trollGUI.addItem(45, ItemBuilder.createItemWithLore(Material.POTION, ChatColor.WHITE + langConfig.getString("troll-gui.vanish") + " " + trollGUI.getStatusTrollGUI("TROLLPLUS_VANISH"), langConfig.getString("troll-gui.vanish-description")));
-    }
-
-    // Sends a vanish or reappear message to the target player if enabled
-    private void sendVanishMessage(Player player, ConfigUtil langConfig, String messageKey) {
-        if (plugin.getConfig().getBoolean("vanish-join-quit-message-enabled", true)) {
-            String message = langConfig.getString(messageKey);
-            if (message != null) player.sendMessage(message.replace("[player]", player.getName()));
-        }
     }
 
     // Handles the teleport Feature, teleporting the player to the target
@@ -257,7 +256,7 @@ public class InventoryClickListener implements Listener {
                 itemInHand.setAmount(newAmount);
                 target.getInventory().setItemInMainHand(itemInHand);
             }
-        }.runTaskTimer(plugin, 0, plugin.getConfig().getInt("hand-item-drop-delay"));
+        }.runTaskTimer(plugin, 0, plugin.getConfig().getInt("hand-item-drop-period"));
     }
 
     // Handles the control feature, control the player
@@ -318,7 +317,7 @@ public class InventoryClickListener implements Listener {
                 // Apply the knockback to the target
                 target.setVelocity(new Vector(x, y, z));
             }
-        }.runTaskTimer(plugin, 0, plugin.getConfig().getInt("spank-delay"));
+        }.runTaskTimer(plugin, 0, plugin.getConfig().getInt("spank-period"));
     }
 
     // Handles the spam messages feature, continuously spams the target player with randomly colored messages and titles
@@ -344,7 +343,7 @@ public class InventoryClickListener implements Listener {
                 target.sendMessage(chatMessage);
                 target.sendTitle(titleMessage, subtitleMessage, 3, 10, 3);
             }
-        }.runTaskTimer(plugin, 0, plugin.getConfig().getInt("spam-messages-delay"));
+        }.runTaskTimer(plugin, 0, plugin.getConfig().getInt("spam-messages-period"));
     }
 
     // Generates a randomly colored message from a list of message
@@ -377,16 +376,15 @@ public class InventoryClickListener implements Listener {
                 }
 
                 List<Sound> sounds;
-                if (plugin.getServer().getBukkitVersion().contains("1.13")) {
+                if (plugin.getServerVersion() < 1.14) {
                     sounds = Arrays.asList(Sound.ENTITY_VILLAGER_YES, Sound.ENTITY_PLAYER_HURT, Sound.ENTITY_CHICKEN_DEATH, Sound.ENTITY_WOLF_GROWL, Sound.BLOCK_ANVIL_FALL, Sound.ENTITY_WITHER_DEATH, Sound.ENTITY_WOLF_DEATH, Sound.BLOCK_IRON_DOOR_CLOSE, Sound.BLOCK_CHEST_OPEN, Sound.ENTITY_PIG_HURT, Sound.BLOCK_GRAVEL_BREAK, Sound.ENTITY_SHULKER_BULLET_HIT, Sound.ENTITY_ILLUSIONER_DEATH, Sound.BLOCK_PORTAL_AMBIENT, Sound.ENTITY_BAT_HURT);
-                } else {
+                } else
                     sounds = Arrays.asList(Sound.ENTITY_FOX_BITE, Sound.ENTITY_VILLAGER_YES, Sound.ENTITY_PLAYER_HURT, Sound.ENTITY_CHICKEN_DEATH, Sound.ENTITY_WOLF_GROWL, Sound.BLOCK_BELL_USE, Sound.BLOCK_ANVIL_FALL, Sound.ENTITY_WITHER_DEATH, Sound.ENTITY_WOLF_DEATH, Sound.BLOCK_IRON_DOOR_CLOSE, Sound.BLOCK_CHEST_OPEN, Sound.ENTITY_PIG_HURT, Sound.BLOCK_GRAVEL_BREAK, Sound.ENTITY_SHULKER_BULLET_HIT, Sound.ENTITY_ILLUSIONER_DEATH, Sound.BLOCK_PORTAL_AMBIENT, Sound.ENTITY_BAT_HURT);
-                }
                 Sound randomSound = sounds.get(RandomUtils.nextInt(0, sounds.size()));
 
                 target.playSound(target.getLocation(), randomSound, RandomUtils.nextInt(1, 100), RandomUtils.nextInt(1, 100));
             }
-        }.runTaskTimer(plugin, 0, plugin.getConfig().getInt("spam-sounds-delay"));
+        }.runTaskTimer(plugin, 0, plugin.getConfig().getInt("spam-sounds-period"));
     }
 
     // Handles the semi ban feature, prevents the target from interacting and chatting
@@ -429,7 +427,7 @@ public class InventoryClickListener implements Listener {
 
                 if (loc.getBlock().getType() == Material.AIR) loc.getBlock().setType(Material.DAMAGED_ANVIL);
             }
-        }.runTaskTimer(plugin, 0, plugin.getConfig().getInt("falling-anvils-delay"));
+        }.runTaskTimer(plugin, 0, plugin.getConfig().getInt("falling-anvils-period"));
     }
 
     // Handles the tnt track feature, continuously spawns primed TNT at the target player's location
@@ -453,7 +451,7 @@ public class InventoryClickListener implements Listener {
                 tnt.setMetadata("TROLLPLUS_TNT", new FixedMetadataValue(plugin, tnt));
                 tnt.getWorld().playSound(target.getLocation(), Sound.ENTITY_TNT_PRIMED, 20, 1);
             }
-        }.runTaskTimer(plugin, 0, plugin.getConfig().getInt("tnt-track-delay"));
+        }.runTaskTimer(plugin, 0, plugin.getConfig().getInt("tnt-track-period"));
     }
 
     // Handles the mob spawner feature, continuously spawns random mobs near the target player
@@ -473,16 +471,16 @@ public class InventoryClickListener implements Listener {
                 }
 
                 List<EntityType> mobs;
-                if (plugin.getServer().getBukkitVersion().contains("1.13")) {
+                if (plugin.getServerVersion() < 1.14) {
                     mobs = Arrays.asList(EntityType.DROWNED, EntityType.ENDERMITE, EntityType.HUSK, EntityType.MAGMA_CUBE, EntityType.PHANTOM, EntityType.SILVERFISH, EntityType.SKELETON, EntityType.SLIME, EntityType.STRAY, EntityType.WITCH, EntityType.WITHER_SKELETON, EntityType.ZOMBIE, EntityType.ZOMBIE_VILLAGER, EntityType.ILLUSIONER);
-                } else if (plugin.getServer().getBukkitVersion().contains("1.14") || plugin.getServer().getBukkitVersion().contains("1.15")) {
+                } else if (plugin.getServerVersion() < 1.16) {
                     mobs = Arrays.asList(EntityType.DROWNED, EntityType.ENDERMITE, EntityType.HUSK, EntityType.MAGMA_CUBE, EntityType.PHANTOM, EntityType.PILLAGER, EntityType.SILVERFISH, EntityType.SKELETON, EntityType.SLIME, EntityType.STRAY, EntityType.WITCH, EntityType.WITHER_SKELETON, EntityType.ZOMBIE, EntityType.ZOMBIE_VILLAGER, EntityType.ILLUSIONER);
                 } else
                     mobs = Arrays.asList(EntityType.DROWNED, EntityType.ENDERMITE, EntityType.HOGLIN, EntityType.HUSK, EntityType.MAGMA_CUBE, EntityType.PHANTOM, EntityType.PIGLIN_BRUTE, EntityType.PILLAGER, EntityType.SILVERFISH, EntityType.SKELETON, EntityType.SLIME, EntityType.STRAY, EntityType.WITCH, EntityType.WITHER_SKELETON, EntityType.ZOGLIN, EntityType.ZOMBIE, EntityType.ZOMBIE_VILLAGER, EntityType.ILLUSIONER);
                 EntityType randomMob = mobs.get(RandomUtils.nextInt(0, mobs.size()));
                 target.getWorld().spawnEntity(target.getLocation(), randomMob).setGlowing(true);
             }
-        }.runTaskTimer(plugin, 0, plugin.getConfig().getInt("mob-spawner-delay"));
+        }.runTaskTimer(plugin, 0, plugin.getConfig().getInt("mob-spawner-period"));
     }
 
     // Handles the slowly kill feature, slowly damages the target player over time
@@ -512,18 +510,18 @@ public class InventoryClickListener implements Listener {
 
                 target.damage(1);
             }
-        }.runTaskTimer(plugin, 0, plugin.getConfig().getInt("slowly-kill-delay"));
+        }.runTaskTimer(plugin, 0, plugin.getConfig().getInt("slowly-kill-period"));
     }
 
     // Handles the random scary sound feature, plays a random scary sound near the target player
     private void handleRandomScarySoundFeature(Player target) {
         List<Sound> sounds;
-        if (plugin.getServer().getBukkitVersion().contains("1.13") || plugin.getServer().getBukkitVersion().contains("1.14") || plugin.getServer().getBukkitVersion().contains("1.15")) {
+        if (plugin.getServerVersion() < 1.16) {
             sounds = Arrays.asList(Sound.AMBIENT_CAVE, Sound.AMBIENT_UNDERWATER_LOOP_ADDITIONS, Sound.AMBIENT_UNDERWATER_LOOP_ADDITIONS_RARE, Sound.AMBIENT_UNDERWATER_LOOP_ADDITIONS_ULTRA_RARE);
         } else
             sounds = Arrays.asList(Sound.AMBIENT_CAVE, Sound.AMBIENT_UNDERWATER_LOOP_ADDITIONS, Sound.AMBIENT_UNDERWATER_LOOP_ADDITIONS_RARE, Sound.AMBIENT_UNDERWATER_LOOP_ADDITIONS_ULTRA_RARE, Sound.AMBIENT_BASALT_DELTAS_MOOD, Sound.AMBIENT_BASALT_DELTAS_ADDITIONS, Sound.AMBIENT_CRIMSON_FOREST_MOOD, Sound.AMBIENT_CRIMSON_FOREST_ADDITIONS, Sound.AMBIENT_NETHER_WASTES_MOOD, Sound.AMBIENT_NETHER_WASTES_ADDITIONS, Sound.AMBIENT_SOUL_SAND_VALLEY_MOOD, Sound.AMBIENT_SOUL_SAND_VALLEY_ADDITIONS, Sound.AMBIENT_WARPED_FOREST_MOOD, Sound.AMBIENT_WARPED_FOREST_ADDITIONS);
         Sound randomSound = sounds.get(RandomUtils.nextInt(0, sounds.size()));
-        target.playSound(target.getLocation(), randomSound, 200, 1);
+        target.playSound(target.getLocation(), randomSound, plugin.getConfig().getInt("random-scary-sound-volume"), 1);
     }
 
     // Handles the inventory drop feature, drops all items from the target player's inventory at their current location
@@ -567,7 +565,7 @@ public class InventoryClickListener implements Listener {
 
         // Schedule a repeating task to simulate the rocket's upward movement
         new BukkitRunnable() {
-            private final int maxRocketCharges = plugin.getConfig().getInt("rocket-charges");
+            private final int maxRocketCharges = plugin.getConfig().getInt("rocket.charges");
             private int rocketCharges = 0;
 
             @Override
@@ -591,7 +589,7 @@ public class InventoryClickListener implements Listener {
 
                 rocketCharges++;
             }
-        }.runTaskTimer(plugin, 0, 5);
+        }.runTaskTimer(plugin, 0, plugin.getConfig().getLong("rocket.period"));
     }
 
     // Handles the fake ban feature, simulates banning a player by kicking them from the server with a custom message
@@ -693,6 +691,7 @@ public class InventoryClickListener implements Listener {
                 bowDescription = langConfig.getString("trollbows.silverfish-bow-description");
                 break;
             default:
+                // No action for other slots
                 return;
         }
 
@@ -723,43 +722,56 @@ public class InventoryClickListener implements Listener {
             case 26:
                 player.closeInventory();
                 break;
-
             // Handle language change
             case 10:
-                handleLanguageChange(settingsGUI, player, langConfig);
                 player.closeInventory();
-                break;
+                languageGUI = new GUIUtil(langConfig.getString("trollsettings.title"), 27, plugin);
 
+                // Add the available settings to the GUI
+                languageGUI.addItem(4, ItemBuilder.createItem(Material.PAPER, ChatColor.WHITE + langConfig.getString("trollsettings.lang.current-language") + " " + ChatColor.GRAY + plugin.getConfig().getString("language")));
+                languageGUI.addItem(26, ItemBuilder.createItemWithLore(Material.BARRIER, ChatColor.RED + langConfig.getString("guis.close"), langConfig.getString("guis.close-description")));
+                languageGUI.addItem(9, ItemBuilder.createItem(Material.GRAY_STAINED_GLASS, ChatColor.WHITE + langConfig.getString("trollsettings.lang.custom")));
+                languageGUI.addItem(10, ItemBuilder.createItem(Material.BLACK_STAINED_GLASS, ChatColor.WHITE + langConfig.getString("trollsettings.lang.de")));
+                languageGUI.addItem(11, ItemBuilder.createItem(Material.BLUE_STAINED_GLASS, ChatColor.WHITE + langConfig.getString("trollsettings.lang.en")));
+                languageGUI.addItem(12, ItemBuilder.createItem(Material.YELLOW_STAINED_GLASS, ChatColor.WHITE + langConfig.getString("trollsettings.lang.es")));
+                languageGUI.addItem(13, ItemBuilder.createItem(Material.LIGHT_BLUE_STAINED_GLASS, ChatColor.WHITE + langConfig.getString("trollsettings.lang.fr")));
+                languageGUI.addItem(14, ItemBuilder.createItem(Material.WHITE_STAINED_GLASS, ChatColor.WHITE + langConfig.getString("trollsettings.lang.nl")));
+                languageGUI.addItem(15, ItemBuilder.createItem(Material.RED_STAINED_GLASS, ChatColor.WHITE + langConfig.getString("trollsettings.lang.zh-cn")));
+                languageGUI.addItem(16, ItemBuilder.createItem(Material.RED_STAINED_GLASS, ChatColor.WHITE + langConfig.getString("trollsettings.lang.zh-tw")));
+                languageGUI.addItemWithLore(17, Material.CYAN_STAINED_GLASS, " ", langConfig.getString("guis.placeholder.description"));
+
+                // Add placeholders
+                byte[] placeholderArray = {0, 1, 2, 3, 5, 6, 7, 8, 18, 19, 20, 21, 22, 23, 24, 25};
+                for (int slot : placeholderArray) {
+                    languageGUI.addItem(slot, ItemBuilder.createItemWithLore(Material.RED_STAINED_GLASS_PANE, " ", langConfig.getString("guis.placeholder.description")));
+                }
+
+                player.openInventory(languageGUI.getGUI());
+                break;
             // Toggle metrics
             case 11:
                 toggleSetting(event, "metrics-enabled", Material.BOOK, settingsGUI, langConfig);
                 break;
-
             // Toggle update check
             case 12:
                 toggleSetting(event, "check-for-updates", Material.GLOWSTONE, settingsGUI, langConfig);
                 break;
-
             // Toggle feature deactivation on quit
             case 13:
                 toggleSetting(event, "deactivate-features-on-quit", Material.REDSTONE_LAMP, settingsGUI, langConfig);
                 break;
-
             // Toggle teleport control
             case 14:
-                toggleSetting(event, "control-teleport-back", Material.ENDER_PEARL, settingsGUI, langConfig);
+                toggleSetting(event, "control.teleport-back", Material.ENDER_PEARL, settingsGUI, langConfig);
                 break;
-
             // Toggle fire setting
             case 15:
                 toggleSetting(event, "set-fire", Material.FIRE_CHARGE, settingsGUI, langConfig);
                 break;
-
             // Toggle block breaking
             case 16:
                 toggleSetting(event, "break-blocks", Material.DIAMOND_PICKAXE, settingsGUI, langConfig);
                 break;
-
             default:
                 // No action for other slots
                 break;
@@ -767,26 +779,44 @@ public class InventoryClickListener implements Listener {
     }
 
     // Handles the language change setting
-    private void handleLanguageChange(GUIUtil settingsGUI, Player player, ConfigUtil langConfig) {
-        String currentLanguage = plugin.getConfig().getString("language");
-        String newLanguage;
-
-        if ("de".equals(currentLanguage)) {
-            newLanguage = "zhcn";
-        } else if ("zhcn".equals(currentLanguage)) {
-            newLanguage = "zhtw";
-        } else if ("zhtw".equals(currentLanguage)) {
-            newLanguage = "custom";
-        } else if ("custom".equals(currentLanguage)) {
-            newLanguage = "en";
-        } else {
-            newLanguage = "de";
+    private void handleLanguageChangeGUI(InventoryClickEvent event, Player player, ConfigUtil langConfig) {
+        switch (event.getSlot()) {
+            case 26:
+                player.closeInventory();
+                break;
+            case 9:
+                plugin.getConfig().set("language", "custom");
+                break;
+            case 10:
+                plugin.getConfig().set("language", "de");
+                break;
+            case 11:
+                plugin.getConfig().set("language", "en");
+                break;
+            case 12:
+                plugin.getConfig().set("language", "es");
+                break;
+            case 13:
+                plugin.getConfig().set("language", "fr");
+                break;
+            case 14:
+                plugin.getConfig().set("language", "nl");
+                break;
+            case 15:
+                plugin.getConfig().set("language", "zh-cn");
+                break;
+            case 16:
+                plugin.getConfig().set("language", "zh-tw");
+                break;
+            default:
+                // No action for other slots
+                break;
         }
 
-        plugin.getConfig().set("language", newLanguage);
-        settingsGUI.addItem(10, ItemBuilder.createItemWithLore(Material.PAPER, ChatColor.WHITE + langConfig.getString("trollsettings.language") + ChatColor.DARK_GRAY + " " + newLanguage, langConfig.getString("trollsettings.language-description")));
+        // Save configuration and send the player a success message
         plugin.saveConfig();
-        player.sendMessage(PLUGIN_PREFIX + ChatColor.GREEN + langConfig.getString("trollsettings.language-successfully-changed"));
+        player.closeInventory();
+        player.sendMessage(PLUGIN_PREFIX + ChatColor.GREEN + langConfig.getString("trollsettings.lang.successfully-changed"));
     }
 
     // Toggles a boolean setting and updates the corresponding item in the Settings GUI

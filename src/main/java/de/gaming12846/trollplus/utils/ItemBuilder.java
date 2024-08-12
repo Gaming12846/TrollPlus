@@ -19,7 +19,22 @@ import java.util.List;
 
 // Utility class for creating ItemStacks with custom properties
 public class ItemBuilder {
-    // Creates an ItemStack with the specified material, name, and lore
+    // Creates an ItemStack with the specified material and name
+    public static ItemStack createItem(Material material, String name) {
+        ItemStack item = new ItemStack(material);
+        ItemMeta meta = item.getItemMeta();
+
+        if (meta != null) {
+            meta.setDisplayName(name);
+            meta.addItemFlags(ItemFlag.HIDE_ADDITIONAL_TOOLTIP, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ARMOR_TRIM, ItemFlag.HIDE_DESTROYS, ItemFlag.HIDE_DYE, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_UNBREAKABLE);
+
+            item.setItemMeta(meta);
+        }
+
+        return item;
+    }
+
+    // Creates an ItemStack with the specified material, name and lore
     public static ItemStack createItemWithLore(Material material, String name, String lore) {
         ItemStack item = new ItemStack(material);
         ItemMeta meta = item.getItemMeta();
@@ -44,6 +59,9 @@ public class ItemBuilder {
         if (meta != null) {
             meta.setDisplayName(name);
             meta.setOwningPlayer(owner);
+
+            List<String> loreList = Collections.singletonList("Ping: " + owner.getPing());
+            meta.setLore(loreList);
             skull.setItemMeta(meta);
         }
 

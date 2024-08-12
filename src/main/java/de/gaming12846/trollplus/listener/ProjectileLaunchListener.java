@@ -98,7 +98,7 @@ public class ProjectileLaunchListener implements Listener {
     private void handleLightningBoltArrow(Arrow arrow) {
         arrow.setMetadata("TROLLPLUS_LIGHTNING_BOLT_ARROW", new FixedMetadataValue(plugin, arrow));
 
-        Particle particleType = plugin.getServer().getBukkitVersion().contains("1.13") ? Particle.FIREWORK : Particle.FLASH;
+        Particle particleType = plugin.getServerVersion() < 1.14 ? Particle.FIREWORK : Particle.FLASH;
 
         new BukkitRunnable() {
             @Override

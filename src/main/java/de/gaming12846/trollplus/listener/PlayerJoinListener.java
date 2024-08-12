@@ -39,7 +39,7 @@ public class PlayerJoinListener implements Listener {
             player.setExp(controlUtil.getPlayerExp());
 
             // Teleport the player back to their previous location if configured
-            if (plugin.getConfig().getBoolean("control-teleport-back", true))
+            if (plugin.getConfig().getBoolean("control.teleport-back", true))
                 player.teleport(controlUtil.getPlayerLocation());
 
             // Remove the "TROLLPLUS_CONTROL_PLAYER" metadata

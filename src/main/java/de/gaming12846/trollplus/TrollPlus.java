@@ -33,12 +33,11 @@ import java.util.Objects;
 
 // The main class for the TrollPlus plugin
 public class TrollPlus extends JavaPlugin {
-    public final String configVersion = "1.1";
-    public final String languageConfigVersion = "1.1";
+    public final String configVersion = "1.4.7";
+    public final String languageConfigVersion = "1.4.7";
     public boolean updateAvailable = false;
 
     // ConfigUtil instances for various configuration files
-    public ConfigUtil blocklistConfig;
     public ConfigUtil langCustomConfig;
     public ConfigUtil langGermanConfig;
     public ConfigUtil langEnglishConfig;
@@ -47,18 +46,20 @@ public class TrollPlus extends JavaPlugin {
     public ConfigUtil langDutchConfig;
     public ConfigUtil langSimplifiedChineseConfig;
     public ConfigUtil langTraditionalChineseConfig;
-    public ConfigUtil langEnglishConfig;
-
+    private double serverVersion;
+    // ConfigUtil instances for various configuration files
+    private ConfigUtil blocklistConfig;
     // Command and Listener instances
-    private InventoryClickListener inventoryClickListener;
-    private TrollPlusCommand trollPlusCommand;
-    private TrollCommand trollCommand;
     private TrollBowsCommand trollBowsCommand;
+    private TrollCommand trollCommand;
+    private TrollPlusCommand trollPlusCommand;
+    private InventoryClickListener inventoryClickListener;
 
     // Called when the plugin is first enabled
     @Override
     public void onEnable() {
         loadConfigs();
+        checkServerVersion();
         registerListeners(getServer().getPluginManager());
         registerCommands();
         registerTabCompleters(new TabCompleter());
@@ -80,11 +81,17 @@ public class TrollPlus extends JavaPlugin {
         langSimplifiedChineseConfig = new ConfigUtil(this, "languages/lang_zh-cn.yml");
         langTraditionalChineseConfig = new ConfigUtil(this, "languages/lang_zh-tw.yml");
 
-        if (!configVersion.equalsIgnoreCase(this.getConfig().getString("version")))
+        // Check config versions
+        if (!configVersion.equalsIgnoreCase(getConfig().getString("version")))
             getLogger().warning(getLanguageConfig().getConfig().getString("config-outdated"));
 
         if (!languageConfigVersion.equalsIgnoreCase(getLanguageConfig().getConfig().getString("version")))
             getLogger().warning(getLanguageConfig().getConfig().getString("language-config-outdated"));
+    }
+
+    // Retrieves the blocklist configuration
+    public ConfigUtil getBlocklistConfig() {
+        return blocklistConfig;
     }
 
     // Retrieves the appropriate language configuration based on the plugin's config setting
@@ -112,9 +119,22 @@ public class TrollPlus extends JavaPlugin {
         }
     }
 
-    // Retrieves the blocklist configuration
-    public ConfigUtil getBlocklistConfig() {
-        return blocklistConfig;
+    // Checks the server version for incompatibility
+    private void checkServerVersion() {
+        String bukkitVersion = getServer().getBukkitVersion().split("-")[0].split("\\.")[1];
+        serverVersion = Double.parseDouble(bukkitVersion);
+
+        if (serverVersion < 1.13) {
+            getLogger().warning(getLanguageConfig().getString("server-version-unsupported"));
+            if (getConfig().getBoolean("load-despite-unsupported-version", false))
+                getServer().getPluginManager().disablePlugin(this);
+        } else if (serverVersion < 1.16)
+            getLogger().info(getLanguageConfig().getString("server-version-partly-supported"));
+    }
+
+    // Retrieves the server version
+    public double getServerVersion() {
+        return serverVersion;
     }
 
     // Registers events with the Bukkit plugin manager
@@ -181,14 +201,9 @@ public class TrollPlus extends JavaPlugin {
         }
     }
 
-    // Retrieves the InventoryClickListener instance
-    public InventoryClickListener getInventoryClickListener() {
-        return inventoryClickListener;
-    }
-
-    // Retrieves the TrollPlusCommand instance
-    public TrollPlusCommand getTrollPlusCommand() {
-        return trollPlusCommand;
+    // Retrieves the TrollBowsCommand instance
+    public TrollBowsCommand getTrollBowsCommand() {
+        return trollBowsCommand;
     }
 
     // Retrieves the TrollCommand instance
@@ -196,8 +211,13 @@ public class TrollPlus extends JavaPlugin {
         return trollCommand;
     }
 
-    // Retrieves the TrollBowsCommand instance
-    public TrollBowsCommand getTrollBowsCommand() {
-        return trollBowsCommand;
+    // Retrieves the TrollPlusCommand instance
+    public TrollPlusCommand getTrollPlusCommand() {
+        return trollPlusCommand;
+    }
+
+    // Retrieves the InventoryClickListener instance
+    public InventoryClickListener getInventoryClickListener() {
+        return inventoryClickListener;
     }
 }

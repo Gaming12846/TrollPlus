@@ -87,7 +87,7 @@ public class TrollCommand implements CommandExecutor {
         trollGUI.addItemWithLore(49, Material.CHORUS_FRUIT, ChatColor.WHITE + langConfig.getString("troll-gui.random-troll"), langConfig.getString("troll-gui.random-troll-description"));
         trollGUI.addItemWithLore(51, Material.CHEST, ChatColor.WHITE + langConfig.getString("troll-gui.invsee"), langConfig.getString("troll-gui.invsee-description"));
         trollGUI.addItemWithLore(52, Material.ENDER_CHEST, ChatColor.WHITE + langConfig.getString("troll-gui.invsee-ender-chest"), langConfig.getString("troll-gui.invsee-ender-chest-description"));
-        trollGUI.addItemWithLore(53, Material.BARRIER, ChatColor.RED + langConfig.getString("troll-gui.close"), langConfig.getString("troll-gui.close-description"));
+        trollGUI.addItemWithLore(53, Material.BARRIER, ChatColor.RED + langConfig.getString("guis.close"), langConfig.getString("guis.close-description"));
 
         trollGUI.addItemWithLore(10, Material.ICE, ChatColor.WHITE + langConfig.getString("troll-gui.freeze") + " " + trollGUI.getStatusTrollGUI("TROLLPLUS_FREEZE"), langConfig.getString("troll-gui.freeze-description"));
         trollGUI.addItemWithLore(12, Material.SHEARS, ChatColor.WHITE + langConfig.getString("troll-gui.hand-item-drop") + " " + trollGUI.getStatusTrollGUI("TROLLPLUS_HAND_ITEM_DROP"), langConfig.getString("troll-gui.hand-item-drop-description"));
@@ -111,11 +111,11 @@ public class TrollCommand implements CommandExecutor {
         // Add placeholders to the GUI
         final byte[] placeholderSlots = {0, 1, 2, 3, 5, 6, 7, 8, 48, 50};
         for (int slot : placeholderSlots) {
-            trollGUI.addItem(slot, ItemBuilder.createItemWithLore(Material.RED_STAINED_GLASS_PANE, " ", langConfig.getString("guis.placeholder-description")));
+            trollGUI.addItem(slot, ItemBuilder.createItemWithLore(Material.RED_STAINED_GLASS_PANE, " ", langConfig.getString("guis.placeholder.description")));
         }
         final byte[] placeholderSlots1 = {9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43};
         for (int slot : placeholderSlots1) {
-            trollGUI.addItem(slot, ItemBuilder.createItemWithLore(Material.GRAY_STAINED_GLASS_PANE, " ", langConfig.getString("guis.placeholder-description")));
+            trollGUI.addItem(slot, ItemBuilder.createItemWithLore(Material.GRAY_STAINED_GLASS_PANE, " ", langConfig.getString("guis.placeholder.description")));
         }
     }
 }

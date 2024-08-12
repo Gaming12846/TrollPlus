@@ -113,11 +113,16 @@ public class TrollPlusCommand implements CommandExecutor {
         }
 
         // Reload the plugin configurations
-        plugin.blocklistConfig.reload();
-        plugin.langCustomConfig.reload();
-        plugin.langEnglishConfig.reload();
-        plugin.langSimplifiedChineseConfig.reload();
         plugin.reloadConfig();
+        plugin.getBlocklistConfig().reload();
+        plugin.langCustomConfig.reload();
+        plugin.langGermanConfig.reload();
+        plugin.langEnglishConfig.reload();
+        plugin.langSpanishConfig.reload();
+        plugin.langFrenchConfig.reload();
+        plugin.langDutchConfig.reload();
+        plugin.langSimplifiedChineseConfig.reload();
+        plugin.langTraditionalChineseConfig.reload();
 
         // Send a message after successfully reloading the configurations
         sender.sendMessage(Constants.PLUGIN_PREFIX + ChatColor.GREEN + langConfig.getString("trollplus.reload"));
@@ -241,8 +246,8 @@ public class TrollPlusCommand implements CommandExecutor {
         settingsGUI = new GUIUtil(langConfig.getString("trollsettings.title"), 27, plugin);
 
         // Add the available settings to the GUI
-        settingsGUI.addItem(26, ItemBuilder.createItemWithLore(Material.BARRIER, ChatColor.RED + langConfig.getString("trollsettings.close"), langConfig.getString("trollsettings.close-description")));
-        settingsGUI.addItem(10, ItemBuilder.createItemWithLore(Material.PAPER, ChatColor.WHITE + langConfig.getString("trollsettings.language") + ChatColor.DARK_GRAY + " " + plugin.getConfig().getString("language"), langConfig.getString("trollsettings.language-description")));
+        settingsGUI.addItem(26, ItemBuilder.createItemWithLore(Material.BARRIER, ChatColor.RED + langConfig.getString("guis.close"), langConfig.getString("guis.close-description")));
+        settingsGUI.addItem(10, ItemBuilder.createItemWithLore(Material.PAPER, ChatColor.WHITE + langConfig.getString("trollsettings.language"), langConfig.getString("trollsettings.language-description")));
         settingsGUI.addItem(11, ItemBuilder.createItemWithLore(Material.WRITABLE_BOOK, ChatColor.WHITE + langConfig.getString("trollsettings.metrics-enabled") + ChatColor.DARK_GRAY + " " + settingsGUI.getStatusSettingsGUI(plugin.getConfig().getBoolean("metrics-enabled")), langConfig.getString("trollsettings.metrics-enabled-description")));
         settingsGUI.addItem(12, ItemBuilder.createItemWithLore(Material.GLOWSTONE, ChatColor.WHITE + langConfig.getString("trollsettings.check-for-updates") + ChatColor.DARK_GRAY + " " + settingsGUI.getStatusSettingsGUI(plugin.getConfig().getBoolean("check-for-updates")), langConfig.getString("trollsettings.check-for-updates-description")));
         settingsGUI.addItem(13, ItemBuilder.createItemWithLore(Material.REDSTONE_LAMP, ChatColor.WHITE + langConfig.getString("trollsettings.deactivate-features-on-quit") + ChatColor.DARK_GRAY + " " + settingsGUI.getStatusSettingsGUI(plugin.getConfig().getBoolean("deactivate-features-on-quit")), langConfig.getString("trollsettings.deactivate-features-on-quit-description")));
@@ -253,7 +258,7 @@ public class TrollPlusCommand implements CommandExecutor {
         // Add placeholders
         byte[] placeholderArray = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 17, 18, 19, 20, 21, 22, 23, 24, 25};
         for (int slot : placeholderArray) {
-            settingsGUI.addItem(slot, ItemBuilder.createItemWithLore(Material.RED_STAINED_GLASS_PANE, " ", langConfig.getString("guis.placeholder-description")));
+            settingsGUI.addItem(slot, ItemBuilder.createItemWithLore(Material.RED_STAINED_GLASS_PANE, " ", langConfig.getString("guis.placeholder.description")));
         }
 
         // Open the Settings GUI for the player

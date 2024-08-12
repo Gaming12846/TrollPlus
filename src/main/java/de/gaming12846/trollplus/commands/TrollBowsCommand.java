@@ -65,7 +65,7 @@ public class TrollBowsCommand implements CommandExecutor {
         trollBowsGUI = new GUIUtil(langConfig.getString("trollbows.title"), 9);
 
         // Add troll bows to the GUI
-        trollBowsGUI.addItemWithLore(8, Material.BARRIER, ChatColor.RED + langConfig.getString("trollbows.close"), langConfig.getString("trollbows.close-description"));
+        trollBowsGUI.addItemWithLore(8, Material.BARRIER, ChatColor.RED + langConfig.getString("guis.close"), langConfig.getString("guis.close-description"));
         trollBowsGUI.addItem(0, ItemBuilder.createBow(langConfig.getString("trollbows.explosion-bow"), langConfig.getString("trollbows.explosion-bow-description")));
         trollBowsGUI.addItem(1, ItemBuilder.createBow(langConfig.getString("trollbows.tnt-bow"), langConfig.getString("trollbows.tnt-bow-description")));
         trollBowsGUI.addItem(2, ItemBuilder.createBow(langConfig.getString("trollbows.lightning-bolt-bow"), langConfig.getString("trollbows.lightning-bolt-bow-description")));
@@ -74,7 +74,7 @@ public class TrollBowsCommand implements CommandExecutor {
         // Add placeholders to the GUI
         final byte[] placeholderSlots = {4, 5, 6, 7};
         for (int slot : placeholderSlots) {
-            trollBowsGUI.addItem(slot, ItemBuilder.createItemWithLore(Material.GRAY_STAINED_GLASS_PANE, " ", langConfig.getString("guis.placeholder-description")));
+            trollBowsGUI.addItem(slot, ItemBuilder.createItemWithLore(Material.GRAY_STAINED_GLASS_PANE, " ", langConfig.getString("guis.placeholder.description")));
         }
     }
 }
