@@ -14,6 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -60,7 +61,7 @@ public class ItemBuilder {
             meta.setDisplayName(name);
             meta.setOwningPlayer(owner);
 
-            List<String> loreList = Collections.singletonList("Ping: " + owner.getPing());
+            List<String> loreList = Arrays.asList(ChatColor.GRAY + "Ping: " + ChatColor.RED + owner.getPing(), ChatColor.GRAY + "Health: " + ChatColor.RED + owner.getHealth(), ChatColor.GRAY + "Exp: " + ChatColor.RED + owner.getExp(), ChatColor.GRAY + "GameMode: " + ChatColor.RED + owner.getGameMode(), ChatColor.GRAY + "Locale: " + ChatColor.RED + owner.getLocale());
             meta.setLore(loreList);
             skull.setItemMeta(meta);
         }
