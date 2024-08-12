@@ -5,11 +5,15 @@
 # Language config by:
 
 # Configuration Version
-version: 1.1
+version: 1.4.7
 
-###########################Global############################
+########################## Global ###########################
 
 metrics-enabled: ""
+
+server-version:
+  unsupported: ""
+  partly-supported: ""
 
 checking-updates: ""
 no-update-available: ""
@@ -25,7 +29,7 @@ no-console: ""
 invalid-syntax: ""
 invalid-syntax-use: ""
 
-#####################"Trollplus" command#####################
+##################### Trollplus command #####################
 
 trollplus:
   version: ""
@@ -38,7 +42,7 @@ trollplus:
   not-in-blocklist: "[player]" # [player] will be replaced by the player's name.
   removed-from-blocklist: "[player]"  # [player] will be replaced by the player's name.
 
-#######################"Troll" command#######################
+####################### Troll command #######################
 
 troll:
   player-not-online: "[player]" # [player] will be replaced by the player's name.
@@ -54,14 +58,12 @@ troll:
   freefall-cannot-fall: ""
   kill-message: ""
 
-#########################"Troll" GUI#########################
+######################### Troll GUI #########################
 
 troll-gui:
   title: ""
   status-on: ""
   status-off: ""
-  close: ""
-  close-description: ""
   vanish: ""
   vanish-description: ""
   teleport: ""
@@ -111,12 +113,10 @@ troll-gui:
   freefall: ""
   freefall-description: ""
 
-#######################"Trollbows" GUI#######################
+####################### Trollbows GUI #######################
 
 trollbows:
   title: ""
-  close: ""
-  close-description: ""
   explosion-bow: ""
   explosion-bow-description: ""
   tnt-bow: ""
@@ -126,7 +126,7 @@ trollbows:
   silverfish-bow: ""
   silverfish-bow-description: ""
 
-####################Features translations####################
+################### Features translations ###################
 
 vanish:
   quit-message: "[player]" # [player] will be replaced by the player's name.
@@ -146,17 +146,14 @@ fake-ban:
 
 fake-op-message: "[player]" # [player] will be replaced by the player's name.
 
-#######################"Settings" GUI#######################
+####################### Settings GUI #######################
 
 trollsettings:
   title: ""
   status-on: ""
   status-off: ""
-  close: ""
-  close-description: ""
   language: ""
   language-description: ""
-  language-successfully-changed: ""
   metrics-enabled: ""
   metrics-enabled-description: ""
   check-for-updates: ""
@@ -169,10 +166,25 @@ trollsettings:
   set-fire-description: ""
   break-blocks: ""
   break-blocks-description: ""
+  lang:
+    title: ""
+    current-language: ""
+    successfully-changed: ""
+    custom: ""
+    de: ""
+    en: ""
+    es: ""
+    fr: ""
+    nl: ""
+    zh-cn: ""
+    zh-tw: ""
 
-############################GUIs#############################
+########################### GUIs ############################
 
 guis:
-  placeholder-description: ""
-  placeholder-coming-soon: ""
-  placeholder-coming-soon-description: ""
+  placeholder:
+    description: ""
+    coming-soon: ""
+    coming-soon-description: ""
+  close: ""
+  close-description: ""

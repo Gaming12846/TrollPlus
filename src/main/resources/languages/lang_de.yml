@@ -3,14 +3,18 @@
 # Sprachkonfiguration von: Gaming12846
 
 # Konfigurationsversion
-version: 1.1
+version: 1.4.7
 
-###########################Global############################
+######################### Allgemein #########################
 
-metrics-enabled: "Pluginmetriken aktivieren"
+metrics-enabled: "Pluginmetriken aktiviert."
+
+server-version:
+  unsupported: "Serverversion nicht unterstützt. Das Plugin wird nicht geladen, wenn es nicht in der Konfiguration aktiviert ist. Wenn es geladen wird, können Fehler auftreten."
+  partly-supported: "Serverversion teilweise unterstützt. Einige Funktionen sind anders oder nicht verfügbar."
 
 checking-updates: "Suche nach Updates ..."
-no-update-available: "Kein neues Update verfügbar"
+no-update-available: "Kein neues Update verfügbar."
 update-available: "Ein neues Update ist verfügbar! Besuche SpigotMC, um es herunterzuladen:"
 unable-check-updates: "Update-Überprüfung fehlgeschlagen:"
 
@@ -23,7 +27,7 @@ no-console: "Der Befehl kann nicht von der Konsole ausgeführt werden."
 invalid-syntax: "Ungültige Befehlssyntax!"
 invalid-syntax-use: "Benutze /"
 
-#####################"Trollplus" Befehl#####################
+##################### Trollplus Befehl ######################
 
 trollplus:
   version: "Version:"
@@ -36,7 +40,7 @@ trollplus:
   not-in-blocklist: "Der Spieler [player] ist nicht auf der Sperrliste." # "[player]" muss in der Nachricht enthalten sein, da es durch den Namen des Spielers ersetzt wird.
   removed-from-blocklist: "Der Spieler [player] wurde von der Sperrliste entfernt." # "[player]" muss in der Nachricht enthalten sein, da es durch den Namen des Spielers ersetzt wird.
 
-#######################"Troll" Befehl#######################
+####################### Troll Befehl ########################
 
 troll:
   player-not-online: "Der Spieler [player] ist momentan nicht online." # "[player]" muss in der Nachricht enthalten sein, da es durch den Namen des Spielers ersetzt wird.
@@ -52,14 +56,12 @@ troll:
   freefall-cannot-fall: "Freier Fall kann nicht aktiviert werden, da sich das Ziel nicht unter freiem Himmel befindet."
   kill-message: "ist durch Dummheit gestorben."
 
-#########################"Troll" GUI#########################
+######################### Troll GUI #########################
 
 troll-gui:
   title: "Troll"
   status-on: "An"
   status-off: "Aus"
-  close: "Schließen"
-  close-description: "Schließe das Trollmenü"
   vanish: "Verschwinden"
   vanish-description: "Lass dich für das Ziel verschwinden"
   teleport: "Teleport"
@@ -109,12 +111,10 @@ troll-gui:
   freefall: "Freier Fall"
   freefall-description: "Teleportiert das Ziel in die Luft und lässt es frei fallen"
 
-#######################"Trollbows" GUI#######################
+####################### Trollbows GUI #######################
 
 trollbows:
   title: "Trollbögen"
-  close: "Schließen"
-  close-description: "Schließe das Trollbögen-Menü"
   explosion-bow: "Explosionsbogen"
   explosion-bow-description: "Ein Bogen, der beim Auftreffen des Pfeils eine Explosion erzeugt"
   tnt-bow: "TNT-Bogen"
@@ -124,7 +124,7 @@ trollbows:
   silverfish-bow: "Silberfischbogen"
   silverfish-bow-description: "Ein Bogen, der beim Auftreffen des Pfeils eine Horde Silberfische erzeugt"
 
-####################Features translations####################
+################## Features Übersetzungen ###################
 
 vanish:
   quit-message: "[player] hat das Spiel verlassen." # "[player]" muss in der Nachricht enthalten sein, da es durch den Namen des Spielers ersetzt wird.
@@ -144,17 +144,14 @@ fake-ban:
 
 fake-op-message: "[Server: Der Spieler [player] wurde zum Server-Operator ernannt.]" # "[player]" muss in der Nachricht enthalten sein, da es durch den Namen des Spielers ersetzt wird.
 
-#######################"Settings" GUI#######################
+##################### Einstellungen GUI #####################
 
 trollsettings:
-  title: "TrollPlus-Einstellungen"
+  title: "TrollPlus Einstellungen"
   status-on: "An"
   status-off: "Aus"
-  close: "Schließen"
-  close-description: "Schließe das Einstellungsmenü"
-  language: "Sprache:"
-  language-description: "Legen Sie die Sprache für das Plugin fest. Verfügbare Optionen sind custom, en, de, zhcn und zhtw."
-  language-successfully-changed: "Die Sprache wurde erfolgreich geändert!"
+  language: "Sprache ändern"
+  language-description: "Die Sprache des Plugins festlegen. Verfügbare Optionen: custom, de, en, es, fr, nl, zh-cn, zh-tw."
   metrics-enabled: "Metriken:"
   metrics-enabled-description: "Aktivieren oder deaktivieren Sie die Pluginmetriken (Wird beim nächsten Neustart/Neuladen angewendet)"
   check-for-updates: "Auf Updates prüfen:"
@@ -167,10 +164,25 @@ trollsettings:
   set-fire-description: "Aktivieren oder deaktivieren, dass ein Feuer durch die Funktion 'TNT-Spur' und die Trollbögen entfacht werden kann."
   break-blocks: "Blöcke zerstören:"
   break-blocks-description: "Aktivieren oder deaktivieren, dass Explosionen Blöcke bei der Funktion 'TNT-Spur' und bei den Trollbögen zerstören können."
+  lang:
+    title: "TrollPlus Spracheinstellungen"
+    current-language: "Aktuelle Sprache:"
+    successfully-changed: "Die Sprache wurde erfolgreich geändert!"
+    custom: "Benutzerdefiniert"
+    de: "Deutsch"
+    en: "Englisch"
+    es: "Spanisch"
+    fr: "Französisch"
+    nl: "Niederländisch"
+    zh-cn: "Vereinfachtes Chinesisch"
+    zh-tw: "Traditionelles Chinesisch"
 
-############################GUIs#############################
+########################### GUIs ############################
 
 guis:
-  placeholder-description: "Nur ein einsamer Platzhalter :("
-  placeholder-coming-soon: "Demnächst verfügbar"
-  placeholder-coming-soon-description: "Nur ein Platzhalter für kommende Funktionen :("
+  placeholder:
+    description: "Nur ein einsamer Platzhalter :("
+    coming-soon: "Demnächst verfügbar"
+    coming-soon-description: "Nur ein Platzhalter für kommende Funktionen :("
+  close: "Schließen"
+  close-description: "Benutzeroberfläche schließen"

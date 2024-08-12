@@ -1,0 +1,188 @@
+# Este es el archivo de configuración en inglés para TrollPlus.
+# Esta configuración de idioma se generó para la versión ${project.version}.
+# Configuración se tradujo con ai.
+
+# Versión de configuración
+version: 1.4.7
+
+########################## Global ##########################
+
+metrics-enabled: "Las métricas del plugin están habilitadas."
+
+server-version:
+  unsupported: "Versión del servidor no compatible. El plugin no se cargará a menos que se active en la configuración. Si se carga, pueden ocurrir errores."
+  partly-supported: "Versión del servidor parcialmente compatible. Algunas funciones son diferentes o no están disponibles."
+
+checking-updates: "Buscando actualizaciones..."
+no-update-available: "No hay nuevas actualizaciones disponibles."
+update-available: "¡Una nueva actualización está disponible! Descárgala desde SpigotMC:"
+unable-check-updates: "No se puede verificar si hay actualizaciones."
+
+config-outdated: "¡Tu archivo de configuración está desactualizado! Por favor, actualízalo a la última versión. El plugin intentará cargarlo, pero pueden ocurrir errores."
+language-config-outdated: "¡Tu configuración de idioma está desactualizada! Por favor, actualízala a la última versión. El plugin intentará cargarla, pero pueden ocurrir errores."
+failed-to-save-config: "Error al guardar la configuración."
+
+no-permission: "No tienes permiso para ejecutar este comando."
+no-console: "Este comando no se puede usar desde la consola."
+invalid-syntax: "¡Sintaxis de comando inválida!"
+invalid-syntax-use: "Uso: /"
+
+##################### Comando Trollplus #####################
+
+trollplus:
+  version: "Versión:"
+  developer: "Desarrollador:"
+  plugin-website: "Sitio web del plugin:"
+  report-bugs: "Reportar errores a:"
+  reload: "Configuraciones recargadas con éxito."
+  already-in-blocklist: "El jugador [player] ya está en la lista negra." # [player] será reemplazado por el nombre del jugador.
+  added-to-blocklist: "El jugador [player] ha sido agregado a la lista negra." # [player] será reemplazado por el nombre del jugador.
+  not-in-blocklist: "El jugador [player] no está en la lista negra." # [player] será reemplazado por el nombre del jugador.
+  removed-from-blocklist: "El jugador [player] ha sido removido de la lista negra." # [player] será reemplazado por el nombre del jugador.
+
+####################### Comando Troll #######################
+
+troll:
+  player-not-online: "El jugador [player] no está actualmente en línea." # [player] será reemplazado por el nombre del jugador.
+  player-is-immune: "El jugador [player] es inmune." # [player] será reemplazado por el nombre del jugador.
+  player-quit: "El jugador seleccionado ha salido del juego."
+  vanish-not-available: "No puedes desaparecer de ti mismo."
+  teleport-not-available: "Ya estás en tu posición de inicio."
+  control-not-available: "Ya estás en control."
+  falling-anvils-not-available: "Las enclumas caídas no se pueden activar ya que el objetivo está debajo de un bloque."
+  slowly-kill-not-available: "La muerte lenta no se puede activar porque el objetivo no está en modo supervivencia o aventura."
+  rocket-cannot-launch: "El cohete no se puede lanzar ya que el objetivo no está bajo un cielo abierto."
+  rocket-launch-stopped: "El lanzamiento del cohete se detuvo ya que el objetivo ya no está bajo un cielo abierto."
+  freefall-cannot-fall: "La caída libre no se puede activar ya que el objetivo no está bajo un cielo abierto."
+  kill-message: "murió debido a un accidente."
+
+######################### Troll GUI #########################
+
+troll-gui:
+  title: "Troll"
+  status-on: "Activado"
+  status-off: "Desactivado"
+  vanish: "Desaparecer"
+  vanish-description: "Hacer desaparecer al objetivo"
+  teleport: "Teletransportar"
+  teleport-description: "Teletransportarse al objetivo"
+  random-troll: "Troll Aleatorio"
+  random-troll-description: "Seleccionar aleatoriamente una acción de troll para el objetivo"
+  kill: "Matar"
+  kill-description: "Matar al objetivo"
+  invsee: "Ver Inventario"
+  invsee-description: "Ver el inventario del objetivo"
+  invsee-ender-chest: "Ver Cofre del Ender"
+  invsee-ender-chest-description: "Ver el cofre del Ender del objetivo"
+  freeze: "Congelar"
+  freeze-description: "Impedir que el objetivo se mueva, interactúe o deje/recoga objetos"
+  hand-item-drop: "Caída de Objeto en Mano"
+  hand-item-drop-description: "Dejar caer automáticamente el objeto en mano del objetivo"
+  control: "Controlar"
+  control-description: "Tomar control total sobre las acciones del objetivo, incluyendo movimiento, interacción y chat"
+  flip-backwards: "Voltear Atrás"
+  flip-backwards-description: "Voltear al objetivo hacia atrás (180°) al interactuar con algo (incluye romper bloques y golpear entidades)"
+  spank: "Azotar"
+  spank-description: "Azotar al objetivo con retroceso aleatorio"
+  spam-messages: "Mensajes Spam"
+  spam-messages-description: "Enviar mensajes personalizados aleatorios al objetivo"
+  spam-sounds: "Sonidos Spam"
+  spam-sounds-description: "Reproducir sonidos aleatorios al objetivo"
+  semi-ban: "Semi-Baneo"
+  semi-ban-description: "Impedir que el objetivo construya, interactúe, cause daño y chatee"
+  falling-anvils: "Enclumas Caídas"
+  falling-anvils-description: "Dejar caer enclumas sobre el objetivo"
+  tnt-track: "Rastreo de TNT"
+  tnt-track-description: "Hacer aparecer TNT activada en la ubicación del objetivo a intervalos"
+  mob-spawner: "Generador de Mobs"
+  mob-spawner-description: "Hacer aparecer mobs aleatorios en la ubicación del objetivo"
+  slowly-kill: "Muerte Lenta"
+  slowly-kill-description: "Infligir daño al objetivo a intervalos"
+  random-scary-sound: "Sonido Espeluznante Aleatorio"
+  random-scary-sound-description: "Reproducir un sonido espeluznante aleatorio en la ubicación del objetivo para asustarlo"
+  inventory-drop: "Caída de Inventario"
+  inventory-drop-description: "Dejar caer todos los objetos del inventario del objetivo, incluyendo armaduras y objetos en la mano secundaria"
+  rocket: "Cohete"
+  rocket-description: "Lanzar al objetivo al aire como un fuego artificial"
+  fake-ban: "Falso Baneo"
+  fake-ban-description: "Hacer creer al objetivo que ha sido baneado"
+  fake-op: "Falso OP"
+  fake-op-description: "Hacer creer al objetivo que ha recibido permisos de operador"
+  freefall: "Caída Libre"
+  freefall-description: "Teletransportar al objetivo al aire y dejarlo caer libremente"
+
+####################### Trollbows GUI #######################
+
+trollbows:
+  title: "Trollbows"
+  explosion-bow: "Arco de Explosión"
+  explosion-bow-description: "Un arco que crea una explosión al impactar la flecha"
+  tnt-bow: "Arco de TNT"
+  tnt-bow-description: "Un arco que hace aparecer TNT al impactar la flecha"
+  lightning-bolt-bow: "Arco de Rayo"
+  lightning-bolt-bow-description: "Un arco que lanza rayos al impactar la flecha"
+  silverfish-bow: "Arco de Pececillo de Plata"
+  silverfish-bow-description: "Un arco que hace aparecer una horda de pececillos de plata al impactar la flecha"
+
+############## Traducciones de Características ##############
+
+vanish:
+  quit-message: "[player] ha salido del juego." # [player] será reemplazado por el nombre del jugador.
+  join-message: "[player] se ha unido al juego." # [player] será reemplazado por el nombre del jugador.
+
+# Mensajes spam para la función "Mensajes Spam". Agrega tantos como desees.
+spam-messages:
+  - "¡Hola, amigo!"
+  - "¡Alerta de troll!"
+  - "LoLoLoLoLo"
+  - "xDxDxDxDxD"
+  - "XoXoXoXo"
+
+fake-ban:
+  message-player: "Has sido baneado de este servidor."
+  message-broadcast: "El jugador [player] ha sido baneado permanentemente del servidor." # [player] será reemplazado por el nombre del jugador.
+
+fake-op-message: "[Servidor: Hizo a [player] operador del servidor]" # [player] será reemplazado por el nombre del jugador.
+
+##################### Configuración GUI #####################
+
+trollsettings:
+  title: "Configuración de TrollPlus"
+  status-on: "Activado"
+  status-off: "Desactivado"
+  language: "Cambiar idioma"
+  language-description: "Configurar el idioma del plugin. Opciones disponibles: custom, de, en, es, fr, nl, zh-cn, zh-tw."
+  metrics-enabled: "Métricas:"
+  metrics-enabled-description: "Activar o desactivar las métricas del plugin (se aplicará en el próximo reinicio/reload)."
+  check-for-updates: "Verificar Actualizaciones:"
+  check-for-updates-description: "Activar o desactivar el verificador de actualizaciones (se aplicará en el próximo reinicio/reload)."
+  deactivate-features-on-quit: "Desactivar Funcionalidades al Salir:"
+  deactivate-features-on-quit-description: "Desactivar las funcionalidades de troll activas cuando la víctima salga del servidor."
+  control-teleport-back: "Teletransportar Control de Regreso:"
+  control-teleport-back-description: "Teletransportar al jugador de vuelta a su posición original."
+  set-fire: "Poner Fuego:"
+  set-fire-description: "Permitir o prohibir la puesta en fuego para 'Rastreo de TNT' y Trollbows."
+  break-blocks: "Romper Bloques:"
+  break-blocks-description: "Permitir o prohibir las explosiones que destruyen bloques para 'Rastreo de TNT' y Trollbows."
+  lang:
+    title: "Configuración de idioma de TrollPlus"
+    current-language: "Idioma actual:"
+    successfully-changed: "¡Idioma cambiado con éxito!"
+    custom: "Personalizado"
+    de: "Alemán"
+    en: "Inglés"
+    es: "Español"
+    fr: "Francés"
+    nl: "Holandés"
+    zh-cn: "Chino simplificado"
+    zh-tw: "Chino tradicional"
+
+############################ GUIs #############################
+
+guis:
+  placeholder:
+    description: "Solo un marcador de posición por ahora."
+    coming-soon: "Próximamente"
+    coming-soon-description: "Un marcador de posición para las próximas características."
+  close: "Cerrar"
+  close-description: "Cerrar la interfaz gráfica"

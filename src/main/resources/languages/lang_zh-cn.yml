@@ -3,11 +3,15 @@
 # 语言文件贡献者: ranyouHigh 和 Stars
 
 # 配置版本
-version: 1.1
+version: 1.4.7
 
-###########################全局############################
+############################ 全局 #############################
 
 metrics-enabled: "正在开启插件数据收集功能"
+
+server-version:
+  unsupported: "不支持服务器版本。除非在配置中激活，否则不会加载该插件。如果加载，可能会出现错误。"
+  partly-supported: "部分支持服务器版本。某些功能不同或不可用。"
 
 checking-updates: "正在检查更新..."
 no-update-available: "已是最新版本"
@@ -23,7 +27,7 @@ no-console: "无法从控制台执行命令"
 invalid-syntax: "无效的指令参数！"
 invalid-syntax-use: "请使用 /"
 
-#####################"Trollplus" 指令#####################
+####################### Trollplus 指令 ########################
 
 trollplus:
   version: "版本："
@@ -36,7 +40,7 @@ trollplus:
   not-in-blocklist: "玩家 [player] 不在黑名单中" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
   removed-from-blocklist: "玩家 [player] 已从黑名单中移除" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
 
-#######################"Troll" 指令#######################
+######################### Troll 指令 ##########################
 
 troll:
   player-not-online: "玩家 [player] 目前不在线" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
@@ -52,14 +56,12 @@ troll:
   freefall-cannot-fall: "无法自由落体，因为目标不再暴露在开放的区域"
   kill-message: "由于愚蠢而死亡"
 
-#########################"Troll" GUI#########################
+######################### Troll GUI #########################
 
 troll-gui:
   title: "Troll"
   status-on: "开启"
   status-off: "关闭"
-  close: "关闭"
-  close-description: "关闭 Troll GUI"
   vanish: "隐身"
   vanish-description: "使目标玩家隐身"
   teleport: "传送"
@@ -109,12 +111,10 @@ troll-gui:
   freefall: "自由落体"
   freefall-description: "把目标玩家传送至空中并丢下他"
 
-#######################"Trollbows" GUI#######################
+####################### Trollbows GUI #######################
 
 trollbows:
   title: "Trollbows"
-  close: "关闭"
-  close-description: "关闭 Trollbows GUI"
   explosion-bow: "爆炸弓"
   explosion-bow-description: "发射弓箭时产生爆炸效果"
   tnt-bow: "TNT弓"
@@ -124,7 +124,7 @@ trollbows:
   silverfish-bow: "河豚弓"
   silverfish-bow-description: "发射弓箭时生成河豚"
 
-####################功能翻译####################
+########################### 功能翻译 ############################
 
 vanish:
   quit-message: "[player] left the game" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
@@ -144,17 +144,14 @@ fake-ban:
 
 fake-op-message: "[Server: Made [player] a server operator]" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
 
-#######################"设置" GUI#######################
+########################## 设置 GUI ###########################
 
 trollsettings:
   title: "TrollPlus 设置"
   status-on: "开启"
   status-off: "关闭"
-  close: "关闭"
-  close-description: "关闭设置 GUI"
-  language: "语言:"
-  language-description: "设置插件的语言，可选项是 custom, en, de, zhcn 和 zhtw"
-  language-successfully-changed: "语言成功更改!"
+  language: "更改语言"
+  language-description: "设置插件的语言。可用选项：custom, de, en, es, fr, nl, zh-cn, zh-tw。"
   metrics-enabled: "Metrics:"
   metrics-enabled-description: "开启或关闭插件Metrics"
   check-for-updates: "更新检查:"
@@ -167,10 +164,25 @@ trollsettings:
   set-fire-description: "开启或关闭 'TNT追踪' 和 'Trollbows' 功能施加的火焰效果"
   break-blocks: "破坏方块:"
   break-blocks-description: "开启或关闭 'TNT追踪' 和 'Trollbows' 功能施加的破坏方块效果"
+  lang:
+    title: "TrollPlus 语言设置"
+    current-language: "当前语言："
+    successfully-changed: "语言成功更改!"
+    custom: "自定义"
+    de: "德语"
+    en: "英语"
+    es: "西班牙语"
+    fr: "法语"
+    nl: "荷兰语"
+    zh-cn: "简体中文"
+    zh-tw: "繁体中文"
 
-############################GUIs#############################
+########################### GUIs ############################
 
 guis:
-  placeholder-description: "仅仅用于占位 :("
-  placeholder-coming-soon: "更多功能即将推出"
-  placeholder-coming-soon-description: "仅仅给未到来的功能作占位 :("
+  placeholder:
+    description: "仅仅用于占位 :("
+    coming-soon: "更多功能即将推出"
+    coming-soon-description: "仅仅给未到来的功能作占位 :("
+  close: "关闭"
+  close-description: "关闭图形用户界面"

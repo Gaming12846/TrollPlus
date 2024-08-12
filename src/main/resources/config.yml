@@ -16,7 +16,7 @@ version: 1.1
 
 ####################### Global Settings #######################
 
-# Language setting for the plugin. Options are: custom, en, de, zhcn, zhtw. [Default: en]
+# Language setting for the plugin. Options are: custom, de, en, es, fr, nl zh-cn, zh-tw. [Default: en]
 language: en
 
 # Enable or disable plugin metrics collection. [Default: true]

@@ -3,11 +3,15 @@
 # Language config by: Gaming12846
 
 # Configuration Version
-version: 1.1
+version: 1.4.7
 
-###########################Global############################
+########################## Global ###########################
 
-metrics-enabled: "Plugin metrics are enabled"
+metrics-enabled: "Plugin metrics are enabled."
+
+server-version:
+  unsupported: "Server version not supported. The plugin will not load unless activated in the configuration. If loaded, errors may occur."
+  partly-supported: "Server version partially supported. Some functions are different or not available."
 
 checking-updates: "Checking for updates..."
 no-update-available: "No new updates available."
@@ -23,7 +27,7 @@ no-console: "This command cannot be used from the console."
 invalid-syntax: "Invalid command syntax!"
 invalid-syntax-use: "Usage: /"
 
-#####################"Trollplus" command#####################
+##################### Trollplus command #####################
 
 trollplus:
   version: "Version:"
@@ -36,7 +40,7 @@ trollplus:
   not-in-blocklist: "Player [player] is not in the blocklist." # [player] will be replaced by the player's name.
   removed-from-blocklist: "Player [player] has been removed from the blocklist." # [player] will be replaced by the player's name.
 
-#######################"Troll" command#######################
+####################### Troll command #######################
 
 troll:
   player-not-online: "Player [player] is not currently online." # [player] will be replaced by the player's name.
@@ -52,14 +56,12 @@ troll:
   freefall-cannot-fall: "Free fall cannot be activated as the target is not under open sky."
   kill-message: "died due to mishap."
 
-#########################"Troll" GUI#########################
+######################### Troll GUI #########################
 
 troll-gui:
   title: "Troll"
   status-on: "On"
   status-off: "Off"
-  close: "Close"
-  close-description: "Close the Troll GUI"
   vanish: "Vanish"
   vanish-description: "Make the target disappear"
   teleport: "Teleport"
@@ -109,12 +111,10 @@ troll-gui:
   freefall: "Freefall"
   freefall-description: "Teleport the target into the air and let them fall freely"
 
-#######################"Trollbows" GUI#######################
+####################### Trollbows GUI #######################
 
 trollbows:
   title: "Trollbows"
-  close: "Close"
-  close-description: "Close the Trollbows GUI"
   explosion-bow: "Explosion Bow"
   explosion-bow-description: "A bow that creates an explosion on arrow impact"
   tnt-bow: "TNT Bow"
@@ -124,7 +124,7 @@ trollbows:
   silverfish-bow: "Silverfish Bow"
   silverfish-bow-description: "A bow that spawns a horde of silverfish on arrow impact"
 
-####################Features Translations####################
+################### Features translations ###################
 
 vanish:
   quit-message: "[player] left the game." # [player] will be replaced by the player's name.
@@ -144,17 +144,14 @@ fake-ban:
 
 fake-op-message: "[Server: Made [player] a server operator]" # [player] will be replaced by the player's name.
 
-#######################"Settings" GUI#######################
+######################## Settings GUI ########################
 
 trollsettings:
   title: "TrollPlus Settings"
   status-on: "On"
   status-off: "Off"
-  close: "Close"
-  close-description: "Close the settings GUI"
-  language: "Language:"
-  language-description: "Set the plugin's language. Available options: custom, en, de, zhcn, zhtw."
-  language-successfully-changed: "Language changed successfully!"
+  language: "Change language"
+  language-description: "Set the plugin's language. Available options: custom, de, en, es, fr, nl, zh-cn, zh-tw."
   metrics-enabled: "Metrics:"
   metrics-enabled-description: "Enable or disable plugin metrics (will take effect on the next restart/reload)."
   check-for-updates: "Check for Updates:"
@@ -167,10 +164,25 @@ trollsettings:
   set-fire-description: "Allow or disallow setting fire for 'TNT track' and Trollbows."
   break-blocks: "Break Blocks:"
   break-blocks-description: "Allow or disallow explosions from destroying blocks for 'TNT track' and Trollbows."
+  lang:
+    title: "TrollPlus language settings"
+    current-language: "Current language:"
+    successfully-changed: "Language changed successfully!"
+    custom: "Custom"
+    de: "German"
+    en: "English"
+    es: "Spanish"
+    fr: "French"
+    nl: "Dutch"
+    zh-cn: "Simplified Chinese"
+    zh-tw: "Traditional Chinese"
 
-############################GUIs#############################
+########################### GUIs ############################
 
 guis:
-  placeholder-description: "Just a placeholder for now."
-  placeholder-coming-soon: "Coming soon"
-  placeholder-coming-soon-description: "A placeholder for upcoming features."
+  placeholder:
+    description: "Just a placeholder for now."
+    coming-soon: "Coming soon"
+    coming-soon-description: "A placeholder for upcoming features."
+  close: "Close"
+  close-description: "Close the GUI"

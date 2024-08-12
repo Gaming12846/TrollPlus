@@ -41,6 +41,10 @@ public class TrollPlus extends JavaPlugin {
     public ConfigUtil blocklistConfig;
     public ConfigUtil langCustomConfig;
     public ConfigUtil langGermanConfig;
+    public ConfigUtil langEnglishConfig;
+    public ConfigUtil langSpanishConfig;
+    public ConfigUtil langFrenchConfig;
+    public ConfigUtil langDutchConfig;
     public ConfigUtil langSimplifiedChineseConfig;
     public ConfigUtil langTraditionalChineseConfig;
     public ConfigUtil langEnglishConfig;
@@ -67,11 +71,14 @@ public class TrollPlus extends JavaPlugin {
         this.saveDefaultConfig();
 
         blocklistConfig = new ConfigUtil(this, "blocklist.yml");
-        langCustomConfig = new ConfigUtil(this, "lang_custom.yml");
-        langGermanConfig = new ConfigUtil(this, "lang_de.yml");
-        langSimplifiedChineseConfig = new ConfigUtil(this, "lang_zhcn.yml");
-        langTraditionalChineseConfig = new ConfigUtil(this, "lang_zhtw.yml");
-        langEnglishConfig = new ConfigUtil(this, "lang_en.yml");
+        langCustomConfig = new ConfigUtil(this, "languages/lang_custom.yml");
+        langGermanConfig = new ConfigUtil(this, "languages/lang_de.yml");
+        langEnglishConfig = new ConfigUtil(this, "languages/lang_en.yml");
+        langSpanishConfig = new ConfigUtil(this, "languages/lang_es.yml");
+        langFrenchConfig = new ConfigUtil(this, "languages/lang_fr.yml");
+        langDutchConfig = new ConfigUtil(this, "languages/lang_nl.yml");
+        langSimplifiedChineseConfig = new ConfigUtil(this, "languages/lang_zh-cn.yml");
+        langTraditionalChineseConfig = new ConfigUtil(this, "languages/lang_zh-tw.yml");
 
         if (!configVersion.equalsIgnoreCase(this.getConfig().getString("version")))
             getLogger().warning(getLanguageConfig().getConfig().getString("config-outdated"));
@@ -90,9 +97,15 @@ public class TrollPlus extends JavaPlugin {
                 return langCustomConfig;
             case "de":
                 return langGermanConfig;
-            case "zhcn":
+            case "es":
+                return langSpanishConfig;
+            case "fr":
+                return langFrenchConfig;
+            case "nl":
+                return langDutchConfig;
+            case "zh-cn":
                 return langSimplifiedChineseConfig;
-            case "zhtw":
+            case "zh-tw":
                 return langTraditionalChineseConfig;
             default:
                 return langEnglishConfig;
