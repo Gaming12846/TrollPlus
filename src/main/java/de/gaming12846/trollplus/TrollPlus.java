@@ -38,6 +38,7 @@ public class TrollPlus extends JavaPlugin {
     public boolean updateAvailable = false;
 
     // ConfigUtil instances for various configuration files
+    private ConfigUtil blocklistConfig;
     public ConfigUtil langCustomConfig;
     public ConfigUtil langGermanConfig;
     public ConfigUtil langEnglishConfig;
@@ -47,8 +48,7 @@ public class TrollPlus extends JavaPlugin {
     public ConfigUtil langSimplifiedChineseConfig;
     public ConfigUtil langTraditionalChineseConfig;
     private double serverVersion;
-    // ConfigUtil instances for various configuration files
-    private ConfigUtil blocklistConfig;
+
     // Command and Listener instances
     private TrollBowsCommand trollBowsCommand;
     private TrollCommand trollCommand;
