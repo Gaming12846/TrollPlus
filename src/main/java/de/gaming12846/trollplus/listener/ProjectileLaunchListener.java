@@ -8,12 +8,15 @@ package de.gaming12846.trollplus.listener;
 import de.gaming12846.trollplus.TrollPlus;
 import de.gaming12846.trollplus.utils.ConfigUtil;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
+import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -44,20 +47,32 @@ public class ProjectileLaunchListener implements Listener {
         String displayName = itemMeta.getDisplayName();
 
         // Handle explosion arrow
-        if (displayName.equals(ChatColor.RED + langConfig.getString("trollbows.explosion-bow")) && itemMeta.isUnbreakable())
+        if (displayName.equals(ChatColor.RED + langConfig.getString("trollbows.explosion-bow")) && itemMeta.isUnbreakable()) {
             handleExplosionArrow(arrow);
+            if (plugin.getServerVersion() < 1.20 && player.getGameMode() != GameMode.CREATIVE)
+                player.getInventory().addItem(new ItemStack(Material.ARROW));
+        }
 
         // Handle TNT arrow
-        if (displayName.equals(ChatColor.RED + langConfig.getString("trollbows.tnt-bow")) && itemMeta.isUnbreakable())
+        if (displayName.equals(ChatColor.RED + langConfig.getString("trollbows.tnt-bow")) && itemMeta.isUnbreakable()) {
             handleTntArrow(arrow);
+            if (plugin.getServerVersion() < 1.20 && player.getGameMode() != GameMode.CREATIVE)
+                player.getInventory().addItem(new ItemStack(Material.ARROW));
+        }
 
         // Handle lightning bolt arrow
-        if (displayName.equals(ChatColor.RED + langConfig.getString("trollbows.lightning-bolt-bow")) && itemMeta.isUnbreakable())
+        if (displayName.equals(ChatColor.RED + langConfig.getString("trollbows.lightning-bolt-bow")) && itemMeta.isUnbreakable()) {
             handleLightningBoltArrow(arrow);
+            if (plugin.getServerVersion() < 1.20 && player.getGameMode() != GameMode.CREATIVE)
+                player.getInventory().addItem(new ItemStack(Material.ARROW));
+        }
 
         // Handle silverfish arrow
-        if (displayName.equals(ChatColor.RED + langConfig.getString("trollbows.silverfish-bow")) && itemMeta.isUnbreakable())
+        if (displayName.equals(ChatColor.RED + langConfig.getString("trollbows.silverfish-bow")) && itemMeta.isUnbreakable()) {
             handleSilverfishArrow(arrow);
+            if (plugin.getServerVersion() < 1.20 && player.getGameMode() != GameMode.CREATIVE)
+                player.getInventory().addItem(new ItemStack(Material.ARROW));
+        }
     }
 
     // Handles the explosion arrow effect
@@ -72,7 +87,8 @@ public class ProjectileLaunchListener implements Listener {
                     return;
                 }
 
-                arrow.getWorld().spawnParticle(Particle.FIREWORK, arrow.getLocation(), 1, 0, 0, 0, 0);
+                Particle particleType = plugin.getServerVersion() < 1.20 ? Particle.FLAME : Particle.FIREWORK;
+                arrow.getWorld().spawnParticle(particleType, arrow.getLocation(), 1, 0, 0, 0, 0);
             }
         }.runTaskTimer(plugin, 0, 1);
     }
@@ -89,7 +105,8 @@ public class ProjectileLaunchListener implements Listener {
                     return;
                 }
 
-                arrow.getWorld().spawnParticle(Particle.SMOKE, arrow.getLocation(), 1, 0, 0, 0, 0);
+                Particle particleType = plugin.getServerVersion() < 1.20 ? Particle.FLAME : Particle.SMOKE;
+                arrow.getWorld().spawnParticle(particleType, arrow.getLocation(), 1, 0, 0, 0, 0);
             }
         }.runTaskTimer(plugin, 0, 1);
     }
@@ -97,8 +114,6 @@ public class ProjectileLaunchListener implements Listener {
     // Handles the lightning bolt arrow effect
     private void handleLightningBoltArrow(Arrow arrow) {
         arrow.setMetadata("TROLLPLUS_LIGHTNING_BOLT_ARROW", new FixedMetadataValue(plugin, arrow));
-
-        Particle particleType = plugin.getServerVersion() < 1.14 ? Particle.FIREWORK : Particle.FLASH;
 
         new BukkitRunnable() {
             @Override
@@ -108,6 +123,7 @@ public class ProjectileLaunchListener implements Listener {
                     return;
                 }
 
+                Particle particleType = plugin.getServerVersion() < 1.20 ? Particle.FLASH : Particle.FIREWORK;
                 arrow.getWorld().spawnParticle(particleType, arrow.getLocation(), 1, 0, 0, 0, 0);
             }
         }.runTaskTimer(plugin, 0, 1);

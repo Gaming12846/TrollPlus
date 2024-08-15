@@ -68,7 +68,7 @@ public class ProjectileHitListener implements Listener {
         TNTPrimed tnt = arrow.getWorld().spawn(arrow.getLocation(), TNTPrimed.class);
         tnt.setFuseTicks(40);
         tnt.setMetadata("TROLLPLUS_TNT", new FixedMetadataValue(plugin, tnt));
-        tnt.getWorld().playSound(arrow.getLocation(), Sound.ENTITY_TNT_PRIMED, 20.0f, 1.0f);
+        tnt.getWorld().playSound(arrow.getLocation(), Sound.ENTITY_TNT_PRIMED, 20, 1);
     }
 
     // Handles the lightning bolt arrow effect
@@ -81,8 +81,9 @@ public class ProjectileHitListener implements Listener {
     // Handles the silverfish arrow effect
     private void handleSilverfishArrow(Arrow arrow) {
         arrow.removeMetadata("TROLLPLUS_SILVERFISH_ARROW", plugin);
-        arrow.getWorld().playSound(arrow.getLocation(), Sound.ENTITY_SILVERFISH_STEP, 20.0f, 1.0f);
-        arrow.getWorld().spawnParticle(Particle.EXPLOSION, arrow.getLocation(), 1);
+        arrow.getWorld().playSound(arrow.getLocation(), Sound.ENTITY_SILVERFISH_STEP, 20, 1);
+        Particle particleType = plugin.getServerVersion() < 1.20 ? Particle.ASH : Particle.EXPLOSION;
+        arrow.getWorld().spawnParticle(particleType, arrow.getLocation(), 1);
 
         for (int i = 0; i < RandomUtils.nextInt(3, 5); i++) {
             Location spawnLocation = arrow.getLocation().add(RandomUtils.nextInt(0, 2), RandomUtils.nextInt(0, 2), RandomUtils.nextInt(0, 2));

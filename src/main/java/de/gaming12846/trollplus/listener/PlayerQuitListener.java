@@ -38,7 +38,7 @@ public class PlayerQuitListener implements Listener {
             }
 
             // Remove any active slowness potion effects
-            player.removePotionEffect(PotionEffectType.SLOWNESS);
+            if (plugin.getServerVersion() > 1.19) player.removePotionEffect(PotionEffectType.SLOWNESS);
         }
     }
 

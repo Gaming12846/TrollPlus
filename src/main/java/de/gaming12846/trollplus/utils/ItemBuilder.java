@@ -5,6 +5,7 @@
 
 package de.gaming12846.trollplus.utils;
 
+import de.gaming12846.trollplus.TrollPlus;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -27,7 +28,7 @@ public class ItemBuilder {
 
         if (meta != null) {
             meta.setDisplayName(name);
-            meta.addItemFlags(ItemFlag.HIDE_ADDITIONAL_TOOLTIP, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ARMOR_TRIM, ItemFlag.HIDE_DESTROYS, ItemFlag.HIDE_DYE, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_UNBREAKABLE);
+            meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_DESTROYS, ItemFlag.HIDE_DYE, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_UNBREAKABLE);
 
             item.setItemMeta(meta);
         }
@@ -42,7 +43,7 @@ public class ItemBuilder {
 
         if (meta != null) {
             meta.setDisplayName(name);
-            meta.addItemFlags(ItemFlag.HIDE_ADDITIONAL_TOOLTIP, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ARMOR_TRIM, ItemFlag.HIDE_DESTROYS, ItemFlag.HIDE_DYE, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_UNBREAKABLE);
+            meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_DESTROYS, ItemFlag.HIDE_DYE, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_UNBREAKABLE);
 
             List<String> loreList = Collections.singletonList(ChatColor.GRAY + lore);
             meta.setLore(loreList);
@@ -70,15 +71,16 @@ public class ItemBuilder {
     }
 
     // Creates a bow ItemStack with a custom name and lore
-    public static ItemStack createBow(String name, String lore) {
+    public static ItemStack createBow(TrollPlus plugin, String name, String lore) {
         ItemStack bow = new ItemStack(Material.BOW);
         ItemMeta meta = bow.getItemMeta();
 
         if (meta != null) {
             meta.setDisplayName(ChatColor.RED + name);
             meta.setUnbreakable(true);
-            meta.addEnchant(Enchantment.INFINITY, 1, false);
-            meta.addItemFlags(ItemFlag.HIDE_ADDITIONAL_TOOLTIP, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ARMOR_TRIM, ItemFlag.HIDE_DESTROYS, ItemFlag.HIDE_DYE, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_UNBREAKABLE);
+            if (plugin.getServerVersion() > 1.19) meta.addEnchant(Enchantment.INFINITY, 1, false);
+
+            meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_DESTROYS, ItemFlag.HIDE_DYE, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_UNBREAKABLE);
 
             List<String> loreList = Collections.singletonList(ChatColor.GRAY + lore);
             meta.setLore(loreList);

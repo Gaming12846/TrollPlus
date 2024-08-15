@@ -36,6 +36,7 @@ public class TrollPlus extends JavaPlugin {
     public final String configVersion = "1.4.7";
     public final String languageConfigVersion = "1.4.7";
     public boolean updateAvailable = false;
+    private double serverVersion;
 
     // ConfigUtil instances for various configuration files
     private ConfigUtil blocklistConfig;
@@ -47,7 +48,6 @@ public class TrollPlus extends JavaPlugin {
     public ConfigUtil langDutchConfig;
     public ConfigUtil langSimplifiedChineseConfig;
     public ConfigUtil langTraditionalChineseConfig;
-    private double serverVersion;
 
     // Command and Listener instances
     private TrollBowsCommand trollBowsCommand;
@@ -121,15 +121,15 @@ public class TrollPlus extends JavaPlugin {
 
     // Checks the server version for incompatibility
     private void checkServerVersion() {
-        String bukkitVersion = getServer().getBukkitVersion().split("-")[0].split("\\.")[1];
+        String bukkitVersion = getServer().getBukkitVersion().split("-")[0].split("\\.")[0] + "." + getServer().getBukkitVersion().split("-")[0].split("\\.")[1];
         serverVersion = Double.parseDouble(bukkitVersion);
 
         if (serverVersion < 1.13) {
-            getLogger().warning(getLanguageConfig().getString("server-version-unsupported"));
+            getLogger().warning(getLanguageConfig().getString("server-version.unsupported"));
             if (getConfig().getBoolean("load-despite-unsupported-version", false))
                 getServer().getPluginManager().disablePlugin(this);
-        } else if (serverVersion < 1.16)
-            getLogger().info(getLanguageConfig().getString("server-version-partly-supported"));
+        } else if (serverVersion < 1.20)
+            getLogger().info(getLanguageConfig().getString("server-version.partly-supported"));
     }
 
     // Retrieves the server version

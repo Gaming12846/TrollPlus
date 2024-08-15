@@ -216,10 +216,11 @@ public class InventoryClickListener implements Listener {
     private void handleFreezeFeature(Player target, GUIUtil trollGUI, ConfigUtil langConfig) {
         if (!target.hasMetadata("TROLLPLUS_FREEZE")) {
             target.setMetadata("TROLLPLUS_FREEZE", new FixedMetadataValue(plugin, target.getName()));
-            target.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, Integer.MAX_VALUE, 6));
+            if (plugin.getServerVersion() > 1.19)
+                target.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, Integer.MAX_VALUE, 6));
         } else {
             target.removeMetadata("TROLLPLUS_FREEZE", plugin);
-            target.removePotionEffect(PotionEffectType.SLOWNESS);
+            if (plugin.getServerVersion() > 1.19) target.removePotionEffect(PotionEffectType.SLOWNESS);
         }
 
         trollGUI.addItem(10, ItemBuilder.createItemWithLore(Material.ICE, ChatColor.WHITE + langConfig.getString("troll-gui.freeze") + " " + trollGUI.getStatusTrollGUI("TROLLPLUS_FREEZE"), langConfig.getString("troll-gui.freeze-description")));
@@ -552,10 +553,12 @@ public class InventoryClickListener implements Listener {
         if (!targetInitiallyAllowedFlight) target.setAllowFlight(true);
 
         // Spawn initial explosion particle at the player's location
-        target.getWorld().spawnParticle(Particle.EXPLOSION, target.getLocation(), 1);
+        Particle particleType = plugin.getServerVersion() < 1.20 ? Particle.ASH : Particle.EXPLOSION;
+        target.getWorld().spawnParticle(particleType, target.getLocation(), 1);
 
         // Create an array of particles to simulate the rocket launch
-        Particle[] particles = {Particle.FIREWORK, Particle.LAVA, Particle.FLAME};
+        Particle particlesType = plugin.getServerVersion() < 1.20 ? Particle.FLASH : Particle.FIREWORK;
+        Particle[] particles = {particlesType, Particle.LAVA, Particle.FLAME};
         for (Particle particle : particles) {
             target.getWorld().spawnParticle(particle, target.getLocation(), 25);
         }
@@ -701,11 +704,10 @@ public class InventoryClickListener implements Listener {
 
     // Gives the player a trollbow
     private void givePlayerBow(Player player, String bowName, String bowDescription) {
-        ItemStack bow = ItemBuilder.createBow(bowName, bowDescription);
-        ItemStack arrow = new ItemStack(Material.ARROW, 1);
+        ItemStack bow = ItemBuilder.createBow(plugin, bowName, bowDescription);
 
         if (player.getGameMode() != GameMode.CREATIVE && !player.getInventory().contains(Material.ARROW))
-            player.getInventory().addItem(arrow);
+            player.getInventory().addItem(new ItemStack(Material.ARROW));
 
         player.getInventory().addItem(bow);
     }
@@ -762,7 +764,7 @@ public class InventoryClickListener implements Listener {
                 break;
             // Toggle teleport control
             case 14:
-                toggleSetting(event, "control.teleport-back", Material.ENDER_PEARL, settingsGUI, langConfig);
+                toggleSetting(event, "control-teleport-back", Material.ENDER_PEARL, settingsGUI, langConfig);
                 break;
             // Toggle fire setting
             case 15:
@@ -780,39 +782,53 @@ public class InventoryClickListener implements Listener {
 
     // Handles the language change setting
     private void handleLanguageChangeGUI(InventoryClickEvent event, Player player, ConfigUtil langConfig) {
+        // Cancel the event to prevent any unwanted interactions
+        event.setCancelled(true);
+
         switch (event.getSlot()) {
             case 26:
                 player.closeInventory();
                 break;
             case 9:
                 plugin.getConfig().set("language", "custom");
+                saveLanguageChange(player, langConfig);
                 break;
             case 10:
                 plugin.getConfig().set("language", "de");
+                saveLanguageChange(player, langConfig);
                 break;
             case 11:
                 plugin.getConfig().set("language", "en");
+                saveLanguageChange(player, langConfig);
                 break;
             case 12:
                 plugin.getConfig().set("language", "es");
+                saveLanguageChange(player, langConfig);
                 break;
             case 13:
                 plugin.getConfig().set("language", "fr");
+                saveLanguageChange(player, langConfig);
                 break;
             case 14:
                 plugin.getConfig().set("language", "nl");
+                saveLanguageChange(player, langConfig);
                 break;
             case 15:
                 plugin.getConfig().set("language", "zh-cn");
+                saveLanguageChange(player, langConfig);
                 break;
             case 16:
                 plugin.getConfig().set("language", "zh-tw");
+                saveLanguageChange(player, langConfig);
                 break;
             default:
                 // No action for other slots
                 break;
         }
+    }
 
+    // Saves the language change to the config ans send a success message
+    private void saveLanguageChange(Player player, ConfigUtil langConfig) {
         // Save configuration and send the player a success message
         plugin.saveConfig();
         player.closeInventory();
