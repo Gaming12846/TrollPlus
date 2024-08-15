@@ -52,10 +52,10 @@ vanish:
 hand-item-drop-period: 20
 
 # Control Feature
-control: # Enable or disable teleporting the player back to the starting position. [Default: true]
-  teleport-back: true
-  # Period in ticks between the synchronization of the state between the controller and the target player. [Default: 1]
-  period: 1
+# Enable or disable teleporting the player back to the starting position. [Default: true]
+control-teleport-back: true
+# Period in ticks between the synchronization of the state between the controller and the target player. [Default: 1]
+control-period: 1
 
 # Spank Feature
 # Period in ticks between each spanking action. [Default: 100]
