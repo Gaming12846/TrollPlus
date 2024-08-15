@@ -1,6 +1,15 @@
 # Changelog for TrollPlus
 
-## [1.4.7] - Latest Stable Release
+## [1.4.8] - Latest Stable Release
+
+- Enhanced compatibility with older versions
+- Improved server version detection
+- Added support for Spanish, French, and Dutch languages
+- Refined proofreading and grammar corrections
+- Updated TrollPlus settings GUI for better usability
+- Hovering over a player's head in the troll menu now displays useful information
+
+## [1.4.7]
 
 - Updated to Minecraft version 1.21.1
 - Added Traditional Chinese language support

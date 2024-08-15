@@ -33,8 +33,8 @@ import java.util.Objects;
 
 // The main class for the TrollPlus plugin
 public class TrollPlus extends JavaPlugin {
-    public final String configVersion = "1.4.7";
-    public final String languageConfigVersion = "1.4.7";
+    public final String configVersion = "1.4.8";
+    public final String languageConfigVersion = "1.4.8";
     public boolean updateAvailable = false;
     private double serverVersion;
 

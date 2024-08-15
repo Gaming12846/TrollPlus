@@ -13,7 +13,8 @@ Are you looking to have some fun and prank your friends in Minecraft? **TrollPlu
 allows you to execute various pranks and tricks on other players, making their Minecraft experience both fun and
 surprising.
 
-This plugin is compatible with Minecraft versions **1.13 to 1.21.1** on Spigot and Paper.
+This plugin is compatible with Minecraft versions 1.13 to 1.21.1 on Spigot and Paper. However, versions prior to 1.20
+have limited support, meaning some features may behave differently or be unavailable.e
 
 For installation instructions, command usage, and permissions, please refer to
 the [wiki](https://github.com/Gaming12846/TrollPlus/wiki).
