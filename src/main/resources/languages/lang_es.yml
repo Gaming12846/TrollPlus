@@ -54,7 +54,7 @@ troll:
   rocket-cannot-launch: "El cohete no se puede lanzar ya que el objetivo no está bajo un cielo abierto."
   rocket-launch-stopped: "El lanzamiento del cohete se detuvo ya que el objetivo ya no está bajo un cielo abierto."
   freefall-cannot-fall: "La caída libre no se puede activar ya que el objetivo no está bajo un cielo abierto."
-  kill-message: "murió debido a un accidente."
+  kill-message: "murió debido a un accidente"
 
 ######################### Troll GUI #########################
 
@@ -139,8 +139,8 @@ spam-messages:
   - "XoXoXoXo"
 
 fake-ban:
-  message-player: "Has sido baneado de este servidor."
-  message-broadcast: "El jugador [player] ha sido baneado permanentemente del servidor." # [player] será reemplazado por el nombre del jugador.
+  message-player: "Has sido baneado de este servidor"
+  message-broadcast: "El jugador [player] ha sido baneado permanentemente del servidor" # [player] será reemplazado por el nombre del jugador.
 
 fake-op-message: "[Servidor: Hizo a [player] operador del servidor]" # [player] será reemplazado por el nombre del jugador.
 

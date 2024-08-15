@@ -54,7 +54,7 @@ troll:
   rocket-cannot-launch: "Start nicht möglich, da das Ziel sich nicht unter freiem Himmel befindet."
   rocket-launch-stopped: "Raketenstart gestoppt, da das Ziel nicht mehr unter freiem Himmel ist."
   freefall-cannot-fall: "Freier Fall kann nicht aktiviert werden, da sich das Ziel nicht unter freiem Himmel befindet."
-  kill-message: "ist durch Dummheit gestorben."
+  kill-message: "ist durch Dummheit gestorben"
 
 ######################### Troll GUI #########################
 
@@ -139,10 +139,10 @@ spam-messages:
   - "XoXoXoXo"
 
 fake-ban:
-  message-player: "Du wurdest von diesem Server ausgeschlossen."
-  message-broadcast: "Der Spieler [player] wurde dauerhaft vom Server ausgeschlossen." # "[player]" muss in der Nachricht enthalten sein, da es durch den Namen des Spielers ersetzt wird.
+  message-player: "Du wurdest von diesem Server ausgeschlossen"
+  message-broadcast: "Der Spieler [player] wurde dauerhaft vom Server ausgeschlossen" # "[player]" muss in der Nachricht enthalten sein, da es durch den Namen des Spielers ersetzt wird.
 
-fake-op-message: "[Server: Der Spieler [player] wurde zum Server-Operator ernannt.]" # "[player]" muss in der Nachricht enthalten sein, da es durch den Namen des Spielers ersetzt wird.
+fake-op-message: "[Server: Der Spieler [player] wurde zum Server-Operator ernannt]" # "[player]" muss in der Nachricht enthalten sein, da es durch den Namen des Spielers ersetzt wird.
 
 ##################### Einstellungen GUI #####################
 

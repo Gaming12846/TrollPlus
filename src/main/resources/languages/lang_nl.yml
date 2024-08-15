@@ -54,7 +54,7 @@ troll:
   rocket-cannot-launch: "Raket kan niet worden gelanceerd omdat het doel niet onder een open lucht staat."
   rocket-launch-stopped: "Raketlancering gestopt omdat het doel niet langer onder een open lucht staat."
   freefall-cannot-fall: "Vrije val kan niet worden geactiveerd omdat het doel niet onder een open lucht staat."
-  kill-message: "stierf door een ongeluk."
+  kill-message: "stierf door een ongeluk"
 
 ######################### Troll GUI #########################
 
@@ -139,8 +139,8 @@ spam-messages:
   - "XoXoXoXo"
 
 fake-ban:
-  message-player: "Je bent verbannen van deze server."
-  message-broadcast: "Speler [player] is permanent verbannen van de server." # [player] wordt vervangen door de naam van de speler.
+  message-player: "Je bent verbannen van deze server"
+  message-broadcast: "Speler [player] is permanent verbannen van de server" # [player] wordt vervangen door de naam van de speler.
 
 fake-op-message: "[Server: Maakte [player] een serveroperator]" # [player] wordt vervangen door de naam van de speler.
 
