@@ -25,7 +25,7 @@ the [wiki](https://github.com/Gaming12846/TrollPlus/wiki).
 
 - **Highly Customizable Plugin Configuration:** Configure most of the features to suit your needs.
 - **Fully Customizable Language Configuration:** Translate messages, descriptions, and item names into your preferred
-  language. (Available languages: English, German, Traditional Chinese, Simplified Chinese)
+  language. (Available languages: English, German, Spanish, French, Dutch, Simplified Chinese and Traditional Chinese)
 - **Blocklist:** Protect players by preventing the troll command from being executed on them.
 
 ### Troll Menu
