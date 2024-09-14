@@ -82,7 +82,7 @@ public class ProjectileLaunchListener implements Listener {
         new BukkitRunnable() {
             @Override
             public void run() {
-                if (arrow.isInBlock()) {
+                if (arrow.isInBlock() || arrow.isOnGround() ||arrow.isInWater() ||arrow.isDead()) {
                     cancel();
                     return;
                 }
@@ -100,7 +100,7 @@ public class ProjectileLaunchListener implements Listener {
         new BukkitRunnable() {
             @Override
             public void run() {
-                if (arrow.isInBlock()) {
+                if (arrow.isInBlock() || arrow.isOnGround() ||arrow.isInWater() ||arrow.isDead()) {
                     cancel();
                     return;
                 }
@@ -118,7 +118,7 @@ public class ProjectileLaunchListener implements Listener {
         new BukkitRunnable() {
             @Override
             public void run() {
-                if (arrow.isInBlock()) {
+                if (arrow.isInBlock() || arrow.isOnGround() ||arrow.isInWater() ||arrow.isDead()) {
                     cancel();
                     return;
                 }
@@ -136,7 +136,7 @@ public class ProjectileLaunchListener implements Listener {
         new BukkitRunnable() {
             @Override
             public void run() {
-                if (arrow.isInBlock()) {
+                if (arrow.isInBlock() || arrow.isOnGround() ||arrow.isInWater() ||arrow.isDead()) {
                     cancel();
                     return;
                 }
