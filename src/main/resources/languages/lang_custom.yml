@@ -16,8 +16,8 @@ server-version:
   partly-supported: ""
 
 checking-updates: ""
-no-update-available: ""
 update-available: ""
+no-update-available: ""
 unable-check-updates: ""
 
 config-outdated: ""

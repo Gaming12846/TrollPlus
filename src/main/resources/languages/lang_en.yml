@@ -14,8 +14,8 @@ server-version:
   partly-supported: "Server version partially supported. Some functions are different or not available."
 
 checking-updates: "Checking for updates..."
+update-available: "A new update is available! Download it from GitHub:"
 no-update-available: "No new updates available."
-update-available: "A new update is available! Download it from SpigotMC:"
 unable-check-updates: "Unable to check for updates."
 
 config-outdated: "Your configuration file is outdated! Please update it to the latest version. The plugin will attempt to load it, but errors may occur."

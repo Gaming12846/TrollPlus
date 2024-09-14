@@ -15,8 +15,8 @@ server-version:
   partly-supported: "伺服器版本部分支援。某些功能有所不同或無法使用。"
 
 checking-updates: "正在檢查更新..."
+update-available: "發現新版本！請前往 GitHub 頁面下載最新版本："
 no-update-available: "已是最新版本"
-update-available: "發現新版本！請前往 SpigotMC 頁面下載最新版本："
 unable-check-updates: "檢查新版本失敗："
 
 config-outdated: "您的配置已過時！請將您的配置更新到最新版本。插件無論如何都會嘗試加載它，但可能會出現錯誤"

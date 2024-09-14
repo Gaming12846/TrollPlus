@@ -15,8 +15,8 @@
     <packaging>jar</packaging>
 
     <name>TrollPlus</name>
-    <description>A simple plugin to troll players in Minecraft</description>
-    <url>https://www.spigotmc.org/resources/81193</url>
+    <description>Prank and trick other players to make their Minecraft experience both fun and surprising!</description>
+    <url>https://github.com/Gaming12846/TrollPlus</url>
 
     <properties>
         <java.version>1.8</java.version>

@@ -94,8 +94,7 @@ public class TrollPlusCommand implements CommandExecutor {
         sender.sendMessage(Constants.PLUGIN_PREFIX + headerFooter);
 
         // Send a message when an update is available
-        if (plugin.updateAvailable)
-            sender.sendMessage(langConfig.getString("update-available") + " https://www.spigotmc.org/resources/81193");
+        sender.sendMessage(plugin.updateChecker);
     }
 
     // Handles the "reload" subcommand to reload plugin configurations

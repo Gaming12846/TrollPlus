@@ -35,11 +35,6 @@ import java.util.Objects;
 public class TrollPlus extends JavaPlugin {
     public final String configVersion = "1.4.8";
     public final String languageConfigVersion = "1.4.8";
-    public boolean updateAvailable = false;
-    private double serverVersion;
-
-    // ConfigUtil instances for various configuration files
-    private ConfigUtil blocklistConfig;
     public ConfigUtil langCustomConfig;
     public ConfigUtil langGermanConfig;
     public ConfigUtil langEnglishConfig;
@@ -48,7 +43,10 @@ public class TrollPlus extends JavaPlugin {
     public ConfigUtil langDutchConfig;
     public ConfigUtil langSimplifiedChineseConfig;
     public ConfigUtil langTraditionalChineseConfig;
-
+    public String updateChecker;
+    private double serverVersion;
+    // ConfigUtil instances for various configuration files
+    private ConfigUtil blocklistConfig;
     // Command and Listener instances
     private TrollBowsCommand trollBowsCommand;
     private TrollCommand trollCommand;
@@ -189,15 +187,7 @@ public class TrollPlus extends JavaPlugin {
     private void checkForUpdates() {
         if (getConfig().getBoolean("check-for-updates", true)) {
             getLogger().info(getLanguageConfig().getString("checking-updates"));
-
-            new UpdateChecker(this, 81193).getVersion(version -> {
-                if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
-                    getLogger().info(getLanguageConfig().getString("no-update-available"));
-                } else {
-                    getLogger().info(getLanguageConfig().getString("update-available") + " https://www.spigotmc.org/resources/81193");
-                    updateAvailable = true;
-                }
-            });
+            updateChecker = new UpdateChecker(this).checkForUpdates();
         }
     }
 
