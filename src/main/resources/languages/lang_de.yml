@@ -60,20 +60,6 @@ troll:
 
 troll-gui:
   title: "Troll"
-  status-on: "An"
-  status-off: "Aus"
-  vanish: "Verschwinden"
-  vanish-description: "Lass dich für das Ziel verschwinden"
-  teleport: "Teleport"
-  teleport-description: "Teleportiere dich zum Ziel"
-  random-troll: "Zufälliger Troll"
-  random-troll-description: "Wählt zufällig einen Troll aus, um das Ziel zu trollen"
-  kill: "Töten"
-  kill-description: "Töte das Ziel"
-  invsee: "Inventar sehen"
-  invsee-description: "Öffne das Inventar des Ziels"
-  invsee-ender-chest: "Endertruhe sehen"
-  invsee-ender-chest-description: "Öffne die Endertruhe des Ziels"
   freeze: "Einfrieren"
   freeze-description: "Einfrieren des Ziels und Verhindern von Bewegung, Interaktion oder dem Fallenlassen und Aufnehmen von Gegenständen"
   hand-item-drop: "Handgegenstände fallen lassen"
@@ -98,18 +84,33 @@ troll-gui:
   mob-spawner-description: "Lässt zufällige Mobs an der Position des Ziels erscheinen"
   slowly-kill: "Langsam töten"
   slowly-kill-description: "Tötet das Ziel langsam, indem es dem Ziel alle paar Sekunden Schaden zufügt"
-  random-scary-sound: "Zufälliges gruseliges Geräusch"
-  random-scary-sound-description: "Spielt ein zufälliges gruseliges Geräusch an der Position des Ziels ab, um das Ziel zu erschrecken"
   inventory-drop: "Inventar fallen lassen"
   inventory-drop-description: "Lässt alle Gegenstände aus dem Inventar des Ziels fallen, einschließlich Rüstung und Gegenstände aus der Offhand"
+  inventory-shuffle: "Inventar-Mischung"
+  inventory-shuffle-description: "Mischt alle Gegenstände im Inventar des Ziels."
+  random-scary-sound: "Zufälliges gruseliges Geräusch"
+  random-scary-sound-description: "Spielt ein zufälliges gruseliges Geräusch an der Position des Ziels ab, um das Ziel zu erschrecken"
   rocket: "Rakete"
   rocket-description: "Schießt das Ziel wie ein Feuerwerkskörper in die Luft"
+  freefall: "Freier Fall"
+  freefall-description: "Teleportiert das Ziel in die Luft und lässt es frei fallen"
   fake-ban: "Fake-Bann"
   fake-ban-description: "Lässt das Ziel glauben, dass es gebannt wurde"
   fake-op: "Fake-Op"
   fake-op-description: "Lässt das Ziel glauben, dass es Operator-Rechte hat"
-  freefall: "Freier Fall"
-  freefall-description: "Teleportiert das Ziel in die Luft und lässt es frei fallen"
+
+  teleport: "Teleport"
+  teleport-description: "Teleportiere dich zum Ziel"
+  invsee: "Inventar sehen"
+  invsee-description: "Öffne das Inventar des Ziels"
+  kill: "Töten"
+  kill-description: "Töte das Ziel"
+  invsee-ender-chest: "Endertruhe sehen"
+  invsee-ender-chest-description: "Öffne die Endertruhe des Ziels"
+  vanish: "Verschwinden"
+  vanish-description: "Lass dich für das Ziel verschwinden"
+  random-troll: "Zufälliger Troll"
+  random-troll-description: "Wählt zufällig einen Troll aus, um das Ziel zu trollen"
 
 ####################### Trollbows GUI #######################
 
@@ -123,6 +124,8 @@ trollbows:
   lightning-bolt-bow-description: "Ein Bogen, der beim Auftreffen des Pfeils einen Blitzschlag erzeugt"
   silverfish-bow: "Silberfischbogen"
   silverfish-bow-description: "Ein Bogen, der beim Auftreffen des Pfeils eine Horde Silberfische erzeugt"
+  potion-effect-bow: "Trankeffektbogen"
+  potion-effect-bow-description: "Ein Bogen, der beim Einschlag des Pfeils einen zufälligen Trankeffekt verursacht"
 
 ################## Features Übersetzungen ###################
 
@@ -148,8 +151,6 @@ fake-op-message: "[Server: Der Spieler [player] wurde zum Server-Operator ernann
 
 trollsettings:
   title: "TrollPlus Einstellungen"
-  status-on: "An"
-  status-off: "Aus"
   language: "Sprache ändern"
   language-description: "Die Sprache des Plugins festlegen. Verfügbare Optionen: custom, de, en, es, fr, nl, zh-cn, zh-tw."
   metrics-enabled: "Metriken:"
@@ -180,9 +181,9 @@ trollsettings:
 ########################### GUIs ############################
 
 guis:
+  status-on: "An"
+  status-off: "Aus"
   placeholder:
     description: "Nur ein einsamer Platzhalter :("
     coming-soon: "Demnächst verfügbar"
     coming-soon-description: "Nur ein Platzhalter für kommende Funktionen :("
-  close: "Schließen"
-  close-description: "Benutzeroberfläche schließen"

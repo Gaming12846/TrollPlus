@@ -62,19 +62,23 @@ public class TrollBowsCommand implements CommandExecutor {
 
     // Creates the TrollBows GUI for the player
     private void createTrollBowsGUI(ConfigUtil langConfig) {
-        trollBowsGUI = new GUIUtil(langConfig.getString("trollbows.title"), 9);
+        trollBowsGUI = new GUIUtil(ChatColor.BLACK + langConfig.getString("trollbows.title"), 9);
 
         // Add troll bows to the GUI
-        trollBowsGUI.addItemWithLore(8, Material.BARRIER, ChatColor.RED + langConfig.getString("guis.close"), langConfig.getString("guis.close-description"));
-        trollBowsGUI.addItem(0, ItemBuilder.createBow(plugin, langConfig.getString("trollbows.explosion-bow"), langConfig.getString("trollbows.explosion-bow-description")));
-        trollBowsGUI.addItem(1, ItemBuilder.createBow(plugin, langConfig.getString("trollbows.tnt-bow"), langConfig.getString("trollbows.tnt-bow-description")));
-        trollBowsGUI.addItem(2, ItemBuilder.createBow(plugin, langConfig.getString("trollbows.lightning-bolt-bow"), langConfig.getString("trollbows.lightning-bolt-bow-description")));
-        trollBowsGUI.addItem(3, ItemBuilder.createBow(plugin, langConfig.getString("trollbows.silverfish-bow"), langConfig.getString("trollbows.silverfish-bow-description")));
+        trollBowsGUI.addItem(2, ItemBuilder.createBow(plugin, langConfig.getString("trollbows.explosion-bow"), langConfig.getString("trollbows.explosion-bow-description")));
+        trollBowsGUI.addItem(3, ItemBuilder.createBow(plugin, langConfig.getString("trollbows.tnt-bow"), langConfig.getString("trollbows.tnt-bow-description")));
+        trollBowsGUI.addItem(4, ItemBuilder.createBow(plugin, langConfig.getString("trollbows.lightning-bolt-bow"), langConfig.getString("trollbows.lightning-bolt-bow-description")));
+        trollBowsGUI.addItem(5, ItemBuilder.createBow(plugin, langConfig.getString("trollbows.silverfish-bow"), langConfig.getString("trollbows.silverfish-bow-description")));
+        trollBowsGUI.addItem(6, ItemBuilder.createBow(plugin, langConfig.getString("trollbows.potion-effect-bow"), langConfig.getString("trollbows.potion-effect-bow-description")));
 
         // Add placeholders to the GUI
-        final byte[] placeholderSlots = {4, 5, 6, 7};
+        final byte[] placeholderSlots = {0, 8};
         for (int slot : placeholderSlots) {
-            trollBowsGUI.addItem(slot, ItemBuilder.createItemWithLore(Material.GRAY_STAINED_GLASS_PANE, " ", langConfig.getString("guis.placeholder.description")));
+            trollBowsGUI.addItem(slot, ItemBuilder.createItemWithLore(Material.RED_STAINED_GLASS_PANE, " ", langConfig.getString("guis.placeholder.description")));
+        }
+        final byte[] placeholderSlots1 = {1, 7};
+        for (int slot : placeholderSlots1) {
+            trollBowsGUI.addItem(slot, ItemBuilder.createItemWithLore(Material.WHITE_STAINED_GLASS_PANE, " ", langConfig.getString("guis.placeholder.description")));
         }
     }
 }

@@ -60,20 +60,6 @@ troll:
 
 troll-gui:
   title: "Troll"
-  status-on: "Aan"
-  status-off: "Uit"
-  vanish: "Verdwijnen"
-  vanish-description: "Laat het doel verdwijnen"
-  teleport: "Teleporteer"
-  teleport-description: "Teleporteer naar het doel"
-  random-troll: "Willekeurige Troll"
-  random-troll-description: "Selecteer willekeurig een trollactie voor het doel"
-  kill: "Doden"
-  kill-description: "Dood het doel"
-  invsee: "Bekijk Inventaris"
-  invsee-description: "Bekijk de inventaris van het doel"
-  invsee-ender-chest: "Bekijk Ender Chest"
-  invsee-ender-chest-description: "Bekijk de Ender Chest van het doel"
   freeze: "Bevriezen"
   freeze-description: "Voorkom dat het doel zich beweegt, interactie heeft of items laat vallen/opraapt"
   hand-item-drop: "Handitem Vallen"
@@ -98,18 +84,33 @@ troll-gui:
   mob-spawner-description: "Spawn willekeurige mobs op de locatie van het doel"
   slowly-kill: "Langzaam Doden"
   slowly-kill-description: "Breng schade toe aan het doel op intervallen"
-  random-scary-sound: "Willekeurig Eng Geluid"
-  random-scary-sound-description: "Speel een willekeurig eng geluid af op de locatie van het doel om te schrikken"
   inventory-drop: "Inventaris Vallen"
   inventory-drop-description: "Laat alle items uit de inventaris van het doel vallen, inclusief armor en offhand items"
+  inventory-shuffle: "Inventaris Herschikking"
+  inventory-shuffle-description: "Schudt alle items in de inventaris van het doelwit door elkaar."
+  random-scary-sound: "Willekeurig Eng Geluid"
+  random-scary-sound-description: "Speel een willekeurig eng geluid af op de locatie van het doel om te schrikken"
   rocket: "Raket"
   rocket-description: "Schiet het doel de lucht in als een vuurwerk"
+  freefall: "Vrije Val"
+  freefall-description: "Teleporteer het doel de lucht in en laat het vrij vallen"
   fake-ban: "Nep-Ban"
   fake-ban-description: "Laat het doel geloven dat het is geband"
   fake-op: "Nep-OP"
   fake-op-description: "Laat het doel geloven dat het operator-rechten heeft gekregen"
-  freefall: "Vrije Val"
-  freefall-description: "Teleporteer het doel de lucht in en laat het vrij vallen"
+
+  teleport: "Teleporteer"
+  teleport-description: "Teleporteer naar het doel"
+  invsee: "Bekijk Inventaris"
+  invsee-description: "Bekijk de inventaris van het doel"
+  kill: "Doden"
+  kill-description: "Dood het doel"
+  invsee-ender-chest: "Bekijk Ender Chest"
+  invsee-ender-chest-description: "Bekijk de Ender Chest van het doel"
+  vanish: "Verdwijnen"
+  vanish-description: "Laat het doel verdwijnen"
+  random-troll: "Willekeurige Troll"
+  random-troll-description: "Selecteer willekeurig een trollactie voor het doel"
 
 ####################### Trollbows GUI #######################
 
@@ -123,6 +124,8 @@ trollbows:
   lightning-bolt-bow-description: "Een boog die bliksem slaat bij het raken van een pijl"
   silverfish-bow: "Zilvervis Boog"
   silverfish-bow-description: "Een boog die een horde zilvervissen doet verschijnen bij het raken van een pijl"
+  potion-effect-bow: "Toverdrankeffectboog"
+  potion-effect-bow-description: "Een boog die bij het raken van een pijl een willekeurig toverdrankeffect veroorzaakt."
 
 ################### Kenmerken Vertalingen ###################
 
@@ -148,8 +151,6 @@ fake-op-message: "[Server: Maakte [player] een serveroperator]" # [player] wordt
 
 trollsettings:
   title: "TrollPlus Instellingen"
-  status-on: "Aan"
-  status-off: "Uit"
   language: "Taal wijzigen"
   language-description: "De taal van de plugin instellen. Beschikbare opties: custom, de, en, es, fr, nl, zh-cn, zh-tw."
   metrics-enabled: "Metrieken:"
@@ -180,9 +181,9 @@ trollsettings:
 ############################ GUIs ############################
 
 guis:
+  status-on: "Aan"
+  status-off: "Uit"
   placeholder:
     description: "Gewoon een tijdelijke aanduiding voor nu."
     coming-soon: "Binnenkort"
     coming-soon-description: "Een tijdelijke aanduiding voor aankomende functies."
-  close: "Sluiten"
-  close-description: "De GUI sluiten"

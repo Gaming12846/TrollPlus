@@ -63,13 +63,13 @@ public class GUIUtil {
 
     // Retrieves the status string for the troll GUI
     public String getStatusTrollGUI(String metadata) {
-        if (player.hasMetadata(metadata)) return "§a§l" + langConfig.getString("troll-gui.status-on");
-        return "§c§l" + langConfig.getString("troll-gui.status-off");
+        if (player.hasMetadata(metadata)) return "§a§l" + langConfig.getString("guis.status-on");
+        return "§c§l" + langConfig.getString("guis.status-off");
     }
 
     // Retrieves the status string for the settings GUI
     public String getStatusSettingsGUI(Boolean configboolean) {
-        if (configboolean) return "§a§l" + langConfig.getString("trollsettings.status-on");
-        return "§c§l" + langConfig.getString("trollsettings.status-off");
+        if (configboolean) return "§a§l" + langConfig.getString("guis.status-on");
+        return "§c§l" + langConfig.getString("guis.status-off");
     }
 }

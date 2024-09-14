@@ -60,20 +60,6 @@ troll:
 
 troll-gui:
   title: "Troll"
-  status-on: "开启"
-  status-off: "关闭"
-  vanish: "隐身"
-  vanish-description: "使目标玩家隐身"
-  teleport: "传送"
-  random-troll: "随机 Troll"
-  random-troll-description: "随机选择一个 Troll 项目"
-  teleport-description: "传送到目标玩家身边"
-  kill: "杀死"
-  kill-description: "强制杀死目标玩家"
-  invsee: "查看背包"
-  invsee-description: "打开目标玩家的背包"
-  invsee-ender-chest: "查看末影箱"
-  invsee-ender-chest-description: "打开目标玩家的末影箱"
   freeze: "冰冻"
   freeze-description: "使目标玩家无法移动，交互以及掉落/捡起物品"
   hand-item-drop: "掉落手上的物品"
@@ -98,18 +84,33 @@ troll-gui:
   mob-spawner-description: "在目标玩家的当前位置随机生成不同种类的怪物"
   slowly-kill: "慢性杀伤"
   slowly-kill-description: "通过慢慢地对目标玩家造成伤害让其死去"
-  random-scary-sound: "恐怖音乐"
-  random-scary-sound-description: "通过不断地播放随机的恐怖音乐来让目标玩家受到惊吓"
   inventory-drop: "掉落身上所有物品"
   inventory-drop-description: "掉落目标身上的所有物品，包括盔甲以及副手上拿的物品"
+  inventory-shuffle: "库存洗牌"
+  inventory-shuffle-description: "随机打乱目标库存中的所有物品。"
+  random-scary-sound: "恐怖音乐"
+  random-scary-sound-description: "通过不断地播放随机的恐怖音乐来让目标玩家受到惊吓"
+  freefall: "自由落体"
+  freefall-description: "把目标玩家传送至空中并丢下他"
   rocket: "发射"
   rocket-description: "将目标玩家像烟花一样发射至天空"
   fake-ban: "假封禁"
   fake-ban-description: "让目标玩家以为他们被封禁了（会踢出目标玩家但是马上就能进来）"
   fake-op: "假op"
   fake-op-description: "让目标玩家以为他们获得了op"
-  freefall: "自由落体"
-  freefall-description: "把目标玩家传送至空中并丢下他"
+
+  teleport: "传送"
+  teleport-description: "传送到目标玩家身边"
+  invsee: "查看背包"
+  invsee-description: "打开目标玩家的背包"
+  kill: "杀死"
+  kill-description: "强制杀死目标玩家"
+  invsee-ender-chest: "查看末影箱"
+  invsee-ender-chest-description: "打开目标玩家的末影箱"
+  vanish: "隐身"
+  vanish-description: "使目标玩家隐身"
+  random-troll: "随机 Troll"
+  random-troll-description: "随机选择一个 Troll 项目"
 
 ####################### Trollbows GUI #######################
 
@@ -123,6 +124,8 @@ trollbows:
   lighting-bolt-bow-description: "发射弓箭时产生闪电"
   silverfish-bow: "河豚弓"
   silverfish-bow-description: "发射弓箭时生成河豚"
+  potion-effect-bow: "药水效果弓"
+  potion-effect-bow-description: "一把在箭矢命中时造成随机药水效果的弓。"
 
 ########################### 功能翻译 ############################
 
@@ -148,8 +151,6 @@ fake-op-message: "[Server: Made [player] a server operator]" # "[player]" 必须
 
 trollsettings:
   title: "TrollPlus 设置"
-  status-on: "开启"
-  status-off: "关闭"
   language: "更改语言"
   language-description: "设置插件的语言。可用选项：custom, de, en, es, fr, nl, zh-cn, zh-tw。"
   metrics-enabled: "Metrics:"
@@ -180,9 +181,9 @@ trollsettings:
 ########################### GUIs ############################
 
 guis:
+  status-on: "开启"
+  status-off: "关闭"
   placeholder:
     description: "仅仅用于占位 :("
     coming-soon: "更多功能即将推出"
     coming-soon-description: "仅仅给未到来的功能作占位 :("
-  close: "关闭"
-  close-description: "关闭图形用户界面"

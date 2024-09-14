@@ -8,13 +8,18 @@ package de.gaming12846.trollplus.listener;
 import de.gaming12846.trollplus.TrollPlus;
 import org.apache.commons.lang3.RandomUtils;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileHitEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 // Listener for handling events when projectiles hit entities or blocks
 public class ProjectileHitListener implements Listener {
@@ -53,6 +58,11 @@ public class ProjectileHitListener implements Listener {
         if (arrow.hasMetadata("TROLLPLUS_SILVERFISH_ARROW")) {
             handleSilverfishArrow(arrow);
         }
+
+        // Handle potion effect arrow
+        if (arrow.hasMetadata("TROLLPLUS_POTION_EFFECT_ARROW")) {
+            handlePotionEffectArrow(arrow);
+        }
     }
 
     // Handles the explosion arrow effect
@@ -88,6 +98,22 @@ public class ProjectileHitListener implements Listener {
         for (int i = 0; i < RandomUtils.nextInt(3, 5); i++) {
             Location spawnLocation = arrow.getLocation().add(RandomUtils.nextInt(0, 2), RandomUtils.nextInt(0, 2), RandomUtils.nextInt(0, 2));
             arrow.getWorld().spawnEntity(spawnLocation, EntityType.SILVERFISH);
+        }
+    }
+
+    // Handles the potion effect arrow effect
+    private void handlePotionEffectArrow(Arrow arrow) {
+        arrow.removeMetadata("TROLLPLUS_POTION_EFFECT_ARROW", plugin);
+        PotionEffectType[] possibleEffects = {PotionEffectType.SLOWNESS, PotionEffectType.MINING_FATIGUE, PotionEffectType.NAUSEA, PotionEffectType.BLINDNESS, PotionEffectType.HUNGER, PotionEffectType.WEAKNESS, PotionEffectType.POISON, PotionEffectType.WITHER, PotionEffectType.LEVITATION};
+
+        // Create a splash potion with the random effect
+        ItemStack itemStack = new ItemStack(Material.SPLASH_POTION);
+        PotionMeta potionMeta = (PotionMeta) itemStack.getItemMeta();
+        if (potionMeta != null) {
+            potionMeta.addCustomEffect(new PotionEffect(possibleEffects[RandomUtils.nextInt(0, 8)], 200, 1), true);
+            itemStack.setItemMeta(potionMeta);
+            ThrownPotion thrownPotion = (ThrownPotion) arrow.getWorld().spawnEntity(arrow.getLocation(), EntityType.POTION);
+            thrownPotion.setItem(itemStack);
         }
     }
 }

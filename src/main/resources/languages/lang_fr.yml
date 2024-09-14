@@ -60,20 +60,6 @@ troll:
 
 troll-gui:
   title: "Troll"
-  status-on: "Activé"
-  status-off: "Désactivé"
-  vanish: "Disparaître"
-  vanish-description: "Faire disparaître la cible"
-  teleport: "Téléporter"
-  teleport-description: "Téléporter vers la cible"
-  random-troll: "Troll Aléatoire"
-  random-troll-description: "Sélectionner aléatoirement une action de troll pour la cible"
-  kill: "Tuer"
-  kill-description: "Tuer la cible"
-  invsee: "Voir Inventaire"
-  invsee-description: "Voir l'inventaire de la cible"
-  invsee-ender-chest: "Voir Coffre de l'Ender"
-  invsee-ender-chest-description: "Voir le coffre de l'Ender de la cible"
   freeze: "Geler"
   freeze-description: "Empêcher la cible de bouger, d'interagir ou de déposer/ramasser des objets"
   hand-item-drop: "Chute d'Objet en Main"
@@ -98,18 +84,33 @@ troll-gui:
   mob-spawner-description: "Faire apparaître des mobs aléatoires à l'emplacement de la cible"
   slowly-kill: "Mort Lente"
   slowly-kill-description: "Infliger des dégâts à la cible à intervalles réguliers"
-  random-scary-sound: "Son Effrayant Aléatoire"
-  random-scary-sound-description: "Jouer un son effrayant aléatoire à l'emplacement de la cible pour les effrayer"
   inventory-drop: "Chute d'Inventaire"
   inventory-drop-description: "Faire tomber tous les objets de l'inventaire de la cible, y compris les armures et les objets de la main secondaire"
+  inventory-shuffle: "Mélange d'Inventaire"
+  inventory-shuffle-description: "Mélange tous les objets dans l'inventaire de la cible."
+  random-scary-sound: "Son Effrayant Aléatoire"
+  random-scary-sound-description: "Jouer un son effrayant aléatoire à l'emplacement de la cible pour les effrayer"
   rocket: "Fusée"
   rocket-description: "Lancer la cible dans les airs comme un feu d'artifice"
+  freefall: "Chute Libre"
+  freefall-description: "Téléporter la cible dans les airs et la laisser tomber librement"
   fake-ban: "Faux Bannissement"
   fake-ban-description: "Faire croire à la cible qu'elle a été bannie"
   fake-op: "Faux OP"
   fake-op-description: "Faire croire à la cible qu'elle a reçu les permissions d'opérateur"
-  freefall: "Chute Libre"
-  freefall-description: "Téléporter la cible dans les airs et la laisser tomber librement"
+
+  teleport: "Téléporter"
+  teleport-description: "Téléporter vers la cible"
+  invsee: "Voir Inventaire"
+  invsee-description: "Voir l'inventaire de la cible"
+  kill: "Tuer"
+  kill-description: "Tuer la cible"
+  invsee-ender-chest: "Voir Coffre de l'Ender"
+  invsee-ender-chest-description: "Voir le coffre de l'Ender de la cible"
+  vanish: "Disparaître"
+  vanish-description: "Faire disparaître la cible"
+  random-troll: "Troll Aléatoire"
+  random-troll-description: "Sélectionner aléatoirement une action de troll pour la cible"
 
 ####################### Trollbows GUI #######################
 
@@ -123,6 +124,8 @@ trollbows:
   lightning-bolt-bow-description: "Un arc qui frappe avec de la foudre à l'impact de la flèche"
   silverfish-bow: "Arc Poisson-argent"
   silverfish-bow-description: "Un arc qui fait apparaître une horde de poissons-argent à l'impact de la flèche"
+  potion-effect-bow: "Arc à Effet de Potion"
+  potion-effect-bow-description: "Un arc qui provoque un effet de potion aléatoire à l'impact de la flèche."
 
 ############## Traductions des fonctionnalités ##############
 
@@ -148,8 +151,6 @@ fake-op-message: "[Serveur : A donné les permissions d'opérateur à [player]]"
 
 trollsettings:
   title: "Paramètres TrollPlus"
-  status-on: "Activé"
-  status-off: "Désactivé"
   language: "Changer la langue"
   language-description: "Définir la langue du plugin. Options disponibles : custom, de, en, es, fr, nl, zh-cn, zh-tw."
   metrics-enabled: "Métriques :"
@@ -180,9 +181,9 @@ trollsettings:
 ########################### GUIs ############################
 
 guis:
+  status-on: "Activé"
+  status-off: "Désactivé"
   placeholder:
     description: "Juste un espace réservé pour l'instant."
     coming-soon: "À venir"
     coming-soon-description: "Un espace réservé pour les fonctionnalités à venir."
-  close: "Fermer"
-  close-description: "Fermer l'interface graphique"

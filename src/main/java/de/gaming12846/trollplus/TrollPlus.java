@@ -188,6 +188,7 @@ public class TrollPlus extends JavaPlugin {
         if (getConfig().getBoolean("check-for-updates", true)) {
             getLogger().info(getLanguageConfig().getString("checking-updates"));
             updateChecker = new UpdateChecker(this).checkForUpdates();
+            getLogger().info(updateChecker);
         }
     }
 

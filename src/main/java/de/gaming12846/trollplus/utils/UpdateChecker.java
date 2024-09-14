@@ -17,7 +17,7 @@ import java.net.URL;
 // A utility class for checking updates for the plugin by querying the GitHub API
 public class UpdateChecker {
     private final TrollPlus plugin;
-    boolean updateAvailable = false;
+    final boolean updateAvailable = false;
     private boolean isPreRelease = false;
 
     // Constructor for the UpdateChecker

@@ -60,20 +60,6 @@ troll:
 
 troll-gui:
   title: "Troll"
-  status-on: "On"
-  status-off: "Off"
-  vanish: "Vanish"
-  vanish-description: "Make the target disappear"
-  teleport: "Teleport"
-  teleport-description: "Teleport to the target"
-  random-troll: "Random Troll"
-  random-troll-description: "Randomly select a troll action for the target"
-  kill: "Kill"
-  kill-description: "Kill the target"
-  invsee: "Inventory See"
-  invsee-description: "View the target's inventory"
-  invsee-ender-chest: "Ender Chest See"
-  invsee-ender-chest-description: "View the target's Ender Chest"
   freeze: "Freeze"
   freeze-description: "Prevent the target from moving, interacting, or dropping/picking up items"
   hand-item-drop: "Hand Item Drop"
@@ -98,18 +84,33 @@ troll-gui:
   mob-spawner-description: "Spawn random mobs at the target's location"
   slowly-kill: "Slowly Kill"
   slowly-kill-description: "Inflict damage on the target at intervals"
-  random-scary-sound: "Random Scary Sound"
-  random-scary-sound-description: "Play a random scary sound at the target's location to frighten them"
   inventory-drop: "Inventory Drop"
   inventory-drop-description: "Drop all items from the target's inventory, including armor and offhand items"
+  inventory-shuffle: "Inventory Shuffle"
+  inventory-shuffle-description: "Shuffles all the items in the target's inventory"
+  random-scary-sound: "Random Scary Sound"
+  random-scary-sound-description: "Play a random scary sound at the target's location to frighten them"
   rocket: "Rocket"
   rocket-description: "Launch the target into the air like a firework"
+  freefall: "Freefall"
+  freefall-description: "Teleport the target into the air and let them fall freely"
   fake-ban: "Fake Ban"
   fake-ban-description: "Make the target believe they have been banned"
   fake-op: "Fake OP"
   fake-op-description: "Make the target believe they have been given operator permissions"
-  freefall: "Freefall"
-  freefall-description: "Teleport the target into the air and let them fall freely"
+
+  teleport: "Teleport"
+  teleport-description: "Teleport to the target"
+  invsee: "Inventory See"
+  invsee-description: "View the target's inventory"
+  kill: "Kill"
+  kill-description: "Kill the target"
+  invsee-ender-chest: "Ender Chest See"
+  invsee-ender-chest-description: "View the target's Ender Chest"
+  vanish: "Vanish"
+  vanish-description: "Make the target disappear"
+  random-troll: "Random Troll"
+  random-troll-description: "Randomly select a troll action for the target"
 
 ####################### Trollbows GUI #######################
 
@@ -123,6 +124,8 @@ trollbows:
   lightning-bolt-bow-description: "A bow that strikes with lightning on arrow impact"
   silverfish-bow: "Silverfish Bow"
   silverfish-bow-description: "A bow that spawns a horde of silverfish on arrow impact"
+  potion-effect-bow: "Potion Effect Bow"
+  potion-effect-bow-description: "A bow that causes a random potion effect on arrow impact"
 
 ################### Features translations ###################
 
@@ -148,8 +151,6 @@ fake-op-message: "[Server: Made [player] a server operator]" # [player] will be 
 
 trollsettings:
   title: "TrollPlus Settings"
-  status-on: "On"
-  status-off: "Off"
   language: "Change language"
   language-description: "Set the plugin's language. Available options: custom, de, en, es, fr, nl, zh-cn, zh-tw."
   metrics-enabled: "Metrics:"
@@ -180,9 +181,9 @@ trollsettings:
 ########################### GUIs ############################
 
 guis:
+  status-on: "On"
+  status-off: "Off"
   placeholder:
     description: "Just a placeholder for now."
     coming-soon: "Coming soon"
     coming-soon-description: "A placeholder for upcoming features."
-  close: "Close"
-  close-description: "Close the GUI"

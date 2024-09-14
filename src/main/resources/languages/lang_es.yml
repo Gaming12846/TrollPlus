@@ -60,20 +60,6 @@ troll:
 
 troll-gui:
   title: "Troll"
-  status-on: "Activado"
-  status-off: "Desactivado"
-  vanish: "Desaparecer"
-  vanish-description: "Hacer desaparecer al objetivo"
-  teleport: "Teletransportar"
-  teleport-description: "Teletransportarse al objetivo"
-  random-troll: "Troll Aleatorio"
-  random-troll-description: "Seleccionar aleatoriamente una acción de troll para el objetivo"
-  kill: "Matar"
-  kill-description: "Matar al objetivo"
-  invsee: "Ver Inventario"
-  invsee-description: "Ver el inventario del objetivo"
-  invsee-ender-chest: "Ver Cofre del Ender"
-  invsee-ender-chest-description: "Ver el cofre del Ender del objetivo"
   freeze: "Congelar"
   freeze-description: "Impedir que el objetivo se mueva, interactúe o deje/recoga objetos"
   hand-item-drop: "Caída de Objeto en Mano"
@@ -98,18 +84,33 @@ troll-gui:
   mob-spawner-description: "Hacer aparecer mobs aleatorios en la ubicación del objetivo"
   slowly-kill: "Muerte Lenta"
   slowly-kill-description: "Infligir daño al objetivo a intervalos"
-  random-scary-sound: "Sonido Espeluznante Aleatorio"
-  random-scary-sound-description: "Reproducir un sonido espeluznante aleatorio en la ubicación del objetivo para asustarlo"
   inventory-drop: "Caída de Inventario"
   inventory-drop-description: "Dejar caer todos los objetos del inventario del objetivo, incluyendo armaduras y objetos en la mano secundaria"
+  inventory-shuffle: "Barajar Inventario"
+  inventory-shuffle-description: "Baraja todos los objetos en el inventario del objetivo."
+  random-scary-sound: "Sonido Espeluznante Aleatorio"
+  random-scary-sound-description: "Reproducir un sonido espeluznante aleatorio en la ubicación del objetivo para asustarlo"
   rocket: "Cohete"
   rocket-description: "Lanzar al objetivo al aire como un fuego artificial"
+  freefall: "Caída Libre"
+  freefall-description: "Teletransportar al objetivo al aire y dejarlo caer libremente"
   fake-ban: "Falso Baneo"
   fake-ban-description: "Hacer creer al objetivo que ha sido baneado"
   fake-op: "Falso OP"
   fake-op-description: "Hacer creer al objetivo que ha recibido permisos de operador"
-  freefall: "Caída Libre"
-  freefall-description: "Teletransportar al objetivo al aire y dejarlo caer libremente"
+
+  teleport: "Teletransportar"
+  teleport-description: "Teletransportarse al objetivo"
+  invsee: "Ver Inventario"
+  invsee-description: "Ver el inventario del objetivo"
+  kill: "Matar"
+  kill-description: "Matar al objetivo"
+  invsee-ender-chest: "Ver Cofre del Ender"
+  invsee-ender-chest-description: "Ver el cofre del Ender del objetivo"
+  vanish: "Desaparecer"
+  vanish-description: "Hacer desaparecer al objetivo"
+  random-troll: "Troll Aleatorio"
+  random-troll-description: "Seleccionar aleatoriamente una acción de troll para el objetivo"
 
 ####################### Trollbows GUI #######################
 
@@ -123,6 +124,8 @@ trollbows:
   lightning-bolt-bow-description: "Un arco que lanza rayos al impactar la flecha"
   silverfish-bow: "Arco de Pececillo de Plata"
   silverfish-bow-description: "Un arco que hace aparecer una horda de pececillos de plata al impactar la flecha"
+  potion-effect-bow: "Arco de Efecto de Poción"
+  potion-effect-bow-description: "Un arco que causa un efecto de poción aleatorio al impactar una flecha."
 
 ############## Traducciones de Características ##############
 
@@ -148,8 +151,6 @@ fake-op-message: "[Servidor: Hizo a [player] operador del servidor]" # [player] 
 
 trollsettings:
   title: "Configuración de TrollPlus"
-  status-on: "Activado"
-  status-off: "Desactivado"
   language: "Cambiar idioma"
   language-description: "Configurar el idioma del plugin. Opciones disponibles: custom, de, en, es, fr, nl, zh-cn, zh-tw."
   metrics-enabled: "Métricas:"
@@ -180,9 +181,9 @@ trollsettings:
 ############################ GUIs #############################
 
 guis:
+  status-on: "Activado"
+  status-off: "Desactivado"
   placeholder:
     description: "Solo un marcador de posición por ahora."
     coming-soon: "Próximamente"
     coming-soon-description: "Un marcador de posición para las próximas características."
-  close: "Cerrar"
-  close-description: "Cerrar la interfaz gráfica"

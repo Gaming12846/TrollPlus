@@ -242,20 +242,19 @@ public class TrollPlusCommand implements CommandExecutor {
         }
 
         Player player = (Player) sender;
-        settingsGUI = new GUIUtil(langConfig.getString("trollsettings.title"), 27, plugin);
+        settingsGUI = new GUIUtil(ChatColor.BLACK + langConfig.getString("trollsettings.title"), 9, plugin);
 
         // Add the available settings to the GUI
-        settingsGUI.addItem(26, ItemBuilder.createItemWithLore(Material.BARRIER, ChatColor.RED + langConfig.getString("guis.close"), langConfig.getString("guis.close-description")));
-        settingsGUI.addItem(10, ItemBuilder.createItemWithLore(Material.PAPER, ChatColor.WHITE + langConfig.getString("trollsettings.language"), langConfig.getString("trollsettings.language-description")));
-        settingsGUI.addItem(11, ItemBuilder.createItemWithLore(Material.WRITABLE_BOOK, ChatColor.WHITE + langConfig.getString("trollsettings.metrics-enabled") + ChatColor.DARK_GRAY + " " + settingsGUI.getStatusSettingsGUI(plugin.getConfig().getBoolean("metrics-enabled")), langConfig.getString("trollsettings.metrics-enabled-description")));
-        settingsGUI.addItem(12, ItemBuilder.createItemWithLore(Material.GLOWSTONE, ChatColor.WHITE + langConfig.getString("trollsettings.check-for-updates") + ChatColor.DARK_GRAY + " " + settingsGUI.getStatusSettingsGUI(plugin.getConfig().getBoolean("check-for-updates")), langConfig.getString("trollsettings.check-for-updates-description")));
-        settingsGUI.addItem(13, ItemBuilder.createItemWithLore(Material.REDSTONE_LAMP, ChatColor.WHITE + langConfig.getString("trollsettings.deactivate-features-on-quit") + ChatColor.DARK_GRAY + " " + settingsGUI.getStatusSettingsGUI(plugin.getConfig().getBoolean("deactivate-features-on-quit")), langConfig.getString("trollsettings.deactivate-features-on-quit-description")));
-        settingsGUI.addItem(14, ItemBuilder.createItemWithLore(Material.ENDER_PEARL, ChatColor.WHITE + langConfig.getString("trollsettings.control-teleport-back") + ChatColor.DARK_GRAY + " " + settingsGUI.getStatusSettingsGUI(plugin.getConfig().getBoolean("control-teleport-back")), langConfig.getString("trollsettings.control-teleport-back-description")));
-        settingsGUI.addItem(15, ItemBuilder.createItemWithLore(Material.FIRE_CHARGE, ChatColor.WHITE + langConfig.getString("trollsettings.set-fire") + ChatColor.DARK_GRAY + " " + settingsGUI.getStatusSettingsGUI(plugin.getConfig().getBoolean("set-fire")), langConfig.getString("trollsettings.set-fire-description")));
-        settingsGUI.addItem(16, ItemBuilder.createItemWithLore(Material.DIAMOND_PICKAXE, ChatColor.WHITE + langConfig.getString("trollsettings.break-blocks") + ChatColor.DARK_GRAY + " " + settingsGUI.getStatusSettingsGUI(plugin.getConfig().getBoolean("break-blocks")), langConfig.getString("trollsettings.break-blocks-description")));
+        settingsGUI.addItem(1, ItemBuilder.createItemWithLore(Material.PAPER, ChatColor.WHITE + langConfig.getString("trollsettings.language"), langConfig.getString("trollsettings.language-description")));
+        settingsGUI.addItem(2, ItemBuilder.createItemWithLore(Material.WRITABLE_BOOK, ChatColor.WHITE + langConfig.getString("trollsettings.metrics-enabled") + ChatColor.DARK_GRAY + " " + settingsGUI.getStatusSettingsGUI(plugin.getConfig().getBoolean("metrics-enabled")), langConfig.getString("trollsettings.metrics-enabled-description")));
+        settingsGUI.addItem(3, ItemBuilder.createItemWithLore(Material.GLOWSTONE, ChatColor.WHITE + langConfig.getString("trollsettings.check-for-updates") + ChatColor.DARK_GRAY + " " + settingsGUI.getStatusSettingsGUI(plugin.getConfig().getBoolean("check-for-updates")), langConfig.getString("trollsettings.check-for-updates-description")));
+        settingsGUI.addItem(4, ItemBuilder.createItemWithLore(Material.REDSTONE_LAMP, ChatColor.WHITE + langConfig.getString("trollsettings.deactivate-features-on-quit") + ChatColor.DARK_GRAY + " " + settingsGUI.getStatusSettingsGUI(plugin.getConfig().getBoolean("deactivate-features-on-quit")), langConfig.getString("trollsettings.deactivate-features-on-quit-description")));
+        settingsGUI.addItem(5, ItemBuilder.createItemWithLore(Material.ENDER_PEARL, ChatColor.WHITE + langConfig.getString("trollsettings.control-teleport-back") + ChatColor.DARK_GRAY + " " + settingsGUI.getStatusSettingsGUI(plugin.getConfig().getBoolean("control-teleport-back")), langConfig.getString("trollsettings.control-teleport-back-description")));
+        settingsGUI.addItem(6, ItemBuilder.createItemWithLore(Material.FIRE_CHARGE, ChatColor.WHITE + langConfig.getString("trollsettings.set-fire") + ChatColor.DARK_GRAY + " " + settingsGUI.getStatusSettingsGUI(plugin.getConfig().getBoolean("set-fire")), langConfig.getString("trollsettings.set-fire-description")));
+        settingsGUI.addItem(7, ItemBuilder.createItemWithLore(Material.DIAMOND_PICKAXE, ChatColor.WHITE + langConfig.getString("trollsettings.break-blocks") + ChatColor.DARK_GRAY + " " + settingsGUI.getStatusSettingsGUI(plugin.getConfig().getBoolean("break-blocks")), langConfig.getString("trollsettings.break-blocks-description")));
 
         // Add placeholders
-        byte[] placeholderArray = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 17, 18, 19, 20, 21, 22, 23, 24, 25};
+        byte[] placeholderArray = {0, 8};
         for (int slot : placeholderArray) {
             settingsGUI.addItem(slot, ItemBuilder.createItemWithLore(Material.RED_STAINED_GLASS_PANE, " ", langConfig.getString("guis.placeholder.description")));
         }

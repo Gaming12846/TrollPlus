@@ -73,6 +73,13 @@ public class ProjectileLaunchListener implements Listener {
             if (plugin.getServerVersion() < 1.20 && player.getGameMode() != GameMode.CREATIVE)
                 player.getInventory().addItem(new ItemStack(Material.ARROW));
         }
+
+        // Handle potion effect arrow
+        if (displayName.equals(ChatColor.RED + langConfig.getString("trollbows.potion-effect-bow")) && itemMeta.isUnbreakable()) {
+            handlePotionEffectArrow(arrow);
+            if (plugin.getServerVersion() < 1.20 && player.getGameMode() != GameMode.CREATIVE)
+                player.getInventory().addItem(new ItemStack(Material.ARROW));
+        }
     }
 
     // Handles the explosion arrow effect
@@ -142,6 +149,23 @@ public class ProjectileLaunchListener implements Listener {
                 }
 
                 arrow.getWorld().spawnParticle(Particle.SPIT, arrow.getLocation(), 1, 0, 0, 0, 0);
+            }
+        }.runTaskTimer(plugin, 0, 1);
+    }
+
+    // Handles the potion effect arrow effect
+    private void handlePotionEffectArrow(Arrow arrow) {
+        arrow.setMetadata("TROLLPLUS_POTION_EFFECT_ARROW", new FixedMetadataValue(plugin, arrow));
+
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                if (arrow.isInBlock() || arrow.isOnGround() || arrow.isInWater() || arrow.isDead()) {
+                    cancel();
+                    return;
+                }
+
+                arrow.getWorld().spawnParticle(Particle.EFFECT, arrow.getLocation(), 1, 0, 0, 0, 0);
             }
         }.runTaskTimer(plugin, 0, 1);
     }
