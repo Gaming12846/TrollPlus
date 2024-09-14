@@ -45,7 +45,6 @@ _The troll GUI in the game._
 - **Fake Ban:** Simulate a ban to trick the target.
 - **Fake OP:** Simulate operator permissions for the target.
 
-
 - **Teleport:** Teleport to the target’s location.
 - **Kill:** Instantly kill the target.
 - **Invsee:** Open the target’s inventory.
