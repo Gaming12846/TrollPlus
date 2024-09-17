@@ -32,7 +32,7 @@ public class EntityExplodeListener implements Listener {
         // Check if the exploding entity is a TNTPrimed entity with the "TROLLPLUS_TNT" metadata
         if (entity instanceof TNTPrimed && entity.hasMetadata("TROLLPLUS_TNT")) {
             // If the plugin configuration allows block breaking, exit the method early
-            if (plugin.getConfig().getBoolean("break-blocks", true)) return;
+            if (plugin.getConfigHelper().getBoolean("break-blocks")) return;
 
             // Cancel the explosion event and play an explosion sound at the entity's location
             event.setCancelled(true);

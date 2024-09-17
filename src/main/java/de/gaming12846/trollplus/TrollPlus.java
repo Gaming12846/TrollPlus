@@ -22,10 +22,11 @@ import de.gaming12846.trollplus.commands.TrollBowsCommand;
 import de.gaming12846.trollplus.commands.TrollCommand;
 import de.gaming12846.trollplus.commands.TrollPlusCommand;
 import de.gaming12846.trollplus.listener.*;
-import de.gaming12846.trollplus.utils.ConfigUtil;
+import de.gaming12846.trollplus.utils.ConfigHelper;
 import de.gaming12846.trollplus.utils.TabCompleter;
 import de.gaming12846.trollplus.utils.UpdateChecker;
 import org.bstats.bukkit.Metrics;
+import org.bukkit.ChatColor;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -33,20 +34,22 @@ import java.util.Objects;
 
 // The main class for the TrollPlus plugin
 public class TrollPlus extends JavaPlugin {
-    public final String configVersion = "1.4.8";
-    public final String languageConfigVersion = "1.4.8";
-    public ConfigUtil langCustomConfig;
-    public ConfigUtil langGermanConfig;
-    public ConfigUtil langEnglishConfig;
-    public ConfigUtil langSpanishConfig;
-    public ConfigUtil langFrenchConfig;
-    public ConfigUtil langDutchConfig;
-    public ConfigUtil langSimplifiedChineseConfig;
-    public ConfigUtil langTraditionalChineseConfig;
-    public String updateChecker;
+    public static final String PLUGIN_PREFIX = ChatColor.DARK_GRAY + "[" + ChatColor.DARK_RED + ChatColor.BOLD + "TrollPlus" + ChatColor.RESET + ChatColor.DARK_GRAY + "]" + ChatColor.RESET + " ";
+    public String updateCheckerLog;
     private double serverVersion;
-    // ConfigUtil instances for various configuration files
-    private ConfigUtil blocklistConfig;
+
+    // ConfigHelper instances
+    private ConfigHelper configHelper;
+    private ConfigHelper configHelperBlocklist;
+    private ConfigHelper configHelperLangCustom;
+    private ConfigHelper configHelperLangGerman;
+    private ConfigHelper configHelperLangEnglish;
+    private ConfigHelper configHelperLangSpanish;
+    private ConfigHelper configHelperLangFrench;
+    private ConfigHelper configHelperLangDutch;
+    private ConfigHelper configHelperLangSimplifiedChinese;
+    private ConfigHelper configHelperLangTraditionalChinese;
+
     // Command and Listener instances
     private TrollBowsCommand trollBowsCommand;
     private TrollCommand trollCommand;
@@ -67,53 +70,66 @@ public class TrollPlus extends JavaPlugin {
 
     // Loads the plugin's configuration files and checks their versions
     private void loadConfigs() {
-        this.saveDefaultConfig();
-
-        blocklistConfig = new ConfigUtil(this, "blocklist.yml");
-        langCustomConfig = new ConfigUtil(this, "languages/lang_custom.yml");
-        langGermanConfig = new ConfigUtil(this, "languages/lang_de.yml");
-        langEnglishConfig = new ConfigUtil(this, "languages/lang_en.yml");
-        langSpanishConfig = new ConfigUtil(this, "languages/lang_es.yml");
-        langFrenchConfig = new ConfigUtil(this, "languages/lang_fr.yml");
-        langDutchConfig = new ConfigUtil(this, "languages/lang_nl.yml");
-        langSimplifiedChineseConfig = new ConfigUtil(this, "languages/lang_zh-cn.yml");
-        langTraditionalChineseConfig = new ConfigUtil(this, "languages/lang_zh-tw.yml");
+        configHelper = new ConfigHelper(this, "config.yml");
+        configHelperBlocklist = new ConfigHelper(this, "blocklist.yml");
+        configHelperLangCustom = new ConfigHelper(this, "languages/lang_custom.yml");
+        configHelperLangGerman = new ConfigHelper(this, "languages/lang_de.yml");
+        configHelperLangEnglish = new ConfigHelper(this, "languages/lang_en.yml");
+        configHelperLangSpanish = new ConfigHelper(this, "languages/lang_es.yml");
+        configHelperLangFrench = new ConfigHelper(this, "languages/lang_fr.yml");
+        configHelperLangDutch = new ConfigHelper(this, "languages/lang_nl.yml");
+        configHelperLangSimplifiedChinese = new ConfigHelper(this, "languages/lang_zh-cn.yml");
+        configHelperLangTraditionalChinese = new ConfigHelper(this, "languages/lang_zh-tw.yml");
 
         // Check config versions
-        if (!configVersion.equalsIgnoreCase(getConfig().getString("version")))
-            getLogger().warning(getLanguageConfig().getConfig().getString("config-outdated"));
+        String configVersion = "1.4.8";
+        if (!configVersion.equalsIgnoreCase(getConfigHelper().getString("version")))
+            getLogger().warning(getConfigHelperLanguage().getString("config-outdated"));
 
-        if (!languageConfigVersion.equalsIgnoreCase(getLanguageConfig().getConfig().getString("version")))
-            getLogger().warning(getLanguageConfig().getConfig().getString("language-config-outdated"));
+        String languageConfigVersion = "1.4.8";
+        if (!languageConfigVersion.equalsIgnoreCase(getConfigHelperLanguage().getString("version")))
+            getLogger().warning(getConfigHelperLanguage().getString("language-config-outdated"));
+    }
+
+    // Retrieves the plugin configuration
+    public ConfigHelper getConfigHelper() {
+        return configHelper;
     }
 
     // Retrieves the blocklist configuration
-    public ConfigUtil getBlocklistConfig() {
-        return blocklistConfig;
+    public ConfigHelper getConfigHelperBlocklist() {
+        return configHelperBlocklist;
     }
 
     // Retrieves the appropriate language configuration based on the plugin's config setting
-    public ConfigUtil getLanguageConfig() {
-        String language = getConfig().getString("language");
-        if (language == null) language = "en";
+    public ConfigHelper getConfigHelperLanguage() {
+        String language = getConfigHelper().getString("language");
 
         switch (language.toLowerCase()) {
-            case "custom":
-                return langCustomConfig;
-            case "de":
-                return langGermanConfig;
-            case "es":
-                return langSpanishConfig;
-            case "fr":
-                return langFrenchConfig;
-            case "nl":
-                return langDutchConfig;
-            case "zh-cn":
-                return langSimplifiedChineseConfig;
-            case "zh-tw":
-                return langTraditionalChineseConfig;
-            default:
-                return langEnglishConfig;
+            case "custom" -> {
+                return configHelperLangCustom;
+            }
+            case "de" -> {
+                return configHelperLangGerman;
+            }
+            case "es" -> {
+                return configHelperLangSpanish;
+            }
+            case "fr" -> {
+                return configHelperLangFrench;
+            }
+            case "nl" -> {
+                return configHelperLangDutch;
+            }
+            case "zh-cn" -> {
+                return configHelperLangSimplifiedChinese;
+            }
+            case "zh-tw" -> {
+                return configHelperLangTraditionalChinese;
+            }
+            default -> {
+                return configHelperLangEnglish;
+            }
         }
     }
 
@@ -123,11 +139,11 @@ public class TrollPlus extends JavaPlugin {
         serverVersion = Double.parseDouble(bukkitVersion);
 
         if (serverVersion < 1.13) {
-            getLogger().warning(getLanguageConfig().getString("server-version.unsupported"));
+            getLogger().warning(getConfigHelperLanguage().getString("server-version.unsupported"));
             if (getConfig().getBoolean("load-despite-unsupported-version", false))
                 getServer().getPluginManager().disablePlugin(this);
         } else if (serverVersion < 1.20)
-            getLogger().info(getLanguageConfig().getString("server-version.partly-supported"));
+            getLogger().info(getConfigHelperLanguage().getString("server-version.partly-supported"));
     }
 
     // Retrieves the server version
@@ -178,7 +194,7 @@ public class TrollPlus extends JavaPlugin {
     // Initializes the bStats metrics for the plugin
     private void initializeMetrics() {
         if (getConfig().getBoolean("metrics-enabled", true)) {
-            getLogger().info(getLanguageConfig().getString("metrics-enabled"));
+            getLogger().info(getConfigHelperLanguage().getString("metrics-enabled"));
             new Metrics(this, 11761);
         }
     }
@@ -186,9 +202,9 @@ public class TrollPlus extends JavaPlugin {
     // Checks for updates to the plugin and logs the result
     private void checkForUpdates() {
         if (getConfig().getBoolean("check-for-updates", true)) {
-            getLogger().info(getLanguageConfig().getString("checking-updates"));
-            updateChecker = new UpdateChecker(this).checkForUpdates();
-            getLogger().info(updateChecker);
+            getLogger().info(getConfigHelperLanguage().getString("checking-updates"));
+            updateCheckerLog = new UpdateChecker(this).checkForUpdates();
+            getLogger().info(updateCheckerLog);
         }
     }
 

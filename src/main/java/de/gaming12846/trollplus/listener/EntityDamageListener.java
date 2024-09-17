@@ -27,8 +27,7 @@ public class EntityDamageListener implements Listener {
         Entity entity = event.getEntity();
 
         // Handle the "rocket" feature
-        if (entity instanceof Player && event.getCause() == EntityDamageEvent.DamageCause.FALL) {
-            Player player = (Player) entity;
+        if (entity instanceof Player player && event.getCause() == EntityDamageEvent.DamageCause.FALL) {
 
             // Cancel fall damage if the player has the "TROLLPLUS_ROCKET_NO_FALL_DAMAGE" metadata and then remove it
             if (player.hasMetadata("TROLLPLUS_ROCKET_NO_FALL_DAMAGE")) {

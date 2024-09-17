@@ -3,7 +3,7 @@ version: '${project.version}'
 main: de.gaming12846.trollplus.TrollPlus
 api-version: '1.13'
 prefix: TrollPlus
-author: Gaming12846
+authors: [ Gaming12846 ]
 description: ${project.description}
 website: ${project.url}
 

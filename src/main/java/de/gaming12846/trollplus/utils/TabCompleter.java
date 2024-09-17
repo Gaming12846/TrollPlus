@@ -26,35 +26,33 @@ public class TabCompleter implements org.bukkit.command.TabCompleter {
         // Handle tab completion for the "trollplus" command
         if (cmd.getLabel().equalsIgnoreCase("trollplus")) {
             switch (args.length) {
-                case 1:
+                case 1 -> {
                     // First argument completion
-                    if (sender.hasPermission(Constants.PERMISSION_VERSION)) results.add("version");
-                    if (sender.hasPermission(Constants.PERMISSION_RELOAD)) results.add("reload");
-                    if (sender.hasPermission(Constants.PERMISSION_BLOCKLIST_ADD) || sender.hasPermission(Constants.PERMISSION_BLOCKLIST_REMOVE))
+                    if (sender.hasPermission("trollplus.version")) results.add("version");
+                    if (sender.hasPermission("trollplus.reload")) results.add("reload");
+                    if (sender.hasPermission("trollplus.troll") || sender.hasPermission("trollplus.blocklist.remove"))
                         results.add("blocklist");
-                    if (sender.hasPermission(Constants.PERMISSION_SETTINGS)) results.add("settings");
-                    break;
-                case 2:
+                    if (sender.hasPermission("trollplus.settings")) results.add("settings");
+                }
+                case 2 -> {
                     // Second argument completion for "blocklist"
                     if (args[0].equals("blocklist")) {
-                        if (sender.hasPermission(Constants.PERMISSION_BLOCKLIST_ADD)) results.add("add");
-                        if (sender.hasPermission(Constants.PERMISSION_BLOCKLIST_REMOVE)) results.add("remove");
+                        if (sender.hasPermission("trollplus.troll")) results.add("add");
+                        if (sender.hasPermission("trollplus.blocklist.remove")) results.add("remove");
                     }
-                    break;
-                case 3:
+                }
+                case 3 -> {
                     // Third argument completion for "blocklist add/remove"
-                    if (args[0].equals("blocklist") && (sender.hasPermission(Constants.PERMISSION_BLOCKLIST_ADD) || sender.hasPermission(Constants.PERMISSION_BLOCKLIST_REMOVE))) {
+                    if (args[0].equals("blocklist") && (sender.hasPermission("trollplus.troll") || sender.hasPermission("trollplus.blocklist.remove"))) {
                         for (Player p : Bukkit.getOnlinePlayers()) {
                             results.add(p.getName());
                         }
                     }
-                    break;
-                default:
-                    break;
+                }
             }
         }
         // Handle tab completion for the "troll" command
-        else if (cmd.getLabel().equalsIgnoreCase("troll") && sender.hasPermission(Constants.PERMISSION_TROLL)) {
+        else if (cmd.getLabel().equalsIgnoreCase("troll") && sender.hasPermission("trollplus.troll")) {
             if (args.length == 1) {
                 for (Player p : Bukkit.getOnlinePlayers()) {
                     results.add(p.getName());

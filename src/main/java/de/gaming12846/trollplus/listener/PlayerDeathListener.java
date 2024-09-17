@@ -32,7 +32,7 @@ public class PlayerDeathListener implements Listener {
         // Handle the kill feature to remove the kill metadata and set a custom death message
         if (player.hasMetadata("TROLLPLUS_KILL")) {
             player.removeMetadata("TROLLPLUS_KILL", plugin);
-            event.setDeathMessage(player.getName() + " " + plugin.getLanguageConfig().getString("troll.kill-message"));
+            event.setDeathMessage(player.getName() + " " + plugin.getConfigHelperLanguage().getString("troll.kill-message"));
         }
     }
 }

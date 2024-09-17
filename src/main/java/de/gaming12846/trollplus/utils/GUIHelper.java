@@ -13,27 +13,27 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 // Utility class for creating and managing graphical user interfaces (GUIs)
-public class GUIUtil {
+public class GUIHelper {
     private final Inventory inventory;
     private Player player;
-    private ConfigUtil langConfig;
+    private ConfigHelper configHelperLanguage;
 
-    // Constructor for the GUIUtil for a general GUI
-    public GUIUtil(String title, Integer size) {
+    // Constructor for the GUIHelper for a general GUI
+    public GUIHelper(String title, Integer size) {
         inventory = Bukkit.createInventory(null, size, title);
     }
 
-    // Constructor for the GUIUtil for the Troll GUI
-    public GUIUtil(String title, Integer size, Player target, TrollPlus plugin) {
+    // Constructor for the GUIHelper for the Troll GUI
+    public GUIHelper(String title, Integer size, Player target, TrollPlus plugin) {
         inventory = Bukkit.createInventory(null, size, title);
         player = target;
-        langConfig = plugin.getLanguageConfig();
+        configHelperLanguage = plugin.getConfigHelperLanguage();
     }
 
-    // Constructor for the GUIUtil for the TrollPlus settings GUI
-    public GUIUtil(String title, Integer size, TrollPlus plugin) {
+    // Constructor for the GUIHelper for the TrollPlus settings GUI
+    public GUIHelper(String title, Integer size, TrollPlus plugin) {
         inventory = Bukkit.createInventory(null, size, title);
-        langConfig = plugin.getLanguageConfig();
+        configHelperLanguage = plugin.getConfigHelperLanguage();
     }
 
     // Adds an item to the specified index in the GUI
@@ -51,8 +51,8 @@ public class GUIUtil {
         return inventory;
     }
 
-    // Retrieves the GUIUtil instance
-    public GUIUtil getGUIUtil() {
+    // Retrieves the GUIHelper instance
+    public GUIHelper getGUIUtil() {
         return this;
     }
 
@@ -61,15 +61,15 @@ public class GUIUtil {
         return player;
     }
 
-    // Retrieves the status string for the troll GUI
-    public String getStatusTrollGUI(String metadata) {
-        if (player.hasMetadata(metadata)) return "§a§l" + langConfig.getString("guis.status-on");
-        return "§c§l" + langConfig.getString("guis.status-off");
+    // Retrieves the status string
+    public String getStatus(String metadata) {
+        if (player.hasMetadata(metadata)) return "§a§l" + configHelperLanguage.getString("guis.status-on");
+        return "§c§l" + configHelperLanguage.getString("guis.status-off");
     }
 
-    // Retrieves the status string for the settings GUI
-    public String getStatusSettingsGUI(Boolean configboolean) {
-        if (configboolean) return "§a§l" + langConfig.getString("guis.status-on");
-        return "§c§l" + langConfig.getString("guis.status-off");
+    // Retrieves the status string
+    public String getStatus(Boolean configboolean) {
+        if (configboolean) return "§a§l" + configHelperLanguage.getString("guis.status-on");
+        return "§c§l" + configHelperLanguage.getString("guis.status-off");
     }
 }

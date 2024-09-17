@@ -20,14 +20,13 @@ public class BlockIgniteListener implements Listener {
         this.plugin = plugin;
     }
 
-
     // Event handler for the BlockIgniteEvent
     @EventHandler
     private void onBlockIgniteEvent(BlockIgniteEvent event) {
         Entity entity = event.getIgnitingEntity();
 
         // Check if the plugin configuration allows setting fire
-        if (!plugin.getConfig().getBoolean("set-fire", true)) {
+        if (!plugin.getConfigHelper().getBoolean("set-fire")) {
             // Ensure the entity is not null, check the cause and for custom metadata
             if (entity != null && event.getCause() == BlockIgniteEvent.IgniteCause.LIGHTNING && entity.hasMetadata("TROLLPLUS_LIGHTNING_BOLT"))
                 event.setCancelled(true);

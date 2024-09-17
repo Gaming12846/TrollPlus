@@ -15,9 +15,7 @@ public class EntityPickupItemEvent implements Listener {
     @EventHandler
     private void onEntityPickupItemEvent(org.bukkit.event.entity.EntityPickupItemEvent event) {
         // Check if the entity picking up the item is a player
-        if (!(event.getEntity() instanceof Player)) return;
-
-        Player player = (Player) event.getEntity();
+        if (!(event.getEntity() instanceof Player player)) return;
 
         // Cancel the item pickup event if the player has the "TROLLPLUS_FREEZE" metadata
         if (player.hasMetadata("TROLLPLUS_FREEZE")) event.setCancelled(true);

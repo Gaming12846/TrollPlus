@@ -18,7 +18,6 @@ import java.net.URL;
 public class UpdateChecker {
     private final TrollPlus plugin;
     final boolean updateAvailable = false;
-    private boolean isPreRelease = false;
 
     // Constructor for the UpdateChecker
     public UpdateChecker(TrollPlus plugin) {
@@ -44,18 +43,8 @@ public class UpdateChecker {
 
             return JsonParser.parseString(response.toString()).getAsJsonObject();
         } else
-            plugin.getLogger().warning(plugin.getLanguageConfig().getString("unable-check-updates") + " " + responseCode);
+            plugin.getLogger().warning(plugin.getConfigHelperLanguage().getString("unable-check-updates") + " " + responseCode);
         return null;
-    }
-
-    // Retrieves if an update is available
-    public boolean getUpdateAvailable() {
-        return updateAvailable;
-    }
-
-    // Retrieves if the latest version is a pre-release
-    public boolean getIsPreRelease() {
-        return isPreRelease;
     }
 
     // Checks for updates to the plugin
@@ -65,13 +54,13 @@ public class UpdateChecker {
         try {
             JsonObject latestRelease = getLatestReleaseFromGitHub();
             String latestVersion = latestRelease.get("tag_name").getAsString();
-            isPreRelease = latestRelease.get("prerelease").getAsBoolean();
+            boolean isPreRelease = latestRelease.get("prerelease").getAsBoolean();
 
             if (!isPreRelease && !currentVersion.equals(latestVersion)) {
-                return plugin.getLanguageConfig().getString("update-available") + " https://github.com/Gaming12846/TrollPlus/releases";
-            } else return plugin.getLanguageConfig().getString("no-update-available");
-        } catch (Exception exception) {
-            plugin.getLogger().warning(plugin.getLanguageConfig().getString("unable-check-updates") + " " + exception.getMessage());
+                return plugin.getConfigHelperLanguage().getString("update-available") + " https://github.com/Gaming12846/TrollPlus/releases";
+            } else return plugin.getConfigHelperLanguage().getString("no-update-available");
+        } catch (Exception e) {
+            plugin.getLogger().warning(plugin.getConfigHelperLanguage().getString("unable-check-updates") + " " + e);
         }
         return null;
     }

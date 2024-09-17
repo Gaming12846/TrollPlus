@@ -6,7 +6,7 @@
 package de.gaming12846.trollplus.listener;
 
 import de.gaming12846.trollplus.TrollPlus;
-import de.gaming12846.trollplus.utils.ConfigUtil;
+import de.gaming12846.trollplus.utils.ConfigHelper;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -35,47 +35,46 @@ public class ProjectileLaunchListener implements Listener {
     private void onProjectileLaunchEvent(ProjectileLaunchEvent event) {
         // Check if the projectile is an arrow shot by a player
         if (!(event.getEntity().getShooter() instanceof Player)) return;
-        if (!(event.getEntity() instanceof Arrow)) return;
+        if (!(event.getEntity() instanceof Arrow arrow)) return;
 
-        Arrow arrow = (Arrow) event.getEntity();
         Player player = (Player) arrow.getShooter();
         ItemMeta itemMeta = player.getInventory().getItemInMainHand().getItemMeta();
 
         if (itemMeta == null) return;
 
-        ConfigUtil langConfig = plugin.getLanguageConfig();
+        ConfigHelper configHelperLanguage = plugin.getConfigHelperLanguage();
         String displayName = itemMeta.getDisplayName();
 
         // Handle explosion arrow
-        if (displayName.equals(ChatColor.RED + langConfig.getString("trollbows.explosion-bow")) && itemMeta.isUnbreakable()) {
+        if (displayName.equals(ChatColor.RED + configHelperLanguage.getString("trollbows.explosion-bow")) && itemMeta.isUnbreakable()) {
             handleExplosionArrow(arrow);
             if (plugin.getServerVersion() < 1.20 && player.getGameMode() != GameMode.CREATIVE)
                 player.getInventory().addItem(new ItemStack(Material.ARROW));
         }
 
         // Handle TNT arrow
-        if (displayName.equals(ChatColor.RED + langConfig.getString("trollbows.tnt-bow")) && itemMeta.isUnbreakable()) {
+        if (displayName.equals(ChatColor.RED + configHelperLanguage.getString("trollbows.tnt-bow")) && itemMeta.isUnbreakable()) {
             handleTntArrow(arrow);
             if (plugin.getServerVersion() < 1.20 && player.getGameMode() != GameMode.CREATIVE)
                 player.getInventory().addItem(new ItemStack(Material.ARROW));
         }
 
         // Handle lightning bolt arrow
-        if (displayName.equals(ChatColor.RED + langConfig.getString("trollbows.lightning-bolt-bow")) && itemMeta.isUnbreakable()) {
+        if (displayName.equals(ChatColor.RED + configHelperLanguage.getString("trollbows.lightning-bolt-bow")) && itemMeta.isUnbreakable()) {
             handleLightningBoltArrow(arrow);
             if (plugin.getServerVersion() < 1.20 && player.getGameMode() != GameMode.CREATIVE)
                 player.getInventory().addItem(new ItemStack(Material.ARROW));
         }
 
         // Handle silverfish arrow
-        if (displayName.equals(ChatColor.RED + langConfig.getString("trollbows.silverfish-bow")) && itemMeta.isUnbreakable()) {
+        if (displayName.equals(ChatColor.RED + configHelperLanguage.getString("trollbows.silverfish-bow")) && itemMeta.isUnbreakable()) {
             handleSilverfishArrow(arrow);
             if (plugin.getServerVersion() < 1.20 && player.getGameMode() != GameMode.CREATIVE)
                 player.getInventory().addItem(new ItemStack(Material.ARROW));
         }
 
         // Handle potion effect arrow
-        if (displayName.equals(ChatColor.RED + langConfig.getString("trollbows.potion-effect-bow")) && itemMeta.isUnbreakable()) {
+        if (displayName.equals(ChatColor.RED + configHelperLanguage.getString("trollbows.potion-effect-bow")) && itemMeta.isUnbreakable()) {
             handlePotionEffectArrow(arrow);
             if (plugin.getServerVersion() < 1.20 && player.getGameMode() != GameMode.CREATIVE)
                 player.getInventory().addItem(new ItemStack(Material.ARROW));

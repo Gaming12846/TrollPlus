@@ -44,7 +44,7 @@ public class AsyncPlayerChatListener implements Listener {
         if (player.hasMetadata("TROLLPLUS_SEMI_BAN")) {
             // Cancel the chat event and replace it with a custom message
             event.setCancelled(true);
-            String semiBanMessageReplace = plugin.getConfig().getString("semi-ban-message-replace", "");
+            String semiBanMessageReplace = plugin.getConfigHelper().getString("semi-ban-message-replace");
 
             // Send the replacement message if it's configured
             if (!semiBanMessageReplace.isEmpty())

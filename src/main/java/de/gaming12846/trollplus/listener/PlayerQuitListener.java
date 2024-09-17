@@ -28,7 +28,7 @@ public class PlayerQuitListener implements Listener {
         Player player = event.getPlayer();
 
         // Check if features should be deactivated upon player quit
-        if (plugin.getConfig().getBoolean("deactivate-features-on-quit", true)) {
+        if (plugin.getConfigHelper().getBoolean("deactivate-features-on-quit")) {
             // Remove player metadata related to troll features
             removeMetadata(player);
 

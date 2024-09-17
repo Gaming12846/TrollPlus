@@ -35,9 +35,7 @@ public class ProjectileHitListener implements Listener {
     private void onProjectileHitEvent(ProjectileHitEvent event) {
         // Check if the projectile is an arrow shot by a player
         if (!(event.getEntity().getShooter() instanceof Player)) return;
-        if (!(event.getEntity() instanceof Arrow)) return;
-
-        Arrow arrow = (Arrow) event.getEntity();
+        if (!(event.getEntity() instanceof Arrow arrow)) return;
 
         // Handle explosion arrow
         if (arrow.hasMetadata("TROLLPLUS_EXPLOSION_ARROW")) {
@@ -69,7 +67,7 @@ public class ProjectileHitListener implements Listener {
     private void handleExplosionArrow(Arrow arrow) {
         arrow.removeMetadata("TROLLPLUS_EXPLOSION_ARROW", plugin);
         Location location = arrow.getLocation();
-        arrow.getWorld().createExplosion(location, 2, plugin.getConfig().getBoolean("set-fire"), plugin.getConfig().getBoolean("break-blocks"));
+        arrow.getWorld().createExplosion(location, 2, plugin.getConfigHelper().getBoolean("set-fire"), plugin.getConfigHelper().getBoolean("break-blocks"));
     }
 
     // Handles the TNT arrow effect
