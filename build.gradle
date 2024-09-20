@@ -1,0 +1,94 @@
+/*
+ * This file is part of TrollPlus.
+ * Copyright (C) 2024 Gaming12846
+ */
+
+// Apply plugins
+plugins {
+    id 'java'
+    id 'com.gradleup.shadow' version '8.3.2'
+}
+
+// Define project group and version
+group = 'de.gaming12846'
+version = '1.4.8'
+
+// Configure repositories for dependencies
+repositories {
+    // Use Maven Central repository
+    mavenCentral()
+    // Add SpigotMC repository for Spigot API dependencies
+    maven {
+        name = "spigotmc-repo"
+        url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/"
+    }
+    // Add Sonatype repository for other dependencies
+    maven {
+        name = "sonatype"
+        url = "https://oss.sonatype.org/content/groups/public/"
+    }
+}
+
+// Declare project dependencies
+dependencies {
+    // Spigot API dependency
+    compileOnly 'org.spigotmc:spigot-api:1.21.1-R0.1-SNAPSHOT'
+
+    // BStats dependency
+    implementation 'org.bstats:bstats-bukkit:3.0.2'
+
+    // Apache Commons Lang dependency
+    compileOnly 'org.apache.commons:commons-lang3:3.15.0'
+}
+
+// Configure Java version compatibility
+def targetJavaVersion = 17
+java {
+    // Set source and target compatibility to the specified Java version
+    def javaVersion = JavaVersion.toVersion(targetJavaVersion)
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
+    if (JavaVersion.current() < javaVersion) {
+        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    }
+}
+
+// Configure Java compilation tasks
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+// Configure the shadow JAR task
+tasks.named('shadowJar') {
+    archiveClassifier.set('shadowJar')
+
+    // Relocate package to avoid conflicts, if needed
+    relocate('org.bstats', 'de.gaming12846.trollplus.metrics')
+
+    // Exclude unnecessary META-INF files from the final JAR
+    exclude 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA', 'META-INF/*.MF'
+
+    // Define the manifest attributes for the final JAR
+    manifest {
+        attributes(
+                'Implementation-Title': name,
+                'Implementation-Version': version,
+                'Main-Class': 'de.gaming12846.trollplus'
+        )
+    }
+}
+
+// Ensure the shadow JAR is built as part of the 'build' task
+tasks.build {
+    dependsOn tasks.shadowJar
+}
+
+// Configure the processResources task
+processResources {
+    def props = [version: version]
+    inputs.properties props
+    filteringCharset 'UTF-8'
+    filesMatching('plugin.yml') {
+        expand props
+    }
+}

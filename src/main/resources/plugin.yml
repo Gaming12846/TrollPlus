@@ -1,11 +1,11 @@
 name: TrollPlus
-version: '${project.version}'
+version: '${version}'
 main: de.gaming12846.trollplus.TrollPlus
-api-version: '1.13'
+api-version: '1.17'
 prefix: TrollPlus
 authors: [ Gaming12846 ]
-description: ${project.description}
-website: ${project.url}
+description: Prank and trick other players to make their Minecraft experience both fun and surprising!
+website: https://github.com/Gaming12846/TrollPlus
 
 commands:
   trollplus:
