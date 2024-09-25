@@ -6,6 +6,8 @@
 package de.gaming12846.trollplus.listener;
 
 import de.gaming12846.trollplus.TrollPlus;
+import de.gaming12846.trollplus.constants.ConfigConstants;
+import de.gaming12846.trollplus.constants.MetadataConstants;
 import de.gaming12846.trollplus.utils.ControlUtil;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -28,12 +30,12 @@ public class AsyncPlayerChatListener implements Listener {
         ControlUtil controlUtil = plugin.getInventoryClickListener().getControlUtil();
 
         // Handle players being controlled by another player
-        if (player.hasMetadata("TROLLPLUS_CONTROL_TARGET"))
+        if (player.hasMetadata(MetadataConstants.TROLLPLUS_CONTROL_TARGET))
             // Cancel the chat event if control message boolean is false
             if (!controlUtil.getControlMessageBoolean()) event.setCancelled(true);
 
         // Handle the player who is controlling another player
-        if (player.hasMetadata("TROLLPLUS_CONTROL_PLAYER")) {
+        if (player.hasMetadata(MetadataConstants.TROLLPLUS_CONTROL_PLAYER)) {
             // Cancel the chat event and relay the message through ControlUtil
             event.setCancelled(true);
             controlUtil.setControlMessage(event.getMessage());
@@ -41,10 +43,10 @@ public class AsyncPlayerChatListener implements Listener {
         }
 
         // Handle players who are semi-banned
-        if (player.hasMetadata("TROLLPLUS_SEMI_BAN")) {
+        if (player.hasMetadata(MetadataConstants.TROLLPLUS_SEMI_BAN)) {
             // Cancel the chat event and replace it with a custom message
             event.setCancelled(true);
-            String semiBanMessageReplace = plugin.getConfigHelper().getString("semi-ban-message-replace");
+            String semiBanMessageReplace = plugin.getConfigHelper().getString(ConfigConstants.SEMI_BAN_MESSAGE_REPLACE);
 
             // Send the replacement message if it's configured
             if (!semiBanMessageReplace.isEmpty())

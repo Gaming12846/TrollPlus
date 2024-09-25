@@ -6,6 +6,7 @@
 package de.gaming12846.trollplus.utils;
 
 import de.gaming12846.trollplus.TrollPlus;
+import de.gaming12846.trollplus.constants.LangConstants;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -46,6 +47,11 @@ public class GUIHelper {
         inventory.setItem(index, ItemBuilder.createItemWithLore(material, name, lore));
     }
 
+    // Adds an item with custom name, lore and status to the specified index in the GUI
+    public void addItemWithLoreAndStatus(Integer index, Material material, String name, String metadata, String lore) {
+        inventory.setItem(index, ItemBuilder.createItemWithLore(material, name + " " + getStatus(metadata), lore));
+    }
+
     // Retrieves the Inventory (GUI)
     public Inventory getGUI() {
         return inventory;
@@ -63,13 +69,13 @@ public class GUIHelper {
 
     // Retrieves the status string
     public String getStatus(String metadata) {
-        if (player.hasMetadata(metadata)) return "§a§l" + configHelperLanguage.getString("guis.status-on");
-        return "§c§l" + configHelperLanguage.getString("guis.status-off");
+        if (player.hasMetadata(metadata)) return "§a§l" + configHelperLanguage.getString(LangConstants.GUI_STATUS_ON);
+        return "§c§l" + configHelperLanguage.getString(LangConstants.GUI_STATUS_OFF);
     }
 
     // Retrieves the status string
     public String getStatus(Boolean configboolean) {
-        if (configboolean) return "§a§l" + configHelperLanguage.getString("guis.status-on");
-        return "§c§l" + configHelperLanguage.getString("guis.status-off");
+        if (configboolean) return "§a§l" + configHelperLanguage.getString(LangConstants.GUI_STATUS_ON);
+        return "§c§l" + configHelperLanguage.getString(LangConstants.GUI_STATUS_OFF);
     }
 }

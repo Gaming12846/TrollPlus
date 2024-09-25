@@ -9,14 +9,12 @@ version: 1.4.8
 
 metrics-enabled: "Las métricas del plugin están habilitadas."
 
-server-version:
-  unsupported: "Versión del servidor no compatible. El plugin no se cargará a menos que se active en la configuración. Si se carga, pueden ocurrir errores."
-  partly-supported: "Versión del servidor parcialmente compatible. Algunas funciones son diferentes o no están disponibles."
+server-version-only-partly-supported: "Versión del servidor parcialmente compatible. Algunas funciones son diferentes o no están disponibles."
 
-checking-updates: "Buscando actualizaciones..."
+checking-for-updates: "Buscando actualizaciones..."
 update-available: "¡Una nueva actualización está disponible! Descárgala desde GitHub:"
 no-update-available: "No hay nuevas actualizaciones disponibles."
-unable-check-updates: "No se puede verificar si hay actualizaciones."
+unable-check-for-updates: "No se puede verificar si hay actualizaciones."
 
 config-outdated: "¡Tu archivo de configuración está desactualizado! Por favor, actualízalo a la última versión. El plugin intentará cargarlo, pero pueden ocurrir errores."
 language-config-outdated: "¡Tu configuración de idioma está desactualizada! Por favor, actualízala a la última versión. El plugin intentará cargarla, pero pueden ocurrir errores."
@@ -25,7 +23,7 @@ failed-to-save-config: "Error al guardar la configuración."
 no-permission: "No tienes permiso para ejecutar este comando."
 no-console: "Este comando no se puede usar desde la consola."
 invalid-syntax: "¡Sintaxis de comando inválida!"
-invalid-syntax-use: "Uso: /"
+invalid-syntax-usage: "Uso: /"
 
 ##################### Comando Trollplus #####################
 
@@ -136,10 +134,20 @@ vanish:
 # Mensajes spam para la función "Mensajes Spam". Agrega tantos como desees.
 spam-messages:
   - "¡Hola, amigo!"
-  - "¡Alerta de troll!"
-  - "LoLoLoLoLo"
-  - "xDxDxDxDxD"
-  - "XoXoXoXo"
+  - "¡Advertencia: Trolls por todas partes!"
+  - "¡JaJaJaJaJa!"
+  - "¡LOLz xD xD!"
+  - "¡Abrazos y besos! XOXO!"
+  - "¡Has ganado un premio!"
+  - "¡Dinero gratis! ¡Haz clic ahora!"
+  - "¡No te pierdas esta oferta!"
+  - "¡Solo por tiempo limitado!"
+  - "¡Felicidades! ¡Eres un ganador!"
+  - "¡Grandes noticias, todos!"
+  - "¡Únete a la diversión ahora!"
+  - "¡Mensaje súper secreto!"
+  - "¡Tu opinión es necesaria!"
+  - "¡Esto no es un simulacro!"
 
 fake-ban:
   message-player: "Has sido baneado de este servidor"

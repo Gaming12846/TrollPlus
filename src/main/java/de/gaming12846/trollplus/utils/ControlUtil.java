@@ -6,6 +6,8 @@
 package de.gaming12846.trollplus.utils;
 
 import de.gaming12846.trollplus.TrollPlus;
+import de.gaming12846.trollplus.constants.ConfigConstants;
+import de.gaming12846.trollplus.constants.MetadataConstants;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -119,12 +121,12 @@ public class ControlUtil {
         new BukkitRunnable() {
             @Override
             public void run() {
-                if (!playerTarget.hasMetadata("TROLLPLUS_CONTROL_TARGET")) {
+                if (!playerTarget.hasMetadata(MetadataConstants.TROLLPLUS_CONTROL_TARGET)) {
                     endControl(wasFlightAllowed);
                     cancel();
                     return;
-                } else if (!playerController.hasMetadata("TROLLPLUS_CONTROL_PLAYER")) {
-                    playerTarget.removeMetadata("TROLLPLUS_CONTROL_TARGET", plugin);
+                } else if (!playerController.hasMetadata(MetadataConstants.TROLLPLUS_CONTROL_PLAYER)) {
+                    playerTarget.removeMetadata(MetadataConstants.TROLLPLUS_CONTROL_TARGET, plugin);
                     cancel();
                     return;
                 }
@@ -136,12 +138,12 @@ public class ControlUtil {
 
                 synchronizePlayerStates();
             }
-        }.runTaskTimer(plugin, 0, plugin.getConfigHelper().getLong("control.period"));
+        }.runTaskTimer(plugin, 0, plugin.getConfigHelper().getLong(ConfigConstants.CONTROL_PERIOD));
     }
 
     // Ends the control process, restoring the controlling player's original state and visibility
     private void endControl(boolean wasFlightAllowed) {
-        playerController.removeMetadata("TROLLPLUS_CONTROL_PLAYER", plugin);
+        playerController.removeMetadata(MetadataConstants.TROLLPLUS_CONTROL_PLAYER, plugin);
         playerController.setInvulnerable(false);
         playerController.getInventory().setContents(playerInventory);
         playerController.getInventory().setArmorContents(playerArmor);
@@ -149,7 +151,8 @@ public class ControlUtil {
         playerController.setLevel(playerLevel);
         playerController.setExp(playerExp);
 
-        if (plugin.getConfigHelper().getBoolean("control.teleport-back")) playerController.teleport(playerLocation);
+        if (plugin.getConfigHelper().getBoolean(ConfigConstants.CONTROL_TELEPORT_BACK))
+            playerController.teleport(playerLocation);
 
         if (!wasFlightAllowed) {
             playerTarget.setAllowFlight(false);

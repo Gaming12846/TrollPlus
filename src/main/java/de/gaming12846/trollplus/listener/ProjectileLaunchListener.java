@@ -6,6 +6,8 @@
 package de.gaming12846.trollplus.listener;
 
 import de.gaming12846.trollplus.TrollPlus;
+import de.gaming12846.trollplus.constants.LangConstants;
+import de.gaming12846.trollplus.constants.MetadataConstants;
 import de.gaming12846.trollplus.utils.ConfigHelper;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -46,35 +48,35 @@ public class ProjectileLaunchListener implements Listener {
         String displayName = itemMeta.getDisplayName();
 
         // Handle explosion arrow
-        if (displayName.equals(ChatColor.RED + configHelperLanguage.getString("trollbows.explosion-bow")) && itemMeta.isUnbreakable()) {
+        if (displayName.equals(ChatColor.RED + configHelperLanguage.getString(LangConstants.TROLLBOWS_EXPLOSION_BOW)) && itemMeta.isUnbreakable()) {
             handleExplosionArrow(arrow);
             if (plugin.getServerVersion() < 1.20 && player.getGameMode() != GameMode.CREATIVE)
                 player.getInventory().addItem(new ItemStack(Material.ARROW));
         }
 
         // Handle TNT arrow
-        if (displayName.equals(ChatColor.RED + configHelperLanguage.getString("trollbows.tnt-bow")) && itemMeta.isUnbreakable()) {
+        if (displayName.equals(ChatColor.RED + configHelperLanguage.getString(LangConstants.TROLLBOWS_TNT_BOW)) && itemMeta.isUnbreakable()) {
             handleTntArrow(arrow);
             if (plugin.getServerVersion() < 1.20 && player.getGameMode() != GameMode.CREATIVE)
                 player.getInventory().addItem(new ItemStack(Material.ARROW));
         }
 
         // Handle lightning bolt arrow
-        if (displayName.equals(ChatColor.RED + configHelperLanguage.getString("trollbows.lightning-bolt-bow")) && itemMeta.isUnbreakable()) {
+        if (displayName.equals(ChatColor.RED + configHelperLanguage.getString(LangConstants.TROLLBOWS_LIGHTNING_BOLT_BOW)) && itemMeta.isUnbreakable()) {
             handleLightningBoltArrow(arrow);
             if (plugin.getServerVersion() < 1.20 && player.getGameMode() != GameMode.CREATIVE)
                 player.getInventory().addItem(new ItemStack(Material.ARROW));
         }
 
         // Handle silverfish arrow
-        if (displayName.equals(ChatColor.RED + configHelperLanguage.getString("trollbows.silverfish-bow")) && itemMeta.isUnbreakable()) {
+        if (displayName.equals(ChatColor.RED + configHelperLanguage.getString(LangConstants.TROLLBOWS_SILVERFISH_BOW)) && itemMeta.isUnbreakable()) {
             handleSilverfishArrow(arrow);
             if (plugin.getServerVersion() < 1.20 && player.getGameMode() != GameMode.CREATIVE)
                 player.getInventory().addItem(new ItemStack(Material.ARROW));
         }
 
         // Handle potion effect arrow
-        if (displayName.equals(ChatColor.RED + configHelperLanguage.getString("trollbows.potion-effect-bow")) && itemMeta.isUnbreakable()) {
+        if (displayName.equals(ChatColor.RED + configHelperLanguage.getString(LangConstants.TROLLBOWS_POTION_EFFECT_BOW)) && itemMeta.isUnbreakable()) {
             handlePotionEffectArrow(arrow);
             if (plugin.getServerVersion() < 1.20 && player.getGameMode() != GameMode.CREATIVE)
                 player.getInventory().addItem(new ItemStack(Material.ARROW));
@@ -83,7 +85,7 @@ public class ProjectileLaunchListener implements Listener {
 
     // Handles the explosion arrow effect
     private void handleExplosionArrow(Arrow arrow) {
-        arrow.setMetadata("TROLLPLUS_EXPLOSION_ARROW", new FixedMetadataValue(plugin, arrow));
+        arrow.setMetadata(MetadataConstants.TROLLPLUS_TROLLBOWS_EXPLOSION_ARROW, new FixedMetadataValue(plugin, arrow));
 
         new BukkitRunnable() {
             @Override
@@ -101,7 +103,7 @@ public class ProjectileLaunchListener implements Listener {
 
     // Handles the TNT arrow effect
     private void handleTntArrow(Arrow arrow) {
-        arrow.setMetadata("TROLLPLUS_TNT_ARROW", new FixedMetadataValue(plugin, arrow));
+        arrow.setMetadata(MetadataConstants.TROLLPLUS_TROLLBOWS_TNT_ARROW, new FixedMetadataValue(plugin, arrow));
 
         new BukkitRunnable() {
             @Override
@@ -119,7 +121,7 @@ public class ProjectileLaunchListener implements Listener {
 
     // Handles the lightning bolt arrow effect
     private void handleLightningBoltArrow(Arrow arrow) {
-        arrow.setMetadata("TROLLPLUS_LIGHTNING_BOLT_ARROW", new FixedMetadataValue(plugin, arrow));
+        arrow.setMetadata(MetadataConstants.TROLLPLUS_TROLLBOWS_LIGHTNING_BOLT_ARROW, new FixedMetadataValue(plugin, arrow));
 
         new BukkitRunnable() {
             @Override
@@ -137,7 +139,7 @@ public class ProjectileLaunchListener implements Listener {
 
     // Handles the silverfish arrow effect
     private void handleSilverfishArrow(Arrow arrow) {
-        arrow.setMetadata("TROLLPLUS_SILVERFISH_ARROW", new FixedMetadataValue(plugin, arrow));
+        arrow.setMetadata(MetadataConstants.TROLLPLUS_TROLLBOWS_SILVERFISH_ARROW, new FixedMetadataValue(plugin, arrow));
 
         new BukkitRunnable() {
             @Override
@@ -154,7 +156,7 @@ public class ProjectileLaunchListener implements Listener {
 
     // Handles the potion effect arrow effect
     private void handlePotionEffectArrow(Arrow arrow) {
-        arrow.setMetadata("TROLLPLUS_POTION_EFFECT_ARROW", new FixedMetadataValue(plugin, arrow));
+        arrow.setMetadata(MetadataConstants.TROLLPLUS_TROLLBOWS_POTION_EFFECT_ARROW, new FixedMetadataValue(plugin, arrow));
 
         new BukkitRunnable() {
             @Override

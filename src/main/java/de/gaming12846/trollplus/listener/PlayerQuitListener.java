@@ -6,6 +6,8 @@
 package de.gaming12846.trollplus.listener;
 
 import de.gaming12846.trollplus.TrollPlus;
+import de.gaming12846.trollplus.constants.ConfigConstants;
+import de.gaming12846.trollplus.constants.MetadataConstants;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -28,7 +30,7 @@ public class PlayerQuitListener implements Listener {
         Player player = event.getPlayer();
 
         // Check if features should be deactivated upon player quit
-        if (plugin.getConfigHelper().getBoolean("deactivate-features-on-quit")) {
+        if (plugin.getConfigHelper().getBoolean(ConfigConstants.DEACTIVATE_FEATURES_ON_QUIT)) {
             // Remove player metadata related to troll features
             removeMetadata(player);
 
@@ -44,7 +46,7 @@ public class PlayerQuitListener implements Listener {
 
     // Removes metadata related to various troll features from the player
     private void removeMetadata(Player player) {
-        String[] metadataKeys = {"TROLLPLUS_VANISH", "TROLLPLUS_FREEZE", "TROLLPLUS_HAND_ITEM_DROP", "TROLLPLUS_CONTROL_TARGET", "TROLLPLUS_CONTROL_PLAYER", "TROLLPLUS_FLIP_BEHIND", "TROLLPLUS_SPANK", "TROLLPLUS_SPAM_MESSAGES", "TROLLPLUS_SPAM_SOUNDS", "TROLLPLUS_SEMI_BAN", "TROLLPLUS_FALLING_ANVILS", "TROLLPLUS_TNT_TRACK", "TROLLPLUS_MOB_SPAWNER", "TROLLPLUS_SLOWLY_KILL", "TROLLPLUS_ROCKET_NO_FALL_DAMAGE"};
+        String[] metadataKeys = {MetadataConstants.TROLLPLUS_VANISH, MetadataConstants.TROLLPLUS_FREEZE, MetadataConstants.TROLLPLUS_HAND_ITEM_DROP, MetadataConstants.TROLLPLUS_CONTROL_TARGET, MetadataConstants.TROLLPLUS_CONTROL_PLAYER, MetadataConstants.TROLLPLUS_FLIP_BEHIND, MetadataConstants.TROLLPLUS_SPANK, MetadataConstants.TROLLPLUS_SPAM_MESSAGES, MetadataConstants.TROLLPLUS_SPAM_SOUNDS, MetadataConstants.TROLLPLUS_SEMI_BAN, MetadataConstants.TROLLPLUS_FALLING_ANVILS, MetadataConstants.TROLLPLUS_TNT_TRACK, MetadataConstants.TROLLPLUS_MOB_SPAWNER, MetadataConstants.TROLLPLUS_SLOWLY_KILL, MetadataConstants.TROLLPLUS_ROCKET_NO_FALL_DAMAGE};
 
         for (String key : metadataKeys) {
             player.removeMetadata(key, plugin);

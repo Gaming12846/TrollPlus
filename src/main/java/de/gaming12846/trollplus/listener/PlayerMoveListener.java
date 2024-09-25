@@ -5,6 +5,7 @@
 
 package de.gaming12846.trollplus.listener;
 
+import de.gaming12846.trollplus.constants.MetadataConstants;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,6 +19,6 @@ public class PlayerMoveListener implements Listener {
         Player player = event.getPlayer();
 
         // Cancel movement if the player has the "TROLLPLUS_FREEZE" metadata
-        if (player.hasMetadata("TROLLPLUS_FREEZE")) event.setCancelled(true);
+        if (player.hasMetadata(MetadataConstants.TROLLPLUS_FREEZE)) event.setCancelled(true);
     }
 }

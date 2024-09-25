@@ -21,22 +21,26 @@ package de.gaming12846.trollplus;
 import de.gaming12846.trollplus.commands.TrollBowsCommand;
 import de.gaming12846.trollplus.commands.TrollCommand;
 import de.gaming12846.trollplus.commands.TrollPlusCommand;
+import de.gaming12846.trollplus.constants.ConfigConstants;
+import de.gaming12846.trollplus.constants.LangConstants;
 import de.gaming12846.trollplus.listener.*;
 import de.gaming12846.trollplus.utils.ConfigHelper;
 import de.gaming12846.trollplus.utils.TabCompleter;
 import de.gaming12846.trollplus.utils.UpdateChecker;
 import org.bstats.bukkit.Metrics;
-import org.bukkit.ChatColor;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Objects;
+import java.util.logging.Level;
 
 // The main class for the TrollPlus plugin
 public class TrollPlus extends JavaPlugin {
-    public static final String PLUGIN_PREFIX = ChatColor.DARK_GRAY + "[" + ChatColor.DARK_RED + ChatColor.BOLD + "TrollPlus" + ChatColor.RESET + ChatColor.DARK_GRAY + "]" + ChatColor.RESET + " ";
-    public String updateCheckerLog;
     private double serverVersion;
+    public boolean updateAvailable = false;
 
     // ConfigHelper instances
     private ConfigHelper configHelper;
@@ -60,12 +64,18 @@ public class TrollPlus extends JavaPlugin {
     @Override
     public void onEnable() {
         loadConfigs();
+        // Set log level from config
+        getLogger().setLevel(Level.parse(getConfigHelper().getString(ConfigConstants.LOG_LEVEL)));
         checkServerVersion();
         registerListeners(getServer().getPluginManager());
         registerCommands();
         registerTabCompleters(new TabCompleter());
         initializeMetrics();
-        checkForUpdates();
+        try {
+            checkForUpdates();
+        } catch (URISyntaxException | MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     // Loads the plugin's configuration files and checks their versions
@@ -82,13 +92,12 @@ public class TrollPlus extends JavaPlugin {
         configHelperLangTraditionalChinese = new ConfigHelper(this, "languages/lang_zh-tw.yml");
 
         // Check config versions
-        String configVersion = "1.4.8";
-        if (!configVersion.equalsIgnoreCase(getConfigHelper().getString("version")))
-            getLogger().warning(getConfigHelperLanguage().getString("config-outdated"));
+        String version = getDescription().getVersion();
+        if (!version.equalsIgnoreCase(getConfigHelper().getString(ConfigConstants.CONFIG_VERSION)))
+            getLogger().warning(getConfigHelperLanguage().getString(LangConstants.CONFIG_OUTDATED));
 
-        String languageConfigVersion = "1.4.8";
-        if (!languageConfigVersion.equalsIgnoreCase(getConfigHelperLanguage().getString("version")))
-            getLogger().warning(getConfigHelperLanguage().getString("language-config-outdated"));
+        if (!version.equalsIgnoreCase(getConfigHelperLanguage().getString(LangConstants.LANGUAGE_CONFIG_VERSION)))
+            getLogger().warning(getConfigHelperLanguage().getString(LangConstants.LANGUAGE_CONFIG_OUTDATED));
     }
 
     // Retrieves the plugin configuration
@@ -103,7 +112,7 @@ public class TrollPlus extends JavaPlugin {
 
     // Retrieves the appropriate language configuration based on the plugin's config setting
     public ConfigHelper getConfigHelperLanguage() {
-        String language = getConfigHelper().getString("language");
+        String language = getConfigHelper().getString(ConfigConstants.LANGUAGE);
 
         switch (language.toLowerCase()) {
             case "custom" -> {
@@ -138,12 +147,8 @@ public class TrollPlus extends JavaPlugin {
         String bukkitVersion = getServer().getBukkitVersion().split("-")[0].split("\\.")[0] + "." + getServer().getBukkitVersion().split("-")[0].split("\\.")[1];
         serverVersion = Double.parseDouble(bukkitVersion);
 
-        if (serverVersion < 1.13) {
-            getLogger().warning(getConfigHelperLanguage().getString("server-version.unsupported"));
-            if (getConfig().getBoolean("load-despite-unsupported-version", false))
-                getServer().getPluginManager().disablePlugin(this);
-        } else if (serverVersion < 1.20)
-            getLogger().info(getConfigHelperLanguage().getString("server-version.partly-supported"));
+        if (serverVersion < 1.20)
+            getLogger().info(getConfigHelperLanguage().getString(LangConstants.SERVER_VERSION_ONLY_PARTLY_SUPPORTED));
     }
 
     // Retrieves the server version
@@ -193,18 +198,19 @@ public class TrollPlus extends JavaPlugin {
 
     // Initializes the bStats metrics for the plugin
     private void initializeMetrics() {
-        if (getConfig().getBoolean("metrics-enabled", true)) {
-            getLogger().info(getConfigHelperLanguage().getString("metrics-enabled"));
+        if (getConfig().getBoolean(ConfigConstants.METRICS_ENABLED, true)) {
+            getLogger().info(getConfigHelperLanguage().getString(LangConstants.METRICS_ENABLED));
             new Metrics(this, 11761);
         }
     }
 
     // Checks for updates to the plugin and logs the result
-    private void checkForUpdates() {
-        if (getConfig().getBoolean("check-for-updates", true)) {
-            getLogger().info(getConfigHelperLanguage().getString("checking-updates"));
-            updateCheckerLog = new UpdateChecker(this).checkForUpdates();
-            getLogger().info(updateCheckerLog);
+    private void checkForUpdates() throws URISyntaxException, MalformedURLException {
+        if (getConfig().getBoolean(ConfigConstants.CHECK_FOR_UPDATES, true)) {
+            getLogger().info(getConfigHelperLanguage().getString(LangConstants.CHECKING_FOR_UPDATES));
+            String updateChecker = new UpdateChecker(this, new URI("https://api.github.com/repos/Gaming12846/TrollPlus/releases/latest").toURL()).checkForUpdates();
+            getLogger().info(updateChecker);
+            if (updateChecker.equals(LangConstants.UPDATE_AVAILABLE)) updateAvailable = true;
         }
     }
 

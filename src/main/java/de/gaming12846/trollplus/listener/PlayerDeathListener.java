@@ -6,6 +6,8 @@
 package de.gaming12846.trollplus.listener;
 
 import de.gaming12846.trollplus.TrollPlus;
+import de.gaming12846.trollplus.constants.LangConstants;
+import de.gaming12846.trollplus.constants.MetadataConstants;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -26,13 +28,13 @@ public class PlayerDeathListener implements Listener {
         Player player = event.getEntity();
 
         // Handle the control feature to clear the inventory of the player being controlled
-        if (player.hasMetadata("TROLLPLUS_CONTROL_TARGET"))
+        if (player.hasMetadata(MetadataConstants.TROLLPLUS_CONTROL_TARGET))
             plugin.getInventoryClickListener().controlUtil.getPlayer().getInventory().clear();
 
         // Handle the kill feature to remove the kill metadata and set a custom death message
-        if (player.hasMetadata("TROLLPLUS_KILL")) {
-            player.removeMetadata("TROLLPLUS_KILL", plugin);
-            event.setDeathMessage(player.getName() + " " + plugin.getConfigHelperLanguage().getString("troll.kill-message"));
+        if (player.hasMetadata(MetadataConstants.TROLLPLUS_KILL)) {
+            player.removeMetadata(MetadataConstants.TROLLPLUS_KILL, plugin);
+            event.setDeathMessage(player.getName() + " " + plugin.getConfigHelperLanguage().getString(LangConstants.TROLL_KILL_MESSAGE));
         }
     }
 }

@@ -11,14 +11,12 @@ version: 1.4.8
 
 metrics-enabled: ""
 
-server-version:
-  unsupported: ""
-  partly-supported: ""
+server-version-only-partly-supported:
 
-checking-updates: ""
+checking-for-updates: ""
 update-available: ""
 no-update-available: ""
-unable-check-updates: ""
+unable-check-for-updates: ""
 
 config-outdated: ""
 language-config-outdated: ""
@@ -27,7 +25,7 @@ failed-to-safe-config: ""
 no-permission: ""
 no-console: ""
 invalid-syntax: ""
-invalid-syntax-use: ""
+invalid-syntax-usage: ""
 
 ##################### Trollplus command #####################
 
@@ -134,8 +132,6 @@ vanish:
 
 # Spam messages for the "Spam Messages" feature. Add as many as you like.
 spam-messages:
-  - ""
-  - ""
   - ""
   - ""
   - ""

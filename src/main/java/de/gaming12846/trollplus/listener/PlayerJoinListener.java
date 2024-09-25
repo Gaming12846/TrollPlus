@@ -6,6 +6,8 @@
 package de.gaming12846.trollplus.listener;
 
 import de.gaming12846.trollplus.TrollPlus;
+import de.gaming12846.trollplus.constants.ConfigConstants;
+import de.gaming12846.trollplus.constants.MetadataConstants;
 import de.gaming12846.trollplus.utils.ControlUtil;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -27,7 +29,7 @@ public class PlayerJoinListener implements Listener {
         Player player = event.getPlayer();
 
         // Check if the player has the "TROLLPLUS_CONTROL_PLAYER" metadata
-        if (player.hasMetadata("TROLLPLUS_CONTROL_PLAYER")) {
+        if (player.hasMetadata(MetadataConstants.TROLLPLUS_CONTROL_PLAYER)) {
             ControlUtil controlUtil = plugin.getInventoryClickListener().getControlUtil();
 
             // Return the player's own items and levels
@@ -39,11 +41,11 @@ public class PlayerJoinListener implements Listener {
             player.setExp(controlUtil.getPlayerExp());
 
             // Teleport the player back to their previous location if configured
-            if (plugin.getConfigHelper().getBoolean("control.teleport-back"))
+            if (plugin.getConfigHelper().getBoolean(ConfigConstants.CONTROL_TELEPORT_BACK))
                 player.teleport(controlUtil.getPlayerLocation());
 
             // Remove the "TROLLPLUS_CONTROL_PLAYER" metadata
-            player.removeMetadata("TROLLPLUS_CONTROL_PLAYER", plugin);
+            player.removeMetadata(MetadataConstants.TROLLPLUS_CONTROL_PLAYER, plugin);
         }
     }
 }

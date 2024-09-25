@@ -5,6 +5,7 @@
 
 package de.gaming12846.trollplus.listener;
 
+import de.gaming12846.trollplus.constants.MetadataConstants;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.EventHandler;
@@ -19,19 +20,19 @@ public class EntityDamageByEntityListener implements Listener {
         Entity damager = event.getDamager();
 
         // Cancel damage if the damager has the "TROLLPLUS_FREEZE" metadata
-        if (damager.hasMetadata("TROLLPLUS_FREEZE")) event.setCancelled(true);
+        if (damager.hasMetadata(MetadataConstants.TROLLPLUS_FREEZE)) event.setCancelled(true);
 
         // Cancel damage if the damager has the "TROLLPLUS_CONTROL_TARGET" metadata
-        if (damager.hasMetadata("TROLLPLUS_CONTROL_TARGET")) event.setCancelled(true);
+        if (damager.hasMetadata(MetadataConstants.TROLLPLUS_CONTROL_TARGET)) event.setCancelled(true);
 
         // Flip the damager 180 degrees if it has the "TROLLPLUS_FLIP_BEHIND" metadata
-        if (damager.hasMetadata("TROLLPLUS_FLIP_BEHIND")) {
+        if (damager.hasMetadata(MetadataConstants.TROLLPLUS_FLIP_BEHIND)) {
             Location location = damager.getLocation();
             location.setYaw(damager.getLocation().getYaw() + 180);
             damager.teleport(location);
         }
 
         // Cancel damage if the damager has the "TROLLPLUS_SEMI_BAN" metadata
-        if (damager.hasMetadata("TROLLPLUS_SEMI_BAN")) event.setCancelled(true);
+        if (damager.hasMetadata(MetadataConstants.TROLLPLUS_SEMI_BAN)) event.setCancelled(true);
     }
 }

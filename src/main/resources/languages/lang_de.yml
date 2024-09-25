@@ -9,14 +9,12 @@ version: 1.4.8
 
 metrics-enabled: "Pluginmetriken aktiviert."
 
-server-version:
-  unsupported: "Serverversion nicht unterstützt. Das Plugin wird nicht geladen, wenn es nicht in der Konfiguration aktiviert ist. Wenn es geladen wird, können Fehler auftreten."
-  partly-supported: "Serverversion teilweise unterstützt. Einige Funktionen sind anders oder nicht verfügbar."
+server-version-only-partly-supported: "Serverversion teilweise unterstützt. Einige Funktionen sind anders oder nicht verfügbar."
 
-checking-updates: "Suche nach Updates ..."
+checking-for-updates: "Suche nach Updates ..."
 update-available: "Ein neues Update ist verfügbar! Besuche GitHub, um es herunterzuladen:"
 no-update-available: "Kein neues Update verfügbar."
-unable-check-updates: "Update-Überprüfung fehlgeschlagen:"
+unable-check-for-updates: "Update-Überprüfung fehlgeschlagen:"
 
 config-outdated: "Die Konfigurationsdatei ist veraltet! Bitte aktualisiere die Konfigurationsdatei auf die neueste Version. Das Plugin wird versuchen, sie trotzdem zu laden, aber es können Fehler auftreten."
 language-config-outdated: "Die Sprachkonfigurationsdatei ist veraltet! Bitte aktualisiere die Sprachkonfigurationsdatei auf die neueste Version. Das Plugin wird versuchen, sie trotzdem zu laden, aber es können Fehler auftreten."
@@ -25,7 +23,7 @@ failed-to-save-config: "Fehler beim Speichern der Konfiguration:"
 no-permission: "Du hast nicht genügend Rechte, um diesen Befehl auszuführen."
 no-console: "Der Befehl kann nicht von der Konsole ausgeführt werden."
 invalid-syntax: "Ungültige Befehlssyntax!"
-invalid-syntax-use: "Benutze /"
+invalid-syntax-usage: "Benutze /"
 
 ##################### Trollplus Befehl ######################
 
@@ -135,11 +133,21 @@ vanish:
 
 # Füge Spam-Nachrichten für die Funktion "Spam-Nachrichten" hinzu (so viele Nachrichten wie gewünscht)
 spam-messages:
-  - "Hallo, mein Freund"
-  - "Troll"
-  - "LoLoLoLo"
-  - "xDxDxDxDxD"
-  - "XoXoXoXo"
+  - "Hallo, Kumpel!"
+  - "Warnung: Überall Trolls!"
+  - "HaHaHaHaHa!"
+  - "LOLz xD xD!"
+  - "Umarmungen und Küsse! XOXO!"
+  - "Du hast einen Preis gewonnen!!!"
+  - "Kostenloses Geld! Jetzt klicken!"
+  - "Verpass dieses Angebot nicht!"
+  - "Nur für kurze Zeit!"
+  - "Herzlichen Glückwunsch! Du bist ein Gewinner!"
+  - "Große Neuigkeiten, alle!"
+  - "Mach jetzt mit!"
+  - "Super geheime Nachricht!"
+  - "Deine Meinung wird gebraucht!"
+  - "Das ist kein Drill!"
 
 fake-ban:
   message-player: "Du wurdest von diesem Server ausgeschlossen"

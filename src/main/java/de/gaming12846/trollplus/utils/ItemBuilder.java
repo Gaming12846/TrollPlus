@@ -62,6 +62,7 @@ public class ItemBuilder {
             meta.setDisplayName(name);
             meta.setOwningPlayer(owner);
 
+            // TODO
             List<String> loreList = Arrays.asList(ChatColor.GRAY + "Ping: " + ChatColor.RED + owner.getPing(), ChatColor.GRAY + "Health: " + ChatColor.RED + owner.getHealth(), ChatColor.GRAY + "Exp: " + ChatColor.RED + owner.getExp(), ChatColor.GRAY + "GameMode: " + ChatColor.RED + owner.getGameMode(), ChatColor.GRAY + "Locale: " + ChatColor.RED + owner.getLocale());
             meta.setLore(loreList);
             skull.setItemMeta(meta);

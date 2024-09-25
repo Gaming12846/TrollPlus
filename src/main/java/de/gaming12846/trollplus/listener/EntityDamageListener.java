@@ -6,6 +6,7 @@
 package de.gaming12846.trollplus.listener;
 
 import de.gaming12846.trollplus.TrollPlus;
+import de.gaming12846.trollplus.constants.MetadataConstants;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -30,9 +31,9 @@ public class EntityDamageListener implements Listener {
         if (entity instanceof Player player && event.getCause() == EntityDamageEvent.DamageCause.FALL) {
 
             // Cancel fall damage if the player has the "TROLLPLUS_ROCKET_NO_FALL_DAMAGE" metadata and then remove it
-            if (player.hasMetadata("TROLLPLUS_ROCKET_NO_FALL_DAMAGE")) {
+            if (player.hasMetadata(MetadataConstants.TROLLPLUS_ROCKET_NO_FALL_DAMAGE)) {
                 event.setCancelled(true);
-                player.removeMetadata("TROLLPLUS_ROCKET_NO_FALL_DAMAGE", plugin);
+                player.removeMetadata(MetadataConstants.TROLLPLUS_ROCKET_NO_FALL_DAMAGE, plugin);
             }
         }
     }

@@ -6,6 +6,8 @@
 package de.gaming12846.trollplus.listener;
 
 import de.gaming12846.trollplus.TrollPlus;
+import de.gaming12846.trollplus.constants.ConfigConstants;
+import de.gaming12846.trollplus.constants.MetadataConstants;
 import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.TNTPrimed;
@@ -30,9 +32,9 @@ public class EntityExplodeListener implements Listener {
         Entity entity = event.getEntity();
 
         // Check if the exploding entity is a TNTPrimed entity with the "TROLLPLUS_TNT" metadata
-        if (entity instanceof TNTPrimed && entity.hasMetadata("TROLLPLUS_TNT")) {
+        if (entity instanceof TNTPrimed && entity.hasMetadata(MetadataConstants.TROLLPLUS_TNT)) {
             // If the plugin configuration allows block breaking, exit the method early
-            if (plugin.getConfigHelper().getBoolean("break-blocks")) return;
+            if (plugin.getConfigHelper().getBoolean(ConfigConstants.BREAK_BLOCKS)) return;
 
             // Cancel the explosion event and play an explosion sound at the entity's location
             event.setCancelled(true);

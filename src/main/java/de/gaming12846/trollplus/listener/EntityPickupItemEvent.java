@@ -5,6 +5,7 @@
 
 package de.gaming12846.trollplus.listener;
 
+import de.gaming12846.trollplus.constants.MetadataConstants;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,12 +19,12 @@ public class EntityPickupItemEvent implements Listener {
         if (!(event.getEntity() instanceof Player player)) return;
 
         // Cancel the item pickup event if the player has the "TROLLPLUS_FREEZE" metadata
-        if (player.hasMetadata("TROLLPLUS_FREEZE")) event.setCancelled(true);
+        if (player.hasMetadata(MetadataConstants.TROLLPLUS_FREEZE)) event.setCancelled(true);
 
         // Cancel the item pickup event if the player has the "TROLLPLUS_CONTROL_TARGET" metadata
-        if (player.hasMetadata("TROLLPLUS_CONTROL_TARGET")) event.setCancelled(true);
+        if (player.hasMetadata(MetadataConstants.TROLLPLUS_CONTROL_TARGET)) event.setCancelled(true);
 
         // Cancel the item pickup event if the player has the "TROLLPLUS_SEMI_BAN" metadata
-        if (player.hasMetadata("TROLLPLUS_SEMI_BAN")) event.setCancelled(true);
+        if (player.hasMetadata(MetadataConstants.TROLLPLUS_SEMI_BAN)) event.setCancelled(true);
     }
 }

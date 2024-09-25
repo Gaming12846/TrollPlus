@@ -5,6 +5,7 @@
 
 package de.gaming12846.trollplus.listener;
 
+import de.gaming12846.trollplus.constants.MetadataConstants;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,6 +19,6 @@ public class PlayerItemHeldListener implements Listener {
         Player player = event.getPlayer();
 
         // Cancel item switch if the player has the "TROLLPLUS_CONTROL_TARGET" metadata
-        if (player.hasMetadata("TROLLPLUS_CONTROL_TARGET")) event.setCancelled(true);
+        if (player.hasMetadata(MetadataConstants.TROLLPLUS_CONTROL_TARGET)) event.setCancelled(true);
     }
 }

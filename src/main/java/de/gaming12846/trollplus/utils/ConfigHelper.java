@@ -6,6 +6,7 @@
 package de.gaming12846.trollplus.utils;
 
 import de.gaming12846.trollplus.TrollPlus;
+import de.gaming12846.trollplus.constants.LangConstants;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -31,7 +32,6 @@ public class ConfigHelper {
 
     // Method to save the default config if it doesn't exist
     public void saveDefaultConfig() {
-        if (!plugin.getDataFolder().exists()) plugin.getDataFolder().mkdirs();
         file = new File(plugin.getDataFolder(), path);
         if (!file.exists()) plugin.saveResource(path, false);
     }
@@ -50,22 +50,27 @@ public class ConfigHelper {
         try {
             fileConfiguration.save(file);
         } catch (IOException e) {
-            plugin.getLogger().warning(plugin.getConfigHelperLanguage().getString("failed-to-save-config") + " " + e);
+            plugin.getLogger().warning(plugin.getConfigHelperLanguage().getString(LangConstants.FAILED_TO_SAVE_CONFIG) + " " + e);
         }
     }
 
-    // Retrieves the FileConfiguration
-    public FileConfiguration getConfig() {
-        return fileConfiguration;
+    // Sets the specified path with the given value in the file configuration.
+    public void set(String path, Object value) {
+        fileConfiguration.set(path, value);
+    }
+
+    // Checks if the specified path exists in the file configuration.
+    public boolean contains(String path) {
+        return fileConfiguration.contains(path);
     }
 
     // Retrieve a string from the config
     public String getString(String path) {
         // Get the value from the current language config
-        String string = fileConfiguration.getString(path);
+        String message = fileConfiguration.getString(path);
 
         // If the message is null or empty, replace it with the default value
-        if (string == null || string.trim().isEmpty()) {
+        if (message == null || message.trim().isEmpty()) {
             // Load the default config from the plugin's jar
             FileConfiguration defaultConfig = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder(), path));
 
@@ -73,7 +78,7 @@ public class ConfigHelper {
             return defaultConfig.getString(path, "Message not found: " + path);
         }
 
-        return string;
+        return message;
     }
 
     // Retrieve a boolean from the config
@@ -106,15 +111,5 @@ public class ConfigHelper {
         }
 
         return list;
-    }
-
-    //
-    public void set(String path, Object value) {
-        fileConfiguration.set(path, value);
-    }
-
-    //
-    public boolean contains(String path) {
-        return fileConfiguration.contains(path);
     }
 }

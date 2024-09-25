@@ -6,6 +6,8 @@
 package de.gaming12846.trollplus.listener;
 
 import de.gaming12846.trollplus.TrollPlus;
+import de.gaming12846.trollplus.constants.ConfigConstants;
+import de.gaming12846.trollplus.constants.MetadataConstants;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -26,9 +28,9 @@ public class BlockIgniteListener implements Listener {
         Entity entity = event.getIgnitingEntity();
 
         // Check if the plugin configuration allows setting fire
-        if (!plugin.getConfigHelper().getBoolean("set-fire")) {
-            // Ensure the entity is not null, check the cause and for custom metadata
-            if (entity != null && event.getCause() == BlockIgniteEvent.IgniteCause.LIGHTNING && entity.hasMetadata("TROLLPLUS_LIGHTNING_BOLT"))
+        if (!plugin.getConfigHelper().getBoolean(ConfigConstants.SET_FIRE)) {
+            // Ensure the entity is not null, check the cause and for "TROLLPLUS_TROLLBOWS_LIGHTNING_BOLT" metadata
+            if (entity != null && event.getCause() == BlockIgniteEvent.IgniteCause.LIGHTNING && entity.hasMetadata(MetadataConstants.TROLLPLUS_TROLLBOWS_LIGHTNING_BOLT))
                 event.setCancelled(true);
         }
     }

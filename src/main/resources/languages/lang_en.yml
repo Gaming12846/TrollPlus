@@ -9,14 +9,12 @@ version: 1.4.8
 
 metrics-enabled: "Plugin metrics are enabled."
 
-server-version:
-  unsupported: "Server version not supported. The plugin will not load unless activated in the configuration. If loaded, errors may occur."
-  partly-supported: "Server version partially supported. Some functions are different or not available."
+server-version-only-partly-supported: "Server version partially supported. Some functions are different or not available."
 
-checking-updates: "Checking for updates..."
+checking-for-updates: "Checking for updates..."
 update-available: "A new update is available! Download it from GitHub:"
 no-update-available: "No new updates available."
-unable-check-updates: "Unable to check for updates."
+unable-check-for-updates: "Unable to check for updates."
 
 config-outdated: "Your configuration file is outdated! Please update it to the latest version. The plugin will attempt to load it, but errors may occur."
 language-config-outdated: "Your language configuration is outdated! Please update it to the latest version. The plugin will attempt to load it, but errors may occur."
@@ -25,7 +23,7 @@ failed-to-save-config: "Failed to save configuration."
 no-permission: "You do not have permission to execute this command."
 no-console: "This command cannot be used from the console."
 invalid-syntax: "Invalid command syntax!"
-invalid-syntax-use: "Usage: /"
+invalid-syntax-usage: "Usage: /"
 
 ##################### Trollplus command #####################
 
@@ -135,11 +133,21 @@ vanish:
 
 # Spam messages for the "Spam Messages" feature. Add as many as you like.
 spam-messages:
-  - "Hello, friend!"
-  - "Troll alert!"
-  - "LoLoLoLoLo"
-  - "xDxDxDxDxD"
-  - "XoXoXoXo"
+  - "Hey there, buddy!"
+  - "Warning: Trolls everywhere!"
+  - "HaHaHaHaHa!"
+  - "LOLz xD xD!"
+  - "Hugs and kisses! XOXO!"
+  - "You won a prize!!!"
+  - "Free money! Click now!"
+  - "Don’t miss this offer!"
+  - "Limited time only!"
+  - "Congratulations! You're a winner!"
+  - "Big news, everyone!"
+  - "Join the fun now!"
+  - "Super secret message!"
+  - "Your input is needed!"
+  - "This is not a drill!"
 
 fake-ban:
   message-player: "You have been banned from this server"

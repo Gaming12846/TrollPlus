@@ -9,14 +9,12 @@ version: 1.4.8
 
 metrics-enabled: "Les métriques du plugin sont activées."
 
-server-version:
-  unsupported: "Version du serveur non prise en charge. Le plugin ne se chargera pas à moins d'être activé dans la configuration. S'il se charge, des erreurs peuvent survenir."
-  partly-supported: "Version du serveur partiellement prise en charge. Certaines fonctions sont différentes ou non disponibles."
+server-version-only-partly-supported: "Version du serveur partiellement prise en charge. Certaines fonctions sont différentes ou non disponibles."
 
-checking-updates: "Vérification des mises à jour..."
+checking-for-updates: "Vérification des mises à jour..."
 update-available: "Une nouvelle mise à jour est disponible! Téléchargez-la depuis GitHub:"
 no-update-available: "Aucune nouvelle mise à jour disponible."
-unable-check-updates: "Impossible de vérifier les mises à jour."
+unable-check-for-updates: "Impossible de vérifier les mises à jour."
 
 config-outdated: "Votre fichier de configuration est obsolète ! Veuillez le mettre à jour vers la dernière version. Le plugin tentera de le charger, mais des erreurs peuvent survenir."
 language-config-outdated: "Votre configuration de langue est obsolète ! Veuillez la mettre à jour vers la dernière version. Le plugin tentera de la charger, mais des erreurs peuvent survenir."
@@ -25,7 +23,7 @@ failed-to-save-config: "Échec de la sauvegarde de la configuration."
 no-permission: "Vous n'avez pas la permission d'exécuter cette commande."
 no-console: "Cette commande ne peut pas être utilisée depuis la console."
 invalid-syntax: "Syntaxe de commande invalide !"
-invalid-syntax-use: "Utilisation : /"
+invalid-syntax-usage: "Utilisation : /"
 
 #################### Commande Trollplus #####################
 
@@ -135,11 +133,21 @@ vanish:
 
 # Messages spam pour la fonctionnalité "Messages Spam". Ajoutez autant que vous le souhaitez.
 spam-messages:
-  - "Bonjour, ami !"
-  - "Alerte troll !"
-  - "LoLoLoLoLo"
-  - "xDxDxDxDxD"
-  - "XoXoXoXo"
+  - "Salut, mon pote !"
+  - "Alerte : Trolls partout !"
+  - "HaHaHaHaHa !"
+  - "LOLz xD xD !"
+  - "Bisous et câlins ! XOXO !"
+  - "Tu as gagné un prix !!!"
+  - "Argent gratuit ! Clique maintenant !"
+  - "Ne rate pas cette offre !"
+  - "Offre limitée dans le temps !"
+  - "Félicitations ! Tu es un gagnant !"
+  - "Grande nouvelle, tout le monde !"
+  - "Rejoins le fun maintenant !"
+  - "Message super secret !"
+  - "Ton avis est nécessaire !"
+  - "Ce n'est pas un exercice !"
 
 fake-ban:
   message-player: "Vous avez été banni de ce serveur"

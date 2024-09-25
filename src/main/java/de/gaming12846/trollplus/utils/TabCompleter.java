@@ -5,6 +5,7 @@
 
 package de.gaming12846.trollplus.utils;
 
+import de.gaming12846.trollplus.constants.PermissionConstants;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -28,22 +29,25 @@ public class TabCompleter implements org.bukkit.command.TabCompleter {
             switch (args.length) {
                 case 1 -> {
                     // First argument completion
-                    if (sender.hasPermission("trollplus.version")) results.add("version");
-                    if (sender.hasPermission("trollplus.reload")) results.add("reload");
-                    if (sender.hasPermission("trollplus.troll") || sender.hasPermission("trollplus.blocklist.remove"))
+                    if (sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_VERSION)) results.add("version");
+                    if (sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_RELOAD)) results.add("reload");
+                    if (sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_BLOCKLIST_ADD) || sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_BLOCKLIST_REMOVE))
                         results.add("blocklist");
-                    if (sender.hasPermission("trollplus.settings")) results.add("settings");
+                    if (sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_SETTINGS))
+                        results.add("settings");
                 }
                 case 2 -> {
                     // Second argument completion for "blocklist"
                     if (args[0].equals("blocklist")) {
-                        if (sender.hasPermission("trollplus.troll")) results.add("add");
-                        if (sender.hasPermission("trollplus.blocklist.remove")) results.add("remove");
+                        if (sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_BLOCKLIST_ADD))
+                            results.add("add");
+                        if (sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_BLOCKLIST_REMOVE))
+                            results.add("remove");
                     }
                 }
                 case 3 -> {
                     // Third argument completion for "blocklist add/remove"
-                    if (args[0].equals("blocklist") && (sender.hasPermission("trollplus.troll") || sender.hasPermission("trollplus.blocklist.remove"))) {
+                    if (args[0].equals("blocklist") && (sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_BLOCKLIST_ADD) || sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_BLOCKLIST_REMOVE))) {
                         for (Player p : Bukkit.getOnlinePlayers()) {
                             results.add(p.getName());
                         }
@@ -52,7 +56,7 @@ public class TabCompleter implements org.bukkit.command.TabCompleter {
             }
         }
         // Handle tab completion for the "troll" command
-        else if (cmd.getLabel().equalsIgnoreCase("troll") && sender.hasPermission("trollplus.troll")) {
+        else if (cmd.getLabel().equalsIgnoreCase("troll") && sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_TROLL)) {
             if (args.length == 1) {
                 for (Player p : Bukkit.getOnlinePlayers()) {
                     results.add(p.getName());

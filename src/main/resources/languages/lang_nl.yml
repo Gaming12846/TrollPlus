@@ -9,14 +9,12 @@ version: 1.4.8
 
 metrics-enabled: "Pluginmetriek is ingeschakeld."
 
-server-version:
-  unsupported: "Serverversie niet ondersteund. De plugin zal niet laden tenzij geactiveerd in de configuratie. Als geladen, kunnen er fouten optreden."
-  partly-supported: "Serverversie gedeeltelijk ondersteund. Sommige functies zijn anders of niet beschikbaar."
+server-version-only-partly-supported: "Serverversie gedeeltelijk ondersteund. Sommige functies zijn anders of niet beschikbaar."
 
-checking-updates: "Zoeken naar updates..."
+checking-for-updates: "Zoeken naar updates..."
 update-available: "Er is een nieuwe update beschikbaar! Download deze van GitHub:"
 no-update-available: "Geen nieuwe updates beschikbaar."
-unable-check-updates: "Kan niet controleren op updates."
+unable-check-for-updates: "Kan niet controleren op updates."
 
 config-outdated: "Je configuratiebestand is verouderd! Werk het alstublieft bij naar de nieuwste versie. De plugin zal proberen het te laden, maar er kunnen fouten optreden."
 language-config-outdated: "Je taalconfiguratie is verouderd! Werk het alstublieft bij naar de nieuwste versie. De plugin zal proberen het te laden, maar er kunnen fouten optreden."
@@ -25,7 +23,7 @@ failed-to-save-config: "Mislukt om configuratie op te slaan."
 no-permission: "Je hebt geen toestemming om dit commando uit te voeren."
 no-console: "Dit commando kan niet vanaf de console worden gebruikt."
 invalid-syntax: "Ongeldige commando-syntaxis!"
-invalid-syntax-use: "Gebruik: /"
+invalid-syntax-usage: "Gebruik: /"
 
 #################### Trollplus Commando #####################
 
@@ -135,11 +133,21 @@ vanish:
 
 # Spam berichten voor de functie "Spam Berichten". Voeg zoveel toe als je wilt.
 spam-messages:
-  - "Hallo, vriend!"
-  - "Troll melding!"
-  - "LoLoLoLoLo"
-  - "xDxDxDxDxD"
-  - "XoXoXoXo"
+  - "Hey daar, maat!"
+  - "Waarschuwing: Trolls overal!"
+  - "HaHaHaHaHa!"
+  - "LOLz xD xD!"
+  - "Knuffels en kussen! XOXO!"
+  - "Je hebt een prijs gewonnen!!!"
+  - "Gratis geld! Klik nu!"
+  - "Mis deze aanbieding niet!"
+  - "Beperkte tijd alleen!"
+  - "Gefeliciteerd! Je bent een winnaar!"
+  - "Groot nieuws, iedereen!"
+  - "Doe mee met de lol!"
+  - "Super geheime boodschap!"
+  - "Jouw input is nodig!"
+  - "Dit is geen oefening!"
 
 fake-ban:
   message-player: "Je bent verbannen van deze server"

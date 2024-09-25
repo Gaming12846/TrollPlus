@@ -5,6 +5,7 @@
 
 package de.gaming12846.trollplus.listener;
 
+import de.gaming12846.trollplus.constants.MetadataConstants;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -19,19 +20,19 @@ public class PlayerInteractListener implements Listener {
         Player player = event.getPlayer();
 
         // Prevent player interaction if they are frozen
-        if (player.hasMetadata("TROLLPLUS_FREEZE")) event.setCancelled(true);
+        if (player.hasMetadata(MetadataConstants.TROLLPLUS_FREEZE)) event.setCancelled(true);
 
         // Prevent player interaction if they are being controlled
-        if (player.hasMetadata("TROLLPLUS_CONTROL_TARGET")) event.setCancelled(true);
+        if (player.hasMetadata(MetadataConstants.TROLLPLUS_CONTROL_TARGET)) event.setCancelled(true);
 
         // Flip the player's direction if they have the "flip behind" feature
-        if (player.hasMetadata("TROLLPLUS_FLIP_BEHIND")) {
+        if (player.hasMetadata(MetadataConstants.TROLLPLUS_FLIP_BEHIND)) {
             Location location = player.getLocation();
             location.setYaw(player.getLocation().getYaw() + 180);
             player.teleport(location);
         }
 
         // Prevent player interaction if they are semi-banned
-        if (player.hasMetadata("TROLLPLUS_SEMI_BAN")) event.setCancelled(true);
+        if (player.hasMetadata(MetadataConstants.TROLLPLUS_SEMI_BAN)) event.setCancelled(true);
     }
 }

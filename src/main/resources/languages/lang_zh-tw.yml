@@ -10,14 +10,12 @@ version: 1.4.8
 
 metrics-enabled: "正在開啓插件數據收集功能"
 
-server-version:
-  unsupported: "不支援伺服器版本。除非在設定中啟動，否則不會載入外掛程式。如果載入，可能會發生錯誤。"
-  partly-supported: "伺服器版本部分支援。某些功能有所不同或無法使用。"
+server-version-only-partly-supported: "伺服器版本部分支援。某些功能有所不同或無法使用。"
 
-checking-updates: "正在檢查更新..."
+checking-for-updates: "正在檢查更新..."
 update-available: "發現新版本！請前往 GitHub 頁面下載最新版本："
 no-update-available: "已是最新版本"
-unable-check-updates: "檢查新版本失敗："
+unable-check-for-updates: "檢查新版本失敗："
 
 config-outdated: "您的配置已過時！請將您的配置更新到最新版本。插件無論如何都會嘗試加載它，但可能會出現錯誤"
 language-config-outdated: "您的翻譯文件已過時！請將您的翻譯文件更新到最新版本。插件無論如何都會嘗試加載它，但可能會出現錯誤"
@@ -26,7 +24,7 @@ failed-to-safe-config: "保存配置失敗："
 no-permission: "您沒有足夠的權限執行此命令"
 no-console: "無法從控制台執行命令"
 invalid-syntax: "無效的指令參數！"
-invalid-syntax-use: "請使用 /"
+invalid-syntax-usage: "請使用 /"
 
 ####################### Trollplus 指令 ########################
 
@@ -136,11 +134,21 @@ vanish:
 
 # 給 "消息刷屏" 功能的信息 (妳可以加妳想要的信息).
 spam-messages:
-  - "妳好我的朋友"
-  - "Troll"
-  - "LoLoLoLo"
-  - "xDxDxDxDxD"
-  - "XoXoXoXo"
+  - "嘿，朋友！"
+  - "警告：到處都是小丑！"
+  - "哈哈哈哈哈！"
+  - "LOLz xD xD！"
+  - "擁抱和吻！XOXO！"
+  - "你贏得了一個獎品！！！"
+  - "免費錢！現在點擊！"
+  - "不要錯過這個優惠！"
+  - "限時優惠！"
+  - "恭喜！你是贏家！"
+  - "大新聞，大家！"
+  - "現在加入樂趣！"
+  - "超級秘密消息！"
+  - "需要你的意見！"
+  - "這不是演習！"
 
 fake-ban:
   message-player: "妳已被服務器封禁"

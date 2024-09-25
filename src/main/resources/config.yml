@@ -25,8 +25,8 @@ metrics-enabled: true
 # Enable or disable the update checker. [Default: true]
 check-for-updates: true
 
-# Enable or disable whether the plugin should be loaded with an unsupported version. [Default: false]
-load-despite-unsupported-version: false
+# Sets the plugin's log level. Available options include: FINEST, FINER, FINE, CONFIG, INFO, WARNING, and SEVERE. [Default: CONFIG]
+log-level: CONFIG
 
 ##################### Feature Settings ######################
 
