@@ -5,6 +5,8 @@
 
 package de.gaming12846.trollplus.commands;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import de.gaming12846.trollplus.TrollPlus;
 import de.gaming12846.trollplus.constants.ConfigConstants;
 import de.gaming12846.trollplus.constants.LangConstants;
@@ -22,7 +24,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginDescriptionFile;
 
-import static de.gaming12846.trollplus.TrollPlus.PLUGIN_PREFIX;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.util.UUID;
 
 // Handles the "trollplus" commands, the main commands for the plugin
 public class TrollPlusCommand implements CommandExecutor {
@@ -154,21 +160,28 @@ public class TrollPlusCommand implements CommandExecutor {
         }
 
         // Check if the player is in the blocklist
-        OfflinePlayer offlineTarget = Bukkit.getOfflinePlayer(args[2]);
-        if (configHelperBlocklist.contains(offlineTarget.getUniqueId().toString())) {
-            String message = PLUGIN_PREFIX + configHelperLanguage.getString("trollplus.already-in-blocklist");
-            sender.sendMessage(message.replace("[player]", ChatColor.RED + ChatColor.BOLD.toString() + offlineTarget.getName() + ChatColor.RESET));
-            return;
+        Player onlinePlayer = Bukkit.getPlayer(args[2]);
+        UUID playerUUID;
+        if (onlinePlayer != null) {
+            playerUUID = onlinePlayer.getUniqueId();
+        } else playerUUID = getOfflinePlayerUUID(args[2]);
+
+        if (playerUUID != null) {
+            if (configHelperBlocklist.contains(playerUUID.toString())) {
+                String message = LangConstants.PLUGIN_PREFIX + configHelperLanguage.getString(LangConstants.TROLLPLUS_ALREADY_IN_BLOCKLIST);
+                sender.sendMessage(message.replace("[player]", ChatColor.RED + ChatColor.BOLD.toString() + args[2] + ChatColor.RESET));
+                return;
+            }
+
+            // Add player to the blocklist
+            configHelperBlocklist.set(playerUUID.toString(), args[2]);
+            String message = LangConstants.PLUGIN_PREFIX + configHelperLanguage.getString(LangConstants.TROLLPLUS_ADDED_TO_BLOCKLIST);
+            sender.sendMessage(message.replace("[player]", ChatColor.RED + ChatColor.BOLD.toString() + args[2] + ChatColor.RESET));
+
+            // Save and reload the blocklist configuration
+            configHelperBlocklist.saveConfig();
+            configHelperBlocklist.loadConfig();
         }
-
-        // Add player to the blocklist
-        configHelperBlocklist.set(offlineTarget.getUniqueId().toString(), offlineTarget.getName());
-        String message = PLUGIN_PREFIX + configHelperLanguage.getString("trollplus.added-to-blocklist");
-        sender.sendMessage(message.replace("[player]", ChatColor.RED + ChatColor.BOLD.toString() + offlineTarget.getName() + ChatColor.RESET));
-
-        // Save and reload the blocklist configuration
-        configHelperBlocklist.saveConfig();
-        configHelperBlocklist.loadConfig();
     }
 
     // Handles the "blocklist remove" subcommand to remove a player from the blocklist
@@ -186,21 +199,59 @@ public class TrollPlusCommand implements CommandExecutor {
         }
 
         // Check if the player is in the blocklist
-        OfflinePlayer offlineTarget = Bukkit.getOfflinePlayer(args[2]);
-        if (!configHelperBlocklist.contains(offlineTarget.getUniqueId().toString())) {
-            String message = PLUGIN_PREFIX + configHelperLanguage.getString("trollplus.not-in-blocklist");
-            sender.sendMessage(message.replace("[player]", ChatColor.RED + ChatColor.BOLD.toString() + offlineTarget.getName() + ChatColor.RESET));
-            return;
+        Player onlinePlayer = Bukkit.getPlayer(args[2]);
+        UUID playerUUID;
+        if (onlinePlayer != null) {
+            playerUUID = onlinePlayer.getUniqueId();
+        } else playerUUID = getOfflinePlayerUUID(args[2]);
+
+        if (playerUUID != null) {
+            if (!configHelperBlocklist.contains(playerUUID.toString())) {
+                String message = LangConstants.PLUGIN_PREFIX + configHelperLanguage.getString(LangConstants.TROLLPLUS_NOT_IN_BLOCKLIST);
+                sender.sendMessage(message.replace("[player]", ChatColor.RED + ChatColor.BOLD.toString() + args[2] + ChatColor.RESET));
+                return;
+            }
+
+            // Remove player to the blocklist
+            configHelperBlocklist.set(playerUUID.toString(), null);
+            String message = LangConstants.PLUGIN_PREFIX + configHelperLanguage.getString(LangConstants.TROLLPLUS_REMOVED_FROM_BLOCKLIST);
+            sender.sendMessage(message.replace("[player]", ChatColor.RED + ChatColor.BOLD.toString() + args[2] + ChatColor.RESET));
+
+            // Save and reload the blocklist configuration
+            configHelperBlocklist.saveConfig();
+            configHelperBlocklist.loadConfig();
         }
+    }
 
-        // Remove player to the blocklist
-        configHelperBlocklist.set(offlineTarget.getUniqueId().toString(), null);
-        String message = PLUGIN_PREFIX + configHelperLanguage.getString("trollplus.removed-from-blocklist");
-        sender.sendMessage(message.replace("[player]", ChatColor.RED + ChatColor.BOLD.toString() + offlineTarget.getName() + ChatColor.RESET));
+    // Method for retrieving the UUID of an offline player with the Mojang api
+    private UUID getOfflinePlayerUUID(String playerName) {
+        try {
+            String url = "https://api.mojang.com/users/profiles/minecraft/" + playerName;
+            HttpURLConnection connection = (HttpURLConnection) new URI(url).toURL().openConnection();
+            connection.setRequestMethod("GET");
 
-        // Save and reload the blocklist configuration
-        configHelperBlocklist.saveConfig();
-        configHelperBlocklist.loadConfig();
+            int responseCode = connection.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String inputLine;
+                StringBuilder response = new StringBuilder();
+
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+
+                // Parse the UUID from the JSON response
+                String jsonResponse = response.toString();
+                JsonObject jsonObject = JsonParser.parseString(jsonResponse).getAsJsonObject();
+                // Extract the content string from the first choice's message
+                String contentString = jsonObject.get("id").getAsString();
+                return UUID.fromString(contentString.replaceFirst("(.{8})(.{4})(.{4})(.{4})(.{12})", "$1-$2-$3-$4-$5"));
+            }
+        } catch (Exception e) {
+            plugin.getLogger().warning(e.getMessage());
+        }
+        return null; // Player not found or error occurred
     }
 
     // Handles the "settings" subcommand to open the settings GUI for a player
