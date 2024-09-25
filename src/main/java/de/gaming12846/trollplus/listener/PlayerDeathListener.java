@@ -29,7 +29,7 @@ public class PlayerDeathListener implements Listener {
 
         // Handle the control feature to clear the inventory of the player being controlled
         if (player.hasMetadata(MetadataConstants.TROLLPLUS_CONTROL_TARGET))
-            plugin.getInventoryClickListener().controlUtil.getPlayer().getInventory().clear();
+            plugin.getInventoryClickListener().getControlHelper().getPlayer().getInventory().clear();
 
         // Handle the kill feature to remove the kill metadata and set a custom death message
         if (player.hasMetadata(MetadataConstants.TROLLPLUS_KILL)) {

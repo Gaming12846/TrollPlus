@@ -10,7 +10,7 @@ import de.gaming12846.trollplus.constants.ConfigConstants;
 import de.gaming12846.trollplus.constants.LangConstants;
 import de.gaming12846.trollplus.constants.MetadataConstants;
 import de.gaming12846.trollplus.utils.ConfigHelper;
-import de.gaming12846.trollplus.utils.ControlUtil;
+import de.gaming12846.trollplus.utils.ControlHelper;
 import de.gaming12846.trollplus.utils.GUIHelper;
 import de.gaming12846.trollplus.utils.ItemBuilder;
 import org.bukkit.*;
@@ -37,7 +37,7 @@ import java.util.concurrent.ThreadLocalRandom;
 // Listener for handling inventory click events
 public class InventoryClickListener implements Listener {
     private final TrollPlus plugin;
-    public ControlUtil controlUtil;
+    public ControlHelper controlHelper;
     private GUIHelper guiHelperLanguageSettings;
 
     // Constructor for the InventoryClickListener
@@ -215,14 +215,16 @@ public class InventoryClickListener implements Listener {
             player.setMetadata(MetadataConstants.TROLLPLUS_CONTROL_PLAYER, new FixedMetadataValue(plugin, player.getName()));
 
             // Initialize the control utility and start controlling
-            controlUtil = new ControlUtil(plugin, target, player);
-            controlUtil.control();
+            controlHelper = new ControlHelper(plugin, target, controller);
+            controlHelper.control();
         } else {
             target.removeMetadata(MetadataConstants.TROLLPLUS_CONTROL_TARGET, plugin);
             player.removeMetadata(MetadataConstants.TROLLPLUS_CONTROL_PLAYER, plugin);
         }
 
-        plugin.getTrollCommand().getGUIHelperTroll().addItemWithLoreAndStatus(13, Material.LEAD, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_CONTROL), MetadataConstants.TROLLPLUS_CONTROL_TARGET, configHelperLanguage.getString(LangConstants.TROLL_GUI_CONTROL_DESCRIPTION));
+    // Retrieves the ControlHelper instance
+    public ControlHelper getControlHelper() {
+        return controlHelper;
     }
 
     // Handles the flip behind feature, flip the player 180° on interaction

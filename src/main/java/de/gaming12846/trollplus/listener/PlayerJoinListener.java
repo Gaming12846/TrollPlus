@@ -8,7 +8,7 @@ package de.gaming12846.trollplus.listener;
 import de.gaming12846.trollplus.TrollPlus;
 import de.gaming12846.trollplus.constants.ConfigConstants;
 import de.gaming12846.trollplus.constants.MetadataConstants;
-import de.gaming12846.trollplus.utils.ControlUtil;
+import de.gaming12846.trollplus.utils.ControlHelper;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -30,19 +30,19 @@ public class PlayerJoinListener implements Listener {
 
         // Check if the player has the "TROLLPLUS_CONTROL_PLAYER" metadata
         if (player.hasMetadata(MetadataConstants.TROLLPLUS_CONTROL_PLAYER)) {
-            ControlUtil controlUtil = plugin.getInventoryClickListener().getControlUtil();
+            ControlHelper controlHelper = plugin.getInventoryClickListener().getControlHelper();
 
             // Return the player's own items and levels
             player.setInvulnerable(false);
-            player.getInventory().setContents(controlUtil.getPlayerInventory());
-            player.getInventory().setArmorContents(controlUtil.getPlayerArmor());
-            player.getInventory().setItemInOffHand(controlUtil.getPlayerOffHandItem());
-            player.setLevel(controlUtil.getPlayerLevel());
-            player.setExp(controlUtil.getPlayerExp());
+            player.getInventory().setContents(controlHelper.getPlayerInventory());
+            player.getInventory().setArmorContents(controlHelper.getPlayerArmor());
+            player.getInventory().setItemInOffHand(controlHelper.getPlayerOffHandItem());
+            player.setLevel(controlHelper.getPlayerLevel());
+            player.setExp(controlHelper.getPlayerExp());
 
             // Teleport the player back to their previous location if configured
             if (plugin.getConfigHelper().getBoolean(ConfigConstants.CONTROL_TELEPORT_BACK))
-                player.teleport(controlUtil.getPlayerLocation());
+                player.teleport(controlHelper.getPlayerLocation());
 
             // Remove the "TROLLPLUS_CONTROL_PLAYER" metadata
             player.removeMetadata(MetadataConstants.TROLLPLUS_CONTROL_PLAYER, plugin);

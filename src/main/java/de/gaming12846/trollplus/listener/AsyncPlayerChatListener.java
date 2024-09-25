@@ -8,7 +8,7 @@ package de.gaming12846.trollplus.listener;
 import de.gaming12846.trollplus.TrollPlus;
 import de.gaming12846.trollplus.constants.ConfigConstants;
 import de.gaming12846.trollplus.constants.MetadataConstants;
-import de.gaming12846.trollplus.utils.ControlUtil;
+import de.gaming12846.trollplus.utils.ControlHelper;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -27,19 +27,19 @@ public class AsyncPlayerChatListener implements Listener {
     @EventHandler
     private void onAsyncPlayerChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
-        ControlUtil controlUtil = plugin.getInventoryClickListener().getControlUtil();
+        ControlHelper controlHelper = plugin.getInventoryClickListener().getControlHelper();
 
         // Handle players being controlled by another player
         if (player.hasMetadata(MetadataConstants.TROLLPLUS_CONTROL_TARGET))
             // Cancel the chat event if control message boolean is false
-            if (!controlUtil.getControlMessageBoolean()) event.setCancelled(true);
+            if (!controlHelper.getControlMessageBoolean()) event.setCancelled(true);
 
         // Handle the player who is controlling another player
         if (player.hasMetadata(MetadataConstants.TROLLPLUS_CONTROL_PLAYER)) {
-            // Cancel the chat event and relay the message through ControlUtil
+            // Cancel the chat event and relay the message through ControlHelper
             event.setCancelled(true);
-            controlUtil.setControlMessage(event.getMessage());
-            controlUtil.setControlMessageBoolean(true);
+            controlHelper.setControlMessage(event.getMessage());
+            controlHelper.setControlMessageBoolean(true);
         }
 
         // Handle players who are semi-banned
