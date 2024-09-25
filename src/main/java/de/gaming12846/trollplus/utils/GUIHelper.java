@@ -21,20 +21,20 @@ public class GUIHelper {
 
     // Constructor for the GUIHelper for a general GUI
     public GUIHelper(String title, Integer size) {
-        inventory = Bukkit.createInventory(null, size, title);
+        this.inventory = Bukkit.createInventory(null, size, title);
     }
 
     // Constructor for the GUIHelper for the Troll GUI
     public GUIHelper(String title, Integer size, Player target, TrollPlus plugin) {
-        inventory = Bukkit.createInventory(null, size, title);
-        player = target;
-        configHelperLanguage = plugin.getConfigHelperLanguage();
+        this.inventory = Bukkit.createInventory(null, size, title);
+        this.player = target;
+        this.configHelperLanguage = plugin.getConfigHelperLanguage();
     }
 
     // Constructor for the GUIHelper for the TrollPlus settings GUI
     public GUIHelper(String title, Integer size, TrollPlus plugin) {
-        inventory = Bukkit.createInventory(null, size, title);
-        configHelperLanguage = plugin.getConfigHelperLanguage();
+        this.inventory = Bukkit.createInventory(null, size, title);
+        this.configHelperLanguage = plugin.getConfigHelperLanguage();
     }
 
     // Adds an item to the specified index in the GUI
@@ -67,15 +67,15 @@ public class GUIHelper {
         return player;
     }
 
-    // Retrieves the status string
+    // Retrieves the status string based on metadata
     public String getStatus(String metadata) {
-        if (player.hasMetadata(metadata)) return "§a§l" + configHelperLanguage.getString(LangConstants.GUI_STATUS_ON);
-        return "§c§l" + configHelperLanguage.getString(LangConstants.GUI_STATUS_OFF);
+        return getStatus(player.hasMetadata(metadata));
     }
 
-    // Retrieves the status string
+    // Retrieves the status string based on a boolean value
     public String getStatus(Boolean configboolean) {
-        if (configboolean) return "§a§l" + configHelperLanguage.getString(LangConstants.GUI_STATUS_ON);
-        return "§c§l" + configHelperLanguage.getString(LangConstants.GUI_STATUS_OFF);
+        String status = configboolean ? LangConstants.GUI_STATUS_ON : LangConstants.GUI_STATUS_OFF;
+        String color = configboolean ? "§a§l" : "§c§l";
+        return color + configHelperLanguage.getString(status);
     }
 }
