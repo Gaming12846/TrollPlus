@@ -155,16 +155,17 @@ public class InventoryClickListener implements Listener {
 
     // Handles the freeze feature, freezing or unfreezing the target player
     private void handleFreezeFeature(Player target, ConfigHelper configHelperLanguage) {
+        double serverVersion = plugin.getServerVersion();
         if (!target.hasMetadata(MetadataConstants.TROLLPLUS_FREEZE)) {
             target.setMetadata(MetadataConstants.TROLLPLUS_FREEZE, new FixedMetadataValue(plugin, target.getName()));
-            if (plugin.getServerVersion() > 1.19)
+            if (serverVersion > 1.19)
                 target.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, Integer.MAX_VALUE, 6));
         } else {
             target.removeMetadata(MetadataConstants.TROLLPLUS_FREEZE, plugin);
-            if (plugin.getServerVersion() > 1.19) target.removePotionEffect(PotionEffectType.SLOWNESS);
+            if (serverVersion > 1.19) target.removePotionEffect(PotionEffectType.SLOWNESS);
         }
 
-        plugin.getTrollCommand().getGUIHelperTroll().addItemWithLoreAndStatus(11, Material.BLUE_ICE, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_FREEZE), MetadataConstants.TROLLPLUS_FREEZE, configHelperLanguage.getString(LangConstants.TROLL_GUI_FREEZE_DESCRIPTION));
+        updateGUIHelperTroll(11, Material.BLUE_ICE, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_FREEZE), MetadataConstants.TROLLPLUS_FREEZE, configHelperLanguage.getString(LangConstants.TROLL_GUI_FREEZE_DESCRIPTION));
     }
 
     // Handles the hand item drop feature, continuously drops the item held in the target player's main hand
@@ -173,12 +174,14 @@ public class InventoryClickListener implements Listener {
             target.setMetadata(MetadataConstants.TROLLPLUS_HAND_ITEM_DROP, new FixedMetadataValue(plugin, target.getName()));
         } else target.removeMetadata(MetadataConstants.TROLLPLUS_HAND_ITEM_DROP, plugin);
 
-        plugin.getTrollCommand().getGUIHelperTroll().addItemWithLoreAndStatus(12, Material.SHEARS, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_HAND_ITEM_DROP), MetadataConstants.TROLLPLUS_HAND_ITEM_DROP, configHelperLanguage.getString(LangConstants.TROLL_GUI_HAND_ITEM_DROP_DESCRIPTION));
+        // Update the GUI with the hand item drop status
+        updateGUIHelperTroll(12, Material.SHEARS, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_HAND_ITEM_DROP), MetadataConstants.TROLLPLUS_HAND_ITEM_DROP, configHelperLanguage.getString(LangConstants.TROLL_GUI_HAND_ITEM_DROP_DESCRIPTION));
 
+        // Schedule the hand item drop task
         new BukkitRunnable() {
             @Override
             public void run() {
-                // Cancel the task if the player no longer has the "TROLLPLUS_HAND_ITEM_DROP" metadata
+                // Cancel if the player no longer has the "TROLLPLUS_HAND_ITEM_DROP" metadata
                 if (!target.hasMetadata(MetadataConstants.TROLLPLUS_HAND_ITEM_DROP)) {
                     cancel();
                     return;
@@ -186,7 +189,12 @@ public class InventoryClickListener implements Listener {
 
                 // Get the item in the player's main hand. If it's air (empty), do nothing
                 ItemStack itemInHand = target.getInventory().getItemInMainHand();
-                if (itemInHand.getType() == Material.AIR) return;
+
+                // If the hand is empty, do nothing
+                if (itemInHand.getType() == Material.AIR) {
+                    cancel(); // Optional: cancel the task if hand is empty
+                    return;
+                }
 
                 // Drop a single item from the stack in the player's main hand
                 ItemStack dropItem = new ItemStack(itemInHand.getType(), 1);
@@ -197,30 +205,37 @@ public class InventoryClickListener implements Listener {
                 // Decrease the amount of the item in the player's hand by one
                 int newAmount = itemInHand.getAmount() - 1;
                 itemInHand.setAmount(newAmount);
+
+                // Update the player's inventory
                 target.getInventory().setItemInMainHand(itemInHand);
             }
         }.runTaskTimer(plugin, 0, plugin.getConfigHelper().getInt(ConfigConstants.HAND_ITEM_DROP_PERIOD));
     }
 
     // Handles the control feature, control the player
-    private void handleControlFeature(Player player, Player target, ConfigHelper configHelperLanguage) {
+    private void handleControlFeature(Player controller, Player target, ConfigHelper configHelperLanguage) {
         // Check if the player is trying to control themselves
-        if (target.equals(player)) {
-            player.sendMessage(LangConstants.PLUGIN_PREFIX + configHelperLanguage.getString(LangConstants.TROLL_CONTROL_NOT_AVAILABLE));
+        if (target.equals(controller)) {
+            controller.sendMessage(LangConstants.PLUGIN_PREFIX + configHelperLanguage.getString(LangConstants.TROLL_CONTROL_NOT_AVAILABLE));
             return;
         }
 
         if (!target.hasMetadata(MetadataConstants.TROLLPLUS_CONTROL_TARGET)) {
             target.setMetadata(MetadataConstants.TROLLPLUS_CONTROL_TARGET, new FixedMetadataValue(plugin, target.getName()));
-            player.setMetadata(MetadataConstants.TROLLPLUS_CONTROL_PLAYER, new FixedMetadataValue(plugin, player.getName()));
+            controller.setMetadata(MetadataConstants.TROLLPLUS_CONTROL_PLAYER, new FixedMetadataValue(plugin, controller.getName()));
 
             // Initialize the control utility and start controlling
             controlHelper = new ControlHelper(plugin, target, controller);
             controlHelper.control();
         } else {
+            // Stop controlling the target player
             target.removeMetadata(MetadataConstants.TROLLPLUS_CONTROL_TARGET, plugin);
-            player.removeMetadata(MetadataConstants.TROLLPLUS_CONTROL_PLAYER, plugin);
+            controller.removeMetadata(MetadataConstants.TROLLPLUS_CONTROL_PLAYER, plugin);
         }
+
+        // Update the GUI with the control status
+        updateGUIHelperTroll(13, Material.LEAD, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_CONTROL), MetadataConstants.TROLLPLUS_CONTROL_TARGET, configHelperLanguage.getString(LangConstants.TROLL_GUI_CONTROL_DESCRIPTION));
+    }
 
     // Retrieves the ControlHelper instance
     public ControlHelper getControlHelper() {
@@ -233,7 +248,8 @@ public class InventoryClickListener implements Listener {
             target.setMetadata(MetadataConstants.TROLLPLUS_FLIP_BEHIND, new FixedMetadataValue(plugin, target.getName()));
         } else target.removeMetadata(MetadataConstants.TROLLPLUS_FLIP_BEHIND, plugin);
 
-        plugin.getTrollCommand().getGUIHelperTroll().addItemWithLoreAndStatus(14, Material.COMPASS, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_FLIP_BACKWARDS), MetadataConstants.TROLLPLUS_FLIP_BEHIND, configHelperLanguage.getString(LangConstants.TROLL_GUI_FLIP_BACKWARDS_DESCRIPTION));
+        // Update the GUI with the flip behind status
+        updateGUIHelperTroll(14, Material.COMPASS, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_FLIP_BACKWARDS), MetadataConstants.TROLLPLUS_FLIP_BEHIND, configHelperLanguage.getString(LangConstants.TROLL_GUI_FLIP_BACKWARDS_DESCRIPTION));
     }
 
     // Handles the spank feature, continuously applies a random knockback ("spank") effect to the target
@@ -242,19 +258,20 @@ public class InventoryClickListener implements Listener {
             target.setMetadata(MetadataConstants.TROLLPLUS_SPANK, new FixedMetadataValue(plugin, target.getName()));
         } else target.removeMetadata(MetadataConstants.TROLLPLUS_SPANK, plugin);
 
-        plugin.getTrollCommand().getGUIHelperTroll().addItemWithLoreAndStatus(15, Material.SLIME_BALL, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_SPANK), MetadataConstants.TROLLPLUS_SPANK, configHelperLanguage.getString(LangConstants.TROLL_GUI_SPANK_DESCRIPTION));
+        // Update the GUI with the spank status
+        updateGUIHelperTroll(15, Material.SLIME_BALL, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_SPANK), MetadataConstants.TROLLPLUS_SPANK, configHelperLanguage.getString(LangConstants.TROLL_GUI_SPANK_DESCRIPTION));
 
+        // Schedule the spank task
         new BukkitRunnable() {
-
             @Override
             public void run() {
-                // Check if the target still has the "TROLLPLUS_SPANK" metadata, cancel if not
+                // Cancel if the target no longer has the "TROLLPLUS_SPANK" metadata
                 if (!target.hasMetadata(MetadataConstants.TROLLPLUS_SPANK)) {
                     cancel();
                     return;
                 }
 
-                // Generate random knockback vector components within specified ranges
+                // Generate random knockback vector components
                 double x = ThreadLocalRandom.current().nextDouble(0.1, 1) - ThreadLocalRandom.current().nextDouble(0.1, 1);
                 double y = ThreadLocalRandom.current().nextDouble(0.33, 1);
                 double z = ThreadLocalRandom.current().nextDouble(0.1, 1) - ThreadLocalRandom.current().nextDouble(0.1, 1);
@@ -271,21 +288,28 @@ public class InventoryClickListener implements Listener {
             target.setMetadata(MetadataConstants.TROLLPLUS_SPAM_MESSAGES, new FixedMetadataValue(plugin, target.getName()));
         } else target.removeMetadata(MetadataConstants.TROLLPLUS_SPAM_MESSAGES, plugin);
 
-        plugin.getTrollCommand().getGUIHelperTroll().addItemWithLoreAndStatus(19, Material.WRITABLE_BOOK, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_SPAM_MESSAGES), MetadataConstants.TROLLPLUS_SPAM_MESSAGES, configHelperLanguage.getString(LangConstants.TROLL_GUI_SPAM_MESSAGES_DESCRIPTION));
+        // Update the GUI with the spam messages status
+        updateGUIHelperTroll(19, Material.WRITABLE_BOOK, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_SPAM_MESSAGES), MetadataConstants.TROLLPLUS_SPAM_MESSAGES, configHelperLanguage.getString(LangConstants.TROLL_GUI_SPAM_MESSAGES_DESCRIPTION));
 
+        // List of spam messages
+        List<String> spamMessages = configHelperLanguage.getStringList(LangConstants.SPAM_MESSAGES);
+
+        // Schedule the spam messages task
         new BukkitRunnable() {
             @Override
             public void run() {
+                // Cancel if the target no longer has the "TROLLPLUS_SPAM_MESSAGES" metadata
                 if (!target.hasMetadata(MetadataConstants.TROLLPLUS_SPAM_MESSAGES)) {
                     cancel();
                     return;
                 }
 
-                List<String> spamMessages = configHelperLanguage.getStringList(LangConstants.SPAM_MESSAGES);
+                // Get random messages for chat and title
                 String chatMessage = getRandomColoredMessage(spamMessages);
                 String titleMessage = getRandomColoredMessage(spamMessages);
                 String subtitleMessage = getRandomColoredMessage(spamMessages);
 
+                // Send chat and title messages to the target
                 target.sendMessage(chatMessage);
                 target.sendTitle(titleMessage, subtitleMessage, 3, 10, 3);
             }
@@ -294,10 +318,13 @@ public class InventoryClickListener implements Listener {
 
     // Generates a randomly colored message from a list of message
     private String getRandomColoredMessage(List<String> messages) {
-        StringBuilder messageBuilder = new StringBuilder();
+        // Select a random message from the provided list
         String randomMessage = messages.get(ThreadLocalRandom.current().nextInt(0, messages.size()));
+        StringBuilder messageBuilder = new StringBuilder();
 
+        // Append a random color to each character in the selected message
         for (Character character : randomMessage.toCharArray()) {
+            // Get a random index between 0 and 15 (inclusive) for ChatColor
             ChatColor randomColor = ChatColor.getByChar(Integer.toHexString(ThreadLocalRandom.current().nextInt(0, 16)));
             messageBuilder.append(randomColor).append(character);
         }
@@ -311,20 +338,27 @@ public class InventoryClickListener implements Listener {
             target.setMetadata(MetadataConstants.TROLLPLUS_SPAM_SOUNDS, new FixedMetadataValue(plugin, target.getName()));
         } else target.removeMetadata(MetadataConstants.TROLLPLUS_SPAM_SOUNDS, plugin);
 
-        plugin.getTrollCommand().getGUIHelperTroll().addItemWithLoreAndStatus(20, Material.NOTE_BLOCK, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_SPAM_SOUNDS), MetadataConstants.TROLLPLUS_SPAM_SOUNDS, configHelperLanguage.getString(LangConstants.TROLL_GUI_SPAM_SOUNDS_DESCRIPTION));
+        // Update the GUI with the spam sounds status
+        updateGUIHelperTroll(20, Material.NOTE_BLOCK, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_SPAM_SOUNDS), MetadataConstants.TROLLPLUS_SPAM_SOUNDS, configHelperLanguage.getString(LangConstants.TROLL_GUI_SPAM_SOUNDS_DESCRIPTION));
 
+        // List of annoying sounds
+        List<Sound> annoyingSounds = Arrays.asList(Sound.ENTITY_PHANTOM_AMBIENT, Sound.ENTITY_PHANTOM_HURT, Sound.ENTITY_PHANTOM_DEATH, Sound.ENTITY_ENDERMAN_SCREAM, Sound.ENTITY_GHAST_SCREAM, Sound.ENTITY_GHAST_HURT, Sound.BLOCK_NOTE_BLOCK_HARP, Sound.BLOCK_NOTE_BLOCK_BASEDRUM, Sound.BLOCK_NOTE_BLOCK_BELL, Sound.BLOCK_NOTE_BLOCK_BASS, Sound.BLOCK_NOTE_BLOCK_SNARE, Sound.BLOCK_ANVIL_USE, Sound.BLOCK_ANVIL_FALL, Sound.BLOCK_BELL_USE, Sound.BLOCK_BELL_RESONATE, Sound.BLOCK_IRON_DOOR_OPEN, Sound.BLOCK_IRON_DOOR_CLOSE, Sound.ENTITY_VILLAGER_NO, Sound.ENTITY_VILLAGER_HURT, Sound.ENTITY_VILLAGER_TRADE, Sound.ENTITY_VILLAGER_YES, Sound.BLOCK_PORTAL_AMBIENT, Sound.BLOCK_PORTAL_TRAVEL, Sound.BLOCK_LAVA_POP, Sound.BLOCK_LAVA_AMBIENT, Sound.BLOCK_END_PORTAL_SPAWN, Sound.BLOCK_FIRE_AMBIENT, Sound.BLOCK_FIRE_EXTINGUISH, Sound.ENTITY_SILVERFISH_AMBIENT, Sound.ENTITY_SILVERFISH_HURT, Sound.ENTITY_SILVERFISH_DEATH, Sound.ENTITY_CAT_HISS, Sound.ENTITY_ZOMBIE_CONVERTED_TO_DROWNED, Sound.ENTITY_ZOMBIE_VILLAGER_CONVERTED);
+
+        // Schedule the spam sounds task
         new BukkitRunnable() {
             @Override
             public void run() {
+                // Cancel if the target no longer has the spam sounds metadata
                 if (!target.hasMetadata(MetadataConstants.TROLLPLUS_SPAM_SOUNDS)) {
                     cancel();
                     return;
                 }
 
-                List<Sound> annoyingSounds = Arrays.asList(Sound.ENTITY_PHANTOM_AMBIENT, Sound.ENTITY_PHANTOM_HURT, Sound.ENTITY_PHANTOM_DEATH, Sound.ENTITY_ENDERMAN_SCREAM, Sound.ENTITY_GHAST_SCREAM, Sound.ENTITY_GHAST_HURT, Sound.BLOCK_NOTE_BLOCK_HARP, Sound.BLOCK_NOTE_BLOCK_BASEDRUM, Sound.BLOCK_NOTE_BLOCK_BELL, Sound.BLOCK_NOTE_BLOCK_BASS, Sound.BLOCK_NOTE_BLOCK_SNARE, Sound.BLOCK_ANVIL_USE, Sound.BLOCK_ANVIL_FALL, Sound.BLOCK_BELL_USE, Sound.BLOCK_BELL_RESONATE, Sound.BLOCK_IRON_DOOR_OPEN, Sound.BLOCK_IRON_DOOR_CLOSE, Sound.ENTITY_VILLAGER_NO, Sound.ENTITY_VILLAGER_HURT, Sound.ENTITY_VILLAGER_TRADE, Sound.ENTITY_VILLAGER_YES, Sound.BLOCK_PORTAL_AMBIENT, Sound.BLOCK_PORTAL_TRAVEL, Sound.BLOCK_LAVA_POP, Sound.BLOCK_LAVA_AMBIENT, Sound.BLOCK_END_PORTAL_SPAWN, Sound.BLOCK_FIRE_AMBIENT, Sound.BLOCK_FIRE_EXTINGUISH, Sound.ENTITY_SILVERFISH_AMBIENT, Sound.ENTITY_SILVERFISH_HURT, Sound.ENTITY_SILVERFISH_DEATH, Sound.ENTITY_CAT_HISS, Sound.ENTITY_ZOMBIE_CONVERTED_TO_DROWNED, Sound.ENTITY_ZOMBIE_VILLAGER_CONVERTED);
-                Sound randomSound = annoyingSounds.get(ThreadLocalRandom.current().nextInt(0, annoyingSounds.size()));
-
-                target.playSound(target.getLocation(), randomSound, ThreadLocalRandom.current().nextInt(1, 100), ThreadLocalRandom.current().nextInt(1, 100));
+                // Play a random sound from the list
+                Sound randomSound = annoyingSounds.get(ThreadLocalRandom.current().nextInt(annoyingSounds.size()));
+                float volume = ThreadLocalRandom.current().nextFloat() * 2; // Volume range between 0 and 2
+                float pitch = ThreadLocalRandom.current().nextFloat() * 2;  // Pitch range between 0 and 2
+                target.playSound(target.getLocation(), randomSound, volume, pitch);
             }
         }.runTaskTimer(plugin, 0, plugin.getConfigHelper().getInt(ConfigConstants.SPAM_SOUNDS_PERIOD));
     }
@@ -335,14 +369,17 @@ public class InventoryClickListener implements Listener {
             target.setMetadata(MetadataConstants.TROLLPLUS_SEMI_BAN, new FixedMetadataValue(plugin, target.getName()));
         } else target.removeMetadata(MetadataConstants.TROLLPLUS_SEMI_BAN, plugin);
 
-        plugin.getTrollCommand().getGUIHelperTroll().addItemWithLoreAndStatus(21, Material.TRIPWIRE_HOOK, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_SEMI_BAN), MetadataConstants.TROLLPLUS_SEMI_BAN, configHelperLanguage.getString(LangConstants.TROLL_GUI_SEMI_BAN_DESCRIPTION));
+        // Update the GUI with the semi ban status
+        updateGUIHelperTroll(21, Material.TRIPWIRE_HOOK, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_SEMI_BAN), MetadataConstants.TROLLPLUS_SEMI_BAN, configHelperLanguage.getString(LangConstants.TROLL_GUI_SEMI_BAN_DESCRIPTION));
     }
 
     // Handles the falling anvils feature, continuously spawns falling anvils above the target player
     private void handleFallingAnvilsFeature(Player target, Player player, ConfigHelper configHelperLanguage) {
         if (!target.hasMetadata(MetadataConstants.TROLLPLUS_FALLING_ANVILS)) {
-            Location loc = target.getLocation();  // Clone the location to avoid modifying the original
+            // Clone the target's location
+            Location loc = target.getLocation();
 
+            // Check if the space above the target is clear for anvil placement
             for (int i = 0; i < 4; i++) {
                 if (loc.getBlock().getType() == Material.AIR) {
                     loc.add(0, 1, 0);
@@ -352,21 +389,27 @@ public class InventoryClickListener implements Listener {
                 }
             }
 
+            // Set metadata to indicate falling anvils feature is active
             target.setMetadata(MetadataConstants.TROLLPLUS_FALLING_ANVILS, new FixedMetadataValue(plugin, target.getName()));
         } else target.removeMetadata(MetadataConstants.TROLLPLUS_FALLING_ANVILS, plugin);
 
-        plugin.getTrollCommand().getGUIHelperTroll().addItemWithLoreAndStatus(22, Material.ANVIL, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_FALLING_ANVILS), MetadataConstants.TROLLPLUS_FALLING_ANVILS, configHelperLanguage.getString(LangConstants.TROLL_GUI_FALLING_ANVILS_DESCRIPTION));
+        // Update the GUI with the falling anvils status
+        updateGUIHelperTroll(22, Material.ANVIL, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_FALLING_ANVILS), MetadataConstants.TROLLPLUS_FALLING_ANVILS, configHelperLanguage.getString(LangConstants.TROLL_GUI_FALLING_ANVILS_DESCRIPTION));
 
+        // Schedule the falling anvils task
         new BukkitRunnable() {
             @Override
             public void run() {
+                // Cancel if the target no longer has the falling anvils metadata
                 if (!target.hasMetadata(MetadataConstants.TROLLPLUS_FALLING_ANVILS)) {
                     cancel();
                     return;
                 }
 
+                // Get the location directly above the target player
                 Location loc = target.getLocation().add(0, 3, 0);
 
+                // Check if the location above is clear and set an anvil block
                 if (loc.getBlock().getType() == Material.AIR) loc.getBlock().setType(Material.DAMAGED_ANVIL);
             }
         }.runTaskTimer(plugin, 0, plugin.getConfigHelper().getInt(ConfigConstants.FALLING_ANVILS_PERIOD));
@@ -378,16 +421,20 @@ public class InventoryClickListener implements Listener {
             target.setMetadata(MetadataConstants.TROLLPLUS_TNT_TRACK, new FixedMetadataValue(plugin, target.getName()));
         } else target.removeMetadata(MetadataConstants.TROLLPLUS_TNT_TRACK, plugin);
 
-        plugin.getTrollCommand().getGUIHelperTroll().addItemWithLoreAndStatus(23, Material.TNT, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_TNT_TRACK), MetadataConstants.TROLLPLUS_TNT_TRACK, configHelperLanguage.getString(LangConstants.TROLL_GUI_TNT_TRACK_DESCRIPTION));
+        // Update the GUI with the TNT spawning status
+        updateGUIHelperTroll(23, Material.TNT, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_TNT_TRACK), MetadataConstants.TROLLPLUS_TNT_TRACK, configHelperLanguage.getString(LangConstants.TROLL_GUI_TNT_TRACK_DESCRIPTION));
 
+        // Schedule the TNT track task
         new BukkitRunnable() {
             @Override
             public void run() {
+                // Cancel if the target no longer has the TNT track metadata
                 if (!target.hasMetadata(MetadataConstants.TROLLPLUS_TNT_TRACK)) {
                     cancel();
                     return;
                 }
 
+                // Spawn the primed TNT and set its properties
                 TNTPrimed tnt = target.getWorld().spawn(target.getLocation(), TNTPrimed.class);
                 tnt.setFuseTicks(80);
                 tnt.setMetadata(MetadataConstants.TROLLPLUS_TNT, new FixedMetadataValue(plugin, tnt));
@@ -402,17 +449,23 @@ public class InventoryClickListener implements Listener {
             target.setMetadata(MetadataConstants.TROLLPLUS_MOB_SPAWNER, new FixedMetadataValue(plugin, target.getName()));
         } else target.removeMetadata(MetadataConstants.TROLLPLUS_MOB_SPAWNER, plugin);
 
-        plugin.getTrollCommand().getGUIHelperTroll().addItemWithLoreAndStatus(24, Material.SPAWNER, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_MOB_SPAWNER), MetadataConstants.TROLLPLUS_MOB_SPAWNER, configHelperLanguage.getString(LangConstants.TROLL_GUI_MOB_SPAWNER_DESCRIPTION));
+        // Update the GUI with the mob spawner status
+        updateGUIHelperTroll(24, Material.SPAWNER, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_MOB_SPAWNER), MetadataConstants.TROLLPLUS_MOB_SPAWNER, configHelperLanguage.getString(LangConstants.TROLL_GUI_MOB_SPAWNER_DESCRIPTION));
 
+        // Define a list of hostile mobs
+        List<EntityType> hostileMobs = Arrays.asList(EntityType.CREEPER, EntityType.SKELETON, EntityType.SPIDER, EntityType.ZOMBIE, EntityType.HUSK, EntityType.DROWNED, EntityType.ENDERMAN, EntityType.ENDERMITE, EntityType.SILVERFISH, EntityType.BLAZE, EntityType.MAGMA_CUBE, EntityType.WITHER_SKELETON, EntityType.PIGLIN_BRUTE, EntityType.ZOMBIFIED_PIGLIN, EntityType.PILLAGER, EntityType.VINDICATOR, EntityType.EVOKER, EntityType.ILLUSIONER, EntityType.WITCH, EntityType.PHANTOM, EntityType.SLIME, EntityType.VEX, EntityType.RAVAGER, EntityType.PIGLIN, EntityType.ZOGLIN, EntityType.STRAY, EntityType.CAVE_SPIDER);
+
+        // Schedule the mob spawning task
         new BukkitRunnable() {
             @Override
             public void run() {
+                // Cancel if the target no longer has the mob spawner metadata
                 if (!target.hasMetadata(MetadataConstants.TROLLPLUS_MOB_SPAWNER)) {
                     cancel();
                     return;
                 }
 
-                List<EntityType> hostileMobs = Arrays.asList(EntityType.CREEPER, EntityType.SKELETON, EntityType.SPIDER, EntityType.ZOMBIE, EntityType.HUSK, EntityType.DROWNED, EntityType.ENDERMAN, EntityType.ENDERMITE, EntityType.SILVERFISH, EntityType.BLAZE, EntityType.MAGMA_CUBE, EntityType.WITHER_SKELETON, EntityType.PIGLIN_BRUTE, EntityType.ZOMBIFIED_PIGLIN, EntityType.PILLAGER, EntityType.VINDICATOR, EntityType.EVOKER, EntityType.ILLUSIONER, EntityType.WITCH, EntityType.PHANTOM, EntityType.SLIME, EntityType.VEX, EntityType.RAVAGER, EntityType.PIGLIN, EntityType.ZOGLIN, EntityType.STRAY, EntityType.CAVE_SPIDER);
+                // Spawn a random hostile mob near the target player
                 EntityType randomMob = hostileMobs.get(ThreadLocalRandom.current().nextInt(0, hostileMobs.size()));
                 target.getWorld().spawnEntity(target.getLocation(), randomMob).setGlowing(true);
             }
@@ -425,24 +478,30 @@ public class InventoryClickListener implements Listener {
             target.setMetadata(MetadataConstants.TROLLPLUS_SLOWLY_KILL, new FixedMetadataValue(plugin, target.getName()));
         } else target.removeMetadata(MetadataConstants.TROLLPLUS_SLOWLY_KILL, plugin);
 
-        plugin.getTrollCommand().getGUIHelperTroll().addItemWithLoreAndStatus(25, Material.SKELETON_SKULL, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_SLOWLY_KILL), MetadataConstants.TROLLPLUS_SLOWLY_KILL, configHelperLanguage.getString(LangConstants.TROLL_GUI_SLOWLY_KILL_DESCRIPTION));
+        // Update the GUI with the slowly kill status
+        updateGUIHelperTroll(25, Material.SKELETON_SKULL, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_SLOWLY_KILL), MetadataConstants.TROLLPLUS_SLOWLY_KILL, configHelperLanguage.getString(LangConstants.TROLL_GUI_SLOWLY_KILL_DESCRIPTION));
 
+        // Schedule the slowly kill task
         new BukkitRunnable() {
             @Override
             public void run() {
+                // Cancel if the target no longer has the slowly kill metadata
                 if (!target.hasMetadata(MetadataConstants.TROLLPLUS_SLOWLY_KILL)) {
                     cancel();
                     return;
                 }
 
-                if (target.getGameMode() == GameMode.CREATIVE || target.getGameMode() == GameMode.SPECTATOR) {
+                // Handle game mode restrictions
+                GameMode gameMode = target.getGameMode();
+                if (gameMode == GameMode.CREATIVE || gameMode == GameMode.SPECTATOR) {
                     player.sendMessage(LangConstants.PLUGIN_PREFIX + configHelperLanguage.getString(LangConstants.TROLL_SLOWLY_KILL_NOT_AVAILABLE));
                     target.removeMetadata(MetadataConstants.TROLLPLUS_SLOWLY_KILL, plugin);
-                    plugin.getTrollCommand().getGUIHelperTroll().addItemWithLoreAndStatus(25, Material.SKELETON_SKULL, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_SLOWLY_KILL), MetadataConstants.TROLLPLUS_SLOWLY_KILL, configHelperLanguage.getString(LangConstants.TROLL_GUI_SLOWLY_KILL_DESCRIPTION));
+                    updateGUIHelperTroll(25, Material.SKELETON_SKULL, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_SLOWLY_KILL), MetadataConstants.TROLLPLUS_SLOWLY_KILL, configHelperLanguage.getString(LangConstants.TROLL_GUI_SLOWLY_KILL_DESCRIPTION));
                     cancel();
                     return;
                 }
 
+                // Damage the target player
                 target.damage(1);
             }
         }.runTaskTimer(plugin, 0, plugin.getConfigHelper().getInt(ConfigConstants.SLOWLY_KILL_PERIOD));
@@ -450,13 +509,16 @@ public class InventoryClickListener implements Listener {
 
     // Handles the inventory drop feature, drops all items from the target player's inventory at their current location
     private void handleInventoryDropFeature(Player target) {
+        // Drop items from inventory
         for (ItemStack item : target.getInventory().getContents()) {
             if (item != null) {
                 Item droppedItem = target.getWorld().dropItemNaturally(target.getLocation(), item);
+                // Set pickup delay to prevent immediate pickup
                 droppedItem.setPickupDelay(40);
             }
         }
 
+        // Clear the inventory after dropping items
         target.getInventory().clear();
     }
 
@@ -465,26 +527,30 @@ public class InventoryClickListener implements Listener {
         Inventory inventory = target.getInventory();
         ItemStack[] items = inventory.getContents();
 
-        // Reverse the order of items in the inventory
+        // Shuffles the items in the inventory
         for (int i = 0; i < items.length / 2; i++) {
             ItemStack temp = items[i];
             items[i] = items[items.length - 1 - i];
             items[items.length - 1 - i] = temp;
         }
 
-        // Update the player's inventory with the reversed items
+        // Update the player's inventory with the shuffled items
         inventory.setContents(items);
     }
 
     // Handles the random scary sound feature, plays a random scary sound near the target player
     private void handleRandomScarySoundFeature(Player target) {
+        // List of scary ambient sounds
         List<Sound> scaryAmbientSounds = Arrays.asList(Sound.AMBIENT_CAVE, Sound.AMBIENT_BASALT_DELTAS_ADDITIONS, Sound.AMBIENT_BASALT_DELTAS_LOOP, Sound.AMBIENT_BASALT_DELTAS_MOOD, Sound.AMBIENT_NETHER_WASTES_ADDITIONS, Sound.AMBIENT_NETHER_WASTES_LOOP, Sound.AMBIENT_NETHER_WASTES_MOOD, Sound.AMBIENT_SOUL_SAND_VALLEY_ADDITIONS, Sound.AMBIENT_SOUL_SAND_VALLEY_LOOP, Sound.AMBIENT_SOUL_SAND_VALLEY_MOOD, Sound.AMBIENT_CRIMSON_FOREST_ADDITIONS, Sound.AMBIENT_CRIMSON_FOREST_LOOP, Sound.AMBIENT_CRIMSON_FOREST_MOOD, Sound.AMBIENT_WARPED_FOREST_ADDITIONS, Sound.AMBIENT_WARPED_FOREST_LOOP, Sound.AMBIENT_WARPED_FOREST_MOOD, Sound.BLOCK_PORTAL_AMBIENT, Sound.BLOCK_PORTAL_TRAVEL, Sound.BLOCK_END_PORTAL_SPAWN, Sound.AMBIENT_UNDERWATER_LOOP_ADDITIONS_ULTRA_RARE, Sound.AMBIENT_UNDERWATER_LOOP_ADDITIONS_RARE);
+        // Select a random sound from the list
         Sound randomSound = scaryAmbientSounds.get(ThreadLocalRandom.current().nextInt(0, scaryAmbientSounds.size()));
+        // Play the selected sound near the target player
         target.playSound(target.getLocation(), randomSound, plugin.getConfigHelper().getInt(ConfigConstants.RANDOM_SCARY_SOUND_VOLUME), 1);
     }
 
     // Handles the rocket feature, launching the target player into the air if conditions are met
     private void handleRocketFeature(Player player, Player target, ConfigHelper configHelperLanguage) {
+        // Check if the target can be launched
         if (target.getLocation().getBlockY() < target.getWorld().getHighestBlockYAt(target.getLocation())) {
             player.sendMessage(LangConstants.PLUGIN_PREFIX + configHelperLanguage.getString(LangConstants.TROLL_ROCKET_CANNOT_LAUNCH));
             target.removeMetadata(MetadataConstants.TROLLPLUS_ROCKET_NO_FALL_DAMAGE, plugin);
@@ -498,13 +564,12 @@ public class InventoryClickListener implements Listener {
         boolean targetInitiallyAllowedFlight = target.getAllowFlight();
         if (!targetInitiallyAllowedFlight) target.setAllowFlight(true);
 
-        // Spawn initial explosion particle at the player's location
+        // Spawn initial launch particle at the player's location
         Particle particleType = plugin.getServerVersion() < 1.20 ? Particle.ASH : Particle.EXPLOSION;
         target.getWorld().spawnParticle(particleType, target.getLocation(), 1);
 
         // Create an array of particles to simulate the rocket launch
-        Particle particlesType = plugin.getServerVersion() < 1.20 ? Particle.FLASH : Particle.FIREWORK;
-        Particle[] particles = {particlesType, Particle.LAVA, Particle.FLAME};
+        Particle[] particles = {plugin.getServerVersion() < 1.20 ? Particle.FLASH : Particle.FIREWORK, Particle.LAVA, Particle.FLAME};
         for (Particle particle : particles) {
             target.getWorld().spawnParticle(particle, target.getLocation(), 25);
         }
@@ -512,7 +577,7 @@ public class InventoryClickListener implements Listener {
         // Play explosion sound at the player's location
         target.getWorld().playSound(target.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 1.0f, 1.0f);
 
-        // Schedule a repeating task to simulate the rocket's upward movement
+        // Schedule the rocket task
         new BukkitRunnable() {
             private final int maxRocketCharges = plugin.getConfigHelper().getInt(ConfigConstants.ROCKET_CHARGES);
             private int rocketCharges = 0;
@@ -535,7 +600,6 @@ public class InventoryClickListener implements Listener {
 
                 // Disable flying if the player was flying
                 if (target.isFlying()) target.setFlying(false);
-
                 rocketCharges++;
             }
         }.runTaskTimer(plugin, 0, plugin.getConfigHelper().getLong(ConfigConstants.ROCKET_PERIOD));
@@ -555,7 +619,8 @@ public class InventoryClickListener implements Listener {
             if (loc.getBlock().getType() != Material.AIR) {
                 player.sendMessage(LangConstants.PLUGIN_PREFIX + configHelperLanguage.getString(LangConstants.TROLL_FREEFALL_CANNOT_FALL));
                 canFall = false;
-
+                // Exit loop early if a non-air block is found
+                break;
             }
             loc.setY(loc.getY() + 1);
         }
@@ -578,10 +643,8 @@ public class InventoryClickListener implements Listener {
         // Check if fake ban broadcast is enabled in the configuration
         if (plugin.getConfigHelper().getBoolean(ConfigConstants.FAKE_BAN_MESSAGE_BROADCAST_ENABLED)) {
             String fakeBanMessageBroadcast = configHelperLanguage.getString(LangConstants.FAKE_BAN_MESSAGE_BROADCAST);
-
             // Replace the placeholder with the target player's name
             String formattedBroadcastMessage = fakeBanMessageBroadcast.replace("[player]", target.getName());
-
             // Broadcast the fake ban message to all players
             Bukkit.broadcastMessage(formattedBroadcastMessage);
         }
@@ -591,7 +654,6 @@ public class InventoryClickListener implements Listener {
     private void handleFakeOpFeature(Player target, ConfigHelper configHelperLanguage) {
         // Retrieve the fake op message from the configuration
         String fakeOpMessage = configHelperLanguage.getString(LangConstants.FAKE_OP_MESSAGE);
-
         // Replace the placeholder with the target player's name
         String formattedOpMessage = fakeOpMessage.replace("[player]", target.getName());
 
@@ -606,33 +668,50 @@ public class InventoryClickListener implements Listener {
 
     // Handles the teleport Feature, teleporting the player to the target
     private void handleTeleportFeature(Player player, Player target, ConfigHelper configHelperLanguage) {
-        if (target == player) {
+        // Check if the target is the same as the player
+        if (target.equals(player)) {
             player.sendMessage(LangConstants.PLUGIN_PREFIX + configHelperLanguage.getString(LangConstants.TROLL_TELEPORT_NOT_AVAILABLE));
             return;
         }
+
+        // Teleport the player to the target's location
         player.teleport(target);
     }
 
     // Handles the vanish feature, allowing the player to vanish or reappear
     private void handleVanishFeature(Player player, Player target, ConfigHelper configHelperLanguage) {
-        if (target == player) {
+        // Check if the target is the same as the player
+        if (target.equals(player)) {
             player.sendMessage(LangConstants.PLUGIN_PREFIX + configHelperLanguage.getString(LangConstants.TROLL_VANISH_NOT_AVAILABLE));
             return;
         }
 
+        // Toggle vanish state
         if (!target.hasMetadata(MetadataConstants.TROLLPLUS_VANISH)) {
             target.setMetadata(MetadataConstants.TROLLPLUS_VANISH, new FixedMetadataValue(plugin, target.getName()));
+            // Vanish the player
             target.hidePlayer(plugin, player);
+
+            // Send vanish message if configured
             if (plugin.getConfigHelper().getBoolean(ConfigConstants.VANISH_QUIT_MESSAGE_ENABLED))
                 player.sendMessage(configHelperLanguage.getString(LangConstants.VANISH_QUIT_MESSAGE).replace("[player]", player.getName()));
         } else {
             target.removeMetadata(MetadataConstants.TROLLPLUS_VANISH, plugin);
+            // Reappear the player
             target.showPlayer(plugin, player);
+
+            // Send reappear message if configured
             if (plugin.getConfigHelper().getBoolean(ConfigConstants.VANISH_JOIN_MESSAGE_ENABLED))
                 player.sendMessage(configHelperLanguage.getString(LangConstants.VANISH_JOIN_MESSAGE).replace("[player]", player.getName()));
         }
 
-        plugin.getTrollCommand().getGUIHelperTroll().addItemWithLoreAndStatus(48, Material.POTION, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_VANISH), MetadataConstants.TROLLPLUS_VANISH, configHelperLanguage.getString(LangConstants.TROLL_GUI_VANISH_DESCRIPTION));
+        // Update the GUI with the vanish status
+        updateGUIHelperTroll(48, Material.POTION, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_VANISH), MetadataConstants.TROLLPLUS_VANISH, configHelperLanguage.getString(LangConstants.TROLL_GUI_VANISH_DESCRIPTION));
+    }
+
+    // Updates the GUIHelperTroll
+    private void updateGUIHelperTroll(Integer index, Material material, String name, String metadata, String lore) {
+        plugin.getTrollCommand().getGUIHelperTroll().addItemWithLoreAndStatus(index, material, name, metadata, lore);
     }
 
     // Handles inventory click events in the TrollBows GUI
@@ -690,10 +769,11 @@ public class InventoryClickListener implements Listener {
 
     // Handles inventory click events in the Settings GUI
     private void handleSettingsGUI(InventoryClickEvent event, Player player, ConfigHelper configHelperLanguage) {
-        GUIHelper settingsGUI = plugin.getTrollPlusCommand().getGuiHelperSettings().getGUIUtil();
-
         // Cancel the event to prevent default behavior
         event.setCancelled(true);
+
+        // Initialize GUI helper
+        GUIHelper settingsGUI = plugin.getTrollPlusCommand().getGuiHelperSettings().getGUIUtil();
 
         // Determine the action based on the clicked slot
         switch (event.getSlot()) {
@@ -725,27 +805,36 @@ public class InventoryClickListener implements Listener {
                 }
 
                 player.openInventory(getGuiHelperLanguageSettings().getGUI());
-
-                // Toggle metrics
             }
+            // Toggle metrics
             case 2 ->
                     toggleSetting(event, ConfigConstants.METRICS_ENABLED, Material.BOOK, settingsGUI, configHelperLanguage);
-                // Toggle update check
+            // Toggle update check
             case 3 ->
                     toggleSetting(event, ConfigConstants.CHECK_FOR_UPDATES, Material.GLOWSTONE, settingsGUI, configHelperLanguage);
-                // Toggle feature deactivation on quit
+            // Toggle feature deactivation on quit
             case 4 ->
                     toggleSetting(event, ConfigConstants.DEACTIVATE_FEATURES_ON_QUIT, Material.REDSTONE_LAMP, settingsGUI, configHelperLanguage);
-                // Toggle teleport control
+            // Toggle teleport control
             case 5 ->
                     toggleSetting(event, ConfigConstants.CONTROL_TELEPORT_BACK, Material.ENDER_PEARL, settingsGUI, configHelperLanguage);
-                // Toggle fire setting
+            // Toggle fire setting
             case 6 ->
                     toggleSetting(event, ConfigConstants.SET_FIRE, Material.FIRE_CHARGE, settingsGUI, configHelperLanguage);
-                // Toggle block breaking
+            // Toggle block breaking
             case 7 ->
                     toggleSetting(event, ConfigConstants.BREAK_BLOCKS, Material.DIAMOND_PICKAXE, settingsGUI, configHelperLanguage);
         }
+    }
+
+    // Toggles a boolean setting and updates the corresponding item in the Settings GUI
+    private void toggleSetting(InventoryClickEvent event, String key, Material material, GUIHelper settingsGUI, ConfigHelper configHelperLanguage) {
+        boolean currentValue = plugin.getConfigHelper().getBoolean(key);
+        boolean newValue = !currentValue;
+
+        plugin.getConfigHelper().set(key, newValue);
+        settingsGUI.addItem(event.getSlot(), ItemBuilder.createItemWithLore(material, ChatColor.WHITE + configHelperLanguage.getString("trollsettings." + key) + ChatColor.DARK_GRAY + " " + settingsGUI.getStatus(newValue), configHelperLanguage.getString("trollsettings." + key + "-description")));
+        plugin.saveConfig();
     }
 
     // Retrieves the guiHelperLanguageSettings instance
@@ -797,26 +886,12 @@ public class InventoryClickListener implements Listener {
         }
     }
 
-    // Saves the language change to the config ans send a success message
+    // Saves the language change to the config and send a success message
     private void saveLanguageChange(Player player, ConfigHelper configHelperLanguage) {
         // Save configuration and send the player a success message
         plugin.saveConfig();
+
         player.closeInventory();
         player.sendMessage(LangConstants.PLUGIN_PREFIX + ChatColor.GREEN + configHelperLanguage.getString(LangConstants.TROLLSETTINGS_LANG_SUCCESSFULLY_CHANGED));
-    }
-
-    // Toggles a boolean setting and updates the corresponding item in the Settings GUI
-    private void toggleSetting(InventoryClickEvent event, String key, Material material, GUIHelper settingsGUI, ConfigHelper configHelperLanguage) {
-        boolean currentValue = plugin.getConfigHelper().getBoolean(key);
-        boolean newValue = !currentValue;
-
-        plugin.getConfigHelper().set(key, newValue);
-        settingsGUI.addItem(event.getSlot(), ItemBuilder.createItemWithLore(material, ChatColor.WHITE + configHelperLanguage.getString("trollsettings." + key) + ChatColor.DARK_GRAY + " " + settingsGUI.getStatus(newValue), configHelperLanguage.getString("trollsettings." + key + "-description")));
-        plugin.saveConfig();
-    }
-
-    // Retrieves the ControlUtil instance
-    public ControlUtil getControlUtil() {
-        return controlUtil;
     }
 }
