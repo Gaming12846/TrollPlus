@@ -1,8 +1,8 @@
 ---
-name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: ''
+name: Bug Report
+about: Report a bug for the Minecraft plugin
+title: "[BUG] Title of the bug"
+labels: bug
 assignees: ''
 
 ---
@@ -11,10 +11,11 @@ assignees: ''
 A clear and concise description of what the bug is.
 
 **To Reproduce**
-Steps to reproduce the behavior:
-1. Enter command '...'
-2. Click on '....'
-3. See error
+
+1. Steps to reproduce the behavior
+2. Step 2
+3. Step 3
+4. ...
 
 **Expected behavior**
 A clear and concise description of what you expected to happen.
@@ -22,8 +23,10 @@ A clear and concise description of what you expected to happen.
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
-**Plugin version**
-The plugin version in which the error occurred.
+**Server Version**
+
+- Minecraft Version:
+- Plugin Version:
 
 **Additional context**
-Add any other context about the problem here.
+Add any other context about the problem here (e.g., other plugins installed, configuration settings, etc.).
