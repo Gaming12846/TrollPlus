@@ -23,21 +23,12 @@ import java.util.List;
 public class ItemBuilder {
     // Creates an ItemStack with the specified material and name
     public static ItemStack createItem(Material material, String name) {
-        ItemStack item = new ItemStack(material);
-        ItemMeta meta = item.getItemMeta();
-
-        if (meta != null) {
-            meta.setDisplayName(name);
-            meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_DESTROYS, ItemFlag.HIDE_DYE, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_UNBREAKABLE);
-
-            item.setItemMeta(meta);
-        }
-
-        return item;
+        return createItemWithLore(material, name, null);
     }
 
     // Creates an ItemStack with the specified material, name and lore
     public static ItemStack createItemWithLore(Material material, String name, String lore) {
+        // Create a new ItemStack of the given material
         ItemStack item = new ItemStack(material);
         ItemMeta meta = item.getItemMeta();
 
@@ -45,8 +36,11 @@ public class ItemBuilder {
             meta.setDisplayName(name);
             meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_DESTROYS, ItemFlag.HIDE_DYE, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_UNBREAKABLE);
 
-            List<String> loreList = Collections.singletonList(ChatColor.GRAY + lore);
-            meta.setLore(loreList);
+            // If lore is provided, add it as a list
+            if (lore != null) {
+                List<String> loreList = Collections.singletonList(ChatColor.GRAY + lore);
+                meta.setLore(loreList);
+            }
             item.setItemMeta(meta);
         }
 
@@ -55,6 +49,7 @@ public class ItemBuilder {
 
     // Creates a player head ItemStack with a custom name and owner
     public static ItemStack createSkull(String name, Player owner) {
+        // Create a new player head item
         ItemStack skull = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) skull.getItemMeta();
 
@@ -73,14 +68,15 @@ public class ItemBuilder {
 
     // Creates a bow ItemStack with a custom name and lore
     public static ItemStack createBow(TrollPlus plugin, String name, String lore) {
+        // Create a new bow item
         ItemStack bow = new ItemStack(Material.BOW);
         ItemMeta meta = bow.getItemMeta();
 
         if (meta != null) {
             meta.setDisplayName(ChatColor.RED + name);
             meta.setUnbreakable(true);
+            // Add the infinity enchantment if the server version supports it
             if (plugin.getServerVersion() > 1.19) meta.addEnchant(Enchantment.INFINITY, 1, false);
-
             meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_DESTROYS, ItemFlag.HIDE_DYE, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_UNBREAKABLE);
 
             List<String> loreList = Collections.singletonList(ChatColor.GRAY + lore);
