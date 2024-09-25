@@ -39,9 +39,8 @@ import java.util.logging.Level;
 
 // The main class for the TrollPlus plugin
 public class TrollPlus extends JavaPlugin {
-    private double serverVersion;
     public boolean updateAvailable = false;
-
+    private double serverVersion;
     // ConfigHelper instances
     private ConfigHelper configHelper;
     private ConfigHelper configHelperBlocklist;
