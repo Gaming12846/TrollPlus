@@ -249,7 +249,7 @@ public class TrollPlusCommand implements CommandExecutor {
                 return UUID.fromString(contentString.replaceFirst("(.{8})(.{4})(.{4})(.{4})(.{12})", "$1-$2-$3-$4-$5"));
             }
         } catch (Exception e) {
-            plugin.getLogger().warning(e.getMessage());
+            plugin.getLoggingHelper().error(e.getMessage());
         }
         return null; // Player not found or error occurred
     }

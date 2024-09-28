@@ -25,8 +25,8 @@ metrics-enabled: true
 # Enable or disable the update checker. [Default: true]
 check-for-updates: true
 
-# Sets the plugin's log level. Available options include: FINEST, FINER, FINE, CONFIG, INFO, WARNING, and SEVERE. [Default: CONFIG]
-log-level: CONFIG
+# Sets the plugin's log level. Available options include: DEBUG, INFO, WARNING, and ERROR. [Default: INFO]
+log-level: INFO
 
 ##################### Feature Settings ######################
 
@@ -58,8 +58,8 @@ control-teleport-back: true
 control-period: 1
 
 # Spank Feature
-# Period in ticks between each spanking action. [Default: 100]
-spank-period: 100
+# Period in ticks between each spanking action. [Default: 120]
+spank-period: 120
 
 # Spam Messages Feature
 # Period in ticks between spam messages to the player. [Default: 20]

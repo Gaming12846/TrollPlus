@@ -50,7 +50,7 @@ public class ConfigHelper {
         try {
             fileConfiguration.save(file);
         } catch (IOException e) {
-            plugin.getLogger().warning(plugin.getConfigHelperLanguage().getString(LangConstants.FAILED_TO_SAVE_CONFIG) + " " + e);
+            plugin.getLoggingHelper().error(plugin.getConfigHelperLanguage().getString(LangConstants.FAILED_TO_SAVE_CONFIG) + " " + e);
         }
     }
 

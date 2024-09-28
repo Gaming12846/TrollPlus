@@ -25,6 +25,7 @@ import de.gaming12846.trollplus.constants.ConfigConstants;
 import de.gaming12846.trollplus.constants.LangConstants;
 import de.gaming12846.trollplus.listener.*;
 import de.gaming12846.trollplus.utils.ConfigHelper;
+import de.gaming12846.trollplus.utils.LoggingHelper;
 import de.gaming12846.trollplus.utils.TabCompleter;
 import de.gaming12846.trollplus.utils.UpdateChecker;
 import org.bstats.bukkit.Metrics;
@@ -35,12 +36,13 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Objects;
-import java.util.logging.Level;
 
 // The main class for the TrollPlus plugin
 public class TrollPlus extends JavaPlugin {
+    private final LoggingHelper loggingHelper = new LoggingHelper(this);
     public boolean updateAvailable = false;
     private double serverVersion;
+
     // ConfigHelper instances
     private ConfigHelper configHelper;
     private ConfigHelper configHelperBlocklist;
@@ -63,8 +65,6 @@ public class TrollPlus extends JavaPlugin {
     @Override
     public void onEnable() {
         loadConfigs();
-        // Set log level from config
-        getLogger().setLevel(Level.parse(getConfigHelper().getString(ConfigConstants.LOG_LEVEL)));
         checkServerVersion();
         registerListeners(getServer().getPluginManager());
         registerCommands();
@@ -79,6 +79,9 @@ public class TrollPlus extends JavaPlugin {
 
     // Loads the plugin's configuration files and checks their versions
     private void loadConfigs() {
+        // Debug logger message
+        getLoggingHelper().debug("Loading configurations");
+
         configHelper = new ConfigHelper(this, "config.yml");
         configHelperBlocklist = new ConfigHelper(this, "blocklist.yml");
         configHelperLangCustom = new ConfigHelper(this, "languages/lang_custom.yml");
@@ -93,10 +96,10 @@ public class TrollPlus extends JavaPlugin {
         // Check config versions
         String version = getDescription().getVersion();
         if (!version.equalsIgnoreCase(getConfigHelper().getString(ConfigConstants.CONFIG_VERSION)))
-            getLogger().warning(getConfigHelperLanguage().getString(LangConstants.CONFIG_OUTDATED));
+            getLoggingHelper().warning(getConfigHelperLanguage().getString(LangConstants.CONFIG_OUTDATED));
 
         if (!version.equalsIgnoreCase(getConfigHelperLanguage().getString(LangConstants.LANGUAGE_CONFIG_VERSION)))
-            getLogger().warning(getConfigHelperLanguage().getString(LangConstants.LANGUAGE_CONFIG_OUTDATED));
+            getLoggingHelper().warning(getConfigHelperLanguage().getString(LangConstants.LANGUAGE_CONFIG_OUTDATED));
     }
 
     // Retrieves the plugin configuration
@@ -143,11 +146,14 @@ public class TrollPlus extends JavaPlugin {
 
     // Checks the server version for incompatibility
     private void checkServerVersion() {
+        // Debug logger message
+        getLoggingHelper().debug("Check server version");
+
         String bukkitVersion = getServer().getBukkitVersion().split("-")[0].split("\\.")[0] + "." + getServer().getBukkitVersion().split("-")[0].split("\\.")[1];
         serverVersion = Double.parseDouble(bukkitVersion);
 
         if (serverVersion < 1.20)
-            getLogger().info(getConfigHelperLanguage().getString(LangConstants.SERVER_VERSION_ONLY_PARTLY_SUPPORTED));
+            getLoggingHelper().warning(getConfigHelperLanguage().getString(LangConstants.SERVER_VERSION_ONLY_PARTLY_SUPPORTED));
     }
 
     // Retrieves the server version
@@ -157,6 +163,9 @@ public class TrollPlus extends JavaPlugin {
 
     // Registers events with the Bukkit plugin manager
     private void registerListeners(PluginManager pluginManager) {
+        // Debug logger message
+        getLoggingHelper().debug("Register listeners");
+
         inventoryClickListener = new InventoryClickListener(this);
 
         pluginManager.registerEvents(new AsyncPlayerChatListener(this), this);
@@ -179,6 +188,9 @@ public class TrollPlus extends JavaPlugin {
 
     // Registers commands with their respective executors
     private void registerCommands() {
+        // Debug logger message
+        getLoggingHelper().debug("Register commands");
+
         trollBowsCommand = new TrollBowsCommand(this);
         trollCommand = new TrollCommand(this);
         trollPlusCommand = new TrollPlusCommand(this);
@@ -188,8 +200,11 @@ public class TrollPlus extends JavaPlugin {
         Objects.requireNonNull(getCommand("trollplus")).setExecutor(trollPlusCommand);
     }
 
-    // Registers tab completers for the plugin's commands
+    // Registers tabcompleters for the plugin's commands
     private void registerTabCompleters(TabCompleter tabCompleter) {
+        // Debug logger message
+        getLoggingHelper().debug("Register tabcompleters");
+
         Objects.requireNonNull(getCommand("trollplus")).setTabCompleter(tabCompleter);
         Objects.requireNonNull(getCommand("troll")).setTabCompleter(tabCompleter);
         Objects.requireNonNull(getCommand("trollbows")).setTabCompleter(tabCompleter);
@@ -206,12 +221,18 @@ public class TrollPlus extends JavaPlugin {
     // Checks for updates to the plugin and logs the result
     private void checkForUpdates() throws URISyntaxException, MalformedURLException {
         if (getConfig().getBoolean(ConfigConstants.CHECK_FOR_UPDATES, true)) {
-            getLogger().info(getConfigHelperLanguage().getString(LangConstants.CHECKING_FOR_UPDATES));
+            getLoggingHelper().info(getConfigHelperLanguage().getString(LangConstants.CHECKING_FOR_UPDATES));
             String updateChecker = new UpdateChecker(this, new URI("https://api.github.com/repos/Gaming12846/TrollPlus/releases/latest").toURL()).checkForUpdates();
-            getLogger().info(updateChecker);
+            getLoggingHelper().info(updateChecker);
             if (updateChecker.equals(LangConstants.UPDATE_AVAILABLE)) updateAvailable = true;
         }
     }
+
+    // Retrieves the LoggingHelper instance
+    public LoggingHelper getLoggingHelper() {
+        return loggingHelper;
+    }
+
 
     // Retrieves the TrollBowsCommand instance
     public TrollBowsCommand getTrollBowsCommand() {

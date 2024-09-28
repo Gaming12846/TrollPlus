@@ -18,12 +18,12 @@ import java.util.Arrays;
 
 // Utility class for handling player control mechanics in the TrollPlus plugin
 public class ControlHelper {
-    private final Player playerTarget;             // The player being controlled
-    private final Player playerController;          // The player controlling the target
-    private final Location playerLocation;          // The original location of the controlling player
-    private final ItemStack[] playerInventory;      // Original inventory of the controlling player
-    private final ItemStack[] playerArmor;          // Original armor of the controlling player
-    private final ItemStack playerOffHandItem;      // Original off-hand item of the controlling player
+    private final Player playerTarget;               // The player being controlled
+    private final Player playerController;           // The player controlling the target
+    private final Location playerLocation;           // The original location of the controlling player
+    private final ItemStack[] playerInventory;       // Original inventory of the controlling player
+    private final ItemStack[] playerArmor;           // Original armor of the controlling player
+    private final ItemStack playerOffHandItem;       // Original off-hand item of the controlling player
     private final int playerLevel;                   // Original level of the controlling player
     private final float playerExp;                   // Original experience of the controlling player
     private final TrollPlus plugin;                  // Reference to the main plugin

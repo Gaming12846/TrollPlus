@@ -45,7 +45,7 @@ public class UpdateChecker {
 
             return JsonParser.parseString(response.toString()).getAsJsonObject();
         } else
-            plugin.getLogger().warning(plugin.getConfigHelperLanguage().getString(LangConstants.UNABLE_CHECK_FOR_UPDATES) + " " + responseCode);
+            plugin.getLoggingHelper().error(plugin.getConfigHelperLanguage().getString(LangConstants.UNABLE_CHECK_FOR_UPDATES) + " " + responseCode);
         return null;
     }
 
@@ -62,7 +62,7 @@ public class UpdateChecker {
                 return plugin.getConfigHelperLanguage().getString(LangConstants.UPDATE_AVAILABLE) + " https://github.com/Gaming12846/TrollPlus/releases";
             } else return plugin.getConfigHelperLanguage().getString(LangConstants.NO_UPDATE_AVAILABLE);
         } catch (Exception e) {
-            plugin.getLogger().warning(plugin.getConfigHelperLanguage().getString(LangConstants.UNABLE_CHECK_FOR_UPDATES) + " " + e);
+            plugin.getLoggingHelper().error(plugin.getConfigHelperLanguage().getString(LangConstants.UNABLE_CHECK_FOR_UPDATES) + " " + e);
         }
         return null;
     }
