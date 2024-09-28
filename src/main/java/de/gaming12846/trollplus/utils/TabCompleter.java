@@ -46,35 +46,28 @@ public class TabCompleter implements org.bukkit.command.TabCompleter {
             addBasicTrollPlusCompletions(sender);
         } else if (args.length == 2 && args[0].equals("blocklist")) {
             addBlocklistCompletions(sender);
-        } else if (args.length == 3 && args[0].equals("blocklist")) {
+        } else if (args.length == 3 && args[0].equals("blocklist"))
             addOnlinePlayerCompletions(); // Add online players to completion list
-        }
     }
 
     // Adds basic command options for "trollplus"
     private void addBasicTrollPlusCompletions(CommandSender sender) {
-        if (sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_VERSION)) {
+        if (sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_VERSION))
             results.add("version");
-        }
-        if (sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_RELOAD)) {
+        if (sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_RELOAD))
             results.add("reload");
-        }
-        if (sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_BLOCKLIST_ADD) || sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_BLOCKLIST_REMOVE)) {
+        if (sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_BLOCKLIST_ADD) || sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_BLOCKLIST_REMOVE))
             results.add("blocklist");
-        }
-        if (sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_SETTINGS)) {
+        if (sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_SETTINGS))
             results.add("settings");
-        }
     }
 
     // Adds options for the "blocklist" command
     private void addBlocklistCompletions(CommandSender sender) {
-        if (sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_BLOCKLIST_ADD)) {
+        if (sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_BLOCKLIST_ADD))
             results.add("add");
-        }
-        if (sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_BLOCKLIST_REMOVE)) {
+        if (sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_BLOCKLIST_REMOVE))
             results.add("remove");
-        }
     }
 
     // Adds online players to the results list for player-based commands
@@ -86,8 +79,8 @@ public class TabCompleter implements org.bukkit.command.TabCompleter {
 
     // Handles tab completions for the "troll" command
     private void handleTrollTabCompletion(CommandSender sender, String[] args) {
-        if (args.length == 1 && sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_TROLL)) {
+        if (args.length == 1 && sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_TROLL))
             addOnlinePlayerCompletions(); // Add online players for the "troll" command
-        }
+
     }
 }
