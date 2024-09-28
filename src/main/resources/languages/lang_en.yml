@@ -82,6 +82,8 @@ troll-gui:
   mob-spawner-description: "Spawn random mobs at the target's location"
   slowly-kill: "Slowly Kill"
   slowly-kill-description: "Inflict damage on the target at intervals"
+  random-teleport: "Random Teleport"
+  random-teleport-description: "Random Teleport"
   inventory-drop: "Inventory Drop"
   inventory-drop-description: "Drop all items from the target's inventory, including armor and offhand items"
   inventory-shuffle: "Inventory Shuffle"

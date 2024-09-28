@@ -30,6 +30,7 @@ public class ConfigConstants {
     public static final String TNT_TRACK_PERIOD = "tnt-track-period";
     public static final String MOB_SPAWNER_PERIOD = "mob-spawner-period";
     public static final String SLOWLY_KILL_PERIOD = "slowly-kill-period";
+    public static final String RANDOM_TELEPORT_PERIOD = "random-teleport-period";
     public static final String RANDOM_SCARY_SOUND_VOLUME = "random-scary-sound-volume";
     public static final String ROCKET_CHARGES = "rocket-charges";
     public static final String ROCKET_PERIOD = "rocket.period";

@@ -21,6 +21,7 @@ public class MetadataConstants {
     public static final String TROLLPLUS_TNT_TRACK = "TROLLPLUS_TNT_TRACK";
     public static final String TROLLPLUS_MOB_SPAWNER = "TROLLPLUS_MOB_SPAWNER";
     public static final String TROLLPLUS_SLOWLY_KILL = "TROLLPLUS_SLOWLY_KILL";
+    public static final String TROLLPLUS_RANDOM_TELEPORT = "TROLLPLUS_RANDOM_TELEPORT";
     public static final String TROLLPLUS_ROCKET_NO_FALL_DAMAGE = "TROLLPLUS_ROCKET_NO_FALL_DAMAGE";
     // Trollbows arrows
     public static final String TROLLPLUS_TROLLBOWS_EXPLOSION_ARROW = "TROLLPLUS_TROLLBOWS_EXPLOSION_ARROW";

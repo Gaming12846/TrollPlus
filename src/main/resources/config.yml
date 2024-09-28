@@ -86,8 +86,12 @@ tnt-track-period: 20
 mob-spawner-period: 60
 
 # Slowly Kill Feature
-# Period in ticks between each damage event for the "Slowly Kill" feature. [Default: 50]
-slowly-kill-period: 50
+# Period in ticks between each damage event for the "Slowly Kill" feature. [Default: 60]
+slowly-kill-period: 60
+
+# Random Teleport Feature
+# Period in ticks between each random teleport for the "Random Teleport" feature. [Default: 160]
+random-teleport-period: 160
 
 # Random Scary Sound Feature
 # Volume of the random scary sound. [Default: 50]

@@ -73,6 +73,8 @@ public class LangConstants {
     public static final String TROLL_GUI_MOB_SPAWNER_DESCRIPTION = "troll-gui.mob-spawner-description";
     public static final String TROLL_GUI_SLOWLY_KILL = "troll-gui.slowly-kill";
     public static final String TROLL_GUI_SLOWLY_KILL_DESCRIPTION = "troll-gui.slowly-kill-description";
+    public static final String TROLL_GUI_RANDOM_TELEPORT = "troll-gui.random-teleport";
+    public static final String TROLL_GUI_RANDOM_TELEPORT_DESCRIPTION = "troll-gui.random-teleport-description";
     public static final String TROLL_GUI_INVENTORY_DROP = "troll-gui.inventory-drop";
     public static final String TROLL_GUI_INVENTORY_DROP_DESCRIPTION = "troll-gui.inventory-drop-description";
     public static final String TROLL_GUI_INVENTORY_SHUFFLE = "troll-gui.inventory-shuffle";

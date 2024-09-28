@@ -14,6 +14,7 @@ import de.gaming12846.trollplus.utils.ControlHelper;
 import de.gaming12846.trollplus.utils.GUIHelper;
 import de.gaming12846.trollplus.utils.ItemBuilder;
 import org.bukkit.*;
+import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -115,9 +116,7 @@ public class InventoryClickListener implements Listener {
             case 23 -> handleTntTrackFeature(target, configHelperLanguage);
             case 24 -> handleMobSpawnerFeature(target, configHelperLanguage);
             case 25 -> handleSlowlyKillFeature(target, player, configHelperLanguage);
-            case 28 -> {
-                //TODO
-            }
+            case 28 -> handleRandomTeleportFeature(target, configHelperLanguage);
             case 29 -> {
                 //TODO
             }
@@ -505,6 +504,62 @@ public class InventoryClickListener implements Listener {
                 target.damage(1);
             }
         }.runTaskTimer(plugin, 0, plugin.getConfigHelper().getInt(ConfigConstants.SLOWLY_KILL_PERIOD));
+    }
+
+    // Handles the random teleport feature
+    private void handleRandomTeleportFeature(Player target, ConfigHelper configHelperLanguage) {
+        if (!target.hasMetadata(MetadataConstants.TROLLPLUS_RANDOM_TELEPORT)) {
+            target.setMetadata(MetadataConstants.TROLLPLUS_RANDOM_TELEPORT, new FixedMetadataValue(plugin, target.getName()));
+        } else target.removeMetadata(MetadataConstants.TROLLPLUS_RANDOM_TELEPORT, plugin);
+
+        // Update the GUI with the random teleport status
+        updateGUIHelperTroll(28, Material.ENDER_EYE, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLL_GUI_RANDOM_TELEPORT), MetadataConstants.TROLLPLUS_RANDOM_TELEPORT, configHelperLanguage.getString(LangConstants.TROLL_GUI_RANDOM_TELEPORT_DESCRIPTION));
+
+        // Schedule the random teleport task
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                // Cancel if the target no longer has the random teleport metadata
+                if (!target.hasMetadata(MetadataConstants.TROLLPLUS_RANDOM_TELEPORT)) {
+                    cancel();
+                    return;
+                }
+
+                Location loc = target.getLocation();
+                World world = target.getWorld();
+
+                // Try to find a safe location
+                for (int i = 0; i < 100; i++) {
+                    double randomX = loc.getX() + (ThreadLocalRandom.current().nextDouble() * (16 * 2)) - 16;
+                    double randomZ = loc.getZ() + (ThreadLocalRandom.current().nextDouble() * (16 * 2)) - 16;
+
+                    int highestY = world.getHighestBlockYAt((int) randomX, (int) randomZ);
+                    Location location = new Location(world, randomX, highestY, randomZ);
+
+                    if (isSafeLocation(location)) {
+                        target.teleport(location);
+                        break;
+                    }
+                }
+            }
+        }.runTaskTimer(plugin, 0, plugin.getConfigHelper().getInt(ConfigConstants.RANDOM_TELEPORT_PERIOD));
+    }
+
+    private boolean isSafeLocation(Location loc) {
+        World world = loc.getWorld();
+
+        if (world != null) {
+            // Check the block the player will stand on (below feet)
+            Block blockBelow = world.getBlockAt(loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ());
+
+            // Check the space at feet and head level
+            Block blockAtFeet = world.getBlockAt(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
+            Block blockAtHead = world.getBlockAt(loc.getBlockX(), loc.getBlockY() + 1, loc.getBlockZ());
+
+            // Ensure block below is solid, and the space at feet and head are air or passable blocks
+            return blockBelow.getType().isSolid() && (blockAtFeet.getType().isAir() || blockAtFeet.isPassable()) && (blockAtHead.getType().isAir() || blockAtHead.isPassable());
+        }
+        return false;
     }
 
     // Handles the inventory drop feature, drops all items from the target player's inventory at their current location
