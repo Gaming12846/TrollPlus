@@ -29,12 +29,15 @@ import de.gaming12846.trollplus.utils.LoggingHelper;
 import de.gaming12846.trollplus.utils.TabCompleter;
 import de.gaming12846.trollplus.utils.UpdateChecker;
 import org.bstats.bukkit.Metrics;
+import org.bstats.charts.DrilldownPie;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 // The main class for the TrollPlus plugin
@@ -213,9 +216,59 @@ public class TrollPlus extends JavaPlugin {
     // Initializes the bStats metrics for the plugin
     private void initializeMetrics() {
         if (getConfig().getBoolean(ConfigConstants.METRICS_ENABLED, true)) {
-            getLogger().info(getConfigHelperLanguage().getString(LangConstants.METRICS_ENABLED));
-            new Metrics(this, 11761);
+            getLoggingHelper().info(getConfigHelperLanguage().getString(LangConstants.METRICS_ENABLED));
+            Metrics metrics = new Metrics(this, 11761);
+
+            // Add custom server locale chart to the bStats metrics
+            addServerLocaleChart(metrics);
         }
+    }
+
+    // Add custom server locale chart to the bStats metrics
+    private void addServerLocaleChart(Metrics metrics) {
+        // Debug logger message
+        getLoggingHelper().debug("Add custom server_locale drilldown pie chart");
+
+        metrics.addCustomChart(new DrilldownPie("server_locale", () -> {
+            final Map<String, Map<String, Integer>> result = new HashMap<>();
+            final Map<String, Integer> backend = new HashMap<>();
+            final String language = getConfigHelper().getString(ConfigConstants.LANGUAGE);
+            switch (language) {
+                case "custom" -> {
+                    backend.put("Custom", 1);
+                    result.put("Custom", backend);
+                }
+                case "de" -> {
+                    backend.put("German", 1);
+                    result.put("German", backend);
+                }
+                case "es" -> {
+                    backend.put("Spanish", 1);
+                    result.put("Spanish", backend);
+                }
+                case "fr" -> {
+                    backend.put("French", 1);
+                    result.put("French", backend);
+                }
+                case "nl" -> {
+                    backend.put("Dutch", 1);
+                    result.put("Dutch", backend);
+                }
+                case "zh-cn" -> {
+                    backend.put("Simplified Chinese", 1);
+                    result.put("Simplified Chinese", backend);
+                }
+                case "zh-tw" -> {
+                    backend.put("Traditional Chinese", 1);
+                    result.put("Traditional Chinese", backend);
+                }
+                default -> {
+                    backend.put("English", 1);
+                    result.put("English", backend);
+                }
+            }
+            return result;
+        }));
     }
 
     // Checks for updates to the plugin and logs the result
