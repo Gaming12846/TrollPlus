@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2024 Gaming12846
+ * Copyright (C) 2026 Gaming12846
  *
  * TrollPlus is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -95,6 +95,7 @@ public class TrollPlus extends JavaPlugin {
         configHelperLangDutch = new ConfigHelper(this, "languages/lang_nl.yml");
         configHelperLangSimplifiedChinese = new ConfigHelper(this, "languages/lang_zh-cn.yml");
         configHelperLangTraditionalChinese = new ConfigHelper(this, "languages/lang_zh-tw.yml");
+        configHelperBlocklist = new ConfigHelper(this, "troll_blocklist.yml");
 
         // Check config versions
         String version = getDescription().getVersion();
@@ -152,7 +153,8 @@ public class TrollPlus extends JavaPlugin {
         // Debug logger message
         getLoggingHelper().debug("Check server version");
 
-        String bukkitVersion = getServer().getBukkitVersion().split("-")[0].split("\\.")[0] + "." + getServer().getBukkitVersion().split("-")[0].split("\\.")[1];
+        String bukkitVersion = getServer().getBukkitVersion().split("-")[0].split("\\.")[0] + "." +
+                getServer().getBukkitVersion().split("-")[0].split("\\.")[1];
         serverVersion = Double.parseDouble(bukkitVersion);
 
         if (serverVersion < 1.20)
@@ -275,7 +277,8 @@ public class TrollPlus extends JavaPlugin {
     private void checkForUpdates() throws URISyntaxException, MalformedURLException {
         if (getConfig().getBoolean(ConfigConstants.CHECK_FOR_UPDATES, true)) {
             getLoggingHelper().info(getConfigHelperLanguage().getString(LangConstants.CHECKING_FOR_UPDATES));
-            String updateChecker = new UpdateChecker(this, new URI("https://api.github.com/repos/Gaming12846/TrollPlus/releases/latest").toURL()).checkForUpdates();
+            String updateChecker = new UpdateChecker(this,
+                    new URI("https://api.github.com/repos/Gaming12846/TrollPlus/releases/latest").toURL()).checkForUpdates();
             getLoggingHelper().info(updateChecker);
             if (updateChecker.equals(LangConstants.UPDATE_AVAILABLE)) updateAvailable = true;
         }
