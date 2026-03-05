@@ -1,112 +1,145 @@
-# TrollPlus
+# TrollPlus - Prank Your Friends with Hilarious Trolls!
 
-Are you looking to have some fun and prank your friends in Minecraft? **TrollPlus** is the perfect plugin for you! It
-allows you to execute various pranks and tricks on other players, making their Minecraft experience both fun and
+Are you looking to have some fun and prank your friends in Minecraft? **TrollPlus** is the perfect plugin for you!
+It allows you to execute various pranks and tricks on other players, making their Minecraft experience both fun and
 surprising.
 
-This plugin is compatible with Minecraft versions 1.13 to 1.21.1 on Spigot and Paper. However, versions prior to 1.20
-have limited support, meaning some features may behave differently or be unavailable.
+![](https://img.shields.io/badge/Minecraft-1.13--1.21.11-blue)
+![](https://img.shields.io/badge/Server-Spigot%20and%20Paper-green)
+![](https://img.shields.io/badge/License-GPLv3-yellow)
 
-For installation instructions, command usage, and permissions, please refer to
-the [wiki](https://github.com/Gaming12846/TrollPlus/wiki).
+> **Note:** Versions prior to Minecraft 1.20 have limited support – some features may behave differently or be
+> unavailable.
 
-## Features
+## 🚀 Features
 
-### General
+### 🎭 Troll Menu
 
-- **Highly Customizable Plugin Configuration:** Configure most of the features to suit your needs.
-- **Fully Customizable Language Configuration:** Translate messages, descriptions, and item names into your preferred
-  language. (Available languages: English, German, Spanish, French, Dutch, Simplified Chinese and Traditional Chinese)
-- **Blocklist:** Protect players by preventing the troll command from being executed on them.
+![Troll Menu](https://up.picr.de/45943955mv.png)  
+*The troll GUI in-game.*
 
-### Troll Menu
+- **Freeze**: Prevent the target from moving, interacting, or dropping/picking up items
+- **Hand Item Drop**: Automatically drop the item in the target’s hand
+- **Control**: Gain complete control over the target’s movements and actions
+- **Flip Backwards**: Flip the target 180° when they interact with something
+- **Spank**: Apply random knockback to the target
+- **Spam Random Messages**: Flood the target with custom messages
+- **Spam Random Sounds**: Play random sounds to the target
+- **Semi Ban**: Restrict building, interacting, and other actions
+- **Falling Anvils**: Drop anvils on the target
+- **TNT Track**: Spawn primed TNT at the target’s location periodically
+- **Mob Spawner**: Spawn random mobs at the target
+- **Slowly Kill**: Inflict gradual damage over time
+- **Inventory Drop**: Drop all items from the target’s inventory
+- **Inventory Shuffle**: Shuffle all items in the target’s inventory
+- **Random Scary Sound**: Play a random scary sound at the target
+- **Rocket**: Launch the target into the air like a firework
+- **Freefall**: Teleport the target into the air and let them fall
+- **Fake Ban**: Simulate a ban to trick the target
+- **Fake OP**: Simulate operator permissions
+- **Teleport**: Teleport to the target’s location
+- **Kill**: Instantly kill the target
+- **Invsee**: Open the target’s inventory
+- **Invsee Ender Chest**: Open the target’s Ender Chest
+- **Vanish**: Make yourself invisible to the target
+- **Random Troll**: Randomly select a troll action
 
-![Troll Menu](https://up.picr.de/45943955mv.png)
+### 🏹 Trollbows
 
-_The troll GUI in the game._
+![Trollbows](https://up.picr.de/45943956ef.png)  
+*The trollbows GUI in-game.*
 
-- **Freeze:** Prevent the target from moving, interacting, or dropping/picking up items.
-- **Hand Item Drop:** Automatically drop the item in the target’s hand.
-- **Control:** Gain complete control over the target’s movements, interactions, and actions.
-- **Flip Backwards:** Flip the target 180 degrees when they interact with something.
-- **Spank:** Apply random knockback to the target.
-- **Spam Random Messages:** Flood the target with custom messages (add as many as you like).
-- **Spam Random Sounds:** Play random sounds to the target.
-- **Semi Ban:** Restrict the target from building, interacting, and performing other actions.
-- **Falling Anvils:** Drop anvils on the target.
-- **TNT Track:** Spawn primed TNT at the target’s location periodically.
-- **Mob Spawner:** Spawn random mobs at the target’s location.
-- **Slowly Kill:** Inflict gradual damage to the target over time.
-- **Inventory Drop:** Drop all items from the target’s inventory, including armor and offhand items.
-- **Inventory Shuffle:** Shuffles all the items in the target's inventory.
-- **Random Scary Sound:** Play a random scary sound at the target’s location.
-- **Rocket:** Launch the target into the air like a firework.
-- **Freefall:** Teleport the target into the air and let them fall.
-- **Fake Ban:** Simulate a ban to trick the target.
-- **Fake OP:** Simulate operator permissions for the target.
+- **Explosion Bow**: Creates an explosion upon arrow impact
+- **TNT Bow**: Generates TNT on arrow impact
+- **Lightning Bolt Bow**: Summons a lightning bolt when the arrow hits
+- **Silverfish Bow**: Spawns a horde of silverfish upon arrow impact
+- **Potion Effect Bow**: Causes a random potion effect on arrow impact
 
-- **Teleport:** Teleport to the target’s location.
-- **Kill:** Instantly kill the target.
-- **Invsee:** Open the target’s inventory.
-- **Invsee Ender Chest:** Open the target’s Ender Chest.
-- **Vanish:** Make yourself invisible to the target.
-- **Random Troll:** Randomly select a troll action for the target.
+### ⚙️ Advanced Configuration
 
-### Trollbows
+- **Highly Customizable**: Configure almost every feature to suit your needs
+- **Multi-Language Interface**: Plugin interface available in 7+ languages
+- **Blocklist**: Protect specific players from being trolled
 
-![Trollbows](https://up.picr.de/45943956ef.png)
+## 📦 Installation
 
-_The trollbows GUI in the game._
+1. **Download**: Get the latest version from [Modrinth](https://modrinth.com/plugin/trollplus) or one of our
+   other distribution platforms
+2. **Install**: Place the `.jar` file in your server's `plugins/` folder
+3. **Configure**: Open the `config.yml` file located in the `plugins/TrollPlus/` and configure as needed
+4. **Restart**: Restart your server
 
-- **Explosion Bow:** Creates an explosion upon arrow impact.
-- **TNT Bow:** Generates TNT on arrow impact.
-- **Lightning Bolt Bow:** Summons a lightning bolt when the arrow hits.
-- **Silverfish Bow:** Spawns a horde of silverfish upon arrow impact.
-- **Potion Effect Bow:** Causes a random potion effect on arrow impact.
+## 🌐 Supported Languages
 
-### TrollPlus Settings
+The plugin interface supports:
 
-![Settings](https://up.picr.de/45943957jn.png)
+- English (en) - Default
+- German (de)
+- Spanish (es)
+- French (fr)
+- Dutch (nl)
+- Simplified Chinese (zh-cn)
+- Traditional Chinese (zh-tw)
+- Custom translations
 
-_The TrollPlus settings GUI in the game._
+## ❓ Troubleshooting
 
-## Notes
+### Common Issues
 
-- Ensure you create or update your configuration files when updating the plugin.
-- The plugin collects anonymous statistics by default. You can view these statistics
-  at [bStats](https://www.bstats.org/plugin/bukkit/TrollPlus/11761).
+1. **Features not working on older Minecraft versions**  
+   Some features are only fully supported on 1.20+. Check the [Wiki](https://github.com/Gaming12846/TrollPlus/wiki) for
+   version-specific details
 
-## Need Help or Have Suggestions?
+2. **Configuration changes not applying**  
+   Make sure you restart your server or reload the plugin properly. Some changes require a full restart.
 
-If you need assistance, have found a bug, or have suggestions, feel free to contact me
-through [Issues](https://github.com/Gaming12846/TrollPlus/issues), [SpigotMC](https://www.spigotmc.org/members/gaming12846.305963)
-or [CurseForge](https://www.curseforge.com/members/gaming12846/projects).
+2. **Players cannot use the troll menu**  
+   Verify permissions (see [Wiki](https://github.com/Gaming12846/TrollPlus/wiki)). The default permission
+   for
+   all commands is `trollplus.*`.
 
-Report bugs and suggestions by [opening a ticket on GitHub](https://github.com/Gaming12846/TrollPlus/issues).
+### Getting Help
 
-If you find the plugin useful or entertaining, consider leaving a review on SpigotMC, CurseForge, and give a star on
-GitHub.
+If you encounter bugs, have feature requests, or need assistance:
 
-## Important Links
+- **GitHub Issues**: [Report bugs or request features](https://github.com/Gaming12846/TrollPlus/issues)
+- **Wiki**: [Detailed documentation](https://github.com/Gaming12846/TrollPlus/wiki)
 
-- [Wiki](https://github.com/Gaming12846/TrollPlus/wiki)
-- [Issues](https://github.com/Gaming12846/TrollPlus/issues)
-- [Pull Requests](https://github.com/Gaming12846/TrollPlus/pulls)
-- [Changelog](https://github.com/Gaming12846/TrollPlus/blob/master/CHANGELOG.md)
-- [SpigotMC](https://www.spigotmc.org/resources/81193)
-- [CurseForge](https://www.curseforge.com/minecraft/bukkit-plugins/trollplus-gaming12846)
-- [bStats](https://www.bstats.org/plugin/bukkit/TrollPlus/11761)
+## 🔗 Important Links
 
-## Credits
+| Platform          | Link                                                                                         | Description                      |
+|-------------------|----------------------------------------------------------------------------------------------|----------------------------------|
+| **Wiki**          | [Documentation](https://github.com/Gaming12846/TrollPlus/wiki)                               | Complete documentation           |
+| **Issues**        | [Issue Tracker](https://github.com/Gaming12846/TrollPlus/wiki)                               | Bug reports and feature requests |
+| **Pull Requests** | [Contribute](https://github.com/Gaming12846/TrollPlus/pulls)                                 | Contribute to the project        |
+| **Changelog**     | [Version History](https://github.com/Gaming12846/TrollPlus/blob/master/CHANGELOG.md)         | Update history and changes       |
+| **Modrinth**      | [Download](https://modrinth.com/plugin/trollplus/)                                           | Primary download platform        |
+| **SpigotMC**      | [SpigotMC Page](https://www.spigotmc.org/resources/trollplus.81193)                          | SpigotMC download                |
+| **Hangar**        | [Paper Plugin Page](https://hangar.papermc.io/Gaming12846/TrollPlus)                         | Paper Plugin Hangar download     |
+| **CurseForge**    | [CurseForge Page](https://www.curseforge.com/minecraft/bukkit-plugins/trollplus-gaming12846) | CurseForge download              |
+| **bStats**        | [Statistics](https://bstats.org/plugin/bukkit/TrollPlus/11761)                               | Usage statistics                 |
+
+## 🌟 Credits
 
 ### Translations
 
 - **Simplified Chinese:** ranyouHigh, Stars, xiaozhu2007
 - **Traditional Chinese:** Stars
 
-## License
+Thank you to all contributors for making TrollPlus accessible worldwide!
 
-This Minecraft plugin project is open-source and licensed under
-the [GNU General Public License v3.0](https://github.com/Gaming12846/TrollPlus/blob/master/LICENSE). This means that the
-plugin is freely available for anyone to use, modify, and distribute, provided that all copies and derivative works are
-licensed under the same GPLv3 terms and provide proper attribution to the original authors.
+## 📄 License
+
+This project is licensed under the **GNU General Public License v3.0**.
+See the [LICENSE](https://github.com/Gaming12846/TrollPlus/blob/master/LICENSE) file for details.
+
+## 🌟 Support the Project
+
+If you enjoy using TrollPlus, please consider:
+
+- ⭐ **Starring** the project on GitHub, Modrinth, SpigotMC, Hangar and/or CurseForge
+- 📝 **Leaving** a review on SpigotMC and/or CurseForge
+- 💬 **Sharing** with other server owners
+- 🐛 **Reporting** bugs and suggesting features
+
+Thank you for choosing TrollPlus – have fun trolling!
