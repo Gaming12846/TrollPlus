@@ -1,94 +1,199 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2024 Gaming12846
+ * Copyright (C) 2026 Gaming12846
+ *
+ * Gradle build configuration for TrollPlus.
  */
 
-// Apply plugins
+// Gradle plugins
 plugins {
     id 'java'
-    id 'com.gradleup.shadow' version '8.3.2'
+    id 'com.gradleup.shadow' version '9.3.2'
 }
 
-// Define project group and version
+// Project metadata
 group = 'de.gaming12846'
 version = '1.4.8'
+description = 'Prank and trick other players to make their Minecraft experience both fun and surprising!'
 
-// Configure repositories for dependencies
+// Dependency versions
+ext {
+    spigotVersion = '1.21.11-R0.1-SNAPSHOT'
+    commonsLang3Version = '3.20.0'
+    bstatsVersion = '3.2.1'
+}
+
+// Declare project repositories
 repositories {
-    // Use Maven Central repository
+    // Primary repository - Maven Central
     mavenCentral()
-    // Add SpigotMC repository for Spigot API dependencies
+
+    // SpigotMC repository for Bukkit/Spigot APIs
     maven {
         name = 'spigotmc-repo'
         url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+        content {
+            includeGroup 'org.spigotmc'
+        }
     }
-    // Add Sonatype repository for other dependencies
+
+    // Sonatype repository for additional dependencies
     maven {
         name = 'sonatype'
         url = 'https://oss.sonatype.org/content/groups/public/'
     }
 }
 
-// Declare project dependencies
+// Dependency management
 dependencies {
-    // Spigot API dependency
-    compileOnly 'org.spigotmc:spigot-api:1.21.1-R0.1-SNAPSHOT'
+    // Provided dependencies (available at runtime)
+    compileOnly "org.spigotmc:spigot-api:${spigotVersion}"
+    compileOnly "org.apache.commons:commons-lang3:${commonsLang3Version}"
 
-    // BStats dependency
-    implementation 'org.bstats:bstats-bukkit:3.1.0'
-
-    // Apache Commons Lang dependency
-    compileOnly 'org.apache.commons:commons-lang3:3.15.0'
+    // Bundled dependencies (included in final JAR)
+    implementation "org.bstats:bstats-bukkit:${bstatsVersion}"
 }
 
-// Configure Java version compatibility
-def targetJavaVersion = 17
+// Java configuration
 java {
-    // Set source and target compatibility to the specified Java version
-    def javaVersion = JavaVersion.toVersion(targetJavaVersion)
-    sourceCompatibility = javaVersion
-    targetCompatibility = javaVersion
-    if (JavaVersion.current() < javaVersion) {
-        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    // Use toolchain for automatic JDK management
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+
+    // Generate Javadoc and sources JARs
+    withJavadocJar()
+    withSourcesJar()
+
+    // Ensure consistent source/target compatibility
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+// Task to verify Java installation
+tasks.register('verifyJava') {
+    doLast {
+        def javaVersion = JavaVersion.current()
+        println "Java version: ${javaVersion}"
+        println "Java home: ${System.getProperty('java.home')}"
     }
 }
 
-// Configure Java compilation tasks
+// Make compile tasks depend on Java verification
 tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
+    dependsOn 'verifyJava'
 }
 
-// Configure the shadow JAR task
-tasks.named('shadowJar') {
-    archiveClassifier.set('shadowJar')
+// Java compilation settings for optimal performance
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
 
-    // Relocate package to avoid conflicts, if needed
+    // Add compiler arguments
+    options.compilerArgs.addAll(['-Xlint:unchecked',
+                                 '-Xlint:deprecation',
+                                 '-parameters',
+                                 '--enable-preview'  // Enable preview features for Java 21
+    ] as List<String>)
+
+    options.incremental = true
+}
+
+// Javadoc configuration
+tasks.withType(Javadoc).configureEach {
+    options {
+        encoding = 'UTF-8'
+        charSet = 'UTF-8'
+        docEncoding = 'UTF-8'
+        addBooleanOption('Xdoclint:all,-missing', true)
+        addBooleanOption('html5', true)
+        addStringOption('source', '21')
+    }
+}
+
+// Shadow JAR configuration for plugin distribution
+shadowJar {
+    // Remove classifier for cleaner file naming
+    archiveClassifier.set('')
+
+    // Relocate bStats into the plugin's package to avoid conflicts
     relocate('org.bstats', 'de.gaming12846.trollplus.metrics')
 
-    // Exclude unnecessary META-INF files from the final JAR
-    exclude 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA', 'META-INF/*.MF'
+    // Optimize dependencies
+    dependencies {
+        // Only merge bStats into the final jar, no other dependencies
+        exclude { it.moduleGroup != 'org.bstats' }
+    }
 
-    // Define the manifest attributes for the final JAR
+    // Exclude unnecessary files to reduce JAR size
+    exclude('META-INF/*.SF',
+            'META-INF/*.DSA',
+            'META-INF/*.RSA',
+            'META-INF/LICENSE',
+            'META-INF/LICENSE.txt',
+            'META-INF/NOTICE',
+            'META-INF/NOTICE.txt',
+            '**/module-info.class',
+            '**/package-info.class')
+
+    // Manifest configuration
     manifest {
-        attributes(
-                'Implementation-Title': name,
-                'Implementation-Version': version,
-                'Main-Class': 'de.gaming12846.trollplus'
+        attributes('Implementation-Title': project.name,
+                'Implementation-Version': project.version,
+                'Implementation-Vendor': 'Gaming12846',
+                'Created-By': "Gradle ${gradle.gradleVersion}",
+                'Build-Jdk': "${System.properties['java.version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})",
+                'Build-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                'Multi-Release': 'true'  // Support for multi-release JARs
         )
     }
 }
 
-// Ensure the shadow JAR is built as part of the 'build' task
-tasks.build {
-    dependsOn tasks.shadowJar
+// Process resources with filtering
+tasks.processResources {
+    filteringCharset = 'UTF-8'
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+
+    // Capture properties at configuration time to avoid Task.project access
+    def propertiesToExpand = [version    : project.version,
+                              name       : project.name,
+                              description: project.description]
+
+    filesMatching(['**/*.yml', '**/*.yaml', '**/*.json']) {
+        expand(propertiesToExpand)
+    }
 }
 
-// Configure the processResources task
-processResources {
-    def props = [version: version]
-    inputs.properties props
-    filteringCharset 'UTF-8'
-    filesMatching('plugin.yml') {
-        expand props
+// Configure regular JAR task
+jar {
+    enabled = false
+    dependsOn shadowJar
+    archiveClassifier.set('original')
+}
+
+// Build task dependencies
+tasks.assemble.dependsOn shadowJar
+
+// Reproducible builds configuration
+tasks.withType(AbstractArchiveTask).configureEach {
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+}
+
+// Input normalization for cache hits
+normalization {
+    runtimeClasspath {
+        ignore '**/build-info.properties'
+        ignore '**/git.properties'
+    }
+}
+
+// Task to display build information
+tasks.register('buildInfo') {
+    doLast {
+        println "Project: ${project.name}"
+        println "Version: ${project.version}"
+        println "Group: ${project.group}"
+        println "Java Version: ${JavaVersion.current()}"
+        println "Gradle Version: ${gradle.gradleVersion}"
     }
 }
