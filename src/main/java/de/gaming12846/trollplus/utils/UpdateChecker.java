@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2024 Gaming12846
+ * Copyright (C) 2026 Gaming12846
  */
 
 package de.gaming12846.trollplus.utils;
@@ -45,7 +45,8 @@ public class UpdateChecker {
 
             return JsonParser.parseString(response.toString()).getAsJsonObject();
         } else
-            plugin.getLoggingHelper().error(plugin.getConfigHelperLanguage().getString(LangConstants.UNABLE_CHECK_FOR_UPDATES) + " " + responseCode);
+            plugin.getLoggingHelper()
+                    .error(plugin.getConfigHelperLanguage().getString(LangConstants.Global.UNABLE_CHECK_FOR_UPDATES) + " " + responseCode);
         return null;
     }
 
@@ -59,10 +60,12 @@ public class UpdateChecker {
             boolean isPreRelease = latestRelease.get("prerelease").getAsBoolean();
 
             if (!isPreRelease && !currentVersion.equals(latestVersion)) {
-                return plugin.getConfigHelperLanguage().getString(LangConstants.UPDATE_AVAILABLE) + " https://github.com/Gaming12846/TrollPlus/releases";
-            } else return plugin.getConfigHelperLanguage().getString(LangConstants.NO_UPDATE_AVAILABLE);
+                return plugin.getConfigHelperLanguage().getString(LangConstants.Global.UPDATE_AVAILABLE) +
+                        " https://github.com/Gaming12846/TrollPlus/releases";
+            } else return plugin.getConfigHelperLanguage().getString(LangConstants.Global.NO_UPDATE_AVAILABLE);
         } catch (Exception e) {
-            plugin.getLoggingHelper().error(plugin.getConfigHelperLanguage().getString(LangConstants.UNABLE_CHECK_FOR_UPDATES) + " " + e);
+            plugin.getLoggingHelper()
+                    .error(plugin.getConfigHelperLanguage().getString(LangConstants.Global.UNABLE_CHECK_FOR_UPDATES) + " " + e);
         }
         return null;
     }

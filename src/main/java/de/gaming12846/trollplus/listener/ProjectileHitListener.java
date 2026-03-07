@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2024 Gaming12846
+ * Copyright (C) 2026 Gaming12846
  */
 
 package de.gaming12846.trollplus.listener;
@@ -70,7 +70,8 @@ public class ProjectileHitListener implements Listener {
     private void handleExplosionArrow(Arrow arrow) {
         arrow.removeMetadata(MetadataConstants.TROLLPLUS_TROLLBOWS_EXPLOSION_ARROW, plugin);
         Location location = arrow.getLocation();
-        arrow.getWorld().createExplosion(location, 2, plugin.getConfigHelper().getBoolean(ConfigConstants.SET_FIRE), plugin.getConfigHelper().getBoolean(ConfigConstants.BREAK_BLOCKS));
+        arrow.getWorld().createExplosion(location, 2, plugin.getConfigHelper().getBoolean(ConfigConstants.Features.SET_FIRE),
+                plugin.getConfigHelper().getBoolean(ConfigConstants.Features.BREAK_BLOCKS));
     }
 
     // Handles the TNT arrow effect
@@ -97,7 +98,9 @@ public class ProjectileHitListener implements Listener {
         arrow.getWorld().spawnParticle(particleType, arrow.getLocation(), 1);
 
         for (int i = 0; i < ThreadLocalRandom.current().nextInt(3, 5); i++) {
-            Location spawnLocation = arrow.getLocation().add(ThreadLocalRandom.current().nextInt(0, 2), ThreadLocalRandom.current().nextInt(0, 2), ThreadLocalRandom.current().nextInt(0, 2));
+            Location spawnLocation = arrow.getLocation()
+                    .add(ThreadLocalRandom.current().nextInt(0, 2), ThreadLocalRandom.current().nextInt(0, 2),
+                            ThreadLocalRandom.current().nextInt(0, 2));
             arrow.getWorld().spawnEntity(spawnLocation, EntityType.SILVERFISH);
         }
     }
@@ -113,7 +116,7 @@ public class ProjectileHitListener implements Listener {
         if (potionMeta != null) {
             potionMeta.addCustomEffect(new PotionEffect(possibleEffects[ThreadLocalRandom.current().nextInt(0, 8)], 200, 1), true);
             itemStack.setItemMeta(potionMeta);
-            ThrownPotion thrownPotion = (ThrownPotion) arrow.getWorld().spawnEntity(arrow.getLocation(), EntityType.POTION);
+            ThrownPotion thrownPotion = (ThrownPotion) arrow.getWorld().spawnEntity(arrow.getLocation(), EntityType.SPLASH_POTION);
             thrownPotion.setItem(itemStack);
         }
     }

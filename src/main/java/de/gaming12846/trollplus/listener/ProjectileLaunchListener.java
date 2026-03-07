@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2024 Gaming12846
+ * Copyright (C) 2026 Gaming12846
  */
 
 package de.gaming12846.trollplus.listener;
@@ -48,35 +48,40 @@ public class ProjectileLaunchListener implements Listener {
         String displayName = itemMeta.getDisplayName();
 
         // Handle explosion arrow
-        if (displayName.equals(ChatColor.RED + configHelperLanguage.getString(LangConstants.TROLLBOWS_EXPLOSION_BOW)) && itemMeta.isUnbreakable()) {
+        if (displayName.equals(ChatColor.RED + configHelperLanguage.getString(LangConstants.GUI.TrollBows.Bows.EXPLOSION_BOW)) &&
+                itemMeta.isUnbreakable()) {
             handleExplosionArrow(arrow);
             if (plugin.getServerVersion() < 1.20 && player.getGameMode() != GameMode.CREATIVE)
                 player.getInventory().addItem(new ItemStack(Material.ARROW));
         }
 
         // Handle TNT arrow
-        if (displayName.equals(ChatColor.RED + configHelperLanguage.getString(LangConstants.TROLLBOWS_TNT_BOW)) && itemMeta.isUnbreakable()) {
+        if (displayName.equals(ChatColor.RED + configHelperLanguage.getString(LangConstants.GUI.TrollBows.Bows.TNT_BOW)) &&
+                itemMeta.isUnbreakable()) {
             handleTntArrow(arrow);
             if (plugin.getServerVersion() < 1.20 && player.getGameMode() != GameMode.CREATIVE)
                 player.getInventory().addItem(new ItemStack(Material.ARROW));
         }
 
         // Handle lightning bolt arrow
-        if (displayName.equals(ChatColor.RED + configHelperLanguage.getString(LangConstants.TROLLBOWS_LIGHTNING_BOLT_BOW)) && itemMeta.isUnbreakable()) {
+        if (displayName.equals(ChatColor.RED + configHelperLanguage.getString(LangConstants.GUI.TrollBows.Bows.LIGHTNING_BOLT_BOW)) &&
+                itemMeta.isUnbreakable()) {
             handleLightningBoltArrow(arrow);
             if (plugin.getServerVersion() < 1.20 && player.getGameMode() != GameMode.CREATIVE)
                 player.getInventory().addItem(new ItemStack(Material.ARROW));
         }
 
         // Handle silverfish arrow
-        if (displayName.equals(ChatColor.RED + configHelperLanguage.getString(LangConstants.TROLLBOWS_SILVERFISH_BOW)) && itemMeta.isUnbreakable()) {
+        if (displayName.equals(ChatColor.RED + configHelperLanguage.getString(LangConstants.GUI.TrollBows.Bows.SILVERFISH_BOW)) &&
+                itemMeta.isUnbreakable()) {
             handleSilverfishArrow(arrow);
             if (plugin.getServerVersion() < 1.20 && player.getGameMode() != GameMode.CREATIVE)
                 player.getInventory().addItem(new ItemStack(Material.ARROW));
         }
 
         // Handle potion effect arrow
-        if (displayName.equals(ChatColor.RED + configHelperLanguage.getString(LangConstants.TROLLBOWS_POTION_EFFECT_BOW)) && itemMeta.isUnbreakable()) {
+        if (displayName.equals(ChatColor.RED + configHelperLanguage.getString(LangConstants.GUI.TrollBows.Bows.POTION_EFFECT_BOW)) &&
+                itemMeta.isUnbreakable()) {
             handlePotionEffectArrow(arrow);
             if (plugin.getServerVersion() < 1.20 && player.getGameMode() != GameMode.CREATIVE)
                 player.getInventory().addItem(new ItemStack(Material.ARROW));
@@ -90,7 +95,7 @@ public class ProjectileLaunchListener implements Listener {
         new BukkitRunnable() {
             @Override
             public void run() {
-                if (arrow.isInBlock() || arrow.isOnGround() ||arrow.isInWater() ||arrow.isDead()) {
+                if (arrow.isInBlock() || arrow.isOnGround() || arrow.isInWater() || arrow.isDead()) {
                     cancel();
                     return;
                 }
@@ -108,7 +113,7 @@ public class ProjectileLaunchListener implements Listener {
         new BukkitRunnable() {
             @Override
             public void run() {
-                if (arrow.isInBlock() || arrow.isOnGround() ||arrow.isInWater() ||arrow.isDead()) {
+                if (arrow.isInBlock() || arrow.isOnGround() || arrow.isInWater() || arrow.isDead()) {
                     cancel();
                     return;
                 }
@@ -126,7 +131,7 @@ public class ProjectileLaunchListener implements Listener {
         new BukkitRunnable() {
             @Override
             public void run() {
-                if (arrow.isInBlock() || arrow.isOnGround() ||arrow.isInWater() ||arrow.isDead()) {
+                if (arrow.isInBlock() || arrow.isOnGround() || arrow.isInWater() || arrow.isDead()) {
                     cancel();
                     return;
                 }
@@ -144,7 +149,7 @@ public class ProjectileLaunchListener implements Listener {
         new BukkitRunnable() {
             @Override
             public void run() {
-                if (arrow.isInBlock() || arrow.isOnGround() ||arrow.isInWater() ||arrow.isDead()) {
+                if (arrow.isInBlock() || arrow.isOnGround() || arrow.isInWater() || arrow.isDead()) {
                     cancel();
                     return;
                 }

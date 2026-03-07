@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2024 Gaming12846
+ * Copyright (C) 2026 Gaming12846
  */
 
 package de.gaming12846.trollplus.listener;
@@ -46,7 +46,7 @@ public class AsyncPlayerChatListener implements Listener {
         if (player.hasMetadata(MetadataConstants.TROLLPLUS_SEMI_BAN)) {
             // Cancel the chat event and replace it with a custom message
             event.setCancelled(true);
-            String semiBanMessageReplace = plugin.getConfigHelper().getString(ConfigConstants.SEMI_BAN_MESSAGE_REPLACE);
+            String semiBanMessageReplace = plugin.getConfigHelper().getString(ConfigConstants.Troll.SEMI_BAN_MESSAGE_REPLACE);
 
             // Send the replacement message if it's configured
             if (!semiBanMessageReplace.isEmpty())

@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2024 Gaming12846
+ * Copyright (C) 2026 Gaming12846
  */
 
 package de.gaming12846.trollplus.listener;
@@ -41,7 +41,7 @@ public class PlayerJoinListener implements Listener {
             player.setExp(controlHelper.getPlayerExp());
 
             // Teleport the player back to their previous location if configured
-            if (plugin.getConfigHelper().getBoolean(ConfigConstants.CONTROL_TELEPORT_BACK))
+            if (plugin.getConfigHelper().getBoolean(ConfigConstants.Troll.Control.TELEPORT_BACK))
                 player.teleport(controlHelper.getPlayerLocation());
 
             // Remove the "TROLLPLUS_CONTROL_PLAYER" metadata

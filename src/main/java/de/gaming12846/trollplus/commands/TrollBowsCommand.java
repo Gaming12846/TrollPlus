@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2024 Gaming12846
+ * Copyright (C) 2026 Gaming12846
  */
 
 package de.gaming12846.trollplus.commands;
@@ -35,19 +35,22 @@ public class TrollBowsCommand implements CommandExecutor {
 
         // Check if the command sender is not a player
         if (!(sender instanceof Player player)) {
-            sender.sendMessage(LangConstants.PLUGIN_PREFIX + configHelperLanguage.getString(LangConstants.NO_CONSOLE));
+            sender.sendMessage(LangConstants.PLUGIN_PREFIX + configHelperLanguage.getString(LangConstants.Global.NO_CONSOLE));
             return true;
         }
 
         // Check if the player has the required permission
         if (!player.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_BOWS)) {
-            player.sendMessage(ChatColor.RED + configHelperLanguage.getString(LangConstants.NO_PERMISSION));
+            player.sendMessage(ChatColor.RED + configHelperLanguage.getString(LangConstants.Global.NO_PERMISSION));
             return true;
         }
 
         // Check if the command syntax is correct
         if (args.length != 0) {
-            player.sendMessage(LangConstants.PLUGIN_PREFIX + ChatColor.RED + configHelperLanguage.getString(LangConstants.INVALID_SYNTAX) + " " + ChatColor.RESET + configHelperLanguage.getString(LangConstants.INVALID_SYNTAX_USAGE) + label);
+            player.sendMessage(
+                    LangConstants.PLUGIN_PREFIX + ChatColor.RED + configHelperLanguage.getString(LangConstants.Global.INVALID_SYNTAX) +
+                            " " +
+                            ChatColor.RESET + configHelperLanguage.getString(LangConstants.Global.INVALID_SYNTAX_USAGE) + label);
             return true;
         }
 
@@ -61,23 +64,35 @@ public class TrollBowsCommand implements CommandExecutor {
 
     // Creates the TrollBows GUI for the player
     private void createTrollBowsGUI(ConfigHelper configHelperLanguage) {
-        guiHelperTrollBows = new GUIHelper(ChatColor.BLACK + configHelperLanguage.getString(LangConstants.TROLLBOWS_TITLE), 9);
+        guiHelperTrollBows = new GUIHelper(ChatColor.BLACK + configHelperLanguage.getString(LangConstants.GUI.TrollBows.TITLE), 9);
 
         // Add troll bows to the GUI
-        getGUIHelperTrollBows().addItem(2, ItemBuilder.createBow(plugin, configHelperLanguage.getString(LangConstants.TROLLBOWS_EXPLOSION_BOW), configHelperLanguage.getString(LangConstants.TROLLBOWS_EXPLOSION_BOW_DESCRIPTION)));
-        getGUIHelperTrollBows().addItem(3, ItemBuilder.createBow(plugin, configHelperLanguage.getString(LangConstants.TROLLBOWS_TNT_BOW), configHelperLanguage.getString(LangConstants.TROLLBOWS_TNT_BOW_DESCRIPTION)));
-        getGUIHelperTrollBows().addItem(4, ItemBuilder.createBow(plugin, configHelperLanguage.getString(LangConstants.TROLLBOWS_LIGHTNING_BOLT_BOW), configHelperLanguage.getString(LangConstants.TROLLBOWS_LIGHTNING_BOLT_BOW_DESCRIPTION)));
-        getGUIHelperTrollBows().addItem(5, ItemBuilder.createBow(plugin, configHelperLanguage.getString(LangConstants.TROLLBOWS_SILVERFISH_BOW), configHelperLanguage.getString(LangConstants.TROLLBOWS_SILVERFISH_BOW_DESCRIPTION)));
-        getGUIHelperTrollBows().addItem(6, ItemBuilder.createBow(plugin, configHelperLanguage.getString(LangConstants.TROLLBOWS_POTION_EFFECT_BOW), configHelperLanguage.getString(LangConstants.TROLLBOWS_POTION_EFFECT_BOW_DESCRIPTION)));
+        getGUIHelperTrollBows().addItem(2,
+                ItemBuilder.createBow(plugin, configHelperLanguage.getString(LangConstants.GUI.TrollBows.Bows.EXPLOSION_BOW),
+                        configHelperLanguage.getString(LangConstants.GUI.TrollBows.Bows.EXPLOSION_BOW_DESCRIPTION)));
+        getGUIHelperTrollBows().addItem(3,
+                ItemBuilder.createBow(plugin, configHelperLanguage.getString(LangConstants.GUI.TrollBows.Bows.TNT_BOW),
+                        configHelperLanguage.getString(LangConstants.GUI.TrollBows.Bows.TNT_BOW_DESCRIPTION)));
+        getGUIHelperTrollBows().addItem(4,
+                ItemBuilder.createBow(plugin, configHelperLanguage.getString(LangConstants.GUI.TrollBows.Bows.LIGHTNING_BOLT_BOW),
+                        configHelperLanguage.getString(LangConstants.GUI.TrollBows.Bows.LIGHTNING_BOLT_BOW_DESCRIPTION)));
+        getGUIHelperTrollBows().addItem(5,
+                ItemBuilder.createBow(plugin, configHelperLanguage.getString(LangConstants.GUI.TrollBows.Bows.SILVERFISH_BOW),
+                        configHelperLanguage.getString(LangConstants.GUI.TrollBows.Bows.SILVERFISH_BOW_DESCRIPTION)));
+        getGUIHelperTrollBows().addItem(6,
+                ItemBuilder.createBow(plugin, configHelperLanguage.getString(LangConstants.GUI.TrollBows.Bows.POTION_EFFECT_BOW),
+                        configHelperLanguage.getString(LangConstants.GUI.TrollBows.Bows.POTION_EFFECT_BOW_DESCRIPTION)));
 
         // Add placeholders to the GUI
         final byte[] placeholderSlots = {0, 8};
         for (int slot : placeholderSlots) {
-            getGUIHelperTrollBows().addItem(slot, ItemBuilder.createItemWithLore(Material.RED_STAINED_GLASS_PANE, " ", configHelperLanguage.getString(LangConstants.GUI_PLACEHOLDER_DESCRIPTION)));
+            getGUIHelperTrollBows().addItem(slot, ItemBuilder.createItemWithLore(Material.RED_STAINED_GLASS_PANE, " ",
+                    configHelperLanguage.getString(LangConstants.GUI.PLACEHOLDER_DESCRIPTION)));
         }
         final byte[] placeholderSlots1 = {1, 7};
         for (int slot : placeholderSlots1) {
-            getGUIHelperTrollBows().addItem(slot, ItemBuilder.createItemWithLore(Material.WHITE_STAINED_GLASS_PANE, " ", configHelperLanguage.getString(LangConstants.GUI_PLACEHOLDER_DESCRIPTION)));
+            getGUIHelperTrollBows().addItem(slot, ItemBuilder.createItemWithLore(Material.WHITE_STAINED_GLASS_PANE, " ",
+                    configHelperLanguage.getString(LangConstants.GUI.PLACEHOLDER_DESCRIPTION)));
         }
     }
 

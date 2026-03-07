@@ -1,0 +1,257 @@
+# ============================================================
+# TrollPlus - Nederlandse taalconfiguratie
+# ============================================================
+#
+# Nederlands taalconfiguratiebestand voor TrollPlus.
+#
+# Gegenereerd voor versie ${version}.
+# Zorg ervoor dat je dit bestand bijwerkt wanneer je de plugin bijwerkt!
+#
+# Taalconfiguratie door Gaming12846.
+#
+# ============================================================
+
+# Configuratieversie
+version: ${version}
+
+# =================== Global =================================
+
+global:
+  metrics-enabled: "Plugin-metrics zijn ingeschakeld."
+
+  server-version-only-partly-supported: "Serverversie wordt gedeeltelijk ondersteund. Sommige functies zijn anders of niet beschikbaar."
+
+  checking-for-updates: "Controleren op updates..."
+  update-available: "Er is een nieuwe update beschikbaar! Download het van Modrinth:"
+  no-update-available: "Je gebruikt de nieuwste versie. Er zijn geen updates beschikbaar."
+  unable-to-check-for-updates: "Kan niet controleren op updates."
+
+  config-outdated: "Je configuratiebestand is verouderd! Werk het bij naar de nieuwste versie. De plugin zal proberen het te laden, maar er kunnen fouten optreden."
+  language-config-outdated: "Je taalconfiguratiebestand is verouderd! Werk het bij naar de nieuwste versie. De plugin zal proberen het te laden, maar er kunnen fouten optreden."
+  failed-to-save-config: "Kan configuratiebestand niet opslaan."
+
+  no-permission: "Je hebt geen toestemming om dit commando te gebruiken."
+  no-console: "Dit commando kan niet vanaf de console worden gebruikt."
+  invalid-syntax: "Ongeldige commandosyntaxis!"
+  invalid-syntax-usage: "Juist gebruik: /"
+
+# =================== TrollPlus Command ======================
+
+trollplus:
+  version: "Pluginversie:"
+  developer: "Ontwikkelaar:"
+  plugin-website: "Pluginwebsite:"
+  report-bugs: "Meld bugs aan:"
+  reload: "Configuratiebestanden succesvol herladen."
+
+  blocklist:
+    already-in: "Speler [player] staat al op de blokkeerlijst." # [player] wordt vervangen door de spelersnaam
+    added: "Speler [player] is toegevoegd aan de blokkeerlijst." # [player] wordt vervangen door de spelersnaam
+    not-in: "Speler [player] staat niet op de blokkeerlijst." # [player] wordt vervangen door de spelersnaam
+    removed: "Speler [player] is verwijderd van de blokkeerlijst." # [player] wordt vervangen door de spelersnaam
+
+# =================== Troll Command ==========================
+
+troll:
+  player:
+    not-online: "Speler [player] is momenteel niet online." # [player] wordt vervangen door de spelersnaam
+    is-immune: "Speler [player] is immuun." # [player] wordt vervangen door de spelersnaam
+    quit: "De geselecteerde speler heeft het spel verlaten."
+
+  not-available:
+    vanish: "Je kunt onzichtbaarheid niet op jezelf gebruiken."
+    teleport: "Je bent al op de locatie van het doelwit."
+    control: "Je hebt al de controle."
+    falling-anvils: "Vallende aanbeelden kunnen niet worden geactiveerd omdat het doelwit onder een blok zit."
+    slowly-kill: "Langzaam doden kan niet worden geactiveerd omdat het doelwit niet in overlevings- of avonturenmodus is."
+    freefall: "Vrije val kan niet worden geactiveerd omdat het doelwit niet onder de open hemel is."
+
+  rocket:
+    cannot-launch: "Raket kan niet worden gelanceerd omdat het doelwit niet onder de open hemel is."
+    launch-stopped: "Raketlancering gestopt omdat het doelwit niet langer onder de open hemel is."
+
+  kill-message: "stierf door een ongelukje"
+
+  features:
+    vanish:
+      quit-message: "[player] heeft het spel verlaten." # [player] wordt vervangen door de spelersnaam
+      join-message: "[player] is bij het spel gekomen." # [player] wordt vervangen door de spelersnaam
+
+    # Spamberichten voor de functie "Spamberichten". Voeg zoveel toe als je wilt
+    spam-messages:
+      - "Hé daar, maat!"
+      - "Waarschuwing: Trollen overal!"
+      - "HaHaHaHaHa!"
+      - "LOLz xD xD!"
+      - "Knuffels en kusjes! XOXO!"
+      - "Je hebt een prijs gewonnen!!!"
+      - "Gratis geld! Klik nu!"
+      - "Mis deze aanbieding niet!"
+      - "Alleen voor beperkte tijd!"
+      - "Gefeliciteerd! Je bent een winnaar!"
+      - "Groot nieuws, iedereen!"
+      - "Doe nu mee met het plezier!"
+      - "Super geheime boodschap!"
+      - "Jouw inbreng is nodig!"
+      - "Dit is geen oefening!"
+
+    fake-ban:
+      message-player: "Je bent verbannen van deze server"
+      message-broadcast: "Speler [player] is permanent verbannen van de server" # [player] wordt vervangen door de spelersnaam
+
+    fake-op-message: "[Server: [player] is serveroperator gemaakt]" # [player] wordt vervangen door de spelersnaam
+
+# =================== GUI ====================================
+
+gui:
+  status:
+    on: "Aan"
+    off: "Uit"
+
+  placeholder-description: "Gewoon een tijdelijke plaatshouder."
+
+  # =================== Troll GUI ============================
+
+  troll:
+    title: "Trol"
+
+    features:
+      freeze: "Bevriezen"
+      freeze-description: "Voorkom dat het doelwit beweegt, interageert of items laat vallen/oppakt"
+
+      hand-item-drop: "Item uit hand laten vallen"
+      hand-item-drop-description: "Laat automatisch het item uit de hand van het doelwit vallen"
+
+      control: "Controle"
+      control-description: "Neem volledige controle over de acties van het doelwit, inclusief beweging, interactie en chat"
+
+      flip-backwards: "Achterwaarts draaien"
+      flip-backwards-description: "Draai het doelwit achterwaarts (180°) wanneer het interageert met iets (inclusief blokken breken en entiteiten slaan)"
+
+      spank: "Billenkoek"
+      spank-description: "Geef het doelwit een klap met willekeurige terugslag"
+
+      spam-messages: "Spamberichten"
+      spam-messages-description: "Stuur willekeurige aangepaste berichten naar het doelwit"
+
+      spam-sounds: "Spamgeluiden"
+      spam-sounds-description: "Speel willekeurige geluiden af voor het doelwit"
+
+      semi-ban: "Semi-verbod"
+      semi-ban-description: "Voorkom dat het doelwit bouwt, interageert, schade veroorzaakt en chat"
+
+      falling-anvils: "Vallende aanbeelden"
+      falling-anvils-description: "Laat aanbeelden op het doelwit vallen"
+
+      tnt-track: "TNT-spoor"
+      tnt-track-description: "Laat met tussenpozen ontstoken TNT verschijnen op de locatie van het doelwit"
+
+      mob-spawner: "Mob-spawner"
+      mob-spawner-description: "Laat willekeurige mobs verschijnen op de locatie van het doelwit"
+
+      slowly-kill: "Langzaam doden"
+      slowly-kill-description: "Breng met tussenpozen schade toe aan het doelwit"
+
+      random-teleport: "Willekeurige teleportatie"
+      random-teleport-description: "Teleporteer het doelwit willekeurig naar een willekeurige locatie"
+
+      inventory-drop: "Inventaris laten vallen"
+      inventory-drop-description: "Laat alle items uit de inventaris van het doelwit vallen, inclusief pantser en items in de tweede hand"
+
+      inventory-shuffle: "Inventaris schudden"
+      inventory-shuffle-description: "Schud alle items in de inventaris van het doelwit"
+
+      random-scary-sound: "Willekeurig eng geluid"
+      random-scary-sound-description: "Speel een willekeurig eng geluid af op de locatie van het doelwit om hen bang te maken"
+
+      rocket: "Raket"
+      rocket-description: "Lanceer het doelwit de lucht in als een vuurwerk"
+
+      freefall: "Vrije val"
+      freefall-description: "Teleporteer het doelwit de lucht in en laat hen vrij vallen"
+
+      fake-ban: "Nepban"
+      fake-ban-description: "Laat het doelwit geloven dat ze zijn verbannen"
+
+      fake-op: "Nep-OP"
+      fake-op-description: "Laat het doelwit geloven dat ze operatorrechten hebben gekregen"
+
+      teleport: "Teleporteer"
+      teleport-description: "Teleporteer naar het doelwit"
+
+      invsee: "Inventaris bekijken"
+      invsee-description: "Bekijk de inventaris van het doelwit"
+
+      kill: "Dood"
+      kill-description: "Dood het doelwit"
+
+      invsee-ender-chest: "Enderkist bekijken"
+      invsee-ender-chest-description: "Bekijk de Enderkist van het doelwit"
+
+      vanish: "Onzichtbaarheid"
+      vanish-description: "Laat het doelwit verdwijnen"
+
+      random-troll: "Willekeurige trol"
+      random-troll-description: "Kies willekeurig een trolactie voor het doelwit"
+
+  # =================== Trollbows GUI ========================
+
+  trollbows:
+    title: "Trollbogen"
+
+    bows:
+      explosion: "Explosieboog"
+      explosion-description: "Een boog die een explosie creëert bij pijlinslag"
+
+      tnt: "TNT-boog"
+      tnt-description: "Een boog die TNT laat verschijnen bij pijlinslag"
+
+      lightning-bolt: "Blikseminslagboog"
+      lightning-bolt-description: "Een boog die inslaat met bliksem bij pijlinslag"
+
+      silverfish: "Zilvervisjesboog"
+      silverfish-description: "Een boog die een horde zilvervisjes laat verschijnen bij pijlinslag"
+
+      potion-effect: "Drankeffectboog"
+      potion-effect-description: "Een boog die een willekeurig drankeffect veroorzaakt bij pijlinslag"
+
+  # =================== Settings GUI =========================
+
+  trollsettings:
+    title: "TrollPlus Instellingen"
+
+    settings:
+      language: "Taal wijzigen"
+      language-description: "Stel de taal van de plugin in. Beschikbare opties: custom, de, en, es, fr, nl, zh-cn, zh-tw."
+
+      metrics-enabled: "Metrics:"
+      metrics-enabled-description: "Schakel plugin-metrics in of uit (wordt van kracht bij de volgende herstart/herlaadbeurt)."
+
+      check-for-updates: "Controleren op updates:"
+      check-for-updates-description: "Schakel de updatecontrole in of uit (wordt van kracht bij de volgende herstart/herlaadbeurt)."
+
+      deactivate-features-on-quit: "Functies deactiveren bij vertrek:"
+      deactivate-features-on-quit-description: "Deactiveer actieve trolfuncties wanneer het doelwit de server verlaat."
+
+      control-teleport-back: "Controle terugteleporteren:"
+      control-teleport-back-description: "Teleporteer de speler terug naar zijn oorspronkelijke positie."
+
+      set-fire: "Vuur aansteken:"
+      set-fire-description: "Sta toe of niet toe dat vuur wordt aangestoken voor 'TNT-spoor' en Trollbogen."
+
+      break-blocks: "Blokken breken:"
+      break-blocks-description: "Sta toe of niet toe dat explosies blokken vernietigen voor 'TNT-spoor' en Trollbogen."
+
+    locale:
+      title: "TrollPlus taalinstellingen"
+      current-language: "Huidige taal:"
+      successfully-changed: "Taal succesvol gewijzigd!"
+
+      custom: "Aangepast"
+      de: "Duits"
+      en: "Engels"
+      es: "Spaans"
+      fr: "Frans"
+      nl: "Nederlands"
+      zh-cn: "Vereenvoudigd Chinees"
+      zh-tw: "Traditioneel Chinees"

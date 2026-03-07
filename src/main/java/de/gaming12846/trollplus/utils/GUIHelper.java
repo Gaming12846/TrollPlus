@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2024 Gaming12846
+ * Copyright (C) 2026 Gaming12846
  */
 
 package de.gaming12846.trollplus.utils;
@@ -74,7 +74,7 @@ public class GUIHelper {
 
     // Retrieves the status string based on a boolean value
     public String getStatus(Boolean configboolean) {
-        String status = configboolean ? LangConstants.GUI_STATUS_ON : LangConstants.GUI_STATUS_OFF;
+        String status = configboolean ? LangConstants.GUI.Status.ON : LangConstants.GUI.Status.OFF;
         String color = configboolean ? "§a§l" : "§c§l";
         return color + configHelperLanguage.getString(status);
     }

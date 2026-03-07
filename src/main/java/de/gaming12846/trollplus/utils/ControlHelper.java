@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2023 Gaming12846
+ * Copyright (C) 2026 Gaming12846
  */
 
 package de.gaming12846.trollplus.utils;
@@ -77,7 +77,7 @@ public class ControlHelper {
 
                 synchronizePlayerStates();
             }
-        }.runTaskTimer(plugin, 0, plugin.getConfigHelper().getLong(ConfigConstants.CONTROL_PERIOD));
+        }.runTaskTimer(plugin, 0, plugin.getConfigHelper().getLong(ConfigConstants.Troll.Control.PERIOD));
     }
 
     // Ends the control process, restoring the controlling player's original state and visibility
@@ -86,7 +86,7 @@ public class ControlHelper {
         restoreVisibility();
 
         // Teleport back if needed
-        if (plugin.getConfigHelper().getBoolean(ConfigConstants.CONTROL_TELEPORT_BACK)) {
+        if (plugin.getConfigHelper().getBoolean(ConfigConstants.Troll.Control.TELEPORT_BACK)) {
             playerController.teleport(playerLocation);
         }
 
@@ -136,7 +136,8 @@ public class ControlHelper {
 
     // Checks if the control is still active
     private boolean isControlActive() {
-        return playerTarget.hasMetadata(MetadataConstants.TROLLPLUS_CONTROL_TARGET) && playerController.hasMetadata(MetadataConstants.TROLLPLUS_CONTROL_PLAYER);
+        return playerTarget.hasMetadata(MetadataConstants.TROLLPLUS_CONTROL_TARGET) &&
+                playerController.hasMetadata(MetadataConstants.TROLLPLUS_CONTROL_PLAYER);
     }
 
     // Synchronizes the target player's state with the controlling player's state

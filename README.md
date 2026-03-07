@@ -93,7 +93,7 @@ The plugin interface supports:
 2. **Configuration changes not applying**  
    Make sure you restart your server or reload the plugin properly. Some changes require a full restart.
 
-2. **Players cannot use the troll menu**  
+3. **Players cannot use the troll menu**  
    Verify permissions (see [Wiki](https://github.com/Gaming12846/TrollPlus/wiki)). The default permission
    for
    all commands is `trollplus.*`.

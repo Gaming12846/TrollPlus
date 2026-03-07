@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2024 Gaming12846
+ * Copyright (C) 2026 Gaming12846
  */
 
 package de.gaming12846.trollplus.listener;
@@ -30,7 +30,7 @@ public class PlayerQuitListener implements Listener {
         Player player = event.getPlayer();
 
         // Check if features should be deactivated upon player quit
-        if (plugin.getConfigHelper().getBoolean(ConfigConstants.DEACTIVATE_FEATURES_ON_QUIT)) {
+        if (plugin.getConfigHelper().getBoolean(ConfigConstants.Features.DEACTIVATE_ON_QUIT)) {
             // Remove player metadata related to troll features
             removeMetadata(player);
 

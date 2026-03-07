@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2024 Gaming12846
+ * Copyright (C) 2026 Gaming12846
  */
 
 package de.gaming12846.trollplus.utils;
@@ -50,7 +50,8 @@ public class ConfigHelper {
         try {
             fileConfiguration.save(file);
         } catch (IOException e) {
-            plugin.getLoggingHelper().error(plugin.getConfigHelperLanguage().getString(LangConstants.FAILED_TO_SAVE_CONFIG) + " " + e);
+            plugin.getLoggingHelper()
+                    .error(plugin.getConfigHelperLanguage().getString(LangConstants.Global.FAILED_TO_SAVE_CONFIG) + " " + e);
         }
     }
 
@@ -107,7 +108,8 @@ public class ConfigHelper {
             FileConfiguration defaultConfig = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder(), path));
 
             // Return the default list or a single-item list indicating the path wasn't found
-            return defaultConfig.getStringList(path).isEmpty() ? Collections.singletonList("List not found: " + path) : defaultConfig.getStringList(path);
+            return defaultConfig.getStringList(path).isEmpty() ? Collections.singletonList(
+                    "List not found: " + path) : defaultConfig.getStringList(path);
         }
 
         return list;

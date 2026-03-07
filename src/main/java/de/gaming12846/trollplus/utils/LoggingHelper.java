@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2024 Gaming12846
+ * Copyright (C) 2026 Gaming12846
  */
 
 package de.gaming12846.trollplus.utils;
@@ -18,7 +18,7 @@ public class LoggingHelper {
     // Constructor that takes the plugin instance for getting the logger
     public LoggingHelper(TrollPlus plugin) {
         this.logger = plugin.getLogger();
-        setLogLevel(Objects.requireNonNull(plugin.getConfig().getString(ConfigConstants.LOG_LEVEL)));
+        setLogLevel(Objects.requireNonNull(plugin.getConfig().getString(ConfigConstants.General.LOG_LEVEL)));
     }
 
     // Info level logging

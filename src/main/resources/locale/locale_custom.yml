@@ -1,0 +1,257 @@
+# ============================================================
+# TrollPlus - Custom Language Configuration
+# ============================================================
+#
+# Custom language configuration file for TrollPlus.
+#
+# Generated for version ${version}.
+# Ensure you update this file when updating the plugin!
+#
+# Use this file to translate the plugin to your preferred language.
+#
+# ============================================================
+
+# Configuration version
+version: ${version}
+
+# =================== Global =================================
+
+global:
+  metrics-enabled: ""
+
+  server-version-only-partly-supported:
+
+  checking-for-updates: ""
+  update-available: ""
+  no-update-available: ""
+  unable-to-check-for-updates: ""
+
+  configuration-outdated: ""
+  language-configuration-outdated: ""
+  failed-to-save-configuration: ""
+
+  no-permission: ""
+  no-console: ""
+  invalid-syntax: ""
+  invalid-syntax-usage: ""
+
+# =================== TrollPlus Command ======================
+
+trollplus:
+  version: ""
+  developer: ""
+  plugin-website: ""
+  report-bugs: ""
+  reload: ""
+
+  blocklist:
+    already-in: "[player]" # [player] will be replaced by the player's name
+    added: "[player]" # [player] will be replaced by the player's name
+    not-in: "[player]" # [player] will be replaced by the player's name
+    removed: "[player]"  # [player] will be replaced by the player's name
+
+# =================== Troll Command ==========================
+
+troll:
+  player:
+    not-online: "[player]" # [player] will be replaced by the player's name
+    is-immune: "[player]" # [player] will be replaced by the player's name
+    quit: ""
+
+  not-available:
+    vanish: ""
+    teleport: ""
+    control: ""
+    falling-anvils: ""
+    slowly-kill: ""
+    freefall: ""
+
+  rocket:
+    cannot-launch: ""
+    launch-stopped: ""
+
+  kill-message: ""
+
+  features:
+    vanish:
+      quit-message: "[player]" # [player] will be replaced by the player's name
+      join-message: "[player]" # [player] will be replaced by the player's name
+
+    # Spam messages for the "Spam Messages" feature. Add as many as you like
+    spam-messages:
+      - ""
+      - ""
+      - ""
+      - ""
+      - ""
+      - ""
+      - ""
+      - ""
+      - ""
+      - ""
+      - ""
+      - ""
+      - ""
+      - ""
+      - ""
+
+    fake-ban:
+      message-player: ""
+      message-broadcast: "[player]" # [player] will be replaced by the player's name
+
+    fake-op-message: "[player]" # [player] will be replaced by the player's name
+
+# =================== GUI ====================================
+
+gui:
+  status:
+    on: ""
+    off: ""
+
+  placeholder-description: ""
+
+  # =================== Troll GUI ============================
+
+  troll:
+    title: ""
+
+    features:
+      freeze: ""
+      freeze-description: ""
+
+      hand-item-drop: ""
+      hand-item-drop-description: ""
+
+      control: ""
+      control-description: ""
+
+      flip-backwards: ""
+      flip-backwards-description: ""
+
+      spank: ""
+      spank-description: ""
+
+      spam-messages: ""
+      spam-messages-description: ""
+
+      spam-sounds: ""
+      spam-sounds-description: ""
+
+      semi-ban: ""
+      semi-ban-description: ""
+
+      falling-anvils: ""
+      falling-anvils-description: ""
+
+      tnt-track: ""
+      tnt-track-description: ""
+
+      mob-spawner: ""
+      mob-spawner-description: ""
+
+      slowly-kill: ""
+      slowly-kill-description: ""
+
+      random-teleport: ""
+      random-teleport-description: ""
+
+      inventory-drop: ""
+      inventory-drop-description: ""
+
+      inventory-shuffle: ""
+      inventory-shuffle-description: ""
+
+      random-scary-sound: ""
+      random-scary-sound-description: ""
+
+      rocket: ""
+      rocket-description: ""
+
+      freefall: ""
+      freefall-description: ""
+
+      fake-ban: ""
+      fake-ban-description: ""
+
+      fake-op: ""
+      fake-op-description: ""
+
+      teleport: ""
+      teleport-description: ""
+
+      invsee: ""
+      invsee-description: ""
+
+      kill: ""
+      kill-description: ""
+
+      invsee-ender-chest: ""
+      invsee-ender-chest-description: ""
+
+      vanish: ""
+      vanish-description: ""
+
+      random-troll: ""
+      random-troll-description: ""
+
+  # =================== Trollbows GUI ========================
+
+  trollbows:
+    title: ""
+
+    bows:
+      explosion: ""
+      explosion-description: ""
+
+      tnt: ""
+      tnt-description: ""
+
+      lighting-bolt: ""
+      lighting-bolt-description: ""
+
+      silverfish: ""
+      silverfish-description: ""
+
+      potion-effect: ""
+      potion-effect-description: ""
+
+  # =================== Settings GUI =========================
+
+  trollsettings:
+    title: ""
+
+    settings:
+      language: ""
+      language-description: ""
+
+      metrics-enabled: ""
+      metrics-enabled-description: ""
+
+      check-for-updates: ""
+      check-for-updates-description: ""
+
+      deactivate-features-on-quit: ""
+      deactivate-features-on-quit-description: ""
+
+      control-teleport-back: ""
+      control-teleport-back-description: ""
+
+      set-fire: ""
+      set-fire-description: ""
+
+      break-blocks: ""
+      break-blocks-description: ""
+
+    locale:
+      title: ""
+      current-language: ""
+      successfully-changed: ""
+
+      custom: ""
+      de: ""
+      en: ""
+      es: ""
+      fr: ""
+      nl: ""
+      zh-cn: ""
+      zh-tw: ""

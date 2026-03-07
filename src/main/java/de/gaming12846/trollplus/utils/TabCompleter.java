@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2024 Gaming12846
+ * Copyright (C) 2026 Gaming12846
  */
 
 package de.gaming12846.trollplus.utils;
@@ -56,7 +56,8 @@ public class TabCompleter implements org.bukkit.command.TabCompleter {
             results.add("version");
         if (sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_RELOAD))
             results.add("reload");
-        if (sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_BLOCKLIST_ADD) || sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_BLOCKLIST_REMOVE))
+        if (sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_BLOCKLIST_ADD) ||
+                sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_BLOCKLIST_REMOVE))
             results.add("blocklist");
         if (sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_SETTINGS))
             results.add("settings");

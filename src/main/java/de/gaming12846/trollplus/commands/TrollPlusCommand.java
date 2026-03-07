@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2024 Gaming12846
+ * Copyright (C) 2026 Gaming12846
  */
 
 package de.gaming12846.trollplus.commands;
@@ -47,7 +47,11 @@ public class TrollPlusCommand implements CommandExecutor {
 
         // Display usage information if no arguments are provided
         if (args.length == 0) {
-            sender.sendMessage(LangConstants.PLUGIN_PREFIX + ChatColor.RED + configHelperLanguage.getString(LangConstants.INVALID_SYNTAX) + " " + ChatColor.RESET + configHelperLanguage.getString(LangConstants.INVALID_SYNTAX_USAGE) + label + " <version|reload|blocklist|settings>");
+            sender.sendMessage(
+                    LangConstants.PLUGIN_PREFIX + ChatColor.RED + configHelperLanguage.getString(LangConstants.Global.INVALID_SYNTAX) +
+                            " " +
+                            ChatColor.RESET + configHelperLanguage.getString(LangConstants.Global.INVALID_SYNTAX_USAGE) + label +
+                            " <version|reload|blocklist|settings>");
             return true;
         }
 
@@ -57,8 +61,11 @@ public class TrollPlusCommand implements CommandExecutor {
             case "reload" -> handleReloadSubcommand(sender, label, args, configHelperLanguage);
             case "blocklist" -> handleBlocklistSubcommand(sender, label, args, configHelperLanguage);
             case "settings" -> handleSettingsSubcommand(sender, args, configHelperLanguage);
-            default ->
-                    sender.sendMessage(LangConstants.PLUGIN_PREFIX + ChatColor.RED + configHelperLanguage.getString(LangConstants.INVALID_SYNTAX) + " " + ChatColor.RESET + configHelperLanguage.getString(LangConstants.INVALID_SYNTAX_USAGE) + " " + label + " <version|reload|blocklist|settings>");
+            default -> sender.sendMessage(
+                    LangConstants.PLUGIN_PREFIX + ChatColor.RED + configHelperLanguage.getString(LangConstants.Global.INVALID_SYNTAX) +
+                            " " +
+                            ChatColor.RESET + configHelperLanguage.getString(LangConstants.Global.INVALID_SYNTAX_USAGE) + " " + label +
+                            " <version|reload|blocklist|settings>");
         }
 
         return true;
@@ -68,13 +75,17 @@ public class TrollPlusCommand implements CommandExecutor {
     private void handleVersionSubcommand(CommandSender sender, String label, String[] args, ConfigHelper configHelperLanguage) {
         // Check if the player has the required permission
         if (!sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_VERSION)) {
-            sender.sendMessage(ChatColor.RED + configHelperLanguage.getString(LangConstants.NO_PERMISSION));
+            sender.sendMessage(ChatColor.RED + configHelperLanguage.getString(LangConstants.Global.NO_PERMISSION));
             return;
         }
 
         // Check if the command syntax is correct
         if (args.length != 1) {
-            sender.sendMessage(LangConstants.PLUGIN_PREFIX + ChatColor.RED + configHelperLanguage.getString(LangConstants.INVALID_SYNTAX) + " " + ChatColor.RESET + configHelperLanguage.getString(LangConstants.INVALID_SYNTAX_USAGE) + " " + label + " version");
+            sender.sendMessage(
+                    LangConstants.PLUGIN_PREFIX + ChatColor.RED + configHelperLanguage.getString(LangConstants.Global.INVALID_SYNTAX) +
+                            " " +
+                            ChatColor.RESET + configHelperLanguage.getString(LangConstants.Global.INVALID_SYNTAX_USAGE) + " " + label +
+                            " version");
             return;
         }
 
@@ -84,30 +95,42 @@ public class TrollPlusCommand implements CommandExecutor {
         // Display plugin information
         sender.sendMessage(LangConstants.PLUGIN_PREFIX + headerFooter);
         sender.sendMessage(LangConstants.PLUGIN_PREFIX);
-        sender.sendMessage(LangConstants.PLUGIN_PREFIX + ChatColor.RED + configHelperLanguage.getString(LangConstants.TROLLPLUS_VERSION) + " " + ChatColor.WHITE + description.getVersion());
-        sender.sendMessage(LangConstants.PLUGIN_PREFIX + ChatColor.RED + configHelperLanguage.getString(LangConstants.TROLLPLUS_DEVELOPER) + " " + ChatColor.WHITE + description.getAuthors());
-        sender.sendMessage(LangConstants.PLUGIN_PREFIX + ChatColor.RED + configHelperLanguage.getString(LangConstants.TROLLPLUS_PLUGIN_WEBSITE));
+        sender.sendMessage(
+                LangConstants.PLUGIN_PREFIX + ChatColor.RED + configHelperLanguage.getString(LangConstants.TrollPlusCommand.VERSION) + " " +
+                        ChatColor.WHITE + description.getVersion());
+        sender.sendMessage(
+                LangConstants.PLUGIN_PREFIX + ChatColor.RED + configHelperLanguage.getString(LangConstants.TrollPlusCommand.DEVELOPER) +
+                        " " +
+                        ChatColor.WHITE + description.getAuthors());
+        sender.sendMessage(
+                LangConstants.PLUGIN_PREFIX + ChatColor.RED +
+                        configHelperLanguage.getString(LangConstants.TrollPlusCommand.PLUGIN_WEBSITE));
         sender.sendMessage(LangConstants.PLUGIN_PREFIX + ChatColor.WHITE + description.getWebsite());
-        sender.sendMessage(LangConstants.PLUGIN_PREFIX + ChatColor.RED + configHelperLanguage.getString(LangConstants.TROLLPLUS_REPORT_BUGS));
+        sender.sendMessage(
+                LangConstants.PLUGIN_PREFIX + ChatColor.RED + configHelperLanguage.getString(LangConstants.TrollPlusCommand.REPORT_BUGS));
         sender.sendMessage(LangConstants.PLUGIN_PREFIX + ChatColor.WHITE + "https://github.com/Gaming12846/TrollPlus/issues");
         sender.sendMessage(LangConstants.PLUGIN_PREFIX);
         sender.sendMessage(LangConstants.PLUGIN_PREFIX + headerFooter);
 
         // Send a message when an update is available
-        if (plugin.updateAvailable) sender.sendMessage(LangConstants.UPDATE_AVAILABLE);
+        if (plugin.updateAvailable) sender.sendMessage(LangConstants.Global.UPDATE_AVAILABLE);
     }
 
     // Handles the "reload" subcommand to reload plugin configurations
     private void handleReloadSubcommand(CommandSender sender, String label, String[] args, ConfigHelper configHelperLanguage) {
         // Check if the player has the required permission
         if (!sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_RELOAD)) {
-            sender.sendMessage(ChatColor.RED + configHelperLanguage.getString(LangConstants.NO_PERMISSION));
+            sender.sendMessage(ChatColor.RED + configHelperLanguage.getString(LangConstants.Global.NO_PERMISSION));
             return;
         }
 
         // Check if the command syntax is correct
         if (args.length != 1) {
-            sender.sendMessage(LangConstants.PLUGIN_PREFIX + ChatColor.RED + configHelperLanguage.getString(LangConstants.INVALID_SYNTAX_USAGE) + " " + ChatColor.RESET + configHelperLanguage.getString(LangConstants.INVALID_SYNTAX_USAGE) + " " + label + " reload");
+            sender.sendMessage(
+                    LangConstants.PLUGIN_PREFIX + ChatColor.RED +
+                            configHelperLanguage.getString(LangConstants.Global.INVALID_SYNTAX_USAGE) + " " +
+                            ChatColor.RESET + configHelperLanguage.getString(LangConstants.Global.INVALID_SYNTAX_USAGE) + " " + label +
+                            " reload");
             return;
         }
 
@@ -117,20 +140,26 @@ public class TrollPlusCommand implements CommandExecutor {
         plugin.getConfigHelperLanguage().loadConfig();
 
         // Send a message after successfully reloading the configurations
-        sender.sendMessage(LangConstants.PLUGIN_PREFIX + ChatColor.GREEN + configHelperLanguage.getString(LangConstants.TROLLPLUS_RELOAD));
+        sender.sendMessage(
+                LangConstants.PLUGIN_PREFIX + ChatColor.GREEN + configHelperLanguage.getString(LangConstants.TrollPlusCommand.RELOAD));
     }
 
     // Handles the "blocklist" subcommand to manage the blocklist of players
     private void handleBlocklistSubcommand(CommandSender sender, String label, String[] args, ConfigHelper configHelperLanguage) {
         // Check if the player has the required permission
-        if (!sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_BLOCKLIST_ADD) && !sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_BLOCKLIST_REMOVE)) {
-            sender.sendMessage(ChatColor.RED + configHelperLanguage.getString(LangConstants.NO_PERMISSION));
+        if (!sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_BLOCKLIST_ADD) &&
+                !sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_BLOCKLIST_REMOVE)) {
+            sender.sendMessage(ChatColor.RED + configHelperLanguage.getString(LangConstants.Global.NO_PERMISSION));
             return;
         }
 
         // Check if the command syntax is correct
         if (args.length < 2) {
-            sender.sendMessage(LangConstants.PLUGIN_PREFIX + ChatColor.RED + configHelperLanguage.getString(LangConstants.INVALID_SYNTAX) + " " + ChatColor.RESET + configHelperLanguage.getString(LangConstants.INVALID_SYNTAX) + " " + label + " blocklist <add|remove>");
+            sender.sendMessage(
+                    LangConstants.PLUGIN_PREFIX + ChatColor.RED + configHelperLanguage.getString(LangConstants.Global.INVALID_SYNTAX) +
+                            " " +
+                            ChatColor.RESET + configHelperLanguage.getString(LangConstants.Global.INVALID_SYNTAX) + " " + label +
+                            " blocklist <add|remove>");
             return;
         }
 
@@ -140,8 +169,11 @@ public class TrollPlusCommand implements CommandExecutor {
         switch (args[1].toLowerCase()) {
             case "add" -> handleBlocklistAddSubcommand(sender, args, configHelperBlocklist, configHelperLanguage);
             case "remove" -> handleBlocklistRemoveSubcommand(sender, args, configHelperBlocklist, configHelperLanguage);
-            default ->
-                    sender.sendMessage(LangConstants.PLUGIN_PREFIX + ChatColor.RED + configHelperLanguage.getString(LangConstants.INVALID_SYNTAX) + " " + ChatColor.RESET + configHelperLanguage.getString(LangConstants.INVALID_SYNTAX) + " " + label + " blocklist <add|remove>");
+            default -> sender.sendMessage(
+                    LangConstants.PLUGIN_PREFIX + ChatColor.RED + configHelperLanguage.getString(LangConstants.Global.INVALID_SYNTAX) +
+                            " " +
+                            ChatColor.RESET + configHelperLanguage.getString(LangConstants.Global.INVALID_SYNTAX) + " " + label +
+                            " blocklist <add|remove>");
         }
     }
 
@@ -149,13 +181,17 @@ public class TrollPlusCommand implements CommandExecutor {
     private void handleBlocklistAddSubcommand(CommandSender sender, String[] args, ConfigHelper configHelperBlocklist, ConfigHelper configHelperLanguage) {
         // Check if the player has the required permission
         if (!sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_BLOCKLIST_ADD)) {
-            sender.sendMessage(ChatColor.RED + configHelperLanguage.getString(LangConstants.NO_PERMISSION));
+            sender.sendMessage(ChatColor.RED + configHelperLanguage.getString(LangConstants.Global.NO_PERMISSION));
             return;
         }
 
         // Check if the command syntax is correct
         if (args.length != 3) {
-            sender.sendMessage(LangConstants.PLUGIN_PREFIX + ChatColor.RED + configHelperLanguage.getString(LangConstants.INVALID_SYNTAX) + " " + ChatColor.RESET + configHelperLanguage.getString(LangConstants.INVALID_SYNTAX) + " " + "blocklist add <player>");
+            sender.sendMessage(
+                    LangConstants.PLUGIN_PREFIX + ChatColor.RED + configHelperLanguage.getString(LangConstants.Global.INVALID_SYNTAX) +
+                            " " +
+                            ChatColor.RESET + configHelperLanguage.getString(LangConstants.Global.INVALID_SYNTAX) + " " +
+                            "blocklist add <player>");
             return;
         }
 
@@ -168,14 +204,16 @@ public class TrollPlusCommand implements CommandExecutor {
 
         if (playerUUID != null) {
             if (configHelperBlocklist.contains(playerUUID.toString())) {
-                String message = LangConstants.PLUGIN_PREFIX + configHelperLanguage.getString(LangConstants.TROLLPLUS_ALREADY_IN_BLOCKLIST);
+                String message =
+                        LangConstants.PLUGIN_PREFIX + configHelperLanguage.getString(LangConstants.TrollPlusCommand.Blocklist.ALREADY_IN);
                 sender.sendMessage(message.replace("[player]", ChatColor.RED + ChatColor.BOLD.toString() + args[2] + ChatColor.RESET));
                 return;
             }
 
             // Add player to the blocklist
             configHelperBlocklist.set(playerUUID.toString(), args[2]);
-            String message = LangConstants.PLUGIN_PREFIX + configHelperLanguage.getString(LangConstants.TROLLPLUS_ADDED_TO_BLOCKLIST);
+            String message =
+                    LangConstants.PLUGIN_PREFIX + configHelperLanguage.getString(LangConstants.TrollPlusCommand.Blocklist.ADDED);
             sender.sendMessage(message.replace("[player]", ChatColor.RED + ChatColor.BOLD.toString() + args[2] + ChatColor.RESET));
 
             // Save and reload the blocklist configuration
@@ -188,13 +226,17 @@ public class TrollPlusCommand implements CommandExecutor {
     private void handleBlocklistRemoveSubcommand(CommandSender sender, String[] args, ConfigHelper configHelperBlocklist, ConfigHelper configHelperLanguage) {
         // Check if the player has the required permission
         if (!sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_BLOCKLIST_REMOVE)) {
-            sender.sendMessage(ChatColor.RED + configHelperLanguage.getString(LangConstants.NO_PERMISSION));
+            sender.sendMessage(ChatColor.RED + configHelperLanguage.getString(LangConstants.Global.NO_PERMISSION));
             return;
         }
 
         // Check if the command syntax is correct
         if (args.length != 3) {
-            sender.sendMessage(LangConstants.PLUGIN_PREFIX + ChatColor.RED + configHelperLanguage.getString(LangConstants.INVALID_SYNTAX) + " " + ChatColor.RESET + configHelperLanguage.getString(LangConstants.INVALID_SYNTAX) + " " + "blocklist remove <player>");
+            sender.sendMessage(
+                    LangConstants.PLUGIN_PREFIX + ChatColor.RED + configHelperLanguage.getString(LangConstants.Global.INVALID_SYNTAX) +
+                            " " +
+                            ChatColor.RESET + configHelperLanguage.getString(LangConstants.Global.INVALID_SYNTAX) + " " +
+                            "blocklist remove <player>");
             return;
         }
 
@@ -207,14 +249,16 @@ public class TrollPlusCommand implements CommandExecutor {
 
         if (playerUUID != null) {
             if (!configHelperBlocklist.contains(playerUUID.toString())) {
-                String message = LangConstants.PLUGIN_PREFIX + configHelperLanguage.getString(LangConstants.TROLLPLUS_NOT_IN_BLOCKLIST);
+                String message =
+                        LangConstants.PLUGIN_PREFIX + configHelperLanguage.getString(LangConstants.TrollPlusCommand.Blocklist.NOT_IN);
                 sender.sendMessage(message.replace("[player]", ChatColor.RED + ChatColor.BOLD.toString() + args[2] + ChatColor.RESET));
                 return;
             }
 
             // Remove player to the blocklist
             configHelperBlocklist.set(playerUUID.toString(), null);
-            String message = LangConstants.PLUGIN_PREFIX + configHelperLanguage.getString(LangConstants.TROLLPLUS_REMOVED_FROM_BLOCKLIST);
+            String message =
+                    LangConstants.PLUGIN_PREFIX + configHelperLanguage.getString(LangConstants.TrollPlusCommand.Blocklist.REMOVED);
             sender.sendMessage(message.replace("[player]", ChatColor.RED + ChatColor.BOLD.toString() + args[2] + ChatColor.RESET));
 
             // Save and reload the blocklist configuration
@@ -258,37 +302,70 @@ public class TrollPlusCommand implements CommandExecutor {
     private void handleSettingsSubcommand(CommandSender sender, String[] args, ConfigHelper configHelperLanguage) {
         // Check if the command sender is not a player
         if (!(sender instanceof Player player)) {
-            sender.sendMessage(LangConstants.PLUGIN_PREFIX + configHelperLanguage.getString(LangConstants.NO_CONSOLE));
+            sender.sendMessage(LangConstants.PLUGIN_PREFIX + configHelperLanguage.getString(LangConstants.Global.NO_CONSOLE));
             return;
         }
 
         // Check if the player has the required permission
         if (!sender.hasPermission(PermissionConstants.PERMISSION_TROLLPLUS_SETTINGS)) {
-            sender.sendMessage(ChatColor.RED + configHelperLanguage.getString(LangConstants.NO_PERMISSION));
+            sender.sendMessage(ChatColor.RED + configHelperLanguage.getString(LangConstants.Global.NO_PERMISSION));
             return;
         }
 
         // Check if the command syntax is correct
         if (args.length != 1) {
-            sender.sendMessage(LangConstants.PLUGIN_PREFIX + ChatColor.RED + configHelperLanguage.getString(LangConstants.INVALID_SYNTAX) + " " + ChatColor.RESET + configHelperLanguage.getString(LangConstants.INVALID_SYNTAX) + " settings");
+            sender.sendMessage(
+                    LangConstants.PLUGIN_PREFIX + ChatColor.RED + configHelperLanguage.getString(LangConstants.Global.INVALID_SYNTAX) +
+                            " " +
+                            ChatColor.RESET + configHelperLanguage.getString(LangConstants.Global.INVALID_SYNTAX) + " settings");
             return;
         }
 
-        guiHelperSettings = new GUIHelper(ChatColor.BLACK + configHelperLanguage.getString(LangConstants.TROLLSETTINGS_TITLE), 9, plugin);
+        guiHelperSettings = new GUIHelper(ChatColor.BLACK + configHelperLanguage.getString(LangConstants.GUI.TrollSettings.TITLE), 9,
+                plugin);
 
         // Add the available settings to the GUI
-        getGuiHelperSettings().addItem(1, ItemBuilder.createItemWithLore(Material.PAPER, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLLSETTINGS_LANGUAGE), configHelperLanguage.getString(LangConstants.TROLLSETTINGS_LANGUAGE_DESCRIPTION)));
-        getGuiHelperSettings().addItem(2, ItemBuilder.createItemWithLore(Material.WRITABLE_BOOK, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLLSETTINGS_METRICS_ENABLED) + ChatColor.DARK_GRAY + " " + getGuiHelperSettings().getStatus(plugin.getConfigHelper().getBoolean(ConfigConstants.METRICS_ENABLED)), configHelperLanguage.getString(LangConstants.TROLLSETTINGS_METRICS_ENABLED_DESCRIPTION)));
-        getGuiHelperSettings().addItem(3, ItemBuilder.createItemWithLore(Material.GLOWSTONE, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLLSETTINGS_CHECK_FOR_UPDATES) + ChatColor.DARK_GRAY + " " + getGuiHelperSettings().getStatus(plugin.getConfigHelper().getBoolean(ConfigConstants.CHECK_FOR_UPDATES)), configHelperLanguage.getString(LangConstants.TROLLSETTINGS_CHECK_FOR_UPDATES_DESCRIPTION)));
-        getGuiHelperSettings().addItem(4, ItemBuilder.createItemWithLore(Material.REDSTONE_LAMP, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLLSETTINGS_DEACTIVATE_FEATURES_ON_QUIT) + ChatColor.DARK_GRAY + " " + getGuiHelperSettings().getStatus(plugin.getConfigHelper().getBoolean(ConfigConstants.DEACTIVATE_FEATURES_ON_QUIT)), configHelperLanguage.getString(LangConstants.TROLLSETTINGS_DEACTIVATE_FEATURES_ON_QUIT_DESCRIPTION)));
-        getGuiHelperSettings().addItem(5, ItemBuilder.createItemWithLore(Material.ENDER_PEARL, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLLSETTINGS_CONTROL_TELEPORT_BACK) + ChatColor.DARK_GRAY + " " + getGuiHelperSettings().getStatus(plugin.getConfigHelper().getBoolean(ConfigConstants.CONTROL_TELEPORT_BACK)), configHelperLanguage.getString(LangConstants.TROLLSETTINGS_CONTROL_TELEPORT_BACK_DESCRIPTION)));
-        getGuiHelperSettings().addItem(6, ItemBuilder.createItemWithLore(Material.FIRE_CHARGE, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLLSETTINGS_SET_FIRE) + ChatColor.DARK_GRAY + " " + getGuiHelperSettings().getStatus(plugin.getConfigHelper().getBoolean(ConfigConstants.SET_FIRE)), configHelperLanguage.getString(LangConstants.TROLLSETTINGS_SET_FIRE_DESCRIPTION)));
-        getGuiHelperSettings().addItem(7, ItemBuilder.createItemWithLore(Material.DIAMOND_PICKAXE, ChatColor.WHITE + configHelperLanguage.getString(LangConstants.TROLLSETTINGS_BREAK_BLOCKS) + ChatColor.DARK_GRAY + " " + getGuiHelperSettings().getStatus(plugin.getConfigHelper().getBoolean(ConfigConstants.BREAK_BLOCKS)), configHelperLanguage.getString(LangConstants.TROLLSETTINGS_BREAK_BLOCKS_DESCRIPTION)));
+        getGuiHelperSettings().addItem(1, ItemBuilder.createItemWithLore(Material.PAPER,
+                ChatColor.WHITE + configHelperLanguage.getString(LangConstants.GUI.TrollSettings.Settings.LANGUAGE),
+                configHelperLanguage.getString(LangConstants.GUI.TrollSettings.Settings.LANGUAGE_DESCRIPTION)));
+        getGuiHelperSettings().addItem(2, ItemBuilder.createItemWithLore(Material.WRITABLE_BOOK,
+                ChatColor.WHITE + configHelperLanguage.getString(LangConstants.GUI.TrollSettings.Settings.METRICS_ENABLED) +
+                        ChatColor.DARK_GRAY + " " +
+                        getGuiHelperSettings().getStatus(plugin.getConfigHelper().getBoolean(ConfigConstants.General.METRICS_ENABLED)),
+                configHelperLanguage.getString(LangConstants.GUI.TrollSettings.Settings.METRICS_ENABLED_DESCRIPTION)));
+        getGuiHelperSettings().addItem(3, ItemBuilder.createItemWithLore(Material.GLOWSTONE,
+                ChatColor.WHITE + configHelperLanguage.getString(LangConstants.GUI.TrollSettings.Settings.CHECK_FOR_UPDATES) +
+                        ChatColor.DARK_GRAY +
+                        " " +
+                        getGuiHelperSettings().getStatus(plugin.getConfigHelper().getBoolean(ConfigConstants.General.CHECK_FOR_UPDATES))
+                , configHelperLanguage.getString(LangConstants.GUI.TrollSettings.Settings.CHECK_FOR_UPDATES_DESCRIPTION)));
+        getGuiHelperSettings().addItem(4, ItemBuilder.createItemWithLore(Material.REDSTONE_LAMP,
+                ChatColor.WHITE + configHelperLanguage.getString(LangConstants.GUI.TrollSettings.Settings.DEACTIVATE_FEATURES_ON_QUIT) +
+                        ChatColor.DARK_GRAY + " " +
+                        getGuiHelperSettings().getStatus(plugin.getConfigHelper().getBoolean(ConfigConstants.Features.DEACTIVATE_ON_QUIT)),
+                configHelperLanguage.getString(LangConstants.GUI.TrollSettings.Settings.DEACTIVATE_FEATURES_ON_QUIT_DESCRIPTION)));
+        getGuiHelperSettings().addItem(5, ItemBuilder.createItemWithLore(Material.ENDER_PEARL,
+                ChatColor.WHITE + configHelperLanguage.getString(LangConstants.GUI.TrollSettings.Settings.CONTROL_TELEPORT_BACK) +
+                        ChatColor.DARK_GRAY +
+                        " " +
+                        getGuiHelperSettings().getStatus(plugin.getConfigHelper().getBoolean(ConfigConstants.Troll.Control.TELEPORT_BACK)),
+                configHelperLanguage.getString(LangConstants.GUI.TrollSettings.Settings.CONTROL_TELEPORT_BACK_DESCRIPTION)));
+        getGuiHelperSettings().addItem(6, ItemBuilder.createItemWithLore(Material.FIRE_CHARGE,
+                ChatColor.WHITE + configHelperLanguage.getString(LangConstants.GUI.TrollSettings.Settings.SET_FIRE) + ChatColor.DARK_GRAY +
+                        " " +
+                        getGuiHelperSettings().getStatus(plugin.getConfigHelper().getBoolean(ConfigConstants.Features.SET_FIRE)),
+                configHelperLanguage.getString(LangConstants.GUI.TrollSettings.Settings.SET_FIRE_DESCRIPTION)));
+        getGuiHelperSettings().addItem(7, ItemBuilder.createItemWithLore(Material.DIAMOND_PICKAXE,
+                ChatColor.WHITE + configHelperLanguage.getString(LangConstants.GUI.TrollSettings.Settings.BREAK_BLOCKS) +
+                        ChatColor.DARK_GRAY + " " +
+                        getGuiHelperSettings().getStatus(plugin.getConfigHelper().getBoolean(ConfigConstants.Features.BREAK_BLOCKS)),
+                configHelperLanguage.getString(LangConstants.GUI.TrollSettings.Settings.BREAK_BLOCKS_DESCRIPTION)));
 
         // Add placeholders
         byte[] placeholderArray = {0, 8};
         for (int slot : placeholderArray) {
-            getGuiHelperSettings().addItem(slot, ItemBuilder.createItemWithLore(Material.RED_STAINED_GLASS_PANE, " ", configHelperLanguage.getString(LangConstants.GUI_PLACEHOLDER_DESCRIPTION)));
+            getGuiHelperSettings().addItem(slot, ItemBuilder.createItemWithLore(Material.RED_STAINED_GLASS_PANE, " ",
+                    configHelperLanguage.getString(LangConstants.GUI.PLACEHOLDER_DESCRIPTION)));
         }
 
         // Open the Settings GUI for the player

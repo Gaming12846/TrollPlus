@@ -1,19 +1,6 @@
 /*
  * This file is part of TrollPlus.
  * Copyright (C) 2026 Gaming12846
- *
- * TrollPlus is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * TrollPlus is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 package de.gaming12846.trollplus;
@@ -86,24 +73,23 @@ public class TrollPlus extends JavaPlugin {
         getLoggingHelper().debug("Loading configurations");
 
         configHelper = new ConfigHelper(this, "config.yml");
-        configHelperBlocklist = new ConfigHelper(this, "blocklist.yml");
-        configHelperLangCustom = new ConfigHelper(this, "languages/lang_custom.yml");
-        configHelperLangGerman = new ConfigHelper(this, "languages/lang_de.yml");
-        configHelperLangEnglish = new ConfigHelper(this, "languages/lang_en.yml");
-        configHelperLangSpanish = new ConfigHelper(this, "languages/lang_es.yml");
-        configHelperLangFrench = new ConfigHelper(this, "languages/lang_fr.yml");
-        configHelperLangDutch = new ConfigHelper(this, "languages/lang_nl.yml");
-        configHelperLangSimplifiedChinese = new ConfigHelper(this, "languages/lang_zh-cn.yml");
-        configHelperLangTraditionalChinese = new ConfigHelper(this, "languages/lang_zh-tw.yml");
         configHelperBlocklist = new ConfigHelper(this, "troll_blocklist.yml");
+        configHelperLangCustom = new ConfigHelper(this, "locale/locale_custom.yml");
+        configHelperLangGerman = new ConfigHelper(this, "locale/locale_de.yml");
+        configHelperLangEnglish = new ConfigHelper(this, "locale/locale_en.yml");
+        configHelperLangSpanish = new ConfigHelper(this, "locale/locale_es.yml");
+        configHelperLangFrench = new ConfigHelper(this, "locale/locale_fr.yml");
+        configHelperLangDutch = new ConfigHelper(this, "locale/locale_nl.yml");
+        configHelperLangSimplifiedChinese = new ConfigHelper(this, "locale/locale_zh-cn.yml");
+        configHelperLangTraditionalChinese = new ConfigHelper(this, "locale/locale_zh-tw.yml");
 
         // Check config versions
         String version = getDescription().getVersion();
         if (!version.equalsIgnoreCase(getConfigHelper().getString(ConfigConstants.CONFIG_VERSION)))
-            getLoggingHelper().warning(getConfigHelperLanguage().getString(LangConstants.CONFIG_OUTDATED));
+            getLoggingHelper().warning(getConfigHelperLanguage().getString(LangConstants.Global.CONFIG_OUTDATED));
 
         if (!version.equalsIgnoreCase(getConfigHelperLanguage().getString(LangConstants.LANGUAGE_CONFIG_VERSION)))
-            getLoggingHelper().warning(getConfigHelperLanguage().getString(LangConstants.LANGUAGE_CONFIG_OUTDATED));
+            getLoggingHelper().warning(getConfigHelperLanguage().getString(LangConstants.Global.LANGUAGE_CONFIG_OUTDATED));
     }
 
     // Retrieves the plugin configuration
@@ -118,7 +104,7 @@ public class TrollPlus extends JavaPlugin {
 
     // Retrieves the appropriate language configuration based on the plugin's config setting
     public ConfigHelper getConfigHelperLanguage() {
-        String language = getConfigHelper().getString(ConfigConstants.LANGUAGE);
+        String language = getConfigHelper().getString(ConfigConstants.General.LANGUAGE);
 
         switch (language.toLowerCase()) {
             case "custom" -> {
@@ -158,7 +144,7 @@ public class TrollPlus extends JavaPlugin {
         serverVersion = Double.parseDouble(bukkitVersion);
 
         if (serverVersion < 1.20)
-            getLoggingHelper().warning(getConfigHelperLanguage().getString(LangConstants.SERVER_VERSION_ONLY_PARTLY_SUPPORTED));
+            getLoggingHelper().warning(getConfigHelperLanguage().getString(LangConstants.Global.SERVER_VERSION_ONLY_PARTLY_SUPPORTED));
     }
 
     // Retrieves the server version
@@ -217,8 +203,8 @@ public class TrollPlus extends JavaPlugin {
 
     // Initializes the bStats metrics for the plugin
     private void initializeMetrics() {
-        if (getConfig().getBoolean(ConfigConstants.METRICS_ENABLED, true)) {
-            getLoggingHelper().info(getConfigHelperLanguage().getString(LangConstants.METRICS_ENABLED));
+        if (getConfig().getBoolean(ConfigConstants.General.METRICS_ENABLED, true)) {
+            getLoggingHelper().info(getConfigHelperLanguage().getString(LangConstants.Global.METRICS_ENABLED));
             Metrics metrics = new Metrics(this, 11761);
 
             // Add custom server locale chart to the bStats metrics
@@ -234,7 +220,7 @@ public class TrollPlus extends JavaPlugin {
         metrics.addCustomChart(new DrilldownPie("server_locale", () -> {
             final Map<String, Map<String, Integer>> result = new HashMap<>();
             final Map<String, Integer> backend = new HashMap<>();
-            final String language = getConfigHelper().getString(ConfigConstants.LANGUAGE);
+            final String language = getConfigHelper().getString(ConfigConstants.General.LANGUAGE);
             switch (language) {
                 case "custom" -> {
                     backend.put("Custom", 1);
@@ -275,12 +261,12 @@ public class TrollPlus extends JavaPlugin {
 
     // Checks for updates to the plugin and logs the result
     private void checkForUpdates() throws URISyntaxException, MalformedURLException {
-        if (getConfig().getBoolean(ConfigConstants.CHECK_FOR_UPDATES, true)) {
-            getLoggingHelper().info(getConfigHelperLanguage().getString(LangConstants.CHECKING_FOR_UPDATES));
+        if (getConfig().getBoolean(ConfigConstants.General.CHECK_FOR_UPDATES, true)) {
+            getLoggingHelper().info(getConfigHelperLanguage().getString(LangConstants.Global.CHECKING_FOR_UPDATES));
             String updateChecker = new UpdateChecker(this,
                     new URI("https://api.github.com/repos/Gaming12846/TrollPlus/releases/latest").toURL()).checkForUpdates();
             getLoggingHelper().info(updateChecker);
-            if (updateChecker.equals(LangConstants.UPDATE_AVAILABLE)) updateAvailable = true;
+            if (updateChecker.equals(LangConstants.Global.UPDATE_AVAILABLE)) updateAvailable = true;
         }
     }
 

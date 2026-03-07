@@ -1,0 +1,257 @@
+# ============================================================
+# TrollPlus - Configuration linguistique française
+# ============================================================
+#
+# Fichier de configuration linguistique française pour TrollPlus.
+#
+# Généré pour la version ${version}.
+# Assurez-vous de mettre à jour ce fichier lors de la mise à jour du plugin !
+#
+# Configuration linguistique par Gaming12846.
+#
+# ============================================================
+
+# Version de configuration
+version: ${version}
+
+# =================== Global =================================
+
+global:
+  metrics-enabled: "Les métriques du plugin sont activées."
+
+  server-version-only-partly-supported: "La version du serveur est partiellement prise en charge. Certaines fonctions sont différentes ou non disponibles."
+
+  checking-for-updates: "Recherche de mises à jour..."
+  update-available: "Une nouvelle mise à jour est disponible ! Téléchargez-la depuis Modrinth :"
+  no-update-available: "Vous utilisez la dernière version. Aucune mise à jour n'est disponible."
+  unable-to-check-for-updates: "Impossible de vérifier les mises à jour."
+
+  config-outdated: "Votre fichier de configuration est obsolète ! Veuillez le mettre à jour vers la dernière version. Le plugin tentera de le charger, mais des erreurs peuvent survenir."
+  language-config-outdated: "Votre fichier de configuration linguistique est obsolète ! Veuillez le mettre à jour vers la dernière version. Le plugin tentera de le charger, mais des erreurs peuvent survenir."
+  failed-to-save-config: "Échec de l'enregistrement du fichier de configuration."
+
+  no-permission: "Vous n'avez pas la permission d'utiliser cette commande."
+  no-console: "Cette commande ne peut pas être utilisée depuis la console."
+  invalid-syntax: "Syntaxe de commande invalide !"
+  invalid-syntax-usage: "Utilisation correcte : /"
+
+# =================== TrollPlus Command ======================
+
+trollplus:
+  version: "Version du plugin :"
+  developer: "Développeur :"
+  plugin-website: "Site Web du plugin :"
+  report-bugs: "Signaler les bugs à :"
+  reload: "Fichiers de configuration rechargés avec succès."
+
+  blocklist:
+    already-in: "Le joueur [player] est déjà dans la liste de blocage." # [player] sera remplacé par le nom du joueur
+    added: "Le joueur [player] a été ajouté à la liste de blocage." # [player] sera remplacé par le nom du joueur
+    not-in: "Le joueur [player] n'est pas dans la liste de blocage." # [player] sera remplacé par le nom du joueur
+    removed: "Le joueur [player] a été retiré de la liste de blocage." # [player] sera remplacé par le nom du joueur
+
+# =================== Troll Command ==========================
+
+troll:
+  player:
+    not-online: "Le joueur [player] n'est pas en ligne actuellement." # [player] sera remplacé par le nom du joueur
+    is-immune: "Le joueur [player] est immunisé." # [player] sera remplacé par le nom du joueur
+    quit: "Le joueur sélectionné a quitté la partie."
+
+  not-available:
+    vanish: "Vous ne pouvez pas utiliser l'invisibilité sur vous-même."
+    teleport: "Vous êtes déjà à l'emplacement de la cible."
+    control: "Vous avez déjà le contrôle."
+    falling-anvils: "Les enclumes tombantes ne peuvent pas être activées car la cible est sous un bloc."
+    slowly-kill: "La mort lente ne peut pas être activée car la cible n'est pas en mode survie ou aventure."
+    freefall: "La chute libre ne peut pas être activée car la cible n'est pas sous un ciel ouvert."
+
+  rocket:
+    cannot-launch: "La fusée ne peut pas être lancée car la cible n'est pas sous un ciel ouvert."
+    launch-stopped: "Lancement de la fusée arrêté car la cible n'est plus sous un ciel ouvert."
+
+  kill-message: "est mort à cause d'un accident"
+
+  features:
+    vanish:
+      quit-message: "[player] a quitté la partie." # [player] sera remplacé par le nom du joueur
+      join-message: "[player] a rejoint la partie." # [player] sera remplacé par le nom du joueur
+
+    # Messages de spam pour la fonction "Messages de spam". Ajoutez-en autant que vous le souhaitez
+    spam-messages:
+      - "Salut, mon pote !"
+      - "Attention : Des trolls partout !"
+      - "HaHaHaHaHa !"
+      - "LOLz xD xD !"
+      - "Câlins et bisous ! XOXO !"
+      - "Vous avez gagné un prix !!!"
+      - "Argent gratuit ! Cliquez maintenant !"
+      - "Ne manquez pas cette offre !"
+      - "Offre limitée dans le temps !"
+      - "Félicitations ! Vous êtes gagnant !"
+      - "Grande nouvelle, tout le monde !"
+      - "Rejoignez le fun maintenant !"
+      - "Message super secret !"
+      - "Votre avis est nécessaire !"
+      - "Ce n'est pas un exercice !"
+
+    fake-ban:
+      message-player: "Vous avez été banni de ce serveur"
+      message-broadcast: "Le joueur [player] a été banni définitivement du serveur" # [player] sera remplacé par le nom du joueur
+
+    fake-op-message: "[Serveur : [player] a été nommé opérateur du serveur]" # [player] sera remplacé par le nom du joueur
+
+# =================== GUI ====================================
+
+gui:
+  status:
+    on: "Activé"
+    off: "Désactivé"
+
+  placeholder-description: "Juste un espace réservé pour l'instant."
+
+  # =================== Troll GUI ============================
+
+  troll:
+    title: "Troll"
+
+    features:
+      freeze: "Geler"
+      freeze-description: "Empêcher la cible de bouger, d'interagir ou de lâcher/ramasser des objets"
+
+      hand-item-drop: "Lâcher l'objet de la main"
+      hand-item-drop-description: "Lâche automatiquement l'objet de la main de la cible"
+
+      control: "Contrôle"
+      control-description: "Prendre le contrôle total des actions de la cible, y compris les mouvements, les interactions et le chat"
+
+      flip-backwards: "Retourner en arrière"
+      flip-backwards-description: "Retourne la cible en arrière (180°) lorsqu'elle interagit avec quelque chose (inclut casser des blocs et frapper des entités)"
+
+      spank: "Fessée"
+      spank-description: "Donne une fessée à la cible avec un recul aléatoire"
+
+      spam-messages: "Messages de spam"
+      spam-messages-description: "Envoyer des messages personnalisés aléatoires à la cible"
+
+      spam-sounds: "Sons de spam"
+      spam-sounds-description: "Jouer des sons aléatoires pour la cible"
+
+      semi-ban: "Semi-bannissement"
+      semi-ban-description: "Empêcher la cible de construire, d'interagir, de causer des dégâts et de discuter"
+
+      falling-anvils: "Enclumes tombantes"
+      falling-anvils-description: "Faire tomber des enclumes sur la cible"
+
+      tnt-track: "Piste de TNT"
+      tnt-track-description: "Faire apparaître de la TNT amorcée à l'emplacement de la cible à intervalles réguliers"
+
+      mob-spawner: "Générateur de mobs"
+      mob-spawner-description: "Faire apparaître des mobs aléatoires à l'emplacement de la cible"
+
+      slowly-kill: "Mort lente"
+      slowly-kill-description: "Infliger des dégâts à la cible à intervalles réguliers"
+
+      random-teleport: "Téléportation aléatoire"
+      random-teleport-description: "Téléporter aléatoirement la cible vers un endroit aléatoire"
+
+      inventory-drop: "Lâcher l'inventaire"
+      inventory-drop-description: "Lâcher tous les objets de l'inventaire de la cible, y compris l'armure et les objets de la main secondaire"
+
+      inventory-shuffle: "Mélanger l'inventaire"
+      inventory-shuffle-description: "Mélanger tous les objets de l'inventaire de la cible"
+
+      random-scary-sound: "Son effrayant aléatoire"
+      random-scary-sound-description: "Jouer un son effrayant aléatoire à l'emplacement de la cible pour lui faire peur"
+
+      rocket: "Fusée"
+      rocket-description: "Lancer la cible dans les airs comme un feu d'artifice"
+
+      freefall: "Chute libre"
+      freefall-description: "Téléporter la cible dans les airs et la laisser tomber librement"
+
+      fake-ban: "Faux bannissement"
+      fake-ban-description: "Faire croire à la cible qu'elle a été bannie"
+
+      fake-op: "Faux opérateur"
+      fake-op-description: "Faire croire à la cible qu'elle a reçu les permissions d'opérateur"
+
+      teleport: "Téléportation"
+      teleport-description: "Se téléporter à la cible"
+
+      invsee: "Voir l'inventaire"
+      invsee-description: "Voir l'inventaire de la cible"
+
+      kill: "Tuer"
+      kill-description: "Tuer la cible"
+
+      invsee-ender-chest: "Voir le coffre de l'End"
+      invsee-ender-chest-description: "Voir le coffre de l'End de la cible"
+
+      vanish: "Invisibilité"
+      vanish-description: "Faire disparaître la cible"
+
+      random-troll: "Troll aléatoire"
+      random-troll-description: "Sélectionner aléatoirement une action de troll pour la cible"
+
+  # =================== Trollbows GUI ========================
+
+  trollbows:
+    title: "Arcs troll"
+
+    bows:
+      explosion: "Arc d'explosion"
+      explosion-description: "Un arc qui crée une explosion à l'impact de la flèche"
+
+      tnt: "Arc TNT"
+      tnt-description: "Un arc qui fait apparaître de la TNT à l'impact de la flèche"
+
+      lightning-bolt: "Arc de foudre"
+      lightning-bolt-description: "Un arc qui frappe avec la foudre à l'impact de la flèche"
+
+      silverfish: "Arc de poissons d'argent"
+      silverfish-description: "Un arc qui fait apparaître une horde de poissons d'argent à l'impact de la flèche"
+
+      potion-effect: "Arc d'effet de potion"
+      potion-effect-description: "Un arc qui provoque un effet de potion aléatoire à l'impact de la flèche"
+
+  # =================== Settings GUI =========================
+
+  trollsettings:
+    title: "Paramètres de TrollPlus"
+
+    settings:
+      language: "Changer la langue"
+      language-description: "Définir la langue du plugin. Options disponibles : custom, de, en, es, fr, nl, zh-cn, zh-tw."
+
+      metrics-enabled: "Métriques :"
+      metrics-enabled-description: "Activer ou désactiver les métriques du plugin (sera effectif au prochain redémarrage/rechargement)."
+
+      check-for-updates: "Vérifier les mises à jour :"
+      check-for-updates-description: "Activer ou désactiver le vérificateur de mises à jour (sera effectif au prochain redémarrage/rechargement)."
+
+      deactivate-features-on-quit: "Désactiver les fonctionnalités à la déconnexion :"
+      deactivate-features-on-quit-description: "Désactiver les fonctionnalités de troll actives lorsque la cible quitte le serveur."
+
+      control-teleport-back: "Retéléporter le contrôle :"
+      control-teleport-back-description: "Téléporter le joueur à sa position d'origine."
+
+      set-fire: "Mettre le feu :"
+      set-fire-description: "Autoriser ou interdire la mise à feu pour 'Piste de TNT' et les Arcs troll."
+
+      break-blocks: "Casser des blocs :"
+      break-blocks-description: "Autoriser ou interdire que les explosions détruisent des blocs pour 'Piste de TNT' et les Arcs troll."
+
+    locale:
+      title: "Paramètres de langue de TrollPlus"
+      current-language: "Langue actuelle :"
+      successfully-changed: "Langue changée avec succès !"
+
+      custom: "Personnalisé"
+      de: "Allemand"
+      en: "Anglais"
+      es: "Espagnol"
+      fr: "Français"
+      nl: "Néerlandais"
+      zh-cn: "Chinois simplifié"
+      zh-tw: "Chinois traditionnel"

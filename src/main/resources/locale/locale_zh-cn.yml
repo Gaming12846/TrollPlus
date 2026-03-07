@@ -1,0 +1,257 @@
+# ============================================================
+# TrollPlus - 简体中文语言配置
+# ============================================================
+#
+# 这是 TrollPlus 的简体中文语言配置文件。
+#
+# 生成于插件版本 ${version}。
+# 更新插件时，请确保同时更新此文件！
+#
+# 语言文件贡献者 ranyouHigh 和 Stars。
+#
+# ============================================================
+
+# 配置版本
+version: ${version}
+
+# =================== Global =================================
+
+global:
+  metrics-enabled: "正在开启插件数据收集功能"
+
+  server-version-only-partly-supported: "部分支持服务器版本。某些功能不同或不可用。"
+
+  checking-for-updates: "正在检查更新..."
+  update-available: "发现新版本！请前往 GitHub 页面下载最新版本："
+  no-update-available: "已是最新版本"
+  unable-to-check-for-updates: "检查新版本失败："
+
+  configuration-outdated: "您的配置已过时！请将您的配置更新到最新版本。插件无论如何都会尝试加载它，但可能会出现错误"
+  language-configuration-outdated: "您的翻译文件已过时！请将您的翻译文件更新到最新版本。插件无论如何都会尝试加载它，但可能会出现错误"
+  failed-to-save-configuration: "保存配置失败："
+
+  no-permission: "您没有足够的权限执行此命令"
+  no-console: "无法从控制台执行命令"
+  invalid-syntax: "无效的指令参数！"
+  invalid-syntax-usage: "请使用 /"
+
+# =================== TrollPlus Command ======================
+
+trollplus:
+  version: "版本："
+  developer: "开发者："
+  plugin-website: "插件官网："
+  report-bugs: "请将 Bug 反馈至："
+  reload: "配置文件重载成功"
+
+  blocklist:
+    already-in: "玩家 [player] 已经在黑名单中了" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
+    added: "玩家 [player] 已被添加至黑名单中" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
+    not-in: "玩家 [player] 不在黑名单中" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
+    removed: "玩家 [player] 已从黑名单中移除" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
+
+# =================== Troll Command ==========================
+
+troll:
+  player:
+    not-online: "玩家 [player] 目前不在线" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
+    is-immune: "玩家 [player] 当前处于受保护状态中" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
+    quit: "指定的玩家已经退出游戏"
+
+  not-available:
+    vanish: "对不起，你不能隐身自己"
+    teleport: "做得很好，但你已经处于自己的位置了 :)"
+    control: "做得很好，但你已经被控制了 :)"
+    falling-anvils: "无法坠落铁砧，因为目标在方块下"
+    slowly-kill: "无法缓慢杀伤，因为目标未处于生存或冒险模式"
+    freefall: "无法自由落体，因为目标不再暴露在开放的区域"
+
+  rocket:
+    cannot-launch: "无法发射，因为目标头顶有方块"
+    launch-stopped: "发射停止，因为目标不再暴露在开放的区域"
+
+  kill-message: "由于愚蠢而死亡"
+
+  features:
+    vanish:
+      quit-message: "[player] left the game" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
+      join-message: "[player] joined the game" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
+
+    # “消息刷屏”功能的消息内容。您可以根据需要添加任意多条消息
+    spam-messages:
+      - "嘿，朋友！"
+      - "警告：到处都是小丑！"
+      - "哈哈哈哈哈！"
+      - "LOLz xD xD！"
+      - "拥抱和吻！XOXO！"
+      - "你赢得了一个奖品！！！"
+      - "免费钱！现在点击！"
+      - "不要错过这个优惠！"
+      - "限时优惠！"
+      - "恭喜！你是赢家！"
+      - "大新闻，大家！"
+      - "现在加入乐趣！"
+      - "超级秘密消息！"
+      - "需要你的意见！"
+      - "这不是演习！"
+
+    fake-ban:
+      message-player: "你已被服务器封禁"
+      message-broadcast: "玩家 [player] 被服务器封禁" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
+
+    fake-op-message: "[Server: Made [player] a server operator]" # "[player]" 必须包含在信息内，因为它会被替换成玩家的名称
+
+# =================== GUI ====================================
+
+gui:
+  status:
+    on: "开启"
+    off: "关闭"
+
+  placeholder-description: "仅仅用于占位 :("
+
+  # =================== Troll GUI ============================
+
+  troll:
+    title: "Troll"
+
+    features:
+      freeze: "冰冻"
+      freeze-description: "使目标玩家无法移动，交互以及掉落/捡起物品"
+
+      hand-item-drop: "掉落手上的物品"
+      hand-item-drop-description: "掉落玩家当前手上拿着的物品"
+
+      control: "控制"
+      control-description: "完全控制目标玩家，包括移动，交互，造成伤害，掉落/捡起物品以及聊天"
+
+      flip-backwards: "向后翻转"
+      flip-backwards-description: "当目标玩家交互方块或攻击生物实体时，强制让其向后180度翻转"
+
+      spank: "打巴掌"
+      spank-description: "用随机的击退效果击退目标玩家"
+
+      spam-messages: "消息刷屏"
+      spam-messages-description: "使用随机的消息刷屏目标玩家"
+
+      spam-sounds: "噪音"
+      spam-sounds-description: "给目标玩家随机播放声音"
+
+      semi-ban: "类封禁"
+      semi-ban-description: "使目标玩家无法建筑，交互，造成伤害，掉落/捡起物品以及聊天"
+
+      falling-anvils: "坠落铁砧"
+      falling-anvils-description: "在目标玩家头顶坠落铁砧"
+
+      tnt-track: "TNT追踪"
+      tnt-track-description: "在目标玩家的当前位置不断生成TNT（TNT爆炸默认不会破坏方块）"
+
+      mob-spawner: "生成怪物"
+      mob-spawner-description: "在目标玩家的当前位置随机生成不同种类的怪物"
+
+      slowly-kill: "慢性杀伤"
+      slowly-kill-description: "通过慢慢地对目标玩家造成伤害让其死去"
+
+      random-teleport: ""
+      random-teleport-description: ""
+
+      inventory-drop: "掉落身上所有物品"
+      inventory-drop-description: "掉落目标身上的所有物品，包括盔甲以及副手上拿的物品"
+
+      inventory-shuffle: "库存洗牌"
+      inventory-shuffle-description: "随机打乱目标库存中的所有物品。"
+
+      random-scary-sound: "恐怖音乐"
+      random-scary-sound-description: "通过不断地播放随机的恐怖音乐来让目标玩家受到惊吓"
+
+      rocket: "发射"
+      rocket-description: "将目标玩家像烟花一样发射至天空"
+
+      freefall: "自由落体"
+      freefall-description: "把目标玩家传送至空中并丢下他"
+
+      fake-ban: "假封禁"
+      fake-ban-description: "让目标玩家以为他们被封禁了（会踢出目标玩家但是马上就能进来）"
+
+      fake-op: "假op"
+      fake-op-description: "让目标玩家以为他们获得了op"
+
+      teleport: "传送"
+      teleport-description: "传送到目标玩家身边"
+
+      invsee: "查看背包"
+      invsee-description: "打开目标玩家的背包"
+
+      kill: "杀死"
+      kill-description: "强制杀死目标玩家"
+
+      invsee-ender-chest: "查看末影箱"
+      invsee-ender-chest-description: "打开目标玩家的末影箱"
+
+      vanish: "隐身"
+      vanish-description: "使目标玩家隐身"
+
+      random-troll: "随机 Troll"
+      random-troll-description: "随机选择一个 Troll 项目"
+
+  # =================== Trollbows GUI ========================
+
+  trollbows:
+    title: "Trollbows"
+
+    bows:
+      explosion: "爆炸弓"
+      explosion-description: "发射弓箭时产生爆炸效果"
+
+      tnt: "TNT弓"
+      tnt-description: "发射弓箭时生成TNT"
+
+      lighting-bolt: "闪电弓"
+      lighting-bolt-description: "发射弓箭时产生闪电"
+
+      silverfish: "河豚弓"
+      silverfish-description: "发射弓箭时生成河豚"
+
+      potion-effect: "药水效果弓"
+      potion-effect-description: "一把在箭矢命中时造成随机药水效果的弓。"
+
+  # =================== Settings GUI =========================
+
+  trollsettings:
+    title: "TrollPlus 设置"
+
+    settings:
+      language: "更改语言"
+      language-description: "设置插件的语言。可用选项：custom, de, en, es, fr, nl, zh-cn, zh-tw。"
+
+      metrics-enabled: "Metrics:"
+      metrics-enabled-description: "开启或关闭插件Metrics"
+
+      check-for-updates: "更新检查:"
+      check-for-updates-description: "开启或关闭插件更新检查"
+
+      deactivate-features-on-quit: "在玩家退出时关闭功能:"
+      deactivate-features-on-quit-description: "当目标玩家离开服务器时关闭对他的所有 Troll 功能"
+
+      control-teleport-back: "控制:"
+      control-teleport-back-description: "将玩家重新传送回最初位置"
+
+      set-fire: "着火:"
+      set-fire-description: "开启或关闭 'TNT追踪' 和 'Trollbows' 功能施加的火焰效果"
+
+      break-blocks: "破坏方块:"
+      break-blocks-description: "开启或关闭 'TNT追踪' 和 'Trollbows' 功能施加的破坏方块效果"
+
+    locale:
+      title: "TrollPlus 语言设置"
+      current-language: "当前语言："
+      successfully-changed: "语言成功更改!"
+
+      custom: "自定义"
+      de: "德语"
+      en: "英语"
+      es: "西班牙语"
+      fr: "法语"
+      nl: "荷兰语"
+      zh-cn: "简体中文"
+      zh-tw: "繁体中文"

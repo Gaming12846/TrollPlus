@@ -1,116 +1,156 @@
-#############################################################
-#*---------------------------------------------------------*#
-#|                        TrollPlus                        |#
-#*---------------------------------------------------------*#
-#############################################################
+# ============================================================
+# TrollPlus
+# ============================================================
+#
+# Main configuration file for TrollPlus.
+#
+# Generated for version ${version}.
+# Ensure to update this file when updating the plugin!
+#
+# For support or inquiries, please contact us via GitHub or Modrinth.
+#
+#
+# ============================================================
 
-# This is the configuration file for TrollPlus.
-# This config was generated for version ${project.version}.
+# Configuration version
+version: ${version}
 
-# Always create or update your configuration when you update the plugin!
+# =================== General Settings =======================
 
-# For support or questions, please reach out on GitHub, SpigotMC or CurseForge.
+# General plugin configuration
+general:
 
-# Configuration Version
-version: 1.4.8
+  # Supported languages: en, de, es, fr, nl, zh-cn, zh-tw, custom
+  # Default: en
+  language: en
 
-###################### Global Settings ######################
+  # Enable plugin metrics and data collection
+  # Default: true
+  enable-metrics: true
 
-# Language setting for the plugin. Options are: custom, de, en, es, fr, nl zh-cn, zh-tw. [Default: en]
-language: en
+  # Check for plugin updates on startup
+  # Default: true
+  check-for-updates: true
 
-# Enable or disable plugin metrics collection. [Default: true]
-metrics-enabled: true
+  # Logging level: DEBUG, INFO, WARNING, ERROR
+  # Default: INFO
+  log-level: INFO
 
-# Enable or disable the update checker. [Default: true]
-check-for-updates: true
+# =================== Feature Settings =======================
 
-# Sets the plugin's log level. Available options include: DEBUG, INFO, WARNING, and ERROR. [Default: INFO]
-log-level: INFO
+# Global feature configuration
+features:
 
-##################### Feature Settings ######################
+  # Deactivate active troll features when the target leaves the server
+  # Default: true
+  deactivate-on-quit: true
 
-# Deactivate active troll features when the target leaves the server. [Default: true]
-deactivate-features-on-quit: true
+  # Allow setting fire (igniting blocks) for TNT track and Trollbows features
+  # Default: false
+  set-fire: false
 
-# Allow setting fire for "TNT track" and "Trollbows" features. [Default: false]
-set-fire: false
+  # Allow explosions to destroy blocks for TNT track and Trollbows features
+  # Default: false
+  break-blocks: false
 
-# Allow explosions to destroy blocks for "TNT track" and "Trollbows" features. [Default: false]
-break-blocks: false
+# =================== Troll Feature Settings =================
 
-###################### Troll Settings #######################
+# Configuration for individual troll features
+troll:
 
-# Vanish Feature
-# Enable or disable join and quit messages when a player goes vanish. [Default: false]
-vanish:
-  join-message-enabled: false
-  quit-message-enabled: false
+  # Hand Item Drop Feature
+  # Period in ticks between dropping the hand item
+  # Default: 20
+  hand-item-drop-period: 20
 
-# Hand Item Drop Feature
-# Period in ticks between dropping the hand item. [Default: 20]
-hand-item-drop-period: 20
+  # Spank Feature
+  # Period in ticks between spanking actions
+  # Default: 120
+  spank-period: 120
 
-# Control Feature
-# Enable or disable teleporting the player back to the starting position. [Default: true]
-control-teleport-back: true
-# Period in ticks between the synchronization of the state between the controller and the target player. [Default: 1]
-control-period: 1
+  # Spam Messages Feature
+  # Period in ticks between spam messages sent to the player
+  # Default: 20
+  spam-messages-period: 20
 
-# Spank Feature
-# Period in ticks between each spanking action. [Default: 120]
-spank-period: 120
+  # Spam Sounds Feature
+  # Period in ticks between spam sounds played to the player
+  # Default: 10
+  spam-sounds-period: 10
 
-# Spam Messages Feature
-# Period in ticks between spam messages to the player. [Default: 20]
-spam-messages-period: 20
+  # Semi Ban Feature
+  # Format for the player name in semi-ban messages. The "[player]" tag will be replaced.
+  # Default: "<[player]>"
+  semi-ban-message-replace: "<[player]>"
 
-# Spam Sounds Feature
-# Period in ticks between spam sounds to the player. [Default: 10]
-spam-sounds-period: 10
+  # Falling Anvils Feature
+  # Period in ticks between falling anvils
+  # Default: 20
+  falling-anvils-period: 20
 
-# Semi Ban Feature
-# Format for the player name in the "Semi ban" messages. [Default: "<[player]>"]
-semi-ban-message-replace: "<[player]>" # The "[player]" tag will be replaced with the player's name.
+  # TNT Track Feature
+  # Period in ticks between TNT events
+  # Default: 20
+  tnt-track-period: 20
 
-# Falling Anvils Feature
-# Period in ticks between each falling anvil. [Default: 20]
-falling-anvils-period: 20
+  # Mob Spawner Feature
+  # Period in ticks between mob spawns
+  # Default: 60
+  mob-spawner-period: 60
 
-# TNT Track Feature
-# Period in ticks between each TNT event. [Default: 20]
-tnt-track-period: 20
+  # Slowly Kill Feature
+  # Period in ticks between damage events
+  # Default: 60
+  slowly-kill-period: 60
 
-# Mob Spawner Feature
-# Period in ticks between each mob spawn. [Default: 60]
-mob-spawner-period: 60
+  # Random Teleport Feature
+  # Period in ticks between random teleports
+  # Default: 160
+  random-teleport-period: 160
 
-# Slowly Kill Feature
-# Period in ticks between each damage event for the "Slowly Kill" feature. [Default: 60]
-slowly-kill-period: 60
+  # Random Scary Sound Feature
+  # Volume of the random scary sound
+  # Default: 200
+  random-scary-sound-volume: 200
 
-# Random Teleport Feature
-# Period in ticks between each random teleport for the "Random Teleport" feature. [Default: 160]
-random-teleport-period: 160
+  # Fake Ban Feature
+  # Enable or disable broadcasting a message when a fake ban occurs
+  # Default: true
+  fake-ban-message-broadcast-enabled: true
 
-# Random Scary Sound Feature
-# Volume of the random scary sound. [Default: 50]
-random-scary-sound-volume: 200
+  # Fake OP Feature
+  # Enable or disable broadcasting a message when a fake op occurs
+  # Default: true
+  fake-op-message-broadcast-enabled: true
 
-# Rocket Feature
-rocket: # Number of charges determining how many times the target will be launched. [Default: 20]
-  charges: 20
-  # Period in ticks between each rocket charge. [Default: 5]
-  period: 5
+  # Freefall Feature
+  # Height to which the target is teleported for freefall
+  # Default: 100
+  freefall-height: 100
 
-# Fake Ban Feature
-# Enable or disable broadcasting a message when a fake ban occurs. [Default: true]
-fake-ban-message-broadcast-enabled: true
+  # Vanish Feature
+  vanish: # Enable or disable join messages when vanishing
+    # Default: false
+    join-message-enabled: false
 
-# Fake OP Feature
-# Enable or disable broadcasting a message when a fake op occurs. [Default: true]
-fake-op-message-broadcast-enabled: true
+    # Enable or disable quit messages when vanishing
+    # Default: false
+    quit-message-enabled: false
 
-# Freefall Feature
-# Height to which the target is teleported for the freefall feature. [Default: 100]
-freefall-height: 100
+  # Control Feature
+  control: # Enable or disable teleporting the player back to the starting position
+    # Default: true
+    teleport-back: true
+
+    # Period in ticks between state synchronizations of controller and target
+    # Default: 1
+    period: 1
+
+  # Rocket Feature
+  rocket: # Number of charges determining how many times the target will be launched
+    # Default: 20
+    charges: 20
+
+    # Period in ticks between rocket charges
+    # Default: 5
+    period: 5

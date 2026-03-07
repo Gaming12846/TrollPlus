@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2024 Gaming12846
+ * Copyright (C) 2026 Gaming12846
  */
 
 package de.gaming12846.trollplus.utils;
@@ -34,7 +34,8 @@ public class ItemBuilder {
 
         if (meta != null) {
             meta.setDisplayName(name);
-            meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_DESTROYS, ItemFlag.HIDE_DYE, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_UNBREAKABLE);
+            meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_DESTROYS, ItemFlag.HIDE_DYE, ItemFlag.HIDE_ENCHANTS,
+                    ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_UNBREAKABLE);
 
             // If lore is provided, add it as a list
             if (lore != null) {
@@ -57,8 +58,11 @@ public class ItemBuilder {
             meta.setDisplayName(name);
             meta.setOwningPlayer(owner);
 
-            // TODO
-            List<String> loreList = Arrays.asList(ChatColor.GRAY + "Ping: " + ChatColor.RED + owner.getPing(), ChatColor.GRAY + "Health: " + ChatColor.RED + owner.getHealth(), ChatColor.GRAY + "Exp: " + ChatColor.RED + owner.getExp(), ChatColor.GRAY + "GameMode: " + ChatColor.RED + owner.getGameMode(), ChatColor.GRAY + "Locale: " + ChatColor.RED + owner.getLocale());
+            List<String> loreList = Arrays.asList(ChatColor.GRAY + "Ping: " + ChatColor.RED + owner.getPing(),
+                    ChatColor.GRAY + "Health: " + ChatColor.RED + owner.getHealth(),
+                    ChatColor.GRAY + "Exp: " + ChatColor.RED + owner.getExp(),
+                    ChatColor.GRAY + "GameMode: " + ChatColor.RED + owner.getGameMode(),
+                    ChatColor.GRAY + "Locale: " + ChatColor.RED + owner.getLocale());
             meta.setLore(loreList);
             skull.setItemMeta(meta);
         }
@@ -77,7 +81,8 @@ public class ItemBuilder {
             meta.setUnbreakable(true);
             // Add the infinity enchantment if the server version supports it
             if (plugin.getServerVersion() > 1.19) meta.addEnchant(Enchantment.INFINITY, 1, false);
-            meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_DESTROYS, ItemFlag.HIDE_DYE, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_UNBREAKABLE);
+            meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_DESTROYS, ItemFlag.HIDE_DYE, ItemFlag.HIDE_ENCHANTS,
+                    ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_UNBREAKABLE);
 
             List<String> loreList = Collections.singletonList(ChatColor.GRAY + lore);
             meta.setLore(loreList);

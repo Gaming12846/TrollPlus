@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2024 Gaming12846
+ * Copyright (C) 2026 Gaming12846
  */
 
 package de.gaming12846.trollplus.listener;
@@ -34,7 +34,8 @@ public class PlayerDeathListener implements Listener {
         // Handle the kill feature to remove the kill metadata and set a custom death message
         if (player.hasMetadata(MetadataConstants.TROLLPLUS_KILL)) {
             player.removeMetadata(MetadataConstants.TROLLPLUS_KILL, plugin);
-            event.setDeathMessage(player.getName() + " " + plugin.getConfigHelperLanguage().getString(LangConstants.TROLL_KILL_MESSAGE));
+            event.setDeathMessage(
+                    player.getName() + " " + plugin.getConfigHelperLanguage().getString(LangConstants.TrollCommand.KILL_MESSAGE));
         }
     }
 }

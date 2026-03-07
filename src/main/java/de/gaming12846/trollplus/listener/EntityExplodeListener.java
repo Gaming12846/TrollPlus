@@ -1,6 +1,6 @@
 /*
  * This file is part of TrollPlus.
- * Copyright (C) 2024 Gaming12846
+ * Copyright (C) 2026 Gaming12846
  */
 
 package de.gaming12846.trollplus.listener;
@@ -34,7 +34,7 @@ public class EntityExplodeListener implements Listener {
         // Check if the exploding entity is a TNTPrimed entity with the "TROLLPLUS_TNT" metadata
         if (entity instanceof TNTPrimed && entity.hasMetadata(MetadataConstants.TROLLPLUS_TNT)) {
             // If the plugin configuration allows block breaking, exit the method early
-            if (plugin.getConfigHelper().getBoolean(ConfigConstants.BREAK_BLOCKS)) return;
+            if (plugin.getConfigHelper().getBoolean(ConfigConstants.Features.BREAK_BLOCKS)) return;
 
             // Cancel the explosion event and play an explosion sound at the entity's location
             event.setCancelled(true);
