@@ -104,9 +104,8 @@ troll:
 # =================== GUI ====================================
 
 gui:
-  status:
-    on: "Aan"
-    off: "Uit"
+  status-on: "Aan"
+  status-off: "Uit"
 
   placeholder-description: "Gewoon een tijdelijke plaatshouder."
 

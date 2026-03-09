@@ -137,8 +137,8 @@ public class LangConstants {
         }
 
         public static final class Status {
-            public static final String ON = "gui.status.on";
-            public static final String OFF = "gui.status.off";
+            public static final String ON = "gui.status-on";
+            public static final String OFF = "gui.status-off";
 
             private Status() {
             }

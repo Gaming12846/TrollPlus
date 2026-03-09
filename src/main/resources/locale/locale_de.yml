@@ -104,9 +104,8 @@ troll:
 # =================== GUI ====================================
 
 gui:
-  status:
-    on: "An"
-    off: "Aus"
+  status-on: "An"
+  status-off: "Aus"
 
   placeholder-description: "Nur ein Platzhalter vorerst."
 

@@ -104,9 +104,8 @@ troll:
 # =================== GUI ====================================
 
 gui:
-  status:
-    on: "开启"
-    off: "关闭"
+  status-on: "开启"
+  status-off: "关闭"
 
   placeholder-description: "仅仅用于占位 :("
 

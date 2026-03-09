@@ -77,7 +77,7 @@ public class ControlHelper {
 
                 synchronizePlayerStates();
             }
-        }.runTaskTimer(plugin, 0, plugin.getConfigHelper().getLong(ConfigConstants.Troll.Control.PERIOD));
+        }.runTaskTimer(plugin, 0, plugin.getConfigHelper().getInt(ConfigConstants.Troll.Control.PERIOD));
     }
 
     // Ends the control process, restoring the controlling player's original state and visibility

@@ -721,7 +721,7 @@ public class InventoryClickListener implements Listener {
                 if (target.isFlying()) target.setFlying(false);
                 rocketCharges++;
             }
-        }.runTaskTimer(plugin, 0, plugin.getConfigHelper().getLong(ConfigConstants.Troll.Rocket.PERIOD));
+        }.runTaskTimer(plugin, 0, plugin.getConfigHelper().getInt(ConfigConstants.Troll.Rocket.PERIOD));
     }
 
     // Handles the freefall feature, simulates a freefall by teleporting the target player to a specified height above their current position

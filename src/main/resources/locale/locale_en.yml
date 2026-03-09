@@ -104,9 +104,8 @@ troll:
 # =================== GUI ====================================
 
 gui:
-  status:
-    on: "On"
-    off: "Off"
+  status-on: "On"
+  status-off: "Off"
 
   placeholder-description: "Just a placeholder for now."
 

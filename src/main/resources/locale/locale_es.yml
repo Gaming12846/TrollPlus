@@ -104,9 +104,8 @@ troll:
 # =================== GUI ====================================
 
 gui:
-  status:
-    on: "Activado"
-    off: "Desactivado"
+  status-on: "Activado"
+  status-off: "Desactivado"
 
   placeholder-description: "Solo un marcador de posición por ahora."
 

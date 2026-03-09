@@ -104,9 +104,8 @@ troll:
 # =================== GUI ====================================
 
 gui:
-  status:
-    on: "Activé"
-    off: "Désactivé"
+  status-on: "Activé"
+  status-off: "Désactivé"
 
   placeholder-description: "Juste un espace réservé pour l'instant."
 

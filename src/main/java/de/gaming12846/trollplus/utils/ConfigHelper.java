@@ -92,11 +92,6 @@ public class ConfigHelper {
         return fileConfiguration.getInt(path);
     }
 
-    // Retrieve a long from the config
-    public long getLong(String path) {
-        return fileConfiguration.getLong(path);
-    }
-
     // Retrieve a list of strings from the config
     public List<String> getStringList(String path) {
         // Get the list from the current language config
